@@ -1,3 +1,5 @@
 **/__pycache__/
 **/outputs/*.npz
 **/outputs/*.npy
+**/checkpoints/
+**/outputs/run*.log
