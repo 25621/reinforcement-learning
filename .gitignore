@@ -13,3 +13,8 @@ docusaurus-site/.docusaurus/
 docusaurus-site/build/
 docusaurus-site/node_modules/
 /docs/
+
+# RL Phase 7 offline-RL dataset caches (~10 MB each). Not committed because they are
+# fully regenerated in ~30s from the committed teacher policies in
+# guides/reinforcement-learning/projects/38-bc-baseline-on-d4rl/teachers/.
+guides/reinforcement-learning/projects/38-bc-baseline-on-d4rl/data/

@@ -690,7 +690,7 @@ the modern default.
 
 | Project | Description | Difficulty |
 |---------|-------------|------------|
-| [BC baseline on D4RL](projects/38-bc-baseline-on-d4rl/README.md) | Behavior cloning on the `walker2d-medium-v2` task; report return | ⭐⭐ |
+| [BC baseline on D4RL](projects/38-bc-baseline-on-d4rl/README.md) | Behavior cloning on a `halfcheetah-medium` dataset; report return | ⭐⭐ |
 | [Naive Q-learning on the same dataset](projects/39-naive-q-learning-on-the-same-dataset/README.md) | Verify the catastrophic failure | ⭐⭐⭐ |
 | [Implement CQL](projects/40-implement-cql/README.md) | Add the conservative penalty; reproduce CQL's D4RL numbers | ⭐⭐⭐⭐ |
 | [Implement IQL](projects/41-implement-iql/README.md) | Verify it works on the same tasks with fewer knobs | ⭐⭐⭐⭐ |
