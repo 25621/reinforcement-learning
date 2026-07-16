@@ -1,0 +1,9 @@
+prompt        base completion   SFT completion   correct(base/sft)
+20+9=         15;               29;              no/yes
+25+41=        15;               66;              no/yes
+3+4=          15;               4;               no/no
+34+6=         15;               40;              no/yes
+23+37=        15;               60;              no/yes
+3+32=         15;               35;              no/yes
+13+2=         15;               15;              yes/yes
+5+27=         15;               32;              no/yes

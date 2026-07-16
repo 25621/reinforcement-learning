@@ -1,0 +1,14 @@
+prompt: 24+48=      (true answer 72)
+
+completion   reward   advantage
+74;             0.0      -0.577
+72;             1.0      +1.732
+73;             0.0      -0.577
+74;             0.0      -0.577
+73;             0.0      -0.577
+72;             1.0      +1.732
+73;             0.0      -0.577
+74;             0.0      -0.577
+
+group mean reward = baseline; above-average completions get
+positive advantage, below-average ones negative.

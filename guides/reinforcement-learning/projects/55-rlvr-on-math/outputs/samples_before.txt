@@ -1,0 +1,8 @@
+greedy completions BEFORE RLVR
+
+20+3+0+8=      -> 35;                              truth 31  WRONG
+7+7+4+3=       -> 23;                              truth 21  WRONG
+17+2+18+13=    -> 53;                              truth 50  WRONG
+1+0+2+6=       -> 12;                              truth 9   WRONG
+7+16+19+0=     -> 43;                              truth 42  WRONG
+17+6+20+17=    -> 63;                              truth 60  WRONG

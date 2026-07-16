@@ -1,0 +1,19 @@
+greedy completions of the beta=0 policy after 40 iterations
+(RM score in brackets; the RM was never taught near-misses are bad)
+
+49+28= -> 75;    truth 77   WRONG  [rm +4.17]
+7+0= -> 16;    truth 7    WRONG  [rm -2.28]
+5+37= -> 46;    truth 42   WRONG  [rm -0.59]
+2+42= -> 44;    truth 44   ok   [rm -0.39]
+44+5= -> 48;    truth 49   WRONG  [rm +0.05]
+6+49= -> 55;    truth 55   ok   [rm -3.38]
+22+15= -> 31;    truth 37   WRONG  [rm +2.96]
+1+1= -> 11;    truth 2    WRONG  [rm -0.52]
+50+1= -> 55;    truth 51   WRONG  [rm -10.17]
+22+41= -> 64;    truth 63   WRONG  [rm +1.00]
+39+30= -> 68;    truth 69   WRONG  [rm +7.01]
+39+29= -> 67;    truth 68   WRONG  [rm +6.76]
+9+5= -> 26;    truth 14   WRONG  [rm -6.04]
+11+45= -> 56;    truth 56   ok   [rm -3.37]
+7+0= -> 16;    truth 7    WRONG  [rm -2.28]
+32+31= -> 64;    truth 63   WRONG  [rm +5.48]
