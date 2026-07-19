@@ -1,0 +1,4 @@
+digit from content: 0.346
+digit from motion: 0.102
+position from motion: 0.962
+position from content: -0.027
