@@ -1,0 +1,4 @@
+format,disk_mb,encode_s,decode_ms_per_clip,psnr_db
+raw .npy,314.6,0.6,2.6,inf
+H.264 .mp4,2.2,1.9,22.0,34.4
+AV1 .webm,2.1,4.5,18.6,34.9
