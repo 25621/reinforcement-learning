@@ -8,7 +8,7 @@
 
 | File | What it does |
 |------|--------------|
-| `mmnist.py` | Generates Moving MNIST clips on the fly: MNIST digits bouncing around a 32×32 canvas. Also used by [project 09](../09-read-mocogan/README.md). |
+| `mmnist.py` | Generates Moving MNIST clips on the fly: MNIST digits bouncing around a 32×32 canvas. Also used by [project 09](../09-read-mocogan/README.md) and the Phase-3 I2V trilogy ([project 12](../12-tiny-i2v-model/README.md), [project 13](../13-motion-control/README.md), [project 14](../14-camera-trajectory/README.md)). |
 | `predictor.py` | The ConvLSTM cell and the encoder → ConvLSTM → decoder predictor. |
 | `train.py` | Trains the predictor (~9 min on CPU) and makes all the figures below. |
 | `outputs/` | The committed figures. |

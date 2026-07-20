@@ -1,0 +1,4 @@
+run,motion_bucket_id,mean_flow_px_per_frame
+svd_bucket020,20,2.78
+svd_bucket180,180,7.05
+svdxt_bucket127,127,7.07

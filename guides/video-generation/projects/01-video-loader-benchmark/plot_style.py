@@ -2,7 +2,7 @@
 
 One place for colors and axis chrome so every chart in these projects reads the
 same. Series colors follow a fixed categorical order; axis chrome is recessive.
-Imported by projects 02-05 via sys.path.
+Imported by most later projects via sys.path.
 """
 
 import matplotlib

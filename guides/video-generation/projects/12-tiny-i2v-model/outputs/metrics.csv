@@ -1,0 +1,5 @@
+model,flicker,cond_mse
+real clips,0.0479,0.0000
+inflated, temporal untrained,0.0854,0.0756
+inflated, temporal trained,0.0450,0.0206
+scratch, same budget,0.0539,0.0246

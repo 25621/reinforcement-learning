@@ -1,0 +1,5 @@
+comparison,flow_correlation
+epiCRealism vs dreamshaper (same seed),0.746
+epiCRealism seed3 vs seed17 (same model),-0.020
+clip mean |delta|,8.45
+stills mean |delta|,109.01

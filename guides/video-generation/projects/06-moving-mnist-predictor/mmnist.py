@@ -9,8 +9,8 @@ The original benchmark uses two 28x28 digits on a 64x64 canvas; we shrink
 everything by 2x (14x14 digits, 32x32 canvas) so the ConvLSTM trains in
 minutes on a CPU. The dynamics are identical.
 
-Imported by project 09 via sys.path (one-digit clips for the content/motion
-VAE).
+Imported via sys.path by project 09 (one-digit clips for the content/
+motion VAE) and by the Phase-3 I2V projects 12-14.
 """
 
 from pathlib import Path
