@@ -1,0 +1,11 @@
+quantity,opensora_v1_2,our_mini_dit
+transformer blocks,28,5
+hidden size,1152,128
+attention heads,16,4
+"patch size (t,h,w)",1x2x2,1x2x2
+latent channels,4,4
+text embedding width,4096,0 (project 28 adds text)
+tokens per clip,"93,600",64
+forward GFLOPs,1213848,0.136
+seconds per forward on this CPU (estimated),52465,0.0059
+VAE latent scale factors,"[3.85, 2.32, 2.33, 3.06]",1 measured scalar (project 24)

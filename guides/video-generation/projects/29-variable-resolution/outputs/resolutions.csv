@@ -1,0 +1,10 @@
+test,arm,tokens,fid_proxy,align,flicker,real_floor_fid,error,seconds
+square (trained),fixed_learned,64,163.16,0.823,0.0163,9.01,,2.2
+square (trained),fixed_rope,64,164.04,0.874,0.0172,9.01,,2.4
+square (trained),bucket_rope,64,61.51,0.878,0.0206,9.01,,2.6
+2:1 portrait (unseen shape),fixed_learned,72,270.23,0.829,0.0128,5.08,,2.4
+2:1 portrait (unseen shape),fixed_rope,72,255.93,0.882,0.0123,5.08,,2.8
+2:1 portrait (unseen shape),bucket_rope,72,128.0,0.866,0.0166,5.08,,2.9
+double length (unseen duration),fixed_learned,128,167.8,0.83,0.0141,10.42,,4.8
+double length (unseen duration),fixed_rope,128,288.13,0.83,0.0089,10.42,,5.3
+double length (unseen duration),bucket_rope,128,119.77,0.854,0.0181,10.42,,5.4

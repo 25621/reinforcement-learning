@@ -1,0 +1,2 @@
+digit classifier held-out accuracy: 0.842
+centroid direction judge accuracy on real clips: 1.000
