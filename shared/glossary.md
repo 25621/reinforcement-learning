@@ -2558,6 +2558,9 @@ PyTorch's base class for all neural network components; acts as a registry that 
 ### Node (distributed) {#node-distributed}
 One physical machine (server) in a distributed job, usually holding several GPUs; multi-node training spreads work across several of them over a network.
 
+### Noise-conditioning augmentation {#noise-conditioning-augmentation}
+A training trick for [cascaded diffusion](/shared/glossary/#cascaded-diffusion): while training a [super-resolution](/shared/glossary/#super-resolution) stage, deliberately corrupt the low-resolution conditioning input with a random amount of noise. Without it, the stage only ever sees *perfect* downsampled images during training, then receives the previous stage's slightly-flawed *generated* images at inference — a train/test mismatch it handles badly, amplifying every upstream artifact. Corrupting the condition during training puts "slightly wrong input" inside the training distribution, so the stage learns to clean up rather than trust its input blindly. Like training a copy-editor on drafts that contain typos instead of only on flawless text — otherwise the first real typo they meet gets faithfully reproduced in print.
+
 ### Noise schedule {#noise-schedule}
 The recipe a [diffusion model](/shared/glossary/#diffusion-model) follows for *how much* noise to add at each step of its forward (noising) process — and therefore how much the denoiser must remove at each reverse step. A *linear* schedule raises the noise level by equal amounts every step; a *cosine* schedule ramps up gently at the start and end, keeping recognizable image structure alive for more of the process, which usually trains better. Think of it as a dimmer switch for how quickly a picture fades to static: turn it down too fast (linear) and most steps see only static, leaving little to learn from. The choice mainly affects training quality and how many sampling steps you need, not the model architecture.
 
@@ -3149,6 +3152,9 @@ An [LLM](/shared/glossary/#llm) trained to think out loud at length — writing 
 
 ### ReAct {#react}
 A simple [agent](/shared/glossary/#agent) pattern that interleaves **Rea**soning and **Act**ing: the model writes a thought, takes an action with a tool, reads the observation, then repeats — the loop most basic agents are built on.
+
+### Receptive field {#receptive-field}
+The region of the input that can influence one particular output value of a network. A single 3×3 [convolution](/shared/glossary/#convolution-layers) has a receptive field of 3: each output pixel sees only its immediate neighbors. Stacking layers grows the field — every extra 3×3 layer lets information travel one step further — but growth is slow and indirect: two far-apart positions can only communicate through a long chain of intermediate layers. [Attention](/shared/glossary/#attention) is the opposite extreme: every position sees every other position in a single layer (a global receptive field). This trade-off is why video models add [temporal attention](/shared/glossary/#temporal-attention) on top of temporal convolutions — the convolution's small window along the time axis smooths neighboring frames, while attention lets the first and last frame of a clip constrain each other directly.
 
 ### Reciprocal rank fusion {#reciprocal-rank-fusion}
 A simple, robust way to merge several ranked lists into one: each item scores the sum of `1 / (rank + constant)` across the lists, so items ranked highly by more than one retriever rise to the top. Common for combining dense and sparse search in [hybrid retrieval](/shared/glossary/#hybrid-retrieval).

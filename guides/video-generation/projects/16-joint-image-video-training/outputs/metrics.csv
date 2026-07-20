@@ -1,0 +1,16 @@
+model,still_sharpness
+pretrained image model,0.0344
+joint 90/10,0.0357
+video-only,0.0490
+real clean frames,0.0392
+real degraded frames,0.0435
+
+model,eval_loss_clean,eval_loss_degraded
+pretrained image model,0.0198,0.0316
+joint 90/10,0.0210,0.0302
+video-only,0.0235,0.0247
+
+model,flicker,align_response,frame_sharpness
+joint 90/10,0.0469,0.5504,0.0374
+video-only,0.0521,0.7352,0.0435
+real degraded clips,0.0433,0.8546,0.0406

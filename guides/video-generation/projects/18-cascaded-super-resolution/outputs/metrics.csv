@@ -1,0 +1,6 @@
+model,input,psnr_db,sharpness
+sr,real LR,18.14,0.0392
+sr_noaug,real LR,18.79,0.0371
+bilinear upsample,real LR,20.66,0.0167
+sr,generated LR,,0.0378
+sr_noaug,generated LR,,0.0354

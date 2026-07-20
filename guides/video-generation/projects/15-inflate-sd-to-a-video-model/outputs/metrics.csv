@@ -1,0 +1,5 @@
+model,flicker,align_response
+real clips,0.0377,0.9129
+"inflated, untrained (independent frames)",0.0839,0.3210
+temporal conv only,0.0419,0.6682
+temporal conv + attention,0.0376,0.6784
