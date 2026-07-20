@@ -1,0 +1,9 @@
+clip,latent,input_flicker,recon_flicker,amplification,static_px,static_recon_flicker,psnr_db,latent_flicker,latent_abs,seconds
+static,mode,0.0,0.0,n/a,65536,0.0,27.38,0.0,0.6046,16.7
+static,sample,0.0,3e-05,n/a,65536,3e-05,27.38,0.0001,0.6046,17.8
+noise,mode,0.004505,0.002588,0.57,0,nan,27.36,0.0187,0.5925,16.5
+noise,sample,0.004505,0.002588,0.57,0,nan,27.36,0.0187,0.5925,17.1
+drift,mode,0.012675,0.016401,1.29,39,nan,28.63,0.0903,0.6235,18.4
+drift,sample,0.012675,0.016401,1.29,39,nan,28.63,0.0903,0.6235,16.8
+motion,mode,0.001147,0.002544,2.22,63734,0.001178,27.29,0.0157,0.6122,17.7
+motion,sample,0.001147,0.002545,2.22,63734,0.001179,27.29,0.0157,0.6122,18.8

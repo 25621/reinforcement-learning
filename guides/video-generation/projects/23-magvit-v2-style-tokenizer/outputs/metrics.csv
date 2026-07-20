@@ -1,0 +1,4 @@
+arm,label,codes,psnr_db,flicker_error,code_usage,perplexity,rfid_proxy
+vq,VQ (learned codebook),512,15.7,0.0622,0.0547,7.0,759.84
+fsq,FSQ (3 ch x 8 levels),512,19.25,0.0531,0.668,24.9,235.96
+lfq,LFQ (9 ch x sign),512,13.64,0.0569,0.0527,5.0,1412.67

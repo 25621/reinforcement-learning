@@ -1,0 +1,3 @@
+model,psnr_db,flicker_error,image_psnr,latent_scale
+causal (this project),19.81,0.0508,21.17,1.503
+non-causal (project 21),20.23,0.0496,nan,nan
