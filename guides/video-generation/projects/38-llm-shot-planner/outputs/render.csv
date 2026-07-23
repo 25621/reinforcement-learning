@@ -1,0 +1,33 @@
+arm,story,shots,subject_acc,direction_follow,identity_drift_end,digit_stable,path_jerk
+zero_shot,a knight rescues a princess,4,0.3,0.8125,0.1336,0.375,1.8497
+zero_shot,a robot learns to dance,4,0.225,0.875,0.2299,0.225,1.3627
+zero_shot,a cat chases a red laser dot across the kitchen,4,0.125,0.8125,0.1159,0.275,1.6408
+zero_shot,a paper plane flies across the city and lands on a roof,4,0.2,0.875,0.1011,0.325,1.653
+zero_shot,a diver swims down to a shipwreck and finds a lantern,4,0.075,0.875,0.2023,0.275,1.7224
+zero_shot,a farmer walks the field at dawn and opens the gate,4,0.225,0.875,0.1259,0.225,1.6606
+zero_shot,a detective follows a suspect through a rainy market,4,0.425,0.75,0.1466,0.6,1.3445
+zero_shot,a comet passes the earth and disappears behind the moon,4,0.4,0.8125,0.1422,0.25,1.6308
+few_shot,a knight rescues a princess,4,0.15,0.9375,0.1732,0.2,1.6819
+few_shot,a robot learns to dance,4,0.1,0.875,0.2343,0.425,1.393
+few_shot,a cat chases a red laser dot across the kitchen,4,0.3,0.8125,0.117,0.275,1.4917
+few_shot,a paper plane flies across the city and lands on a roof,4,0.15,1.0,0.1536,0.25,2.2536
+few_shot,a diver swims down to a shipwreck and finds a lantern,4,0.175,0.75,0.1717,0.275,1.075
+few_shot,a farmer walks the field at dawn and opens the gate,4,0.4,0.9375,0.1838,0.3,2.2499
+few_shot,a detective follows a suspect through a rainy market,4,0.3,0.9375,0.234,0.35,1.3587
+few_shot,a comet passes the earth and disappears behind the moon,4,0.15,0.8125,0.1737,0.275,1.9209
+constrained,a knight rescues a princess,4,0.975,0.8125,0.0662,0.975,1.5891
+constrained,a robot learns to dance,4,0.225,0.875,0.2299,0.225,1.3627
+constrained,a cat chases a red laser dot across the kitchen,4,0.2,0.875,0.2493,0.375,1.138
+constrained,a paper plane flies across the city and lands on a roof,4,0.325,0.6875,0.2577,0.35,1.2713
+constrained,a diver swims down to a shipwreck and finds a lantern,4,0.225,0.75,0.2573,0.325,1.2143
+constrained,a farmer walks the field at dawn and opens the gate,4,0.3,0.875,0.248,0.425,1.1542
+constrained,a detective follows a suspect through a rainy market,4,0.3,0.875,0.2519,0.3,1.1537
+constrained,a comet passes the earth and disappears behind the moon,4,0.125,0.8125,0.2454,0.2,1.9021
+random,a knight rescues a princess,4,0.1,0.875,0.1795,0.125,1.5459
+random,a robot learns to dance,4,0.65,0.875,0.1194,0.95,2.2301
+random,a cat chases a red laser dot across the kitchen,4,0.325,0.75,0.1533,0.275,0.8042
+random,a paper plane flies across the city and lands on a roof,4,0.425,0.875,0.181,0.275,1.4795
+random,a diver swims down to a shipwreck and finds a lantern,4,0.25,0.625,0.2717,0.375,1.4442
+random,a farmer walks the field at dawn and opens the gate,4,0.4,0.8125,0.1411,0.525,2.1636
+random,a detective follows a suspect through a rainy market,4,0.175,0.875,0.1721,0.225,2.2852
+random,a comet passes the earth and disappears behind the moon,4,0.1,0.8125,0.1538,0.3,1.9915

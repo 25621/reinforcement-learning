@@ -1,0 +1,4 @@
+method,frames,travel_px,near_wall_frac,path_jerk,seam_ratio,direction_follow,digit_acc,digit_stable,identity_drift_end
+coarse_16f,16,30.4339,0.1589,0.6097,1.0,1.0,0.4688,0.5729,0.0773
+hierarchical,40,29.6022,0.1437,0.8006,,,0.3625,0.4625,0.1404
+sliding_window,40,36.7942,0.3104,1.32,0.5328,0.7083,0.35,0.4417,0.155
