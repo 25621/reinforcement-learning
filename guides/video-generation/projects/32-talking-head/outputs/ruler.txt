@@ -1,0 +1,4 @@
+aperture-vs-truth correlation on REAL seen_eval frames: 0.883
+aperture-vs-truth correlation on REAL held_eval frames: 0.855
+held-out speaker's personal max_open: 0.40 (training speakers: 0.75-1.00)
+real aperture swing, held-out speaker: 0.0899

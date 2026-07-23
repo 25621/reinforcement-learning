@@ -1,0 +1,4 @@
+style,what,clip_tokens,clip_kept,clip_dropped,t5_tokens,clause_starts_at_clip_token,clause_survives_clip
+short,the clause alone,7,7,0,8,1,True
+long_early,"clause first, then 100 tokens of scenery",94,77,17,113,1,True
+long_late,"100 tokens of scenery, then the clause",95,77,18,114,89,False

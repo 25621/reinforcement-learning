@@ -1,0 +1,1 @@
+style judge accuracy on VAE-reconstructed real clips: 0.768 (chance 0.333)

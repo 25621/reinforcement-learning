@@ -1,0 +1,5 @@
+temporal  |output - frozen base| at init: 0.00e+00   trainable 1,167,792 of 3,169,216 (36.8%)
+perframe  |output - frozen base| at init: 0.00e+00   trainable 1,150,896 of 3,152,320 (36.5%)
+scratch   |output - frozen base| at init: 0.00e+00   trainable 1,167,792 of 3,169,216 (36.8%)
+digit judge on full-resolution frames: 84.4%
+digit judge on the control map alone: 38.3% (chance 10%)

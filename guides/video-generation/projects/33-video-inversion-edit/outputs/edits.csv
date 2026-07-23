@@ -1,0 +1,10 @@
+method,new_digit,old_digit,direction,path_px,flicker,seconds
+no inversion (fresh noise),0.281,0.031,1.0,9.7,0.0294,4.5
+invert + same prompt (control),0.188,0.281,1.0,3.38,0.033,6.7
+"edit, inverted to t=0.4",0.188,0.375,1.0,0.62,0.0279,6.6
+"edit, inverted to t=0.6",0.281,0.312,1.0,0.86,0.0266,6.5
+"edit, inverted to t=0.8",0.281,0.312,1.0,1.47,0.0263,7.1
+"edit, inverted to t=1.0",0.344,0.188,1.0,3.32,0.0316,6.7
+"edit, every frame on its own",0.25,0.125,0.844,5.94,0.015,10.6
+"frame-by-frame, same prompt (control)",0.312,0.156,0.875,5.45,0.0177,10.6
+the real clips themselves,,0.844,1.0,0.0,0.042,

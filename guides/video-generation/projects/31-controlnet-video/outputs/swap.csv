@@ -1,0 +1,5 @@
+measure,value
+digit matches the PROMPT,0.167
+digit matches the CONTROL's source clip,0.167
+tracking error vs the control (px),1.19
+chance,0.1
