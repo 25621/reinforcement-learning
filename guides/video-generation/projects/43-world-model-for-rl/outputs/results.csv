@@ -1,0 +1,8 @@
+method,real_coins_per_100,dreamed_coins_per_100,real_steps_used
+dream H=5,2.156,7.273,20000
+dream H=15,1.812,2.191,20000
+dream H=30,1.922,1.187,20000
+random buttons,1.000,,0
+"model-free, same budget",1.312,,20000
+"model-free, 20x the data",5.875,,400000
+scripted (reads hidden state),11.266,,0

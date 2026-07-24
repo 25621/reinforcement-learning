@@ -1,0 +1,6 @@
+arm,n_codes,trained_on,control_accuracy
+k4,4,rand,0.2277
+k8,8,rand,0.1667
+k16,16,rand,0.1421
+oracle,4,rand,0.9901
+greedy,8,greedy,0.2945
