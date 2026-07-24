@@ -18,3 +18,8 @@ docusaurus-site/node_modules/
 # fully regenerated in ~30s from the committed teacher policies in
 # guides/reinforcement-learning/projects/38-bc-baseline-on-d4rl/teachers/.
 guides/reinforcement-learning/projects/38-bc-baseline-on-d4rl/data/
+
+# Multimodal Phase 1 shared cache: 1,000 COCO JPEGs (~15 MB) plus their CLIP
+# embeddings (~19 MB), used by projects 02 and 03. Not committed because
+# `python3 run.py --stage data` re-downloads and re-encodes them in ~2 minutes.
+guides/multimodal-learning/projects/02-visualize-the-modality-gap/data/

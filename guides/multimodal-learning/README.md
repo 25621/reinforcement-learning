@@ -97,17 +97,17 @@ Before architectures, get the conceptual map right. "Multimodal" is a fuzzy umbr
 ### Concepts to Learn
 
 - **The four canonical tasks**:
-  - **Cross-modal retrieval** — given an image, find the matching caption (or vice versa)
+  - **[Cross-modal retrieval](/shared/glossary/#cross-modal-retrieval)** — given an image, find the matching caption (or vice versa)
   - **Cross-modal generation** — given text, produce an image (or audio, or video). *The generative half lives in [Image Generation](../image-generation/) / [Video Generation](../video-generation/); here we care about the conditioning and the cross-modal interface.*
-  - **Multimodal understanding** — given image + text, answer a question (VQA, captioning)
-  - **Joint/any-to-any** — flexibly map any subset of modalities to any other
-- **Modality gap** — even well-trained models keep text and image embeddings in noticeably different regions of the shared space
-- **Alignment vs fusion** — alignment is *making spaces comparable*; fusion is *combining information*
-- **Early vs late fusion**:
-  - *Late fusion*: encode each modality separately, combine at the end (CLIP-style)
-  - *Early fusion*: interleave modalities into one sequence from the start (Chameleon-style)
-  - *Middle fusion*: encode separately, then attend across (Flamingo, LLaVA)
-- **Pretraining objectives**: contrastive, masked, generative, and combinations
+  - **Multimodal understanding** — given image + text, answer a question ([VQA](/shared/glossary/#vqa-visual-question-answering), captioning)
+  - **Joint/any-to-any** — flexibly map any subset of [modalities](/shared/glossary/#modality) to any other
+- **[Modality gap](/shared/glossary/#modality-gap)** — even well-trained models keep text and image [embeddings](/shared/glossary/#embedding) in noticeably different regions of the shared space. Concretely: a photo scores about 0.30 [cosine similarity](/shared/glossary/#cosine-similarity) against *its own* caption but about 0.49 against a completely unrelated photo, so raw [CLIP](/shared/glossary/#clip) scores tell you almost nothing on their own — only rankings do. Project [02](projects/02-visualize-the-modality-gap/README.md) measures this and traces it back to the [cone effect](/shared/glossary/#cone-effect), which is present *before* any training.
+- **Alignment vs fusion** — alignment is *making spaces comparable* (so a photo and its caption can be scored against each other); fusion is *combining information* (so the model can reason over both at once). A [dual encoder](/shared/glossary/#dual-encoder) only aligns; a [VLM](/shared/glossary/#vlm) fuses.
+- **Early vs late [fusion](/shared/glossary/#fusion-earlymiddlelate)** — "early/middle/late" refers to *how far into the network* the two modalities are first allowed to meet:
+  - *Late fusion*: encode each modality separately, combine at the end ([CLIP](/shared/glossary/#clip)-style)
+  - *Early fusion*: interleave modalities into one sequence from the start ([Chameleon](/shared/glossary/#chameleon)-style)
+  - *Middle fusion*: encode separately, then attend across ([Flamingo](/shared/glossary/#flamingo), [LLaVA](/shared/glossary/#llava))
+- **Pretraining objectives**: [contrastive](/shared/glossary/#infonce) (rank the true pair above the wrong ones), masked (hide part of the input, predict it), generative (predict the next [token](/shared/glossary/#token-visualaudio)), and combinations
 
 ### A Taxonomy Diagram
 
@@ -140,7 +140,9 @@ Before architectures, get the conceptual map right. "Multimodal" is a fuzzy umbr
 
 ### Key Insight
 
-The choice of fusion strategy determines what your model can do. Dual encoders (CLIP) are fast and great at retrieval but can't reason or generate. Encoder-decoder VLMs (LLaVA) reason and generate text but not images. Unified models (Chameleon, GPT-4o) do everything but need vastly more data and compute. There is no free lunch; pick the architecture that matches your task.
+The choice of fusion strategy determines what your model can do. [Dual encoders](/shared/glossary/#dual-encoder) (CLIP) are fast and great at retrieval but can't reason or generate. Encoder-decoder [VLMs](/shared/glossary/#vlm) (LLaVA) reason and generate text but not images. Unified models (Chameleon, GPT-4o) do everything but need vastly more data and compute. There is no free lunch; pick the architecture that matches your task.
+
+Two consequences of that "fast" claim, since it is easy to skim past. A dual encoder is fast *at query time* because each item is encoded once, in advance, and answering a query is then one [matrix multiplication](/shared/glossary/#matmul) over stored vectors — a million candidates cost one matmul, not a million forward passes. A VLM has no such precomputable per-item vector, so scoring a million candidates means running the whole model a million times *per query*. And "can't generate" is structural, not a missing feature: a dual encoder's output is a single vector, and a single vector is not a sequence, so there is nothing for a decoder to read off. Project [01](projects/01-modality-survey/README.md) lays this out as a grid where each architecture's position predicts exactly which jobs it can do.
 
 ### Resources
 
