@@ -1,0 +1,4 @@
+model,violation,vanish,leak,teleport,sharpness,n
+strong (project 45),0.0550,0.0000,0.0450,0.0100,0.9149,200
+weak (undertrained),0.1200,0.0000,0.0750,0.0450,0.8317,200
+"strong, frames shuffled",0.9900,0.0000,0.0450,0.9850,0.9149,200

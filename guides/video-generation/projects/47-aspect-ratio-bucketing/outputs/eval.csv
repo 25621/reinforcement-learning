@@ -1,0 +1,5 @@
+aspect,model,align_mean,shape,speed,aspect_hw
+tall,squish,0.8862,0.9024,0.7561,2.4095
+tall,bucket,0.9878,0.9634,1.0000,1.1830
+wide,squish,0.8902,0.8171,0.8537,0.6145
+wide,bucket,0.9959,0.9878,1.0000,0.9510
