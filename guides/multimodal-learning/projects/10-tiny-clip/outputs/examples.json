@@ -1,0 +1,38 @@
+[
+  {
+    "query_image": 1643,
+    "true_rank": 1,
+    "true_caption": "A cat standing on top of a car trunk next to a parked motorcycle.",
+    "top1_retrieved": "A cat standing on top of a car trunk next to a parked motorcycle."
+  },
+  {
+    "query_image": 3561,
+    "true_rank": 1,
+    "true_caption": "A blender glass with several green vegetables in it.",
+    "top1_retrieved": "A blender glass with several green vegetables in it."
+  },
+  {
+    "query_image": 2298,
+    "true_rank": 1,
+    "true_caption": "a black motorcycle is parked by the side of the road",
+    "top1_retrieved": "a black motorcycle is parked by the side of the road"
+  },
+  {
+    "query_image": 3220,
+    "true_rank": 44,
+    "true_caption": "A motorcycle is parked on the beach near the ocean.",
+    "top1_retrieved": "A large train is coming down the track between a beautiful mountain."
+  },
+  {
+    "query_image": 3846,
+    "true_rank": 80,
+    "true_caption": "A lady holding up a pot roast while posing for a photo.",
+    "top1_retrieved": "A man holding a Nintendo Wii controller in front of a couch."
+  },
+  {
+    "query_image": 1331,
+    "true_rank": 180,
+    "true_caption": "a sugar donut with a bite taken out of it",
+    "top1_retrieved": "A bathroom is photographed with a fisheye filter."
+  }
+]

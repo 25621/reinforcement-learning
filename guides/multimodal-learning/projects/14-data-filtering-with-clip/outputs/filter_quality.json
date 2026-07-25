@@ -1,0 +1,39 @@
+{
+  "summary": {
+    "n_pairs": 4500,
+    "share_broken": 0.606,
+    "mean_score_true_pair": 0.2771,
+    "mean_score_broken_pair": 0.1433,
+    "auc": 0.9939
+  },
+  "thresholds": [
+    {
+      "keep_fraction": 1.0,
+      "pairs_kept": 4500,
+      "precision_share_kept_that_are_true": 0.3944,
+      "recall_share_of_true_pairs_kept": 1.0,
+      "true_pairs_kept": 1775
+    },
+    {
+      "keep_fraction": 0.7,
+      "pairs_kept": 3150,
+      "precision_share_kept_that_are_true": 0.5635,
+      "recall_share_of_true_pairs_kept": 1.0,
+      "true_pairs_kept": 1775
+    },
+    {
+      "keep_fraction": 0.4,
+      "pairs_kept": 1800,
+      "precision_share_kept_that_are_true": 0.9544,
+      "recall_share_of_true_pairs_kept": 0.9679,
+      "true_pairs_kept": 1718
+    },
+    {
+      "keep_fraction": 0.2,
+      "pairs_kept": 900,
+      "precision_share_kept_that_are_true": 0.9989,
+      "recall_share_of_true_pairs_kept": 0.5065,
+      "true_pairs_kept": 899
+    }
+  ]
+}

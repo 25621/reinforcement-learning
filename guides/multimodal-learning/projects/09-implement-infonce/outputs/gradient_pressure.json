@@ -1,0 +1,14 @@
+{
+  "rows": {
+    "grad_norm_images": 0.05388,
+    "grad_norm_texts": 0.0761
+  },
+  "cols": {
+    "grad_norm_images": 0.05467,
+    "grad_norm_texts": 0.07393
+  },
+  "both": {
+    "grad_norm_images": 0.05396,
+    "grad_norm_texts": 0.07448
+  }
+}

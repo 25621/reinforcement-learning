@@ -1,0 +1,14 @@
+{
+  "bare": {
+    "true": "beagle",
+    "predicted_as": "English foxhound",
+    "rate": 0.16,
+    "recall_of_true_class": 0.81
+  },
+  "ensemble": {
+    "true": "English foxhound",
+    "predicted_as": "beagle",
+    "rate": 0.15,
+    "recall_of_true_class": 0.74
+  }
+}

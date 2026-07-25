@@ -1,0 +1,176 @@
+{
+  "accuracy_1000_way": 0.491,
+  "share_of_errors_landing_outside_the_10_classes": 0.957,
+  "per_class": {
+    "Shih-Tzu": {
+      "recall": 0.56,
+      "top_wrong_labels": [
+        {
+          "label": "Lhasa Apso",
+          "count": 11
+        },
+        {
+          "label": "Tibetan Terrier",
+          "count": 6
+        },
+        {
+          "label": "Sealyham Terrier",
+          "count": 5
+        }
+      ]
+    },
+    "Rhodesian ridgeback": {
+      "recall": 0.6,
+      "top_wrong_labels": [
+        {
+          "label": "Redbone Coonhound",
+          "count": 13
+        },
+        {
+          "label": "Vizsla",
+          "count": 5
+        },
+        {
+          "label": "Malinois",
+          "count": 4
+        }
+      ]
+    },
+    "beagle": {
+      "recall": 0.42,
+      "top_wrong_labels": [
+        {
+          "label": "Basset Hound",
+          "count": 17
+        },
+        {
+          "label": "Treeing Walker Coonhound",
+          "count": 13
+        },
+        {
+          "label": "Entlebucher Sennenhund",
+          "count": 6
+        }
+      ]
+    },
+    "English foxhound": {
+      "recall": 0.24,
+      "top_wrong_labels": [
+        {
+          "label": "Treeing Walker Coonhound",
+          "count": 38
+        },
+        {
+          "label": "Basset Hound",
+          "count": 5
+        },
+        {
+          "label": "Beagle",
+          "count": 5
+        }
+      ]
+    },
+    "Border terrier": {
+      "recall": 0.68,
+      "top_wrong_labels": [
+        {
+          "label": "Cairn Terrier",
+          "count": 5
+        },
+        {
+          "label": "Australian Terrier",
+          "count": 3
+        },
+        {
+          "label": "Lakeland Terrier",
+          "count": 3
+        }
+      ]
+    },
+    "Australian terrier": {
+      "recall": 0.23,
+      "top_wrong_labels": [
+        {
+          "label": "Australian Silky Terrier",
+          "count": 34
+        },
+        {
+          "label": "Norwich Terrier",
+          "count": 9
+        },
+        {
+          "label": "Yorkshire Terrier",
+          "count": 7
+        }
+      ]
+    },
+    "golden retriever": {
+      "recall": 0.54,
+      "top_wrong_labels": [
+        {
+          "label": "Labrador Retriever",
+          "count": 13
+        },
+        {
+          "label": "Great Pyrenees dog",
+          "count": 7
+        },
+        {
+          "label": "Irish Setter",
+          "count": 4
+        }
+      ]
+    },
+    "Old English sheepdog": {
+      "recall": 0.38,
+      "top_wrong_labels": [
+        {
+          "label": "Sealyham Terrier",
+          "count": 10
+        },
+        {
+          "label": "Tibetan Terrier",
+          "count": 10
+        },
+        {
+          "label": "Lhasa Apso",
+          "count": 7
+        }
+      ]
+    },
+    "Samoyed": {
+      "recall": 0.71,
+      "top_wrong_labels": [
+        {
+          "label": "Kuvasz",
+          "count": 8
+        },
+        {
+          "label": "dog sled",
+          "count": 3
+        },
+        {
+          "label": "Great Pyrenees dog",
+          "count": 3
+        }
+      ]
+    },
+    "dingo": {
+      "recall": 0.55,
+      "top_wrong_labels": [
+        {
+          "label": "dhole",
+          "count": 18
+        },
+        {
+          "label": "Basenji",
+          "count": 6
+        },
+        {
+          "label": "upright piano",
+          "count": 2
+        }
+      ]
+    }
+  }
+}

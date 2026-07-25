@@ -1,0 +1,5 @@
+loss_direction,i2t_r1,i2t_r5,t2i_r1,t2i_r5,asymmetry_i2t_minus_t2i,caption_hub_max,caption_hub_concentration
+none (frozen CLIP),0.76,0.97,0.755,0.985,0.005,4.0,1.45
+rows,0.675,0.97,0.68,0.945,-0.005,4.0,1.58
+cols,0.67,0.965,0.695,0.955,-0.025,4.0,1.63
+both,0.67,0.97,0.68,0.965,-0.01,4.0,1.63

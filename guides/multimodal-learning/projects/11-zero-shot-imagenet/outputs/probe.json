@@ -1,0 +1,16 @@
+[
+  {
+    "dataset": "imagenette",
+    "zero_shot_best": 0.988,
+    "zero_shot_best_style": "photo",
+    "linear_probe_600_labels": 0.989,
+    "gap": 0.001
+  },
+  {
+    "dataset": "imagewoof",
+    "zero_shot_best": 0.895,
+    "zero_shot_best_style": "ensemble",
+    "linear_probe_600_labels": 0.89,
+    "gap": -0.005
+  }
+]

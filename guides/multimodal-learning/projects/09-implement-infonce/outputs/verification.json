@@ -1,0 +1,17 @@
+{
+  "loss_rows_manual": 3.6046648497775537,
+  "loss_rows_reference": 3.604664849777554,
+  "loss_rows_absdiff": 4.440892098500626e-16,
+  "loss_cols_manual": 3.594748974320112,
+  "loss_cols_reference": 3.5947489743201126,
+  "loss_cols_absdiff": 4.440892098500626e-16,
+  "loss_both_manual": 3.599706912048833,
+  "loss_both_reference": 3.599706912048833,
+  "loss_both_absdiff": 0.0,
+  "grad_rows_maxdiff": 4.336808689942018e-19,
+  "grad_cols_maxdiff": 4.336808689942018e-19,
+  "grad_both_maxdiff": 8.673617379884035e-19,
+  "fd_maxdiff_images": 1.9100178795354583e-12,
+  "fd_maxdiff_texts": 3.617949201947107e-12,
+  "rows_minus_cols": 0.009915875457441548
+}

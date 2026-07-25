@@ -1,0 +1,11 @@
+mined with a real frozen CLIP B/32
+
+ANCHOR: A wooden desk filled with a laptop and computer monitor.
+
+  overlap 0.33   An office desk with a laptop and a phone on it.
+  overlap 0.17   a desk with a banana a keyboard and a mouse
+  overlap 0.33   a white laptop is on a wood desk
+  overlap 0.00   Two cats in a chair taking their naps.
+  overlap 0.17   A cubicle desk with two laptops on it.
+  overlap 0.00   There is a dog sleeping on a futon.
+  overlap 0.50   a desk with a cup plate laptop monitor and keyboard

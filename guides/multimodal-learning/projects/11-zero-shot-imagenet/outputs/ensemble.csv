@@ -1,0 +1,23 @@
+dataset,classifier,accuracy
+imagenette,template 1: a photo of a {}.,0.628
+imagenette,template 2: a blurry photo of a {}.,0.632
+imagenette,template 3: a photo of the large {}.,0.636
+imagenette,template 4: a photo of the small {}.,0.648
+imagenette,template 5: a cropped photo of a {}.,0.641
+imagenette,template 6: a bright photo of a {}.,0.596
+imagenette,template 7: a photo of one {}.,0.629
+imagenette,ensemble (normalize first),0.66
+imagenette,best single template,0.648
+imagenette,mean of single templates,0.63
+imagenette,worst single template,0.596
+imagewoof,template 1: a photo of a {}.,0.47
+imagewoof,template 2: a blurry photo of a {}.,0.473
+imagewoof,template 3: a photo of the large {}.,0.464
+imagewoof,template 4: a photo of the small {}.,0.436
+imagewoof,template 5: a cropped photo of a {}.,0.477
+imagewoof,template 6: a bright photo of a {}.,0.399
+imagewoof,template 7: a photo of one {}.,0.459
+imagewoof,ensemble (normalize first),0.491
+imagewoof,best single template,0.477
+imagewoof,mean of single templates,0.454
+imagewoof,worst single template,0.399
