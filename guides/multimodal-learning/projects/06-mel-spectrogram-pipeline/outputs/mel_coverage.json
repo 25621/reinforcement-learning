@@ -1,0 +1,30 @@
+[
+  {
+    "n_mels": 8,
+    "fft_bins": 129,
+    "min_effective_bins": 8.81,
+    "median_effective_bins": 18.65,
+    "filters_under_2_bins": 0
+  },
+  {
+    "n_mels": 20,
+    "fft_bins": 129,
+    "min_effective_bins": 3.24,
+    "median_effective_bins": 7.89,
+    "filters_under_2_bins": 0
+  },
+  {
+    "n_mels": 40,
+    "fft_bins": 129,
+    "min_effective_bins": 1.33,
+    "median_effective_bins": 3.99,
+    "filters_under_2_bins": 4
+  },
+  {
+    "n_mels": 80,
+    "fft_bins": 129,
+    "min_effective_bins": 1.0,
+    "median_effective_bins": 2.03,
+    "filters_under_2_bins": 39
+  }
+]

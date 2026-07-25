@@ -162,17 +162,17 @@ Before you can fuse modalities, you have to encode each one into vectors. This p
 ### Concepts to Learn
 
 - **Image encoders**:
-  - CNNs (ResNet, EfficientNet) — still useful, especially for small models
-  - Vision Transformers (ViT) — the modern default; how patchification works
-  - **Patch size and resolution tradeoffs** — smaller patches = more tokens = better detail = quadratically more compute
-  - **SigLIP / SigLIP 2 / DFN / EVA-CLIP / DINOv2** — modern improvements over the original CLIP vision tower; DINOv2 is the dominant *self-supervised* (non-contrastive) choice
+  - [CNNs](/shared/glossary/#cnn) ([ResNet](/shared/glossary/#resnet), EfficientNet) — still useful, especially for small models
+  - [Vision Transformers](/shared/glossary/#vit) (ViT) — the modern default; how [patchification](/shared/glossary/#patchification) works
+  - **Patch size and resolution tradeoffs** — smaller patches = more tokens = better detail = quadratically more compute. Project [08](projects/08-patch-size-study/README.md) measures each link in that chain: 17 → 257 tokens costs 19× the [FLOPs](/shared/glossary/#flops), and [attention](/shared/glossary/#attention)'s share of them climbs from 2% to 25% because attention compares every token with every other while all the other layers see each token alone. It also finds the trap in "better detail": on a task with no fine detail to find, the *largest* patch wins on accuracy as well as on cost.
+  - **[SigLIP](/shared/glossary/#siglip) / SigLIP 2 / DFN / EVA-CLIP / [DINOv2](/shared/glossary/#dinov2)** — modern improvements over the original CLIP vision tower; DINOv2 is the dominant *[self-supervised](/shared/glossary/#self-supervised)* (non-contrastive) choice
 - **Text encoders**:
   - BERT-style bidirectional encoders (for dual-encoder models)
   - Decoder-only LLMs as encoders (just take hidden states)
   - The tradeoff: bidirectional sees both sides but is non-causal; decoder-only is causal but composes naturally with generation
 - **Audio encoders**:
-  - Mel spectrograms — the standard input representation
-  - Whisper-style encoders for speech
+  - [Mel spectrograms](/shared/glossary/#mel-spectrogram) — the standard input representation. Project [06](projects/06-mel-spectrogram-pipeline/README.md) builds one from scratch and removes each step in turn to show none of them is convention: dropping the log alone takes a digit classifier from 72% to 21%.
+  - [Whisper](/shared/glossary/#whisper)-style encoders for speech — project [07](projects/07-whisper-encoder-reuse/README.md) freezes one and probes every layer, watching it *discard* speaker identity (0.82 → 0.44) while it builds up phonetic content (0.19 → 0.96), because identity is a nuisance variable for transcription
   - HuBERT, wav2vec 2.0 for general audio
   - Neural audio codecs (EnCodec, SoundStream, DAC, Mimi) for discrete audio tokens
 - **Video encoders**:
@@ -238,7 +238,13 @@ class PatchEmbed(nn.Module):
 
 ### Key Insight
 
-The patchification trick — using a single strided convolution to both split the image into patches *and* project them to the embedding dimension — is one of those "obvious in hindsight" moves that made ViT practical. It's mathematically identical to the unfold-then-linear approach but is dramatically faster. The deeper lesson: every modality reduces to "turn it into a sequence of D-dimensional vectors," after which a transformer doesn't care whether those vectors came from pixels, waveforms, or words.
+The [patchification](/shared/glossary/#patchification) trick — using a single strided convolution to both split the image into patches *and* project them to the embedding dimension — is one of those "obvious in hindsight" moves that made ViT practical. It's mathematically identical to the unfold-then-linear approach but is dramatically faster. (It works because a convolution whose kernel size *equals* its stride never lets two windows overlap, so it visits exactly the squares you would have cut by hand — and applying the kernel to a window *is* the projection you wanted. Project [04](projects/04-implement-vit-from-scratch/README.md) checks the two routes agree to 8 × 10⁻⁷.) The deeper lesson: every modality reduces to "turn it into a sequence of D-dimensional vectors," after which a transformer doesn't care whether those vectors came from pixels, waveforms, or words.
+
+Two threads run through all five projects here and are worth naming before you start, because each one cost a beginner-shaped mistake to find.
+
+**Freeze first, and probe before you fine-tune.** Fine-tuning *changes* the features, so it measures how well an encoder adapts, not what it already knows — which is the wrong question when you are choosing what to build on. Project [05](projects/05-compare-encoders/README.md) freezes four towers and finds that [SigLIP](/shared/glossary/#siglip), trained on free noisy web captions, beats a ViT of identical size and shape trained on 14M hand-curated ImageNet-21k labels. Supervision beat architecture. Project [07](projects/07-whisper-encoder-reuse/README.md) shows the payoff in data: a frozen [Whisper](/shared/glossary/#whisper) encoder plus one linear layer reaches 68% on spoken digits from five examples each, where an equivalent network trained from scratch reaches 14% — barely above guessing.
+
+**Your benchmark has to be able to see the thing you are measuring.** This bites in every one of these projects. Project [05](projects/05-compare-encoders/README.md)'s four encoders all score 0.94–0.99 with plenty of labels and look interchangeable; cut to one label per class and a 65-point gap opens. Project [07](projects/07-whisper-encoder-reuse/README.md)'s layer chart is two flat lines at full labels and reveals the encoder's entire design philosophy at two labels per class. And three separate projects found *extra resolution that was genuinely useless*, because the task had no structure at that scale — [04](projects/04-implement-vit-from-scratch/README.md)'s positional embeddings (used, but worth only 2 points on CIFAR-10), [06](projects/06-mel-spectrogram-pipeline/README.md)'s mel bins (8 beat 80 by 38 points), and [08](projects/08-patch-size-study/README.md)'s patch size (the *largest* patch won). Before concluding a component does not matter, check whether your measurement could have noticed if it did.
 
 ### Resources
 

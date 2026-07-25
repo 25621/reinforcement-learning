@@ -1,0 +1,6 @@
+{
+  "conv_vs_unfold_maxdiff": 8.344650268554688e-07,
+  "sdpa_vs_manual_maxdiff": 1.043081283569336e-07,
+  "shuffle_maxdiff_no_pos": 3.5762786865234375e-07,
+  "shuffle_maxdiff_with_pos": 0.001033782958984375
+}

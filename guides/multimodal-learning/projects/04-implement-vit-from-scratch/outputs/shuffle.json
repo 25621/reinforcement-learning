@@ -1,0 +1,14 @@
+{
+  "cls+pos": {
+    "clean": 0.5017,
+    "shuffled": 0.4595
+  },
+  "cls-nopos": {
+    "clean": 0.4814,
+    "shuffled": 0.4814
+  },
+  "mean+pos": {
+    "clean": 0.4734,
+    "shuffled": 0.4618
+  }
+}

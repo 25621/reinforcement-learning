@@ -1,0 +1,17 @@
+encoder,name,how,dim,params_m,ms_per_image,shots,linear,knn
+resnet50,ResNet-50,supervised on ImageNet-1k labels,2048,23.5,47.8,1,0.294,0.944
+resnet50,ResNet-50,supervised on ImageNet-1k labels,2048,23.5,47.8,5,0.716,0.958
+resnet50,ResNet-50,supervised on ImageNet-1k labels,2048,23.5,47.8,15,0.866,0.966
+resnet50,ResNet-50,supervised on ImageNet-1k labels,2048,23.5,47.8,60,0.944,0.984
+vit_b16,ViT-B/16,supervised on ImageNet-21k labels,768,86.4,91.3,1,0.932,0.95
+vit_b16,ViT-B/16,supervised on ImageNet-21k labels,768,86.4,91.3,5,0.964,0.968
+vit_b16,ViT-B/16,supervised on ImageNet-21k labels,768,86.4,91.3,15,0.972,0.978
+vit_b16,ViT-B/16,supervised on ImageNet-21k labels,768,86.4,91.3,60,0.978,0.978
+siglip,SigLIP-B/16,contrastive on web image-text pairs (no labels),768,92.9,95.9,1,0.944,0.932
+siglip,SigLIP-B/16,contrastive on web image-text pairs (no labels),768,92.9,95.9,5,0.986,0.968
+siglip,SigLIP-B/16,contrastive on web image-text pairs (no labels),768,92.9,95.9,15,0.986,0.98
+siglip,SigLIP-B/16,contrastive on web image-text pairs (no labels),768,92.9,95.9,60,0.99,0.986
+dinov2,DINOv2-B/14,"self-supervised on images alone (no labels, no text)",768,86.6,132.8,1,0.904,0.91
+dinov2,DINOv2-B/14,"self-supervised on images alone (no labels, no text)",768,86.6,132.8,5,0.962,0.962
+dinov2,DINOv2-B/14,"self-supervised on images alone (no labels, no text)",768,86.6,132.8,15,0.97,0.978
+dinov2,DINOv2-B/14,"self-supervised on images alone (no labels, no text)",768,86.6,132.8,60,0.984,0.992

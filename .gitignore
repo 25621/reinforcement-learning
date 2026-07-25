@@ -23,3 +23,18 @@ guides/reinforcement-learning/projects/38-bc-baseline-on-d4rl/data/
 # embeddings (~19 MB), used by projects 02 and 03. Not committed because
 # `python3 run.py --stage data` re-downloads and re-encodes them in ~2 minutes.
 guides/multimodal-learning/projects/02-visualize-the-modality-gap/data/
+
+# Multimodal Phase 2 dataset caches, all re-downloaded automatically on first run:
+#   04  CIFAR-10 as npz (~170 MB), shared with project 08
+#   05  Imagenette (~95 MB) plus the four encoders' cached features (~15 MB)
+#   06  the Free Spoken Digit Dataset (~15 MB), shared with project 07
+#   07  its own FSDD copy at 16 kHz plus pooled Whisper features (~10 MB)
+guides/multimodal-learning/projects/04-implement-vit-from-scratch/data/
+guides/multimodal-learning/projects/05-compare-encoders/data/
+guides/multimodal-learning/projects/06-mel-spectrogram-pipeline/data/
+guides/multimodal-learning/projects/07-whisper-encoder-reuse/data/
+
+# Multimodal Phase 2 trained ViT checkpoints (3.3 MB each). Not committed because
+# `python3 run.py --stage train` regenerates all three in ~9 minutes; every number
+# they produced is already in outputs/training.json and outputs/shuffle.json.
+guides/multimodal-learning/projects/04-implement-vit-from-scratch/outputs/*.pt
