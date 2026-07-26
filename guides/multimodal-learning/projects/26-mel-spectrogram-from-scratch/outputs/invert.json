@@ -1,0 +1,15 @@
+{
+ "seconds": 3.0,
+ "griffin_lim_iters": 48,
+ "took_s": 0.5009064674377441,
+ "lsd_db": {
+  "from_stft (magnitude only, phase guessed)": 5.580545531464357,
+  "from_mel (80 bands + phase guessed)": 9.77722715892632,
+  "from_mel_true_phase (80 bands, phase given back)": 7.187204208970195
+ },
+ "numbers_per_second": {
+  "waveform": 16000,
+  "stft_magnitude": 32125.0,
+  "mel": 10000.0
+ }
+}

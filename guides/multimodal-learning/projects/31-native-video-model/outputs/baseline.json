@@ -1,0 +1,8 @@
+{
+ "majority_class": {
+  "direction": 0.284,
+  "speed": 0.505,
+  "content": 0.591
+ },
+ "n_val": 1000
+}

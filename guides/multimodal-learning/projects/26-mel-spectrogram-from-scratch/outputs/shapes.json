@@ -1,0 +1,11 @@
+{
+ "samples": 160000,
+ "seconds": 10.0,
+ "stft_frames": 1247,
+ "stft_bins": 257,
+ "mel_frames": 1247,
+ "mel_bands": 80,
+ "numbers_waveform": 160000,
+ "numbers_stft": 320479,
+ "numbers_mel": 99760
+}

@@ -1,0 +1,28 @@
+{
+ "rows": [
+  {
+   "n_fft": 128,
+   "window_ms": 8.0,
+   "time_resolution_ms": 2.0,
+   "freq_resolution_hz": 125.0,
+   "frames": 997,
+   "bins": 65
+  },
+  {
+   "n_fft": 512,
+   "window_ms": 32.0,
+   "time_resolution_ms": 8.0,
+   "freq_resolution_hz": 31.25,
+   "frames": 247,
+   "bins": 257
+  },
+  {
+   "n_fft": 2048,
+   "window_ms": 128.0,
+   "time_resolution_ms": 32.0,
+   "freq_resolution_hz": 7.8125,
+   "frames": 59,
+   "bins": 1025
+  }
+ ]
+}

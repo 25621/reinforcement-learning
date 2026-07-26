@@ -1,0 +1,37 @@
+{
+ "rows": [
+  {
+   "features": "EnCodec codes, 1 codebook(s)",
+   "n_q": 1,
+   "accuracy": 0.47876447439193726
+  },
+  {
+   "features": "EnCodec codes, 2 codebook(s)",
+   "n_q": 2,
+   "accuracy": 0.46332046389579773
+  },
+  {
+   "features": "EnCodec codes, 4 codebook(s)",
+   "n_q": 4,
+   "accuracy": 0.4478764533996582
+  },
+  {
+   "features": "EnCodec codes, 8 codebook(s)",
+   "n_q": 8,
+   "accuracy": 0.3513513505458832
+  },
+  {
+   "features": "EnCodec codes, 32 codebook(s)",
+   "n_q": 32,
+   "accuracy": 0.2509652376174927
+  },
+  {
+   "features": "log-mel, 40 bands",
+   "n_q": 0,
+   "accuracy": 0.4054054021835327
+  }
+ ],
+ "n_clips": 1500,
+ "held_out_speaker": "yweweler",
+ "test_n": 259
+}

@@ -1,0 +1,42 @@
+{
+ "rows": [
+  {
+   "view": "ordered",
+   "inputs": 24576,
+   "n": 200,
+   "triangle": 1.0,
+   "direction": 0.9950000047683716,
+   "speed": 0.824999988079071
+  },
+  {
+   "view": "shuffled",
+   "inputs": 24576,
+   "n": 200,
+   "triangle": 1.0,
+   "direction": 0.41999998688697815,
+   "speed": 0.5699999928474426
+  },
+  {
+   "view": "time_averaged",
+   "inputs": 3072,
+   "n": 200,
+   "triangle": 1.0,
+   "direction": 0.4350000023841858,
+   "speed": 0.6549999713897705
+  },
+  {
+   "view": "one_frame",
+   "inputs": 3072,
+   "n": 200,
+   "triangle": 1.0,
+   "direction": 0.4050000011920929,
+   "speed": 0.46000000834465027
+  }
+ ],
+ "chance": {
+  "triangle": 0.5,
+  "direction": 0.25,
+  "speed": 0.5
+ },
+ "note": "2-layer MLP on the same cached CLIP features the VLM reads"
+}

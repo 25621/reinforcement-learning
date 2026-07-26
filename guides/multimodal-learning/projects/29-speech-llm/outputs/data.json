@@ -1,0 +1,10 @@
+{
+ "utterances": 2000,
+ "train": 1340,
+ "seen_voice": 300,
+ "new_voice": 360,
+ "audio_tokens": 26,
+ "encoder_frames_kept": 104,
+ "encoder_frames_total": 1500,
+ "seconds": 278.1625118255615
+}

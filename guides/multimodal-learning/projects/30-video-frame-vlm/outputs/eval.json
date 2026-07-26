@@ -1,0 +1,79 @@
+[
+ {
+  "arm": "video",
+  "condition": "ordered",
+  "n": 200,
+  "presence": 0.46,
+  "presence_parseable": 1.0,
+  "direction": 0.32,
+  "direction_parseable": 1.0,
+  "speed": 0.515,
+  "speed_parseable": 1.0
+ },
+ {
+  "arm": "video",
+  "condition": "shuffled",
+  "n": 200,
+  "presence": 0.445,
+  "presence_parseable": 1.0,
+  "direction": 0.3,
+  "direction_parseable": 1.0,
+  "speed": 0.51,
+  "speed_parseable": 1.0
+ },
+ {
+  "arm": "video",
+  "condition": "one_frame",
+  "n": 200,
+  "presence": 0.44,
+  "presence_parseable": 1.0,
+  "direction": 0.305,
+  "direction_parseable": 1.0,
+  "speed": 0.51,
+  "speed_parseable": 1.0
+ },
+ {
+  "arm": "blind",
+  "condition": "blind",
+  "n": 200,
+  "presence": 0.52,
+  "presence_parseable": 1.0,
+  "direction": 0.3,
+  "direction_parseable": 1.0,
+  "speed": 0.505,
+  "speed_parseable": 1.0
+ },
+ {
+  "arm": "tuned",
+  "condition": "ordered",
+  "n": 200,
+  "presence": 0.5,
+  "presence_parseable": 1.0,
+  "direction": 0.3,
+  "direction_parseable": 1.0,
+  "speed": 0.57,
+  "speed_parseable": 1.0
+ },
+ {
+  "arm": "tuned",
+  "condition": "shuffled",
+  "n": 200,
+  "presence": 0.5,
+  "presence_parseable": 1.0,
+  "direction": 0.3,
+  "direction_parseable": 1.0,
+  "speed": 0.57,
+  "speed_parseable": 1.0
+ },
+ {
+  "arm": "tuned",
+  "condition": "one_frame",
+  "n": 200,
+  "presence": 0.5,
+  "presence_parseable": 1.0,
+  "direction": 0.3,
+  "direction_parseable": 1.0,
+  "speed": 0.57,
+  "speed_parseable": 1.0
+ }
+]

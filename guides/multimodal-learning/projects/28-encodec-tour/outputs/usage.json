@@ -1,0 +1,207 @@
+{
+ "rows": [
+  {
+   "codebook": 0,
+   "distinct_used": 83,
+   "entropy_bits": 5.572330972838407,
+   "perplexity": 47.58157007526411
+  },
+  {
+   "codebook": 1,
+   "distinct_used": 162,
+   "entropy_bits": 6.825024420003717,
+   "perplexity": 113.38016157593438
+  },
+  {
+   "codebook": 2,
+   "distinct_used": 206,
+   "entropy_bits": 7.160007340830726,
+   "perplexity": 143.01348136347494
+  },
+  {
+   "codebook": 3,
+   "distinct_used": 240,
+   "entropy_bits": 7.537991653537226,
+   "perplexity": 185.8495846239425
+  },
+  {
+   "codebook": 4,
+   "distinct_used": 261,
+   "entropy_bits": 7.743706962552183,
+   "perplexity": 214.33252157008008
+  },
+  {
+   "codebook": 5,
+   "distinct_used": 275,
+   "entropy_bits": 7.828713092955397,
+   "perplexity": 227.34084423688677
+  },
+  {
+   "codebook": 6,
+   "distinct_used": 289,
+   "entropy_bits": 7.958897699217601,
+   "perplexity": 248.8094893414768
+  },
+  {
+   "codebook": 7,
+   "distinct_used": 313,
+   "entropy_bits": 8.129721622335992,
+   "perplexity": 280.08513800633835
+  },
+  {
+   "codebook": 8,
+   "distinct_used": 307,
+   "entropy_bits": 8.095699302193532,
+   "perplexity": 273.5573108491161
+  },
+  {
+   "codebook": 9,
+   "distinct_used": 313,
+   "entropy_bits": 8.142775628960274,
+   "perplexity": 282.6309460821529
+  },
+  {
+   "codebook": 10,
+   "distinct_used": 331,
+   "entropy_bits": 8.231163267873203,
+   "perplexity": 300.4879375349382
+  },
+  {
+   "codebook": 11,
+   "distinct_used": 329,
+   "entropy_bits": 8.2239519067669,
+   "perplexity": 298.9896858276681
+  },
+  {
+   "codebook": 12,
+   "distinct_used": 318,
+   "entropy_bits": 8.107241893666853,
+   "perplexity": 275.7547436519714
+  },
+  {
+   "codebook": 13,
+   "distinct_used": 306,
+   "entropy_bits": 8.098976726861283,
+   "perplexity": 274.17946771754305
+  },
+  {
+   "codebook": 14,
+   "distinct_used": 314,
+   "entropy_bits": 8.145542545622135,
+   "perplexity": 283.1735185858366
+  },
+  {
+   "codebook": 15,
+   "distinct_used": 302,
+   "entropy_bits": 8.084467115721326,
+   "perplexity": 271.43578378667286
+  },
+  {
+   "codebook": 16,
+   "distinct_used": 301,
+   "entropy_bits": 8.070710163309451,
+   "perplexity": 268.85978404859856
+  },
+  {
+   "codebook": 17,
+   "distinct_used": 307,
+   "entropy_bits": 8.106631934501408,
+   "perplexity": 275.63818153941827
+  },
+  {
+   "codebook": 18,
+   "distinct_used": 313,
+   "entropy_bits": 8.147441996671631,
+   "perplexity": 283.5465901357053
+  },
+  {
+   "codebook": 19,
+   "distinct_used": 320,
+   "entropy_bits": 8.17855310778274,
+   "perplexity": 289.7275584275986
+  },
+  {
+   "codebook": 20,
+   "distinct_used": 307,
+   "entropy_bits": 8.06713318447737,
+   "perplexity": 268.1940061119751
+  },
+  {
+   "codebook": 21,
+   "distinct_used": 302,
+   "entropy_bits": 8.062379927838665,
+   "perplexity": 267.31183963130417
+  },
+  {
+   "codebook": 22,
+   "distinct_used": 291,
+   "entropy_bits": 8.004910962255147,
+   "perplexity": 256.8729138932162
+  },
+  {
+   "codebook": 23,
+   "distinct_used": 299,
+   "entropy_bits": 8.066130684525447,
+   "perplexity": 268.00770819178206
+  },
+  {
+   "codebook": 24,
+   "distinct_used": 296,
+   "entropy_bits": 8.043821573375872,
+   "perplexity": 263.89525010756273
+  },
+  {
+   "codebook": 25,
+   "distinct_used": 299,
+   "entropy_bits": 8.053520524434987,
+   "perplexity": 265.6753421457851
+  },
+  {
+   "codebook": 26,
+   "distinct_used": 279,
+   "entropy_bits": 7.946545045574058,
+   "perplexity": 246.68822528925313
+  },
+  {
+   "codebook": 27,
+   "distinct_used": 292,
+   "entropy_bits": 8.01438799004735,
+   "perplexity": 258.56586003975525
+  },
+  {
+   "codebook": 28,
+   "distinct_used": 268,
+   "entropy_bits": 7.889046594505331,
+   "perplexity": 237.04983760641213
+  },
+  {
+   "codebook": 29,
+   "distinct_used": 273,
+   "entropy_bits": 7.89734124679611,
+   "perplexity": 238.41666091471606
+  },
+  {
+   "codebook": 30,
+   "distinct_used": 255,
+   "entropy_bits": 7.788042697807145,
+   "perplexity": 221.02146821970805
+  },
+  {
+   "codebook": 31,
+   "distinct_used": 266,
+   "entropy_bits": 7.873871213564641,
+   "perplexity": 234.56943256879893
+  }
+ ],
+ "codebook_size": 1024,
+ "bits_per_code": 10,
+ "frames_per_second": 75,
+ "tokens_per_second": {
+  "1.5": 150,
+  "3.0": 300,
+  "6.0": 600,
+  "12.0": 1200,
+  "24.0": 2400
+ },
+ "text_tokens_per_second_speech": 3.0
+}

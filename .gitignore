@@ -90,3 +90,24 @@ guides/multimodal-learning/projects/23-grounding-head/data/
 # 20's stage-1 projector from here, exactly as the real two-stage recipe does;
 # every number they produced is already in outputs/*.json.
 guides/multimodal-learning/projects/20-llava-from-scratch/checkpoints/
+
+# Multimodal Phase 6 dataset caches, all rebuilt automatically on first run:
+#   26  the 10-second demo clip plus the 1.1 MB steam-train download (~2 MB),
+#       rebuilt by `run.py --stage picture` in seconds
+#   28  EnCodec codes for 1,500 spoken digits (~15 MB), rebuilt in ~90 s
+#   29  2,000 two-digit utterances plus two frozen-Whisper feature taps
+#       (~320 MB), rebuilt by `run.py --stage data` in ~5 min
+#   30  1,000 rendered clips plus their pooled frozen-CLIP features (~60 MB),
+#       rebuilt by `run.py --stage data` in ~5 min. Project 31 regenerates the
+#       same clips procedurally in ~5 s and caches nothing.
+guides/multimodal-learning/projects/26-mel-spectrogram-from-scratch/data/
+guides/multimodal-learning/projects/28-encodec-tour/data/
+guides/multimodal-learning/projects/29-speech-llm/data/
+guides/multimodal-learning/projects/30-video-frame-vlm/data/
+
+# Multimodal Phase 6 trained weights: 27's fine-tuned Whisper copies (~150 MB
+# each) and the projectors of 29 and 30 (~2 MB each). Every number they produced
+# is already in outputs/*.json.
+guides/multimodal-learning/projects/27-whisper-fine-tune/checkpoints/
+guides/multimodal-learning/projects/29-speech-llm/checkpoints/
+guides/multimodal-learning/projects/30-video-frame-vlm/checkpoints/

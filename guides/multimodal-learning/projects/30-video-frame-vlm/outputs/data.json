@@ -1,0 +1,10 @@
+{
+ "clips": 1000,
+ "frames": 8,
+ "tokens_per_frame": 4,
+ "tokens_per_clip": 32,
+ "tokens_if_unpooled": 392,
+ "train": 800,
+ "val": 200,
+ "seconds": 0.12932157516479492
+}
