@@ -1,0 +1,23 @@
+[
+ {
+  "model": "SmolLM2-135M (this project)",
+  "kv_bytes_per_token": 46080,
+  "tokens_per_image": 49,
+  "mb_per_image": 2.25792,
+  "images_in_10gb": 4428.854875283447
+ },
+ {
+  "model": "LLaVA-1.5-7B",
+  "kv_bytes_per_token": 524288,
+  "tokens_per_image": 576,
+  "mb_per_image": 301.989888,
+  "images_in_10gb": 33.11369154188368
+ },
+ {
+  "model": "Qwen2-VL-7B (1 megapixel)",
+  "kv_bytes_per_token": 57344,
+  "tokens_per_image": 1280,
+  "mb_per_image": 73.40032,
+  "images_in_10gb": 136.23918805803572
+ }
+]

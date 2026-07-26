@@ -469,15 +469,15 @@ The current workhorse class. A VLM takes images (+ text) in and produces text. M
 
 ### Concepts to Learn
 
-- **The standard recipe**: pretrained vision encoder + projector + pretrained LLM → train projector first, then jointly fine-tune. (The vision encoder comes from Phase 2/3; the LLM comes from the [LLM guide](../llm/) — a VLM is mostly *glue and data*.)
+- **The standard recipe**: pretrained vision encoder + projector + pretrained LLM → train projector first, then jointly fine-tune. (The vision encoder comes from Phase 2/3; the LLM comes from the [LLM guide](../llm/) — a VLM is mostly *glue and data*.) Project [20](projects/20-llava-from-scratch/README.md) builds exactly this on a real frozen CLIP and a real frozen 135M LLM, and its measurement is a warning: an image-blind [soft prompt](/shared/glossary/#prompt-tuning) *beat* the real thing on caption loss (3.071 vs 3.150) while scoring exactly [chance](/shared/glossary/#chance-level) at picking the matching caption out of 20 (0.050 vs 0.140). Caption loss mostly measures whether you write like the dataset.
 - **Image preprocessing for VLMs**:
-  - Fixed resolution vs **dynamic resolution / AnyRes** (Qwen2-VL, InternVL2): tile the image to handle any aspect ratio
+  - Fixed resolution vs **dynamic resolution / AnyRes** (Qwen2-VL, InternVL2): tile the image to handle any aspect ratio. Project [22](projects/22-dynamic-resolution/README.md) finds the split you should expect — identical accuracy on a big coloured shape, 0.303 → 0.397 on reading small print — and one surprise: native tiles *without* the global thumbnail scored 0.073, far worse than plain squashing, because detail you cannot locate is not usable detail.
   - **Native-resolution ViT** (Qwen2-VL's NaViT-style approach) — process the image at its true resolution instead of a fixed grid
   - Token budget per image — typically 256 to a few thousand image tokens
-- **Instruction tuning for VLMs** — the "LLaVA-Instruct" recipe: GPT-4-generated multimodal instructions
+- **Instruction tuning for VLMs** — the "LLaVA-Instruct" recipe: GPT-4-generated multimodal instructions. Project [21](projects/21-visual-instruction-tuning/README.md) reproduces the format flip (yes/no accuracy 0.382 → 0.679, parseable answers 0.885 → 0.994) and then measures how much of it is vision: a blind model trained on the same questions reaches 0.649, so *looking* is worth about 3 points — inside the noise. Always run the blind baseline.
 - **Visual question answering (VQA)** — classic benchmark task
 - **OCR-heavy VLMs** — Donut, Nougat, GOT — for documents
-- **Grounding** — output bounding boxes or pixel coordinates; teaching the LLM to "point" (Molmo's *pointing* supervision is a clean recent example)
+- **[Grounding](/shared/glossary/#grounding)** — output [bounding boxes](/shared/glossary/#bounding-box) or pixel coordinates; teaching the LLM to "point" (Molmo's *pointing* supervision is a clean recent example). Project [23](projects/23-grounding-head/README.md) adds the [coordinate-token](/shared/glossary/#coordinate-tokens) vocabulary and separates two things that are easy to confuse: the *format* is learned immediately and perfectly (100% well-formed boxes, against 0% for the same boxes written as plain digits), while the *mapping* from image to position is not (0.097 IoU against a 0.866 ceiling — plausible boxes in the wrong places). Grounding is a data problem wearing an architecture problem's clothes.
 - **Modern frontier VLMs** (2025–2026):
   - **Qwen2.5-VL / Qwen3-VL** — Alibaba, strong open VLM family
   - **InternVL2.5 / InternVL3** — Shanghai AI Lab
@@ -502,6 +502,14 @@ Data:   ~500k–10M           Format:   conversational (image, Q, A)
 
 Result: LLM "speaks image"  Result: VLM that follows visual instructions
 ```
+
+> **Three things a beginner reasonably asks at this point.**
+>
+> **"Both big networks are pretrained and frozen in stage 1. So what is actually learning?"** Only the [projector](/shared/glossary/#projector) — in project [20](projects/20-llava-from-scratch/README.md) that is 0.78M weights against a 135M-parameter LLM, well under 1%. What it learns is a *change of coordinates*: CLIP's patch vectors and the LLM's word embeddings are both "vectors", but they were trained separately, so they share no axes and usually not even a width. Stage 1 is a translation exercise, which is why it is stable and cheap. It is also why the honest way to report it is against a control that gets the same training and no image — project 20 uses a learned [soft prompt](/shared/glossary/#prompt-tuning), and it closes most of the raw loss gap on its own.
+>
+> **"Why two stages? Why not train on instruction data from the beginning?"** Because at step 0 the projector's output is noise, and noise spliced into a pretrained LLM's input is actively harmful. Stage 1 gets the image into the LLM's vocabulary space using the easiest possible target (a caption describes *whatever is in* the picture, so almost any visual signal helps). Only then does stage 2 unfreeze the LLM and ask for specific answers to specific questions — a target that punishes a model for missing details it would otherwise be free to skip. Skipping stage 1 means asking the LLM to adapt to garbage inputs while also learning the task; the recipe exists to avoid that.
+>
+> **"The image encoder already sees the whole picture. Why does [AnyRes](/shared/glossary/#anyres) chop it into tiles as well?"** Because "sees the whole picture" hides a resize. A [ViT](/shared/glossary/#vit) accepts exactly the grid it was trained on, so a big page is *downscaled* first, and downscaling destroys small structures while leaving big ones recognisable. A tile is not extra information about the same pixels — it is the *original* pixels, at a resolution the encoder can resolve. Project [22](projects/22-dynamic-resolution/README.md) shows the split that follows: tiling leaves the big-object question untouched and transforms the small-text one.
 
 ### Projects
 
@@ -995,4 +1003,3 @@ Visual jailbreaks (typographic attacks, adversarial images), CSAM detection, dee
 ## License
 
 MIT License. See the [LICENSE](https://github.com/25621/ai-learning-guides/blob/main/LICENSE) file for details.
-</content>

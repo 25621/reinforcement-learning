@@ -1,0 +1,38 @@
+[
+ {
+  "arm": "layer-penult",
+  "kind": "mlp2",
+  "steps": 200,
+  "bs": 8,
+  "lr": 0.003,
+  "image_tokens": 49,
+  "uses_image": true,
+  "proj_params": 776832,
+  "val_loss_start": 3.9561318214340964,
+  "val_loss": 3.235841342435025,
+  "choice_raw": 0.08,
+  "choice_lift": 0.13,
+  "choice_n": 100,
+  "ms_per_step": 962.547835111618,
+  "train_seconds": 192.5095670223236,
+  "layer": "penult"
+ },
+ {
+  "arm": "layer-last",
+  "kind": "mlp2",
+  "steps": 200,
+  "bs": 8,
+  "lr": 0.003,
+  "image_tokens": 49,
+  "uses_image": true,
+  "proj_params": 776832,
+  "val_loss_start": 3.920808951500619,
+  "val_loss": 3.2540860075997835,
+  "choice_raw": 0.06,
+  "choice_lift": 0.05,
+  "choice_n": 100,
+  "ms_per_step": 987.4607396125793,
+  "train_seconds": 197.49214792251587,
+  "layer": "last"
+ }
+]
