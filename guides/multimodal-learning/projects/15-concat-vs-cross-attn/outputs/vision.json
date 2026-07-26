@@ -1,0 +1,14 @@
+{
+ "pretext": "what-where",
+ "pretext_color_acc": 1.0,
+ "pretext_shape_acc": 1.0,
+ "pretext_position_acc": 1.0,
+ "encoder_params": 695552,
+ "majority_class": {
+  "0": 0.341,
+  "1": 0.501,
+  "2": 0.338,
+  "3": 0.179,
+  "4": 0.377
+ }
+}

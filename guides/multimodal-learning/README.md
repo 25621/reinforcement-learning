@@ -409,6 +409,12 @@ Once each modality is encoded, you have to combine them. There are more options 
      trained with one next-token prediction loss over the whole alphabet
 ```
 
+> **Two things a beginner reasonably asks at this point.**
+>
+> **"The image encoder already outputs vectors. Why does every diagram add a [projector](/shared/glossary/#projector) on top?"** Because two networks trained separately do not share a coordinate system — "vision dimension 7" and "language dimension 7" mean unrelated things — and they usually do not even share a *width* (1024 for a ViT, 4096 for a large LLM). The projector learns the change of basis and the resize. Crucially it stays **trainable while both encoders stay [frozen](/shared/glossary/#frozen)**, so it is the one piece that can adapt a frozen encoder to a model it was never trained with. Project [15](projects/15-concat-vs-cross-attn/README.md) measures what it buys.
+>
+> **"CLIP already produces one summary vector per image. Why does BLIP-2 build a [Q-Former](/shared/glossary/#q-former) to produce another?"** Because CLIP's summary was optimised for a different job — telling this photo apart from a million others in [contrastive](/shared/glossary/#contrastive-learning) training. Being *discriminative* is not the same as being *informative enough to write a sentence from*. The Q-Former's queries are trained on the downstream generation objective instead, so they can keep what the generator needs and drop what only mattered for matching. Project [16](projects/16-implement-q-former/README.md) builds one and tests whether that gap is real at small scale.
+
 ### Projects
 
 | Project | Description | Difficulty |

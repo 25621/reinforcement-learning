@@ -1,0 +1,42 @@
+{
+ "pooled-1": [
+  "a person wearing a <unk> and holding a snowboard",
+  "a laptop computer is shown on a desk",
+  "a man holding a <unk> cake on a beach",
+  "a white building with a fire hydrant on the side of a street",
+  "a yellow and blue car parked near a green and yellow car",
+  "a man sits on a sidewalk next to a street"
+ ],
+ "gridpool-16": [
+  "two men are standing in front of a black and white photo",
+  "a laptop sitting on a table with a laptop and a laptop",
+  "a woman is holding a blue <unk> and a couple of people",
+  "a fire hydrant is in the middle of the road",
+  "a small yellow and white car parked in front of a building",
+  "a man sitting on top of a city street"
+ ],
+ "qformer-16": [
+  "a man and a woman <unk> a cell phone",
+  "a laptop computer sitting on top of a desk",
+  "a woman is holding a white umbrella in the grass",
+  "a view of a traffic light <unk> a street",
+  "a red truck parked in front of a building",
+  "a man is walking through a city street"
+ ],
+ "patches-50": [
+  "a woman is skiing in a <unk> with a picture in the air",
+  "a laptop is sitting on a table next to a laptop",
+  "a man holding a pink umbrella and a <unk>",
+  "a woman standing in front of a building with a clock on it",
+  "a small old car parked next to a red building",
+  "a man standing in front of a car"
+ ],
+ "no-image": [
+  "a man in a suit and tie is sitting on a <unk>",
+  "a man in a suit and tie is sitting on a <unk>",
+  "a man in a suit and tie is sitting on a <unk>",
+  "a man in a suit and tie is sitting on a <unk>",
+  "a man in a suit and tie is sitting on a <unk>",
+  "a man in a suit and tie is sitting on a <unk>"
+ ]
+}
