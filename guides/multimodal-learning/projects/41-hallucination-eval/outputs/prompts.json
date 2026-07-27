@@ -1,0 +1,47 @@
+{
+ "model": "smolvlm-256m-generate",
+ "styles": {
+  "plain": {
+   "n": 214,
+   "accuracy": 0.897196261682243,
+   "precision": 0.8455284552845529,
+   "recall": 0.9719626168224299,
+   "f1": 0.9043478260869565,
+   "yes_rate": 0.5747663551401869,
+   "unparsed": 3,
+   "tp": 104,
+   "fp": 19,
+   "fn": 3,
+   "tn": 88,
+   "prompt": "Is there {a} in the image?"
+  },
+  "yesno": {
+   "n": 214,
+   "accuracy": 0.8504672897196262,
+   "precision": 0.9310344827586207,
+   "recall": 0.7570093457943925,
+   "f1": 0.8350515463917525,
+   "yes_rate": 0.40654205607476634,
+   "unparsed": 0,
+   "tp": 81,
+   "fp": 6,
+   "fn": 26,
+   "tn": 101,
+   "prompt": "Is there {a} in the image? Answer yes or no."
+  },
+  "strict": {
+   "n": 214,
+   "accuracy": 0.8925233644859814,
+   "precision": 0.8962264150943396,
+   "recall": 0.8878504672897196,
+   "f1": 0.892018779342723,
+   "yes_rate": 0.4953271028037383,
+   "unparsed": 0,
+   "tp": 95,
+   "fp": 11,
+   "fn": 12,
+   "tn": 96,
+   "prompt": "Answer the question using a single word, yes or no. Is there {a} in the image?"
+  }
+ }
+}

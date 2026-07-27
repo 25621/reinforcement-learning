@@ -1,0 +1,38 @@
+[
+ {
+  "image": 1432,
+  "object": "person",
+  "answer": "yes",
+  "question": "Is there a person in the image? Answer yes or no."
+ },
+ {
+  "image": 1432,
+  "object": "beach",
+  "answer": "no",
+  "question": "Is there a beach in the image? Answer yes or no."
+ },
+ {
+  "image": 1432,
+  "object": "person",
+  "answer": "yes",
+  "question": "Is there a person in the image? Answer yes or no."
+ },
+ {
+  "image": 1432,
+  "object": "street",
+  "answer": "no",
+  "question": "Is there a street in the image? Answer yes or no."
+ },
+ {
+  "image": 1432,
+  "object": "person",
+  "answer": "yes",
+  "question": "Is there a person in the image? Answer yes or no."
+ },
+ {
+  "image": 1432,
+  "object": "street",
+  "answer": "no",
+  "question": "Is there a street in the image? Answer yes or no."
+ }
+]

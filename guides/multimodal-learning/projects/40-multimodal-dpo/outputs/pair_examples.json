@@ -1,0 +1,50 @@
+[
+ {
+  "image": 28,
+  "chosen": "Dark clouds spreading across a field and a house.",
+  "rejected": "Dark clouds spreading across a field and a house beside a pizza.",
+  "object": "pizza"
+ },
+ {
+  "image": 2720,
+  "chosen": "A sign to a big place that's next to a fire hydrant.",
+  "rejected": "A sign to a big place that's next to a fire hydrant with a skateboard nearby.",
+  "object": "skateboard"
+ },
+ {
+  "image": 1966,
+  "chosen": "A motorcycle parked next to a few bicycles.",
+  "rejected": "A motorcycle parked next to a few bicycles next to a dog.",
+  "object": "dog"
+ },
+ {
+  "image": 398,
+  "chosen": "A woman riding a surf board through the waves.",
+  "rejected": "A woman riding a surf board through the waves along with a banana.",
+  "object": "banana"
+ },
+ {
+  "image": 1294,
+  "chosen": "A person flying a kite while standing in the grass.",
+  "rejected": "A person flying a kite while standing in the grass along with a cake.",
+  "object": "cake"
+ },
+ {
+  "image": 2913,
+  "chosen": "A city area with bus, cars and people at night.",
+  "rejected": "A city area with bus, cars and people at night beside a sandwich.",
+  "object": "sandwich"
+ },
+ {
+  "image": 1033,
+  "chosen": "A church tower with a clock on it is above a city.",
+  "rejected": "A church tower with a clock on it is above a city next to a tree.",
+  "object": "tree"
+ },
+ {
+  "image": 2240,
+  "chosen": "A bike with a basket attached to it is parked.",
+  "rejected": "A bike with a basket attached to it is parked with an orange nearby.",
+  "object": "orange"
+ }
+]

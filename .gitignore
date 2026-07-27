@@ -136,3 +136,26 @@ guides/multimodal-learning/projects/32-discrete-image-tokens/checkpoints/
 guides/multimodal-learning/projects/33-tiny-chameleon/checkpoints/
 guides/multimodal-learning/projects/35-moe-for-multimodal/checkpoints/
 guides/multimodal-learning/projects/36-reverse-direction/checkpoints/
+
+# Multimodal Phase 8 caches, all rebuilt automatically by the projects' stages:
+#   37  2,400 COCO photos at 128x128, the injected "web crawl", its CLIP scores
+#       and the WebDataset shards (~250 MB). This is the SHARED Phase-8 image
+#       source -- project 38 reads it from 37's directory rather than keeping a
+#       copy. Rebuilt by `run.py --stage crawl` in ~4 min.
+#   38  the shared caption vocabulary built over all three caption sources
+#   39  the text-only and image-only rows built from project 33's token cache
+#       (~4 MB), rebuilt by `run.py --stage data` in seconds
+#   40  the (chosen, rejected) preference pairs
+#   41  110 COCO photos at 336x336 for the real open VLMs (~15 MB)
+guides/multimodal-learning/projects/37-mini-laion-pipeline/data/
+guides/multimodal-learning/projects/38-caption-ablation/data/
+guides/multimodal-learning/projects/39-modality-ratio-sweep/data/
+guides/multimodal-learning/projects/40-multimodal-dpo/data/
+guides/multimodal-learning/projects/41-hallucination-eval/data/
+
+# Multimodal Phase 8 trained weights: project 40's captioner and its three
+# preference-training arms (~30 MB each, projector plus the top four LLM
+# blocks). Project 41 loads `base.pt` and `dpo.pt` from here. Every number they
+# produced is already in outputs/*.json; regenerate with
+# `cd 40-multimodal-dpo && python3 run.py --stage sft` then `--stage train`.
+guides/multimodal-learning/projects/40-multimodal-dpo/checkpoints/

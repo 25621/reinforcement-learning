@@ -1,0 +1,16 @@
+{
+ "samples": 885,
+ "shards": [
+  {
+   "file": "mini-laion-00000.tar",
+   "samples": 512,
+   "megabytes": 4.94592
+  },
+  {
+   "file": "mini-laion-00001.tar",
+   "samples": 373,
+   "megabytes": 3.59424
+  }
+ ],
+ "bytes_per_sample": 9649.898305084746
+}

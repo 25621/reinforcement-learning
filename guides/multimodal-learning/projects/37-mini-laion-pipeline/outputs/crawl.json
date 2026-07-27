@@ -1,0 +1,16 @@
+{
+ "records": 2616,
+ "base_photos": 2400,
+ "by_defect": {
+  "ok": 1680,
+  "dup_exact": 108,
+  "dup_near": 108,
+  "mismatch": 288,
+  "boilerplate": 192,
+  "tiny": 96,
+  "banner": 96,
+  "blocked": 48
+ },
+ "clean_share": 0.6422018348623854,
+ "seconds": 0.6239831447601318
+}

@@ -1,0 +1,38 @@
+[
+ {
+  "arm": "base",
+  "chair_i": 0.6013513513513513,
+  "chair_s": 0.7333333333333333,
+  "objects_per_caption": 1.9733333333333334,
+  "mean_words": 9.306666666666667,
+  "caption_loss": 2.9174501319632147,
+  "distinct_captions": 0.66
+ },
+ {
+  "arm": "dpo",
+  "chair_i": 0.5581395348837209,
+  "chair_s": 0.47333333333333333,
+  "objects_per_caption": 0.86,
+  "mean_words": 2.9,
+  "caption_loss": 5.066045920807415,
+  "distinct_captions": 0.3466666666666667
+ },
+ {
+  "arm": "dpo-lennorm",
+  "chair_i": 0.5654205607476636,
+  "chair_s": 0.6133333333333333,
+  "objects_per_caption": 1.4266666666666667,
+  "mean_words": 6.573333333333333,
+  "caption_loss": 3.324211000077909,
+  "distinct_captions": 0.7066666666666667
+ },
+ {
+  "arm": "sft-chosen",
+  "chair_i": 0.5263157894736842,
+  "chair_s": 0.6666666666666666,
+  "objects_per_caption": 1.7733333333333334,
+  "mean_words": 8.786666666666667,
+  "caption_loss": 2.903689862050905,
+  "distinct_captions": 0.6866666666666666
+ }
+]

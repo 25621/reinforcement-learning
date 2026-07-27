@@ -1,0 +1,44 @@
+{
+ "train_images": 2600,
+ "val_images": 400,
+ "pairs": 2600,
+ "chosen_mean_words": 10.429615384615385,
+ "rejected_mean_words": 13.927692307692308,
+ "extra_words_in_rejected": 3.4980769230769226,
+ "distinct_hallucinated_objects": 64,
+ "most_common_inserts": [
+  [
+   "bowl",
+   52
+  ],
+  [
+   "elephant",
+   51
+  ],
+  [
+   "pizza",
+   50
+  ],
+  [
+   "plate",
+   50
+  ],
+  [
+   "sink",
+   49
+  ],
+  [
+   "bedroom",
+   48
+  ],
+  [
+   "grass",
+   47
+  ],
+  [
+   "surfboard",
+   46
+  ]
+ ],
+ "objects_per_image_in_human_captions": 2.3333333333333335
+}

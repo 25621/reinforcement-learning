@@ -1,0 +1,11 @@
+{
+ "vocab_size": 541,
+ "words": 22,
+ "image_codes": 512,
+ "text_rows": 7200,
+ "image_rows": 7200,
+ "val_rows": 800,
+ "text_tokens_per_row": 9.034027777777778,
+ "image_tokens_per_row": 64.0,
+ "token_share_at_50_50_rows": 0.8763038537972216
+}
