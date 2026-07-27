@@ -1,0 +1,57 @@
+{
+ "n_train": 7200,
+ "n_val": 800,
+ "resolution": 64,
+ "raw_bytes_per_image": 12288,
+ "n_distinct_captions": 370,
+ "vocab_words": 22,
+ "mean_caption_words": 9.034027777777778,
+ "most_common": [
+  [
+   "a young man with black hair",
+   306
+  ],
+  [
+   "a young man",
+   255
+  ],
+  [
+   "a smiling young woman with blond hair and heavy makeup and an open mouth",
+   240
+  ],
+  [
+   "a smiling young woman with heavy makeup and an open mouth",
+   225
+  ],
+  [
+   "a young woman with heavy makeup",
+   212
+  ],
+  [
+   "a smiling young woman with brown hair and heavy makeup and an open mouth",
+   207
+  ],
+  [
+   "a smiling young woman with black hair and heavy makeup and an open mouth",
+   178
+  ],
+  [
+   "a young woman",
+   173
+  ]
+ ],
+ "examples": [
+  "a smiling young woman with brown hair and heavy makeup and an open mouth",
+  "a smiling young woman with brown hair and an open mouth",
+  "a young man",
+  "a young woman",
+  "a young woman with heavy makeup",
+  "a young woman with brown hair and heavy makeup and an open mouth",
+  "a young man with black hair",
+  "a young man with black hair",
+  "a smiling young woman with bangs and heavy makeup and an open mouth",
+  "a young woman with heavy makeup",
+  "a smiling young woman with black hair and an open mouth",
+  "a smiling young man with black hair and an open mouth"
+ ]
+}

@@ -1,0 +1,23 @@
+{
+ "val_accuracy": {
+  "Male": 0.9084821343421936,
+  "Smiling": 0.890625,
+  "Blond_Hair": 0.9330357313156128,
+  "Eyeglasses": 0.9609375,
+  "Young": 0.8292410969734192,
+  "Black_Hair": 0.8448660969734192,
+  "Wearing_Hat": 0.9620535969734192,
+  "Mouth_Slightly_Open": 0.8024553656578064
+ },
+ "majority_baseline": {
+  "Male": 0.5775,
+  "Smiling": 0.5225,
+  "Blond_Hair": 0.86375,
+  "Eyeglasses": 0.92375,
+  "Young": 0.78375,
+  "Black_Hair": 0.7575000000000001,
+  "Wearing_Hat": 0.9575,
+  "Mouth_Slightly_Open": 0.50125
+ },
+ "steps": 700
+}

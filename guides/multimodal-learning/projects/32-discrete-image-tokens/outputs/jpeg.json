@@ -1,0 +1,65 @@
+{
+ "raw_bytes": 12288,
+ "results": [
+  {
+   "codec": "VQ-VAE f=2",
+   "tokens": 1024,
+   "bytes": 1152.0,
+   "psnr": 25.507446899414063
+  },
+  {
+   "codec": "VQ-VAE f=4",
+   "tokens": 256,
+   "bytes": 288.0,
+   "psnr": 22.924513549804686
+  },
+  {
+   "codec": "VQ-VAE f=8",
+   "tokens": 64,
+   "bytes": 72.0,
+   "psnr": 19.61874267578125
+  },
+  {
+   "codec": "JPEG q=1",
+   "tokens": null,
+   "bytes": 733.875,
+   "psnr": 19.42191162109375
+  },
+  {
+   "codec": "JPEG q=3",
+   "tokens": null,
+   "bytes": 746.875,
+   "psnr": 19.901474609375
+  },
+  {
+   "codec": "JPEG q=5",
+   "tokens": null,
+   "bytes": 788.84,
+   "psnr": 22.0018994140625
+  },
+  {
+   "codec": "JPEG q=10",
+   "tokens": null,
+   "bytes": 882.095,
+   "psnr": 24.6856103515625
+  },
+  {
+   "codec": "JPEG q=20",
+   "tokens": null,
+   "bytes": 1022.9,
+   "psnr": 27.0846728515625
+  },
+  {
+   "codec": "JPEG q=40",
+   "tokens": null,
+   "bytes": 1230.785,
+   "psnr": 29.33974365234375
+  },
+  {
+   "codec": "JPEG q=75",
+   "tokens": null,
+   "bytes": 1645.075,
+   "psnr": 32.32163330078125
+  }
+ ]
+}

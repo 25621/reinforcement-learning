@@ -1,0 +1,100 @@
+{
+ "tests": [
+  {
+   "attribute": "Male",
+   "positive": "a young man",
+   "negative": "a young woman"
+  },
+  {
+   "attribute": "Blond_Hair",
+   "positive": "a young woman with blond hair",
+   "negative": "a young woman with black hair"
+  }
+ ],
+ "real_swing": {
+  "Male": 0.746051549911499,
+  "Blond_Hair": 0.6259189248085022
+ },
+ "arms": {
+  "head_only": {
+   "Male": {
+    "positive": 0.5212728381156921,
+    "negative": 0.4899376928806305,
+    "swing": 0.031335145235061646,
+    "real_swing": 0.746051549911499,
+    "obeyed": 0.04200131376816897,
+    "positive_prompt": "a young man",
+    "negative_prompt": "a young woman"
+   },
+   "Blond_Hair": {
+    "positive": 0.15197373926639557,
+    "negative": 0.09279045462608337,
+    "swing": 0.059183284640312195,
+    "real_swing": 0.6259189248085022,
+    "obeyed": 0.09455423425393172,
+    "positive_prompt": "a young woman with blond hair",
+    "negative_prompt": "a young woman with black hair"
+   }
+  },
+  "lora": {
+   "Male": {
+    "positive": 0.660876989364624,
+    "negative": 0.6454129219055176,
+    "swing": 0.015464067459106445,
+    "real_swing": 0.746051549911499,
+    "obeyed": 0.020727880614872903,
+    "positive_prompt": "a young man",
+    "negative_prompt": "a young woman"
+   },
+   "Blond_Hair": {
+    "positive": 0.12125971913337708,
+    "negative": 0.034720513969659805,
+    "swing": 0.08653920516371727,
+    "real_swing": 0.6259189248085022,
+    "obeyed": 0.13825944820280622,
+    "positive_prompt": "a young woman with blond hair",
+    "negative_prompt": "a young woman with black hair"
+   }
+  },
+  "full": {
+   "Male": {
+    "positive": 0.39463409781455994,
+    "negative": 0.33556410670280457,
+    "swing": 0.05906999111175537,
+    "real_swing": 0.746051549911499,
+    "obeyed": 0.07917682245786178,
+    "positive_prompt": "a young man",
+    "negative_prompt": "a young woman"
+   },
+   "Blond_Hair": {
+    "positive": 0.29735666513442993,
+    "negative": 0.009836259298026562,
+    "swing": 0.28752040583640337,
+    "real_swing": 0.6259189248085022,
+    "obeyed": 0.4593572656784092,
+    "positive_prompt": "a young woman with blond hair",
+    "negative_prompt": "a young woman with black hair"
+   }
+  },
+  "from_scratch": {
+   "Male": {
+    "positive": 0.44189390540122986,
+    "negative": 0.4468982517719269,
+    "swing": -0.0050043463706970215,
+    "real_swing": 0.746051549911499,
+    "obeyed": -0.006707775583725637,
+    "positive_prompt": "a young man",
+    "negative_prompt": "a young woman"
+   },
+   "Blond_Hair": {
+    "positive": 0.3093060255050659,
+    "negative": 0.006047643255442381,
+    "swing": 0.30325838224962354,
+    "real_swing": 0.6259189248085022,
+    "obeyed": 0.48450105953004124,
+    "positive_prompt": "a young woman with blond hair",
+    "negative_prompt": "a young woman with black hair"
+   }
+  }
+ }
+}

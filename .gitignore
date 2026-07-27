@@ -111,3 +111,28 @@ guides/multimodal-learning/projects/30-video-frame-vlm/data/
 guides/multimodal-learning/projects/27-whisper-fine-tune/checkpoints/
 guides/multimodal-learning/projects/29-speech-llm/checkpoints/
 guides/multimodal-learning/projects/30-video-frame-vlm/checkpoints/
+
+# Multimodal Phase 7 dataset caches, all rebuilt automatically on first run:
+#   32  8,000 CelebA faces at 64x64 plus their 40 attribute labels (~85 MB).
+#       This is the SHARED Phase-7 image source. `run.py --stage data` re-downloads
+#       it in ~7 min (the listing endpoint rate-limits, so most of that is waiting).
+#   33  the same faces re-encoded as 64 VQ-VAE codes each, cached with the
+#       images so the referee probe can reuse them (~85 MB). This is the SHARED
+#       token cache -- projects 34/35/36 read it from 33's directory. Rebuilt by
+#       `run.py --stage data` in ~5 s once 32's tokenizer exists.
+#   34  EnCodec codes for 3,000 spoken digits plus the merged tri-modal corpus
+#       (~90 MB), rebuilt by `run.py --stage data` in ~3 min
+guides/multimodal-learning/projects/32-discrete-image-tokens/data/
+guides/multimodal-learning/projects/33-tiny-chameleon/data/
+guides/multimodal-learning/projects/34-modality-balancing/data/
+
+# Multimodal Phase 7 trained weights. 32's tokenizer (1.7 MB) is the one every
+# later project depends on; regenerate it FIRST with
+# `cd 32-discrete-image-tokens && python3 run.py --stage train` (~3.5 min), then
+# delete 33/data/tokens.npz and 34/data/corpus.npz so the token caches are rebuilt
+# from the tokenizer you actually have. Every number these produced is already in
+# outputs/*.json.
+guides/multimodal-learning/projects/32-discrete-image-tokens/checkpoints/
+guides/multimodal-learning/projects/33-tiny-chameleon/checkpoints/
+guides/multimodal-learning/projects/35-moe-for-multimodal/checkpoints/
+guides/multimodal-learning/projects/36-reverse-direction/checkpoints/
