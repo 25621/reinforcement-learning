@@ -1,0 +1,56 @@
+[
+ {
+  "arm": "words 40px, plaque",
+  "accuracy": 1.0,
+  "n": 30,
+  "example": {
+   "truth": "mirror",
+   "said": "mirror"
+  }
+ },
+ {
+  "arm": "words 20px, plaque",
+  "accuracy": 1.0,
+  "n": 30,
+  "example": {
+   "truth": "mirror",
+   "said": "mirror"
+  }
+ },
+ {
+  "arm": "words 10px, plaque",
+  "accuracy": 1.0,
+  "n": 30,
+  "example": {
+   "truth": "mirror",
+   "said": "mirror"
+  }
+ },
+ {
+  "arm": "words 34-46px, NO plaque",
+  "accuracy": 0.8666666666666667,
+  "n": 30,
+  "example": {
+   "truth": "mirror",
+   "said": "mirror"
+  }
+ },
+ {
+  "arm": "nonwords 34-46px, plaque",
+  "accuracy": 0.8333333333333334,
+  "n": 30,
+  "example": {
+   "truth": "lefohe",
+   "said": "lefohe"
+  }
+ },
+ {
+  "arm": "nonwords 10px, plaque",
+  "accuracy": 0.6666666666666666,
+  "n": 30,
+  "example": {
+   "truth": "lefohe",
+   "said": "leofhe"
+  }
+ }
+]

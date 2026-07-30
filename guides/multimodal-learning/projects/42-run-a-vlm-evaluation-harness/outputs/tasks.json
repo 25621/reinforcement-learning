@@ -1,0 +1,58 @@
+{
+ "pope-random": {
+  "kind": "yesno",
+  "questions": 100,
+  "photos": 50,
+  "primary": "accuracy",
+  "chance": 0.5
+ },
+ "pope-adversarial": {
+  "kind": "yesno",
+  "questions": 100,
+  "photos": 50,
+  "primary": "accuracy",
+  "chance": 0.5
+ },
+ "mmbench-mini": {
+  "kind": "mcq",
+  "questions": 120,
+  "photos": 30,
+  "primary": "accuracy",
+  "chance": 0.25
+ },
+ "caption-match": {
+  "kind": "mcq",
+  "questions": 120,
+  "photos": 30,
+  "primary": "accuracy",
+  "chance": 0.25
+ },
+ "ocr-mini": {
+  "kind": "freeform",
+  "questions": 50,
+  "photos": 50,
+  "primary": "accuracy",
+  "chance": 0.04
+ },
+ "count-mini": {
+  "kind": "freeform",
+  "questions": 50,
+  "photos": "synthetic canvas",
+  "primary": "accuracy",
+  "chance": 0.25
+ },
+ "spatial-mini": {
+  "kind": "freeform",
+  "questions": 51,
+  "photos": 39,
+  "primary": "accuracy",
+  "chance": 0.5
+ },
+ "caption-gen": {
+  "kind": "caption",
+  "questions": 50,
+  "photos": 50,
+  "primary": "cider",
+  "chance": 0.0
+ }
+}

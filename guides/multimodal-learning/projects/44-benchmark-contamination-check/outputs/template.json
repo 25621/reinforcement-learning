@@ -1,0 +1,151 @@
+{
+ "n=5": {
+  "template_ngrams": 13,
+  "plain": {
+   "flagged": 70,
+   "tp": 38,
+   "fp": 32,
+   "fn": 0,
+   "precision": 0.5428571428571428,
+   "recall": 1.0,
+   "f1": 0.7037037037037037,
+   "recall_by_flavor": {
+    "verbatim": 1.0,
+    "reworded": 1.0,
+    "answer-key": 1.0,
+    "image-only": 1.0
+   }
+  },
+  "template_removed": {
+   "flagged": 35,
+   "tp": 23,
+   "fp": 12,
+   "fn": 15,
+   "precision": 0.6571428571428571,
+   "recall": 0.6052631578947368,
+   "f1": 0.6301369863013698,
+   "recall_by_flavor": {
+    "verbatim": 1.0,
+    "reworded": 0.8888888888888888,
+    "answer-key": 0.3333333333333333,
+    "image-only": 0.2727272727272727
+   }
+  },
+  "example_template": [
+   "s letter from the given",
+   "option s letter from the",
+   "answer with the option s",
+   "the option s letter from",
+   "which caption describes the image"
+  ]
+ },
+ "n=8": {
+  "template_ngrams": 4,
+  "plain": {
+   "flagged": 43,
+   "tp": 25,
+   "fp": 18,
+   "fn": 13,
+   "precision": 0.5813953488372093,
+   "recall": 0.6578947368421053,
+   "f1": 0.6172839506172839,
+   "recall_by_flavor": {
+    "verbatim": 1.0,
+    "reworded": 0.6666666666666666,
+    "answer-key": 0.3333333333333333,
+    "image-only": 0.6363636363636364
+   }
+  },
+  "template_removed": {
+   "flagged": 25,
+   "tp": 18,
+   "fp": 7,
+   "fn": 20,
+   "precision": 0.72,
+   "recall": 0.47368421052631576,
+   "f1": 0.5714285714285714,
+   "recall_by_flavor": {
+    "verbatim": 1.0,
+    "reworded": 0.6666666666666666,
+    "answer-key": 0.1111111111111111,
+    "image-only": 0.18181818181818182
+   }
+  },
+  "example_template": [
+   "answer with the option s letter from the",
+   "option s letter from the given choices directly",
+   "the option s letter from the given choices",
+   "with the option s letter from the given"
+  ]
+ },
+ "n=13": {
+  "template_ngrams": 0,
+  "plain": {
+   "flagged": 10,
+   "tp": 7,
+   "fp": 3,
+   "fn": 31,
+   "precision": 0.7,
+   "recall": 0.18421052631578946,
+   "f1": 0.29166666666666663,
+   "recall_by_flavor": {
+    "verbatim": 0.2222222222222222,
+    "reworded": 0.5555555555555556,
+    "answer-key": 0.0,
+    "image-only": 0.0
+   }
+  },
+  "template_removed": {
+   "flagged": 10,
+   "tp": 7,
+   "fp": 3,
+   "fn": 31,
+   "precision": 0.7,
+   "recall": 0.18421052631578946,
+   "f1": 0.29166666666666663,
+   "recall_by_flavor": {
+    "verbatim": 0.2222222222222222,
+    "reworded": 0.5555555555555556,
+    "answer-key": 0.0,
+    "image-only": 0.0
+   }
+  },
+  "example_template": []
+ },
+ "single-leak n=5": {
+  "flagged": 55,
+  "tp": 1,
+  "fp": 54,
+  "fn": 0,
+  "precision": 0.01818181818181818,
+  "recall": 1.0,
+  "f1": 0.03571428571428572,
+  "recall_by_flavor": {
+   "verbatim": 1.0
+  }
+ },
+ "single-leak n=8": {
+  "flagged": 4,
+  "tp": 1,
+  "fp": 3,
+  "fn": 0,
+  "precision": 0.25,
+  "recall": 1.0,
+  "f1": 0.4,
+  "recall_by_flavor": {
+   "verbatim": 1.0
+  }
+ },
+ "single-leak n=13": {
+  "flagged": 1,
+  "tp": 0,
+  "fp": 1,
+  "fn": 1,
+  "precision": 0.0,
+  "recall": 0.0,
+  "f1": 0.0,
+  "recall_by_flavor": {
+   "verbatim": 0.0
+  }
+ }
+}

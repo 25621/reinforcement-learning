@@ -1,0 +1,32 @@
+{
+ "text_only": {
+  "flagged": 64,
+  "tp": 37,
+  "fp": 27,
+  "fn": 1,
+  "precision": 0.578125,
+  "recall": 0.9736842105263158,
+  "f1": 0.7254901960784313,
+  "recall_by_flavor": {
+   "verbatim": 1.0,
+   "reworded": 1.0,
+   "answer-key": 1.0,
+   "image-only": 0.9090909090909091
+  }
+ },
+ "text_plus_image": {
+  "flagged": 65,
+  "tp": 38,
+  "fp": 27,
+  "fn": 0,
+  "precision": 0.5846153846153846,
+  "recall": 1.0,
+  "f1": 0.7378640776699029,
+  "recall_by_flavor": {
+   "verbatim": 1.0,
+   "reworded": 1.0,
+   "answer-key": 1.0,
+   "image-only": 1.0
+  }
+ }
+}

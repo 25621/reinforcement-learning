@@ -159,3 +159,14 @@ guides/multimodal-learning/projects/41-hallucination-eval/data/
 # produced is already in outputs/*.json; regenerate with
 # `cd 40-multimodal-dpo && python3 run.py --stage sft` then `--stage train`.
 guides/multimodal-learning/projects/40-multimodal-dpo/checkpoints/
+
+# Multimodal Phase 9 caches, both rebuilt automatically on first run:
+#   42  200 MS-COCO photos at 336x336 (~35 MB). This is the SHARED Phase-9 image
+#       source -- projects 43, 44 and 45 import 42's `harness.py` and read the
+#       photos from its directory rather than keeping copies. Rebuilt in ~10 s
+#       by any stage that needs it (the COCO listing itself comes from project
+#       20's `data/rows.json`).
+#   45  the 100 rated captions, so re-running `--stage rate` does not re-generate
+#       them. Rebuilt by `run.py --stage outputs` in ~3 min.
+guides/multimodal-learning/projects/42-run-a-vlm-evaluation-harness/data/
+guides/multimodal-learning/projects/45-human-correlated-eval/data/

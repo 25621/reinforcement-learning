@@ -1,0 +1,298 @@
+{
+ "pinned": {
+  "n": 120,
+  "accuracy": 0.85,
+  "circular_accuracy": 0.7333333333333333,
+  "unparsed": 0,
+  "strict_accuracy": 0.0,
+  "strict_unparsed": 120,
+  "letter_bias": {
+   "A": 0.30833333333333335,
+   "B": 0.24166666666666667,
+   "C": 0.23333333333333334,
+   "D": 0.21666666666666667
+  },
+  "seconds": 158.3,
+  "config": {},
+  "sample": [
+   " Answer: A",
+   " Answer: D.",
+   " Answer: C.",
+   " Answer: B.",
+   " Answer: A",
+   " Answer: D"
+  ]
+ },
+ "_published": {
+  "accuracy": 0.85,
+  "circular_accuracy": 0.7333333333333333,
+  "strict_accuracy": 0.0,
+  "unparsed": 0,
+  "n": 120
+ },
+ "_reproduction": {
+  "exact_match": true,
+  "raw_answers_match": true
+ },
+ "no-suffix": {
+  "n": 120,
+  "accuracy": 0.775,
+  "circular_accuracy": 0.6666666666666666,
+  "unparsed": 0,
+  "strict_accuracy": 0.0,
+  "strict_unparsed": 120,
+  "letter_bias": {
+   "A": 0.20833333333333334,
+   "B": 0.2,
+   "C": 0.35,
+   "D": 0.24166666666666667
+  },
+  "seconds": 113.6,
+  "config": {
+   "suffix": "no-suffix"
+  },
+  "sample": [
+   " Answer: A",
+   " Answer: D",
+   " Answer: C",
+   " Answer: B",
+   " Answer: A",
+   " Answer: D"
+  ]
+ },
+ "verbose-suffix": {
+  "n": 120,
+  "accuracy": 0.36666666666666664,
+  "circular_accuracy": 0.0,
+  "unparsed": 0,
+  "strict_accuracy": 0.06666666666666667,
+  "strict_unparsed": 97,
+  "letter_bias": {
+   "A": 0.0,
+   "B": 0.025,
+   "C": 0.1,
+   "D": 0.875
+  },
+  "seconds": 85.5,
+  "config": {
+   "suffix": "verbose-suffix"
+  },
+  "sample": [
+   " Answer: D.",
+   " D.",
+   " D.",
+   " D.",
+   " D.",
+   " D."
+  ]
+ },
+ "cot-suffix": {
+  "n": 120,
+  "accuracy": 0.6833333333333333,
+  "circular_accuracy": 0.36666666666666664,
+  "unparsed": 0,
+  "strict_accuracy": 0.041666666666666664,
+  "strict_unparsed": 106,
+  "letter_bias": {
+   "A": 0.2,
+   "B": 0.225,
+   "C": 0.125,
+   "D": 0.45
+  },
+  "seconds": 137.5,
+  "config": {
+   "suffix": "cot-suffix"
+  },
+  "sample": [
+   " D.",
+   " D.",
+   " Answer: C.",
+   " D.",
+   " Answer: A",
+   " Answer: D"
+  ]
+ },
+ "likelihood": {
+  "n": 120,
+  "accuracy": 0.375,
+  "circular_accuracy": 0.0,
+  "unparsed": 0,
+  "strict_accuracy": 0.375,
+  "strict_unparsed": 0,
+  "letter_bias": {
+   "A": 0.7666666666666667,
+   "B": 0.0,
+   "C": 0.03333333333333333,
+   "D": 0.2
+  },
+  "seconds": 142.8,
+  "config": {
+   "mode": "likelihood"
+  },
+  "sample": [
+   "A",
+   "D",
+   "A",
+   "A",
+   "D",
+   "D"
+  ]
+ },
+ "photos-30": {
+  "n": 116,
+  "accuracy": 0.8275862068965517,
+  "circular_accuracy": 0.6896551724137931,
+  "unparsed": 0,
+  "strict_accuracy": 0.0,
+  "strict_unparsed": 116,
+  "letter_bias": {
+   "A": 0.28448275862068967,
+   "B": 0.25862068965517243,
+   "C": 0.23275862068965517,
+   "D": 0.22413793103448276
+  },
+  "seconds": 83.6,
+  "config": {
+   "offset": 30
+  },
+  "sample": [
+   " Answer: A",
+   " Answer: A",
+   " Answer: C.",
+   " Answer: B.",
+   " Answer: A",
+   " Answer: D"
+  ]
+ },
+ "photos-60": {
+  "n": 112,
+  "accuracy": 0.8660714285714286,
+  "circular_accuracy": 0.6428571428571429,
+  "unparsed": 0,
+  "strict_accuracy": 0.0,
+  "strict_unparsed": 112,
+  "letter_bias": {
+   "A": 0.35714285714285715,
+   "B": 0.24107142857142858,
+   "C": 0.20535714285714285,
+   "D": 0.19642857142857142
+  },
+  "seconds": 81.1,
+  "config": {
+   "offset": 60
+  },
+  "sample": [
+   " Answer: A.",
+   " Answer: A",
+   " Answer: C.",
+   " Answer: B.",
+   " Answer: A",
+   " Answer: D"
+  ]
+ },
+ "photos-90": {
+  "n": 120,
+  "accuracy": 0.8583333333333333,
+  "circular_accuracy": 0.6666666666666666,
+  "unparsed": 0,
+  "strict_accuracy": 0.0,
+  "strict_unparsed": 120,
+  "letter_bias": {
+   "A": 0.3333333333333333,
+   "B": 0.225,
+   "C": 0.21666666666666667,
+   "D": 0.225
+  },
+  "seconds": 87.8,
+  "config": {
+   "offset": 90
+  },
+  "sample": [
+   " Answer: A",
+   " Answer: C",
+   " Answer: C",
+   " Answer: B",
+   " Answer: A",
+   " Answer: D"
+  ]
+ },
+ "photos-120": {
+  "n": 120,
+  "accuracy": 0.8083333333333333,
+  "circular_accuracy": 0.5333333333333333,
+  "unparsed": 0,
+  "strict_accuracy": 0.0,
+  "strict_unparsed": 120,
+  "letter_bias": {
+   "A": 0.3416666666666667,
+   "B": 0.2833333333333333,
+   "C": 0.2,
+   "D": 0.175
+  },
+  "seconds": 91.9,
+  "config": {
+   "offset": 120
+  },
+  "sample": [
+   " Answer: A",
+   " Answer: D.",
+   " Answer: C.",
+   " Answer: B.",
+   " Answer: A",
+   " Answer: D."
+  ]
+ },
+ "subset-1view": {
+  "n": 48,
+  "accuracy": 0.8125,
+  "circular_accuracy": 0.6666666666666666,
+  "unparsed": 0,
+  "strict_accuracy": 0.0,
+  "strict_unparsed": 48,
+  "letter_bias": {
+   "A": 0.3333333333333333,
+   "B": 0.25,
+   "C": 0.22916666666666666,
+   "D": 0.1875
+  },
+  "seconds": 33.4,
+  "config": {
+   "items": 12
+  },
+  "sample": [
+   " Answer: A",
+   " Answer: D.",
+   " Answer: C.",
+   " Answer: B.",
+   " Answer: A",
+   " Answer: D"
+  ]
+ },
+ "subset-5views": {
+  "n": 48,
+  "accuracy": 0.8333333333333334,
+  "circular_accuracy": 0.5833333333333334,
+  "unparsed": 0,
+  "strict_accuracy": 0.0,
+  "strict_unparsed": 48,
+  "letter_bias": {
+   "A": 0.3333333333333333,
+   "B": 0.22916666666666666,
+   "C": 0.22916666666666666,
+   "D": 0.20833333333333334
+  },
+  "seconds": 517.3,
+  "config": {
+   "split_images": true,
+   "items": 12
+  },
+  "sample": [
+   " Answer: A",
+   " Answer: D.",
+   " Answer: C.",
+   " Answer: B",
+   " Answer: A",
+   " Answer: D"
+  ]
+ }
+}
