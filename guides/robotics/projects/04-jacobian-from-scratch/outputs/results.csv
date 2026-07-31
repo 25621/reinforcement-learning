@@ -1,0 +1,35 @@
+quantity,value,unit
+arm6: worst analytic-vs-MuJoCo entry at 'wrist_3_link' (500 configs),1.2212453270876722e-15,
+arm6: worst error in the lever-arm identity for tool0,2.220446049250313e-16,
+arm7: worst analytic-vs-MuJoCo entry at 'link7' (500 configs),1.4432899320127035e-15,
+arm7: worst error in the lever-arm identity for tool0,2.220446049250313e-16,
+testarm: worst analytic-vs-MuJoCo entry at 'link5' (500 configs),2.9976021664879227e-15,
+testarm: worst error in the lever-arm identity for tool0,1.1102230246251565e-16,
+arm6: worst analytic-vs-finite-difference entry (h = 1e-06),2.736050275231605e-10,
+arm6: matching decimal places,9.56287592666864,
+arm7: worst analytic-vs-finite-difference entry (h = 1e-06),2.691199485482798e-10,
+arm7: matching decimal places,9.570054108912801,
+testarm: worst analytic-vs-finite-difference entry (h = 1e-06),2.928098874477314e-10,
+testarm: matching decimal places,9.533414262342166,
+best central-difference error,2.220756911697208e-11,
+step size at the central-difference optimum,1e-05,rad
+theory: eps^(1/3) for central differences,6.055454452393343e-06,rad
+best forward-difference error,1.9674107315514888e-08,
+step size at the forward-difference optimum,4.641588833612773e-08,rad
+theory: sqrt(eps) for forward differences,1.4901161193847656e-08,rad
+log-log slope of the prediction error vs dt (theory: 2),2.000015278172962,
+prediction error after a 1 ms step,2.432212636095896e-07,m+rad
+columns of the camera Jacobian that are exactly zero,3.0,
+columns of the tool Jacobian that are exactly zero,0.0,
+camera motion when only those joints turn by 0.3 rad,0.0,m
+median condition number with lengths in metres,17.94020114347942,
+median manipulability with lengths in metres,0.03857307383831951,
+median condition number with lengths in centimetres,156.86418787812664,
+median manipulability with lengths in centimetres,38573.07383831957,
+median condition number with lengths in millimetres,1565.9833540281807,
+median manipulability with lengths in millimetres,38573073.83831949,
+median condition number with lengths in kilometres,16425.15369811919,
+median manipulability with lengths in kilometres,3.857307383831954e-11,
+arm7: analytic Jacobian,333.557064877823,us
+arm7: finite-difference Jacobian,2196.541087469086,us
+arm7: finite difference is slower by,6.585203309285763,x

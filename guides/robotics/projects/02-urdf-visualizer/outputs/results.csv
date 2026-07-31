@@ -1,0 +1,25 @@
+quantity,value,unit
+arm6: movable joints,6,
+arm6: links,8,
+arm6: total mass,19.2,kg
+arm6: total joint range,32.6,rad
+arm6: links compared against MuJoCo,6,
+arm6: worst link position error vs MuJoCo,4.440892098500626e-16,m
+arm6: worst link rotation error vs MuJoCo,5.777993591978116e-16,rad
+"arm6: reachable volume (voxel estimate, 4 cm, 40k samples)",1.6682880000000002,m^3
+"arm6: furthest tool reach, within limits",1.3099321595037285,m
+"arm6: lowest tool height, within limits",-0.6432644150962292,m
+"arm6: furthest tool reach, ignoring limits",1.3097396681092042,m
+"arm6: lowest tool height, ignoring limits",-0.7094638704466752,m
+arm7: movable joints,7,
+arm7: links,9,
+arm7: total mass,17.1,kg
+arm7: total joint range,33.32,rad
+arm7: links compared against MuJoCo,7,
+arm7: worst link position error vs MuJoCo,3.3306690738754696e-16,m
+arm7: worst link rotation error vs MuJoCo,6.611988681513135e-16,rad
+"arm7: reachable volume (voxel estimate, 4 cm, 40k samples)",1.4132480000000003,m^3
+"arm7: furthest tool reach, within limits",1.1877255921697758,m
+"arm7: lowest tool height, within limits",-0.2893048295415027,m
+"arm7: furthest tool reach, ignoring limits",1.1892785680462827,m
+"arm7: lowest tool height, ignoring limits",-0.6278295959289235,m

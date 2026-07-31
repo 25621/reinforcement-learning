@@ -1,0 +1,53 @@
+quantity,value,unit
+calibration poses collected,40.0,
+true camera offset: distance from the tool frame,78.10249675906654,mm
+true camera offset: rotation away from the tool frame,45.57190589946923,deg
+noise-free: rotation error,4.70493804814183e-13,deg
+noise-free: translation error,5.407460029778644e-12,mm
+noise-free: AX=XB rotation residual,4.157041522352197e-12,deg
+number of motion pairs from 40 poses,780.0,
+3 poses: median rotation error,2.777606788482094,deg
+3 poses: median translation error,24.60781926480854,mm
+4 poses: median rotation error,1.5768551181220203,deg
+4 poses: median translation error,11.024254838885161,mm
+5 poses: median rotation error,0.9219553482637876,deg
+5 poses: median translation error,10.374336650967834,mm
+6 poses: median rotation error,0.9686966663264498,deg
+6 poses: median translation error,9.082490928529777,mm
+8 poses: median rotation error,0.7467448940673697,deg
+8 poses: median translation error,7.401577358989975,mm
+10 poses: median rotation error,0.7119750989519329,deg
+10 poses: median translation error,5.31192639583092,mm
+14 poses: median rotation error,0.5244415801303518,deg
+14 poses: median translation error,5.054318176859153,mm
+20 poses: median rotation error,0.5826268868615685,deg
+20 poses: median translation error,3.4661449906294575,mm
+30 poses: median rotation error,0.3677068370958587,deg
+30 poses: median translation error,3.3463371849214623,mm
+40 poses: median rotation error,0.26008869175747473,deg
+40 poses: median translation error,2.805161675267552,mm
+0.05 px corner noise: median translation error,0.7568472762460058,mm
+0.1 px corner noise: median translation error,1.492356511784199,mm
+0.2 px corner noise: median translation error,2.9150151344528434,mm
+0.4 px corner noise: median translation error,5.654833940169089,mm
+0.8 px corner noise: median translation error,14.109872935015492,mm
+1.6 px corner noise: median translation error,32.341233716400595,mm
+3.2 px corner noise: median translation error,144.4035335892307,mm
+poses collected in the degenerate (one-axis) set,20.0,
+[varied viewpoints] median |dt| along x,1.152239174053677,mm
+[varied viewpoints] median |dt| along y,1.9370673883786007,mm
+[varied viewpoints] median |dt| along z,2.895234993993453,mm
+[varied viewpoints] smallest singular value of the translation system,7.167873458949531,
+[varied viewpoints] AX=XB translation residual,9.390704233324968,mm
+[one axis only] median |dt| along x,207351.8749782333,mm
+[one axis only] median |dt| along y,291643.0640784954,mm
+[one axis only] median |dt| along z,595338.7908524096,mm
+[one axis only] smallest singular value of the translation system,9.128454902486675e-05,
+[one axis only] AX=XB translation residual,253.12473727820515,mm
+correlation: AX=XB translation residual vs the TRUE error,0.1745392373845387,
+correlation: tag-prediction scatter vs the TRUE error,0.8088622656904839,
+closed form: median translation error,5.157222676139252,mm
+after Gauss-Newton refinement: median translation error,2.5992888290486804,mm
+closed form: median rotation error,0.5781316118566389,deg
+after Gauss-Newton refinement: median rotation error,0.547878895072495,deg
+refinement improved translation in this fraction of trials,0.975,

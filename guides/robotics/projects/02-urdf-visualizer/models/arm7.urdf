@@ -1,0 +1,169 @@
+<?xml version="1.0"?>
+<!--
+  arm7 - a 7-DoF REDUNDANT arm in the "shoulder - elbow - wrist" layout used
+  by research arms such as the Franka Panda or the KUKA LBR iiwa.
+
+  Six numbers are enough to specify an end-effector pose (3 for position,
+  3 for orientation).  This arm has seven joints, so for almost every reachable
+  pose there is a whole ONE-PARAMETER FAMILY of joint angles that achieves it:
+  the elbow can swing around the shoulder-to-wrist line like a hinge while the
+  hand stays perfectly still.  That family is the NULL SPACE, and projects 05
+  and 06 spend their time exploiting it.
+
+  Axis pattern z, y, z, y, z, y, z - roll, pitch, roll, pitch, ... - which is
+  what gives the arm its "elbow circle" freedom.
+
+  Units: metres, radians, kilograms.  <origin rpy> is fixed-axis roll-pitch-yaw.
+-->
+<robot name="arm7">
+
+  <link name="base_link">
+    <inertial>
+      <origin xyz="0 0 0.10"/><mass value="4.0"/>
+      <inertia ixx="0.03" ixy="0" ixz="0" iyy="0.03" iyz="0" izz="0.02"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0.10"/>
+      <geometry><cylinder radius="0.080" length="0.20"/></geometry>
+    </visual>
+  </link>
+
+  <link name="link1">
+    <inertial>
+      <origin xyz="0 0 0.04"/><mass value="2.5"/>
+      <inertia ixx="0.01" ixy="0" ixz="0" iyy="0.01" iyz="0" izz="0.008"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0.04"/>
+      <geometry><cylinder radius="0.068" length="0.08"/></geometry>
+    </visual>
+  </link>
+
+  <link name="link2">
+    <inertial>
+      <origin xyz="0 0 0.16"/><mass value="3.5"/>
+      <inertia ixx="0.04" ixy="0" ixz="0" iyy="0.04" iyz="0" izz="0.006"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0.16"/>
+      <geometry><cylinder radius="0.055" length="0.32"/></geometry>
+    </visual>
+  </link>
+
+  <link name="link3">
+    <inertial>
+      <origin xyz="0 0 0.04"/><mass value="2.0"/>
+      <inertia ixx="0.006" ixy="0" ixz="0" iyy="0.006" iyz="0" izz="0.005"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0.04"/>
+      <geometry><cylinder radius="0.052" length="0.08"/></geometry>
+    </visual>
+  </link>
+
+  <link name="link4">
+    <inertial>
+      <origin xyz="0 0 0.16"/><mass value="2.5"/>
+      <inertia ixx="0.03" ixy="0" ixz="0" iyy="0.03" iyz="0" izz="0.004"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0.16"/>
+      <geometry><cylinder radius="0.046" length="0.32"/></geometry>
+    </visual>
+  </link>
+
+  <link name="link5">
+    <inertial>
+      <origin xyz="0 0 0.04"/><mass value="1.2"/>
+      <inertia ixx="0.003" ixy="0" ixz="0" iyy="0.003" iyz="0" izz="0.002"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0.04"/>
+      <geometry><cylinder radius="0.042" length="0.08"/></geometry>
+    </visual>
+  </link>
+
+  <link name="link6">
+    <inertial>
+      <origin xyz="0 0 0.03"/><mass value="0.8"/>
+      <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0.03"/>
+      <geometry><cylinder radius="0.036" length="0.06"/></geometry>
+    </visual>
+  </link>
+
+  <link name="link7">
+    <inertial>
+      <origin xyz="0 0 0.05"/><mass value="0.5"/>
+      <inertia ixx="0.0008" ixy="0" ixz="0" iyy="0.0008" iyz="0" izz="0.0008"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0.05"/>
+      <geometry><cylinder radius="0.030" length="0.11"/></geometry>
+    </visual>
+  </link>
+
+  <link name="tool0">
+    <inertial>
+      <origin xyz="0 0 0"/><mass value="0.1"/>
+      <inertia ixx="0.0001" ixy="0" ixz="0" iyy="0.0001" iyz="0" izz="0.0001"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0"/>
+      <geometry><sphere radius="0.022"/></geometry>
+    </visual>
+  </link>
+
+  <joint name="joint1" type="revolute">
+    <parent link="base_link"/><child link="link1"/>
+    <origin xyz="0 0 0.20" rpy="0 0 0"/><axis xyz="0 0 1"/>
+    <limit lower="-2.90" upper="2.90" effort="87" velocity="2.6"/>
+  </joint>
+
+  <joint name="joint2" type="revolute">
+    <parent link="link1"/><child link="link2"/>
+    <origin xyz="0 0 0.08" rpy="0 0 0"/><axis xyz="0 1 0"/>
+    <limit lower="-1.76" upper="1.76" effort="87" velocity="2.6"/>
+  </joint>
+
+  <joint name="joint3" type="revolute">
+    <parent link="link2"/><child link="link3"/>
+    <origin xyz="0 0 0.32" rpy="0 0 0"/><axis xyz="0 0 1"/>
+    <limit lower="-2.90" upper="2.90" effort="87" velocity="2.6"/>
+  </joint>
+
+  <!-- The elbow.  Its lower limit is 0.10 rad, not 0: a perfectly straight arm
+       is a SINGULARITY (the hand can no longer be pushed outwards), so real
+       arms are built so the elbow can never fully lock. -->
+  <joint name="joint4" type="revolute">
+    <parent link="link3"/><child link="link4"/>
+    <origin xyz="0 0 0.08" rpy="0 0 0"/><axis xyz="0 1 0"/>
+    <limit lower="0.10" upper="2.90" effort="87" velocity="2.6"/>
+  </joint>
+
+  <joint name="joint5" type="revolute">
+    <parent link="link4"/><child link="link5"/>
+    <origin xyz="0 0 0.32" rpy="0 0 0"/><axis xyz="0 0 1"/>
+    <limit lower="-2.90" upper="2.90" effort="12" velocity="3.0"/>
+  </joint>
+
+  <joint name="joint6" type="revolute">
+    <parent link="link5"/><child link="link6"/>
+    <origin xyz="0 0 0.08" rpy="0 0 0"/><axis xyz="0 1 0"/>
+    <limit lower="-1.90" upper="1.90" effort="12" velocity="3.0"/>
+  </joint>
+
+  <joint name="joint7" type="revolute">
+    <parent link="link6"/><child link="link7"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/><axis xyz="0 0 1"/>
+    <limit lower="-2.90" upper="2.90" effort="12" velocity="3.0"/>
+  </joint>
+
+  <joint name="tool_fixed" type="fixed">
+    <parent link="link7"/><child link="tool0"/>
+    <origin xyz="0 0 0.11" rpy="0 0 0"/>
+  </joint>
+
+</robot>

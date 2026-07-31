@@ -1,0 +1,49 @@
+quantity,value,unit
+worst tool twist caused by the null-space term (exact projector),9.245660964044183e-13,
+"worst tool twist caused by the null-space term (damped projector, lam=0.01)",0.007493020930471769,
+worst |NN - N| (applying a projector twice must change nothing),3.3021779755060265e-12,
+"rank of J (6 rows, 7 joints)",6.0,
+dimension of the null space = joints minus rank,1.0,
+jammed IK solution: smallest joint-limit margin,0.0025593758113906517,rad
+after null-space repair: smallest joint-limit margin,0.33824069756360897,rad
+worst TOOL position error during the repair,0.15974070686635172,mm
+worst tool twist the repair itself caused (the projected term),3.018036099933628e-15,
+how far the ARM moved during the repair,1.5971665132085078,rad
+start-of-circle IK residual,6.870265191344852e-08,m
+start-of-circle smallest joint-limit margin,0.8118518186903285,rad
+[no secondary task] mean tool position error,0.27243308543148936,mm
+[no secondary task] worst tool orientation error,0.05583345582316293,deg
+[no secondary task] worst tool twist caused by the secondary task,0.0,
+[no secondary task] joint-space drift after 1 lap,0.26433810787095713,rad
+[no secondary task] joint-space drift after 6 laps,1.2424993999573404,rad
+[no secondary task] mean distance from the home posture,2.2842209910665217,rad
+"[no secondary task] mean joint-limit cost (0 = mid-travel, 1 = at a limit)",0.08008900060619609,
+[no secondary task] smallest joint-limit margin,0.5997302751087905,rad
+[no secondary task] mean manipulability,0.07713839550555539,
+[posture (go home)] mean tool position error,0.23224026802760583,mm
+[posture (go home)] worst tool orientation error,0.011520042654572066,deg
+[posture (go home)] worst tool twist caused by the secondary task,1.1623103163297999e-14,
+[posture (go home)] joint-space drift after 1 lap,0.007399345036671004,rad
+[posture (go home)] joint-space drift after 6 laps,0.011397279221702831,rad
+[posture (go home)] mean distance from the home posture,2.085731405259024,rad
+"[posture (go home)] mean joint-limit cost (0 = mid-travel, 1 = at a limit)",0.06126581173368741,
+[posture (go home)] smallest joint-limit margin,0.5997482136559116,rad
+[posture (go home)] mean manipulability,0.08183354735101322,
+[joint-limit avoidance] mean tool position error,0.23243260656177211,mm
+[joint-limit avoidance] worst tool orientation error,0.013294653690005967,deg
+[joint-limit avoidance] worst tool twist caused by the secondary task,3.4870208512598845e-15,
+[joint-limit avoidance] joint-space drift after 1 lap,0.1511830999248882,rad
+[joint-limit avoidance] joint-space drift after 6 laps,0.22281423332157846,rad
+[joint-limit avoidance] mean distance from the home posture,2.0983556555470257,rad
+"[joint-limit avoidance] mean joint-limit cost (0 = mid-travel, 1 = at a limit)",0.06236501608851538,
+[joint-limit avoidance] smallest joint-limit margin,0.5997400343991162,rad
+[joint-limit avoidance] mean manipulability,0.08143554518496977,
+[manipulability] mean tool position error,0.24152501089869857,mm
+[manipulability] worst tool orientation error,0.027812069230225025,deg
+[manipulability] worst tool twist caused by the secondary task,1.9281428054579287e-15,
+[manipulability] joint-space drift after 1 lap,0.22011700640679,rad
+[manipulability] joint-space drift after 6 laps,0.7078856991672751,rad
+[manipulability] mean distance from the home posture,2.15598508416151,rad
+"[manipulability] mean joint-limit cost (0 = mid-travel, 1 = at a limit)",0.06750239972634187,
+[manipulability] smallest joint-limit margin,0.5997275278322651,rad
+[manipulability] mean manipulability,0.07987984818338527,

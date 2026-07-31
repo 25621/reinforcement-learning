@@ -1,0 +1,38 @@
+section,quantity,value,unit
+roundtrip,max geodesic error [R -> quat -> R],1.2970741639301013e-15,rad
+roundtrip,max elementwise error [R -> quat -> R],1.1102230246251565e-15,
+roundtrip,max geodesic error [R -> axis-angle -> R],1.3013401327773019e-15,rad
+roundtrip,max elementwise error [R -> axis-angle -> R],1.3322676295501878e-15,
+roundtrip,max geodesic error [R -> rpy -> R],1.651458363874439e-14,rad
+roundtrip,max elementwise error [R -> rpy -> R],1.549455008742484e-14,
+roundtrip,max geodesic error [R -> T -> T^-1 -> R],0.0,rad
+roundtrip,max elementwise error [R -> T -> T^-1 -> R],0.0,
+roundtrip,max geodesic error [R -> se3 log -> exp -> R],1.3013401327773019e-15,rad
+roundtrip,max elementwise error [R -> se3 log -> exp -> R],1.3322676295501878e-15,
+roundtrip,max geodesic error [R -> quat -> aa -> quat -> R],1.3453962179442023e-15,rad
+roundtrip,max elementwise error [R -> quat -> aa -> quat -> R],1.3322676295501878e-15,
+roundtrip,"max error [SE(3) log/exp, incl. translation]",1.1102230246251565e-15,m
+logmap,naive worst error,3.141592652589793,rad
+logmap,robust worst error,7.15324494275451e-16,rad
+logmap,naive error at theta = pi - 1e-9,3.141592652589793,rad
+logmap,robust error at theta = pi - 1e-9,0.0,rad
+gimbal,worst roll/pitch/yaw angle error near lock,0.40000000000000013,rad
+gimbal,worst rotation error near lock,5.562029244866616e-07,rad
+gimbal,"rotation distance between (0,90,0) and (0.8,90,0.8)",4.768999264375571e-17,rad
+double_cover,"corr(naive ||qa-qb||, true angle)",0.16881458365615792,
+double_cover,"corr(sign-fixed ||qa-qb||, true angle)",0.9988922444685606,
+double_cover,true angle of the 'closest' pair under naive distance,0.2788860363290674,rad
+interp,slerp: angular-speed max/min ratio,1.0000000000000826,
+interp,euler-lerp: angular-speed max/min ratio,1.3564860412284445,
+interp,matrix-lerp: angular-speed max/min ratio,3.9914956995414363,
+interp,worst ||R^T R - I|| of the raw matrix lerp,1.062602249009561,
+drift,matrix ||R^T R - I|| after 200k compositions,7.401985136508281e-14,
+drift,quaternion |‖q‖-1| after 200k compositions (no renorm),4.596323321948148e-14,
+drift,quaternion |‖q‖-1| after 200k compositions (renormalised),0.0,
+timing,one 3x3 @ 3x3 matrix composition,1294.7054250980727,ns
+timing,one quaternion product (numpy arrays),3306.0466599999927,ns
+timing,quaternion speed-up (>1 means quaternions win),0.391617408417967,
+timing,"floating-point multiplies, matrix product",27,mults
+timing,"floating-point multiplies, quaternion product",16,mults
+timing,"bytes to store one rotation, matrix",72,B
+timing,"bytes to store one rotation, quaternion",32,B
