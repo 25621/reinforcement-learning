@@ -1,0 +1,164 @@
+section,quantity,value,unit
+1-position,surface height change across the stroke,5.849285583488406,mm
+1-position,steepest slope over the stroke,8.36360178902672,deg
+1-position,planned press into the believed surface,3.0,mm
+1-position,model 3 mm too LOW: mean contact force,7.311238517255965,N
+1-position,model 3 mm too LOW: force std,4.13917439585142,N
+1-position,model 3 mm too LOW: peak force,12.528987081664573,N
+1-position,model 3 mm too LOW: time above the 12 N break limit,5.065666041275797,%
+1-position,model 3 mm too LOW: time below the 0.5 N lift-off limit,8.380237648530331,%
+1-position,model exact: mean contact force,3.115848635770551,N
+1-position,model exact: force std,3.1560520356979724,N
+1-position,model exact: peak force,9.759011969505975,N
+1-position,model exact: time above the 12 N break limit,0.0,%
+1-position,model exact: time below the 0.5 N lift-off limit,41.21325828642902,%
+1-position,model 3 mm too HIGH: mean contact force,0.047113095624104394,N
+1-position,model 3 mm too HIGH: force std,0.2758755094720579,N
+1-position,model 3 mm too HIGH: peak force,4.178580273164972,N
+1-position,model 3 mm too HIGH: time above the 12 N break limit,0.0,%
+1-position,model 3 mm too HIGH: time below the 0.5 N lift-off limit,96.37273295809882,%
+1-position,model FLAT (bulge ignored): mean contact force,1.2029302978949252,N
+1-position,model FLAT (bulge ignored): force std,2.401171213035697,N
+1-position,model FLAT (bulge ignored): peak force,9.01935994431279,N
+1-position,model FLAT (bulge ignored): time above the 12 N break limit,0.0,%
+1-position,model FLAT (bulge ignored): time below the 0.5 N lift-off limit,78.67417135709819,%
+1-position,joint gains x1: effective contact stiffness,39745.36423473973,N/m
+1-position,joint gains x1: mean force,3.115848635770551,N
+1-position,joint gains x1: peak force,9.759011969505975,N
+1-position,joint gains x1: time above the break limit,0.0,%
+1-position,joint gains x3: effective contact stiffness,49269.95543297977,N/m
+1-position,joint gains x3: mean force,3.688032169636161,N
+1-position,joint gains x3: peak force,17.61069866795007,N
+1-position,joint gains x3: time above the break limit,12.632895559724828,%
+1-position,joint gains x6: effective contact stiffness,45587.96219358838,N/m
+1-position,joint gains x6: mean force,3.821613613199983,N
+1-position,joint gains x6: peak force,22.837263970197878,N
+1-position,joint gains x6: time above the break limit,11.569731081926204,%
+2-impedance,flat model: mean contact force,4.421534082814283,N
+2-impedance,flat model: force std,1.2590928154539145,N
+2-impedance,flat model: peak force,12.63958193036666,N
+2-impedance,flat model: time above the 12 N break limit,0.6879299562226392,%
+2-impedance,flat model: time below the 0.5 N lift-off limit,1.5634771732332706,%
+2-impedance,3 mm too low: mean contact force,5.618234469780773,N
+2-impedance,3 mm too low: force std,0.9160818812689545,N
+2-impedance,3 mm too low: peak force,10.014021675833312,N
+2-impedance,3 mm too low: time above the 12 N break limit,0.0,%
+2-impedance,3 mm too low: time below the 0.5 N lift-off limit,1.188242651657286,%
+2-impedance,3 mm too high: mean contact force,4.173213747775758,N
+2-impedance,3 mm too high: force std,1.0165959623171583,N
+2-impedance,3 mm too high: peak force,12.873057331723285,N
+2-impedance,3 mm too high: time above the 12 N break limit,0.2501563477173233,%
+2-impedance,3 mm too high: time below the 0.5 N lift-off limit,1.7510944340212633,%
+2-impedance,commanded normal stiffness,250.0,N/m
+2-impedance,commanded press depth,20.0,mm
+2-impedance,force this predicts,5.0,N
+3-stiffness,Kz=60 N/m: mean contact force,4.884038275230101,N
+3-stiffness,Kz=60 N/m: force std,3.0005620779971824,N
+3-stiffness,Kz=60 N/m: peak force,23.618085674487784,N
+3-stiffness,Kz=60 N/m: time above the 12 N break limit,3.314571607254534,%
+3-stiffness,Kz=60 N/m: time below the 0.5 N lift-off limit,9.255784865540964,%
+3-stiffness,Kz=120 N/m: mean contact force,4.766553576917669,N
+3-stiffness,Kz=120 N/m: force std,2.1142642966996608,N
+3-stiffness,Kz=120 N/m: peak force,18.294887089282444,N
+3-stiffness,Kz=120 N/m: time above the 12 N break limit,1.813633520950594,%
+3-stiffness,Kz=120 N/m: time below the 0.5 N lift-off limit,4.627892432770482,%
+3-stiffness,Kz=250 N/m: mean contact force,4.421534082814283,N
+3-stiffness,Kz=250 N/m: force std,1.2590928154539145,N
+3-stiffness,Kz=250 N/m: peak force,12.63958193036666,N
+3-stiffness,Kz=250 N/m: time above the 12 N break limit,0.6879299562226392,%
+3-stiffness,Kz=250 N/m: time below the 0.5 N lift-off limit,1.5634771732332706,%
+3-stiffness,Kz=500 N/m: mean contact force,3.7304768835587256,N
+3-stiffness,Kz=500 N/m: force std,0.9909232223953919,N
+3-stiffness,Kz=500 N/m: peak force,5.07198530936162,N
+3-stiffness,Kz=500 N/m: time above the 12 N break limit,0.0,%
+3-stiffness,Kz=500 N/m: time below the 0.5 N lift-off limit,0.0,%
+3-stiffness,Kz=1000 N/m: mean contact force,2.649237388305021,N
+3-stiffness,Kz=1000 N/m: force std,1.7156307440181529,N
+3-stiffness,Kz=1000 N/m: peak force,4.793888005300062,N
+3-stiffness,Kz=1000 N/m: time above the 12 N break limit,0.0,%
+3-stiffness,Kz=1000 N/m: time below the 0.5 N lift-off limit,19.63727329580988,%
+3-stiffness,Kz=2000 N/m: mean contact force,1.7405269941910473,N
+3-stiffness,Kz=2000 N/m: force std,1.841680842986582,N
+3-stiffness,Kz=2000 N/m: peak force,4.616077218277699,N
+3-stiffness,Kz=2000 N/m: time above the 12 N break limit,0.0,%
+3-stiffness,Kz=2000 N/m: time below the 0.5 N lift-off limit,47.65478424015009,%
+3-stiffness,force std at the softest setting,3.0005620779971824,N
+3-stiffness,force std at the stiffest setting,1.841680842986582,N
+3-stiffness,ratio,0.6137786171769086,x
+3-stiffness,peak force at the stiffest setting,4.616077218277699,N
+3-stiffness,press depth needed at the softest setting,83.33333333333333,mm
+4-integral,"spring only, Kz = 250: mean contact force",4.421534082814283,N
+4-integral,"spring only, Kz = 250: force std",1.2590928154539145,N
+4-integral,"spring only, Kz = 250: peak force",12.63958193036666,N
+4-integral,"spring only, Kz = 250: time above the 12 N break limit",0.6879299562226392,%
+4-integral,"spring only, Kz = 250: time below the 0.5 N lift-off limit",1.5634771732332706,%
+4-integral,"spring only, Kz = 250: mean force error",0.5784659171857172,N
+4-integral,"spring only, Kz = 1000: mean contact force",2.649237388305021,N
+4-integral,"spring only, Kz = 1000: force std",1.7156307440181529,N
+4-integral,"spring only, Kz = 1000: peak force",4.793888005300062,N
+4-integral,"spring only, Kz = 1000: time above the 12 N break limit",0.0,%
+4-integral,"spring only, Kz = 1000: time below the 0.5 N lift-off limit",19.63727329580988,%
+4-integral,"spring only, Kz = 1000: mean force error",2.350762611694979,N
+4-integral,Kz = 1000 + force integral: mean contact force,3.5097214565010226,N
+4-integral,Kz = 1000 + force integral: force std,1.6543005707562,N
+4-integral,Kz = 1000 + force integral: peak force,5.610137437339051,N
+4-integral,Kz = 1000 + force integral: time above the 12 N break limit,0.0,%
+4-integral,Kz = 1000 + force integral: time below the 0.5 N lift-off limit,0.0,%
+4-integral,Kz = 1000 + force integral: mean force error,1.4902785434989774,N
+5-steep,gentle (R = 55 cm): steepest slope over the stroke,8.36360178902672,deg
+5-steep,"gentle (R = 55 cm), compliant along world z: mean contact force",4.848031104284976,N
+5-steep,"gentle (R = 55 cm), compliant along world z: force std",0.893701218391587,N
+5-steep,"gentle (R = 55 cm), compliant along world z: peak force",8.855616176988823,N
+5-steep,"gentle (R = 55 cm), compliant along world z: time above the 12 N break limit",0.0,%
+5-steep,"gentle (R = 55 cm), compliant along world z: time below the 0.5 N lift-off limit",1.6260162601626018,%
+5-steep,"gentle (R = 55 cm), compliant along the normal: mean contact force",4.870280493670393,N
+5-steep,"gentle (R = 55 cm), compliant along the normal: force std",0.7745698804607275,N
+5-steep,"gentle (R = 55 cm), compliant along the normal: peak force",7.486810155881374,N
+5-steep,"gentle (R = 55 cm), compliant along the normal: time above the 12 N break limit",0.0,%
+5-steep,"gentle (R = 55 cm), compliant along the normal: time below the 0.5 N lift-off limit",1.3758599124452784,%
+5-steep,steep (R = 16 cm): steepest slope over the stroke,30.000000000000043,deg
+5-steep,"steep (R = 16 cm), compliant along world z: mean contact force",4.876460282533899,N
+5-steep,"steep (R = 16 cm), compliant along world z: force std",1.1197474437147104,N
+5-steep,"steep (R = 16 cm), compliant along world z: peak force",9.040354403216103,N
+5-steep,"steep (R = 16 cm), compliant along world z: time above the 12 N break limit",0.0,%
+5-steep,"steep (R = 16 cm), compliant along world z: time below the 0.5 N lift-off limit",0.0,%
+5-steep,"steep (R = 16 cm), compliant along the normal: mean contact force",4.809019247919483,N
+5-steep,"steep (R = 16 cm), compliant along the normal: force std",0.5811181826103066,N
+5-steep,"steep (R = 16 cm), compliant along the normal: peak force",9.519977439272614,N
+5-steep,"steep (R = 16 cm), compliant along the normal: time above the 12 N break limit",0.0,%
+5-steep,"steep (R = 16 cm), compliant along the normal: time below the 0.5 N lift-off limit",0.0,%
+5-steep,gentle (R = 55 cm): force-std ratio (world z / normal),1.1538032150953226,x
+5-steep,steep (R = 16 cm): force-std ratio (world z / normal),1.926884198812971,x
+6-speed,stroke in 3.2 s: mean contact force,4.364136949488121,N
+6-speed,stroke in 3.2 s: force std,0.5273797241737587,N
+6-speed,stroke in 3.2 s: peak force,4.968690551082898,N
+6-speed,stroke in 3.2 s: time above the 12 N break limit,0.0,%
+6-speed,stroke in 3.2 s: time below the 0.5 N lift-off limit,0.0,%
+6-speed,stroke in 3.2 s: pen speed,0.05000000000000001,m/s
+6-speed,stroke in 2.0 s: mean contact force,4.354915876421221,N
+6-speed,stroke in 2.0 s: force std,0.5821126663147591,N
+6-speed,stroke in 2.0 s: peak force,7.1344093733637575,N
+6-speed,stroke in 2.0 s: time above the 12 N break limit,0.0,%
+6-speed,stroke in 2.0 s: time below the 0.5 N lift-off limit,0.0,%
+6-speed,stroke in 2.0 s: pen speed,0.08000000000000002,m/s
+6-speed,stroke in 1.2 s: mean contact force,4.071717475314267,N
+6-speed,stroke in 1.2 s: force std,2.1458245246689995,N
+6-speed,stroke in 1.2 s: peak force,13.097076893551908,N
+6-speed,stroke in 1.2 s: time above the 12 N break limit,1.668520578420467,%
+6-speed,stroke in 1.2 s: time below the 0.5 N lift-off limit,11.67964404894327,%
+6-speed,stroke in 1.2 s: pen speed,0.13333333333333336,m/s
+6-speed,stroke in 0.8 s: mean contact force,4.474720999174702,N
+6-speed,stroke in 0.8 s: force std,5.345599278575925,N
+6-speed,stroke in 0.8 s: peak force,27.871232377406887,N
+6-speed,stroke in 0.8 s: time above the 12 N break limit,7.0116861435726205,%
+6-speed,stroke in 0.8 s: time below the 0.5 N lift-off limit,28.380634390651082,%
+6-speed,stroke in 0.8 s: pen speed,0.20000000000000004,m/s
+6-speed,stroke in 0.6 s: mean contact force,3.3321449032011716,N
+6-speed,stroke in 0.6 s: force std,5.290155562142042,N
+6-speed,stroke in 0.6 s: peak force,21.825444471443745,N
+6-speed,stroke in 0.6 s: time above the 12 N break limit,6.796116504854369,%
+6-speed,stroke in 0.6 s: time below the 0.5 N lift-off limit,59.46601941747572,%
+6-speed,stroke in 0.6 s: pen speed,0.29090909090909095,m/s
+6-speed,fastest stroke that keeps the pen intact,2.0,s
+6-speed,force std at the slowest stroke,0.5273797241737587,N
+6-speed,force std at the fastest stroke,5.290155562142042,N

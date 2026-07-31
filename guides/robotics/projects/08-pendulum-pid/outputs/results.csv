@@ -1,0 +1,80 @@
+section,quantity,value,unit
+1-step,Kp (hand-tuned),13.482000000000003,N*m/rad
+1-step,Ki,40.0,N*m/(rad*s)
+1-step,Kd,1.5360000000000005,N*m*s/rad
+1-step,gravity's gain floor  m*g*l,1.9620000000000002,N*m/rad
+1-step,b = 1 (plain PID): rise time (10-90%),121.99999999999997,ms
+1-step,b = 1 (plain PID): overshoot,45.89977927539459,%
+1-step,b = 1 (plain PID): settling time (2% band),1063.0000000000002,ms
+1-step,b = 1 (plain PID): steady-state error,0.1648843757261209,mrad
+1-step,b = 0 (setpoint weighting): rise time (10-90%),351.00000000000006,ms
+1-step,b = 0 (setpoint weighting): overshoot,3.8515286496643526,%
+1-step,b = 0 (setpoint weighting): settling time (2% band),935.0,ms
+1-step,b = 0 (setpoint weighting): steady-state error,-0.1868294215399413,mrad
+1-step,b = 1 (plain PID): peak angle after a 0.2 N*m push,13.759432186521275,mrad
+1-step,b = 0 (setpoint weighting): peak angle after a 0.2 N*m push,13.759432186521275,mrad
+2-gains,P-only Kp=0.50*mgl: |angle| at 3 s,2.0361618276064153,rad
+2-gains,P-only Kp=0.90*mgl: |angle| at 3 s,0.8480313019883944,rad
+2-gains,P-only Kp=1.05*mgl: |angle| at 3 s,0.08708386972746991,rad
+2-gains,P-only Kp=3.00*mgl: |angle| at 3 s,0.05339104076676752,rad
+2-gains,P-only Kp=7.00*mgl: |angle| at 3 s,0.029339525122316933,rad
+2-gains,PD Kd=0.000: time to settle inside 5 mrad,nan,ms
+2-gains,PD Kd=0.614: time to settle inside 5 mrad,659.0,ms
+2-gains,PD Kd=1.536: time to settle inside 5 mrad,282.0,ms
+2-gains,PD Kd=4.608: time to settle inside 5 mrad,1165.0,ms
+2-gains,PD steady offset under a 0.25 N*m load,21.70109880058425,mrad
+2-gains,  predicted -load/(Kp - mgl),-21.701388888888886,mrad
+2-gains,PID steady offset under the same load,-5.142240911810941e-07,mrad
+2-gains,offset reduction from the I term,42201637.7154562,x
+3-windup,no anti-windup: overshoot,54.64509131360608,%
+3-windup,no anti-windup: settling time,2550.9999999999995,ms
+3-windup,no anti-windup: peak unsaturated command,20.737308289694624,N*m
+3-windup,anti-windup: overshoot,3.8943655378621322,%
+3-windup,anti-windup: settling time,727.0000000000001,ms
+3-windup,anti-windup: peak unsaturated command,20.223000000000006,N*m
+3-windup,overshoot ratio (no AW / AW),14.03183414148747,x
+4-derivative,D on error: peak commanded torque,232.42230000000006,N*m
+4-derivative,D on measurement: peak commanded torque,2.0283,N*m
+4-derivative,kick multiplier (on error / on measurement),114.5897056648425,x
+4-derivative,no filter: torque RMS with a noisy encoder,2.413386159701925,N*m
+4-derivative,no filter: angle RMS,19.256593684310634,mrad
+4-derivative,30 Hz filter: torque RMS with a noisy encoder,0.543523214919005,N*m
+4-derivative,30 Hz filter: angle RMS,0.2620579670772098,mrad
+4-derivative,8 Hz filter: torque RMS with a noisy encoder,0.1793203771422746,N*m
+4-derivative,8 Hz filter: angle RMS,0.27116063639529375,mrad
+5-rate,2000 Hz: overshoot,3.8998163607144725,%
+5-rate,1000 Hz: overshoot,3.8763463379326426,%
+5-rate,500 Hz: overshoot,3.8290744549641653,%
+5-rate,250 Hz: overshoot,3.7337810605140573,%
+5-rate,150 Hz: overshoot,3.6089411652566596,%
+5-rate,100 Hz: overshoot,3.4633134286477656,%
+5-rate,70 Hz: overshoot,3.31233706364889,%
+5-rate,50 Hz: overshoot,3.1961680744718306,%
+5-rate,40 Hz: overshoot,3.56765255566506,%
+5-rate,30 Hz: overshoot,348.6390810493579,%
+5-rate,20 Hz: overshoot,500.0,%
+5-rate,lowest rate that still holds the pendulum,30,Hz
+5-rate,ratio to the design rate,33.333333333333336,x
+5-rate,overshoot at 1000 Hz,3.8763463379326426,%
+5-rate,overshoot at 100 Hz,3.4633134286477656,%
+6-zn,ultimate gain Ku,6.666786489542574,N*m/rad
+6-zn,ultimate period Tu,819.4285714285716,ms
+6-zn,ZN Kp,4.000071893725544,N*m/rad
+6-zn,ZN Ki,9.763076449120923,N*m/(rad*s)
+6-zn,ZN Kd,0.4097216496858879,N*m*s/rad
+6-zn,ZN Kp / hand-tuned Kp,0.29669721804817856,x
+6-zn,hand-tuned: overshoot,45.89977927539459,%
+6-zn,hand-tuned: settling time,1063.0000000000002,ms
+6-zn,hand-tuned: peak torque,2.0283,N*m
+6-zn,Ziegler-Nichols: overshoot,154.0475933847247,%
+6-zn,Ziegler-Nichols: settling time,nan,ms
+6-zn,Ziegler-Nichols: peak torque,1.1720456010145628,N*m
+7-basin,fraction of the start grid PID recovers,53.37864854058376,%
+7-basin,largest recoverable tilt at zero speed,0.6283185307179586,rad
+7-basin,"  same, in degrees",36.0,deg
+7-basin,motor torque limit,1.2,N*m
+7-basin,gravity torque when horizontal (m*g*l),1.9620000000000002,N*m
+7-basin,same grid with a 4 N*m motor,100.0,%
+7-basin,swing-up + catch: final |angle|,2.0342929784992347e-18,rad
+7-basin,time of hand-over to PID,1.544,s
+7-basin,peak swing-up torque used,1.2,N*m

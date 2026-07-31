@@ -1,0 +1,81 @@
+section,quantity,value,unit
+1-verify,arm2: worst |tau_rnea - tau_mujoco|,5.329070518200751e-15,N*m
+1-verify,arm2: worst |M_mine - M_mujoco|,4.440892098500626e-16,kg*m^2
+1-verify,arm2: worst |g_mine - g_mujoco|,3.552713678800501e-15,N*m
+1-verify,arm6: worst |tau_rnea - tau_mujoco|,4.263256414560601e-14,N*m
+1-verify,arm6: worst |M_mine - M_mujoco|,3.9968028886505635e-15,kg*m^2
+1-verify,arm6: worst |g_mine - g_mujoco|,3.552713678800501e-14,N*m
+1-verify,arm7: worst |tau_rnea - tau_mujoco|,2.842170943040401e-14,N*m
+1-verify,arm7: worst |M_mine - M_mujoco|,3.1086244689504383e-15,kg*m^2
+1-verify,arm7: worst |g_mine - g_mujoco|,2.1316282072803006e-14,N*m
+1-verify,testarm: worst |tau_rnea - tau_mujoco|,2.842170943040401e-14,N*m
+1-verify,testarm: worst |M_mine - M_mujoco|,5.773159728050814e-15,kg*m^2
+1-verify,testarm: worst |g_mine - g_mujoco|,8.881784197001252e-15,N*m
+1-verify,arm7 at q=0 with limit constraints LEFT ON,430.038476726103,N*m
+2-mass,worst |M - M^T| before symmetrising,4.440892098500626e-16,kg*m^2
+2-mass,smallest eigenvalue of M over 300 configs,0.0008686557839717793,kg*m^2
+2-mass,median condition number of M,2725.0477522359115,
+2-mass,worst condition number of M,5249.125221548457,
+2-mass,"M[0,0] arm straight up (shoulder pan)",0.031100000000000003,kg*m^2
+2-mass,"M[0,0] arm reaching out (shoulder pan)",3.6911978229152007,kg*m^2
+2-mass,ratio out/up for the pan joint,118.688032891164,x
+3-passivity,worst |S + S^T| where S = Mdot - 2C,3.917065005687448e-10,
+3-passivity,worst |qd^T (Mdot - 2C) qd|,6.405396213438053e-10,W
+3-passivity,worst |C qd - rnea velocity term|,3.051476640814066e-10,N*m
+3-passivity,energy-balance drift after 4 s of random torque,2.763633931368581e-06,J
+4-scaling,"fitted exponent p in time ~ n^p, RNEA",1.0086982334591073,
+4-scaling,"fitted exponent p in time ~ n^p, M+C+g",1.9010198858339602,
+4-scaling,speed-up of RNEA at n=40,44.814770201204226,x
+4-scaling,RNEA time at n=40,9.318493003956974,ms
+5-terms,speed x0.25: gravity RMS,11.339360072674413,N*m
+5-terms,speed x0.25: Coriolis RMS,0.07476292839818935,N*m
+5-terms,speed x0.25: inertia RMS,0.2481284076277345,N*m
+5-terms,speed x0.50: gravity RMS,11.339360072674413,N*m
+5-terms,speed x0.50: Coriolis RMS,0.2990517135927574,N*m
+5-terms,speed x0.50: inertia RMS,0.9925136305109381,N*m
+5-terms,speed x1.00: gravity RMS,11.339360072674413,N*m
+5-terms,speed x1.00: Coriolis RMS,1.1962068543710296,N*m
+5-terms,speed x1.00: inertia RMS,3.9700545220437498,N*m
+5-terms,speed x1.50: gravity RMS,11.339360072674413,N*m
+5-terms,speed x1.50: Coriolis RMS,2.6914654223348164,N*m
+5-terms,speed x1.50: inertia RMS,8.932622674598441,N*m
+5-terms,speed x2.00: gravity RMS,11.339360072674413,N*m
+5-terms,speed x2.00: Coriolis RMS,4.784827417484118,N*m
+5-terms,speed x2.00: inertia RMS,15.880218088174997,N*m
+5-terms,speed x3.00: gravity RMS,11.339360072674413,N*m
+5-terms,speed x3.00: Coriolis RMS,10.765861689339266,N*m
+5-terms,speed x3.00: inertia RMS,35.73049069839376,N*m
+5-terms,speed x4.00: gravity RMS,11.339360072674413,N*m
+5-terms,speed x4.00: Coriolis RMS,19.139309669936473,N*m
+5-terms,speed x4.00: inertia RMS,63.52087235269999,N*m
+5-terms,speed where Coriolis overtakes gravity,3.0902032097699816,x
+6-energy,explicit Euler: worst energy error at dt = 1 ms,0.7254359485741775,J
+6-energy,explicit Euler: fitted order p in error ~ dt^p,0.9130713381135963,
+6-energy,semi-implicit Euler: worst energy error at dt = 1 ms,0.26701953254622346,J
+6-energy,semi-implicit Euler: fitted order p in error ~ dt^p,1.2899253231363528,
+6-energy,RK4: worst energy error at dt = 1 ms,2.7555789028355093e-07,J
+6-energy,RK4: fitted order p in error ~ dt^p,3.8992842274428834,
+6-energy,RK4 advantage at dt = 1 ms over explicit Euler,2632608.152964515,x
+6-energy,"1 link (constant M), explicit Euler: drift after 10 s",0.29132331173358683,J
+6-energy,"1 link (constant M), explicit Euler: peak-to-peak wobble",0.29130854909064874,J
+6-energy,"1 link (constant M), semi-implicit Euler: drift after 10 s",-0.004302349264936667,J
+6-energy,"1 link (constant M), semi-implicit Euler: peak-to-peak wobble",0.009000691789767368,J
+6-energy,"2 links (M varies), explicit Euler: drift after 10 s",1.5316967945653932,J
+6-energy,"2 links (M varies), explicit Euler: peak-to-peak wobble",1.7034276316052512,J
+6-energy,"2 links (M varies), semi-implicit Euler: drift after 10 s",-2.7925299563884227,J
+6-energy,"2 links (M varies), semi-implicit Euler: peak-to-peak wobble",3.2208219272129615,J
+7-bugs,no_centripetal caught by gravity-only,0.0,N*m
+7-bugs,no_centripetal caught by arm2 one-joint,0.7657289192551221,N*m
+7-bugs,no_centripetal caught by arm6 all-joints,12.829581169647764,N*m
+7-bugs,no_axis_rotation caught by gravity-only,0.0,N*m
+7-bugs,no_axis_rotation caught by arm2 one-joint,0.0,N*m
+7-bugs,no_axis_rotation caught by arm6 all-joints,12.226578612801601,N*m
+7-bugs,inertia_not_rotated caught by gravity-only,0.0,N*m
+7-bugs,inertia_not_rotated caught by arm2 one-joint,0.0,N*m
+7-bugs,inertia_not_rotated caught by arm6 all-joints,0.8388794337073477,N*m
+7-bugs,no_gyroscopic caught by gravity-only,0.0,N*m
+7-bugs,no_gyroscopic caught by arm2 one-joint,0.0,N*m
+7-bugs,no_gyroscopic caught by arm6 all-joints,0.46629408183430243,N*m
+7-bugs,forgot_lever_arm caught by gravity-only,36.40988347040619,N*m
+7-bugs,forgot_lever_arm caught by arm2 one-joint,6.2567622735866575,N*m
+7-bugs,forgot_lever_arm caught by arm6 all-joints,47.79540899559419,N*m

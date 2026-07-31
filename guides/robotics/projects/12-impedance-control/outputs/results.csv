@@ -1,0 +1,94 @@
+section,quantity,value,unit
+1-stiff,K=200 push x (forward): displacement,63.93115191092158,mm
+1-stiff,K=200 push x (forward): measured stiffness,187.70192060234095,N/m
+1-stiff,K=200 push x (forward): measured/commanded,0.9385096030117047,x
+1-stiff,K=200 push x (forward): sideways slip,1.1775737115203855,mm
+1-stiff,K=200 push y (sideways): displacement,64.45354192748914,mm
+1-stiff,K=200 push y (sideways): measured stiffness,186.18061383655402,N/m
+1-stiff,K=200 push y (sideways): measured/commanded,0.9309030691827701,x
+1-stiff,K=200 push y (sideways): sideways slip,46.92048830280702,mm
+1-stiff,K=200 push z (down): displacement,60.54625007254016,mm
+1-stiff,K=200 push z (down): measured stiffness,198.19559403964504,N/m
+1-stiff,K=200 push z (down): measured/commanded,0.9909779701982252,x
+1-stiff,K=200 push z (down): sideways slip,1.3904389994837674,mm
+1-stiff,K=800 push x (forward): displacement,14.953480660029438,mm
+1-stiff,K=800 push x (forward): measured stiffness,802.4887497982945,N/m
+1-stiff,K=800 push x (forward): measured/commanded,1.0031109372478682,x
+1-stiff,K=800 push x (forward): sideways slip,0.016581075416188806,mm
+1-stiff,K=800 push y (sideways): displacement,13.750065807108445,mm
+1-stiff,K=800 push y (sideways): measured stiffness,872.7230958993881,N/m
+1-stiff,K=800 push y (sideways): measured/commanded,1.090903869874235,x
+1-stiff,K=800 push y (sideways): sideways slip,0.4639612642046714,mm
+1-stiff,K=800 push z (down): displacement,14.993968256798883,mm
+1-stiff,K=800 push z (down): measured stiffness,800.3218223807233,N/m
+1-stiff,K=800 push z (down): measured/commanded,1.000402277975904,x
+1-stiff,K=800 push z (down): sideways slip,0.017107554770467992,mm
+1-stiff,K=2000 push x (forward): displacement,6.00007075105391,mm
+1-stiff,K=2000 push x (forward): measured stiffness,1999.9764165934553,N/m
+1-stiff,K=2000 push x (forward): measured/commanded,0.9999882082967276,x
+1-stiff,K=2000 push x (forward): sideways slip,0.00016624954235489042,mm
+1-stiff,K=2000 push y (sideways): displacement,3.6201722139985253,mm
+1-stiff,K=2000 push y (sideways): measured stiffness,3314.7594342606844,N/m
+1-stiff,K=2000 push y (sideways): measured/commanded,1.6573797171303422,x
+1-stiff,K=2000 push y (sideways): sideways slip,4.1208702176104275,mm
+1-stiff,K=2000 push z (down): displacement,6.000080975468835,mm
+1-stiff,K=2000 push z (down): measured stiffness,1999.9730085413291,N/m
+1-stiff,K=2000 push z (down): measured/commanded,0.9999865042706646,x
+1-stiff,K=2000 push z (down): sideways slip,0.00017432901133762613,mm
+1-stiff,worst stiffness error across all nine tests,65.73797171303421,%
+1-stiff,apparent mass at the tool along x (forward),0.8850629182643542,kg
+1-stiff,apparent mass at the tool along y (sideways),0.8426061807472547,kg
+1-stiff,apparent mass at the tool along z (down),3.8725201667769285,kg
+1-stiff,heaviest direction / lightest direction,4.595883884144587,x
+1-stiff,damping assumed by damping_for(),3.0,kg
+1-stiff,actual damping ratio on the sideways axis at K=2000,1.8868974915391759,
+1-stiff,"smallest singular value, working posture",0.22771134308046298,
+1-stiff,"smallest singular value, nearly-straight-up posture",0.031883512751380044,
+1-stiff,"straight-up posture, 12 N sideways: tool moved",46.499809175914756,mm
+1-stiff,  effective stiffness there,258.06557516402825,N/m
+1-stiff,  joint torques saturated,24.680555555555557,% of ticks
+2-aniso,push down (soft axis): displacement along the push,80.53757655706283,mm
+2-aniso,push forward (stiff axis): displacement along the push,4.800162966087762,mm
+2-aniso,commanded stiffness ratio (x / z),16.666666666666668,x
+2-aniso,measured displacement ratio,16.778092145213712,x
+3-gravity,gravity model x0.00: vertical sag,-41.6034861280582,mm
+3-gravity,gravity model x0.50: vertical sag,-20.218934345491768,mm
+3-gravity,gravity model x0.90: vertical sag,-3.958655745606332,mm
+3-gravity,gravity model x1.00: vertical sag,0.0,mm
+3-gravity,gravity model x1.10: vertical sag,3.918710165546513,mm
+3-gravity,apparent weight carried at the tool,49.92418335366984,N
+3-gravity,predicted sag at gravity x0.5,-20.8017430640291,mm
+3-gravity,sag with a perfect model,0.0,mm
+4-ceiling,1000 Hz K=500: settled wobble,0.0725556018035029,mm
+4-ceiling,1000 Hz K=2000: settled wobble,0.008312476537954121,mm
+4-ceiling,1000 Hz K=8000: settled wobble,0.00027341487803689214,mm
+4-ceiling,1000 Hz K=25000: settled wobble,7.53477317810555e-06,mm
+4-ceiling,1000 Hz K=60000: settled wobble,0.1256030578916206,mm
+4-ceiling,1000 Hz: highest stable stiffness,60000.0,N/m
+4-ceiling,200 Hz K=500: settled wobble,41.73240863259901,mm
+4-ceiling,200 Hz K=2000: settled wobble,54.4800812505555,mm
+4-ceiling,200 Hz K=8000: settled wobble,23.77094503986676,mm
+4-ceiling,200 Hz K=25000: settled wobble,21.33924754253489,mm
+4-ceiling,200 Hz K=60000: settled wobble,15.232322717083678,mm
+4-ceiling,200 Hz: highest stable stiffness,0.0,N/m
+4-ceiling,100 Hz K=500: settled wobble,227.05945284373132,mm
+4-ceiling,100 Hz K=2000: settled wobble,153.26729140169635,mm
+4-ceiling,100 Hz K=8000: settled wobble,48.19342866527651,mm
+4-ceiling,100 Hz K=25000: settled wobble,32.32948988403636,mm
+4-ceiling,100 Hz K=60000: settled wobble,51.360377277158186,mm
+4-ceiling,100 Hz: highest stable stiffness,0.0,N/m
+5-wall,IK residual for the position baseline's target,8.299190078820113e-05,mm
+5-wall,stiff joint PD: peak contact force,127.33888785982492,N
+5-wall,stiff joint PD: steady contact force,116.69957153093797,N
+5-wall,stiff joint PD: penetration into the wall,14.568995750406376,mm
+5-wall,impedance: peak contact force,18.51626783433528,N
+5-wall,impedance: steady contact force,7.361965839548893,N
+5-wall,impedance: penetration into the wall,2.301778048119707,mm
+5-wall,peak force ratio (position / impedance),6.877135770508597,x
+5-wall,impedance steady force predicted K * overshoot,7.5,N
+6-damping,zeta=0.3: overshoot past the final position,1.860229574815854,mm
+6-damping,zeta=0.3: time to settle within 0.5 mm,0.791,s
+6-damping,zeta=1.0: overshoot past the final position,0.07514753295778576,mm
+6-damping,zeta=1.0: time to settle within 0.5 mm,0.586,s
+6-damping,zeta=2.5: overshoot past the final position,0.0,mm
+6-damping,zeta=2.5: time to settle within 0.5 mm,1.242,s
