@@ -1,0 +1,21 @@
+stage,objects,blobs,phrase,grounded_correctly,margin,grasp_width_mm,grasp_ok,phrase_kind,n,accuracy_pct,mean_margin,chance_pct,mode,template,object,naive_ok_pct,search_ok_pct,naive_fail_too_wide,naive_fail_off_object,naive_fail_bad_normals,scenes,requests,segmentation_ok_pct,and_grounded_ok_pct,and_grasp_ok_pct
+demo,4,4,the purple bar,True,0.0292,26.6,True,,,,,,,,,,,,,,,,,,
+grounding,,,,,,,,color_noun,95,78.9,0.0295,25.0,,,,,,,,,,,,,
+grounding,,,,,,,,noun,95,47.4,0.0099,25.0,,,,,,,,,,,,,
+grounding,,,,,,,,color,95,75.8,0.024,25.0,,,,,,,,,,,,,
+grounding,,,,,,,,relational (left of / right of),48,20.8,,25.0,,,,,,,,,,,,,
+crop,,,,,,,,,95,95.8,,,tight,,,,,,,,,,,,
+crop,,,,,,,,,95,78.9,,,pad,,,,,,,,,,,,
+crop,,,,,,,,,95,95.8,,,masked,,,,,,,,,,,,
+crop,,,,,,,,,95,27.4,,,highlight,,,,,,,,,,,,
+prompt,,,,,,,,,95,82.1,,,,{},,,,,,,,,,,
+prompt,,,,,,,,,95,78.9,,,,a photo of {},,,,,,,,,,,
+prompt,,,,,,,,,95,83.2,,,,a photo of {} on a table,,,,,,,,,,,
+prompt,,,,,,,,,95,80.0,,,,"a close-up photo of {}, a single object on a plain table",,,,,,,,,,,
+grasp,,,,,,,,,16,,,,,,bar (purple),100.0,100.0,0,0,0,,,,,
+grasp,,,,,,,,,21,,,,,,block (yellow),100.0,100.0,0,0,0,,,,,
+grasp,,,,,,,,,16,,,,,,box (blue),100.0,100.0,0,0,0,,,,,
+grasp,,,,,,,,,21,,,,,,can (green),100.0,100.0,0,0,0,,,,,
+grasp,,,,,,,,,17,,,,,,mug (red),52.9,88.2,4,3,4,,,,,
+end_to_end,,,,,,,,,,,,,,,,,,,,,spread out,95,95.8,78.9,76.8
+end_to_end,,,,,,,,,,,,,,,,,,,,,pushed together,103,0.0,0.0,0.0

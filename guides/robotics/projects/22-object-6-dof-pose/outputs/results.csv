@@ -1,0 +1,22 @@
+stage,object,method,add_mm,adds_mm,add_success_pct,adds_success_pct,rot_err_deg,trans_err_mm,occlude,seconds,rot_rep,loss,axis_direction_err_deg,full_rotation_err_deg,trained_and_tested_with_occlusion,median_depth_err_mm,median_lateral_err_mm,depth_err_pct_of_range,z_m,depth_err_mm
+control,ell,always predict the mean pose,64.23,32.13,0.0,0.0,85.5,19.52,,,,,,,,,,,,
+train,ell,,51.33,29.83,0.2,0.5,74.22,20.93,0.0,35.7,6d,pose,,,,,,,,
+train,ell,,51.33,29.83,0.2,0.5,74.22,20.93,0.0,35.0,6d,pose,,,,,,,,
+train,ell,,56.18,31.13,0.5,0.6,87.58,18.97,0.0,35.7,quat,pose,,,,,,,,
+train,ell,,57.81,31.39,0.0,0.2,97.95,19.7,0.0,35.0,euler,pose,,,,,,,,
+symmetry,L-shape: no symmetry at all,,51.33,29.83,0.2,0.5,74.22,20.93,,39.3,6d,pose,,,,,,,,
+symmetry,mug: a cylinder whose handle breaks the symmetry,,62.39,22.8,0.1,0.8,104.2,19.31,,34.2,6d,pose,,,,,,,,
+symmetry,box: FOUR indistinguishable poses (180 deg about each axis),,60.41,32.93,0.0,0.0,130.55,20.38,,35.8,6d,pose,,,,,,,,
+symmetry,cylinder: a whole circle of indistinguishable poses,,76.16,26.85,0.0,1.2,140.77,16.39,,34.3,6d,pose,,,,,,,,
+symmetry_split,cylinder,,,,,,,,,,,,44.88,140.77,,,,,,
+sym_loss,ell + point-matching loss,,72.7,28.35,1.2,1.6,121.65,29.87,,35.5,6d,adds,,,,,,,,
+sym_loss,cylinder + point-matching loss,,91.63,16.64,0.1,15.8,173.03,20.89,,36.4,6d,adds,,,,,,,,
+occlusion,,,51.33,29.83,0.2,0.5,74.22,20.93,,34.8,6d,pose,,,0.0,,,,,
+occlusion,,,55.3,31.1,0.2,0.2,89.04,21.72,,35.4,6d,pose,,,0.25,,,,,
+occlusion,,,67.84,35.1,0.0,0.0,102.78,34.45,,,,,,,"trained clean, tested occluded",,,,,
+depth,,,,,,,,,,,,,,,,17.6,8.68,4.88,,
+depth_bin,,,,,,,,,,,,,,,,,,,0.338,19.7
+depth_bin,,,,,,,,,,,,,,,,,,,0.351,17.99
+depth_bin,,,,,,,,,,,,,,,,,,,0.364,13.84
+depth_bin,,,,,,,,,,,,,,,,,,,0.379,15.5
+depth_bin,,,,,,,,,,,,,,,,,,,0.394,20.08

@@ -170,3 +170,9 @@ guides/multimodal-learning/projects/40-multimodal-dpo/checkpoints/
 #       them. Rebuilt by `run.py --stage outputs` in ~3 min.
 guides/multimodal-learning/projects/42-run-a-vlm-evaluation-harness/data/
 guides/multimodal-learning/projects/45-human-correlated-eval/data/
+
+# Robotics Phase 3: project 22's rendered pose dataset (~6 MB of 64x64 crops
+# with their ground-truth poses).  Not committed because `python3 run.py`
+# re-renders it in about 40 s per object, and every number it produced is
+# already in outputs/results.csv.
+guides/robotics/projects/22-object-6-dof-pose/data/
