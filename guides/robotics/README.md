@@ -637,20 +637,21 @@ Once you know where the robot is and what it can sense, you have to decide where
   - **[PRM (Probabilistic Roadmap)](/shared/glossary/#prm)** — preprocess: sample, connect; query: [A*](/shared/glossary/#a-star-search) on the roadmap. Good for multi-query in a static world.
   - **[RRT (Rapidly-exploring Random Tree)](/shared/glossary/#rrt)** — incremental tree growth toward random samples. Single-query, great for high-DoF arms.
   - **[RRT-Connect](/shared/glossary/#rrt-connect)** — bidirectional, fast in practice, the default starting point.
-  - **[RRT*](/shared/glossary/#rrt)** — asymptotically optimal version; rewires the tree to improve cost.
+  - **[RRT*](/shared/glossary/#rrt-star)** — [asymptotically optimal](/shared/glossary/#asymptotic-optimality) version; rewires the tree to improve cost.
   - **BIT*** and **AIT*** — modern any-time, batch-informed planners; combine sampling with heuristic search.
-  - **OMPL** — the Open Motion Planning Library packages all of these.
-- **Trajectory smoothing and shortcutting** — sampling-based plans are jerky; post-process by random shortcutting, B-spline fitting, or [trajectory optimization](/shared/glossary/#trajectory-optimization).
+  - **[OMPL](/shared/glossary/#ompl)** — the Open Motion Planning Library packages all of these (and, importantly, a [k-d tree](/shared/glossary/#k-d-tree) for the nearest-neighbour query that otherwise makes these planners quadratic).
+- **Trajectory smoothing and shortcutting** — sampling-based plans are jerky; post-process by random [shortcutting](/shared/glossary/#shortcut-smoothing), B-spline fitting, or [trajectory optimization](/shared/glossary/#trajectory-optimization). Note what this cannot do: smoothing never leaves the [homotopy class](/shared/glossary/#homotopy-class) it was handed, so a path around the wrong side of an obstacle stays on the wrong side.
 - **[Trajectory optimization](/shared/glossary/#trajectory-optimization)** — formulate path-planning as continuous optimization:
   - **[CHOMP](/shared/glossary/#chomp)** — gradient-based, attracts toward goal, repels from obstacles via a [Signed Distance Field (SDF)](/shared/glossary/#sdf)
   - **[TrajOpt](/shared/glossary/#trajopt)** — sequential convex programming with collision avoidance
   - **[STOMP](/shared/glossary/#stomp)** — gradient-free, stochastic variant
   - **GCS (Graphs of Convex Sets)** — modern: decompose free space into convex regions; optimize over the graph
-  - **Direct collocation / direct shooting** — for dynamics-aware trajectory optimization (the bridge to MPC)
+  - **[Direct collocation](/shared/glossary/#direct-collocation) / [direct shooting](/shared/glossary/#single-shooting)** — for dynamics-aware trajectory optimization (the bridge to MPC)
 - **Time-parameterization** — the geometric path is one thing; how fast you traverse it is another. TOPP (time-optimal path parameterization) finds the fastest traversal respecting velocity, acceleration, and torque limits.
 - **Kinodynamic planning** — plan in state-space (including velocities, torques), not just configuration. Necessary for under-actuated systems, dynamic motions, drones, legged robots.
 - **Constraint-aware planning** — task constraints (keep the cup upright, stay on a surface, maintain contact). Project samples onto the constraint manifold (Atlas RRT, CBiRRT) or formulate as nonlinear programs.
 - **Replanning under uncertainty** — POMDPs, belief-space planning. Mostly intractable in full generality; in practice we replan fast.
+- **The failure mode to know by name** — the [narrow passage](/shared/glossary/#narrow-passage). The chance of a uniform sample landing in a passage is proportional to its volume, and a long thin one needs several consecutive samples inside it, so difficulty compounds rather than adding up. [Probabilistic completeness](/shared/glossary/#probabilistic-completeness) promises you will get through eventually and says nothing about when.
 - **Hybrid systems planning** — planning over modes (in contact vs. not, gear up vs. gear down). Footstep planning, contact-rich manipulation. The cutting edge.
 
 ### The Two Worlds of Motion Planning
@@ -673,7 +674,7 @@ Once you know where the robot is and what it can sense, you have to decide where
 
 | Project | Description | Difficulty |
 |---------|-------------|------------|
-| [A* on a grid](projects/31-a-star-on-a-grid/README.md) | Implement A* with the Manhattan heuristic; verify optimality vs. Dijkstra | ⭐⭐ |
+| [A* on a grid](projects/31-a-star-on-a-grid/README.md) | Implement A* with the [Manhattan](/shared/glossary/#manhattan-distance) heuristic; verify optimality vs. Dijkstra | ⭐⭐ |
 | [RRT in 2D](projects/32-rrt-in-2d/README.md) | Plan around random obstacles; visualize tree growth | ⭐⭐⭐ |
 | [RRT-Connect for an arm](projects/33-rrt-connect-for-an-arm/README.md) | Plan a 7-DoF reach around a table in MuJoCo or PyBullet | ⭐⭐⭐⭐ |
 | [Shortcut smoothing](projects/34-shortcut-smoothing/README.md) | Post-process an RRT plan; quantify length reduction | ⭐⭐⭐ |
