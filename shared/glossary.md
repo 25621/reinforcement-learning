@@ -1430,6 +1430,13 @@ The part of a model's uncertainty that comes from *not having seen enough data* 
 ### Epipolar geometry {#epipolar-geometry}
 The geometric relationship between two views of the same rigid scene. Its central fact is the **epipolar constraint**: a point seen in one image must lie somewhere on a specific *line* in the other image, and that line depends only on how the camera moved, not on the scene. This turns matching from a 2D search over the whole image into a 1D search along a line — a hundredfold saving, and the reason [stereo](/shared/glossary/#stereo-vision) rigs are [rectified](/shared/glossary/#rectification-stereo) so that those lines are image rows. The constraint is encoded by the [essential matrix](/shared/glossary/#essential-matrix) for a calibrated camera, or by the fundamental matrix for an uncalibrated one.
 
+### Error-state Kalman filter {#error-state-kalman-filter}
+The form of [Kalman filter](/shared/glossary/#kf) that makes [IMU](/shared/glossary/#imu) fusion work, by splitting the state in two: a **nominal state** (large, nonlinear, integrated directly from the raw sensor) and an **error state** (small, always near zero, genuinely Gaussian and genuinely additive). The filter only ever estimates the error, then "injects" it into the nominal state and resets it to zero.
+
+The reason it exists is that a rotation is not a vector. A Kalman filter's update rule is literally `x ← x + K y`, and adding a correction to a unit quaternion produces something that is no longer a unit quaternion, while adding one to [Euler angles](/shared/glossary/#euler-angles) walks you into gimbal lock. The error state sidesteps this: small rotations *do* live in an ordinary flat 3-dimensional space, so the filter works there, and the conversion back to the curved space of real rotations happens exactly once per update, as a quaternion multiplication.
+
+The second benefit is that the error is small **by construction** — it is reset to zero after every update — so linearizing around it is always accurate. An additive filter is correct to first order and works fine until the corrections stop being small, which is exactly the moment (a bad initialization, a long sensor blackout, a violent manoeuvre) when you most need it not to fail. See also [VIO](/shared/glossary/#vio).
+
 ### Essential matrix {#essential-matrix}
 A 3×3 matrix `E` that encodes how a calibrated camera moved between two views: for any matched pair of points, `x2' E x1 = 0` in normalized image coordinates. It is "essential" in the sense of containing only the essentials — the calibration has been divided out, leaving pure motion — and it factors into a rotation and a *unit-length* translation. That unit length is the fundamental limitation of monocular [visual odometry](/shared/glossary/#visual-odometry): two images tell you which way the camera moved but never how far, because a small scene seen close up and a large one seen from far away produce identical pictures. `E` has five degrees of freedom, so five point pairs determine it; the simpler and more common **eight-point algorithm** uses eight and solves one linear system.
 
@@ -1747,6 +1754,22 @@ An operation where one path of a neural network controls how much of another pat
 ### Gauss-Newton {#gauss-newton}
 An iterative method for least-squares problems: repeatedly linearise the residuals around the current guess, solve the resulting linear least-squares problem for a correction step, apply it, repeat. It is Newton's method with the expensive second-derivative term dropped — legitimate because for a sum of squares that term is small whenever the residuals are small. Fast near a good starting point and prone to overshooting far from one, which is exactly the weakness that [Levenberg-Marquardt](/shared/glossary/#levenberg-marquardt) patches. Nearly every non-linear estimator in robotics is Gauss-Newton underneath: [inverse kinematics](/shared/glossary/#inverse-kinematics), bundle adjustment, and [pose-graph](/shared/glossary/#pose-graph) [SLAM](/shared/glossary/#slam).
 
+### Gaussian distribution {#gaussian-distribution}
+The bell curve, also called the normal distribution — the shape that appears whenever many small independent errors add up, which is most of the time in a sensor. It is fully described by two numbers: a **mean** (where the peak is) and a **[variance](/shared/glossary/#covariance)** (how wide it is). Named after Carl Friedrich Gauss, who used it to fit astronomical observations.
+
+Two properties are the reason nearly all of classical estimation is built on it. First, it is **closed under the operations a filter performs**: add two Gaussians, scale one, or combine two through Bayes' rule, and the answer is another Gaussian — so a [Kalman filter](/shared/glossary/#kf) can carry its whole belief as just a mean and a [covariance](/shared/glossary/#covariance), forever, without the description growing. Second, among all distributions with a given variance the Gaussian is the *least committal* — the one that assumes the least beyond what you have specified.
+
+The catch is the one that motivates the [particle filter](/shared/glossary/#particle-filter): a Gaussian has exactly one peak, so it cannot represent "I am either in room A or in room B". Every estimator built on Gaussians is silently promising that the answer is unimodal.
+
+### GNC {#gnc}
+**Graduated Non-Convexity** — a way to use a strong [robust kernel](/shared/glossary/#robust-kernel) without being trapped by it.
+
+The problem: an aggressive kernel is not convex, so the optimization has many local minima and which one you land in depends on where you started. Given a poor initial guess, a Geman-McClure kernel will confidently switch off the wrong measurements and never reconsider.
+
+The fix: solve a *sequence* of problems. Start with the kernel scale so wide that the kernel is effectively plain least squares — convex, one minimum, nowhere to get stuck — then shrink the scale a little and re-solve starting from the previous answer, and repeat. Each problem is only slightly harder than the last and begins at that one's solution, so the optimizer is walked gently from the easy convex problem to the hard non-convex one you actually wanted.
+
+"Graduated" as in a graduated cylinder — marked off in steps; "non-convexity" because the thing being introduced in steps is the non-convexity itself. A useful side effect over a fixed kernel: it hands you a *list* of which measurements it refused, which a front end can be told to stop proposing.
+
 ### Griffin-Lim {#griffin-lim}
 An algorithm that rebuilds a waveform from a magnitude [spectrogram](/shared/glossary/#spectrogram), inventing the missing [phase](/shared/glossary/#phase-signal). Named after Daniel Griffin and Jae Lim, who published it at MIT in 1984. It alternates between two conditions that a correct answer must satisfy: the magnitudes have to be the ones you were given, and overlapping analysis frames share samples so their phases cannot contradict each other. Starting from random phase it bounces between the two — rebuild a waveform, re-analyse it, keep the resulting phase, restore the true magnitudes, repeat — and converges to something that sounds close but never identical. Modern speech systems replace it with a trained neural [vocoder](/shared/glossary/#vocoder), which produces far better audio because it has *learned* what real waveforms look like instead of only enforcing consistency; Griffin-Lim survives as a training-free way to *hear* what a spectrogram threw away.
 
@@ -1984,6 +2007,11 @@ NVIDIA's 2022 GPU architecture (H100, H200) and the workhorse of LLM training an
 ### Homography {#homography}
 The 3×3 matrix that maps one view of a *flat* surface to another view of the same surface. From Greek *homo-* ("same") + *-graphy* ("drawing"): it redraws one plane as it appears from elsewhere. Any two photographs of a plane are related by one, which is why flat checkerboards are the standard [calibration](/shared/glossary/#camera-calibration) target and why [fiducial markers](/shared/glossary/#fiducial-marker) are printed squares. It is estimated linearly from four or more point correspondences by the Direct Linear Transform, needing no initial guess — which is exactly why it is used to start the non-linear methods that do need one.
 
+### Huber kernel {#huber-kernel}
+A [robust kernel](/shared/glossary/#robust-kernel) that is quadratic near zero and **linear** beyond a threshold `δ`, so a far-out residual pulls with constant force instead of ever-growing force. Named after the Swiss statistician Peter Huber, who introduced it in 1964. Closely related to the [Huber loss](/shared/glossary/#huber-loss) used in regression and reinforcement learning — the same function, in a different job.
+
+Its weight for a residual `e` is `δ/e`, which never reaches zero. That makes it the *gentle* option: it quietens an outlier without ever switching it off, so it degrades gracefully as outliers accumulate rather than failing suddenly, but a hundred-sigma outlier still pulls with a hundredth of the force of a good measurement — times its enormous disagreement, which is not nothing. Compare [Cauchy and Geman-McClure kernels](/shared/glossary/#robust-kernel), whose weights fall as `1/e²` and `1/e⁴` and which genuinely switch an outlier off.
+
 ### Huber loss {#huber-loss}
 A [loss function](/shared/glossary/#loss-function) that behaves like squared error for small mistakes and like absolute error for large ones, switching over at a threshold (usually 1). The point is the [gradient](/shared/glossary/#gradients): squared error's gradient grows without bound as the error grows, so one wildly wrong prediction can dominate a whole batch, while absolute error has a constant gradient that never settles near zero. Huber takes the good half of each. This matters in [DQN](/shared/glossary/#dqn), where the [bootstrapped](/shared/glossary/#bootstrapping) target is *itself* a moving and sometimes badly wrong prediction — one outlier [TD error](/shared/glossary/#td-error), squared, would yank the [weights](/shared/glossary/#weights) hard in a direction chosen by noise. Like a manager who takes small errors seriously but refuses to panic at a catastrophic one. In PyTorch it is `F.smooth_l1_loss`, and it pairs naturally with [gradient clipping](/shared/glossary/#gradient-clipping).
 
@@ -2040,6 +2068,13 @@ A statistics trick for estimating an average under one distribution while your s
 ### IMU {#imu}
 Inertial Measurement Unit — a small sensor package that reports a body's own motion: a [gyroscope](/shared/glossary/#gyroscope) measuring rotation rate and an [accelerometer](/shared/glossary/#accelerometer) measuring linear acceleration, each on three axes (often plus a magnetometer for compass heading). It is fast and cheap and works anywhere, but it senses *rates*, not position — recovering where you are requires summing those rates over time ([dead reckoning](/shared/glossary/#dead-reckoning)), which makes its estimate [drift](/shared/glossary/#drift) within seconds. That is why an IMU is almost always fused with a camera or GPS that can periodically pin the estimate back to reality. Analogy: the inner-ear balance organ — it instantly tells you that you are turning or speeding up, but on its own, eyes shut, you would soon misjudge exactly where you are.
 
+### IMU preintegration {#imu-preintegration}
+A trick that lets an [IMU](/shared/glossary/#imu) running at hundreds of hertz be summarized as a single constraint between two camera keyframes in a [factor graph](/shared/glossary/#factor-graph).
+
+The naive approach fails for a specific reason. Integrating accelerometer readings needs the orientation and the gravity direction at each sample, which depend on the state being estimated — so every time the optimizer changes its mind about a pose, all the integration between that pose and the next has to be redone. With 200 IMU samples between keyframes, that is ruinous.
+
+Preintegration rewrites the integration in *relative* terms that do not depend on the absolute state, plus a first-order correction for how the answer would change if the estimated sensor biases moved. The hundreds of samples are then crunched once into one relative-motion factor, and the optimizer can re-linearize freely without ever revisiting the raw data. It is what makes tightly-coupled [VIO](/shared/glossary/#vio) affordable, and it is the standard bridge between the filtering view of Phase 4 and the smoothing view.
+
 ### Inception network {#inception-network}
 A famous image-classification [convolutional neural network](/shared/glossary/#cnn) (the "Inception" / GoogLeNet family) trained on millions of labeled photos. Along the way it learns to boil any image down to a compact *feature vector* — a list of numbers that captures *what is in the picture* (fur, wheels, sky) rather than the raw pixels. Because those features are such good summaries of image content, quality metrics like [FID](/shared/glossary/#fid) reuse a frozen, pretrained Inception network as a fixed yardstick instead of training anything new — like always using the same trusted scale to weigh two bags so the comparison is fair. (It was nicknamed "Inception" after the movie, for its "[network inside a network](/shared/glossary/#network-in-network)" design.)
 
@@ -2076,6 +2111,11 @@ The robotic task of reorienting or moving an object within a robot hand's grasp 
 * **Analogy**: Pick up a pen and write with it, then use the fingers of the same hand to spin it around so the eraser is pointing down. You did that entirely within your hand without using your other hand or dropping the pen. That is in-hand manipulation.
 * **Example**: Training a [policy](/shared/glossary/#policy) in a physics simulator like [MuJoCo](/shared/glossary/#mujoco) to rotate a block to a target orientation using a five-fingered robotic hand, then transferring that policy to a physical hand.
 
+
+### Innovation {#innovation}
+The difference between what a sensor reported and what the filter expected it to report: `y = z - h(x)`. It is called the innovation because it is the only genuinely *new* information the measurement carries — the part the filter could not have predicted for itself. A measurement that lands exactly where it was expected teaches nothing, and indeed moves the estimate not at all.
+
+The innovation is also the only diagnostic available on real hardware, because computing it needs no ground truth. A healthy filter's innovations have **zero mean** (no systematic bias) and a size that matches the filter's own prediction of how surprised it should be — the check formalized as [NIS](/shared/glossary/#nis). A running *mean* of the innovation catches a biased sensor; [NIS](/shared/glossary/#nis) squares it and so throws the sign away, catching an over- or under-confident noise model instead. Serious estimators watch both.
 
 ### Inpainting {#inpainting}
 Filling in a masked-out region of an image so the patch blends seamlessly with the rest. You hand the model the surrounding pixels as fixed context and let it generate only the hole — like a restorer repainting a torn corner of a photo to match the surviving picture. With a [diffusion model](/shared/glossary/#diffusion-model) this is done by re-noising and denoising only inside the mask while pasting the known pixels back on every step.
@@ -2204,6 +2244,11 @@ The size of the overlap between two sets divided by the size of their union — 
 
 ### Jitter {#jitter}
 The undesired variation in the time delay between periodic events, such as spikes or fluctuations in the execution rate of a control loop or message delivery. In robotics, a control loop commanded to run at 1 kHz expects exactly 1.0 milliseconds between steps; jitter is the deviation from this target (e.g., a step takes 1.2 ms, then 0.8 ms). High jitter can introduce instability in physical systems, causing jerky motions, tracking errors, or actuator damage. **Analogy:** Clapping your hands exactly once every second. If you clap at 1.0s, 2.0s, and 3.0s, you have zero jitter. If you clap at 1.1s, 1.8s, and 3.2s, your rhythm is erratic; that timing variability is jitter. On standard operating systems, background processes can interrupt the controller thread, causing high jitter; this is solved by running on a real-time kernel like [PREEMPT_RT](/shared/glossary/#preempt-rt).
+
+### Kalman gain {#kalman-gain}
+The multiplier a [Kalman filter](/shared/glossary/#kf) applies to a measurement's disagreement with its own prediction, deciding how far to move the estimate. "Gain" is the engineering word for a multiplier on an input signal. `K = P Hᵀ (H P Hᵀ + R)⁻¹`, which reads: *how uncertain am I, divided by how uncertain I plus the sensor are together*. A gain near 0 means "ignore this reading, I already know better"; a gain near 1 means "believe it completely and throw my prediction away".
+
+Two consequences worth knowing. The gain is **homogeneous of degree zero** in the noise scale — multiply the [process noise](/shared/glossary/#process-noise) and [measurement noise](/shared/glossary/#measurement-noise) by the same factor and it does not change at all, so a filter can only perceive the *ratio* of the two, never their absolute sizes. And for a fixed model it converges to a constant after a few dozen updates, which is why a great deal of shipped embedded code contains two hard-coded constants instead of a Kalman filter.
 
 ### Kernel {#kernel}
 A specialized function designed to run in parallel across many execution threads on a [GPU](/shared/glossary/#gpu) (or CPU) to carry out a single bulk operation, such as a [matrix multiply](/shared/glossary/#matmul) or an element-wise addition.
@@ -2469,6 +2514,11 @@ The gap between 1.0 and the next number a computer can represent — about `2.2e
 ### MagViT-v2 {#magvit-v2}
 The strongest open recipe for *discrete* video tokenization — turning a clip into a grid of integer [tokens](/shared/glossary/#token-visualaudio) that an [autoregressive](/shared/glossary/#autoregressive-model) or transformer model can generate the same way it generates language. It builds on the [VQ-VAE](/shared/glossary/#vq-vae) idea of a discrete latent but replaces the learned [codebook](/shared/glossary/#codebook) with [LFQ](/shared/glossary/#lfq) (lookup-free quantization), which sidesteps [codebook collapse](/shared/glossary/#codebook-collapse) and scales to a very large vocabulary cheaply. A single MagViT-v2 tokenizer handles both still images and video (it shares the [causal](/shared/glossary/#causal-3d-vae) trick of encoding the first frame on its own), and its reconstructions are sharp enough that token-based generators can finally rival [diffusion models](/shared/glossary/#diffusion-model) on quality — its headline claim is that a good enough tokenizer is what makes language-model-style video generation competitive.
 
+### Mahalanobis distance {#mahalanobis-distance}
+Distance measured in units of uncertainty rather than in metres: `d² = (a - b)ᵀ Σ⁻¹ (a - b)`. Named after the Indian statistician Prasanta Chandra Mahalanobis, who introduced it in 1936 to compare skull measurements where the different dimensions had wildly different natural spreads.
+
+Two points three centimetres apart are far apart if your uncertainty is a millimetre and adjacent if it is a metre — ordinary Euclidean distance cannot express that, and Mahalanobis distance is exactly the fix. It is also the only sane way to compare quantities with different units: the distance between two `(range, bearing)` measurements is meaningless in Euclidean terms, because it would be adding metres to radians. Dividing each by its own uncertainty first makes the sum a pure number. [NIS](/shared/glossary/#nis) and [NEES](/shared/glossary/#nees) are both Mahalanobis distances.
+
 ### Manifold {#manifold}
 The thin, curved surface inside a much larger space where real data actually lives. A 32×32 color image is a point in a space of 3,072 numbers, but almost every random point in that space looks like static — only a vanishingly small, smoothly connected sliver of it looks like a real photo, and that sliver is the manifold. A useful analogy: a sheet of paper is a 2D surface, but if you crumple it and drop it into a room it traces out a thin curved shape floating in 3D space; the paper is the manifold and the room is the full space. Learning to generate images is largely learning the shape of this surface so you only ever land on it.
 
@@ -2486,6 +2536,13 @@ The part of a [floating-point](https://en.wikipedia.org/wiki/Floating-point_arit
 
 ### Manipulator equation {#manipulator-equation}
 The master equation of rigid-body dynamics for a robot arm — the one relationship every torque-level controller and simulator is built around. It reads `M(q)q̈ + C(q,q̇)q̇ + g(q) = τ + Jᵀ·F_ext`, and each piece has a plain meaning. `M(q)` is the [mass matrix](/shared/glossary/#mass-matrix): how much the arm resists being accelerated, which changes with its configuration `q` (a stretched-out arm is harder to swing than a tucked one). `C(q,q̇)q̇` collects the *Coriolis and centrifugal* terms — the velocity-dependent forces a moving, rotating chain feels, the same effect that makes a spinning skater's arms get flung outward. `g(q)` is the torque needed just to hold the arm up against gravity. `τ` is the joint torque you apply, and `Jᵀ·F_ext` is any external push (a contact or payload) mapped into joint space through the [Jacobian](/shared/glossary/#jacobian) [transpose](/shared/glossary/#transpose). Read left-to-right it says: the torques you command, plus outside forces, must supply exactly the [inertia](/shared/glossary/#inertia), velocity, and gravity terms the desired motion requires. Computing `τ` from a desired motion is [inverse dynamics](/shared/glossary/#inverse-dynamics); computing the motion from given `τ` is forward dynamics.
+
+### Marginalization {#marginalization}
+Removing variables from an estimation problem without losing the information they carried. Split the normal equations into the block you keep and the block you drop, solve the dropped block, and substitute it back; what remains is a smaller system in the kept variables alone. The term subtracted in the process is the **[Schur complement](/shared/glossary/#schur-complement)**.
+
+It is **exact**, not an approximation — the marginalized system gives numerically the same answer for the variables you kept as solving everything at once would have. The price is not accuracy but **sparsity**: every pair of kept variables that was connected through a dropped one becomes directly connected, so the matrix fills in. Marginalize aggressively and you end up with a small dense problem instead of a large sparse one, and a large sparse problem is often the cheaper of the two.
+
+This single trade-off is the exact difference between a filter and a smoother. **A filter is a smoother that marginalizes everything except the present.** The deeper cost is subtler than density: marginalizing also freezes the linearization point, baking in the [Jacobians](/shared/glossary/#jacobian) that were current at the moment of marginalizing. A smoother can re-linearize its whole window when a [loop closure](/shared/glossary/#loop-closure) changes its mind about where the robot was; a filter cannot. That ability to change its mind, rather than the sparsity, is the real reason modern [SLAM](/shared/glossary/#slam) smooths.
 
 ### Markov property {#markov-property}
 The assumption that the current state already contains everything relevant about the past, so what happens next depends only on *where you are now*, not on how you got there. It is the "memoryless" condition that makes an [MDP](/shared/glossary/#mdp) tractable: when it holds, a [policy](/shared/glossary/#policy) can ignore history and look only at the present state. Named after the mathematician Andrey Markov. Example: in chess the current board position is Markov (the move history doesn't change which moves are legal or good), but a single still photo of a moving ball is *not* — you can't tell which way it is heading without the previous frame. When the property fails, you have a [POMDP](/shared/glossary/#pomdp).
@@ -2525,6 +2582,11 @@ Monte Carlo Tree Search — a planning algorithm that decides the next move by g
 
 ### MDP {#mdp}
 Markov Decision Process — the standard mathematical description of a decision-making problem, written as the tuple `(S, A, P, R, γ)`: the set of **S**tates the world can be in, the **A**ctions the agent can take, the [transition probabilities](/shared/glossary/#transition-function) **P** saying where each action is likely to land you, the [**R**eward function](/shared/glossary/#reward-function) scoring what happens, and the [discount factor](/shared/glossary/#discount-factor) **γ** weighing future reward against present. "Decision Process" because the agent makes a sequence of choices over time; "[Markov](/shared/glossary/#markov-property)" because the next state depends only on the current state and action, not on the full history of how you got there. Nearly every RL method assumes the problem is (or can be treated as) an MDP. When the agent cannot fully observe the state, it becomes a [POMDP](/shared/glossary/#pomdp).
+
+### Measurement noise {#measurement-noise}
+The `R` in a [Kalman filter](/shared/glossary/#kf): how much the sensor lies. Unlike [process noise](/shared/glossary/#process-noise), it can usually be measured directly — leave the sensor pointed at something that is not moving and look at the spread of readings.
+
+`R` describes *random* error, not *systematic* error. A sensor with a constant offset has small `R` and is still wrong, and the filter's [covariance](/shared/glossary/#covariance) will never notice, because the covariance recursion is computed from the model alone and never looks at the data. Detecting a bias needs a running mean of the [innovation](/shared/glossary/#innovation), or putting the bias into the state vector and estimating it.
 
 ### Mechanistic interpretability {#mechanistic-interpretability}
 The line of research that tries to reverse-engineer *what individual pieces of a neural network actually do* — which neurons or [attention heads](/shared/glossary/#heads) detect what, where a fact is stored, why a particular output came out. Like opening up a watch to see which gears turn the hands, instead of only timing how fast the watch runs. Main tools: [linear probes](/shared/glossary/#linear-probe), [sparse autoencoders](/shared/glossary/#sae), activation patching, and circuit analysis.
@@ -2671,6 +2733,13 @@ Predicting how far away every pixel is from a *single* ordinary photograph. "Mon
 ### Monosemantic {#monosemantic}
 A feature inside a neural network that fires for exactly *one* concept — for example, a direction in [activation](/shared/glossary/#activations) space that lights up only for "Golden Gate Bridge," or only for "negation in a clause." The opposite is *polysemantic*: one neuron that activates for several unrelated concepts at once. Like a single word that means just one thing versus a homonym that means several. Recovering monosemantic features is the main goal of [SAE](/shared/glossary/#sae)-based interpretability.
 
+### Monte Carlo Localization (MCL) {#monte-carlo-localization-mcl}
+The [particle filter](/shared/glossary/#particle-filter) applied to the problem of finding a robot on a known map. Named after the Monte Carlo casino: the method works by drawing random samples, the way you would estimate the odds of a game by playing it many times rather than solving it.
+
+Two problems hide under one name and they need very different amounts of compute. **Tracking** starts with the robot's position roughly known and only has to keep up; a few hundred particles is plenty. **Global localization** starts from complete ignorance and has to fill the whole space of `(x, y, heading)` densely enough that at least one particle survives the very first scan — and filling a space to a fixed resolution costs particles as the *cube* of that resolution, so it needs one to two orders of magnitude more.
+
+The counter-intuitive part: global localization needs a sensor model **deliberately broader than the real sensor**. A model as sharp as the sensor assigns a likelihood of effectively zero to every particle that is not already nearly perfect, and since resampling can only copy what survived, no amount of extra particles rescues it. AMCL — the version that ships with ROS — adds *adaptive injection*: it watches the average measurement likelihood through a fast and a slow running average, and when the fast one collapses it replaces a burst of particles with fresh random guesses. That is what lets it recover from being picked up and moved.
+
 ### Monte Carlo method {#monte-carlo-method}
 A way to estimate a [value function](/shared/glossary/#value-function) from complete sampled episodes alone, with no model of the environment (meaning the agent does not know the rules or transition probabilities of the world beforehand and must learn purely by trial and error). To estimate values, the agent plays an episode to the end, computes the actual [return](/shared/glossary/#return) that followed each state, and averages those returns over many runs. Having "no model" is like learning to navigate a maze by actually walking through it, bumping into walls, and finding the exit, rather than studying a complete blueprint of the maze before entering. 
 
@@ -2746,6 +2815,18 @@ A [model-based RL](/shared/glossary/#model-based-rl) agent (DeepMind) that maste
 
 ### NaN {#nan}
 "Not a Number" — a floating-point value representing an undefined or unrepresentable result (e.g., `0/0` or `inf - inf`). In PyTorch, NaNs often appear when [gradients](/shared/glossary/#gradients) explode or when taking the logarithm of zero/negative numbers.
+
+### NEES {#nees}
+**Normalized Estimation Error Squared** — the same idea as [NIS](/shared/glossary/#nis), applied to the actual state error rather than to a measurement: `NEES = (x̂ - x)ᵀ P⁻¹ (x̂ - x)`.
+
+It is the stronger of the two tests, because it looks at the state directly instead of at a projection of the state through the measurement model — a filter can have healthy innovations while being quietly wrong about a state the sensor barely sees. Its long-run average should equal the **state dimension**. But it needs `x`, the true state, so it only exists in simulation. In practice you use NEES to validate a filter design in a simulator and [NIS](/shared/glossary/#nis) to keep it honest on the robot.
+
+### NIS {#nis}
+**Normalized Innovation Squared** — the health check you can run on a filter that is bolted to real hardware. Take the [innovation](/shared/glossary/#innovation) `y`, and divide it by how big the filter predicted the innovation would be: `NIS = yᵀ S⁻¹ y`, where `S` is the innovation covariance.
+
+"Normalized" because that division strips out the units. A raw innovation of 3 means nothing on its own — three metres from a laser is a catastrophe, three metres from a GPS is Tuesday — but a NIS of 3 means the same thing for every sensor. If the filter's noise model is right, NIS follows a chi-square distribution with as many degrees of freedom as the measurement has numbers, so **its long-run average should equal the measurement dimension**. Larger means the filter is overconfident; smaller means it is timid.
+
+Two uses. Tuning: adjust [process noise](/shared/glossary/#process-noise) until the mean NIS hits the measurement dimension — this needs no ground truth, which is why it is the only tuning method that survives contact with hardware. Gating: reject any single reading whose NIS exceeds a chi-square threshold, which discards outliers. See also [NEES](/shared/glossary/#nees), the stronger version that needs ground truth.
 
 ### Noise-contrastive estimation (NCE) {#noise-contrastive-estimation}
 The older idea [InfoNCE](/shared/glossary/#infonce) is named after. Gutmann and Hyvärinen (2010) needed to fit a probability model whose normalizing constant was too expensive to compute, and their trick was to stop trying: instead, mix the real data with samples from a known *noise* distribution and train a classifier to tell which is which. A model that can reliably separate data from noise has, implicitly, learned the data's distribution. **Where the name comes from:** *noise*-contrastive because the true example is contrasted against noise samples; *estimation* because the point was estimating a density. InfoNCE keeps the machinery and swaps the goal — the "noise" is the other items in the [batch](/shared/glossary/#batch), and the resulting loss is a lower bound on the [mutual information](/shared/glossary/#mutual-information) between the two views, which is where the *Info* comes from.
@@ -2941,6 +3022,13 @@ The ratio of active [warps](/shared/glossary/#warp) on a Streaming Multiprocesso
 
 **Example:** If a [CUDA](/shared/glossary/#cuda) block uses too many registers or too much shared memory, the SM cannot fit many blocks at once, resulting in low occupancy. If a warp stalls waiting for [HBM](/shared/glossary/#hbm) and there are no other active warps ready to run, the SM's compute units go unused, reducing performance.
 
+### Occupancy grid {#occupancy-grid}
+The simplest useful map: chop the world into square cells and store, per cell, whether something is there. Named literally — each cell records whether it is *occupied*. Real implementations store a log-odds value per cell rather than a bit, so evidence from many scans can accumulate and contradict itself gracefully.
+
+Crude, and enough for the two queries that matter: a planner asks "can I drive through this cell?" and a laser model asks "marching outward from here in this direction, where do I first hit something?" — both of which are array lookups. The costs are memory (quadratic in area, cubic in 3D, which is why 3D work moves to octrees or [TSDFs](/shared/glossary/#tsdf)) and resolution: a cell either is or is not an obstacle, so a 5 cm grid cannot represent a 2 cm lip.
+
+A quality metric worth knowing: a map built from a drifted trajectory is not merely displaced, it is **blurred** — the same wall gets painted several times in slightly different places, so one wall becomes three faint ones, and a planner reading it sees a corridor narrower than it really is. Sharpening that blur is the practical reason to close [loops](/shared/glossary/#loop-closure).
+
 ### OCR (Optical Character Recognition) {#ocr-optical-character-recognition}
 Reading the text *inside* an image — turning pixels of letters into actual characters a computer can use — for example pulling the line items off a photographed receipt or the words out of a scanned page. It is the skill that separates a [VLM](/shared/glossary/#vlm) that "sees a document" from one that can answer "what is the total?", and it is hard precisely because the answer often hides in small print that survives only if the image is fed in at high enough resolution (one reason [AnyRes](/shared/glossary/#anyres) tiling helps). Analogy: the difference between glancing at a street sign and actually reading the words on it. Example: given a photo of a price tag, an OCR-capable model returns the string "$19.99" rather than just "a label"; benchmarks like DocVQA and OCRBench score exactly this ability.
 
@@ -3083,6 +3171,13 @@ The numbers a model *learns* during training — its adjustable internal setting
 
 ### Partial derivative {#partial-derivative}
 How much a function changes when you nudge just one of its inputs and hold all the others still — the [derivative](/shared/glossary/#derivative) taken one input at a time. If a recipe's tastiness depends on both salt and sugar, the partial derivative with respect to salt tells you the effect of adding a pinch more salt while keeping the sugar fixed. A [gradient](/shared/glossary/#gradients) is simply the full list of these one-at-a-time slopes, one per [parameter](/shared/glossary/#parameters).
+
+### Particle depletion {#particle-depletion}
+The failure mode where a [particle filter](/shared/glossary/#particle-filter) is left with only one distinct hypothesis, having killed all the others. It has `N` particles and one idea — an extremely expensive [Kalman filter](/shared/glossary/#kf), with none of the benefits that justified the cost.
+
+The usual cause is a sensor model that is *sharper* than the sensor. With, say, twelve laser beams and an assumed noise of 2 cm, a particle 30 cm from the truth is assigned a likelihood around `e^-100` relative to the best one; it vanishes on the first scan, and resampling can only copy what survived. The measurable symptom is the [effective sample size](/shared/glossary/#effective-sample-size) collapsing towards 1.
+
+The fixes are all forms of admitting more doubt: widen the assumed sensor noise, mix a uniform "some readings are simply garbage" term into the likelihood so no single beam can annihilate a particle, resample only when the effective sample size falls below a threshold rather than every step, and use [systematic resampling](/shared/glossary/#systematic-resampling), which preserves more diversity than drawing independent samples.
 
 ### Particle filter {#particle-filter}
 **Particle filter** (also known as Monte Carlo Localization or MCL) is an algorithm that estimates the state of a system by representing its probability distribution with a set of discrete, weighted samples called **particles**. Each particle represents a single concrete hypothesis of what the system's state might be (e.g., a specific coordinate on a map). The filter updates the particles through a three-step process:
@@ -3299,6 +3394,11 @@ A written review done after an incident — an outage, a slowdown — that lays 
 
 ### Polysemantic {#polysemantic}
 A single neuron or [activation](/shared/glossary/#activations) dimension that fires for *several* unrelated concepts at once — the opposite of [monosemantic](/shared/glossary/#monosemantic). It arises from [superposition](/shared/glossary/#superposition): the network has far more concepts to represent than it has dimensions, so it packs many of them into overlapping directions and tolerates the interference. Like a single dictionary entry that lists five unrelated meanings, forcing you to guess which one is meant. Polysemanticity is why raw activations are hard to read, and why [sparse autoencoders](/shared/glossary/#sae) are trained to unpack them into separate monosemantic features.
+
+### Process noise {#process-noise}
+The `Q` in a [Kalman filter](/shared/glossary/#kf): how much the thing being tracked is allowed to surprise you between one time step and the next. "Process" is the system being estimated, as opposed to the sensor watching it. A target that manoeuvres, a robot whose wheels slip, a temperature disturbed by an open window — all of that lives in `Q`.
+
+It is the knob that decides how much history a filter keeps. A small `Q` says "the model is right, trust it over the sensor", which makes the estimate smooth and slow to react. A large `Q` says "anything could have happened", which makes it jumpy and quick. The failure modes are badly asymmetric: too large costs accuracy, while too small produces a filter that stops believing its own sensors and drifts away confidently — so when in doubt, guess high. See also [measurement noise](/shared/glossary/#measurement-noise) and [NIS](/shared/glossary/#nis), which lets you tune `Q` without ground truth.
 
 ### Projection matrix {#projection-matrix}
 A square matrix `P` that is *idempotent*: applying it twice does nothing more than applying it once, `P P = P`. Geometrically it collapses every vector onto some subspace and leaves vectors already in that subspace alone — like a shadow on the floor, where re-shadowing a shadow changes nothing. Robotics uses this constantly in the form `N = I - J⁺J`, the [null-space](/shared/glossary/#null-space) projector: hand it any desired joint velocity and it deletes exactly the component that would have moved the [end-effector](/shared/glossary/#end-effector), keeping the rest. That is what lets a redundant arm pursue a secondary goal — a comfortable posture, distance from joint limits — provably without disturbing the primary task. (Not to be confused with the [projector](/shared/glossary/#projector) network in multimodal models, an unrelated use of the word.)
@@ -3699,6 +3799,15 @@ RND (Random Network Distillation) is a curiosity-style [exploration](/shared/glo
 ### RNEA {#rnea}
 The Recursive Newton-Euler Algorithm — the standard fast way to compute a robot arm's [inverse dynamics](/shared/glossary/#inverse-dynamics): given the joint positions, velocities, and desired accelerations, it returns the exact joint torques needed (the right-hand side of the [manipulator equation](/shared/glossary/#manipulator-equation)). It works in two sweeps along the chain of links. The *outward* sweep starts at the base and propagates each link's velocity and acceleration down to the fingertip — every joint adds its own motion on top of the link before it. The *inward* sweep then starts at the fingertip and adds up the forces and torques link by link back to the base, applying Newton's and Euler's laws (force = mass × acceleration, and its rotational twin) at each one. Its cost is `O(n)`, meaning the work grows only linearly with the number of joints `n` — twice the joints, twice the work, not four times — which is what makes it cheap enough to run in a fast control loop. Analogy: to find how hard each person in a tug-of-war line is pulling, you first walk down the line noting how fast each is moving, then walk back up tallying the forces each must add to keep the chain consistent.
 
+### Robust kernel {#robust-kernel}
+A replacement for the squared error in a least-squares problem, chosen so that one very wrong measurement cannot outvote many right ones. Also called an M-estimator.
+
+The problem it solves is arithmetic, not philosophical. Plain least squares minimizes the *sum of squares*, so a measurement that disagrees by twenty times the expected amount contributes four hundred times the pull of a good one — nine honest constraints pulling with force 1 lose to one liar pulling with force 400. It is not a vote; it is a tug of war with weights. In a [pose graph](/shared/glossary/#pose-graph), a **single** false [loop closure](/shared/glossary/#loop-closure) is enough to ruin a map built from hundreds of good ones.
+
+A kernel flattens the cost past some scale, so that beyond it extra wrongness stops adding extra pull. Implemented as iteratively reweighted least squares: solve, recompute a per-measurement weight, repeat. The common choices, in increasing order of aggression: **[Huber](/shared/glossary/#huber-kernel)** (weight `δ/e`, quietens but never silences), **Cauchy** (weight `1/(1 + e²/δ²)`, named for the heavy-tailed Cauchy distribution whose mean does not even exist — exactly the shape you want when some of your data may be arbitrarily wrong), and **Geman-McClure** (weight falling as `1/e⁴`, powerful and easy to get stuck with, since an edge it switches off early can never argue its way back in).
+
+Every kernel costs something even on clean data, because it also down-weights the honest tail of a healthy noise distribution. That is the premium on the insurance. See also [GNC](/shared/glossary/#gnc) and [switchable constraints](/shared/glossary/#switchable-constraints).
+
 ### RoCE (RDMA over Converged Ethernet) {#roce}
 RDMA over Converged Ethernet — a network protocol that allows [RDMA](/shared/glossary/#rdma) communication over standard Ethernet networks instead of requiring specialized [InfiniBand (IB)](/shared/glossary/#infiniband-ib) cables and hardware. It enables high-throughput, low-latency direct memory transfer between machines in a cluster, bypassing the operating system kernel and CPU on both ends.
 
@@ -3823,11 +3932,23 @@ A multiplier used to map values from one numerical range or representation to an
 ### Scaling laws {#scaling-laws}
 The empirical finding that a model's [loss](/shared/glossary/#loss-function) drops in a smooth, predictable curve as you add [parameters](/shared/glossary/#parameters), training data, and compute — like a growth chart that lets you forecast a bigger model's quality from smaller ones before you ever build it.
 
+### Scan matching {#scan-matching}
+Estimating how a robot moved by aligning two [LiDAR](/shared/glossary/#lidar) scans, without any wheel or inertial data. The workhorse of 2D [SLAM](/shared/glossary/#slam) front ends, and typically several times more accurate than wheel [odometry](/shared/glossary/#odometry) because it measures against the world rather than against a wheel that may be slipping.
+
+Three families. [ICP](/shared/glossary/#iterative-closest-point-icp) *point-to-point* pulls every point onto its nearest neighbour in the other scan. *Point-to-line* (point-to-plane in 3D) pulls it onto the surface its neighbours lie on instead, which converges faster and more accurately, because a laser samples a *surface* and two scans never hit the same points on it — asking a point to land on its neighbour's exact point is asking for something untrue, while asking it to land on the same wall is not. *Correlative* matchers brute-force a grid of candidate poses; they need no initial guess and cannot fall into a local minimum inside their search window, at a cost that grows with the cube of the window size.
+
+All of them are blind in the same place: a featureless corridor constrains how far you are from each wall and which way you point, and says nothing at all about how far along you have travelled. The residual will not warn you — the smallest eigenvalue of the fit's information matrix will.
+
 ### Scene detection {#scene-detection}
 Automatically finding the "cuts" in a video — the hard jumps where the footage switches from one shot to another — so a long video can be split into clean single-shot clips. It works by watching for a sudden, large change between two adjacent frames, measured by something like the difference in their color histograms (a tally of how many pixels fall into each color bucket) or in deep features. Analogy: flipping through a photo album and starting a new pile every time the picture suddenly looks completely different. Example: a 90-minute movie might be split into roughly 1,500 single-shot clips, each safe to use as a training example because the motion inside it is continuous rather than spanning an editing splice.
 
 ### Scheduler {#scheduler}
 The part of an inference server that decides, at every step, which requests to start, which to keep generating, and which to pause when memory runs low — like an air-traffic controller choosing which planes take off, keep flying, or circle, so the runway (the GPU) is always busy but never overloaded. A good scheduler is often worth more real-world [throughput](/shared/glossary/#throughput) than any single clever kernel.
+
+### Schur complement {#schur-complement}
+For a block matrix `[[A, B], [C, D]]`, the expression `A - B D⁻¹ C`. Named after Issai Schur. It is what falls out when you eliminate one block of unknowns from a linear system by solving for them and substituting back.
+
+In estimation it appears in two places, both important. It is the mechanism of [marginalization](/shared/glossary/#marginalization) — dropping old robot poses from a [factor graph](/shared/glossary/#factor-graph) while keeping every constraint they implied. And it is the standard speed-up in [bundle adjustment](/shared/glossary/#bundle-adjustment), where eliminating the many thousands of 3D landmark points first leaves a much smaller "reduced camera system" over the camera poses alone, which is what makes large reconstructions tractable at all.
 
 ### Score {#score}
 The [gradient](/shared/glossary/#gradients) of the log-probability of the data with respect to the input, written `∇_x log p(x)`. It points in the direction that makes an image *more likely* under the data distribution — in plain terms, "which way should I nudge these pixels to make this look more like a real image?" Diffusion models implicitly learn this at every noise level, so generation becomes a matter of repeatedly stepping in the score's direction, from noise toward a realistic sample.
@@ -3907,6 +4028,11 @@ Supervised Fine-Tuning — the first post-training stage: take a [base model](/s
 
 ### SGD {#sgd}
 Stochastic Gradient Descent — updates parameters by subtracting a scaled gradient computed on a mini-batch; the simplest optimizer and the basis for more advanced methods
+
+### Sigma points {#sigma-points}
+The handful of representative points a [UKF](/shared/glossary/#ukf) uses in place of a derivative. Instead of approximating a nonlinear function by its [Jacobian](/shared/glossary/#jacobian), pick `2n+1` points spread over the current uncertainty (the mean, plus one either side along each of the `n` directions of the [covariance](/shared/glossary/#covariance)), push each one through the *real* function, and rebuild a mean and covariance from where they land. "Sigma" because their spread is measured in standard deviations.
+
+The gain is real and is easiest to see with a robot whose heading is uncertain: driving forward turns its possible positions into a curved **banana**, and the centre of a banana is not on the banana. An [EKF](/shared/glossary/#ekf), which pushes only the mean through the model, reports the tip of the curve; sigma points average several places along it and land much closer to the truth. The catch is that a better prediction only pays off when nothing corrects it soon afterwards — with frequent measurements the [EKF](/shared/glossary/#ekf) usually ties at a third of the cost.
 
 ### Slerp {#slerp}
 **S**pherical **l**inear int**erp**olation: moving smoothly between two orientations by walking along the surface of the unit [quaternion](/shared/glossary/#quaternion) sphere at a constant angular rate, rather than in a straight line through it. Introduced by Ken Shoemake in 1985 for computer animation. Plain straight-line interpolation between two quaternions cuts *through* the sphere, so the result is short (it needs renormalising) and the rotation speeds up in the middle and slows at the ends; interpolating [Euler angles](/shared/glossary/#euler-angles) is worse still, because it wobbles and can hit [gimbal lock](/shared/glossary/#gimbal-lock) partway. Slerp does neither: constant speed, shortest arc, no singularities. The only bookkeeping it needs is the [double cover](/shared/glossary/#double-cover) — flip the sign of one endpoint if their dot product is negative, or the interpolation takes the long way round.
@@ -4132,6 +4258,13 @@ A user-supplied substring that tells the server "as soon as the generated text c
 ### Storage {#storage}
 The 1-D buffer that a tensor is a view into
 
+### Switchable constraints {#switchable-constraints}
+An outlier scheme for [factor graphs](/shared/glossary/#factor-graph) that gives every dubious measurement its own on/off dial and lets the optimizer set it. Each suspect edge gets an extra unknown `s` between 0 and 1 multiplying its information, plus a prior pulling `s` towards 1.
+
+The optimizer then makes a trade: switching an edge off costs whatever the prior charges, and saves whatever residual that edge was contributing. An edge that disagrees with everything else by more than that price gets switched off; one that disagrees only a little does not. The appeal over a fixed [robust kernel](/shared/glossary/#robust-kernel) is that the threshold is not a number you invent — it emerges from the balance between the prior and the data. The catch is that the prior weight is a knob too; it has just moved somewhere less obvious, and setting it too weak switches off good measurements along with bad ones.
+
+Like [GNC](/shared/glossary/#gnc), its most useful output is not a better trajectory but a *list* of which measurements it refused to believe.
+
 ### Symlog {#symlog}
 A squashing function, `symlog(x) = sign(x) · log(1 + |x|)`, that shrinks large values while leaving small ones almost untouched (and, unlike a plain log, handles negatives and zero). [DreamerV3](/shared/glossary/#dreamerv3) trains its [reward](/shared/glossary/#reward-function) and [value](/shared/glossary/#value-function) heads to predict `symlog(target)` instead of the target. The reason is the whole point of DreamerV3: one set of [hyperparameters](/shared/glossary/#hyperparameter) has to work on a game paying rewards of `0.01` and a game paying `10,000`. Under a plain squared-error loss the second game's gradients would be millions of times larger, and any [learning rate](/shared/glossary/#learning-rate) that survived one game would explode or stall on the other. Symlog compresses that scale difference away, so a single learning rate fits both. Its inverse, `symexp`, converts predictions back to real reward units.
 
@@ -4200,6 +4333,11 @@ The process of building mathematical models of a physical system's dynamics by a
 
 ### System prompt {#system-prompt}
 A message placed at the very start of a chat conversation that tells the model how to behave — its role, tone, rules, and the tools it can call — before the user's first turn ever arrives. Like a stage director's note to an actor before the curtain rises: *"You're a polite customer-support agent who answers only refund questions."* System prompts are usually long and shared across many requests, which is why caching their KV state (see [prefix cache](/shared/glossary/#prefix-cache)) saves so much repeated work.
+
+### Systematic resampling {#systematic-resampling}
+The resampling scheme every serious [particle filter](/shared/glossary/#particle-filter) ships. Draw **one** random number, then take `N` evenly spaced samples from the cumulative weight distribution starting there. Its other name, *low-variance resampling*, is the whole point.
+
+Compare it with the obvious alternative, multinomial resampling, which rolls the dice `N` separate times. Both give every particle the same *expected* number of children, but multinomial adds far more randomness around that expectation: a particle holding exactly `1/N` of the weight survives multinomial resampling only about 63% of the time, while systematic resampling guarantees it exactly one child. That difference is pure noise injected into the belief in exchange for no information — measurably around a sevenfold reduction in the variance of the offspring count, for identical cost and about the same three lines of code.
 
 ### Systolic array {#systolic-array}
 A grid of tiny, identical "multiply-and-add" units wired directly to their neighbors, used to do the huge matrix multiplications ([GEMMs](/shared/glossary/#gemm)) at the heart of neural networks. Instead of each unit fetching its numbers from memory, doing one calculation, and writing the answer back, the numbers *march* through the grid step by step — every clock tick, each unit grabs whatever just arrived from the cell to its left and the cell above, multiplies them, adds the running total, and passes the values along to the next cell. The data flows through the chip in rhythmic pulses, which is exactly where the name comes from: "systole" is the medical word for a heartbeat pumping blood, and here the data gets pumped through the array the same way.
@@ -4583,6 +4721,11 @@ One message a user sends in a chat conversation, paired with the model's reply (
 
 ### V2V {#v2v}
 Video-to-Video: transforming an existing video into a new one while keeping its motion and timing — for example restyling it into a cartoon, or re-rendering it conditioned on per-frame depth or pose. The hard part is *temporal consistency*: editing each frame independently makes the result flicker, so V2V methods share information across frames. Contrast with [image-to-video](/shared/glossary/#i2v) (one image in) and [text-to-video](/shared/glossary/#t2v) (text only).
+
+### Validation gate {#validation-gate}
+A rule that refuses a measurement before it reaches the filter, on the grounds that it is too surprising to be true. The usual form is a [NIS](/shared/glossary/#nis) threshold from the chi-square distribution — reject anything above the 99th percentile, say — which discards genuine outliers while throwing away about 1% of good readings by chance.
+
+A gate detects *implausible readings*, not *broken sensors*, and the difference matters. A sensor that freezes at its last value keeps producing perfectly plausible readings until the truth drifts away from it, so the detection delay is roughly `(√threshold × sensor σ) ÷ (rate of true change)` — which for a noisy sensor watching a slow signal can be minutes. Worse, the dead sensor drags the estimate towards itself in the meantime, shrinking the innovation and delaying the gate further. Gates belong in a filter; sensor-liveness checks belong in the driver.
 
 ### Vanishing gradients {#vanishing-gradients}
 A problem during training where [gradients](/shared/glossary/#gradients) become extremely small, effectively preventing the weights from changing their value and stalling the learning process.
