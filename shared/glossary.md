@@ -10,6 +10,12 @@ A way to build a video network cheaply by *factorizing* a full 3D convolution (w
 ### 3D VAE {#3d-vae}
 A [VAE](/shared/glossary/#vae) (variational autoencoder — a network that squeezes data into a small code and reconstructs it) built for video, so it compresses along *time* as well as the two spatial dimensions. A plain image VAE shrinks each frame's height and width; a 3D VAE *also* merges groups of nearby frames, exploiting the fact that consecutive frames barely differ. Typical ratios are about 4× in time and 8× in each spatial direction, cutting a clip's data by roughly 100× overall (the spatial compression applies to both height and width, so it shrinks 4 × 8 × 8 = 256 times in size, but the number of channels usually grows, e.g., from 3 RGB channels to 8 latent channels, so the final footprint is about 100× smaller). This is what makes modern video diffusion affordable: the [diffusion model](/shared/glossary/#diffusion-model) runs on the small compressed [latent](/shared/glossary/#latent-space) grid instead of raw pixels, so it sees maybe 30 latent "frames" where the original clip had 120. Because the same compressor is reused for every clip, the heavy work of learning to reconstruct video is paid once while the VAE is trained, not on every generation.
 
+### 6-DoF grasping {#6-dof-grasping}
+Choosing a grasp as a full pose in space — three numbers for position and three for orientation — rather than restricting the gripper to come straight down and only pick an angle about the vertical. The top-down case is a well-solved special case with four numbers; 6-DoF is what cluttered bins and objects lying at odd angles require.
+* **Analogy**: Picking a mug off a table needs only "where and which way round". Picking the same mug out of a full dishwasher needs "and at what angle to come in", because straight down is blocked.
+* **Cost of the extra freedom**: The candidate space is far larger and cannot be enumerated over image pixels, so 6-DoF systems sample candidate poses on the [point cloud](/shared/glossary/#point-cloud) surface and score them, rather than scoring every pixel.
+
+
 ### A100 {#a100}
 A high-performance data center graphics processing unit ([GPU](/shared/glossary/#gpu)) designed by NVIDIA (built on the [Ampere](/shared/glossary/#volta) architecture) specifically for artificial intelligence training, inference, and scientific computing.
 
@@ -143,10 +149,94 @@ A rule for guessing the remaining cost to the goal that is guaranteed never to g
 **Example:** On an 8-connected grid, straight-line distance is admissible (you can never beat a straight line), while [Manhattan distance](/shared/glossary/#manhattan-distance) is not, because it charges you for two axis moves where one diagonal move would do. Using Manhattan on such a grid makes A* stop searching too early and return paths a few percent too long.
 See also [consistent heuristic](/shared/glossary/#consistent-heuristic), the stronger condition A* needs when it refuses to reconsider states it has already settled.
 
+### Analytic grasping {#analytic-grasping}
+Choosing where to grip an object by *computing* the answer from its geometry, rather than learning it from examples. Given the object's shape, you place contacts, build a [friction cone](/shared/glossary/#friction-cone) at each one, and check [force closure](/shared/glossary/#force-closure). The contrast is [data-driven grasping](/shared/glossary/#data-driven-grasping), which predicts a score from an image and never writes down the geometry at all.
+* **Analogy**: Working out from a blueprint exactly where to put the clamps on a part, instead of copying what a skilled worker did in a thousand photographs.
+* **Strength and weakness**: The answer is exact and comes with a reason attached, so you can debug it. But it needs the object's true shape, which a camera never gives you exactly, and every error in the measured geometry lands directly on the verdict.
+
+
+### Behavior cloning {#behavior-cloning}
+The simplest form of [imitation learning](/shared/glossary/#imitation-learning): collect a set of (observation, action) pairs from an expert and train a network to reproduce the action by plain supervised learning, exactly as if it were a classification problem. There is no reward, no exploration, and no simulator in the loop.
+* **Analogy**: Learning to drive by watching a recording of a good driver and copying the steering angle for each frame, without ever being told what happens if you get it wrong.
+* **The known failure**: The moment the [policy](/shared/glossary/#policy) makes a small error it sees a state the expert never visited, where its training says nothing, so errors compound. This is what [DAgger](/shared/glossary/#dagger) was invented to fix.
+
+
+### Bin picking {#bin-picking}
+Emptying a container of loose, unsorted, possibly identical objects one at a time with a robot. It is the standard hard case of industrial [manipulation](/shared/glossary/#manipulation) because it combines clutter, occlusion, and partial observability: objects lean on each other, hide each other, and move when a neighbour is removed.
+* **Analogy**: Picking one paper clip out of a full desk drawer without tipping the drawer out.
+* **Why it is a benchmark**: Every part of the stack is stressed at once — segmentation with no clean background, [6-DoF grasping](/shared/glossary/#6-dof-grasping) rather than top-down, collision-free approach into a walled box, and recovery when the pile shifts.
+
+
+### Chamfer {#chamfer}
+A bevelled edge machined around the mouth of a hole (or the tip of a pin) so that a part arriving slightly off-centre is guided in by the slope instead of landing on the flat face and stopping. In assembly it is the cheapest possible error correction: it fixes misalignment mechanically, before any sensor or controller is involved.
+* **Analogy**: The funnel shape at the top of a bottle. You do not have to aim the liquid perfectly; the slope does the aiming.
+* **How much it buys**: Roughly, a chamfer of width *c* lets the part start up to *c* plus the clearance off-centre and still self-align — usually far more than the clearance alone, which is why real assembly parts are almost always chamfered.
+
+
 ### Consistent heuristic {#consistent-heuristic}
 A heuristic that, in addition to never overestimating, never *drops* by more than the cost of the step that caused the drop — formally `h(a) <= cost(a, b) + h(b)`, the same shape as the triangle inequality. Every consistent heuristic is [admissible](/shared/glossary/#admissible-heuristic), but not the other way round.
 **Why the distinction matters:** most [A*](/shared/glossary/#a-star-search) implementations never look at a state twice once they have settled it. That shortcut is only safe with a consistent heuristic. With a merely admissible one, a state can be settled at a bad cost and a cheaper route to it discovered too late, and the final path is not optimal even though nothing ever overestimated.
 **Example:** A footstep planner whose heuristic is `ceil(remaining distance / max stride) x cheapest step`. Rounding up never overestimates, so it is admissible. But a 1 cm shuffle that happens to cross a rounding boundary makes `h` fall by a whole stride's worth while costing almost nothing — inconsistent, and enough to return non-optimal walking plans.
+
+### Convex hull {#convex-hull}
+The smallest convex shape that contains a given set of points — what you get by stretching a rubber band (in 2D) or shrink-wrap (in 3D and above) around them. "Convex" means the shape has no dents: the straight line between any two points inside it stays inside.
+* **Analogy**: Hammer nails into a board at the data points and stretch an elastic band around the outside. The band traces the convex hull; nails in the interior never touch it.
+* **Why grasping needs it**: The set of wrenches a grasp can apply is exactly the convex hull of its contact wrenches, so "can this grasp resist anything?" becomes "does that hull contain the origin?" — a geometry question with an exact answer. See [force closure](/shared/glossary/#force-closure) and the [Ferrari-Canny metric](/shared/glossary/#ferrari-canny-metric).
+
+
+### Coulomb friction {#coulomb-friction}
+The standard model of dry friction, named after Charles-Augustin de Coulomb, who measured it in the 1780s: the sideways force a contact can carry is at most *μ* times the force pressing the surfaces together, written ‖*f_t*‖ ≤ *μ f_n*. Below that limit the surfaces stick; at the limit they slide, and the friction force points against the sliding.
+* **Analogy**: A book on a tilted board. Tilt gently and it stays, because friction grows to match gravity's pull along the board. Past a critical angle friction has nothing left to give and the book slides — and that critical angle is exactly arctan(*μ*).
+* **Why it matters**: This one inequality is the [friction cone](/shared/glossary/#friction-cone), which is what makes grasping and contact-rich planning possible at all. It is also deliberately crude — it ignores contact area, speed, and lubrication — but it is close enough that the whole field is built on it.
+
+
+### Data-driven grasping {#data-driven-grasping}
+Predicting whether a grasp will work by learning a function from sensor data to a success probability, instead of computing it from geometry. The training labels come from physics simulation, from analytic tests, or from a real robot trying grasps and recording what happened. [Dex-Net](/shared/glossary/#dex-net), GraspNet and [AnyGrasp](/shared/glossary/#anygrasp) are the well-known lineage.
+* **Analogy**: A warehouse worker who has picked a million items and can glance at a new one and know where to grab it, without ever having done a friction calculation.
+* **The trade it makes**: It works on objects with no model, tolerates noisy sensors it saw during training, and needs no segmentation of the exact shape — but it only knows what its data covered, and it cannot tell you *why* it scored a grasp low. Contrast [analytic grasping](/shared/glossary/#analytic-grasping).
+
+
+### Dex-Net {#dex-net}
+"Dexterity Network": a family of work (Berkeley, 2016 onwards) that generated millions of synthetic [depth](/shared/glossary/#depth-map) images of objects with grasps labelled by an analytic robustness model, then trained a [GQ-CNN](/shared/glossary/#gq-cnn) to predict grasp success from a depth patch. It established the recipe still used today: label cheaply with physics, learn to imitate the labels, deploy the network on real sensor data.
+* **Analogy**: Instead of paying a person to try ten thousand grips, you write down the rule you believe, apply it to ten thousand simulated objects overnight, and train a student that runs a thousand times faster than the rule.
+* **The point that surprises people**: The learned network can end up *more* reliable than the analytic model that taught it, because it is trained on the noisy renderings a real camera produces, so it learns which measurements it can trust.
+
+
+### Evolution strategies {#evolution-strategies}
+A family of derivative-free optimizers used as a [reinforcement learning](/shared/glossary/#reinforcement-learning) method: perturb the [policy](/shared/glossary/#policy) parameters with random noise in many directions, run an episode for each, and step the parameters toward the directions that scored better. No gradients are backpropagated through the environment; the "gradient" is estimated from the scores alone.
+* **Analogy**: Finding the top of a hill in fog by taking a hundred short steps in random directions, noting which ones went up, and then walking the average of the good ones.
+* **When it is the right tool**: Short-horizon control problems with few parameters and a simulator that is cheap to roll out — exactly the case where backpropagating through thousands of contact events would be fragile or impossible. It scales badly in parameter count, which is why it is not used for large networks.
+
+
+### Ferrari-Canny metric {#ferrari-canny-metric}
+The most common [grasp quality metric](/shared/glossary/#grasp-quality-metric), proposed by Carlo Ferrari and John Canny in 1992. Build the [convex hull](/shared/glossary/#convex-hull) of the contact wrenches the fingers can apply, then measure the radius of the largest ball centred on the origin that fits inside it. That radius is the largest disturbance the grasp resists *in its worst direction*.
+* **Analogy**: Rating a tent by the weakest guy rope rather than the average one, because the wind will find the weak side.
+* **Why a minimum and not an average**: A grasp fails in whichever direction it is weakest, so averaging over directions would flatter a grasp that is strong in five directions and helpless in the sixth. Note also that the number mixes forces and torques, so it depends on an arbitrary length scale used to make the units comparable.
+
+
+### GQ-CNN {#gq-cnn}
+Grasp Quality Convolutional Neural Network: the [Dex-Net](/shared/glossary/#dex-net) architecture that takes a small [depth](/shared/glossary/#depth-map) patch, cropped and rotated so that the gripper closes left-to-right, and outputs the probability that the grasp holds. It is a [grasp-quality network](/shared/glossary/#grasp-quality-network) with two specific conventions that do most of the work.
+* **The two conventions**: *Rotate* the crop so every candidate is presented in the same frame — one filter then covers all gripper angles instead of one per angle. *Subtract the centre depth* so the network sees local surface shape rather than how far away the camera is mounted.
+* **Analogy**: Always turning a photograph the same way up before judging it, and describing heights relative to the ground rather than to sea level.
+
+
+### Grasp quality metric {#grasp-quality-metric}
+A single number summarising how good a grasp is, used to rank candidates so a robot can pick one. [Force closure](/shared/glossary/#force-closure) alone is only a yes/no answer and cannot rank anything, so a metric is needed on top of it; the [Ferrari-Canny metric](/shared/glossary/#ferrari-canny-metric) is the standard choice.
+* **Analogy**: A building either passes the safety code or does not, but you still want to know which of two passing designs has more margin before you choose one.
+* **Caution**: Every such metric folds forces and torques into one scalar, which requires choosing a characteristic length to make the units match, and the ranking of near-equal grasps can change when that length changes. Treat the number as a filter, not as truth.
+
+
+### Hybrid force-position control {#hybrid-force-position-control}
+A control scheme that splits the task directions into two sets: those where the robot commands a *position* (because it is free to move there) and those where it commands a *force* (because a surface is in the way). Sliding a tool along a table is the canonical example — position along the surface, force into it.
+* **Analogy**: Writing on paper. You control where the pen goes across the page, but you control how hard you press into it; trying to control the pen's height instead would either tear the paper or write nothing.
+* **Relationship to [impedance control](/shared/glossary/#impedance-control)**: Impedance control commands a *relationship* between force and motion in every direction at once, which handles unexpected contact gracefully; hybrid control switches per direction and is sharper when you know exactly which directions are constrained.
+
+
+### Jamming {#jamming}
+In assembly, the state where a part being inserted is touching at two points and the combination of forces and torque being applied happens to fall outside the range that can push it further in — so it stops, even though it would fit geometrically. Increase or redirect the applied wrench and it moves again.
+* **Analogy**: A drawer that binds when you pull one corner. Nothing is broken and nothing is too big; pull evenly and it slides.
+* **Contrast with [wedging](/shared/glossary/#wedging)**: Jamming is a *force* problem and pushing differently fixes it. Wedging is a *geometry* problem and pushing harder makes it worse.
+
 
 ### Manhattan distance {#manhattan-distance}
 The distance between two points if you may only move along the axes: `|dx| + |dy|`. Named after the street grid of Manhattan, where you cannot cut diagonally across a block — you walk so far east, then so far north. It is the p = 1 case of the general Lp formula `(sum |v_i|^p)^(1/p)`, which is why it is also called the L1 norm.
@@ -321,6 +411,30 @@ Automatic Speech Recognition — the task of turning recorded speech into writte
 The promise that a planner's answer converges to the best possible answer as you give it more and more samples — not that any particular run is good. [RRT](/shared/glossary/#rrt) does not have this property: once it connects to the goal its answer is frozen, and running it ten times longer changes nothing. [RRT-star](/shared/glossary/#rrt-star) does, because it keeps re-attaching existing branches to cheaper parents.
 **Analogy:** Two people crossing a forest. The first stops as soon as they reach the far side and never revisits the choice. The second keeps walking, and every time they spot a shortcut they redraw the map. Given a week, the second one's route approaches the best route; the first one's is whatever they stumbled into in the first hour.
 **Watch the units:** "converges to optimal" says nothing about speed. In measurements, RRT* was still about 4% above optimal after 16 000 samples, while simply shortcutting a plain RRT path reached a similar quality in a fraction of the time.
+
+### Mass-spring model {#mass-spring-model}
+A way to simulate a deformable object by replacing it with point masses connected by springs: structural springs along the fabric, shear springs across the diagonals, and bending springs between every second point to resist folding. Each spring is a simple length constraint, and the whole cloth or rope is the sum of them.
+* **Analogy**: A trampoline. It has no continuous material in the model at all — just a grid of joints and the springs between them — yet it bends and stretches like a surface.
+* **Why it is used for cloth**: It is fast, easy to write, and its parameters map to things you can feel (stiff or floppy, stretchy or not). The cost is that it is not a physically accurate model of a real textile; see [position-based dynamics](/shared/glossary/#position-based-dynamics) for the version that stays stable at large time steps.
+
+
+### Pick and place {#pick-and-place}
+The basic [manipulation](/shared/glossary/#manipulation) task: grasp an object, move it, release it. Roughly 90% of deployed industrial robot arms do only this, and most higher-level manipulation systems are built by chaining pick-and-place primitives together.
+* **Analogy**: Moving pieces on a chessboard. Every move is "lift here, put down there"; the intelligence is in choosing where, not in the moving.
+* **Why it is used as an action for learned policies**: Compressing a whole motion into two points — where to pick and where to place — turns a continuous control problem into a choice of two pixels, which a network can learn from far less data than a full trajectory.
+
+
+### PointNet {#pointnet}
+A neural network architecture (Qi et al., 2017) for [point clouds](/shared/glossary/#point-cloud). It applies the same small network to every point independently, then combines the results with a symmetric operation such as max-pooling. That combination is what makes the output independent of the order the points arrive in — a point cloud is a *set*, and a network that changed its answer when the points were shuffled would be wrong.
+* **Analogy**: Judging a crowd's mood by reading each face and taking the strongest expression you saw, rather than by reading them in the order they happen to be standing.
+* **Where it appears in grasping**: Scoring a 6-DoF grasp candidate from the points inside the gripper's closing volume, which is what [AnyGrasp](/shared/glossary/#anygrasp) and GraspNet do at scale.
+
+
+### Position-based dynamics {#position-based-dynamics}
+A simulation method for deformable objects that skips forces entirely: predict where every particle would go, then repeatedly *move the positions* to satisfy constraints (this edge must be this long, this point must be above the table), and read the velocities back from how far the positions actually moved.
+* **Analogy**: Instead of computing how hard a rope pulls, you simply shorten it back to its correct length whenever it stretches, and let that correction be the physics.
+* **Why it exists**: A stiff [mass-spring model](/shared/glossary/#mass-spring-model) needs tiny time steps or it explodes, because a stiff spring plus a big step overshoots. Projecting positions cannot overshoot, so the simulation stays stable at large steps — which is why nearly every real-time cloth in games and robotics uses it.
+
 
 ### Probabilistic completeness {#probabilistic-completeness}
 The guarantee that if a solution exists, the probability of a sampling-based planner finding it goes to 1 as the number of samples goes to infinity. It is a much weaker promise than it sounds: it says nothing about *how many* samples, and the number can be enormous when the solution has to squeeze through a [narrow passage](/shared/glossary/#narrow-passage).
@@ -2034,6 +2148,12 @@ The matrix of all second partial derivatives of a function — it captures the *
 A [direct collocation](/shared/glossary/#direct-collocation) scheme that fits a *cubic* between consecutive knots and enforces the dynamics at the midpoint as well as at both ends. Compared with the simpler trapezoidal scheme it costs one extra dynamics evaluation per interval and buys two extra orders of accuracy: error shrinks like `dt^4` instead of `dt^2`.
 **Plain consequence:** to halve the error, trapezoidal collocation needs about 1.4x as many knots; Hermite-Simpson needs about 1.19x. On a measured cart-pole swing-up at 80 knots, the trapezoidal plan drifted about 6e-3 from itself when replayed through an accurate integrator, and Hermite-Simpson about 1e-5 — several hundred times better for essentially the same solve time.
 **Named after:** Charles Hermite (the cubic interpolation that matches values *and* slopes at both ends) and Thomas Simpson (the rule that integrates a function from its two endpoints and its midpoint).
+
+### Remote center of compliance (RCC) {#remote-center-of-compliance-rcc}
+A mechanical wrist, built from rubber and metal linkages, whose elastic centre sits at a point out in space *beyond* the wrist — typically at the tip of the tool it is holding. Sideways force applied at that point makes the tool translate rather than rotate, which is exactly the correction an insertion needs.
+* **Analogy**: Pushing a shopping trolley. Push at the handle and it swings; push down at the wheels and it slides straight. Same push, different pivot, opposite outcome.
+* **Why the location matters even though the springs are the same**: A force applied away from the compliance centre also produces a torque about it. Put the centre at the wrist and a bump at the tool tip has a long lever arm, so the tool tilts and wedges; put the centre at the tip and the lever arm is zero, so the tool slides across and finds the hole. The same choice exists in software as a parameter of [impedance control](/shared/glossary/#impedance-control).
+
 
 ### Single shooting {#single-shooting}
 A trajectory-optimization formulation in which only the CONTROLS are decision variables; the states come from simulating forward from the initial condition. The opposite of [direct collocation](/shared/glossary/#direct-collocation), where the states are variables too and the physics appears as constraints.
@@ -4145,8 +4265,26 @@ A matrix equal to the negative of its own [transpose](/shared/glossary/#transpos
 ### Singular value decomposition {#singular-value-decomposition}
 The factorisation `M = U Σ Vᵀ`, where `U` and `V` are rotations and `Σ` is a diagonal matrix of non-negative **singular values**. Read geometrically, it says every linear map is *rotate, then stretch each axis by its own factor, then rotate again* — so the singular values are exactly "how much does this map stretch, in its most and least favourable directions". That makes the SVD the tool for every question about rank, conditioning and near-degeneracy: the [condition number](/shared/glossary/#condition-number) is the ratio of the biggest to the smallest singular value, a zero singular value means a direction has been annihilated, and `U Vᵀ` (dropping `Σ` entirely) is the nearest true rotation to a drifted matrix. In robot kinematics the smallest singular value of the [Jacobian](/shared/glossary/#jacobian) is the standard early-warning signal for a [kinematic singularity](/shared/glossary/#kinematic-singularity) — which is where the two uses of the word "singular" meet.
 
+### Soft gripper {#soft-gripper}
+A gripper made of compliant material — silicone fingers, inflatable bladders, or a bag of granules that stiffens when air is sucked out ("jamming gripper") — so that it conforms to whatever it touches instead of requiring an accurate model of it.
+* **Analogy**: Picking up an egg with a rolled-up sock rather than with pliers.
+* **The trade**: Passive [compliance](/shared/glossary/#compliance) means small position errors are absorbed by the material, so grasp planning can be crude. In exchange the gripper is hard to model, hard to control precisely, and cannot apply large or accurately directed forces.
+
+
+### Spiral search {#spiral-search}
+A blind search strategy for insertion: while pressing the part gently against the surface, sweep the commanded position outward along an Archimedean spiral until the part drops into the opening. It is the standard answer to the fact that a robot's positioning error (millimetres) is far larger than an assembly clearance (tens of microns).
+* **Analogy**: Finding a keyhole in the dark by pressing the key against the door and moving it in widening circles until it falls in.
+* **The condition it needs to work**: The controller must be able to *drag* the part sideways against friction. If the sideways pull it can generate is smaller than friction under the downward push, the part sits still while the command sweeps past it — so the search fails silently, and the fix is more lateral stiffness or less downward force, not a bigger spiral.
+
+
 ### Stribeck friction {#stribeck-friction}
 The dipped shape of a real joint's friction-versus-speed curve: friction is highest at a standstill ([stiction](/shared/glossary/#stiction)), *falls* as the joint starts to creep, and only then rises again with speed as viscous drag takes over. Named after Richard Stribeck, who measured it in journal bearings around 1902 and explained the dip: as speed rises, the lubricant is dragged into the gap and builds a film that lifts the surfaces apart. The practical consequence is that friction is *not* a straight line through the origin, so a Coulomb-plus-viscous model fitted at normal speeds badly under-predicts what a joint needs at a crawl — which is exactly the regime where slow, precise robot motions live, and a large part of why they come out jerky.
+
+### Suction gripper {#suction-gripper}
+An end effector that holds objects with a vacuum cup rather than fingers. It is the workhorse of warehouse picking: fast, needs only one reachable surface, and tolerates enormous position error compared to a two-finger grip.
+* **Analogy**: A bathroom suction hook. It grabs smooth tile instantly and falls straight off textured wallpaper.
+* **Where it fails**: Porous, deeply curved, soft, or dusty surfaces — anything that cannot form a seal. Most real warehouse robots therefore carry both a suction cup and a [gripper](/shared/glossary/#gripper) and choose per item.
+
 
 ### Superposition {#superposition}
 The trick a neural network uses to store more features than it has dimensions: it packs many concepts into overlapping directions in [activation](/shared/glossary/#activations) space, accepting a little interference between them because most features are rare and seldom active at the same time. The consequence is [polysemantic](/shared/glossary/#polysemantic) neurons — a single dimension that lights up for several unrelated things. Like a small office where each desk is shared by several people who rarely come in on the same day. Superposition is *why* interpretability is hard, and undoing it — recovering the packed features as separate directions — is exactly what a [sparse autoencoder](/shared/glossary/#sae) is built to do.
@@ -4453,6 +4591,12 @@ Text-to-Video: generating a video clip from a text prompt alone, with no image t
 ### T5 {#t5}
 A text [transformer](/shared/glossary/#transformer) (Google's "Text-to-Text Transfer Transformer") that reads a sentence and produces rich embeddings of its meaning. Unlike [CLIP](/shared/glossary/#clip)'s text encoder, which was trained only to match images to short captions, T5 was trained on general language tasks, so it captures long, detailed prompts and word order more faithfully — which is why models like Imagen, SD3, and Flux feed it (often the large "T5-XXL" variant) into [cross-attention](/shared/glossary/#cross-attention) for better prompt adherence.
 
+### Tactile sensing {#tactile-sensing}
+Measuring contact at the robot's skin rather than inferring it from joint torques. The variety that changed the field is *vision-based* tactile sensing (GelSight and its descendants): a camera inside a soft transparent fingertip watches the gel deform, giving a high-resolution image of exactly where and how hard the finger is touching.
+* **Analogy**: The difference between feeling that a bag is heavy and feeling the shape of the object inside it through the fabric.
+* **Why it matters for contact-rich tasks**: During insertion or in-hand manipulation the camera view is blocked by the robot's own hand at precisely the moment the information is needed. Touch is the only sensor that is not occluded by contact, because it *is* the contact.
+
+
 ### Tail latency {#tail-latency}
 The [latency](/shared/glossary/#latency) of the slowest requests (for example the p95 or p99 percentiles) rather than the median (p50); it is what users notice most.
 
@@ -4730,6 +4874,12 @@ A 2024 design from Meta that trains one [transformer](/shared/glossary/#transfor
 ### Transition function {#transition-function}
 The part of an [MDP](/shared/glossary/#mdp) that describes how the world moves, `P(s' | s, a)`: the probability of landing in next-state `s'` given that you took action `a` in state `s`. It captures the environment's dynamics, including randomness — like a slippery floor where "go right" actually moves you right only 80% of the time. Also called the transition probabilities, the dynamics, or the model. When these probabilities are *known*, you can plan exactly with [value iteration](/shared/glossary/#value-iteration); when they are *unknown*, the agent must learn from sampled experience, which is what most of RL is about. Example: in a deterministic [gridworld](/shared/glossary/#gridworld), `P` simply maps "in cell 5, move up" to "now in cell 2" with probability 1.
 
+### Transporter Networks {#transporter-networks}
+An architecture (Zeng et al., 2020) for learning [pick and place](/shared/glossary/#pick-and-place) from very few demonstrations. It predicts the pick location as a heatmap over the image, crops the patch there, and then finds the place location by *cross-correlating* that patch against the scene — so "where does this piece go" is answered by template matching that the network learns, not by regressing coordinates.
+* **Analogy**: Solving a jigsaw by sliding the piece over the picture until it lines up, instead of trying to name the coordinates where it belongs.
+* **Why it is data-efficient**: The cross-correlation is equivariant — move the target and the predicted place moves with it, for free. The network does not have to see every position during training to handle it.
+
+
 ### transpose {#transpose}
 The operation that flips a matrix across its main diagonal — every row becomes a column and every column becomes a row. A matrix `M` with `m` rows and `n` columns becomes `Mᵀ` with `n` rows and `m` columns, and the entry at row `i`, column `j` moves to row `j`, column `i`. In robotics, the [Jacobian](/shared/glossary/#jacobian) transpose `Jᵀ` maps forces at the [end-effector](/shared/glossary/#end-effector) back into equivalent joint torques — the mathematically dual direction of what `J` does (joint velocities → end-effector velocity). In [PyTorch](/shared/glossary/#pytorch), `.T` and `torch.transpose` perform this flip by rewriting memory strides rather than copying data, so the result shares storage with the original array but may be non-contiguous.
 
@@ -5001,6 +5151,12 @@ Audio in its rawest digital form: one number per sample giving the air pressure 
 
 ### WebDataset {#webdataset}
 A library that streams training data directly from sharded `.tar` archives, avoiding the need to unpack millions of individual files.
+
+### Wedging {#wedging}
+In assembly, the state where a part being inserted is gripped at two points whose [friction cones](/shared/glossary/#friction-cone) between them can resist *any* insertion force at all. Unlike [jamming](/shared/glossary/#jamming), no redirection of the applied force helps, and pushing harder increases the normal forces, increases friction, and locks it tighter.
+* **Analogy**: A cork pushed in crooked. Hammering it harder is exactly the wrong move.
+* **When it happens**: Typically when two-point contact is established very early, before the part is engaged deeply enough for the geometry to force it straight. The practical fixes are geometric — a [chamfer](/shared/glossary/#chamfer), a longer lead-in, or a compliant wrist that keeps the part aligned — not stronger motors.
+
 
 ### Weight tying {#weight-tying}
 Reusing one matrix in two places instead of learning two. The standard case in language models: the [embedding](/shared/glossary/#embedding) table that maps a word id to a vector on the way *in* is reused, transposed, as the output layer that maps a hidden state to a score for every word on the way *out*. The justification is that both matrices answer the same question — how does word *w* relate to a point in the hidden space — so learning them separately wastes parameters and data. On a vocabulary of 50,000 words with 4,096-wide hidden states this saves about 200 million weights, and small models usually get slightly *better* [perplexity](/shared/glossary/#perplexity) with tying, because the output side gets to learn from every input occurrence as well.

@@ -1,0 +1,74 @@
+experiment,metric,value
+1_trace,clearance (mm),0.2
+1_trace,clearance ratio (clearance / peg half-width),0.02
+1_trace,start offset (mm),6.0
+1_trace,inserted,True
+1_trace,time to insert (s),2.2
+1_trace,peak contact force (N),9.9
+2_stiff,"position control (stiff, no search): inserted",3/8
+2_stiff,"position control (stiff, no search): peak force over all offsets (N)",791.5
+2_stiff,"impedance, no search: inserted",3/8
+2_stiff,"impedance, no search: peak force over all offsets (N)",14.7
+2_stiff,impedance + sweep search: inserted,8/8
+2_stiff,impedance + sweep search: peak force over all offsets (N),35.5
+3_clearance,clearance 0.10 mm: worst crooked grasp still inserted (deg),2.58
+3_clearance,  ... geometric limit 2c/t (deg),0.64
+3_clearance,clearance 0.20 mm: worst crooked grasp still inserted (deg),2.58
+3_clearance,  ... geometric limit 2c/t (deg),1.27
+3_clearance,clearance 0.50 mm: worst crooked grasp still inserted (deg),2.58
+3_clearance,  ... geometric limit 2c/t (deg),3.18
+3_clearance,clearance 1.00 mm: worst crooked grasp still inserted (deg),2.58
+3_clearance,  ... geometric limit 2c/t (deg),6.37
+3_clearance,clearance 2.00 mm: worst crooked grasp still inserted (deg),2.58
+3_clearance,  ... geometric limit 2c/t (deg),12.73
+4_stiffness,kx=200 N/m: largest offset recovered (mm),5.0
+4_stiffness,kx=200 N/m: measured lag while pressed (mm),13.46
+4_stiffness,kx=200 N/m: predicted lag mu*f_push/kx (mm),15.0
+4_stiffness,kx=400 N/m: largest offset recovered (mm),7.0
+4_stiffness,kx=400 N/m: measured lag while pressed (mm),12.92
+4_stiffness,kx=400 N/m: predicted lag mu*f_push/kx (mm),7.5
+4_stiffness,kx=800 N/m: largest offset recovered (mm),10.0
+4_stiffness,kx=800 N/m: measured lag while pressed (mm),11.74
+4_stiffness,kx=800 N/m: predicted lag mu*f_push/kx (mm),3.75
+4_stiffness,kx=1600 N/m: largest offset recovered (mm),12.0
+4_stiffness,kx=1600 N/m: measured lag while pressed (mm),8.37
+4_stiffness,kx=1600 N/m: predicted lag mu*f_push/kx (mm),1.88
+4_stiffness,kx=3200 N/m: largest offset recovered (mm),13.0
+4_stiffness,kx=3200 N/m: measured lag while pressed (mm),5.46
+4_stiffness,kx=3200 N/m: predicted lag mu*f_push/kx (mm),0.94
+4_stiffness,kx=6400 N/m: largest offset recovered (mm),13.0
+4_stiffness,kx=6400 N/m: measured lag while pressed (mm),4.12
+4_stiffness,kx=6400 N/m: predicted lag mu*f_push/kx (mm),0.47
+4_stiffness,sweep amplitude (mm),12.0
+5_search,no search: inserted,3/8
+5_search,no search: mean time when it works (s),2.2
+5_search,no search: mean peak force (N),10.1
+5_search,"sweep, always: inserted",7/8
+5_search,"sweep, always: mean time when it works (s)",2.23
+5_search,"sweep, always: mean peak force (N)",15.9
+5_search,sweep until it feels the drop: inserted,7/8
+5_search,sweep until it feels the drop: mean time when it works (s),2.22
+5_search,sweep until it feels the drop: mean peak force (N),16.3
+6_rcc,compliance centre -60 mm below the peg centre: inserted (offset sweep),4/11
+6_rcc,  ... worst tilt reached (deg),12.4
+6_rcc,  ... inserted (crooked-grasp sweep),0/6
+6_rcc,compliance centre -30 mm below the peg centre: inserted (offset sweep),5/11
+6_rcc,  ... worst tilt reached (deg),16.4
+6_rcc,  ... inserted (crooked-grasp sweep),3/6
+6_rcc,compliance centre +0 mm below the peg centre: inserted (offset sweep),5/11
+6_rcc,  ... worst tilt reached (deg),24.2
+6_rcc,  ... inserted (crooked-grasp sweep),6/6
+6_rcc,compliance centre +15 mm below the peg centre: inserted (offset sweep),3/11
+6_rcc,  ... worst tilt reached (deg),43.6
+6_rcc,  ... inserted (crooked-grasp sweep),2/6
+6_rcc,compliance centre +30 mm below the peg centre: inserted (offset sweep),7/11
+6_rcc,  ... worst tilt reached (deg),23.0
+6_rcc,  ... inserted (crooked-grasp sweep),6/6
+6_rcc,compliance centre +45 mm below the peg centre: inserted (offset sweep),11/11
+6_rcc,  ... worst tilt reached (deg),10.9
+6_rcc,  ... inserted (crooked-grasp sweep),6/6
+7_chamfer,chamfer 0.0 mm: capture range with NO search (mm),0.0
+7_chamfer,chamfer 0.5 mm: capture range with NO search (mm),1.0
+7_chamfer,chamfer 1.5 mm: capture range with NO search (mm),2.0
+7_chamfer,chamfer 3.0 mm: capture range with NO search (mm),3.5
+7_chamfer,chamfer 5.0 mm: capture range with NO search (mm),5.5

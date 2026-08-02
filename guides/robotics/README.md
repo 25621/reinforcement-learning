@@ -759,28 +759,28 @@ Manipulation is the part of robotics where everything you have learned has to wo
 ### Concepts to Learn
 
 - **The manipulation taxonomy** — different problems use different toolkits:
-  - **Pick and place** — grasp, move, release. The bread-and-butter; 90% of industrial robots do only this.
+  - **[Pick and place](/shared/glossary/#pick-and-place)** — grasp, move, release. The bread-and-butter; 90% of industrial robots do only this.
   - **Insertion / assembly** — peg-in-hole, connector mating; needs compliance and search.
   - **In-hand manipulation** — re-orient an object within the hand using fingers; the unsolved frontier (much improved by RL recently).
   - **Tool use** — using the gripper as a wedge, hook, scraper.
   - **Deformable manipulation** — cloth, wires, food; mostly unsolved, mostly learned.
 - **Grasp synthesis**:
-  - **Analytic grasping** — given object geometry, find contact points that achieve **force closure** (the grasp resists any external wrench). Classical, geometric, requires accurate model.
-  - **Data-driven grasping** — learn a grasp-quality function from images / point clouds. Dex-Net, GraspNet, AnyGrasp lineage.
+  - **[Analytic grasping](/shared/glossary/#analytic-grasping)** — given object geometry, find contact points that achieve **[force closure](/shared/glossary/#force-closure)** (the grasp resists any external wrench). Classical, geometric, requires accurate model.
+  - **[Data-driven grasping](/shared/glossary/#data-driven-grasping)** — learn a grasp-quality function from images / point clouds. [Dex-Net](/shared/glossary/#dex-net), GraspNet, [AnyGrasp](/shared/glossary/#anygrasp) lineage.
   - **Top-down parallel-jaw on tabletop** — the well-solved special case; reduce to a planar problem and pick the best 4-DoF grasp.
-  - **6-DoF grasping** — full pose; needed for cluttered bins and arbitrary objects.
+  - **[6-DoF grasping](/shared/glossary/#6-dof-grasping)** — full pose; needed for cluttered bins and arbitrary objects.
 - **Contact mechanics**:
-  - **Coulomb friction** — `‖f_t‖ ≤ μ · f_n`. The friction cone is the model that makes contact-rich planning possible.
+  - **[Coulomb friction](/shared/glossary/#coulomb-friction)** — `‖f_t‖ ≤ μ · f_n`. The [friction cone](/shared/glossary/#friction-cone) is the model that makes contact-rich planning possible.
   - **Hard vs. soft contact models** — rigid-body assumes infinite stiffness; soft contact (Hunt-Crossley, time-stepping with regularization) is what simulators actually use.
   - **Contact-implicit trajectory optimization** — let the optimizer decide when and where contact happens (CITO, LCS); avoids combinatorial mode enumeration.
-- **Force / impedance control for contact** — discussed in Phase 2; here is where it earns its keep. Stiffness in unconstrained directions, low stiffness in constrained directions ("hybrid force/position control").
-- **Compliance** — mechanical (passive springs, soft fingertips) and software (impedance). Real-world insertion almost always uses both.
+- **Force / [impedance control](/shared/glossary/#impedance-control) for contact** — discussed in Phase 2; here is where it earns its keep. Stiffness in unconstrained directions, low stiffness in constrained directions ([hybrid force-position control](/shared/glossary/#hybrid-force-position-control)).
+- **[Compliance](/shared/glossary/#compliance)** — mechanical (passive springs, soft fingertips, the [remote centre of compliance](/shared/glossary/#remote-center-of-compliance-rcc)) and software (impedance). Real-world insertion almost always uses both.
 - **Grasping with a gripper that isn't parallel-jaw**:
-  - **Suction** — fast, robust on flat smooth surfaces (warehouses); fails on porous or curved objects.
+  - **[Suction](/shared/glossary/#suction-gripper)** — fast, robust on flat smooth surfaces (warehouses); fails on porous or curved objects.
   - **Multi-finger hands** — Allegro, Shadow, custom; needed for in-hand manipulation; control complexity explodes.
-  - **Soft grippers** — silicone fingers, jamming grippers; passive compliance, hard to model.
-- **Vision-based-tactile sensing** — high-resolution local contact images; the new ingredient making contact-rich manipulation tractable.
-- **Bin picking** — clutter, partial observability, occlusion, the trifecta. Has its own benchmarks (Bin Picking, YCB, GraspNet-1B).
+  - **[Soft grippers](/shared/glossary/#soft-gripper)** — silicone fingers, jamming grippers; passive compliance, hard to model.
+- **Vision-based [tactile sensing](/shared/glossary/#tactile-sensing)** — high-resolution local contact images; the new ingredient making contact-rich manipulation tractable.
+- **[Bin picking](/shared/glossary/#bin-picking)** — clutter, partial observability, occlusion, the trifecta. Has its own benchmarks (Bin Picking, YCB, GraspNet-1B).
 - **Mobile manipulation** — adding the base's DoF to the arm's; collision avoidance across the whole envelope; "where to drive to before reaching".
 - **Bimanual manipulation** — two arms, often holding the same object; dual-arm constraint planning, asymmetric and symmetric coordination.
 - **Learning vs. classical manipulation**:

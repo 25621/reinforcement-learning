@@ -1,0 +1,101 @@
+experiment,metric,value
+1_picture,force closed: force_closure,True
+1_picture,force closed: quality,0.1308
+1_picture,force closed: antipodal_test,True
+1_picture,force closed: line vs normal (deg),0.0
+1_picture,slips: force_closure,False
+1_picture,slips: quality,0.0
+1_picture,slips: antipodal_test,False
+1_picture,slips: line vs normal (deg),54.5
+2_landscape,rect: candidates,3146
+2_landscape,rect: force-closed fraction,0.1024
+2_landscape,rect: best quality,0.1321
+2_landscape,rect: quality spread (closed only),7.31e-03 .. 1.32e-01
+2_landscape,rect: search time (s),0.519
+2_landscape,hex: candidates,3717
+2_landscape,hex: force-closed fraction,0.1652
+2_landscape,hex: best quality,0.1801
+2_landscape,hex: quality spread (closed only),6.67e-03 .. 1.80e-01
+2_landscape,hex: search time (s),0.686
+2_landscape,triangle: candidates,3315
+2_landscape,triangle: force-closed fraction,0.0
+2_landscape,triangle: best quality,0.0
+2_landscape,triangle: quality spread (closed only),none
+2_landscape,triangle: search time (s),0.457
+2_landscape,ell: candidates,3048
+2_landscape,ell: force-closed fraction,0.0581
+2_landscape,ell: best quality,0.0957
+2_landscape,ell: quality spread (closed only),7.34e-03 .. 9.57e-02
+2_landscape,ell: search time (s),0.451
+2_landscape,wedge: candidates,3292
+2_landscape,wedge: force-closed fraction,0.0498
+2_landscape,wedge: best quality,0.0614
+2_landscape,wedge: quality spread (closed only),1.33e-04 .. 6.14e-02
+2_landscape,wedge: search time (s),0.487
+3_friction,rect: closed % at mu=0,0.0
+3_friction,rect: closed % at mu=0.4,10.95
+3_friction,rect: closed % at mu=1.0,22.16
+3_friction,hex: closed % at mu=0,0.0
+3_friction,hex: closed % at mu=0.4,16.44
+3_friction,hex: closed % at mu=1.0,43.44
+3_friction,triangle: closed % at mu=0,0.0
+3_friction,triangle: closed % at mu=0.4,0.0
+3_friction,triangle: closed % at mu=1.0,17.0
+3_friction,ell: closed % at mu=0,0.0
+3_friction,ell: closed % at mu=0.4,5.31
+3_friction,ell: closed % at mu=1.0,13.02
+3_friction,wedge: closed % at mu=0,0.0
+3_friction,wedge: closed % at mu=0.4,5.05
+3_friction,wedge: closed % at mu=1.0,15.16
+3_friction,mean closed % at mu=0,0.0
+3_friction,mu 0.2 -> 0.4 multiplies closed % by,1.84
+4_tests,grasps tested,2465
+4_tests,exact: force-closed,207
+4_tests,two-finger antipodal test agrees (%),100.0
+4_tests,random-direction test agrees (%),99.757
+4_tests,random-direction disagreements,6
+4_tests,  of which called an OPEN grasp closed,6
+4_tests,  of which called a CLOSED grasp open,0
+4_tests,rarest witness direction (fraction of the sphere),5.00e-06
+4_tests,samples needed to catch it ~,199999
+4_tests,exact test time per grasp (us),119.3
+4_tests,sampled test time per grasp (us),161.7
+4_tests,sampled / exact time,1.4
+5_resistance,best grasp: quality,0.0957
+5_resistance,best grasp: holds straight up (N),3.67
+5_resistance,best grasp: worst direction (N),1.915
+5_resistance,best grasp: up / worst ratio,1.9
+5_resistance,weakest force-closed grasp: quality,0.0073
+5_resistance,weakest force-closed grasp: holds straight up (N),4.31
+5_resistance,weakest force-closed grasp: worst direction (N),0.147
+5_resistance,weakest force-closed grasp: up / worst ratio,29.3
+5_resistance,force-closed grasps on 'ell',177
+5_resistance,their worst-direction strength spans (N),1.47e-01 .. 1.91e+00
+5_resistance,orders of magnitude spanned,1.12
+5_resistance,closed grasps holding < 1 N in some direction (%),52.0
+6_lambda,rect: distinct winners over lambda,1
+6_lambda,rect: worst rank of the lambda=0.01 winner,1
+6_lambda,ell: distinct winners over lambda,2
+6_lambda,ell: worst rank of the lambda=0.01 winner,14
+6_lambda,wedge: distinct winners over lambda,5
+6_lambda,wedge: worst rank of the lambda=0.01 winner,23
+7_fingers,"mu=0.0, k=2: closed %",0.0
+7_fingers,"mu=0.0, k=3: closed %",0.0
+7_fingers,"mu=0.0, k=4: closed %",6.33
+7_fingers,"mu=0.0, k=5: closed %",21.33
+7_fingers,"mu=0.0, k=6: closed %",39.83
+7_fingers,"mu=0.1, k=2: closed %",5.67
+7_fingers,"mu=0.1, k=3: closed %",22.17
+7_fingers,"mu=0.1, k=4: closed %",43.17
+7_fingers,"mu=0.1, k=5: closed %",64.0
+7_fingers,"mu=0.1, k=6: closed %",78.83
+7_fingers,"mu=0.3, k=2: closed %",10.33
+7_fingers,"mu=0.3, k=3: closed %",36.33
+7_fingers,"mu=0.3, k=4: closed %",64.5
+7_fingers,"mu=0.3, k=5: closed %",83.0
+7_fingers,"mu=0.3, k=6: closed %",88.33
+7_fingers,"mu=0.6, k=2: closed %",20.0
+7_fingers,"mu=0.6, k=3: closed %",55.33
+7_fingers,"mu=0.6, k=4: closed %",78.17
+7_fingers,"mu=0.6, k=5: closed %",90.67
+7_fingers,"mu=0.6, k=6: closed %",97.0
