@@ -871,20 +871,20 @@ If a manipulator's challenge is the object, a mobile robot's challenge is the wo
   - **Ackermann / car-like** — minimum turning radius, non-holonomic; the cars and many delivery robots.
   - **Omnidirectional** — mecanum / omni wheels; lateral motion at the cost of dirt and friction.
   - **Tracked** — outdoor, rough terrain; slip is severe and must be modeled.
-- **Path tracking** — Pure Pursuit, Stanley, MPC-based tracking. Tune for the right speed regime.
+- **Path tracking** — [Pure Pursuit](/shared/glossary/#pure-pursuit), [Stanley](/shared/glossary/#stanley-controller), [MPC](/shared/glossary/#mpc)-based tracking. Tune for the right speed regime. The knob that decides everything is the [look-ahead distance](/shared/glossary/#look-ahead-distance), and it fails in two different ways at its two extremes.
 - **The navigation stack** — the canonical layered design:
   - **Global planner** — [A*](/shared/glossary/#a-star-search) / [Dijkstra](/shared/glossary/#dijkstras-algorithm) on a static map
-  - **Local planner** — DWA, TEB, or MPC over a short horizon, considering dynamic obstacles
+  - **Local planner** — [DWA](/shared/glossary/#dynamic-window-approach-dwa), TEB, or [MPC](/shared/glossary/#mpc) over a short horizon, considering dynamic obstacles
   - **Costmap layers** — static (the map), inflation (around obstacles), dynamic (sensed obstacles), social (around humans)
   - **Recovery behaviors** — backup, rotate, clear costmap when stuck
 - **Legged locomotion**:
   - **The state of a legged robot** — base pose (6 DoF) + joint angles + contact mode. The contact mode is discrete; the rest is continuous. A hybrid system.
-  - **The Zero-Moment Point (ZMP)** — classical biped balance criterion: keep the ground reaction's center of pressure inside the support polygon.
-  - **Centroidal dynamics** — track the linear and angular momentum of the body's center of mass; far more tractable than the full multi-body dynamics for online planning.
-  - **MPC for locomotion** — every modern quadruped uses some flavor of MPC over a simplified centroidal model.
+  - **The [Zero-Moment Point](/shared/glossary/#zero-moment-point) (ZMP)** — classical biped balance criterion: keep the ground reaction's center of pressure inside the [support polygon](/shared/glossary/#support-polygon).
+  - **[Centroidal dynamics](/shared/glossary/#centroidal-dynamics)** — track the linear and angular momentum of the body's center of mass; far more tractable than the full multi-body dynamics for online planning. Its usual concrete form is the [single-rigid-body model](/shared/glossary/#single-rigid-body-model).
+  - **[MPC](/shared/glossary/#mpc) for locomotion** — every modern quadruped uses some flavor of MPC over a simplified centroidal model, with the [gait schedule](/shared/glossary/#gait-schedule) fixed in advance so the remaining problem stays convex, and foot placement from the [Raibert heuristic](/shared/glossary/#raibert-heuristic).
   - **[Whole-Body Control (WBC)](/shared/glossary/#wbc)** — a fast inner loop solving a [QP](/shared/glossary/#quadratic-program) for joint torques that achieves task-space goals (CoM, foot placement) while respecting friction cones and joint limits.
-  - **Gaits** — trot, pace, gallop, walk; emerging from policy or planned explicitly via foot-step sequences.
-  - **Learning for locomotion** — RL in massively-parallel simulation (Isaac Gym scale: thousands of robots simultaneously) → policy → real robot. The recipe that made quadruped locomotion go from research demos to commercial reliability over 2018–2024.
+  - **[Gaits](/shared/glossary/#gait)** — [trot](/shared/glossary/#trot), pace, gallop, walk; emerging from policy or planned explicitly via foot-step sequences. Each is a [stance](/shared/glossary/#stance-phase)/[swing](/shared/glossary/#swing-phase) pattern and nothing more.
+  - **Learning for locomotion** — [RL](/shared/glossary/#reinforcement-learning) in massively-parallel simulation (Isaac Gym scale: thousands of robots simultaneously) → [policy](/shared/glossary/#policy) → real robot. The recipe that made quadruped locomotion go from research demos to commercial reliability over 2018–2024. Gradient-free methods such as [Augmented Random Search](/shared/glossary/#augmented-random-search) parallelize the same way and run on a CPU.
 - **Aerial robots / drones**:
   - **[Quadrotor](/shared/glossary/#quadrotor) dynamics** — under-actuated (4 inputs, 6 DoF); [differentially flat](/shared/glossary/#differential-flatness) in position and [yaw](/shared/glossary/#yaw), which makes trajectory generation magical.
   - **Polynomial / minimum-snap trajectories** — closed-form smooth trajectories through waypoints.
@@ -894,8 +894,8 @@ If a manipulator's challenge is the object, a mobile robot's challenge is the wo
   - Behavior / prediction / planning split
   - Safety envelopes, RSS, formal methods, ODD scoping
   - The painful realities of long-tail distribution shift
-- **Dynamic obstacles and humans** — predict their trajectories (constant velocity, social-LSTM, learned models), plan around the predictions. Underconfident predictions cause freezing; overconfident ones cause crashes.
-- **Multi-robot systems** — decentralized planning, conflict-based search, ORCA / velocity obstacles for reactive collision avoidance.
+- **Dynamic obstacles and humans** — predict their trajectories (constant velocity, social-LSTM, learned models — crowds themselves are often simulated with the [social force model](/shared/glossary/#social-force-model)), plan around the predictions, and add a [proxemic](/shared/glossary/#proxemics) margin so "did not collide" also means "was not rude". Underconfident predictions cause the [freezing robot problem](/shared/glossary/#freezing-robot-problem); overconfident ones cause crashes.
+- **Multi-robot systems** — decentralized planning, conflict-based search, ORCA / [velocity obstacles](/shared/glossary/#velocity-obstacle) for reactive collision avoidance.
 
 ### The Mobile Robot Stack, Annotated
 

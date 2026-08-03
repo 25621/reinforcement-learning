@@ -1,0 +1,49 @@
+experiment,iterations,episodes,params,final_return,track_err,survive,vx_at_0.2,vx_at_0.4,vx_at_0.6,vx_at_0.8,removed,mean_return,policy,axis,value,commanded_vx,learned_vx,learned_err,learned_survived,learned_ms,mpc_vx,mpc_err,mpc_survived,mpc_ms,controller,bump_height_m
+1_train,110,3520,600,485.3,0.066,1.0,0.226,0.365,0.509,0.686,,,,,,,,,,,,,,,,
+2_reward,,,,489.7,0.102,1.0,,,,,upright,550.4,,,,,,,,,,,,,,
+2_reward,,,,612.9,0.079,1.0,,,,,effort+smooth,611.8,,,,,,,,,,,,,,
+2_reward,,,,434.5,0.156,1.0,,,,,drift,414.5,,,,,,,,,,,,,,
+3_obs,,,,569.8,0.046,1.0,,,,,clock,,,,,,,,,,,,,,,
+3_obs,,,,452.1,0.142,1.0,,,,,lin_vel,,,,,,,,,,,,,,,
+3_obs,,,,321.5,0.216,1.0,,,,,joint_vel,,,,,,,,,,,,,,,
+3_obs,,,,343.0,0.229,1.0,,,,,command,,,,,,,,,,,,,,,
+4_dr,,,,,0.066,1.0,,,,,,,specialist,friction,0.35,,,,,,,,,,,
+4_dr,,,,,0.066,1.0,,,,,,,specialist,friction,0.5,,,,,,,,,,,
+4_dr,,,,,0.066,1.0,,,,,,,specialist,friction,0.7,,,,,,,,,,,
+4_dr,,,,,0.066,1.0,,,,,,,specialist,friction,0.9,,,,,,,,,,,
+4_dr,,,,,0.099,1.0,,,,,,,specialist,friction,1.1,,,,,,,,,,,
+4_dr,,,,,0.066,1.0,,,,,,,specialist,payload_kg,0.0,,,,,,,,,,,
+4_dr,,,,,0.07,1.0,,,,,,,specialist,payload_kg,1.0,,,,,,,,,,,
+4_dr,,,,,0.063,1.0,,,,,,,specialist,payload_kg,2.0,,,,,,,,,,,
+4_dr,,,,,0.19,1.0,,,,,,,specialist,payload_kg,3.0,,,,,,,,,,,
+4_dr,,,,,0.222,1.0,,,,,,,specialist,payload_kg,4.0,,,,,,,,,,,
+4_dr,,,,,0.125,1.0,,,,,,,randomized,friction,0.35,,,,,,,,,,,
+4_dr,,,,,0.125,1.0,,,,,,,randomized,friction,0.5,,,,,,,,,,,
+4_dr,,,,,0.125,1.0,,,,,,,randomized,friction,0.7,,,,,,,,,,,
+4_dr,,,,,0.125,1.0,,,,,,,randomized,friction,0.9,,,,,,,,,,,
+4_dr,,,,,0.1,1.0,,,,,,,randomized,friction,1.1,,,,,,,,,,,
+4_dr,,,,,0.125,1.0,,,,,,,randomized,payload_kg,0.0,,,,,,,,,,,
+4_dr,,,,,0.102,1.0,,,,,,,randomized,payload_kg,1.0,,,,,,,,,,,
+4_dr,,,,,0.118,1.0,,,,,,,randomized,payload_kg,2.0,,,,,,,,,,,
+4_dr,,,,,0.109,1.0,,,,,,,randomized,payload_kg,3.0,,,,,,,,,,,
+4_dr,,,,,0.128,1.0,,,,,,,randomized,payload_kg,4.0,,,,,,,,,,,
+5_vs_mpc,,,,,,,,,,,,,,,,0.2,0.226,0.026,1,0.0168,0.202,0.002,1,10.16,,
+5_vs_mpc,,,,,,,,,,,,,,,,0.4,0.365,0.035,1,0.0169,0.301,0.099,0,11.42,,
+5_vs_mpc,,,,,,,,,,,,,,,,0.6,0.509,0.091,1,0.0164,0.532,0.068,1,10.72,,
+5_vs_mpc,,,,,,,,,,,,,,,,0.8,0.686,0.114,1,0.0164,0.709,0.091,1,9.66,,
+5_vs_mpc,,,,,,,,,,,,,,,,1.0,0.267,0.733,1,0.0288,0.9,0.1,1,9.7,,
+6_terrain,,,,,0.066,1.0,,,,,,,,,,,,,,,,,,,specialist policy,0.0
+6_terrain,,,,,0.067,1.0,,,,,,,,,,,,,,,,,,,specialist policy,0.01
+6_terrain,,,,,0.067,1.0,,,,,,,,,,,,,,,,,,,specialist policy,0.02
+6_terrain,,,,,0.064,1.0,,,,,,,,,,,,,,,,,,,specialist policy,0.035
+6_terrain,,,,,0.07,1.0,,,,,,,,,,,,,,,,,,,specialist policy,0.05
+6_terrain,,,,,0.125,1.0,,,,,,,,,,,,,,,,,,,randomized policy,0.0
+6_terrain,,,,,0.111,1.0,,,,,,,,,,,,,,,,,,,randomized policy,0.01
+6_terrain,,,,,0.097,1.0,,,,,,,,,,,,,,,,,,,randomized policy,0.02
+6_terrain,,,,,0.105,1.0,,,,,,,,,,,,,,,,,,,randomized policy,0.035
+6_terrain,,,,,0.077,1.0,,,,,,,,,,,,,,,,,,,randomized policy,0.05
+6_terrain,,,,,0.11,0.0,,,,,,,,,,,,,,,,,,,convex MPC,0.0
+6_terrain,,,,,0.024,1.0,,,,,,,,,,,,,,,,,,,convex MPC,0.01
+6_terrain,,,,,0.032,1.0,,,,,,,,,,,,,,,,,,,convex MPC,0.02
+6_terrain,,,,,0.02,1.0,,,,,,,,,,,,,,,,,,,convex MPC,0.035
+6_terrain,,,,,0.042,1.0,,,,,,,,,,,,,,,,,,,convex MPC,0.05
