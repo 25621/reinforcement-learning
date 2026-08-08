@@ -1,0 +1,25 @@
+finding,value
+loss_vs_F_cross_entropy,2.220e-16
+autograd_worst_relative_diff,1.036e-15
+fd_W1_worst_rel,1.430e-06
+fd_b1_worst_rel,4.604e-08
+fd_W2_worst_rel,7.332e-08
+fd_b2_worst_rel,2.749e-09
+fd_one_sided_error,3.062e-09
+fd_central_error,6.483e-11
+train_final_loss_manual,0.128081756663
+train_final_loss_autograd,0.128232725689
+train_final_acc_manual,0.9762
+train_final_acc_autograd,0.9762
+lockstep_worst_grad_diff,1.110e-16
+lockstep_median_grad_diff,3.123e-17
+freerun_curve_max_diff,3.570e-01
+freerun_param_max_diff,4.866e-03
+train_seconds_manual,0.46
+train_seconds_autograd,0.29
+bug_bias_broadcast_shape,"(210, 3)"
+bug_bias_mean_vs_sum_ratio,210.0
+sum_loss_final,515.041526
+mean_loss_final,0.634624
+sum_lr_scaled_final,0.634624
+sum_vs_scaled_curve_diff,3.331e-16
