@@ -1,0 +1,22 @@
+section,quantity,value,note
+data,transitions of play,9600,78.6 MB of 32x32 frames
+model,one-step MSE,0.00033,copy-the-input baseline 0.00157 (4.7x worse)
+model,imagined-vs-real MSE after 1 steps,0.00013,
+model,imagined-vs-real MSE after 3 steps,0.00037,
+model,imagined-vs-real MSE after 5 steps,0.00060,
+model,imagined-vs-real MSE after 7 steps,0.00096,
+plan,raw pixel L2 to the goal image,0.0,final puck error 113 mm
+pixels,arm pixels (channel 0),19.1,
+pixels,puck pixels (channel 1),5.9,
+pixels,arm : puck,3.25,how much louder the arm is in a pixel loss
+pixels,share of the pixel error in the puck channel,1.0,
+plan,puck channel weighted 10x,0.0,final puck error 110 mm
+plan,puck channel only,0.0,final puck error 114 mm
+plan,distance in the model's own features,0.0,final puck error 113 mm
+optimism,pixel L2: imagined cost,0.00503,realised 0.00543  (1.08x)
+optimism,puck x10: imagined cost,0.04388,realised 0.05057  (1.15x)
+optimism,puck only: imagined cost,0.00589,realised 0.00985  (1.67x)
+optimism,latent: imagined cost,0.00015,realised 0.00025  (1.62x)
+cost,seconds per episode of pixel planning,1.11,24 x 5 x 2 model calls per replan
+cost,model parameters,528002,
+cost,total runtime (s),774.2,

@@ -1,0 +1,38 @@
+section,quantity,value,note
+source,demonstrations used,400,10649 transitions
+gap,policy on robot A (home),0.98,expert ceiling 1.000
+gap,policy on robot B (zero shot),0.0,expert ceiling 0.583
+gap,the gap,0.98,
+gap,how much of the gap the robot itself explains,0.417,ceiling A minus ceiling B
+axis,K kinematics: add-one-in cost,0.47,A alone 0.980 -> 0.510   expert ceiling 0.967
+axis,K kinematics: leave-one-out gain,0.0,B minus this axis 0.000
+axis,D dynamics: add-one-in cost,0.0,A alone 0.980 -> 0.980   expert ceiling 1.000
+axis,D dynamics: leave-one-out gain,0.0,B minus this axis 0.000
+axis,G actuator gain: add-one-in cost,0.0,A alone 0.980 -> 0.980   expert ceiling 1.000
+axis,G actuator gain: leave-one-out gain,0.0,B minus this axis 0.000
+axis,L latency: add-one-in cost,-0.01,A alone 0.980 -> 0.990   expert ceiling 0.750
+axis,L latency: leave-one-out gain,0.0,B minus this axis 0.000
+axis,S action scale: add-one-in cost,0.08,A alone 0.980 -> 0.900   expert ceiling 0.983
+axis,S action scale: leave-one-out gain,0.0,B minus this axis 0.000
+axis,O obs convention: add-one-in cost,0.98,A alone 0.980 -> 0.000   expert ceiling 1.000
+axis,O obs convention: leave-one-out gain,0.3,B minus this axis 0.300
+axis,sum of add-one-in costs,1.52,the whole gap is 0.980
+calibrate,measured tool-motion ratio A/B,1.961,the action-scale factor alone would be 1.429
+calibrate,measured joint-command ratio,1.963,
+calibrate,policy on B with calibration,0.0,was 0.000
+calibrate,on robot B without the encoder flip,0.300 -> 0.500,plain -> calibrated
+retarget,"policy on B, task-space retargeting",0.82,ceiling 0.583
+retarget,K kinematics: plain -> retargeted,0.510 -> 0.970,delta +0.460
+retarget,D dynamics: plain -> retargeted,0.980 -> 0.990,delta +0.010
+retarget,G actuator gain: plain -> retargeted,0.980 -> 1.000,delta +0.020
+retarget,L latency: plain -> retargeted,0.990 -> 0.950,delta -0.040
+retarget,S action scale: plain -> retargeted,0.900 -> 0.970,delta +0.070
+retarget,O obs convention: plain -> retargeted,0.000 -> 1.000,delta +1.000
+data,5 demos on B: from scratch,0.07,fine-tuned from A 0.030
+data,10 demos on B: from scratch,0.23,fine-tuned from A 0.220
+data,25 demos on B: from scratch,0.38,fine-tuned from A 0.680
+data,100 demos on B: from scratch,0.73,fine-tuned from A 0.870
+reverse,policy on B (home),0.92,
+reverse,policy on A (zero shot),0.0,gap 0.920 vs 0.980 the other way
+reverse,"policy on A, retargeted",0.91,
+cost,total runtime (s),515.2,
