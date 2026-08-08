@@ -1,0 +1,47 @@
+experiment,base_residual,chain,columns,cond,design,fitted,model,n_params,name,param_err_pct,parameterisation,phys_residual,qdd_noise,rank,tracking_rms_mrad,train_rms,true,val_rms
+measurement,,true qd/qdd (impossible),,213.21898971058081,,,,,,4.0886961793589356e-13,,,0.0,,,,,2.63969132999219e-15
+measurement,,encoder + plain differences,,2176.033610453854,,,,,,56.56005452579189,,,273.15123623247666,,,,,1.5025860552254142
+measurement,,encoder + Savitzky-Golay,,210.03487867267907,,,,,,3.543175953258345,,,1.4737482614271125,,,,,0.03444939844006686
+measurement,,+ low-pass both sides,,234.28123542785036,,,,,,1.1528349659814074,,,1.4737482614271125,,,,,0.025673571640710664
+excitation,,,,234.28123542785036,chirp 0.2-4 Hz,,,,,1.1528349659814074,,,,,,,,0.025673571640710664
+excitation,,,,61.28335149372342,band-limited random,,,,,3.628701639554105,,,,,,,,0.027238587396097608
+excitation,,,,118.37526924343838,step setpoints,,,,,27.698413225074514,,,,,,,,0.2812439526570469
+excitation,,,,56.93684961475077,single sine 0.5 Hz,,,,,2.06112190028916,,,,,,,,0.01999959387814676
+excitation,,,,3481.8288538499282,"shoulder only, elbow held",,,,,87.48688910075934,,,,,,,,1.4635956819194584
+excitation,,,,670.2292094365228,slow ramp (quasi-static),,,,,105.95503847624272,,,,,,,,1.9982665547095384
+structure,,,,,,,full (10 parameters),10,,,,,,,,0.07763192100559783,,0.025673571640710664
+structure,,,,,,,no rotor inertia,9,,,,,,,,0.10261106830227536,,0.032066728594827364
+structure,,,,,,,no Coulomb friction,8,,,,,,,,0.18020443586455692,,0.19634914249804997
+structure,,,,,,,no friction at all,6,,,,,,,,0.8739794697843974,,0.737816955807415
+structure,,,,,,,rigid-body only (no gravity),4,,,,,,,,3.556761263108194,,3.4881667026599086
+structure,,,,,,,gravity + friction only (no inertia),6,,,,,,,,4.968843695919924,,1.5247303904632987
+identifiability,,,10,218.78160807805068,,,,,,,10 base parameters,,,10,,,,
+identifiability,,,12,1.6581048377202352e+19,,,,,,,12 physical parameters,,,9,,,,
+base_param,,,,,,0.12972000000000006,,,th1 (shoulder inertia),,,,,,,,0.12972,
+base_param,,,,,,0.02879999999999998,,,th2 (m2*L1*lc2),,,,,,,,0.0288,
+base_param,,,,,,0.017520000000000084,,,th3 (elbow inertia),,,,,,,,0.01752,
+base_param,,,,,,0.009999999999999941,,,Ia2 (elbow rotor),,,,,,,,0.01,
+base_param,,,,,,0.43199999999999955,,,th4 (shoulder gravity),,,,,,,,0.432,
+base_param,,,,,,0.09600000000000035,,,th5 (elbow gravity),,,,,,,,0.096,
+base_param,,,,,,0.3000000000000007,,,d1,,,,,,,,0.3,
+base_param,,,,,,0.2000000000000004,,,d2,,,,,,,,0.2,
+base_param,,,,,,0.4500000000000005,,,f1,,,,,,,,0.45,
+base_param,,,,,,0.2800000000000001,,,f2,,,,,,,,0.28,
+phys_param,,,,,,0.04402902267508234,,,m1,,,,,,,,1.2,
+phys_param,,,,,,0.32956451144436705,,,lc1,,,,,,,,0.16,
+phys_param,,,,,,-0.0034018468244516875,,,I1,,,,,,,,0.012,
+phys_param,,,,,,0.09825980882012499,,,m2,,,,,,,,0.8,
+phys_param,,,,,,0.10526102867689985,,,lc2,,,,,,,,0.12,
+phys_param,,,,,,-0.004105142961156355,,,I2,,,,,,,,0.006,
+phys_param,,,,,,-0.0034018468244515765,,,Ia1,,,,,,,,0.015,
+phys_param,,,,,,0.009999999999723161,,,Ia2,,,,,,,,0.01,
+phys_param,,,,,,0.3000000000080117,,,d1,,,,,,,,0.3,
+phys_param,,,,,,0.19999999999979018,,,d2,,,,,,,,0.2,
+phys_param,,,,,,0.45000000001205154,,,f1,,,,,,,,0.45,
+phys_param,,,,,,0.2800000000075338,,,f2,,,,,,,,0.28,
+identifiability,4.348573345838208e-15,,,,,,,,,,residual comparison,2.253149047996074e-12,,,,,,
+payoff,,,,,,,CAD / URDF numbers,,,,,,,,374.09608546450113,,,
+payoff,,,,,,,identified from the slow ramp,,,,,,,,349.99690339317914,,,
+payoff,,,,,,,"identified, friction terms dropped",,,,,,,,211.9839624155373,,,
+payoff,,,,,,,"identified, full model",,,,,,,,3.806968460227153,,,
+payoff,,,,,,,the true parameters (unknowable),,,,,,,,0.5990654226999943,,,

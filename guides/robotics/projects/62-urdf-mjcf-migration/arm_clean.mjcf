@@ -1,0 +1,37 @@
+<mujoco model="arm">
+  <compiler angle="radian" meshdir="meshes"/>
+  <option timestep="0.002" integrator="implicitfast"/>
+  <asset>
+    <mesh name="link1" file="link1.obj"/>
+    <mesh name="link2" file="link2.obj"/>
+    <mesh name="link3" file="link3.obj"/>
+  </asset>
+  <worldbody>
+    <body name="base_link" pos="0 0 0">
+      <geom type="cylinder" size="0.05 0.02" density="0"/>
+      <body name="link1" pos="0 0 0.02">
+        <joint name="j_yaw" type="hinge" axis="0 0 1" range="-3.14 3.14" limited="true" damping="0.05" frictionloss="0.02" armature="0.01"/>
+        <inertial pos="0 0 0.05" mass="0.5" diaginertia="0.000566666667 0.000566666667 0.0003"/>
+        <geom type="box" size="0.03 0.03 0.05" pos="0 0 0.05" density="0" rgba="0.7 0.7 0.8 1"/>
+        <body name="link2" pos="0 0 0.1">
+          <joint name="j_shoulder" type="hinge" axis="0 1 0" range="-2 2" limited="true" damping="0.05" frictionloss="0.02" armature="0.01"/>
+          <inertial pos="0.125 0 0" mass="0.6" diaginertia="0.00012 0.003185 0.003185"/>
+          <geom type="capsule" size="0.02" fromto="0 0 0 0.25 0 0" density="0" rgba="0.7 0.7 0.8 1"/>
+          <body name="link3" pos="0.25 0 0">
+            <joint name="j_elbow" type="hinge" axis="0 1 0" range="-2.6 2.6" limited="true" damping="0.05" frictionloss="0.02" armature="0.006"/>
+            <inertial pos="0.111111111 0 0" mass="0.45" diaginertia="6.48e-05 0.00181017778 0.00181017778"/>
+            <geom type="capsule" size="0.018" fromto="0 0 0 0.2 0 0" density="0" rgba="0.7 0.7 0.8 1"/>
+            <body name="tool_link" pos="0.2 0 0">
+              <site name="tcp" size="0.008" rgba="1 0.3 0.1 1"/>
+            </body>
+          </body>
+        </body>
+      </body>
+    </body>
+  </worldbody>
+  <actuator>
+    <motor joint="j_yaw" ctrlrange="-20 20"/>
+    <motor joint="j_shoulder" ctrlrange="-20 20"/>
+    <motor joint="j_elbow" ctrlrange="-20 20"/>
+  </actuator>
+</mujoco>
