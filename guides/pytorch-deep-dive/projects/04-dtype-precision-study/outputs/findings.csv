@@ -1,0 +1,13 @@
+finding,value
+stored_torch.float64,0.001
+stored_torch.float32,0.0010000000474974513
+stored_torch.bfloat16,0.00099945068359375
+stored_torch.float16,0.0010004043579101562
+eps_fp16,0.0009765625
+fp16_lost_pct,23.37999939918518
+bf16_lost_pct,0.0
+fp16_scaled_lost_pct,0.024500000290572643
+fp16_scaled_rel_err,0.001249190652742982
+matmul_rel_error_float32,2.4160118512465647e-07
+matmul_rel_error_bfloat16,0.002877891688208756
+matmul_rel_error_float16,0.000360255073637409

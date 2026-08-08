@@ -1,0 +1,6 @@
+case,ms_per_call
+contig,0.815
+noncontig,1.653
+after_copy,0.933
+copy,5.885
+breakeven_reuses,8.170

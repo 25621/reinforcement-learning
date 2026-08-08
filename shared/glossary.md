@@ -993,6 +993,14 @@ An alignment recipe (introduced by Anthropic) where some or all human preference
 ### Constrained generation {#constrained-generation}
 A decoding-time technique that masks out any next-token choices that would break a target structure — a regex, a JSON schema, a grammar — so the model is only *allowed* to pick valid continuations. Like a Mad Libs game whose blanks accept only nouns or only numbers: the writer can be creative inside each blank but cannot break the form. Libraries such as Outlines and sglang are common implementations, and the technique is what makes reliable [function calling](/shared/glossary/#function-calling) and tool-using agents possible.
 
+### Contiguous {#contiguous}
+A [tensor](/shared/glossary/#tensor) is **contiguous** when its elements sit next to each other in memory in exactly the order you would read them: `[0,0]`, `[0,1]`, `[0,2]`, `[1,0]`, … — no gaps, no back-tracking. The word is Latin for "touching" (the same root as *contact*). Equivalently: its [strides](/shared/glossary/#stride) are the ones a freshly allocated tensor of that [shape](/shared/glossary/#shape) would get, where each dimension's stride is the product of all the dimensions to its right.
+
+* **Why it matters:** most fast kernels assume this layout, because reading consecutive memory is what CPU cache lines and GPU coalesced loads are built for. Reading the same numbers "against the grain" is typically 1.5–3× slower even though the arithmetic is identical.
+* **How it breaks:** [transpose](/shared/glossary/#transpose), [permute](/shared/glossary/#permute), and strided slicing (`x[::2]`) all produce non-contiguous [views](/shared/glossary/#view) — they rewrite strides instead of moving data, which is exactly why they are free. `.contiguous()` restores the layout by physically copying.
+* **The common misconception:** "`.view()` requires a contiguous tensor" is a safe rule of thumb, not the actual rule. `.view()` succeeds whenever the requested shape can be described by *some* strides on the same memory; contiguity guarantees that but is not required. `reshape` does the whole job for you — view if possible, copy if not.
+* **Analogy:** a bookshelf where a series' volumes stand side by side in order. You can still read the series if the volumes are scattered one shelf apart (a strided view), but every reach costs more than sliding your hand along.
+
 ### Contamination {#contamination}
 When items from an evaluation [benchmark](/shared/glossary/#benchmark) accidentally end up in a model's training data, so its score reflects memorization rather than skill — like a student who studied from a leaked copy of the exam. Also called train-test contamination, it is a leading reason a high benchmark number can mislead.
 
@@ -2512,6 +2520,23 @@ The rate of change of acceleration — the third derivative of position. Low jer
 
 ### Jitter {#jitter}
 The undesired variation in the time delay between periodic events, such as spikes or fluctuations in the execution rate of a control loop or message delivery. In robotics, a control loop commanded to run at 1 kHz expects exactly 1.0 milliseconds between steps; jitter is the deviation from this target (e.g., a step takes 1.2 ms, then 0.8 ms). High jitter can introduce instability in physical systems, causing jerky motions, tracking errors, or actuator damage. **Analogy:** Clapping your hands exactly once every second. If you clap at 1.0s, 2.0s, and 3.0s, you have zero jitter. If you clap at 1.1s, 1.8s, and 3.2s, your rhythm is erratic; that timing variability is jitter. On standard operating systems, background processes can interrupt the controller thread, causing high jitter; this is solved by running on a real-time kernel like [PREEMPT_RT](/shared/glossary/#preempt-rt).
+
+### Kahan summation {#kahan-summation}
+A way of adding up many numbers that keeps a second running variable for the digits each addition throws away, and repays them on the next step — so a low-precision total stays far more accurate than a plain loop. Also called *compensated summation*. Named after **William Kahan**, the numerical analyst who designed the IEEE 754 floating-point standard and won the 1989 Turing Award for it.
+
+The problem it fixes is **stagnation**: a floating-point total has a fixed number of significant digits, so as the total grows, the gap between representable values grows with it. Once the total is roughly `2/ε` times larger than the value being added (about 2000× in [float16](/shared/glossary/#float16)), each addition rounds straight back to the total and does nothing at all — the loop keeps running and the answer stops moving.
+
+```python
+y     = value - comp          # the value, plus the crumbs lost last time
+t     = total + y             # this rounds, discarding something
+comp  = (t - total) - y       # exactly what it discarded
+total = t
+```
+
+`(t - total)` is what *actually* got added; subtracting what you meant to add leaves the rounding loss. Crumbs accumulate in `comp` until they are collectively big enough to change the total.
+
+* **Analogy:** a shopkeeper whose till only records whole euros drops every leftover cent into a jar; when the jar reaches a euro, it goes in the till. Nothing is lost, it is just banked until it is large enough to register.
+* **In practice:** you rarely write it, because [PyTorch](/shared/glossary/#pytorch) and NumPy already avoid the worst of stagnation by summing in *blocks* (pairwise summation) rather than one element at a time — which is why `torch.sum` on a [float16](/shared/glossary/#float16) array can be thousands of times more accurate than a Python `for` loop over the same array. It matters when you write your own reduction, in a custom kernel or a running statistic.
 
 ### Kalman gain {#kalman-gain}
 The multiplier a [Kalman filter](/shared/glossary/#kf) applies to a measurement's disagreement with its own prediction, deciding how far to move the estimate. "Gain" is the engineering word for a multiplier on an input signal. `K = P Hᵀ (H P Hᵀ + R)⁻¹`, which reads: *how uncertain am I, divided by how uncertain I plus the sensor are together*. A gain near 0 means "ignore this reading, I already know better"; a gain near 1 means "believe it completely and throw my prediction away".

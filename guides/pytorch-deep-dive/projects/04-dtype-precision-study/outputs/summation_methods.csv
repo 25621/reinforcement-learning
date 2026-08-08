@@ -1,0 +1,12 @@
+method,result,rel_error
+naive loop (float16),4.0,0.996
+naive loop (bfloat16),0.5,0.9995
+naive loop (float32),991.1415405273438,0.00885845947265625
+naive loop (float64),999.9999999832651,1.6734929886297323e-11
+Kahan loop (float16),990.5,0.0095
+torch.sum (float16),1000.5,0.0005
+"torch.sum (float16, acc=float32)",1000.4044189453125,0.0004044189453125
+torch.sum (bfloat16),1000.0,0.0
+"torch.sum (bfloat16, acc=float32)",999.45068359375,0.00054931640625
+torch.sum (float32),1000.0,0.0
+"torch.sum (float32, acc=float32)",1000.0,0.0

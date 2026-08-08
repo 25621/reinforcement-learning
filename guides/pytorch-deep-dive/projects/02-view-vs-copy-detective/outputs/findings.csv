@@ -1,0 +1,10 @@
+finding,value
+contig_shares,True
+noncontig_shares,False
+same_dtype_shares,True
+from_numpy_alias,True
+as_tensor_alias,True
+tensor_copies,True
+drift_view,45.0
+drift_clone,0.0
+silent_grad_ratio,2.000

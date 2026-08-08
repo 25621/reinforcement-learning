@@ -1,0 +1,28 @@
+expression,shape,stride,offset,contiguous,elements,storage_elems,shares_storage,offset_from_ptr
+"x = arange(12).reshape(3,4)","(3, 4)","(4, 1)",0,True,12,12,True,0
+x.t(),"(4, 3)","(1, 4)",0,False,12,12,True,0
+"x.permute(1,0)","(4, 3)","(1, 4)",0,False,12,12,True,0
+"x.reshape(4,3)","(4, 3)","(3, 1)",0,True,12,12,True,0
+"x.view(2,6)","(2, 6)","(6, 1)",0,True,12,12,True,0
+x.flatten(),"(12,)","(1,)",0,True,12,12,True,0
+x[1],"(4,)","(1,)",4,True,4,12,True,4
+"x[:, 2]","(3,)","(4,)",2,False,3,12,True,2
+"x[:, 1:3]","(3, 2)","(4, 1)",1,False,6,12,True,1
+x[::2],"(2, 4)","(8, 1)",0,False,8,12,True,0
+"x[:, ::2]","(3, 2)","(4, 2)",0,False,6,12,True,0
+x.unsqueeze(0),"(1, 3, 4)","(12, 4, 1)",0,True,12,12,True,0
+x.t().contiguous(),"(4, 3)","(3, 1)",0,True,12,12,False,-52304
+x.t().reshape(12),"(12,)","(1,)",0,True,12,12,False,-52304
+x.diagonal(),"(3,)","(5,)",0,False,3,12,True,0
+x.clone(),"(3, 4)","(4, 1)",0,True,12,12,False,-52304
+"col = arange(3).reshape(3,1)","(3, 1)","(1, 1)",0,True,3,3,True,0
+"col.expand(3, 5)","(3, 5)","(1, 0)",0,False,15,3,True,0
+"col.expand(3, 1000)","(3, 1000)","(1, 0)",0,False,3000,3,True,0
+"col.repeat(1, 5)","(3, 5)","(5, 1)",0,True,15,15,False,308176
+"col.broadcast_to((4,3,5))","(4, 3, 5)","(0, 1, 0)",0,False,60,3,True,0
+"img (N,C,H,W)","(8, 3, 32, 32)","(3072, 1024, 32, 1)",0,True,24576,24576,True,0
+"img.permute(0,2,3,1)  # NHWC","(8, 32, 32, 3)","(3072, 32, 1, 1024)",0,False,24576,24576,True,0
+img.to(memory_format=channels_last),"(8, 3, 32, 32)","(3072, 1, 96, 3)",0,False,24576,24576,False,24592
+img.flatten(2),"(8, 3, 1024)","(3072, 1024, 1)",0,True,24576,24576,True,0
+"img[:, 0]","(8, 32, 32)","(3072, 32, 1)",0,False,8192,24576,True,0
+img[2:4],"(2, 3, 32, 32)","(3072, 1024, 32, 1)",6144,True,6144,24576,True,6144
