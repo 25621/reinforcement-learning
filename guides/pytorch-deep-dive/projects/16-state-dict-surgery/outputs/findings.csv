@@ -1,0 +1,13 @@
+key,value
+state_dict_entries,122
+rename_top1,1.0
+rename_max_logit_diff,0.0
+strict_false_missing,5
+strict_false_top1,0.0
+buffers_0_everything_top1,1.0
+buffers_1_drop_top1,1.0
+buffers_2_drop_top1,0.0
+buffers_3_parameters_top1,0.0
+head_surgery_max_diff,0.0
+swap_top1,0.0
+swap_max_logit_diff,9.885494232177734

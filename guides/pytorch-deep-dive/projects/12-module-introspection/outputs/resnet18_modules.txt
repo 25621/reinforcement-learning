@@ -1,0 +1,70 @@
+name                      type                  own params  shapes
+----------------------------------------------------------------------------------------------------
+<root>                    ResNet                         0  
+conv1                     Conv2d                      9408  weight(64, 3, 7, 7)
+bn1                       BatchNorm2d                  128  weight(64,), bias(64,)
+relu                      ReLU                           0  
+maxpool                   MaxPool2d                      0  
+layer1                    Sequential                     0  
+layer1.0                  BasicBlock                     0  
+layer1.0.conv1            Conv2d                     36864  weight(64, 64, 3, 3)
+layer1.0.bn1              BatchNorm2d                  128  weight(64,), bias(64,)
+layer1.0.relu             ReLU                           0  
+layer1.0.conv2            Conv2d                     36864  weight(64, 64, 3, 3)
+layer1.0.bn2              BatchNorm2d                  128  weight(64,), bias(64,)
+layer1.1                  BasicBlock                     0  
+layer1.1.conv1            Conv2d                     36864  weight(64, 64, 3, 3)
+layer1.1.bn1              BatchNorm2d                  128  weight(64,), bias(64,)
+layer1.1.relu             ReLU                           0  
+layer1.1.conv2            Conv2d                     36864  weight(64, 64, 3, 3)
+layer1.1.bn2              BatchNorm2d                  128  weight(64,), bias(64,)
+layer2                    Sequential                     0  
+layer2.0                  BasicBlock                     0  
+layer2.0.conv1            Conv2d                     73728  weight(128, 64, 3, 3)
+layer2.0.bn1              BatchNorm2d                  256  weight(128,), bias(128,)
+layer2.0.relu             ReLU                           0  
+layer2.0.conv2            Conv2d                    147456  weight(128, 128, 3, 3)
+layer2.0.bn2              BatchNorm2d                  256  weight(128,), bias(128,)
+layer2.0.downsample       Sequential                     0  
+layer2.0.downsample.0     Conv2d                      8192  weight(128, 64, 1, 1)
+layer2.0.downsample.1     BatchNorm2d                  256  weight(128,), bias(128,)
+layer2.1                  BasicBlock                     0  
+layer2.1.conv1            Conv2d                    147456  weight(128, 128, 3, 3)
+layer2.1.bn1              BatchNorm2d                  256  weight(128,), bias(128,)
+layer2.1.relu             ReLU                           0  
+layer2.1.conv2            Conv2d                    147456  weight(128, 128, 3, 3)
+layer2.1.bn2              BatchNorm2d                  256  weight(128,), bias(128,)
+layer3                    Sequential                     0  
+layer3.0                  BasicBlock                     0  
+layer3.0.conv1            Conv2d                    294912  weight(256, 128, 3, 3)
+layer3.0.bn1              BatchNorm2d                  512  weight(256,), bias(256,)
+layer3.0.relu             ReLU                           0  
+layer3.0.conv2            Conv2d                    589824  weight(256, 256, 3, 3)
+layer3.0.bn2              BatchNorm2d                  512  weight(256,), bias(256,)
+layer3.0.downsample       Sequential                     0  
+layer3.0.downsample.0     Conv2d                     32768  weight(256, 128, 1, 1)
+layer3.0.downsample.1     BatchNorm2d                  512  weight(256,), bias(256,)
+layer3.1                  BasicBlock                     0  
+layer3.1.conv1            Conv2d                    589824  weight(256, 256, 3, 3)
+layer3.1.bn1              BatchNorm2d                  512  weight(256,), bias(256,)
+layer3.1.relu             ReLU                           0  
+layer3.1.conv2            Conv2d                    589824  weight(256, 256, 3, 3)
+layer3.1.bn2              BatchNorm2d                  512  weight(256,), bias(256,)
+layer4                    Sequential                     0  
+layer4.0                  BasicBlock                     0  
+layer4.0.conv1            Conv2d                   1179648  weight(512, 256, 3, 3)
+layer4.0.bn1              BatchNorm2d                 1024  weight(512,), bias(512,)
+layer4.0.relu             ReLU                           0  
+layer4.0.conv2            Conv2d                   2359296  weight(512, 512, 3, 3)
+layer4.0.bn2              BatchNorm2d                 1024  weight(512,), bias(512,)
+layer4.0.downsample       Sequential                     0  
+layer4.0.downsample.0     Conv2d                    131072  weight(512, 256, 1, 1)
+layer4.0.downsample.1     BatchNorm2d                 1024  weight(512,), bias(512,)
+layer4.1                  BasicBlock                     0  
+layer4.1.conv1            Conv2d                   2359296  weight(512, 512, 3, 3)
+layer4.1.bn1              BatchNorm2d                 1024  weight(512,), bias(512,)
+layer4.1.relu             ReLU                           0  
+layer4.1.conv2            Conv2d                   2359296  weight(512, 512, 3, 3)
+layer4.1.bn2              BatchNorm2d                 1024  weight(512,), bias(512,)
+avgpool                   AdaptiveAvgPool2d              0  
+fc                        Linear                    513000  weight(1000, 512), bias(1000,)
