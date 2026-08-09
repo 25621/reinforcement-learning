@@ -1,0 +1,22 @@
+section,config,value,note
+default_collate,ragged input,"RuntimeError: stack expects each tensor to be equal size, but got [32] at entry 0 and [98] at entry 1",raises
+padding_waste,global max,84.51,"1531904 slots, 0.16s"
+padding_waste,batch max,72.94,"877536 slots, 0.15s"
+padding_waste,bucketed,6.27,"250848 slots, 0.14s"
+padding_cost,global max,17.044,seconds for one training epoch
+padding_cost,batch max,10.388,seconds for one training epoch
+padding_cost,bucketed,3.381,seconds for one training epoch
+mask,ignore_index @ batch max,0.5687,all-position accuracy 0.2856
+mask,no ignore_index @ batch max,0.5207,all-position accuracy 0.9062
+mask,ignore_index @ bucketed,0.5405,all-position accuracy 0.2059
+mask,no ignore_index @ bucketed,0.5379,all-position accuracy 0.9091
+last_state,right_pad_gathered_last @ batch max,0.9973,
+last_state,right_pad_last_timestep @ batch max,0.6587,
+last_state,right_pad_gathered_last @ global max,0.9973,
+last_state,right_pad_last_timestep @ global max,0.2333,
+last_state,left_pad_last_timestep,0.996,
+collate_where,"cheap collate, num_workers=0",0.097,seconds per epoch
+collate_where,"cheap collate, num_workers=4",0.609,seconds per epoch
+collate_where,"expensive collate, num_workers=0",3.337,seconds per epoch
+collate_where,"expensive collate, num_workers=4",1.749,seconds per epoch
+pad_id,padding_idx grad,0.0,abs grad sum of the pad row

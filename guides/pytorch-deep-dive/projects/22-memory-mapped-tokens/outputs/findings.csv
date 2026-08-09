@@ -1,0 +1,19 @@
+section,config,value,note
+dtype_size,uint16,2.95,2 bytes per token
+dtype_size,int32,5.9,4 bytes per token
+dtype_size,int64,11.79,8 bytes per token
+dtype_size,uint16_overflow,"[65535, 0, 4, 4]",astype wraps silently; assignment raises OverflowError
+dtype_size,torch_uint16,NotImplementedError,"""add_stub"" not implemented for 'UInt16'"
+rss,baseline,558.2,file 300.0 MB
+rss,np.fromfile,858.2,file 300.0 MB
+rss,np.memmap,558.2,file 300.0 MB
+rss,after_200_windows,573.5,file 300.0 MB
+rss,after_striding_whole_file,860.7,file 300.0 MB
+cold_warm,random_cold,567.8,2000 windows of 64 tokens
+cold_warm,random_warm,63.0,2000 windows of 64 tokens
+cold_warm,sequential_cold,0.9,128000 tokens
+leak,held_memmap_3000_batches,296.8,MB of RSS growth
+leak,reopened_each_batch,0.0,MB of RSS growth
+windows,distinct_windows,1474137,"1474202 tokens, block 64, repeat rate 0.0074 in 20000 draws"
+training,memmap,69.95,"174.9 ms/step, train 4.6528, val 4.8398, ppl 126.44"
+training,in RAM,71.63,"179.1 ms/step, train 4.6528, val 4.8398, ppl 126.44"

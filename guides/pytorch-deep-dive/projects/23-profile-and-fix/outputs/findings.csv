@@ -1,0 +1,17 @@
+section,config,value,note
+profile_slow,data,11003.3,96.8% of 8 steps
+profile_slow,backward,189.8,1.7% of 8 steps
+profile_slow,forward,159.0,1.4% of 8 steps
+profile_slow,optimizer,11.4,0.1% of 8 steps
+fixes,0. as found,60.649,"26.4 samples/s, spread 0.00s, data 57.92s model 2.64s"
+fixes,1. hoist the directory scan,20.092,"79.6 samples/s, spread 0.00s, data 18.04s model 1.97s"
+fixes,"2. from_numpy, not torch.tensor(list)",15.21,"105.2 samples/s, spread 0.00s, data 11.87s model 3.25s"
+fixes,3. vectorize the normalization,1.384,"1156.4 samples/s, spread 0.68s, data 0.56s model 0.79s"
+fixes,4. num_workers=4 + persistent,1.592,"1005.1 samples/s, spread 0.46s, data 0.62s model 0.94s"
+fixes,5. drop the chatty logging,1.454,"1100.6 samples/s, spread 0.65s, data 0.57s model 0.86s"
+control,baseline,1.672,spread over 5 repeats 0.520s
+control,set_to_none=True,1.506,"baseline 1.672s, speedup 1.110, inside the noise"
+control,pin_memory=True,1.471,"baseline 1.672s, speedup 1.137, inside the noise"
+control,num_workers=12,2.557,"baseline 1.672s, speedup 0.654, REAL"
+worker_visibility,num_workers=0,3144.8,91.1% of the named regions
+worker_visibility,num_workers=4,469.5,69.6% of the named regions

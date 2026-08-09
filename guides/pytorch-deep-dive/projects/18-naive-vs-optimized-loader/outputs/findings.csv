@@ -1,0 +1,36 @@
+section,config,samples_per_sec,loader_s,model_s,wall_s
+workers_cheap,num_workers=0,658.6,0.05,4.47,4.52
+workers_cheap,num_workers=1,671.6,0.15,4.25,4.43
+workers_cheap,num_workers=2,619.2,0.19,4.6,4.81
+workers_cheap,num_workers=4,635.7,0.2,4.46,4.68
+workers_cheap,num_workers=8,628.0,0.26,4.45,4.74
+workers_medium,num_workers=0,504.6,1.56,4.34,5.9
+workers_medium,num_workers=1,607.5,0.19,4.69,4.9
+workers_medium,num_workers=2,591.8,0.2,4.81,5.03
+workers_medium,num_workers=4,633.3,0.25,4.43,4.7
+workers_medium,num_workers=8,576.0,0.31,4.83,5.17
+workers_heavy,num_workers=0,184.9,5.69,2.27,7.96
+workers_heavy,num_workers=1,238.1,3.38,2.78,6.18
+workers_heavy,num_workers=2,469.0,0.98,2.14,3.14
+workers_heavy,num_workers=4,523.2,0.33,2.46,2.81
+workers_heavy,num_workers=8,491.7,0.63,2.35,2.99
+ceiling_cheap,loader_alone_1proc,84242.6,,,
+ceiling_cheap,serial_prediction,622.8,,,
+ceiling_cheap,overlap_ceiling_4w,627.4,,,
+ceiling_medium,loader_alone_1proc,2130.2,,,
+ceiling_medium,serial_prediction,484.7,,,
+ceiling_medium,overlap_ceiling_4w,627.4,,,
+ceiling_heavy,loader_alone_1proc,258.3,,,
+ceiling_heavy,serial_prediction,183.0,,,
+ceiling_heavy,overlap_ceiling_4w,627.4,,,
+ceiling,model_alone,627.4,,,
+persistent,persistent_workers=False,483.7,1.18,4.52,5.95
+persistent,persistent_workers=True,592.0,0.48,4.39,4.87
+prefetch,prefetch_factor=1,571.8,,,spread 136.6
+prefetch,prefetch_factor=2,525.6,,,spread 81.3
+prefetch,prefetch_factor=4,517.6,,,spread 51.9
+prefetch,prefetch_factor=8,529.6,,,spread 72.1
+pin,pin_memory=False,582.0,,,spread 110.8
+pin,pin_memory=True,555.9,,,spread 128.7
+startmethod,start_method=fork,424.0,0.31,1.0,1.36
+startmethod,start_method=spawn,76.5,5.29,0.94,7.53
