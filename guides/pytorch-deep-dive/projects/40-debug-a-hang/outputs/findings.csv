@@ -1,0 +1,31 @@
+section,name,value,note
+skip,all ranks reduce: finished?,True in 3.0s,
+skip,all ranks reduce: value on rank 0 after 3 reductions,12.0,"1+2=3, doubled twice more = 12"
+skip,rank 1 skips it and exits: rank 0 gets,RuntimeError: [/pytorch/third_party/gloo/gloo/transport/tcp/pair.cc:547] Connection closed by peer [192.168.200.105]:6575,"the peer's socket closed, so this looks like a network fault"
+skip,rank 1 skips it and keeps working: rank 0 gets,RuntimeError: [/pytorch/third_party/gloo/gloo/transport/tcp/unbound_buffer.cc:78] Timed out waiting 12000ms for recv operation to complete,
+skip,  how long rank 0 waited,42.1s,exactly the process-group timeout we set (12s); the default is 10 min
+skip,does the message name the rank that failed to show up?,no - it only says THIS rank waited,which is why sections 3 and 4 exist
+skip,does it name the collective that was mismatched?,no - just a recv that timed out,
+monitored,rank 0's error,"RuntimeError: [Rank 0]: Rank 1 failed to pass monitoredBarrier in 6000 ms
+ Original exception: 
+[/pytorch/third_party/gloo/gloo/transport/tcp/unbound_buffer.cc:78] Timed out waiting 6000ms for recv op",
+monitored,does it name the missing rank?,yes,
+stacks,"rank 0, innermost frame","File ""/home/canary/.local/lib/python3.12/site-packages/torch/distributed/distributed_c10d.py"", line 3014 in all_reduce",
+stacks,"rank 1, innermost frame","File ""/home/canary/project/tmp/claude-pytorch-phase7-projects/guides/pytorch-deep-dive/projects/40-debug-a-hang/run.py"",",
+order,correct order: all_reduce result / broadcast result,3 / 0,
+order,swapped order: finished?,yes in 22.4s,
+order,swapped order: rank 1 all_reduce result (expect 3),2,
+order,swapped order: rank 1 broadcast result (expect 0),10,
+order,swapped order: any exception?,RuntimeError: [/pytorch/third_party/gloo/gloo/transport/tcp/unbound_buffer.cc:78] Timed out waiting 20000ms for recv operation to complete,
+shape,"raw all_reduce, 16 floats vs 32 floats","no error and no result: hung, killed after 30s",a size mismatch does not raise - the ranks simply never agree
+shape,"DDP, different hidden size per rank: rank 0",RuntimeError: [/pytorch/third_party/gloo/gloo/transport/tcp/pair.cc:547] Connection closed by peer [192.168.200.105]:39054,
+shape,"DDP, different hidden size per rank: rank 1","RuntimeError: [1]: params[0] in this process with sizes [96, 32] appears not to match sizes of the same param in process 0.",
+shape,the same with TORCH_DISTRIBUTED_DEBUG=DETAIL: rank 0,RuntimeError: [/pytorch/third_party/gloo/gloo/transport/tcp/pair.cc:547] Connection closed by peer [192.168.200.105]:10135,
+shape,the same with TORCH_DISTRIBUTED_DEBUG=DETAIL: rank 1,"RuntimeError: [1]: params[0] in this process with sizes [96, 32] appears not to match sizes of the same param in process 0.",
+uneven,no fix: finished?,True after 43.9s,
+uneven,no fix: steps completed rank0 / rank1,4 / 4,
+uneven,no fix: error on rank 0,RuntimeError: [/pytorch/third_party/gloo/gloo/transport/tcp/unbound_buffer.cc:78] Timed out waiting 15000ms for recv operation to complete,
+uneven,trim to the minimum: steps rank0 / rank1,4 / 4,
+uneven,trim: are the replicas still identical?,0.000e+00,
+uneven,Join(): steps rank0 / rank1,6 / 4,
+uneven,Join: are the replicas still identical?,0.000e+00,

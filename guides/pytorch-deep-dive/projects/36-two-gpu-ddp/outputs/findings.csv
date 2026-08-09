@@ -1,0 +1,25 @@
+section,name,value,note
+equivalence,"max |w(ddp,2 ranks) - w(single, batch 64)|",2.980e-08,
+equivalence,"max |w(ddp,4 ranks) - w(single, batch 64)|",7.483e-05,
+equivalence,final loss single / ddp2 / ddp4,2.0053 / 1.9853 / 1.9599,
+sync,max |w(rank 0) - w(rank 1)| after 20 steps,0.000e+00,
+sync,max spread across 4 ranks after 20 steps,0.000e+00,
+sync,|loss(rank 0) - loss(rank 1)| at step 0,0.0099,"different data -> different loss, same gradient after all-reduce"
+scaling,1 rank(s) x 4 thread(s),    5766 img/s   speedup 1.00x [1.00 - 1.00 across 6 rounds],
+scaling,2 rank(s) x 2 thread(s),    5770 img/s   speedup 0.83x [0.70 - 1.33 across 6 rounds],
+scaling,4 rank(s) x 1 thread(s),    6293 img/s   speedup 1.11x [0.51 - 1.43 across 6 rounds],
+oversubscribe,4 ranks x 1 thread (4 threads on 12 cores),    3612 img/s,
+oversubscribe,4 ranks x 6 threads (24 threads on 12 cores),     231 img/s,
+oversubscribe,cost of oversubscription,15.66x slower,
+noise,"4 ranks x 1 thread, measured in [3] and again in [4]",6293 vs 3612 img/s,the size of the error bar on every absolute number here
+sampler,"samples seen by BOTH ranks, with sampler",376,
+sampler,"samples seen by BOTH ranks, without sampler",512,every rank replays the identical epoch
+sampler,"batches per epoch per rank, with / without",8 / 16,
+sampler,final loss with / without sampler,1.6699 / 1.8345,"no crash, no warning - just half the data per unit of work"
+sampler,epochs with an order identical to epoch 0 (no set_epoch),2 of 2,
+sampler,epochs with an order identical to epoch 0 (set_epoch),0 of 2,
+comm,parameters in the model,"64,520",
+comm,gradient bytes all-reduced per step,252.0 KB,
+comm,2 ranks WITH all-reduce (real DDP),    5598 img/s,
+comm,"2 ranks WITHOUT all-reduce (wrong, but fast)",    7142 img/s,
+comm,communication overhead (median of 6 paired rounds),35%   [-32% - 81% across rounds],

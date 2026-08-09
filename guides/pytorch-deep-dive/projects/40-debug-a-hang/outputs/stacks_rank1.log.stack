@@ -1,0 +1,9 @@
+Timeout (0:00:05)!
+Thread 0x00007d8802a99080 (most recent call first):
+  File "/home/canary/project/tmp/claude-pytorch-phase7-projects/guides/pytorch-deep-dive/projects/40-debug-a-hang/run.py", line 224 in w_faulthandler
+  File "/home/canary/project/tmp/claude-pytorch-phase7-projects/guides/pytorch-deep-dive/projects/40-debug-a-hang/../36-two-gpu-ddp/dist_lib.py", line 79 in _entry
+  File "/usr/lib/python3.12/multiprocessing/process.py", line 108 in run
+  File "/usr/lib/python3.12/multiprocessing/process.py", line 314 in _bootstrap
+  File "/usr/lib/python3.12/multiprocessing/spawn.py", line 135 in _main
+  File "/usr/lib/python3.12/multiprocessing/spawn.py", line 122 in spawn_main
+  File "<string>", line 1 in <module>

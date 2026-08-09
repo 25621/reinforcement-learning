@@ -1,0 +1,2 @@
+terminate called after throwing an instance of 'gloo::EnforceNotMet'
+  what():  [enforce fail at /pytorch/third_party/gloo/gloo/transport/tcp/pair.cc:456] op.preamble.length <= op.nbytes. 32 vs 16. Received data size doesn't match expected size. Is there a distributed collective mismatch in your code?

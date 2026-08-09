@@ -1,0 +1,4 @@
+[Gloo] Rank 0 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+[Gloo] Rank 1 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+rank 1/4 local_rank 1 node 0 done
+rank 0/4 local_rank 0 node 0 done

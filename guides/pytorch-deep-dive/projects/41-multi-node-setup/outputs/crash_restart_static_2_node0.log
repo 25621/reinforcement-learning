@@ -1,0 +1,34 @@
+[Gloo] Rank [Gloo] Rank 01 is connected to  is connected to 11 peer ranks.  peer ranks. Expected number of connected peer ranks is : Expected number of connected peer ranks is : 11
+
+rank 1: simulated failure at step 3
+W0809 18:37:28.519000 902052 torch/distributed/elastic/multiprocessing/api.py:1010] Sending process 902055 closing signal SIGTERM
+E0809 18:37:28.635000 902052 torch/distributed/elastic/multiprocessing/api.py:984] failed (exitcode: 1) local_rank: 1 (pid: 902056) of binary: /usr/bin/python3
+[/pytorch/third_party/gloo/gloo/transport/tcp/debug_logger.cc:9] ERROR failed to connect, willRetry=1, retry=1, retryLimit=3, rank=1, size=2, local=[192.168.200.105]:50866, remote=[192.168.200.105]:13738$1, error=SO_ERROR: Connection refused, remote=[192.168.200.105]:13738$1
+[/pytorch/third_party/gloo/gloo/transport/tcp/debug_logger.cc:9] ERROR failed to connect, willRetry=1, retry=2, retryLimit=3, rank=1, size=2, local=[192.168.200.105]:54962, remote=[192.168.200.105]:13738$1, error=SO_ERROR: Connection refused, remote=[192.168.200.105]:13738$1
+[/pytorch/third_party/gloo/gloo/transport/tcp/debug_logger.cc:9] ERROR failed to connect, willRetry=1, retry=3, retryLimit=3, rank=1, size=2, local=[192.168.200.105]:57522, remote=[192.168.200.105]:13738$1, error=SO_ERROR: Connection refused, remote=[192.168.200.105]:13738$1
+[/pytorch/third_party/gloo/gloo/transport/tcp/debug_logger.cc:9] ERROR failed to connect, willRetry=0, retry=4, retryLimit=3, rank=1, size=2, local=[192.168.200.105]:59058, remote=[192.168.200.105]:13738$1, error=SO_ERROR: Connection refused, remote=[192.168.200.105]:13738$1
+[E809 18:37:30.884349971 ProcessGroupGloo.cpp:66] Gloo connectFullMesh failed with [/pytorch/third_party/gloo/gloo/transport/tcp/pair.cc:152] timed out connecting: SO_ERROR: Connection refused, remote=[192.168.200.105]:13738$1
+Traceback (most recent call last):
+  File "/home/canary/project/tmp/claude-pytorch-phase7-projects/guides/pytorch-deep-dive/projects/41-multi-node-setup/train.py", line 111, in <module>
+    main()
+  File "/home/canary/project/tmp/claude-pytorch-phase7-projects/guides/pytorch-deep-dive/projects/41-multi-node-setup/train.py", line 59, in main
+    dist.init_process_group("gloo")
+  File "/home/canary/.local/lib/python3.12/site-packages/torch/distributed/c10d_logger.py", line 83, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/canary/.local/lib/python3.12/site-packages/torch/distributed/c10d_logger.py", line 97, in wrapper
+    func_return = func(*args, **kwargs)
+                  ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/canary/.local/lib/python3.12/site-packages/torch/distributed/distributed_c10d.py", line 1813, in init_process_group
+    default_pg, _ = _new_process_group_helper(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/canary/.local/lib/python3.12/site-packages/torch/distributed/distributed_c10d.py", line 2043, in _new_process_group_helper
+    backend_class = ProcessGroupGloo(
+                    ^^^^^^^^^^^^^^^^^
+RuntimeError: Gloo connectFullMesh failed with [/pytorch/third_party/gloo/gloo/transport/tcp/pair.cc:152] timed out connecting: SO_ERROR: Connection refused, remote=[192.168.200.105]:13738$1
+W0809 18:37:30.661000 902052 torch/distributed/elastic/multiprocessing/api.py:1010] Sending process 902068 closing signal SIGTERM
+E0809 18:37:30.728000 902052 torch/distributed/elastic/multiprocessing/api.py:984] failed (exitcode: 1) local_rank: 1 (pid: 902069) of binary: /usr/bin/python3
+[Gloo] Rank [Gloo] Rank 01 is connected to  is connected to 11 peer ranks.  peer ranks. Expected number of connected peer ranks is : Expected number of connected peer ranks is : 11
+
+rank 0/2 local_rank 0 node 0 done
+rank 1/2 local_rank 1 node 0 done
