@@ -1,0 +1,45 @@
+section,name,value
+1,legacy (tracing) export time (s),0.11
+1,dynamo (torch.export) export time (s),3.48
+1,legacy file (MB),0.566
+1,dynamo file (MB),0.025
+1,dynamo wrote a separate weights file,True
+1,  that sidecar file (MB),0.562
+1,legacy nodes,"15  {'Conv': 5, 'Relu': 5, 'MaxPool': 2, 'GlobalAveragePool': 1, 'Flatten': 1, 'Gemm': 1}"
+1,dynamo nodes,"15  {'Conv': 5, 'Relu': 5, 'MaxPool': 2, 'ReduceMean': 1, 'Reshape': 1, 'Gemm': 1}"
+1,opset,20
+2,legacy: max |logit difference|,3.815e-06
+2,legacy: mean |logit difference|,5.462e-07
+2,legacy: predictions identical to PyTorch,100.00%
+2,legacy: accuracy on 2000 images,0.6840
+2,dynamo: max |logit difference|,3.815e-06
+2,dynamo: mean |logit difference|,5.349e-07
+2,dynamo: predictions identical to PyTorch,100.00%
+2,dynamo: accuracy on 2000 images,0.6840
+2,PyTorch accuracy on the same images,0.6840
+2,PyTorch vs PyTorch at a different batch size,4.768e-06
+3,"traced with a positive input, run on negative",-2.00
+3,  PyTorch on the same negative input,-0.50
+3,  traced graph contains a branch node,False
+3,torch.export on the same model,refused: TorchExportError
+3,torch.cond version: positive input,+2.00
+3,torch.cond version: negative input,-0.50
+3,  its graph,ReduceMean Squeeze Greater If
+4,fixed: declared input shape,"[1, 3, 32, 32]"
+4,  fixed: batch 1,"ok, output (1, 10)"
+4,  fixed: batch 8,FAILED: Got invalid dimensions for input: x for the following indices  index: 0 Got: 8 Expected: 1
+4,dynamic: declared input shape,"['batch', 3, 32, 32]"
+4,  dynamic: batch 1,"ok, output (1, 10)"
+4,  dynamic: batch 8,"ok, output (8, 10)"
+5,batch  1: PyTorch / ORT (ms),   2.09 /    0.36   ORT is 5.72x
+5,batch  1: images per second,     479 /     2744
+5,batch  8: PyTorch / ORT (ms),   7.76 /    2.20   ORT is 3.52x
+5,batch  8: images per second,    1031 /     3632
+5,batch 32: PyTorch / ORT (ms),  28.61 /    7.32   ORT is 3.91x
+5,batch 32: images per second,    1118 /     4370
+6,PyTorch modules,"21  {'SmallCNN': 1, 'Sequential': 1, 'Conv2d': 5, 'BatchNorm2d': 5, 'ReLU': 5, 'MaxPool2d': 2, 'AdaptiveAvgPool2d': 1, 'Linear': 1}"
+6,ONNX nodes,"15  {'Conv': 5, 'Relu': 5, 'MaxPool': 2, 'GlobalAveragePool': 1, 'Flatten': 1, 'Gemm': 1}"
+6,BatchNorm layers in the module tree,5
+6,BatchNormalization nodes in the graph,0
+6,initializers (weight tensors) in the file,12
+6,|folded conv0 weight - eager conv0 weight| max,1.450e+00

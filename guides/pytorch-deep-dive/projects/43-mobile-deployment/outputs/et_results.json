@@ -1,0 +1,112 @@
+{
+  "torch": "2.13.0+cpu",
+  "export_s": 0.41459381801541895,
+  "portable_lower_s": 0.8616139910009224,
+  "xnnpack_lower_s": 5.866075746977003,
+  "int8_lower_s": 6.3833973230211996,
+  "programs": {
+    "portable": {
+      "operators": 7,
+      "delegates": 0,
+      "arena_bytes": 262144,
+      "graph_call_nodes": 60,
+      "mb": 0.5776
+    },
+    "xnnpack": {
+      "operators": 0,
+      "delegates": 1,
+      "arena_bytes": 12400,
+      "graph_call_nodes": 2,
+      "mb": 0.569768
+    },
+    "xnnpack_int8": {
+      "operators": 0,
+      "delegates": 1,
+      "arena_bytes": 12400,
+      "graph_call_nodes": 2,
+      "mb": 0.154792
+    },
+    "xnnpack_dyn": {
+      "operators": 2,
+      "delegates": 2,
+      "arena_bytes": 192064,
+      "graph_call_nodes": 6,
+      "mb": 0.570664
+    },
+    "xnnpack_dyn32": {
+      "operators": 2,
+      "delegates": 2,
+      "arena_bytes": 192064,
+      "graph_call_nodes": 6,
+      "mb": 0.570664
+    }
+  },
+  "runs": {
+    "portable": {
+      "max_abs_diff": 2.384185791015625e-06,
+      "agree_pct": 100.0,
+      "accuracy": 0.671875,
+      "n_images": 64,
+      "eval_s": 10.361076170986053
+    },
+    "xnnpack": {
+      "max_abs_diff": 2.86102294921875e-06,
+      "agree_pct": 100.0,
+      "accuracy": 0.67578125,
+      "n_images": 512,
+      "eval_s": 0.4578626879956573
+    },
+    "xnnpack_int8": {
+      "max_abs_diff": 0.7459926605224609,
+      "agree_pct": 98.828125,
+      "accuracy": 0.67578125,
+      "n_images": 512,
+      "eval_s": 0.3134594779985491
+    }
+  },
+  "latency_ms_batch1": {
+    "xnnpack": 0.34914006013423204,
+    "xnnpack_int8": 0.21703848033212125,
+    "pytorch_eager": 0.8908623998286203,
+    "portable": 154.9805197006208
+  },
+  "latency_spread": {
+    "xnnpack": [
+      0.27707395958714187,
+      0.8514095196733251
+    ],
+    "xnnpack_int8": [
+      0.177670520497486,
+      0.46547826030291617
+    ],
+    "pytorch_eager": [
+      0.7621782599017024,
+      8.315274739870802
+    ]
+  },
+  "declared_max_batch": 16,
+  "dynamic_batches": {
+    "1": "ok (1, 10)",
+    "8": "ok (8, 10)",
+    "15": "ok (15, 10)",
+    "16": "FAILED (RuntimeError)"
+  },
+  "static_batches": {
+    "1": "ok (1, 10)",
+    "8": "FAILED (RuntimeError)",
+    "15": "FAILED (RuntimeError)",
+    "16": "FAILED (RuntimeError)"
+  },
+  "declared_max_32_accepts": [
+    1,
+    8,
+    15
+  ],
+  "sizes_mb": {
+    "state_dict .pt": 0.577423,
+    "onnx (graph + sidecar)": 0.5880569999999999,
+    "pte portable": 0.5776,
+    "pte xnnpack": 0.569768,
+    "pte xnnpack_int8": 0.154792
+  }
+}

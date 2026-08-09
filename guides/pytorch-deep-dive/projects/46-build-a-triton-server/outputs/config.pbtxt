@@ -1,0 +1,26 @@
+name: "small_cnn"
+platform: "onnxruntime_onnx"
+max_batch_size: 32
+input [
+  {
+    name: "x"
+    data_type: TYPE_FP32
+    dims: [ 3, 32, 32 ]
+  }
+]
+output [
+  {
+    name: "logits"
+    data_type: TYPE_FP32
+    dims: [ 10 ]
+  }
+]
+dynamic_batching {
+  max_queue_delay_microseconds: 2000
+}
+instance_group [
+  {
+    count: 1
+    kind: KIND_CPU
+  }
+]

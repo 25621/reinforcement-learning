@@ -1,0 +1,58 @@
+section,item,metric,value
+program,portable,operators,7
+program,portable,delegates,0
+program,portable,arena_bytes,262144
+program,portable,graph_call_nodes,60
+program,portable,mb,0.5776
+program,xnnpack,operators,0
+program,xnnpack,delegates,1
+program,xnnpack,arena_bytes,12400
+program,xnnpack,graph_call_nodes,2
+program,xnnpack,mb,0.569768
+program,xnnpack_int8,operators,0
+program,xnnpack_int8,delegates,1
+program,xnnpack_int8,arena_bytes,12400
+program,xnnpack_int8,graph_call_nodes,2
+program,xnnpack_int8,mb,0.154792
+program,xnnpack_dyn,operators,2
+program,xnnpack_dyn,delegates,2
+program,xnnpack_dyn,arena_bytes,192064
+program,xnnpack_dyn,graph_call_nodes,6
+program,xnnpack_dyn,mb,0.570664
+program,xnnpack_dyn32,operators,2
+program,xnnpack_dyn32,delegates,2
+program,xnnpack_dyn32,arena_bytes,192064
+program,xnnpack_dyn32,graph_call_nodes,6
+program,xnnpack_dyn32,mb,0.570664
+run,portable,max_abs_diff,2.384185791015625e-06
+run,portable,agree_pct,100.0
+run,portable,accuracy,0.671875
+run,portable,n_images,64
+run,portable,eval_s,10.361076170986053
+run,xnnpack,max_abs_diff,2.86102294921875e-06
+run,xnnpack,agree_pct,100.0
+run,xnnpack,accuracy,0.67578125
+run,xnnpack,n_images,512
+run,xnnpack,eval_s,0.4578626879956573
+run,xnnpack_int8,max_abs_diff,0.7459926605224609
+run,xnnpack_int8,agree_pct,98.828125
+run,xnnpack_int8,accuracy,0.67578125
+run,xnnpack_int8,n_images,512
+run,xnnpack_int8,eval_s,0.3134594779985491
+latency_ms,xnnpack,batch1,0.3491
+latency_ms,xnnpack_int8,batch1,0.2170
+latency_ms,pytorch_eager,batch1,0.8909
+latency_ms,portable,batch1,154.9805
+size_mb,state_dict .pt,,0.5774
+size_mb,onnx (graph + sidecar),,0.5881
+size_mb,pte portable,,0.5776
+size_mb,pte xnnpack,,0.5698
+size_mb,pte xnnpack_int8,,0.1548
+shape,static,1,"ok (1, 10)"
+shape,dynamic,1,"ok (1, 10)"
+shape,static,8,FAILED (RuntimeError)
+shape,dynamic,8,"ok (8, 10)"
+shape,static,15,FAILED (RuntimeError)
+shape,dynamic,15,"ok (15, 10)"
+shape,static,16,FAILED (RuntimeError)
+shape,dynamic,16,FAILED (RuntimeError)

@@ -1,0 +1,7 @@
+PROMPT: The history of the printing press begins
+
+--- float32 ---
+The history of the printing press begins with the invention of the printing press by Johannes Gutenberg in the 15th century. This invention revolutionized the way people consumed and communicated information, making books and manuscripts more accessible to a wider audience.
+
+--- int8 ---
+The history of the printing press begins with the invention of the printing press in the 15th century. The first printing press was invented in 1440 in the town of Mainz in Germany. The first printing press

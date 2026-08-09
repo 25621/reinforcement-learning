@@ -1,0 +1,46 @@
+section,name,value
+1,quantization time (s),1.37
+1,nn.Linear modules in the model,211
+1,quantized modules after the call,211
+1,embedding table,"(49152, 576) = 28.3M values, left in float32"
+1,"weights inside Linear layers (lm_head excluded, it is tied)",106.2M of 134.5M (79%)
+1,lm_head shares the embedding tensor,"True - quantizing it makes an int8 copy, so both live in the file"
+2,state_dict on disk: float32,538.2 MB
+2,state_dict on disk: int8,248.1 MB   (2.17x smaller)
+2,if every weight were int8,134.5 MB (the gap is the embedding)
+2,prefill 512 tokens: fp32 / int8 (ms),626 / 479   1.31x
+2,  prefill tokens/s,818 / 1070
+2,decode 1 token: fp32 / int8 (ms),42.4 / 33.1   1.28x
+2,  decode tokens/s,23.6 / 30.2
+2,"  decode spread over 11 rounds (fp32 / int8, ms)",[42.4-114.6] / [33.1-100.4]
+2,"  prefill spread over 11 rounds (fp32 / int8, ms)",[626-1376] / [479-1031]
+3,"perplexity, float32",16.1251
+3,"perplexity, int8 dynamic",39.4917   (+144.9%)
+3,next-token top-1 agreement,52.00%  of 10220 positions
+3,greedy continuations identical,False
+4,"float32 (reference, 8 chunks)",15.636
+4,"int8 weights AND activations, per-tensor",42.018
+4,"int8 weights only, per-tensor (float32 math)",16.236
+4,"int8 weights only, per-channel (float32 math)",15.669
+4,"int8 both, per-channel weights",38.346   (prefill 1.33x)
+5,input channels at layer 11 down_proj,1536
+5,typical channel's largest value (median),1.707
+5,loudest channel,#1229 at 3611.032  = 2115.7x the typical channel
+5,channels above 5x the typical maximum,15 of 1536 (0.98%)
+5,int8 levels left for a typical channel,0.1 of 255
+5,worst outlier ratio in the whole model,model.layers.11.mlp.down_proj  3791.7x
+5,  next: model.layers.28.mlp.down_proj,621.6x
+5,  next: model.layers.2.mlp.down_proj,171.8x
+5,  next: model.layers.29.mlp.down_proj,98.0x
+5,median outlier ratio over all 211 Linear inputs,9.9x
+5,  effective int8 levels there,0.1 for a typical channel of the worst layer
+6,layer 15: max |activation| per chunk (first 8),9.3  7.7  7.7  6.4  6.8  10.4  6.3  5.7
+6,  spread over 12 chunks,min 4.8  max 10.4  ratio 2.16x
+6,  scale frozen at the narrowest chunk: worst-case clipping,"0.0123% of values, overshoot up to 2.16x"
+6,  scale frozen at the widest chunk: resolution lost,1.11 bits on the narrowest chunk (8 -> 6.89 effective)
+6,"layer 11 (the outlier layer) spread, for contrast",1.27x - pinned by its constant loud channel
+7,attention only: layers / ppl / prefill / size,120 / 16.525 (+5.7%) / 1.03x / 459 MB
+7,MLP only: layers / ppl / prefill / size,90 / 34.078 (+117.9%) / 1.20x / 299 MB
+8,state_dict on disk,163.6 MB   (3.29x smaller than float32)
+8,perplexity,38.9507   (-1.37% vs int8 Linear only)
+8,top-1 agreement with float32,52.30%
