@@ -1,0 +1,26 @@
+section,what,value,note
+traffic,unfused MB,537,5 reads + 3 writes
+traffic,fused MB,134,1 read + 1 write
+compile,default,0.0,s
+compile,-ffast-math,0.0,s
+correctness,softmax_3pass,4.05e-06,vs F.softmax
+correctness,softmax_online,4.05e-06,vs F.softmax
+correctness,3pass -ffast-math,5.96e-08,vs F.softmax
+correctness,naive_ops (python),1.19e-06,vs F.softmax
+stability,scale=1,stable=True,unstable nan/inf=0
+stability,scale=10,stable=True,unstable nan/inf=0
+stability,scale=50,stable=True,unstable nan/inf=2508
+stability,scale=88,stable=True,unstable nan/inf=10240
+stability,scale=100,stable=True,unstable nan/inf=12251
+stability,scale=1000,stable=True,unstable nan/inf=30510
+noise,F.softmax spread,7.6,%
+speed,naive_ops (5 torch ops),46.9 ms,0.35x vs F.softmax
+speed,F.softmax,16.2 ms,1.00x vs F.softmax
+speed,cpp 3-pass,28.7 ms,0.56x vs F.softmax
+speed,cpp online (2-pass),43.3 ms,0.37x vs F.softmax
+speed,cpp 3-pass -ffast-math,15.3 ms,1.06x vs F.softmax
+speed,cpp online -ffast-math,30.0 ms,0.54x vs F.softmax
+threads,1 threads,73.6 ms,1.00x
+threads,2 threads,41.7 ms,1.77x
+threads,4 threads,21.3 ms,3.46x
+threads,6 threads,14.8 ms,4.98x

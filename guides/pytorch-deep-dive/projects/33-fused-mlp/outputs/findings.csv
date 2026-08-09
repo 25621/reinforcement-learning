@@ -1,0 +1,26 @@
+section,what,value,note
+compile,default,0.0,AVX2=False
+compile,with -DCPU_CAPABILITY_AVX2,0.0,AVX2=True
+correctness,F.linear + F.gelu,1.86e-07,vs unfused
+correctness,epilogue fused (C++),1.86e-07,vs unfused
+correctness,mlp_fused (all C++),1.55e-06,vs unfused
+epilogue,h + b1 then F.gelu (2 kernels),2.95 ms,1.00x
+epilogue,"bias_gelu, scalar loop",6.34 ms,0.47x
+epilogue,"bias_gelu_, scalar, in place",6.51 ms,0.45x
+epilogue,"bias_gelu_vec, no AVX2 define",5.83 ms,0.51x
+epilogue,"bias_gelu_vec, AVX2 define",1.03 ms,2.85x
+epilogue,torch.compile,1.11 ms,2.65x
+epilogue,vec vs F.gelu,4.77e-07,max abs diff
+whole mlp,unfused (5 torch ops),14.61 ms,1.00x vs unfused
+whole mlp,F.linear + F.gelu (3 ops),14.35 ms,1.02x vs unfused
+whole mlp,epilogue fused (C++ + oneDNN),13.70 ms,1.07x vs unfused
+whole mlp,"mlp_fused (all C++, 1 call)",63.01 ms,0.23x vs unfused
+whole mlp,torch.compile,14.40 ms,1.01x vs unfused
+time split,matmul 1 (x @ W1),6.55 ms,38.6%
+time split,matmul 2 (h @ W2),6.27 ms,36.9%
+time split,bias + gelu,4.16 ms,24.5%
+time split,elementwise share,24.5,%
+memory,unfused (5 torch ops),4 temporaries,34 MB
+memory,F.linear + F.gelu (3 ops),2 temporaries,17 MB
+memory,epilogue fused (C++),1 temporaries,8 MB
+memory,mlp_fused (all C++),1 temporaries,8 MB

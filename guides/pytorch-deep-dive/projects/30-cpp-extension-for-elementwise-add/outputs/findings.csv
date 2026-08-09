@@ -1,0 +1,30 @@
+section,what,value,note
+compile,load_inline (this run),0.00,loaded from the cache built by an earlier run
+correctness,contiguous,correct,correct
+correctness,b transposed,WRONG (max err 6.670),correct
+correctness,b is every other column,WRONG (max err 6.930),correct
+correctness,b broadcast from one row,reads out of bounds (not run),correct
+error handling,float64 input,expected scalar type Float but found Double,"add_checked only handles float32, got Double and Double"
+error handling,shape mismatch,no error (!),"shape mismatch: [1024, 1024] vs [1024, 2048]"
+noise,torch.add spread,207.9,%
+speed 8M,add_naive (1 thread),6.543 ms,14.7 GB/s
+speed 8M,add_parallel (6 threads),5.987 ms,16.0 GB/s
+speed 8M,add_iter (TensorIterator),5.975 ms,16.1 GB/s
+speed 8M,torch.add,5.714 ms,16.8 GB/s
+speed 8M,arithmetic intensity,0.0833,FLOP/byte
+thread scaling,n=10000,1.01x,"0.0 MB, empty 0.003 ms"
+thread scaling,n=100000,2.12x,"0.4 MB, empty 0.004 ms"
+thread scaling,n=1000000,1.33x,"4.0 MB, empty 0.011 ms"
+thread scaling,n=8000000,1.06x,"32.0 MB, empty 0.022 ms"
+thread scaling,n=32000000,2.24x,"128.0 MB, empty 0.052 ms"
+dispatcher,torch.ops.p30.add matches,True,
+autograd,our op keeps grad_fn,False,backward FAILED: element 0 of tensors does not require grad 
+dtype,torch.float32,"ok, out dtype torch.float32",
+dtype,torch.float64,"ok, out dtype torch.float64",
+dtype,torch.int32,"ok, out dtype torch.int32",
+compile,tiny extension cold,24.60,s
+compile,"load_inline, unchanged source",24.24,s (no cache)
+compile,kernels_lib cache hit,0.0001,s
+compile,cached rebuild,0.00,s
+compile,double load exit code,-6,aborts
+compile,break-even calls,5299,calls

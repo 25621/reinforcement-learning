@@ -1,0 +1,33 @@
+W0809 16:47:54.956000 861452 torch/utils/cpp_extension.py:118] No CUDA runtime is found, using CUDA_HOME='/usr'
+terminate called after throwing an instance of 'c10::Error'
+  what():  Only a single TORCH_LIBRARY can be used to register the namespace p30; please put all of your definitions in a single TORCH_LIBRARY block.  If you were trying to specify implementations, consider using TORCH_LIBRARY_IMPL (which can be duplicated).  If you really intended to define operators for a single namespace in a distributed way, you can use TORCH_LIBRARY_FRAGMENT to explicitly indicate this.  Previous registration of TORCH_LIBRARY was registered at /tmp/pytorch-phase6-kernels/p30_add-b6cf1cbae9bc/main.cpp:87; latest registration was registered at /tmp/pytorch-phase6-kernels/p30_add-b6cf1cbae9bc/main.cpp:87
+Exception raised from registerLibrary at /pytorch/aten/src/ATen/core/dispatch/Dispatcher.cpp:215 (most recent call first):
+frame #0: c10::Error::Error(c10::SourceLocation, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) + 0x9d (0x757aed572fdd in /home/canary/.local/lib/python3.12/site-packages/torch/lib/libc10.so)
+frame #1: c10::detail::torchCheckFail(char const*, char const*, unsigned int, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) + 0xc3 (0x757aed508561 in /home/canary/.local/lib/python3.12/site-packages/torch/lib/libc10.so)
+frame #2: c10::Dispatcher::registerLibrary(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) + 0x2cc (0x757a46a475bc in /home/canary/.local/lib/python3.12/site-packages/torch/lib/libtorch_cpu.so)
+frame #3: torch::Library::Library(torch::Library::Kind, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::optional<c10::DispatchKey>, char const*, unsigned int) + 0x268 (0x757a46a887a8 in /home/canary/.local/lib/python3.12/site-packages/torch/lib/libtorch_cpu.so)
+frame #4: <unknown function> + 0xf052 (0x757b27497052 in /tmp/pytorch-phase6-kernels/p30_add-b6cf1cbae9bc/p30_add_v1.so)
+frame #5: <unknown function> + 0x571f (0x757b4c2dd71f in /lib64/ld-linux-x86-64.so.2)
+frame #6: <unknown function> + 0x5824 (0x757b4c2dd824 in /lib64/ld-linux-x86-64.so.2)
+frame #7: _dl_catch_exception + 0x132 (0x757b4c2d95b2 in /lib64/ld-linux-x86-64.so.2)
+frame #8: <unknown function> + 0xcd7c (0x757b4c2e4d7c in /lib64/ld-linux-x86-64.so.2)
+frame #9: _dl_catch_exception + 0x9c (0x757b4c2d951c in /lib64/ld-linux-x86-64.so.2)
+frame #10: <unknown function> + 0xd164 (0x757b4c2e5164 in /lib64/ld-linux-x86-64.so.2)
+frame #11: <unknown function> + 0x981a4 (0x757b4be981a4 in /lib/x86_64-linux-gnu/libc.so.6)
+frame #12: _dl_catch_exception + 0x9c (0x757b4c2d951c in /lib64/ld-linux-x86-64.so.2)
+frame #13: <unknown function> + 0x1669 (0x757b4c2d9669 in /lib64/ld-linux-x86-64.so.2)
+frame #14: <unknown function> + 0x97c83 (0x757b4be97c83 in /lib/x86_64-linux-gnu/libc.so.6)
+frame #15: dlopen + 0x6f (0x757b4be9825f in /lib/x86_64-linux-gnu/libc.so.6)
+frame #16: /usr/bin/python3() [0x6bc8cc]
+frame #17: /usr/bin/python3() [0x6a99ca]
+frame #18: /usr/bin/python3() [0x6a9152]
+frame #19: /usr/bin/python3() [0x582287]
+frame #20: _PyEval_EvalFrameDefault + 0x4c32 (0x5db532 in /usr/bin/python3)
+frame #21: PyEval_EvalCode + 0x15b (0x5d58bb in /usr/bin/python3)
+frame #22: PyRun_StringFlags + 0xd3 (0x608a33 in /usr/bin/python3)
+frame #23: PyRun_SimpleStringFlags + 0x3e (0x6b426e in /usr/bin/python3)
+frame #24: Py_RunMain + 0x481 (0x6bcf31 in /usr/bin/python3)
+frame #25: Py_BytesMain + 0x2d (0x6bc94d in /usr/bin/python3)
+frame #26: <unknown function> + 0x2a1ca (0x757b4be2a1ca in /lib/x86_64-linux-gnu/libc.so.6)
+frame #27: __libc_start_main + 0x8b (0x757b4be2a28b in /lib/x86_64-linux-gnu/libc.so.6)
+frame #28: _start + 0x25 (0x657b05 in /usr/bin/python3)
