@@ -4175,6 +4175,13 @@ A collective communication operation in distributed computing where every worker
 
 **Example:** In [FSDP](/shared/glossary/#fsdp) training, after calculating the gradients, the GPUs perform a ReduceScatter. This sums the gradients across all workers and distributes them so that each GPU ends up holding and storing only its own sharded chunk of the final summed gradients, saving GPU memory.
 
+### Reference cycle {#reference-cycle}
+A group of objects that point at each other — A holds B and B holds A — so none of their reference counts ever reaches zero, even after the rest of the program has forgotten all of them.
+
+Python normally frees an object the instant nothing points at it any more, by counting references. A cycle defeats that count, so cycles are collected by a separate, slower **cycle collector** (`gc.collect()`) that runs on its own schedule based on how many objects have been allocated — not on how many *bytes* they hold. That is why a handful of small objects each carrying a large [tensor](/shared/glossary/#tensor) can look exactly like a [memory leak](/shared/glossary/#memory-leak): the memory is reclaimable, but nothing has got round to reclaiming it.
+
+The diagnostic is one line: if `gc.collect()` reclaims the objects — it returns the count — you had a cycle; if it reclaims nothing, something is still genuinely referenced. Note that reclaimed is not the same as *returned to the operating system*: on Linux the resident memory may not fall until the allocator is asked to hand the pages back, so judge by the count `gc.collect()` returns, not by what a memory monitor shows. The fix is to break the cycle — drop the back-pointer, or hold it as a `weakref`, a reference that does not count.
+
 ### Reference model {#reference-model}
 A frozen copy of the starting model that [RLHF](/shared/glossary/#rlhf) and [DPO](/shared/glossary/#dpo) measure against (through a [KL](/shared/glossary/#kl-divergence) term) so the model being trained does not drift too far from sensible behavior — a "before" photo to compare every change against.
 

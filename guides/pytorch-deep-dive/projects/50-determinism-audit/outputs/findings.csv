@@ -1,0 +1,65 @@
+section,name,value
+"1. The baseline: the same script, twice",run A fingerprint,9ed5fbace2c9d139
+"1. The baseline: the same script, twice",run B fingerprint,0ce84dff53317343
+"1. The baseline: the same script, twice",bit-identical?,False
+"1. The baseline: the same script, twice",final loss A / B,0.296888 / 0.440448
+"1. The baseline: the same script, twice",difference in final loss,0.143560
+"1. The baseline: the same script, twice",would you notice this in a results table?,the losses differ in the 2nd decimal - about the size of a real improvement
+2. The ladder: add one control at a time,nothing,differs  d7d043ad4a4453f6 vs 345aed852318fbb7
+2. The ladder: add one control at a time,+ torch.manual_seed(0),differs  d49118bea128d50e vs d516f10139175666
+2. The ladder: add one control at a time,+ random.seed / np.random.seed,differs  88f8ab7b162138ac vs ad94edff9101891d
+2. The ladder: add one control at a time,+ DataLoader generator,differs  11a9e3b0435e0900 vs 013d284dde51584e
+2. The ladder: add one control at a time,+ sorted vocabulary,differs  e0dc394dfb4b8be8 vs 0b3ab18d46e289d2
+2. The ladder: add one control at a time,+ use_deterministic_algorithms,LOCKED   e0dc394dfb4b8be8 vs e0dc394dfb4b8be8
+3. The ablation: remove exactly one control from the locked config,remove torch.manual_seed,BREAKS reproducibility
+3. The ablation: remove exactly one control from the locked config,remove random/np seeds,BREAKS reproducibility
+3. The ablation: remove exactly one control from the locked config,remove DataLoader generator,still locked
+3. The ablation: remove exactly one control from the locked config,remove sorted vocabulary,BREAKS reproducibility
+3. The ablation: remove exactly one control from the locked config,remove use_deterministic_algorithms,still locked
+3. The ablation: remove exactly one control from the locked config,remove worker_init_fn (with 2 workers),still locked
+3. The ablation: remove exactly one control from the locked config,"remove nothing (control, 2 workers)",still locked
+3. The ablation: remove exactly one control from the locked config,controls that were load-bearing,3
+3. The ablation: remove exactly one control from the locked config,controls that made no difference here,4
+3. The ablation: remove exactly one control from the locked config,"2 workers, NO worker_init_fn, two processes: same fingerprint?",True
+3. The ablation: remove exactly one control from the locked config,torch seeds `random` in each worker,True
+3. The ablation: remove exactly one control from the locked config,torch seeds `torch` in each worker,True
+3. The ablation: remove exactly one control from the locked config,torch seeds `numpy` in each worker,True
+3. The ablation: remove exactly one control from the locked config,so the classic worker_init_fn advice is,outdated for random/numpy/torch - still needed for any OTHER global RNG
+4. Auditing torch.use_deterministic_algorithms on CPU,operations probed,15
+4. Auditing torch.use_deterministic_algorithms on CPU,blocked by the flag on this CPU build,1: put_
+4. Auditing torch.use_deterministic_algorithms on CPU,what that means,"on CPU the flag is close to a no-op; it is a GPU tool, where atomics reorder"
+5. Thread count is part of your seed,1 thread(s): sum fingerprint / value,46ba8a3c1a74751f / -1431.026611328125
+5. Thread count is part of your seed,2 thread(s): sum fingerprint / value,db5522d0d4a7cd61 / -1431.0263671875
+5. Thread count is part of your seed,4 thread(s): sum fingerprint / value,d14fd4f1e94769b3 / -1431.026123046875
+5. Thread count is part of your seed,6 thread(s): sum fingerprint / value,d14fd4f1e94769b3 / -1431.026123046875
+5. Thread count is part of your seed,distinct sum results across 4 thread counts,3
+5. Thread count is part of your seed,distinct matmul results across 4 thread counts,1
+5. Thread count is part of your seed,distinct sum results over 20 repeats at a FIXED thread count,1
+5. Thread count is part of your seed,so CPU non-determinism is,"a configuration difference, not randomness"
+5. Thread count is part of your seed,"full training run, 1 thread vs 4 threads: same fingerprint?",False
+5. Thread count is part of your seed,"final loss, 1 thread / 4 threads",0.21361661 / 0.21361661
+6. PYTHONHASHSEED: randomness that is not in your code,"vocab built from a set, PYTHONHASHSEED=random: two runs match?",False
+6. PYTHONHASHSEED: randomness that is not in your code,"vocab built from a set, PYTHONHASHSEED=0: two runs match?",True
+6. PYTHONHASHSEED: randomness that is not in your code,"vocab built from sorted(set), PYTHONHASHSEED=random: two runs match?",True
+6. PYTHONHASHSEED: randomness that is not in your code,preferred fix,sort the set; do not rely on an env var callers may not set
+"7. Amplification: one changed bit, 48 steps later",the only difference between these two runs,torch.set_num_threads(1) vs (4)
+"7. Amplification: one changed bit, 48 steps later",first step at which the losses differ at all,5
+"7. Amplification: one changed bit, 48 steps later",|difference| at that step,1.192e-07
+"7. Amplification: one changed bit, 48 steps later",largest |difference| over the run,1.192e-07 (at step 5)
+"7. Amplification: one changed bit, 48 steps later",|difference| at the last step,0.000e+00
+"7. Amplification: one changed bit, 48 steps later",final losses printed to 8 decimals,0.21361661 vs 0.21361661
+"7. Amplification: one changed bit, 48 steps later","sum of all parameters, 1 thread",210.65407149924613
+"7. Amplification: one changed bit, 48 steps later","sum of all parameters, 4 threads",210.65406657983476
+"7. Amplification: one changed bit, 48 steps later",parameter fingerprints match?,False
+"7. Amplification: one changed bit, 48 steps later",verdict,the loss re-converges to 8 decimals while the weights stay different - 'same answer' is a weaker test than 'same bits'
+8. What determinism costs,"2048x2048 matmul, 1 thread",157.8 ms (2.58x)
+8. What determinism costs,"2048x2048 matmul, 4 threads",77.9 ms (1.27x)
+8. What determinism costs,"2048x2048 matmul, 6 threads",61.2 ms (1.00x)
+8. What determinism costs,"index_add_, deterministic flag off / on",75.3 us / 76.7 us
+8. What determinism costs,"the real cost on CPU is the thread count, not the flag",True
+8. What determinism costs,caveat,the two index_add_ numbers are within this shared machine's run-to-run spread; treat them as 'no measurable difference'
+"9. The recipe, and what it does not buy you","full recipe, two fresh processes: bit-identical?",True
+"9. The recipe, and what it does not buy you",fingerprint,e0dc394dfb4b8be8
+"9. The recipe, and what it does not buy you",full recipe with 2 DataLoader workers: bit-identical?,True
+"9. The recipe, and what it does not buy you","same recipe, 6 epochs instead of 3: same fingerprint?",False
+"9. The recipe, and what it does not buy you",bit-exact is a promise about,"this machine, this thread count, this torch build"

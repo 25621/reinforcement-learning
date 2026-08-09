@@ -1,0 +1,52 @@
+section,name,value
+"1-3. Five hangs, one triage procedure",dataloader_fork: state / CPU cores / threads,S / 0.0 / 4
+"1-3. Five hangs, one triage procedure",dataloader_fork: children / sockets / wchan,2 / 0 / poll_schedule_timeout.constprop.0
+"1-3. Five hangs, one triage procedure",dataloader_fork: making progress?,False
+"1-3. Five hangs, one triage procedure",dataloader_fork: verdict,"BLOCKED, and so is every child - a parent waiting on children that are themselves waiting."
+"1-3. Five hangs, one triage procedure",dataloader_fork: innermost user frame,"File ""victim.py"", line 70 in holder"
+"1-3. Five hangs, one triage procedure",ddp_straggler: state / CPU cores / threads,S / 0.0 / 16
+"1-3. Five hangs, one triage procedure",ddp_straggler: children / sockets / wchan,0 / 6 / futex_do_wait
+"1-3. Five hangs, one triage procedure",ddp_straggler: making progress?,False
+"1-3. Five hangs, one triage procedure",ddp_straggler: verdict,BLOCKED with 6 sockets open - suspect a collective the other ranks never reached.
+"1-3. Five hangs, one triage procedure",ddp_straggler: innermost user frame,"File ""victim.py"", line 111 in ddp_straggler"
+"1-3. Five hangs, one triage procedure",nan_loop: state / CPU cores / threads,R / 1.961 / 14
+"1-3. Five hangs, one triage procedure",nan_loop: children / sockets / wchan,0 / 0 / 0
+"1-3. Five hangs, one triage procedure",nan_loop: making progress?,False
+"1-3. Five hangs, one triage procedure",nan_loop: verdict,NOT BLOCKED - burning 2.0 cores. Either an infinite loop or genuine slowness; sample the stack twice and compa
+"1-3. Five hangs, one triage procedure",nan_loop: innermost user frame,"File ""victim.py"", line 136 in nan_loop"
+"1-3. Five hangs, one triage procedure",oversubscribed: state / CPU cores / threads,R / 2.392 / 34
+"1-3. Five hangs, one triage procedure",oversubscribed: children / sockets / wchan,0 / 0 / 0
+"1-3. Five hangs, one triage procedure",oversubscribed: making progress?,True
+"1-3. Five hangs, one triage procedure",oversubscribed: verdict,NOT BLOCKED - burning 2.4 cores. Either an infinite loop or genuine slowness; sample the stack twice and compa
+"1-3. Five hangs, one triage procedure",oversubscribed: innermost user frame,"File ""victim.py"", line 159 in oversubscribed"
+"1-3. Five hangs, one triage procedure",lock_order: state / CPU cores / threads,S / 0.0 / 3
+"1-3. Five hangs, one triage procedure",lock_order: children / sockets / wchan,0 / 0 / futex_do_wait
+"1-3. Five hangs, one triage procedure",lock_order: making progress?,False
+"1-3. Five hangs, one triage procedure",lock_order: verdict,BLOCKED at 0 cores - waiting on a lock or a pipe.
+"1-3. Five hangs, one triage procedure",lock_order: innermost user frame,"File ""victim.py"", line 180 in worker"
+4. What each tool could tell us,gdb -p <pid> -batch -ex 'thread apply all bt',BLOCKED by ptrace_scope
+4. What each tool could tell us,the message,"BLOCKED: Could not attach to process. If your uid matches the uid of the target process, check the setting of /proc/sys/kernel/yama/ptrace_scope, or t"
+4. What each tool could tell us,/proc/sys/kernel/yama/ptrace_scope,1
+4. What each tool could tell us,what that setting means,"1 = a process may only be traced by its own parent, so gdb/py-spy from a shell cannot attach"
+4. What each tool could tell us,py-spy installed here,False
+4. What each tool could tell us,what still works without ptrace,/proc (always) and faulthandler-on-signal (if registered at startup)
+5. Which signal identified which hang,dataloader_fork,CPU fraction: no  | blocked children: yes | open sockets: no  | faulthandler stack: yes
+5. Which signal identified which hang,ddp_straggler,CPU fraction: no  | blocked children: no  | open sockets: yes | faulthandler stack: yes
+5. Which signal identified which hang,nan_loop,CPU fraction: yes | blocked children: no  | open sockets: no  | faulthandler stack: yes
+5. Which signal identified which hang,oversubscribed,CPU fraction: yes | blocked children: no  | open sockets: no  | faulthandler stack: yes
+5. Which signal identified which hang,lock_order,CPU fraction: no  | blocked children: no  | open sockets: no  | faulthandler stack: yes
+5. Which signal identified which hang,signal that fired for every case,faulthandler stack
+5. Which signal identified which hang,signal that fired for exactly one,CPU fraction (and it is the one that changes what you do next)
+6. The registration that makes all of this possible,asking for a stack when no handler was registered,(no stack file - was faulthandler registered?)
+6. The registration that makes all of this possible,cost of registering at startup,"2 lines, no measurable runtime cost"
+6. The registration that makes all of this possible,cost of NOT registering,the information does not exist and cannot be recovered from a running process here
+7. What a process-group timeout buys you,"rank 1 alive but absent, timeout=5s: rank 0 reported after",7.1 s
+7. What a process-group timeout buys you,"rank 1 alive but absent, timeout=5s: message",TIMEOUT after 5.0s: RuntimeError: [/pytorch/third_party/gloo/gloo/transport/tcp/unbound_buffer.cc:78] Timed out waiting 5000ms for
+7. What a process-group timeout buys you,"rank 1 alive but absent, timeout=15s: rank 0 reported after",17.3 s
+7. What a process-group timeout buys you,"rank 1 alive but absent, timeout=15s: message",TIMEOUT after 15.0s: RuntimeError: [/pytorch/third_party/gloo/gloo/transport/tcp/unbound_buffer.cc:78] Timed out waiting 15000ms f
+7. What a process-group timeout buys you,"rank 1 exited, timeout=15s: rank 0 reported after",2.5 s
+7. What a process-group timeout buys you,"rank 1 exited, timeout=15s: message",TIMEOUT after 0.2s: RuntimeError: [/pytorch/third_party/gloo/gloo/transport/tcp/pair.cc:547] Connection closed by peer [192.168.20
+7. What a process-group timeout buys you,a rank that EXITS is noticed in,2.5 s regardless of the timeout
+7. What a process-group timeout buys you,a rank that is ALIVE and absent is noticed in,exactly the timeout you set
+7. What a process-group timeout buys you,PyTorch's default collective timeout,"30 minutes for gloo, 10 for NCCL"
+7. What a process-group timeout buys you,why you should lower it in development,a hang with no deadline produces no information at all

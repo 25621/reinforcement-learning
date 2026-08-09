@@ -1,0 +1,51 @@
+section,name,value
+1. The suspect: resident memory that only goes up,model,"6 x Linear(1024,1024) + ReLU, batch 256"
+1. The suspect: resident memory that only goes up,one activation tensor,1.05 MB
+1. The suspect: resident memory that only goes up,activations per forward pass,12 (12.6 MB)
+1. The suspect: resident memory that only goes up,steps,60
+1. The suspect: resident memory that only goes up,clean loop: RSS growth over 60 steps,63.7 MB
+1. The suspect: resident memory that only goes up,clean loop: RSS slope (2nd half),0.32 MB/step
+1. The suspect: resident memory that only goes up,suspect loop: RSS growth over 60 steps,786.1 MB
+1. The suspect: resident memory that only goes up,suspect loop: RSS slope (2nd half),12.58 MB/step
+1. The suspect: resident memory that only goes up,machine RAM,32.7 GB
+1. The suspect: resident memory that only goes up,steps until the suspect loop eats all of it,"2,599"
+1. The suspect: resident memory that only goes up,"at 3 steps/second, that is",14 minutes
+"3-4. The census and the graph walk, on the same loop",RSS at the end,786.1 MB
+"3-4. The census and the graph walk, on the same loop",tensor census at the end,26.24 MB in 73 new storages
+"3-4. The census and the graph walk, on the same loop",census slope (2nd half),0.000 MB/step
+"3-4. The census and the graph walk, on the same loop",autograd nodes reachable from the kept loss,32
+"3-4. The census and the graph walk, on the same loop",the disagreement,"RSS says 12.58 MB/step, the census says 0.000 MB/step"
+"3-4. The census and the graph walk, on the same loop",graph nodes BEFORE backward,32
+"3-4. The census and the graph walk, on the same loop",tensors saved on those nodes BEFORE backward,28.31 MB
+"3-4. The census and the graph walk, on the same loop",graph nodes AFTER backward,32
+"3-4. The census and the graph walk, on the same loop",tensors saved on those nodes AFTER backward,0.00 MB
+"3-4. The census and the graph walk, on the same loop",so keeping a loss after backward keeps,32 node objects and 0 activations
+5-6. RSS was not measuring your tensors,suspect: RSS after the loop,786.1 MB
+5-6. RSS was not measuring your tensors,suspect: after clearing the list,786.1 MB
+5-6. RSS was not measuring your tensors,suspect: after gc.collect(),786.1 MB
+5-6. RSS was not measuring your tensors,suspect: after malloc_trim(0),27.1 MB
+5-6. RSS was not measuring your tensors,memory the process was holding but not using,758.9 MB
+5-6. RSS was not measuring your tensors,default glibc: RSS growth,1277.7 MB (21.29 MB/step)
+5-6. RSS was not measuring your tensors,MALLOC_MMAP_THRESHOLD_=65536: RSS growth,41.0 MB (0.68 MB/step)
+5-6. RSS was not measuring your tensors,MALLOC_TRIM_THRESHOLD_=131072: RSS growth,40.1 MB (0.67 MB/step)
+5-6. RSS was not measuring your tensors,"ratio, default vs mmap-threshold",31.2x
+"7. Six loops, three instruments",clean,RSS   0.32 MB/step | census  -0.00 MB/step | + 0.0 storages/step | graph nodes    0
+"7. Six loops, three instruments",append loss,RSS  12.58 MB/step | census   0.00 MB/step | + 1.0 storages/step | graph nodes   32
+"7. Six loops, three instruments",append output,RSS  16.78 MB/step | census   1.05 MB/step | + 1.0 storages/step | graph nodes   30
+"7. Six loops, three instruments",feature hook,RSS   4.20 MB/step | census   1.05 MB/step | + 1.0 storages/step | graph nodes    0
+"7. Six loops, three instruments",running sum,RSS  12.59 MB/step | census   0.00 MB/step | + 0.0 storages/step | graph nodes 1272
+"7. Six loops, three instruments",step record,RSS   1.10 MB/step | census   1.05 MB/step | + 1.0 storages/step | graph nodes    0
+8. The leak refcounting cannot free,tensors created and dropped,80 x 1.05 MB = 83.9 MB
+8. The leak refcounting cannot free,NO cycle: RSS growth while the loop runs,2.1 MB
+8. The leak refcounting cannot free,WITH a cycle: RSS growth while the loop runs,83.9 MB
+8. The leak refcounting cannot free,WITH a cycle: RSS after one gc.collect(),83.9 MB
+8. The leak refcounting cannot free,objects that gc.collect() freed,160
+8. The leak refcounting cannot free,WITH a cycle: RSS after gc.collect() AND malloc_trim(0),0.0 MB
+8. The leak refcounting cannot free,read those three together,gc DID free the objects (160 of them); RSS only reflects it once glibc is asked to hand the pages back - the same two-layer story as section 5
+8. The leak refcounting cannot free,why refcounting could not free them,"a.next is b and b.prev is a, so neither count ever reaches 0"
+8. The leak refcounting cannot free,"WITH a cycle, calling gc.collect() every step",2.1 MB
+"9. The fixes, verified",append loss (the bug),"12.58 MB/step RSS, 0.00 MB/step census"
+"9. The fixes, verified",append loss.item(),"0.32 MB/step RSS, -0.00 MB/step census"
+"9. The fixes, verified",append output,"16.78 MB/step RSS, 1.05 MB/step census"
+"9. The fixes, verified",feature hook left registered,"1.05 MB/step census (= 1.05 MB per step, one activation)"
+"9. The fixes, verified",that is exactly one saved activation per step,True
