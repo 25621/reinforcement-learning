@@ -1,0 +1,35 @@
+section,name,value,note
+exact,k=2 max abs diff,7.451e-09,largest gradient 0.044
+exact,k=2 relative,1.705e-07,
+exact,k=2 cosine similarity,1.0000000000,
+exact,k=4 max abs diff,7.451e-09,largest gradient 0.044
+exact,k=4 relative,1.705e-07,
+exact,k=4 cosine similarity,1.0000000000,
+exact,k=8 max abs diff,5.588e-09,largest gradient 0.044
+exact,k=8 relative,1.279e-07,
+exact,k=8 cosine similarity,1.0000000000,
+exact,bit-identical?,no,float addition is not associative — order changed
+nodivide,k=2 norm ratio vs big batch,2.0000,exactly k = 2
+nodivide,k=4 norm ratio vs big batch,4.0000,exactly k = 4
+nodivide,k=8 norm ratio vs big batch,8.0000,exactly k = 8
+uneven,"splits [20, 8, 4], mean of means",2.148e-01,relative error vs the true mean
+uneven,weighted by sample count,1.705e-07,back to float noise
+norm,BatchNorm1d relative diff,3.513e-01,batch statistics change with the micro-batch
+norm,LayerNorm relative diff,1.806e-07,per-sample statistics — unaffected
+dropout,"same seed, relative diff",1.707e-07,the RNG is consumed in a different pattern
+dropout,"eval mode, relative diff",1.627e-07,no randomness left
+dropout,one 32x128 mask == four 8x128 masks,True,CPU draws sequentially — CUDA gives each launch its own offset
+cost,k=1 peak activations,34.67 MB,micro-batch 32
+cost,k=1 step time (ms),39.7,spread over rounds 3.3
+cost,k=2 peak activations,17.34 MB,micro-batch 16
+cost,k=2 step time (ms),38.3,spread over rounds 12.2
+cost,k=4 peak activations,8.67 MB,micro-batch 8
+cost,k=4 step time (ms),42.3,spread over rounds 12.6
+cost,k=8 peak activations,4.33 MB,micro-batch 4
+cost,k=8 step time (ms),49.1,spread over rounds 18.1
+cost,memory saving k=8 vs k=1,8.00x,
+cost,time cost k=8 vs k=1,1.24x,
+train,k=1 final loss,0.72183,
+train,k=4 final loss,0.72183,
+train,max weight difference after 100 steps,4.237e-05,weights are ~0.074 on average
+train,final loss difference,5.960e-08,

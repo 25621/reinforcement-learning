@@ -1,0 +1,37 @@
+section,name,value,note
+warmup,step 0 of the process (ms),520.5,
+warmup,step 1 of the process (ms),214.1,
+warmup,steady state at this shape (ms),218.3,median of steps 4-9
+warmup,step 0 / steady,2.38x,process start-up: varies with what the OS has cached
+warmup,first step at batch 12,1.16x,167.4 ms vs 144.2 ms once warm
+warmup,first step at batch 10,1.02x,129.0 ms vs 126.5 ms once warm
+warmup,first step at batch 6,1.03x,82.9 ms vs 80.2 ms once warm
+warmup,median new-shape penalty,1.03x,why every benchmark needs warm-up iterations
+split,forward share of step,30.0 %,121.2 ms/step
+split,backward share of step,57.2 %,231.2 ms/step
+split,optimizer share of step,12.8 %,51.8 ms/step
+split,backward / forward,1.91x,theory says ~2x
+top-ops,aten::mm,33.5 %,"35 calls/step, 133.62 ms/step"
+top-ops,aten::addmm,15.5 %,"16 calls/step, 61.93 ms/step"
+top-ops,aten::_scaled_dot_product_flash_attention_for_cpu_backward,5.1 %,"4 calls/step, 20.35 ms/step"
+top-ops,aten::copy_,4.7 %,"281 calls/step, 18.69 ms/step"
+top-ops,aten::sum,4.1 %,"17 calls/step, 16.21 ms/step"
+top-ops,top-3 share of self CPU,54.1 %,
+top-ops,distinct operators,94,
+top-ops,total operator calls / step,3362,
+self-vs-total,autograd::engine::evaluate_function: AddmmBackward0,11.4 / 758.8 ms,self / total — the rest is its children
+by-shape,"aten::mm [[2048, 256], [256, 1024]]",22.01 ms/step,4 calls/step
+by-shape,"aten::mm [[1024, 2048], [2048, 256]]",21.35 ms/step,4 calls/step
+by-shape,"aten::addmm [[256], [2048, 1024], [1024, 256], [], []]",20.76 ms/step,4 calls/step
+by-shape,"aten::mm [[2048, 1024], [1024, 256]]",20.62 ms/step,4 calls/step
+memory,aten::addmm,72.00 MB,allocated / step
+memory,aten::mm,70.56 MB,allocated / step
+memory,aten::empty,61.79 MB,allocated / step
+memory,aten::gelu,32.00 MB,allocated / step
+memory,total allocated / step,346.82 MB,
+overhead,step without profiler (ms),199.4,spread 116.5
+overhead,step with profiler (ms),459.5,
+overhead,profiler overhead,2.30x,
+overhead,sum of self CPU (ms/step),399.0,
+overhead,sum of self CPU / wall clock,0.87,CPU work is synchronous: these agree
+trace,trace_step.json.gz,76.7 KB,1.29 MB before gzip

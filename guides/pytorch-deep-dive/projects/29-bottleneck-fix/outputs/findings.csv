@@ -1,0 +1,26 @@
+section,name,value,note
+control,eager (ms),12.06,spread over 3 rounds 1.98
+control,noise floor,16.4 %,of the eager time
+clean,"compiled, no problems (ms)",4.28,spread 0.29
+clean,speedup,2.82x,this is what is at stake
+clean,operations captured,40,"1 graph, compiled in 8 s"
+problem,'print' compiled (ms),11.70,1.03x vs eager | 0 ops captured | 1 break
+reason,print,Failed to trace ...,Failed to trace builtin operator
+problem,'branch' compiled (ms),12.06,1.00x vs eager | 0 ops captured | 1 break
+reason,branch,Unsupported Tens...,Unsupported Tensor.item() call with capture_scalar_outputs=False
+problem,'numpy' compiled (ms),12.91,0.93x vs eager | 0 ops captured | 1 break
+reason,numpy,Data dependent o...,Data dependent operator
+problem,'log' compiled (ms),11.29,1.07x vs eager | 0 ops captured | 1 break
+reason,log,Unsupported Tens...,Unsupported Tensor.item() call with capture_scalar_outputs=False
+fix,all four,13.31 ms,0.91x vs eager | 0 ops captured | 4 problems left
+fix,- print,14.25 ms,0.85x vs eager | 0 ops captured | 3 problems left
+fix,- numpy,11.08 ms,1.09x vs eager | 0 ops captured | 2 problems left
+fix,- log,10.82 ms,1.11x vs eager | 0 ops captured | 1 problems left
+fix,- branch (clean),4.28 ms,2.82x vs eager | 40 ops captured | 0 problems left
+rewrite,torch.where instead of if/.item() (ms),4.49,2.68x vs eager
+rewrite,operations captured,45,0 breaks
+rewrite,same result as the branch version,True,
+recompile,recompile_limit,8,compiles allowed per function before Dynamo gives up
+recompile,calls that compiled,7 of 12,11.3 s in total
+recompile,call 1 / call 12 (s),1.11 / 0.044,"after the limit, Dynamo stops trying and runs eager"
+recompile,unique graphs,8,one per trip count — the loop is unrolled into the graph
