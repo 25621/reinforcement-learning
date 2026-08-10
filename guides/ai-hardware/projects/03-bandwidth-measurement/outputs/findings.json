@@ -1,0 +1,22 @@
+{
+  "device": "NVIDIA GeForce GTX 1070 Ti",
+  "l2_bytes": 2097152,
+  "spec_peak_gbs": 256.256,
+  "copy_scalar_gbs": 200.3488894196322,
+  "copy_float4_gbs": 205.4103290760702,
+  "float4_speedup": 1.0252631280917,
+  "vs_cudamemcpy": 1.0134015597338741,
+  "best_pct_peak": 86.82151320840256,
+  "blocksize_spread": 1.007887737110895,
+  "empty_launch_us": 1.106816,
+  "l2_gbs": 683.9133837725019,
+  "dram_gbs": 203.90478964841324,
+  "l2_over_dram": 3.3540819955811374,
+  "pcie": {
+    "H2D_pageable": 10.419513061564356,
+    "H2D_pinned": 12.69485523344855,
+    "D2H_pageable": 8.26875141465071,
+    "D2H_pinned": 12.792067906805986
+  },
+  "dram_over_pcie": 16.062001960539302
+}

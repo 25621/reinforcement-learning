@@ -1,0 +1,5 @@
+# compiled benchmark binaries - rebuilt by each project's run.py
+*/outputs/bench_ops
+*/outputs/bandwidth
+*/outputs/vecsum
+*/outputs/gemm

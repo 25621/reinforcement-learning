@@ -1,0 +1,495 @@
+{
+  "cpu": "Intel(R) Core(TM) i7-8700K CPU @ 3.70GHz",
+  "avx512_in_cpuinfo": [],
+  "runtime_avx512": 0,
+  "autovectorised_float_sum": false,
+  "avx512_forced_signal": 4,
+  "disasm": {
+    "sum_scalar": {
+      "n_insn": 23,
+      "scalar_add": 3,
+      "packed_add": 0,
+      "fma": 0,
+      "scalar_fma": 0,
+      "widest": "xmm"
+    },
+    "sum_auto": {
+      "n_insn": 65,
+      "scalar_add": 15,
+      "packed_add": 0,
+      "fma": 0,
+      "scalar_fma": 0,
+      "widest": "xmm"
+    },
+    "sum_fastmath": {
+      "n_insn": 66,
+      "scalar_add": 3,
+      "packed_add": 8,
+      "fma": 0,
+      "scalar_fma": 0,
+      "widest": "ymm"
+    },
+    "sum_avx2": {
+      "n_insn": 108,
+      "scalar_add": 22,
+      "packed_add": 7,
+      "fma": 0,
+      "scalar_fma": 0,
+      "widest": "ymm"
+    },
+    "poly_scalar": {
+      "n_insn": 28,
+      "scalar_add": 1,
+      "packed_add": 0,
+      "fma": 0,
+      "scalar_fma": 3,
+      "widest": "xmm"
+    },
+    "poly_auto": {
+      "n_insn": 83,
+      "scalar_add": 9,
+      "packed_add": 0,
+      "fma": 1,
+      "scalar_fma": 3,
+      "widest": "ymm"
+    },
+    "poly_fastmath": {
+      "n_insn": 76,
+      "scalar_add": 1,
+      "packed_add": 4,
+      "fma": 1,
+      "scalar_fma": 3,
+      "widest": "ymm"
+    },
+    "sum_avx512": {
+      "n_insn": 128,
+      "scalar_add": 32,
+      "packed_add": 10,
+      "fma": 0,
+      "scalar_fma": 0,
+      "widest": "zmm"
+    },
+    "poly_avx2": {
+      "n_insn": 124,
+      "scalar_add": 16,
+      "packed_add": 1,
+      "fma": 2,
+      "scalar_fma": 3,
+      "widest": "ymm"
+    },
+    "poly_avx2_ilp": {
+      "n_insn": 132,
+      "scalar_add": 16,
+      "packed_add": 4,
+      "fma": 5,
+      "scalar_fma": 3,
+      "widest": "ymm"
+    },
+    "poly_avx512": {
+      "n_insn": 143,
+      "scalar_add": 18,
+      "packed_add": 7,
+      "fma": 5,
+      "scalar_fma": 3,
+      "widest": "zmm"
+    }
+  },
+  "rows": [
+    {
+      "kernel": "sum",
+      "variant": "scalar",
+      "n": 2048,
+      "where": "L1",
+      "sec": 1.864290501e-06,
+      "gflops": 1.0985412407033446,
+      "gbs": 4.394164962813378,
+      "speedup_vs_scalar": 1.0,
+      "rel_error": 9.88641996957401e-07
+    },
+    {
+      "kernel": "sum",
+      "variant": "auto",
+      "n": 2048,
+      "where": "L1",
+      "sec": 1.839897101e-06,
+      "gflops": 1.1131057268837994,
+      "gbs": 4.4524229075351975,
+      "speedup_vs_scalar": 1.0132580240420739,
+      "rel_error": 9.88641996957401e-07
+    },
+    {
+      "kernel": "sum",
+      "variant": "fastmath",
+      "n": 2048,
+      "where": "L1",
+      "sec": 1.954397492e-07,
+      "gflops": 10.478932808618238,
+      "gbs": 41.91573123447295,
+      "speedup_vs_scalar": 9.538952585802848,
+      "rel_error": 1.3249300073697726e-07
+    },
+    {
+      "kernel": "sum",
+      "variant": "avx2",
+      "n": 2048,
+      "where": "L1",
+      "sec": 5.584715109e-08,
+      "gflops": 36.67152146578727,
+      "gbs": 146.6860858631491,
+      "speedup_vs_scalar": 33.38201617474844,
+      "rel_error": 1.3249300073697726e-07
+    },
+    {
+      "kernel": "sum",
+      "variant": "scalar",
+      "n": 32768,
+      "where": "L2",
+      "sec": 3.08279361e-05,
+      "gflops": 1.0629320073100839,
+      "gbs": 4.251728029240335,
+      "speedup_vs_scalar": 1.0,
+      "rel_error": 3.775986358212139e-06
+    },
+    {
+      "kernel": "sum",
+      "variant": "auto",
+      "n": 32768,
+      "where": "L2",
+      "sec": 3.075959503e-05,
+      "gflops": 1.0652936089711582,
+      "gbs": 4.261174435884633,
+      "speedup_vs_scalar": 1.0022217805511857,
+      "rel_error": 3.775986358212139e-06
+    },
+    {
+      "kernel": "sum",
+      "variant": "fastmath",
+      "n": 32768,
+      "where": "L2",
+      "sec": 3.747549976e-06,
+      "gflops": 8.74384603537039,
+      "gbs": 34.97538414148156,
+      "speedup_vs_scalar": 8.226157435505272,
+      "rel_error": 9.84210558143297e-08
+    },
+    {
+      "kernel": "sum",
+      "variant": "avx2",
+      "n": 32768,
+      "where": "L2",
+      "sec": 1.070832334e-06,
+      "gflops": 30.600495483357342,
+      "gbs": 122.40198193342937,
+      "speedup_vs_scalar": 28.788760967690393,
+      "rel_error": 5.04459020092686e-07
+    },
+    {
+      "kernel": "sum",
+      "variant": "scalar",
+      "n": 1048576,
+      "where": "L3",
+      "sec": 0.00100478407,
+      "gflops": 1.0435834238494643,
+      "gbs": 4.174333695397857,
+      "speedup_vs_scalar": 1.0,
+      "rel_error": 0.0001893214269057907
+    },
+    {
+      "kernel": "sum",
+      "variant": "auto",
+      "n": 1048576,
+      "where": "L3",
+      "sec": 0.0009983889649,
+      "gflops": 1.0502680186424405,
+      "gbs": 4.201072074569762,
+      "speedup_vs_scalar": 1.0064054244636413,
+      "rel_error": 0.0001893214269057907
+    },
+    {
+      "kernel": "sum",
+      "variant": "fastmath",
+      "n": 1048576,
+      "where": "L3",
+      "sec": 0.0001225823421,
+      "gflops": 8.554054213979649,
+      "gbs": 34.216216855918596,
+      "speedup_vs_scalar": 8.196809204218981,
+      "rel_error": 9.803148278482735e-07
+    },
+    {
+      "kernel": "sum",
+      "variant": "avx2",
+      "n": 1048576,
+      "where": "L3",
+      "sec": 5.826036846e-05,
+      "gflops": 17.998101071398544,
+      "gbs": 71.99240428559418,
+      "speedup_vs_scalar": 17.24644207648391,
+      "rel_error": 3.6507874358034663e-06
+    },
+    {
+      "kernel": "sum",
+      "variant": "scalar",
+      "n": 33554432,
+      "where": "DRAM",
+      "sec": 0.032815007,
+      "gflops": 1.0225331355254625,
+      "gbs": 4.09013254210185,
+      "speedup_vs_scalar": 1.0,
+      "rel_error": 0.15220437633975847
+    },
+    {
+      "kernel": "sum",
+      "variant": "auto",
+      "n": 33554432,
+      "where": "DRAM",
+      "sec": 0.03268696766,
+      "gflops": 1.0265385382034546,
+      "gbs": 4.106154152813819,
+      "speedup_vs_scalar": 1.0039171372925082,
+      "rel_error": 0.15220437633975847
+    },
+    {
+      "kernel": "sum",
+      "variant": "fastmath",
+      "n": 33554432,
+      "where": "DRAM",
+      "sec": 0.007110389338,
+      "gflops": 4.719070982607844,
+      "gbs": 18.876283930431377,
+      "speedup_vs_scalar": 4.615078786843219,
+      "rel_error": 0.013278802969713859
+    },
+    {
+      "kernel": "sum",
+      "variant": "avx2",
+      "n": 33554432,
+      "where": "DRAM",
+      "sec": 0.006775140675,
+      "gflops": 4.952580855452126,
+      "gbs": 19.810323421808505,
+      "speedup_vs_scalar": 4.843442900172696,
+      "rel_error": 0.00018916308564149233
+    },
+    {
+      "kernel": "poly",
+      "variant": "scalar",
+      "n": 2048,
+      "where": "L1",
+      "sec": 1.059722675e-05,
+      "gflops": 7.730324351132714,
+      "gbs": 0.7730324351132715,
+      "speedup_vs_scalar": 1.0,
+      "rel_error": 9.335971305957756e-07
+    },
+    {
+      "kernel": "poly",
+      "variant": "auto",
+      "n": 2048,
+      "where": "L1",
+      "sec": 2.57275055e-06,
+      "gflops": 31.841408021465583,
+      "gbs": 3.1841408021465583,
+      "speedup_vs_scalar": 4.119026133334224,
+      "rel_error": 9.335971305957756e-07
+    },
+    {
+      "kernel": "poly",
+      "variant": "fastmath",
+      "n": 2048,
+      "where": "L1",
+      "sec": 2.436401699e-06,
+      "gflops": 33.623355308619,
+      "gbs": 3.3623355308619,
+      "speedup_vs_scalar": 4.34954004273989,
+      "rel_error": 1.4095107880644876e-08
+    },
+    {
+      "kernel": "poly",
+      "variant": "avx2",
+      "n": 2048,
+      "where": "L1",
+      "sec": 1.73974185e-06,
+      "gflops": 47.08744576099034,
+      "gbs": 4.7087445760990345,
+      "speedup_vs_scalar": 6.091263913666272,
+      "rel_error": 6.949648300980476e-08
+    },
+    {
+      "kernel": "poly",
+      "variant": "avx2_ilp",
+      "n": 2048,
+      "where": "L1",
+      "sec": 9.190589e-07,
+      "gflops": 89.13465720205745,
+      "gbs": 8.913465720205746,
+      "speedup_vs_scalar": 11.530519697921429,
+      "rel_error": 6.949648300980476e-08
+    },
+    {
+      "kernel": "poly",
+      "variant": "scalar",
+      "n": 32768,
+      "where": "L2",
+      "sec": 0.0001726233348,
+      "gflops": 7.592947972639907,
+      "gbs": 0.7592947972639907,
+      "speedup_vs_scalar": 1.0,
+      "rel_error": 6.350953892259666e-05
+    },
+    {
+      "kernel": "poly",
+      "variant": "auto",
+      "n": 32768,
+      "where": "L2",
+      "sec": 4.001531131e-05,
+      "gflops": 32.75546177426453,
+      "gbs": 3.275546177426453,
+      "speedup_vs_scalar": 4.313932071218466,
+      "rel_error": 6.350953892259666e-05
+    },
+    {
+      "kernel": "poly",
+      "variant": "fastmath",
+      "n": 32768,
+      "where": "L2",
+      "sec": 3.957064692e-05,
+      "gflops": 33.123542373463934,
+      "gbs": 3.3123542373463932,
+      "speedup_vs_scalar": 4.362408710400735,
+      "rel_error": 1.4187209473873119e-06
+    },
+    {
+      "kernel": "poly",
+      "variant": "avx2",
+      "n": 32768,
+      "where": "L2",
+      "sec": 2.830851584e-05,
+      "gflops": 46.301261691294656,
+      "gbs": 4.630126169129465,
+      "speedup_vs_scalar": 6.0979295338430575,
+      "rel_error": 1.5030433628028754e-06
+    },
+    {
+      "kernel": "poly",
+      "variant": "avx2_ilp",
+      "n": 32768,
+      "where": "L2",
+      "sec": 1.419847898e-05,
+      "gflops": 92.31411349386666,
+      "gbs": 9.231411349386665,
+      "speedup_vs_scalar": 12.157875152905993,
+      "rel_error": 3.520497763395236e-07
+    },
+    {
+      "kernel": "poly",
+      "variant": "scalar",
+      "n": 1048576,
+      "where": "L3",
+      "sec": 0.005636558956,
+      "gflops": 7.441249231563967,
+      "gbs": 0.7441249231563968,
+      "speedup_vs_scalar": 1.0,
+      "rel_error": 0.004974815230872346
+    },
+    {
+      "kernel": "poly",
+      "variant": "auto",
+      "n": 1048576,
+      "where": "L3",
+      "sec": 0.001289115693,
+      "gflops": 32.536288424502175,
+      "gbs": 3.2536288424502176,
+      "speedup_vs_scalar": 4.372422883847401,
+      "rel_error": 0.004974815230872346
+    },
+    {
+      "kernel": "poly",
+      "variant": "fastmath",
+      "n": 1048576,
+      "where": "L3",
+      "sec": 0.001269137105,
+      "gflops": 33.04847036207329,
+      "gbs": 3.3048470362073292,
+      "speedup_vs_scalar": 4.441252985035057,
+      "rel_error": 0.0002443876946520326
+    },
+    {
+      "kernel": "poly",
+      "variant": "avx2",
+      "n": 1048576,
+      "where": "L3",
+      "sec": 0.0009238076406,
+      "gflops": 45.40235234767986,
+      "gbs": 4.5402352347679855,
+      "speedup_vs_scalar": 6.10144223567921,
+      "rel_error": 0.0002443876946520326
+    },
+    {
+      "kernel": "poly",
+      "variant": "avx2_ilp",
+      "n": 1048576,
+      "where": "L3",
+      "sec": 0.0004668955174,
+      "gflops": 89.83388881856932,
+      "gbs": 8.983388881856932,
+      "speedup_vs_scalar": 12.072420372310047,
+      "rel_error": 5.942986121098417e-05
+    },
+    {
+      "kernel": "poly",
+      "variant": "scalar",
+      "n": 33554432,
+      "where": "DRAM",
+      "sec": 0.1805338997,
+      "gflops": 7.434488936594993,
+      "gbs": 0.7434488936594993,
+      "speedup_vs_scalar": 1.0,
+      "rel_error": 0.2844639700026044
+    },
+    {
+      "kernel": "poly",
+      "variant": "auto",
+      "n": 33554432,
+      "where": "DRAM",
+      "sec": 0.042897714,
+      "gflops": 31.287850909724465,
+      "gbs": 3.1287850909724466,
+      "speedup_vs_scalar": 4.208473665986024,
+      "rel_error": 0.2844639700026044
+    },
+    {
+      "kernel": "poly",
+      "variant": "fastmath",
+      "n": 33554432,
+      "where": "DRAM",
+      "sec": 0.04241042334,
+      "gflops": 31.647344551123737,
+      "gbs": 3.1647344551123733,
+      "speedup_vs_scalar": 4.256828521910245,
+      "rel_error": 0.049047629930035065
+    },
+    {
+      "kernel": "poly",
+      "variant": "avx2",
+      "n": 33554432,
+      "where": "DRAM",
+      "sec": 0.03382799867,
+      "gflops": 39.67652042005949,
+      "gbs": 3.9676520420059487,
+      "speedup_vs_scalar": 5.336818812757746,
+      "rel_error": 0.04904771427817056
+    },
+    {
+      "kernel": "poly",
+      "variant": "avx2_ilp",
+      "n": 33554432,
+      "where": "DRAM",
+      "sec": 0.01721411734,
+      "gflops": 77.96956727378739,
+      "gbs": 7.796956727378738,
+      "speedup_vs_scalar": 10.487549035145591,
+      "rel_error": 0.004889713144142829
+    }
+  ]
+}

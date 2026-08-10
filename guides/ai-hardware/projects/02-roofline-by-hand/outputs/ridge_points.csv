@@ -1,0 +1,7 @@
+gpu,year,peak_tflops,dtype,bw_gbs,ridge,memory_bound
+GTX 1070 Ti,2017,8.19,fp32,256.3,31.954740538431523,layernorm softmax gelu transpose
+V100 SXM2,2017,125.0,fp16,900.0,138.88888888888889,layernorm softmax gelu transpose
+A100 80GB,2020,312.0,bf16,2039.0,153.01618440411966,layernorm softmax gelu transpose
+H100 SXM,2022,989.4,bf16,3350.0,295.34328358208955,layernorm softmax gelu transpose
+H200 SXM,2024,989.4,bf16,4800.0,206.125,layernorm softmax gelu transpose
+B200 SXM,2025,2250.0,bf16,8000.0,281.25,layernorm softmax gelu transpose

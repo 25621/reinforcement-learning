@@ -1,0 +1,125 @@
+{
+  "device": "NVIDIA GeForce GTX 1070 Ti",
+  "peak_tflops": 8.186112,
+  "peak_gbs": 256.256,
+  "ridge": 31.945054945054945,
+  "ops": [
+    {
+      "op": "matmul",
+      "ai": 682.6666666666666,
+      "flops": 137438953472,
+      "bytes": 201326592,
+      "bound": "compute",
+      "pred_sec": 0.016789283297369985,
+      "meas_sec": 0.01909678,
+      "pct_of_roof": 87.91682837300311,
+      "achieved_gflops": 7196.970037461812,
+      "achieved_gbs": 10.542436578313202
+    },
+    {
+      "op": "layernorm",
+      "ai": 1.0,
+      "flops": 268435456,
+      "bytes": 268435456,
+      "bound": "memory",
+      "pred_sec": 0.0010475284715284715,
+      "meas_sec": 0.001441677,
+      "pct_of_roof": 72.66041363831646,
+      "achieved_gflops": 186.19666957300421,
+      "achieved_gbs": 186.19666957300421
+    },
+    {
+      "op": "softmax",
+      "ai": 0.625,
+      "flops": 167772160,
+      "bytes": 268435456,
+      "bound": "memory",
+      "pred_sec": 0.0010475284715284715,
+      "meas_sec": 0.001447456,
+      "pct_of_roof": 72.37031533452289,
+      "achieved_gflops": 115.90829703977185,
+      "achieved_gbs": 185.45327526363494
+    },
+    {
+      "op": "gelu",
+      "ai": 1.0,
+      "flops": 268435456,
+      "bytes": 268435456,
+      "bound": "memory",
+      "pred_sec": 0.0010475284715284715,
+      "meas_sec": 0.001368678,
+      "pct_of_roof": 76.53578646902132,
+      "achieved_gflops": 196.12754497405527,
+      "achieved_gbs": 196.12754497405527
+    },
+    {
+      "op": "transpose",
+      "ai": 0.0,
+      "flops": 0,
+      "bytes": 536870912,
+      "bound": "memory",
+      "pred_sec": 0.002095056943056943,
+      "meas_sec": 0.005737912,
+      "pct_of_roof": 36.51253178955939,
+      "achieved_gflops": 0.0,
+      "achieved_gbs": 93.5655534626533
+    }
+  ],
+  "ridge_table": [
+    {
+      "gpu": "GTX 1070 Ti",
+      "year": 2017,
+      "peak_tflops": 8.19,
+      "dtype": "fp32",
+      "bw_gbs": 256.3,
+      "ridge": 31.954740538431523,
+      "memory_bound": "layernorm softmax gelu transpose"
+    },
+    {
+      "gpu": "V100 SXM2",
+      "year": 2017,
+      "peak_tflops": 125.0,
+      "dtype": "fp16",
+      "bw_gbs": 900.0,
+      "ridge": 138.88888888888889,
+      "memory_bound": "layernorm softmax gelu transpose"
+    },
+    {
+      "gpu": "A100 80GB",
+      "year": 2020,
+      "peak_tflops": 312.0,
+      "dtype": "bf16",
+      "bw_gbs": 2039.0,
+      "ridge": 153.01618440411966,
+      "memory_bound": "layernorm softmax gelu transpose"
+    },
+    {
+      "gpu": "H100 SXM",
+      "year": 2022,
+      "peak_tflops": 989.4,
+      "dtype": "bf16",
+      "bw_gbs": 3350.0,
+      "ridge": 295.34328358208955,
+      "memory_bound": "layernorm softmax gelu transpose"
+    },
+    {
+      "gpu": "H200 SXM",
+      "year": 2024,
+      "peak_tflops": 989.4,
+      "dtype": "bf16",
+      "bw_gbs": 4800.0,
+      "ridge": 206.125,
+      "memory_bound": "layernorm softmax gelu transpose"
+    },
+    {
+      "gpu": "B200 SXM",
+      "year": 2025,
+      "peak_tflops": 2250.0,
+      "dtype": "bf16",
+      "bw_gbs": 8000.0,
+      "ridge": 281.25,
+      "memory_bound": "layernorm softmax gelu transpose"
+    }
+  ],
+  "ridge_growth_1070ti_to_h100": 9.242549887923023
+}
