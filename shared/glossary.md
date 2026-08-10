@@ -207,6 +207,12 @@ The smallest convex shape that contains a given set of points — what you get b
 * **Why grasping needs it**: The set of wrenches a grasp can apply is exactly the convex hull of its contact wrenches, so "can this grasp resist anything?" becomes "does that hull contain the origin?" — a geometry question with an exact answer. See [force closure](/shared/glossary/#force-closure) and the [Ferrari-Canny metric](/shared/glossary/#ferrari-canny-metric).
 
 
+### Composite operator {#composite-operator}
+An operator built out of other operators rather than out of its own loop over numbers. `matmul` is one: it reshapes and then calls `mm` or `bmm`.
+**`CompositeImplicitAutograd`** means autograd comes free — differentiating the operations it calls produces the right gradient by the chain rule, so **840 of PyTorch's 3,184 operators have no backward code written for them at all**.
+**`CompositeExplicitAutograd`** means one implementation covers all devices, but autograd is told about it separately.
+**The exception worth knowing:** a handful of composite operators (`linear`, `matmul`, `max_pool2d` and four others) *also* have a hand-written derivative. That is not a contradiction — the formula is registered at the `Autograd` [dispatch key](/shared/glossary/#dispatch-key), which sits above the decomposition and wins. It exists for speed, not correctness: one backward node with fewer saved tensors instead of several.
+
 ### Coulomb friction {#coulomb-friction}
 The standard model of dry friction, named after Charles-Augustin de Coulomb, who measured it in the 1780s: the sideways force a contact can carry is at most *μ* times the force pressing the surfaces together, written ‖*f_t*‖ ≤ *μ f_n*. Below that limit the surfaces stick; at the limit they slide, and the friction force points against the sliding.
 * **Analogy**: A book on a tilted board. Tilt gently and it stays, because friction grows to match gravity's pull along the board. Past a critical angle friction has nothing left to give and the book slides — and that critical angle is exactly arctan(*μ*).
@@ -243,6 +249,9 @@ A family of derivative-free optimizers used as a [reinforcement learning](/share
 * **Analogy**: Finding the top of a hill in fog by taking a hundred short steps in random directions, noting which ones went up, and then walking the average of the good ones.
 * **When it is the right tool**: Short-horizon control problems with few parameters and a simulator that is cheap to roll out — exactly the case where backpropagating through thousands of contact events would be fragile or impossible. It scales badly in parameter count, which is why it is not used for large networks.
 
+
+### Expected failure {#expected-failure}
+A test marked *known to fail*. The suite still runs it and treats the failure as the expected outcome — but goes red if it ever **passes**, which is how somebody's fix gets noticed and the marker removed. **Why this is not just a disabled test:** a disabled test is forgotten, while an expected failure is a live record that says "this behaviour is wrong, we know, nobody has fixed it yet." PyTorch's [OpInfo](/shared/glossary/#opinfo) database holds **1,723** such markers across 114 tests — in effect a queue of small, reproducible, already-test-backed tasks.
 
 ### Ferrari-Canny metric {#ferrari-canny-metric}
 The most common [grasp quality metric](/shared/glossary/#grasp-quality-metric), proposed by Carlo Ferrari and John Canny in 1992. Build the [convex hull](/shared/glossary/#convex-hull) of the contact wrenches the fingers can apply, then measure the radius of the largest ball centred on the origin that fits inside it. That radius is the largest disturbance the grasp resists *in its worst direction*.
@@ -818,6 +827,12 @@ The original [distributional RL](/shared/glossary/#distributional-rl) agent (201
 ### Cache line {#cache-line}
 The smallest amount of memory a CPU will move between [DRAM](/shared/glossary/#dram) and its [caches](/shared/glossary/#cpu-cache-hierarchy) — 64 bytes, or 16 `float32` values, on most x86 machines. You cannot ask for less. This single fact explains most surprising CPU performance: a loop that reads every 16th element does not run 16 times faster than one that reads every element — it runs at the same speed, because both fetch the same number of cache lines and one of them throws away 15/16 of every line. Walking *down* a column of a row-major matrix is the classic example: consecutive iterations sit one row apart in memory, so each one costs a fresh 64-byte fetch to use 4 bytes.
 
+### Caching allocator {#caching-allocator}
+The part of PyTorch that hands out tensor memory. It does not ask the operating system every time you create a tensor — that would be far too slow — but keeps freed blocks and reuses them. **Why you care:** the reuse only happens if the old block has actually been released. A loop that allocates the new result *before* dropping the old one keeps two large buffers alive and defeats the cache; [project 53](/guides/pytorch-deep-dive/projects/trace-one-op-end-to-end/) measured a **1.26x** slowdown from exactly that one-line ordering mistake.
+
+### ccache {#ccache}
+A tool that remembers "I already compiled this exact file with these exact flags, and here is the result." Named for *compiler cache*. Put it in front of your compiler (`CMAKE_CXX_COMPILER_LAUNCHER=ccache`) and an unchanged file is copied from the cache instead of recompiled — which is why the second build of a large C++ project like PyTorch can be roughly ten times faster than the first.
+
 ### Calibration {#calibration}
 Running a few representative batches of data through a model to learn how big its [activations](/shared/glossary/#activations) typically get — their usual smallest and largest values — before [quantizing](/shared/glossary/#quantization) it. Knowing that range lets static quantization choose one fixed [int8](/shared/glossary/#int8) "scale": the conversion factor that maps the real numbers onto the 256 slots an int8 can hold. It is like measuring the tallest guest you expect before setting a doorframe height — check the real range once, then size the fixed scale so almost nothing gets clipped.
 
@@ -1005,6 +1020,9 @@ The fixed list of code vectors a [VQ-VAE](/shared/glossary/#vq-vae) is allowed t
 
 ### Codebook collapse {#codebook-collapse}
 A failure where a [VQ-VAE](/shared/glossary/#vq-vae) ends up using only a few entries of its [codebook](/shared/glossary/#codebook) and ignores the rest — like owning a 64-color crayon box but only ever drawing with three. The unused entries are wasted capacity, so the model stores less detail than its codebook size suggests and reconstructions stay blurry. Common fixes are [EMA](/shared/glossary/#ema-weights) codebook updates, re-initializing dead (never-chosen) entries near popular ones, and k-means warmup. It is the discrete-latent cousin of [mode collapse](/shared/glossary/#mode-collapse) in [GANs](/shared/glossary/#gans).
+
+### Code generation {#code-generation}
+A program that writes source code, which another program then compiles. Also called *codegen*. PyTorch uses it heavily: [torchgen](/shared/glossary/#torchgen) reads [native_functions.yaml](/shared/glossary/#native_functionsyaml) and emits **7,113 files (65 MB)** of C++ in about 16 seconds. **Why bother, when a human could write those files?** Because the same operator needs a wrapper for every [dispatch key](/shared/glossary/#dispatch-key), a Python binding, a tracing hook and an autograd entry — writing them by hand means dozens of copies that drift apart. Generating them means one description and no drift. The cost is that the generated files exist only in your build directory, so searching the repository for them finds nothing.
 
 ### Collate function {#collate-function}
 The function a [DataLoader](/shared/glossary/#dataloader) uses to combine a list of individual samples into one batched tensor; a custom one can pad variable-length data.
@@ -1484,6 +1502,12 @@ The "critic" half of a [GAN](/shared/glossary/#gans): a network that looks at an
 
 ### Dispatcher {#dispatcher}
 The PyTorch component that routes `torch.foo(...)` calls to the right backend/dtype kernel
+
+### Dispatch key {#dispatch-key}
+One routing label the [dispatcher](/shared/glossary/#dispatcher) can send an operation to: `CPU`, `CUDA`, `Autograd`, `SparseCPU`, `Meta`, and about sixty more. Every [tensor](/shared/glossary/#tensor) carries a *set* of keys, and the dispatcher runs the [kernel](/shared/glossary/#kernel) registered for the highest-priority key present, which usually finishes by passing the call down to the next key (*redispatching*).
+**Not the same as a device.** `Autograd`, `Tracer` and `FuncTorchBatched` are keys too — they are behaviours layered above the hardware, which is how one mechanism covers gradients, tracing and `vmap`.
+**Alias keys** such as `Autograd` or `CompositeImplicitAutograd` stand for a whole family (`AutogradCPU`, `AutogradCUDA`, …) rather than a single slot.
+**Why it matters in practice:** the key you register a [kernel](/shared/glossary/#kernel) at *is* the contract. The same function registered at `CPU` is "the arithmetic"; registered at `Autograd` it is "responsible for building the gradient graph", and one that forgets silently produces correct numbers with no gradients at all.
 
 ### Distillation {#distillation}
 Training a smaller "student" model to copy the output of a larger, more capable "teacher" so the student inherits most of the teacher's behavior at a fraction of the cost. Like a junior cook shadowing a head chef and learning each recipe by mimicking the dish — they may never match the master, but they can plate most of the menu for far less money. Distillation works for skills the teacher already has but cannot conjure new abilities the teacher lacks.
@@ -3081,6 +3105,9 @@ A picture of sound: a 2D map with time along one axis and pitch along the other,
 ### Meta-learning {#meta-learning}
 "Learning to learn" — training a model to adapt quickly to new tasks with few examples. Many meta-learning algorithms, such as MAML, rely on higher-order gradients to optimize across tasks.
 
+### Meta tensor {#meta-tensor}
+A [tensor](/shared/glossary/#tensor) with a shape, a [dtype](/shared/glossary/#dtype) and a device of `"meta"`, but **no data** — the storage is never allocated. Operations on meta tensors run a special [kernel](/shared/glossary/#kernel) that computes only the output *shape* and skips the arithmetic. **What it is for:** working out the shapes and memory footprint of a model far too large to fit on your machine, in milliseconds and without a GPU. It is also how `torch.compile` reasons about shapes before generating code. In PyTorch 2.x hundreds of meta kernels are written in Python (`torch/_meta_registrations.py`), not C++.
+
 ### Memorization {#memorization}
 When an [LLM](/shared/glossary/#llm) reproduces a chunk of its training data verbatim instead of generalizing from it — give it the right opening prompt and out comes the original passage word for word. Like a student who recites a textbook sentence rather than explaining the idea; useful for trivia, dangerous for copyright, PII, and security. [Deduplication](/shared/glossary/#deduplication) at training time and prompt filtering at serving time are the main mitigations.
 
@@ -3120,6 +3147,9 @@ A tiny, educational autograd engine implemented in basic Python by Andrej Karpat
 
 ### Minimal pair {#minimal-pair}
 Two items that differ in exactly one thing, built so that telling them apart requires understanding that one thing and nothing else. In vision-language evaluation the pair is usually a true caption and an edited copy of it — "a cat on a table" versus "a table on a cat" — which is why benchmarks built this way (ARO, SugarCrepe, Winoground) are so hard for a contrastively-trained matcher like [CLIP](/shared/glossary/#clip): the two sentences contain the *same words*, so a model that largely treats a sentence as an unordered bag of words sees almost no difference between them. Borrowed from linguistics, where a minimal pair is two words differing in one sound ("pat" / "bat") and is used to prove that the difference carries meaning. Compare [hard negatives](/shared/glossary/#hard-negatives), which are merely difficult rather than surgically controlled.
+
+### Minimal reproduction {#minimal-reproduction}
+The smallest program that still shows a bug — often called a *minimal repro*. Producing one is most of the work in any bug report, and most of its value: it separates the defect from your project, proves the bug is real, and gives the maintainer something to run in thirty seconds. **A good repro has no dependencies beyond the library itself, no random seeds that matter, and prints the wrong result next to the right one.**
 
 ### Minimax {#minimax}
 The exact way to play a two-player game where one player's gain is the other's loss: assume your opponent will always make the *best* reply, and choose the move that leaves you best off under that assumption. Applied recursively to the end of the game, it yields perfect play. It is only feasible when the game is small enough to search exhaustively — [Tic-Tac-Toe](/shared/glossary/#tic-tac-toe) yes, chess no — which is why [MCTS](/shared/glossary/#mcts) exists for anything larger. A useful side effect: on a small game, minimax gives you an unbeatable *opponent* to test a learned agent against, which is a far more honest yardstick than "beats a random player". Its sign-flipping formulation ("my gain is your loss, so negate the value at every level") is called *negamax* and is what makes tree searches like MuZero's work for two players.
@@ -3331,6 +3361,11 @@ The unit [entropy](/shared/glossary/#entropy-regularization) and [log-probabilit
 
 ### Native multimodal {#native-multimodal}
 A model trained from scratch on *all* modalities at once over a single shared [vocabulary](/shared/glossary/#vocabulary), instead of bolting a vision encoder onto a finished language model. Every modality is turned into [tokens](/shared/glossary/#token-visualaudio) — text tokens, image tokens from a [VQ-VAE](/shared/glossary/#vq-vae), audio tokens from a [neural codec](/shared/glossary/#neural-codec) — that all live in one alphabet, and one [transformer](/shared/glossary/#transformer) reads and writes any mix of them with a single next-token objective. This is the [early-fusion](/shared/glossary/#fusion-earlymiddlelate) extreme, used by models like [Chameleon](/shared/glossary/#chameleon) and GPT-4o. Analogy: rather than hiring separate translators for each language and patching their notes together, you raise one person bilingual from birth, so switching between "languages" (modalities) is effortless and mid-thought. The payoff is true any-to-any flexibility; the cost is far more data and compute, since nothing is reused from a pretrained backbone.
+
+### native_functions.yaml {#native_functionsyaml}
+The master list of every built-in PyTorch operation — 2,666 entries describing **3,184 operators** (the extra 518 are generated by `autogen:` lines). Each entry declares the operation's [schema](/shared/glossary/#operator-schema) and tells the [dispatcher](/shared/glossary/#dispatcher) which [kernel](/shared/glossary/#kernel) to use for each backend. "Native" means *implemented inside PyTorch in C++*, as opposed to composed in Python.
+**You already have it:** the file ships inside the installed wheel at `torchgen/packaged/ATen/native/native_functions.yaml`, because [torchgen](/shared/glossary/#torchgen) is installed too and a generator without its input is useless.
+**The trap:** what an entry does *not* say matters. `add.out` never names a CPU kernel — the generator derives one from its `ufunc_inner_loop` field — so reading the file literally and concluding "addition has no CPU kernel" is a mistake it will not warn you about.
 
 ### NaViT (native-resolution ViT) {#navit}
 A [ViT](/shared/glossary/#vit) that processes each image at *its own* size and shape instead of resizing everything to one fixed square. The trick is "patch n' pack": cut every image into the usual fixed-size [patches](/shared/glossary/#patch), then pack patches from several differently-shaped images into one sequence and use a mask (the same mechanism as a [causal mask](/shared/glossary/#causal-mask), just a different pattern) to keep them from mixing — so a 200×900 receipt and a 600×600 photo can share a batch without either being distorted. Positions come from 2-D coordinates rather than a fixed grid index, which is what lets the model handle a shape it never saw in training. **Name:** *Native* resolution — the image keeps the resolution it arrived with. Compare [AnyRes](/shared/glossary/#anyres), which reaches a similar goal from the other direction: keep the encoder fixed and chop the image into square tiles. Qwen2-VL's vision tower is the best-known NaViT-style encoder in a [VLM](/shared/glossary/#vlm).
@@ -3639,6 +3674,23 @@ An open-source Python library for [constrained generation](/shared/glossary/#con
 
 ### Output head {#output-head}
 The final layer that turns a model's hidden vector into scores over the [vocabulary](/shared/glossary/#vocabulary) — usually one `Linear(d, vocab_size)`. Everything before it is shared machinery; the head is what commits the model to a particular set of things it can say. With [weight tying](/shared/glossary/#weight-tying) the head reuses the input embedding matrix, which saves parameters but means the head's ability to *emit* a symbol is entangled with the embedding used to *read* it. Adding a second head over a different block of the vocabulary is the cheapest way to give a model a new kind of output without retraining the body.
+
+### OpInfo {#opinfo}
+PyTorch's database of operator metadata, shipped inside the wheel at `torch.testing._internal.common_methods_invocations.op_db`: **697 entries covering 634 operators**. For each operator it records how to build valid sample inputs, which [dtypes](/shared/glossary/#dtype) and devices it supports, and which of PyTorch's own tests are known to fail for it ([expected failures](/shared/glossary/#expected-failure)). **Why it exists:** it lets one test be written once and run against every operator, instead of a thousand hand-written tests. **Why it is useful to you:** you can run your own checks over every operator in a few seconds without inventing inputs.
+
+### Operator overload {#operator-overload}
+Several operations sharing one name, told apart by their argument types — the name is "overloaded" with more than one meaning, the way the English verb *run* is. PyTorch writes the overload after a dot: `aten::add.Tensor`, `aten::add.Scalar`, `aten::add.out`. `aten::add` alone has **16** of them.
+**A surprise worth knowing:** `add.Scalar` exists, but Python's `+` never reaches it — the binding wraps the plain number into a 0-dimensional [tensor](/shared/glossary/#tensor) and calls `add.Tensor` instead.
+
+### Operator schema {#operator-schema}
+One line of text declaring an operation's name, arguments, defaults and return type — the operation's contract, in a small language of PyTorch's own:
+`aten::add.out(Tensor self, Tensor other, *, Scalar alpha=1, Tensor(a!) out) -> Tensor(a!)`
+`*` starts keyword-only arguments, exactly as in Python. `Tensor(a!)` means **this tensor is written to**: the `!` marks mutation and the letter names an alias group. That annotation is not decoration — it is how [torch.compile](/shared/glossary/#torchcompile) knows the call touches memory and may not be freely reordered.
+
+### out= variant {#out-variant}
+The version of an operation that writes its result into a buffer you supply — `torch.add(a, b, out=c)` — instead of allocating a new [tensor](/shared/glossary/#tensor). Saves an allocation in a hot loop.
+**The contract:** if `out` has the wrong shape it is resized, and if it was **not empty** you get a warning, because silently discarding a buffer the caller supplied is how data goes missing. Resizing an *empty* `out` is the normal path and stays quiet.
+**The twist:** in PyTorch the `out=` form is usually the *primary* implementation, and the ordinary functional form is generated from it (see [structured kernel](/shared/glossary/#structured-kernel)). That is why `torch.add`, `x.add_(y)` and `torch.add(x, y, out=z)` cannot disagree.
 
 ### Overestimation bias {#overestimation-bias}
 The tendency of [Q-learning](/shared/glossary/#q-learning)-style methods to predict action-values that are too high, caused by the `max` in their target. Each `Q(s′, a)` estimate carries random error; taking the maximum over actions systematically singles out whichever action's error happened to be most *positive*, so the target is biased upward even when every individual estimate is unbiased on average. Over many updates this optimism compounds and can destabilize learning. [Double DQN](/shared/glossary/#double-dqn) is the standard fix — it uses one network to pick the action and another to score it, so an inflated estimate is rarely confirmed twice. Analogy: if you always trust whichever of ten noisy thermometers reads highest, you will consistently believe the room is hotter than it really is.
@@ -3990,6 +4042,9 @@ A scorer that grades each individual step of a model's reasoning rather than jus
 
 ### Profiler {#profiler}
 A tool (`torch.profiler`) that records how long each operation in a training step takes, used to locate performance [bottlenecks](/shared/glossary/#bottleneck).
+
+### Property-based testing {#property-based-testing}
+Testing a rule that must hold for *every* input — "the answer does not depend on memory layout", "the `meta` device predicts the same shape as the real run" — instead of checking specific expected outputs. **Why it is powerful:** you need no answer key, so you can test thousands of inputs you never thought about, including ones no human would write down. **Why it is noisy:** a violated property is not automatically a bug. It may be documented behaviour (random ops really do return different numbers), a limitation by design (an output shape that depends on the data cannot be predicted without data), floating-point rounding, or a wrong default in your own comparison function. Triage is the larger half of the work.
 
 ### Projection discriminator {#projection-discriminator}
 A way to feed a class label into a [conditional GAN](/shared/glossary/#conditional-gan-cgan)'s [discriminator](/shared/glossary/#discriminator) by taking a dot product between the image's features and a learned vector for that class, then adding it to the score — rather than just gluing the label on as an extra input. This matches how the math of conditioning actually factorizes, so it conditions more strongly for almost no extra cost, and it became the standard trick for class-conditional GANs such as [BigGAN](/shared/glossary/#biggan).
@@ -4651,6 +4706,10 @@ The dipped shape of a real joint's friction-versus-speed curve: friction is high
 ### Strong scaling {#strong-scaling}
 Keeping the *total* amount of work fixed and adding workers, hoping the job finishes proportionally sooner: the same batch of 512 images split over 1, 2, then 4 GPUs. Perfect strong scaling would halve the time each time you double the workers, and it never quite happens, because the per-worker slice shrinks until fixed costs — kernel launches, [collective](/shared/glossary/#collective-operation) latency, the serial parts described by [Amdahl's law](/shared/glossary/#amdahls-law) — stop shrinking with it. Contrast [weak scaling](/shared/glossary/#weak-scaling), which is the regime distributed training normally lives in.
 
+### Structured kernel {#structured-kernel}
+PyTorch's modern way of writing an operator: the author supplies only a `meta` function (which computes the output shape) and the arithmetic, and the [code generator](/shared/glossary/#code-generation) writes everything around it — argument checks, output allocation, output *resizing*, and the functional, in-place and [`out=`](/shared/glossary/#out-variant) variants.
+**Why it exists:** the alternative is hand-writing that boilerplate once per variant per backend, where the copies drift apart. **What it buys, measurably:** of the operators tested in [project 57](/guides/pytorch-deep-dive/projects/fix-a-good-first-issue/), **123 out of 123** structured ones obeyed the `out=` resize contract, because they do not contain the code that could get it wrong. Only about 20% of PyTorch's 3,184 operators are structured so far; the rest are *unstructured* and hand-write their own boilerplate, which is where such inconsistencies live.
+
 ### Subnormal number {#subnormal-number}
 A floating-point value too small to be written in the format's normal form, kept representable by giving up leading digits of precision. Each format has a smallest *normal* value (6.1e-05 for [float16](/shared/glossary/#float16)); below it, the numbers thin out and lose significant digits until they hit zero (about 6e-08 for float16). Also called *denormal*. They are the last defence against [underflow](/shared/glossary/#underflow), and on some hardware they run far slower than normal values, which is why libraries sometimes flush them to zero on purpose.
 
@@ -4685,6 +4744,9 @@ A fast, on-chip, user-managed cache memory on a Streaming Multiprocessor ([SM](/
 
 * **Analogy:** A shared whiteboard in a study room. Instead of each student (thread) walking back and forth to the library (slow [HBM](/shared/glossary/#hbm) memory) to read their own copy of a book, one student copies the key pages onto the whiteboard. All students in the room can now read from the whiteboard simultaneously, which is much faster.
 * **Example:** In a tiled matrix multiplication kernel, threads load a [tile](/shared/glossary/#tiling) of inputs from [HBM](/shared/glossary/#hbm) into shared memory once, synchronize to ensure the load is complete, and then read those values multiple times from shared memory to perform dot products. This reuse avoids redundant HBM access and speeds up execution.
+
+### Shared library {#shared-library}
+A compiled blob of machine code loaded at run time rather than baked into a program — `.so` on Linux, `.dll` on Windows, `.dylib` on macOS. `import torch` loads several, totalling about **1.7 GB**: `libtorch_cpu.so` (448 MB), `libtorch_cuda.so` (1,044 MB), `libc10.so` (1.5 MB). The size ratios are the architecture made visible — a small core of abstractions, an enormous library of [kernels](/shared/glossary/#kernel) on top.
 
 ### Shot list {#shot-list}
 A structured plan that breaks a story into an ordered sequence of individual shots, each with its own short description of what happens in it — exactly the storyboard a film director writes before shooting. In video generation a [large language model](/shared/glossary/#llm) can act as the "director," expanding a one-line prompt into such a list (often as JSON), after which each shot is generated separately and the clips are stitched together. This is the planning step of [hierarchical generation](/shared/glossary/#hierarchical-generation): deciding *what happens in what order* before any frames are made is what lets a long video follow a sensible narrative instead of drifting aimlessly. Systems like VideoTetris and MovieDreamer build on this idea.
@@ -4894,6 +4956,9 @@ An outlier scheme for [factor graphs](/shared/glossary/#factor-graph) that gives
 The optimizer then makes a trade: switching an edge off costs whatever the prior charges, and saves whatever residual that edge was contributing. An edge that disagrees with everything else by more than that price gets switched off; one that disagrees only a little does not. The appeal over a fixed [robust kernel](/shared/glossary/#robust-kernel) is that the threshold is not a number you invent — it emerges from the balance between the prior and the data. The catch is that the prior weight is a knob too; it has just moved somewhere less obvious, and setting it too weak switches off good measurements along with bad ones.
 
 Like [GNC](/shared/glossary/#gnc), its most useful output is not a better trajectory but a *list* of which measurements it refused to believe.
+
+### Symbol table {#symbol-table}
+The list of named things — functions and global variables — that a [shared library](/shared/glossary/#shared-library) exposes to other libraries, readable with `nm -D`. `libtorch_cpu.so` exports **77,791** symbols; `libc10.so` exports **1,136**. In C++ a symbol is exported only if it is marked (PyTorch uses the `TORCH_API` macro), which is why forgetting that macro produces a link error that mentions a function you can plainly see in the source.
 
 ### Symlog {#symlog}
 A squashing function, `symlog(x) = sign(x) · log(1 + |x|)`, that shrinks large values while leaving small ones almost untouched (and, unlike a plain log, handles negatives and zero). [DreamerV3](/shared/glossary/#dreamerv3) trains its [reward](/shared/glossary/#reward-function) and [value](/shared/glossary/#value-function) heads to predict `symlog(target)` instead of the target. The reason is the whole point of DreamerV3: one set of [hyperparameters](/shared/glossary/#hyperparameter) has to work on a game paying rewards of `0.01` and a game paying `10,000`. Under a plain squared-error loss the second game's gradients would be millions of times larger, and any [learning rate](/shared/glossary/#learning-rate) that survived one game would explode or stall on the other. Symlog compresses that scale difference away, so a single learning rate fits both. Its inverse, `symexp`, converts predictions back to real reward units.
@@ -5244,6 +5309,9 @@ The C++ macro that registers an operator with PyTorch's [dispatcher](/shared/glo
 ### torchrun {#torchrun}
 PyTorch's launcher command that starts one process per GPU and sets the `RANK`, `LOCAL_RANK`, and `WORLD_SIZE` environment variables those processes need to find each other.
 
+### torchgen {#torchgen}
+The program that reads [native_functions.yaml](/shared/glossary/#native_functionsyaml) during a PyTorch build and writes C++ from it — the "gen" is short for *generator*. It is an ordinary Python package installed next to `torch`, so you can run it yourself: `python -m torchgen.gen -s <ATen dir> -d <out dir>` produces **7,113 files in about 16 seconds**, including the `RegisterCPU_0.cpp` that the [dispatcher](/shared/glossary/#dispatcher) names when you ask where a [kernel](/shared/glossary/#kernel) lives.
+
 ### TorchDynamo {#torchdynamo}
 The front end of [`torch.compile`](/shared/glossary/#torchcompile): it hooks into CPython's frame evaluation, watches your Python function run, and captures the PyTorch operations into a graph. The name combines "Torch" with "dynamo" for its *dynamic* approach — it traces the bytecode as it actually executes rather than requiring you to rewrite the model in a static language. When it meets Python it cannot capture (a `print`, a `.item()`, a call into NumPy), it takes a [graph break](/shared/glossary/#graph-break): it compiles what it has, runs the awkward part in [eager mode](/shared/glossary/#eager-mode), and starts a new graph after it. That is why it never fails on ordinary Python — it degrades instead.
 
@@ -5310,6 +5378,9 @@ An architecture (Zeng et al., 2020) for learning [pick and place](/shared/glossa
 * **Why it is data-efficient**: The cross-correlation is equivariant — move the target and the predicted place moves with it, for free. The network does not have to see every position during training to handle it.
 
 
+### Translation unit {#translation-unit}
+One `.cpp` file plus everything it `#include`s, compiled as a single job — abbreviated *TU*. "Translation" is the C++ standard's word for compiling. **Why the term matters:** build time scales with the number of translation units and how many headers each one drags in, not with how much code you wrote. An **empty** file that includes `torch/extension.h` takes about **15 seconds** to compile, because the compiler still reads 352,000 lines of headers.
+
 ### transpose {#transpose}
 The operation that flips a matrix across its main diagonal — every row becomes a column and every column becomes a row. A matrix `M` with `m` rows and `n` columns becomes `Mᵀ` with `n` rows and `m` columns, and the entry at row `i`, column `j` moves to row `j`, column `i`. In robotics, the [Jacobian](/shared/glossary/#jacobian) transpose `Jᵀ` maps forces at the [end-effector](/shared/glossary/#end-effector) back into equivalent joint torques — the mathematically dual direction of what `J` does (joint velocities → end-effector velocity). In [PyTorch](/shared/glossary/#pytorch), `.T` and `torch.transpose` perform this flip by rewriting memory strides rather than copying data, so the result shares storage with the original array but may be non-contiguous.
 
@@ -5353,6 +5424,12 @@ A fix for the [overestimation bias](/shared/glossary/#overestimation-bias) that 
 
 ### Twist {#twist}
 The 6-vector that fully describes a rigid body's instantaneous velocity: three numbers of linear velocity stacked with three of angular velocity. It is the velocity counterpart of a [homogeneous transform](/shared/glossary/#homogeneous-transform), and the output of a [Jacobian](/shared/glossary/#jacobian) — `(v, ω) = J(q) q̇`. One trap deserves naming: there are two common conventions and they are **not** interchangeable. The *point-velocity* (or hybrid) twist gives the velocity of the tool's own origin; the *spatial* (screw) twist gives the velocity of the imaginary body-fixed point that currently sits at the world origin, which for a distant tool is a completely different vector. Mixing them silently leaves a tracking error the size of the arm rather than an obvious crash. See also [wrench](/shared/glossary/#wrench), its force-side twin, and [screw theory](/shared/glossary/#screw-theory) for why they pair up.
+
+### Type promotion {#type-promotion}
+The rule that decides the result [dtype](/shared/glossary/#dtype) when an operation gets mixed inputs. It follows *category* first (bool < integer < floating point), and only then width — which is why `int64 + float32` gives **float32** even though int64 holds far more digits. In PyTorch the rule lives inside [TensorIterator](/shared/glossary/#tensoriterator), not in each [kernel](/shared/glossary/#kernel), which is what guarantees every elementwise operation promotes identically.
+
+### ufunc {#ufunc}
+Short for **universal function**, a name borrowed from NumPy. A formula defined on single numbers that gets applied element by element to whole arrays. PyTorch's `add` is written this way: the human-written source is essentially `a + b * alpha` for one pair of numbers, and the [code generator](/shared/glossary/#code-generation) produces one loop per [dtype](/shared/glossary/#dtype) around it (13 of them for `add`), with the vectorisation and threading supplied by a shared loop helper.
 
 ### Understeer {#understeer}
 What a car does when the front tyres reach their friction limit before the rears: the vehicle turns *less* than the steering angle asks for, and adding more steering does nothing.

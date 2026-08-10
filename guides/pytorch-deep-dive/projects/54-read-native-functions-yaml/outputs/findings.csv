@@ -1,0 +1,140 @@
+section,name,value
+1. finding the file,path,~/.local/lib/python3.12/site-packages/torchgen/packaged/ATen/native/native_functions.yaml
+1. finding the file,size (KB),603.627
+1. finding the file,lines,16099
+1. finding the file,entries physically in the file,2666
+1. finding the file,operators torchgen produces from it,3184
+1. finding the file,operators created by 'autogen:' lines,518
+1. finding the file,entries carrying an autogen: line,497
+1. finding the file,check: entries + generated == operators,True
+1. finding the file,tags.yaml present,True
+1. finding the file,tags.yaml size (KB),5.37891
+1. finding the file,derivatives.yaml present,True
+1. finding the file,derivatives.yaml size (KB),178.615
+2. anatomy of add.out,add.out field: func,"add.out(Tensor self, Tensor other, *, Scalar alpha=1, Tensor(a!) out) -> Tensor(a!)"
+2. anatomy of add.out,add.out field: device_check,NoCheck
+2. anatomy of add.out,add.out field: structured,True
+2. anatomy of add.out,add.out field: structured_inherits,TensorIteratorBase
+2. anatomy of add.out,add.out field: ufunc_inner_loop,"{'Generic': 'add (AllAndComplex, BFloat16, Half, ComplexHalf)', 'ScalarOnly': 'add (Bool)'"
+2. anatomy of add.out,add.out field: dispatch,"{'SparseCPU, SparseMeta': 'add_out_sparse_cpu', 'SparseCUDA': 'add_out_sparse_cuda', 'Spar"
+2. anatomy of add.out,add.out field: tags,pointwise
+2. anatomy of add.out,parsed: structured,True
+2. anatomy of add.out,parsed: inherits,TensorIteratorBase
+2. anatomy of add.out,parsed: CPU kernel (filled in by ufunc_inner_loop),ufunc_add_CPU
+2. anatomy of add.out,dispatch: block mentions CPU,True
+3. the census,variant kind: functional,1695
+3. the census,variant kind: out,1138
+3. the census,variant kind: inplace,342
+3. the census,variant kind: mutable,9
+3. the census,distinct base names,1329
+3. the census,written as: backend-specific,1282
+3. the census,written as: CompositeExplicitAutograd,1062
+3. the census,written as: CompositeImplicitAutograd,840
+3. the census,style: unstructured,2528
+3. the census,style: delegates to a structured op,383
+3. the census,style: structured (the base),273
+3. the census,declared kernels for key CompositeExplicitAutograd,1062
+3. the census,declared kernels for key CUDA,871
+3. the census,declared kernels for key CompositeImplicitAutograd,840
+3. the census,declared kernels for key CPU,677
+3. the census,declared kernels for key MPS,506
+3. the census,declared kernels for key SparseCPU,173
+3. the census,declared kernels for key SparseCUDA,171
+3. the census,declared kernels for key SparseMPS,158
+3. the census,declared kernels for key SparseCsrCPU,140
+3. the census,declared kernels for key SparseCsrCUDA,139
+3. the census,declared kernels for key SparseCsrMeta,129
+3. the census,declared kernels for key QuantizedCPU,110
+3. the census,tag pt2_compliant_tag,3184
+3. the census,tag pointwise,537
+3. the census,tag generated,518
+3. the census,tag core,192
+3. the census,tag nondeterministic_seeded,154
+3. the census,tag reduction,102
+3. the census,tag view_copy,82
+3. the census,tag inplace_view,19
+3. the census,tag dynamic_output_shape,17
+3. the census,tag maybe_aliasing_or_mutating,12
+3. the census,tag data_dependent_output,4
+3. the census,tag needs_exact_strides,4
+4. five daily ops,add.Tensor     composite,no
+4. five daily ops,add.Tensor     own CPU kernel,-
+4. five daily ops,add.Tensor     hand-written derivative,True
+4. five daily ops,add.Tensor     kernels loaded at runtime,20
+4. five daily ops,linear         composite,implicit
+4. five daily ops,linear         own CPU kernel,-
+4. five daily ops,linear         hand-written derivative,True
+4. five daily ops,linear         kernels loaded at runtime,14
+4. five daily ops,matmul         composite,implicit
+4. five daily ops,matmul         own CPU kernel,-
+4. five daily ops,matmul         hand-written derivative,True
+4. five daily ops,matmul         kernels loaded at runtime,14
+4. five daily ops,relu           composite,no
+4. five daily ops,relu           own CPU kernel,relu
+4. five daily ops,relu           hand-written derivative,True
+4. five daily ops,relu           kernels loaded at runtime,19
+4. five daily ops,softmax.int    composite,implicit
+4. five daily ops,softmax.int    own CPU kernel,-
+4. five daily ops,softmax.int    hand-written derivative,False
+4. five daily ops,softmax.int    kernels loaded at runtime,9
+4. five daily ops,conv2d         composite,implicit
+4. five daily ops,conv2d         own CPU kernel,-
+4. five daily ops,conv2d         hand-written derivative,False
+4. five daily ops,conv2d         kernels loaded at runtime,9
+5. testing a plausible rule about composite ops,CompositeImplicitAutograd functional ops,590
+5. testing a plausible rule about composite ops,"of those, ALSO in derivatives.yaml",7
+5. testing a plausible rule about composite ops,rule holds for,583/590
+5. testing a plausible rule about composite ops,  breaks the rule,chunk
+5. testing a plausible rule about composite ops,  breaks the rule,_fused_rms_norm
+5. testing a plausible rule about composite ops,  breaks the rule,linear
+5. testing a plausible rule about composite ops,  breaks the rule,matmul
+5. testing a plausible rule about composite ops,  breaks the rule,max_pool2d
+5. testing a plausible rule about composite ops,  breaks the rule,one_hot
+5. testing a plausible rule about composite ops,  breaks the rule,_test_autograd_multiple_dispatch.ntonly
+5. testing a plausible rule about composite ops,"composites WITH a formula, checked",6
+5. testing a plausible rule about composite ops,  ... that have an Autograd kernel loaded,5
+5. testing a plausible rule about composite ops,"composites WITHOUT a formula, checked",394
+5. testing a plausible rule about composite ops,  ... that have an Autograd kernel loaded,5
+5. testing a plausible rule about composite ops,  ... which ones,value_selecting_reduction_backward narrow native_channel_shuffle silu_backward mish_backward
+5. testing a plausible rule about composite ops,linear: in derivatives.yaml,True
+5. testing a plausible rule about composite ops,linear: Autograd keys loaded,Autograd
+5. testing a plausible rule about composite ops,softmax.int: in derivatives.yaml,False
+5. testing a plausible rule about composite ops,softmax.int: Autograd keys loaded,(none)
+6. declared vs loaded,operators probed,600
+6. declared vs loaded,not found in the running dispatcher,0
+6. declared vs loaded,naive reading agrees with the runtime,542
+6. declared vs loaded,naive reading disagrees,58
+6. declared vs loaded,"after adding the structured_delegate rule, agrees",600
+6. declared vs loaded,"after adding the structured_delegate rule, disagrees",0
+6. declared vs loaded,Meta kernels registered from a .py file,231
+6. declared vs loaded,"  ... of those, also declared in the YAML",1
+6. declared vs loaded,Meta kernels the YAML never mentions,161
+6. declared vs loaded,  python meta kernel,_addmm_activation.out
+6. declared vs loaded,  python meta kernel,_batch_norm_with_update_functional
+6. declared vs loaded,  python meta kernel,_cdist_forward
+6. declared vs loaded,  python meta kernel,_dyn_quant_matmul_4bit
+6. declared vs loaded,  python meta kernel,_embedding_bag_backward
+6. declared vs loaded,  python meta kernel,_fft_r2c.out
+6. declared vs loaded,  python meta kernel,_functional_sym_constrain_range
+6. declared vs loaded,  python meta kernel,_fused_adam
+7. following a kernel name,generated per-operator headers shipped in the wheel,7010
+7. following a kernel name,add_native.h lines naming ufunc_add_CPU,1
+7. following a kernel name,  ,struct TORCH_API structured_ufunc_add_CPU : public at::meta::structured_add_Tensor {
+7. following a kernel name,relu_native.h lines naming relu,15
+7. following a kernel name,  ,"TORCH_API at::Tensor & relu_out(const at::Tensor & self, at::Tensor & out);"
+7. following a kernel name,  ,TORCH_API at::Tensor relu(const at::Tensor & self);
+7. following a kernel name,linear_native.h lines naming linear,3
+7. following a kernel name,  ,"TORCH_API at::Tensor linear(const at::Tensor & input, const at::Tensor & weight, const ::std::option"
+7. following a kernel name,  ,"TORCH_API at::Tensor & linear_out(const at::Tensor & input, const at::Tensor & weight, const ::std::"
+7. following a kernel name,declaration headers (ATen/ops): files,7010
+7. following a kernel name,declaration headers (ATen/ops): MB,12.469
+7. following a kernel name,all headers: files,9319
+7. following a kernel name,all headers: MB,37.837
+8. tags answer real questions,ops tagged nondeterministic_seeded (base names),54
+8. tags answer real questions,  a few,"_cudnn_attention_backward, _cudnn_attention_forward, _cudnn_init_dropout_state, _cudnn_rnn, _efficient_attention_forward, _fill_mem_eff_dropout_mask, _flash_attention_forward, _fused_dropout, _fused_sdp_choice, _lstm_mps, _nested_tensor_softmax_with_shape, _sample_dirichlet"
+8. tags answer real questions,rand reproduces under manual_seed,True
+8. tags answer real questions,'rand' carries the tag,True
+8. tags answer real questions,ops tagged core,163
+8. tags answer real questions,  a few,"_adaptive_avg_pool2d, _adaptive_avg_pool2d_backward, _adaptive_avg_pool3d, _cdist_forward, _embedding_bag, _fft_r2c, _local_scalar_dense, _log_softmax, _native_batch_norm_legit, _native_batch_norm_legit_no_training, _pdist_forward, _softmax"
+8. tags answer real questions,ops tagged pointwise,170
+8. tags answer real questions,ops tagged view_copy,40

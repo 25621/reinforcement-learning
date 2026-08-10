@@ -1,0 +1,73 @@
+section,name,value
+1. baselines (unpatched),stock CPU kernel registered at,/pytorch/build/aten/src/ATen/RegisterCPU_0.cpp:1309
+1. baselines (unpatched),"stock add, 1000 elements (us)",1.75688
+1. baselines (unpatched),"stock add, 1M elements (us)",191.222
+1. baselines (unpatched),training loss after 5 warmup steps,1.77128
+1. baselines (unpatched),add.Tensor calls seen by TorchDispatchMode (20 steps),40
+2. patching from Python,registering produced a warning,True
+2. patching from Python,warning mentions 'Overriding',True
+2. patching from Python,warning names our file,True
+2. patching from Python,our python kernel ran,1
+2. patching from Python,result still correct,True
+2. patching from Python,"python-patched add, 1000 elements (us)",9.61607
+2. patching from Python,slowdown vs stock (x),5.47337
+2. patching from Python,"after _destroy, result correct",True
+2. patching from Python,"restored add, 1000 elements (us)",1.87673
+3. patching in C++,C++ build was cold,True
+3. patching in C++,C++ build seconds,16.5067
+3. patching in C++,printf fired for the first calls,see stdout above
+3. patching in C++,our C++ kernel ran,1
+3. patching in C++,result still correct,True
+3. patching in C++,max |difference| from stock,0
+3. patching in C++,gradient still flows through our kernel,True
+3. patching in C++,grad_fn still built,AddBackward0
+4. the dispatch table now names your file,CPU kernel is now registered at,/home/canary/.cache/torch_extensions/py312_cu128/p56_patch/main.cpp:54
+4. the dispatch table now names your file,it is our build directory,True
+4. the dispatch table now names your file,CUDA kernel is untouched,/pytorch/build/aten/src/ATen/RegisterCUDA_0.cpp:2432
+"5. two instruments, two blind spots","kernel counter alone, 20 steps",20
+"5. two instruments, two blind spots",kernel counter while a TorchDispatchMode is installed,40
+"5. two instruments, two blind spots","TorchDispatchMode's own count, same run",40
+"5. two instruments, two blind spots",extra ADDS CAUSED BY the python instrument,20
+"5. two instruments, two blind spots",inflation factor,2
+"5. two instruments, two blind spots",elements added in those 20 steps,81920
+"5. two instruments, two blind spots",adds during forward (no mode),1
+"5. two instruments, two blind spots",adds during backward (no mode),0
+"5. two instruments, two blind spots",adds during optimizer.step() (no mode),0
+"5. two instruments, two blind spots",adds during forward (mode installed),1
+"5. two instruments, two blind spots",adds during backward (mode installed),1
+"5. two instruments, two blind spots",u + v                      python sees / kernel sees,1 / 1
+"5. two instruments, two blind spots","torch.cdist(u, v)          python sees / kernel sees",0 / 0
+"5. two instruments, two blind spots","F.pairwise_distance(u, v)  python sees / kernel sees",0 / 1
+"5. two instruments, two blind spots","torch.logaddexp(u, v)      python sees / kernel sees",0 / 0
+"5. two instruments, two blind spots",torch.trapezoid(u)         python sees / kernel sees,1 / 1
+"5. two instruments, two blind spots",calls visible only to the kernel patch,1
+"5. two instruments, two blind spots",  invisible to python,"F.pairwise_distance(u, v)"
+6. what the stock kernel was doing for you,"patched add, 1000 elements (us)",2.00862
+6. what the stock kernel was doing for you,"patched add, 1M elements (us)",630.238
+6. what the stock kernel was doing for you,slowdown at 1000 elements (x),1.14329
+6. what the stock kernel was doing for you,slowdown at 1M elements (x),3.29585
+6. what the stock kernel was doing for you,stock GB/s at 1M,65.8028
+6. what the stock kernel was doing for you,patched GB/s at 1M,19.9653
+"7. one word changed, autograd gone",before: grad_fn,AddBackward0
+"7. one word changed, autograd gone",second C++ build was cold,True
+"7. one word changed, autograd gone",second C++ build seconds,16.0597
+"7. one word changed, autograd gone",after: grad_fn,None
+"7. one word changed, autograd gone",after: requires_grad on the result,False
+"7. one word changed, autograd gone",values still correct,True
+"7. one word changed, autograd gone",backward now raises,RuntimeError
+"7. one word changed, autograd gone",  message,element 0 of tensors does not require grad and does not have a grad_fn
+"7. one word changed, autograd gone",backward broke,True
+"7. one word changed, autograd gone",gradients unaffected for ops we did not patch,True
+8. the edit-compile-run loop,this project's C++ build (s),16.5067
+8. the edit-compile-run loop,  was that a cold build,True
+8. the edit-compile-run loop,  (a warm build reuses ~/.cache/torch_extensions and takes <1 s),False
+8. the edit-compile-run loop,"a full PyTorch rebuild (project 55 estimate, h)",1+
+8. the edit-compile-run loop,speedup of patching over rebuilding (x),218
+8. the edit-compile-run loop,CUDA printf possible on this machine,False
+8. the edit-compile-run loop,  reason,the installed wheel supports sm_70+; this GPU is sm_61
+8. the edit-compile-run loop,1. find the kernel,torch._C._dispatch_dump(op) -> file:line (project 53)
+8. the edit-compile-run loop,2. copy its signature,torch/include/ATen/ops/<op>_native.h
+8. the edit-compile-run loop,3. write the replacement,"same signature, your body"
+8. the edit-compile-run loop,4. register it,"TORCH_LIBRARY_IMPL(aten, <Key>, m) { m.impl(...); }"
+8. the edit-compile-run loop,5. build,"load_inline(...) - seconds, not hours"
+8. the edit-compile-run loop,6. verify,dispatch_dump again: the path is now yours
