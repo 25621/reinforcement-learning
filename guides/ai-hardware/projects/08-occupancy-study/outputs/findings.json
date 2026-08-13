@@ -1,0 +1,552 @@
+{
+  "device": {
+    "name": "NVIDIA GeForce GTX 1070 Ti",
+    "cc": "6.1",
+    "sms": 19,
+    "max_warps": 64,
+    "max_threads": 2048,
+    "regs_per_sm": 65536,
+    "smem_per_sm": 98304
+  },
+  "blocksize_spread_x": 1.0080803134182175,
+  "blocksize_min_theo": 0.5,
+  "blocksize_min_theo_pct_of_best": 0.9919844547000242,
+  "gridsize_speedup_x": 5.371845949535192,
+  "gridsize_achieved_lo": 0.0066,
+  "gridsize_achieved_hi": 0.9324,
+  "gridsize_knee_occupancy": 0.1984,
+  "smem_occupancy_drop_x": 4.0,
+  "smem_throughput_change_pct": -0.04849660523762456,
+  "ilp_best": {
+    "chains": 64,
+    "blocks_per_sm": 8,
+    "theo": 0.25,
+    "theo_limit": 0.4375,
+    "achieved": 0.2493,
+    "peak_blocks": 8,
+    "ms": 2.84672,
+    "tflops": 8.7482,
+    "regs": 72
+  },
+  "ilp_best_1chain": {
+    "chains": 1,
+    "blocks_per_sm": 32,
+    "theo": 1.0,
+    "theo_limit": 1.0,
+    "achieved": 0.596,
+    "peak_blocks": 26,
+    "ms": 0.233472,
+    "tflops": 6.6667,
+    "regs": 21
+  },
+  "ilp_match_at_low_occ": {
+    "chains": 64,
+    "blocks_per_sm": 2,
+    "theo": 0.0625,
+    "theo_limit": 0.4375,
+    "achieved": 0.0624,
+    "peak_blocks": 2,
+    "ms": 0.812736,
+    "tflops": 7.6604,
+    "regs": 72
+  },
+  "sections": {
+    "blocksize": [
+      {
+        "x": 32,
+        "tpb": 608,
+        "theo": 0.5,
+        "achieved": 0.4883,
+        "peak_blocks": 32,
+        "ms": 2.439104,
+        "gloads": 4.084
+      },
+      {
+        "x": 64,
+        "tpb": 608,
+        "theo": 1.0,
+        "achieved": 0.9755,
+        "peak_blocks": 32,
+        "ms": 4.856576,
+        "gloads": 4.102
+      },
+      {
+        "x": 128,
+        "tpb": 608,
+        "theo": 1.0,
+        "achieved": 0.9761,
+        "peak_blocks": 16,
+        "ms": 9.693184,
+        "gloads": 4.111
+      },
+      {
+        "x": 256,
+        "tpb": 608,
+        "theo": 1.0,
+        "achieved": 0.9767,
+        "peak_blocks": 8,
+        "ms": 19.359743,
+        "gloads": 4.116
+      },
+      {
+        "x": 512,
+        "tpb": 608,
+        "theo": 1.0,
+        "achieved": 0.976,
+        "peak_blocks": 4,
+        "ms": 38.71632,
+        "gloads": 4.117
+      },
+      {
+        "x": 1024,
+        "tpb": 608,
+        "theo": 1.0,
+        "achieved": 0.9808,
+        "peak_blocks": 2,
+        "ms": 77.535873,
+        "gloads": 4.111
+      }
+    ],
+    "gridsize": [
+      {
+        "x": 1,
+        "tpb": 256,
+        "theo": 1.0,
+        "achieved": 0.0066,
+        "peak_blocks": 1,
+        "ms": 0.17408,
+        "gloads": 0.753
+      },
+      {
+        "x": 2,
+        "tpb": 256,
+        "theo": 1.0,
+        "achieved": 0.0132,
+        "peak_blocks": 1,
+        "ms": 0.197632,
+        "gloads": 1.326
+      },
+      {
+        "x": 4,
+        "tpb": 256,
+        "theo": 1.0,
+        "achieved": 0.0263,
+        "peak_blocks": 1,
+        "ms": 0.256512,
+        "gloads": 2.044
+      },
+      {
+        "x": 8,
+        "tpb": 256,
+        "theo": 1.0,
+        "achieved": 0.0525,
+        "peak_blocks": 1,
+        "ms": 0.39424,
+        "gloads": 2.66
+      },
+      {
+        "x": 16,
+        "tpb": 256,
+        "theo": 1.0,
+        "achieved": 0.1051,
+        "peak_blocks": 1,
+        "ms": 0.55296,
+        "gloads": 3.793
+      },
+      {
+        "x": 32,
+        "tpb": 256,
+        "theo": 1.0,
+        "achieved": 0.1984,
+        "peak_blocks": 2,
+        "ms": 1.028096,
+        "gloads": 4.08
+      },
+      {
+        "x": 64,
+        "tpb": 256,
+        "theo": 1.0,
+        "achieved": 0.3809,
+        "peak_blocks": 4,
+        "ms": 2.126848,
+        "gloads": 3.944
+      },
+      {
+        "x": 128,
+        "tpb": 256,
+        "theo": 1.0,
+        "achieved": 0.8076,
+        "peak_blocks": 7,
+        "ms": 4.117504,
+        "gloads": 4.075
+      },
+      {
+        "x": 256,
+        "tpb": 256,
+        "theo": 1.0,
+        "achieved": 0.848,
+        "peak_blocks": 8,
+        "ms": 8.316544,
+        "gloads": 4.035
+      },
+      {
+        "x": 512,
+        "tpb": 256,
+        "theo": 1.0,
+        "achieved": 0.9324,
+        "peak_blocks": 8,
+        "ms": 16.592512,
+        "gloads": 4.045
+      }
+    ],
+    "sharedmem": [
+      {
+        "x": 1,
+        "tpb": 256,
+        "theo": 1.0,
+        "achieved": 0.9771,
+        "peak_blocks": 8,
+        "ms": 19.322529,
+        "gloads": 4.124
+      },
+      {
+        "x": 2,
+        "tpb": 256,
+        "theo": 1.0,
+        "achieved": 0.9768,
+        "peak_blocks": 8,
+        "ms": 19.321472,
+        "gloads": 4.125
+      },
+      {
+        "x": 4,
+        "tpb": 256,
+        "theo": 1.0,
+        "achieved": 0.9769,
+        "peak_blocks": 8,
+        "ms": 19.32288,
+        "gloads": 4.124
+      },
+      {
+        "x": 6,
+        "tpb": 256,
+        "theo": 1.0,
+        "achieved": 0.977,
+        "peak_blocks": 8,
+        "ms": 19.326977,
+        "gloads": 4.123
+      },
+      {
+        "x": 8,
+        "tpb": 256,
+        "theo": 1.0,
+        "achieved": 0.9774,
+        "peak_blocks": 8,
+        "ms": 19.327553,
+        "gloads": 4.123
+      },
+      {
+        "x": 12,
+        "tpb": 256,
+        "theo": 0.875,
+        "achieved": 0.818,
+        "peak_blocks": 7,
+        "ms": 19.692545,
+        "gloads": 4.047
+      },
+      {
+        "x": 16,
+        "tpb": 256,
+        "theo": 0.625,
+        "achieved": 0.599,
+        "peak_blocks": 5,
+        "ms": 19.703808,
+        "gloads": 4.044
+      },
+      {
+        "x": 24,
+        "tpb": 256,
+        "theo": 0.375,
+        "achieved": 0.3642,
+        "peak_blocks": 3,
+        "ms": 19.470337,
+        "gloads": 4.093
+      },
+      {
+        "x": 32,
+        "tpb": 256,
+        "theo": 0.25,
+        "achieved": 0.245,
+        "peak_blocks": 2,
+        "ms": 19.332096,
+        "gloads": 4.122
+      }
+    ],
+    "ilp": [
+      {
+        "chains": 1,
+        "blocks_per_sm": 1,
+        "theo": 0.0312,
+        "theo_limit": 1.0,
+        "achieved": 0.0312,
+        "peak_blocks": 1,
+        "ms": 0.075424,
+        "tflops": 0.6449,
+        "regs": 21
+      },
+      {
+        "chains": 1,
+        "blocks_per_sm": 2,
+        "theo": 0.0625,
+        "theo_limit": 1.0,
+        "achieved": 0.0624,
+        "peak_blocks": 2,
+        "ms": 0.073728,
+        "tflops": 1.3194,
+        "regs": 21
+      },
+      {
+        "chains": 1,
+        "blocks_per_sm": 4,
+        "theo": 0.125,
+        "theo_limit": 1.0,
+        "achieved": 0.1243,
+        "peak_blocks": 4,
+        "ms": 0.0768,
+        "tflops": 2.5333,
+        "regs": 21
+      },
+      {
+        "chains": 1,
+        "blocks_per_sm": 8,
+        "theo": 0.25,
+        "theo_limit": 1.0,
+        "achieved": 0.2458,
+        "peak_blocks": 8,
+        "ms": 0.079872,
+        "tflops": 4.8718,
+        "regs": 21
+      },
+      {
+        "chains": 1,
+        "blocks_per_sm": 16,
+        "theo": 0.5,
+        "theo_limit": 1.0,
+        "achieved": 0.4624,
+        "peak_blocks": 16,
+        "ms": 0.11776,
+        "tflops": 6.6087,
+        "regs": 21
+      },
+      {
+        "chains": 1,
+        "blocks_per_sm": 32,
+        "theo": 1.0,
+        "theo_limit": 1.0,
+        "achieved": 0.596,
+        "peak_blocks": 26,
+        "ms": 0.233472,
+        "tflops": 6.6667,
+        "regs": 21
+      },
+      {
+        "chains": 4,
+        "blocks_per_sm": 1,
+        "theo": 0.0312,
+        "theo_limit": 1.0,
+        "achieved": 0.0312,
+        "peak_blocks": 1,
+        "ms": 0.08192,
+        "tflops": 2.375,
+        "regs": 21
+      },
+      {
+        "chains": 4,
+        "blocks_per_sm": 2,
+        "theo": 0.0625,
+        "theo_limit": 1.0,
+        "achieved": 0.0624,
+        "peak_blocks": 2,
+        "ms": 0.082944,
+        "tflops": 4.6914,
+        "regs": 21
+      },
+      {
+        "chains": 4,
+        "blocks_per_sm": 4,
+        "theo": 0.125,
+        "theo_limit": 1.0,
+        "achieved": 0.1158,
+        "peak_blocks": 4,
+        "ms": 0.108544,
+        "tflops": 7.1698,
+        "regs": 21
+      },
+      {
+        "chains": 4,
+        "blocks_per_sm": 8,
+        "theo": 0.25,
+        "theo_limit": 1.0,
+        "achieved": 0.2092,
+        "peak_blocks": 8,
+        "ms": 0.201728,
+        "tflops": 7.7157,
+        "regs": 21
+      },
+      {
+        "chains": 4,
+        "blocks_per_sm": 16,
+        "theo": 0.5,
+        "theo_limit": 1.0,
+        "achieved": 0.4374,
+        "peak_blocks": 16,
+        "ms": 0.37376,
+        "tflops": 8.3288,
+        "regs": 21
+      },
+      {
+        "chains": 4,
+        "blocks_per_sm": 32,
+        "theo": 1.0,
+        "theo_limit": 1.0,
+        "achieved": 0.7634,
+        "peak_blocks": 32,
+        "ms": 0.734208,
+        "tflops": 8.4798,
+        "regs": 21
+      },
+      {
+        "chains": 16,
+        "blocks_per_sm": 1,
+        "theo": 0.0312,
+        "theo_limit": 1.0,
+        "achieved": 0.0312,
+        "peak_blocks": 1,
+        "ms": 0.242688,
+        "tflops": 3.2068,
+        "regs": 28
+      },
+      {
+        "chains": 16,
+        "blocks_per_sm": 2,
+        "theo": 0.0625,
+        "theo_limit": 1.0,
+        "achieved": 0.0624,
+        "peak_blocks": 2,
+        "ms": 0.242688,
+        "tflops": 6.4135,
+        "regs": 28
+      },
+      {
+        "chains": 16,
+        "blocks_per_sm": 4,
+        "theo": 0.125,
+        "theo_limit": 1.0,
+        "achieved": 0.1174,
+        "peak_blocks": 4,
+        "ms": 0.403264,
+        "tflops": 7.7194,
+        "regs": 28
+      },
+      {
+        "chains": 16,
+        "blocks_per_sm": 8,
+        "theo": 0.25,
+        "theo_limit": 1.0,
+        "achieved": 0.2407,
+        "peak_blocks": 8,
+        "ms": 0.741888,
+        "tflops": 8.392,
+        "regs": 28
+      },
+      {
+        "chains": 16,
+        "blocks_per_sm": 16,
+        "theo": 0.5,
+        "theo_limit": 1.0,
+        "achieved": 0.4853,
+        "peak_blocks": 16,
+        "ms": 1.46096,
+        "tflops": 8.5231,
+        "regs": 28
+      },
+      {
+        "chains": 16,
+        "blocks_per_sm": 32,
+        "theo": 1.0,
+        "theo_limit": 1.0,
+        "achieved": 0.931,
+        "peak_blocks": 32,
+        "ms": 2.914304,
+        "tflops": 8.5453,
+        "regs": 28
+      },
+      {
+        "chains": 64,
+        "blocks_per_sm": 1,
+        "theo": 0.0312,
+        "theo_limit": 0.4375,
+        "achieved": 0.0312,
+        "peak_blocks": 1,
+        "ms": 0.812032,
+        "tflops": 3.8335,
+        "regs": 72
+      },
+      {
+        "chains": 64,
+        "blocks_per_sm": 2,
+        "theo": 0.0625,
+        "theo_limit": 0.4375,
+        "achieved": 0.0624,
+        "peak_blocks": 2,
+        "ms": 0.812736,
+        "tflops": 7.6604,
+        "regs": 72
+      },
+      {
+        "chains": 64,
+        "blocks_per_sm": 4,
+        "theo": 0.125,
+        "theo_limit": 0.4375,
+        "achieved": 0.1243,
+        "peak_blocks": 4,
+        "ms": 1.462272,
+        "tflops": 8.5154,
+        "regs": 72
+      },
+      {
+        "chains": 64,
+        "blocks_per_sm": 8,
+        "theo": 0.25,
+        "theo_limit": 0.4375,
+        "achieved": 0.2493,
+        "peak_blocks": 8,
+        "ms": 2.84672,
+        "tflops": 8.7482,
+        "regs": 72
+      },
+      {
+        "chains": 64,
+        "blocks_per_sm": 16,
+        "theo": 0.4375,
+        "theo_limit": 0.4375,
+        "achieved": 0.2894,
+        "peak_blocks": 14,
+        "ms": 7.826336,
+        "tflops": 6.3641,
+        "regs": 72
+      },
+      {
+        "chains": 64,
+        "blocks_per_sm": 32,
+        "theo": 0.4375,
+        "theo_limit": 0.4375,
+        "achieved": 0.3239,
+        "peak_blocks": 14,
+        "ms": 14.220928,
+        "tflops": 7.0048,
+        "regs": 72
+      }
+    ]
+  }
+}

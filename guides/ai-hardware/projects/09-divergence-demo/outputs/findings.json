@@ -1,0 +1,157 @@
+{
+  "device": {
+    "name": "NVIDIA GeForce GTX 1070 Ti",
+    "cc": "6.1",
+    "sms": 19
+  },
+  "divergent_slowdown_x": 30.211052038021588,
+  "aligned_slowdown_x": 1.5175480769230771,
+  "divergent_vs_aligned_at_max_x": 19.80252389249696,
+  "max_paths": 32,
+  "predicated_branch_cost_x": 1.014945652173913,
+  "ragged_sort_speedup_x": 1.617529175999057,
+  "ragged_predicted_x": 1.929804995787323,
+  "ragged_wasted_pct": 48.22235767556441,
+  "sass": {
+    "_Z7divergeILi32EEvPfii": {
+      "bra": 288,
+      "pred": 384,
+      "total": 3192
+    },
+    "_Z7divergeILi16EEvPfii": {
+      "bra": 144,
+      "pred": 192,
+      "total": 1608
+    },
+    "_Z7divergeILi8EEvPfii": {
+      "bra": 72,
+      "pred": 96,
+      "total": 824
+    },
+    "_Z7divergeILi4EEvPfii": {
+      "bra": 36,
+      "pred": 48,
+      "total": 424
+    },
+    "_Z7divergeILi2EEvPfii": {
+      "bra": 18,
+      "pred": 24,
+      "total": 232
+    },
+    "_Z7divergeILi1EEvPfii": {
+      "bra": 11,
+      "pred": 11,
+      "total": 120
+    },
+    "_Z6raggedPKiPf": {
+      "bra": 5,
+      "pred": 11,
+      "total": 128
+    },
+    "_Z11tiny_branchPfii": {
+      "bra": 11,
+      "pred": 84,
+      "total": 184
+    }
+  },
+  "ways": [
+    {
+      "ways": 1,
+      "mode": 0,
+      "ms": 0.049656,
+      "tflops": 6.2691
+    },
+    {
+      "ways": 2,
+      "mode": 0,
+      "ms": 0.09496,
+      "tflops": 3.2782
+    },
+    {
+      "ways": 4,
+      "mode": 0,
+      "ms": 0.191704,
+      "tflops": 1.6238
+    },
+    {
+      "ways": 8,
+      "mode": 0,
+      "ms": 0.37746,
+      "tflops": 0.8247
+    },
+    {
+      "ways": 16,
+      "mode": 0,
+      "ms": 0.753024,
+      "tflops": 0.4134
+    },
+    {
+      "ways": 32,
+      "mode": 0,
+      "ms": 1.50016,
+      "tflops": 0.2075
+    },
+    {
+      "ways": 1,
+      "mode": 1,
+      "ms": 0.04992,
+      "tflops": 6.2359
+    },
+    {
+      "ways": 2,
+      "mode": 1,
+      "ms": 0.048384,
+      "tflops": 6.4339
+    },
+    {
+      "ways": 4,
+      "mode": 1,
+      "ms": 0.050772,
+      "tflops": 6.1313
+    },
+    {
+      "ways": 8,
+      "mode": 1,
+      "ms": 0.05056,
+      "tflops": 6.157
+    },
+    {
+      "ways": 16,
+      "mode": 1,
+      "ms": 0.051664,
+      "tflops": 6.0254
+    },
+    {
+      "ways": 32,
+      "mode": 1,
+      "ms": 0.075756,
+      "tflops": 4.1092
+    }
+  ],
+  "tiny": [
+    {
+      "mode": 0,
+      "ms": 0.094208,
+      "tflops": 3.3043
+    },
+    {
+      "mode": 1,
+      "ms": 0.095616,
+      "tflops": 3.2557
+    }
+  ],
+  "ragged": [
+    {
+      "order": "random",
+      "ms": 0.027443,
+      "total_iters": 39278768,
+      "warp_iters": 2370640
+    },
+    {
+      "order": "sorted",
+      "ms": 0.016966,
+      "total_iters": 39278768,
+      "warp_iters": 1228435
+    }
+  ]
+}
