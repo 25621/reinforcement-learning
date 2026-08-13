@@ -17,3 +17,6 @@
 */outputs/tiles
 */outputs/hbm
 */outputs/l2
+*/outputs/vecadd
+*/outputs/sgemm
+*/__pycache__/

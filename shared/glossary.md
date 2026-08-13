@@ -868,6 +868,13 @@ The classic "hello world" control task: a pole is hinged upright on a cart, and 
 ### CasADi {#casadi}
 A free open-source software framework for *symbolic* automatic differentiation and numerical optimization, used heavily to build [model predictive controllers](/shared/glossary/#mpc) and solve trajectory-optimization problems (finding the best path-plus-controls over time). You write your robot's dynamics and cost as ordinary math expressions in Python or C++; CasADi then computes their exact derivatives for you (no hand-derived gradients, no finite-difference error) and feeds the whole problem to a numerical solver such as IPOPT to find the controls that minimize the cost while respecting constraints like torque limits. Analogy: a graphing calculator that not only evaluates your formula but also hands you its slope at every point and then hunts down the formula's best setting — the tedious calculus and search are done for you. The name is short for *Computer Algebra System with Automatic Differentiation*.
 
+### Catastrophic cancellation {#catastrophic-cancellation}
+What happens when you subtract two floating-point numbers that are nearly equal. The leading digits cancel exactly, and what survives is made mostly of the rounding error that was hiding in the last digits — so the *relative* error of the answer can be enormous even though both inputs looked accurate.
+
+* **A concrete case:** computing a variance as `E[x²] − E[x]²` on data with mean 10,000 and true variance 1. Both terms are about 1e8; [float32](/shared/glossary/#float32) has roughly 7 significant decimal digits, so near 1e8 the gap between representable numbers is about 8. Both terms get rounded to a multiple of ~8 *before* the subtraction, and the difference that comes out is pure rounding noise — often negative, which is an impossible variance, and the square root of it is NaN.
+* **The fix is almost always to reformulate, not to add precision.** Subtract the mean *first* and then square (the two-pass "centred" formula), or keep a running centred sum if you can only make one pass. The same idea is behind the max-subtraction in a numerically stable [softmax](/shared/glossary/#softmax): rearrange the arithmetic so that no two large quantities ever have to cancel.
+* **Why it is dangerous rather than merely inaccurate:** there is no exception and no warning. The answer is finite, plausible, and wrong, and it gets worse the further your data drifts away from zero.
+
 ### Catastrophic forgetting {#catastrophic-forgetting}
 When training a model on new data erases skills it had already learned, because the new [gradients](/shared/glossary/#gradients) overwrite the old [weights](/shared/glossary/#weights).
 
@@ -2959,6 +2966,12 @@ A design pattern in robotics middleware (specifically [ROS 2](/shared/glossary/#
 Having chosen a *direction* to move the parameters in, deciding how *far* along it to actually step, by trying a step, checking whether it did what it promised, and shrinking it until it does. "Backtracking" line search starts at the largest step allowed and repeatedly multiplies it by a factor below 1.
 * **Why it matters in RL:** It is [TRPO](/shared/glossary/#trpo)'s last line of defence, and the reason TRPO can honestly claim to enforce its constraint. TRPO computes its step from a *local approximation*: a linear model of the objective and a quadratic model of the [KL divergence](/shared/glossary/#kl-divergence). Those models are true only very near the current parameters, so the step they recommend may in reality both fail to improve the [policy](/shared/glossary/#policy) and violate the [trust region](/shared/glossary/#trust-region). The line search checks the *true* objective and the *true* KL at the proposed point, and backs off until both promises actually hold — or, if none does, takes no step at all. This is the mechanism [PPO](/shared/glossary/#ppo) throws away and replaces with a `clamp`.
 
+### Linear layer {#linear-layer}
+The most common layer in a neural network: multiply the input by a learned weight matrix and add a learned bias, `y = x·W + b`. Also called a *fully connected* or *dense* layer. "Linear" because the operation is a linear map in the algebraic sense — scaling the input scales the output by the same factor, and the sum of two inputs gives the sum of their outputs. (The bias makes it *affine* rather than strictly linear, but the name stuck.)
+
+* **Why it is the operation that matters for hardware:** a linear layer is a [matmul](/shared/glossary/#matmul), and a matmul is the one operation with enough [arithmetic intensity](/shared/glossary/#ai-arithmetic-intensity) to keep a [GPU](/shared/glossary/#gpu) busy. In a transformer, the great majority of the [FLOPs](/shared/glossary/#flops) are in linear layers — attention's projections and the feed-forward block — which is why [cuBLAS](/shared/glossary/#cublas) and [tensor cores](/shared/glossary/#tensor-core) exist.
+* **Where the nonlinearity comes from:** stacking linear layers alone gains nothing, because a linear map of a linear map is just another linear map. A nonlinear activation such as ReLU or GELU between them is what makes depth worth having.
+
 ### Linear probe {#linear-probe}
 A small linear classifier trained on the frozen hidden [activations](/shared/glossary/#activations) of a layer of a neural network to test whether that layer has *already* encoded some property — for example, "is this sentence true?", "what is the capital of this country?", or "which language is this?" Like sticking a voltmeter into one wire of a circuit to see what signal is flowing past that point; you don't change the circuit, you just read what's already there. The standard first tool in [mechanistic interpretability](/shared/glossary/#mechanistic-interpretability).
 
@@ -4358,6 +4371,13 @@ The diagnostic is one line: if `gc.collect()` reclaims the objects — it return
 ### Reference model {#reference-model}
 A frozen copy of the starting model that [RLHF](/shared/glossary/#rlhf) and [DPO](/shared/glossary/#dpo) measure against (through a [KL](/shared/glossary/#kl-divergence) term) so the model being trained does not drift too far from sensible behavior — a "before" photo to compare every change against.
 
+### Register spilling {#register-spilling}
+When a [kernel](/shared/glossary/#kernel) needs more [registers](/shared/glossary/#registers) than a thread is allowed, the compiler moves some values into "local memory" — which, despite the name, lives out in [DRAM](/shared/glossary/#dram). Reads and writes of those values then cost a memory round trip instead of being free.
+
+* **Why it is a cliff, not a slope:** the spilled values are usually the ones in the innermost loop, so a handful of spilled bytes can turn every iteration into a DRAM access. Measured on a Pascal card, 32 spilled bytes per thread cost a [matmul](/shared/glossary/#matmul) more than half its throughput, and configurations that spilled formed a group entirely below configurations that did not.
+* **How to see it without a profiler:** [Triton](/shared/glossary/#triton) reports `kernel.n_regs` and `kernel.n_spills` on every compiled kernel; `nvcc -Xptxas -v` prints the same for [CUDA](/shared/glossary/#cuda) C. Check them before drawing any conclusion from an A/B test between two kernel variants, because a difference you attribute to your algorithm is often the register allocator.
+* **The usual causes:** a tile shape that is too large, or too few threads (`num_warps`) sharing the same tile — both raise the number of values one thread must hold at once.
+
 ### Registers {#registers}
 The fastest, smallest, and most immediate storage locations inside a Streaming Multiprocessor ([SM](/shared/glossary/#sm))'s processor cores. Registers are local to each individual thread; they hold the variables, intermediate calculations, and memory pointers currently being operated on, with zero-cycle access latency. However, the register file per SM is fixed in size (typically 256 KB on modern NVIDIA GPUs), meaning that if a thread uses too many registers, the GPU will run fewer active threads concurrently, reducing [occupancy](/shared/glossary/#occupancy).
 
@@ -5372,6 +5392,13 @@ In parallel computing (especially [GPU](/shared/glossary/#gpu) programming like 
 * **How it works:** When a GPU kernel is launched, it starts a grid containing millions of threads. Each thread receives a unique identifier (such as its thread or block index) that it uses to calculate which memory address to read and write. Threads are grouped into [blocks](/shared/glossary/#block), and further scheduled in hardware as [warps](/shared/glossary/#warp) of 32 threads that execute instructions in lockstep.
 * **Analogy:** Imagine a large office where you need to check and sign 1,000 separate documents. A [CPU](/shared/glossary/#cpu) is like a single highly efficient manager who reads and signs each document one after the other. A GPU is like hiring 1,000 temporary workers (threads) and giving each worker exactly one document to sign: they all sign their document at the exact same moment, completing the work in a fraction of the time.
 * **Example:** In a vector addition kernel (`C[i] = A[i] + B[i]`), each thread uses its global thread index `i` to load `A[i]` and `B[i]`, add them together, and store the result in `C[i]`.
+
+### Thread coarsening {#thread-coarsening}
+Giving one thread several output elements instead of one, so that values it has already loaded into [registers](/shared/glossary/#registers) get reused across all of them. Also called *register tiling* or *thread tiling*. The name is literal: threads become "coarser" — fewer of them, each doing more work.
+
+* **Why it is the key step in a fast [matmul](/shared/glossary/#matmul):** a thread that computes an 8×8 square of the output loads 8 values of A and 8 of B, then does 64 multiply-adds with them. That ratio, `(TM×TN)/(TM+TN)`, is a second level of reuse *on top of* the [shared-memory](/shared/glossary/#shared-memory) tile — and it lives in a different resource, so it is not limited by the shared-memory budget. It is what lets a matmul reach the [ridge point](/shared/glossary/#roofline) that one level of [tiling](/shared/glossary/#tiling) alone cannot.
+* **What it costs:** registers. A coarsened kernel typically runs at low [occupancy](/shared/glossary/#occupancy) — which is fine, and often optimal, once there are enough [warps](/shared/glossary/#warp) in flight to hide memory latency.
+* **The failure mode:** coarsen too far and the accumulators no longer fit, giving [register spilling](/shared/glossary/#register-spilling) and a large, sudden loss.
 
 ### Three-point turn {#three-point-turn}
 A standard driving maneuver used to turn a vehicle around in a narrow road by driving forward while steering one way, reversing while steering the other way, and then driving forward again.

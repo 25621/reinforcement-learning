@@ -1,0 +1,88 @@
+{
+  "device": {
+    "name": "NVIDIA GeForce GTX 1070 Ti",
+    "cc": "6.1",
+    "sms": 19,
+    "mem_gb": 7.92
+  },
+  "naked": {
+    "forward_err": 1.430511474609375e-06,
+    "output_requires_grad": false,
+    "input_required_grad": true,
+    "backward": "RuntimeError: element 0 of tensors does not require grad and does not have a grad_fn",
+    "fullgraph_compile": "Unsupported: torch.* op returned non-Tensor"
+  },
+  "registered": {
+    "forward_err": 1.430511474609375e-06,
+    "fullgraph_compile": "compiled, max error vs eager 0.000e+00",
+    "graph_nodes": [
+      "aihw.silu_mul.default",
+      "<built-in function mul>"
+    ]
+  },
+  "fake": {
+    "no_fake": "TorchRuntimeError: RuntimeError when making fake tensor call",
+    "bad_fake": "compiled and returned shape (8,) (eager gives (8,))"
+  },
+  "autograd": {
+    "grad_fn": "GeneratedBackwardFor_aihw_silu_mul_defaultBackward",
+    "requires_grad": true,
+    "grad_a_err": 7.152557373046875e-07,
+    "grad_b_err": 4.76837158203125e-07
+  },
+  "mutation": [
+    {
+      "op": "mutates_args=()   (a lie)",
+      "eager": 56.0,
+      "compiled": 28.0,
+      "correct": 56.0,
+      "wrong": true
+    },
+    {
+      "op": "mutates_args={'x'} (true)",
+      "eager": 56.0,
+      "compiled": 56.0,
+      "correct": 56.0,
+      "wrong": false
+    }
+  ],
+  "opcheck": {
+    "good": "PASS",
+    "bad_fake": "OpCheckError: opcheck(op, ...): test_faketensor failed with When comparing the output of aihw.relu_badfake.default on FakeTensor and concrete Tensors, found mismatched tensor metadata: Shapes torch.Size([8]) and torch.Size([4]) are not equal! (scroll up for stack trace)"
+  },
+  "inductor": {
+    "gpu": "GPUTooOldForTriton: Found NVIDIA GeForce GTX 1070 Ti which is too old to be supported by the triton GPU compiler, which is used as the backend. Triton only supports devices of CUDA Capability >= 7.0, but your device is of CUDA capability 6.1",
+    "hand_written_triton_err": 4.76837158203125e-07,
+    "cpu": "compiled, max error 0.000e+00"
+  },
+  "overhead": [
+    {
+      "n": 1024,
+      "raw_us": 23.952479362487793,
+      "op_us": 51.470398902893066,
+      "overhead_us": 27.517919540405273,
+      "ratio": 2.148854743759903
+    },
+    {
+      "n": 16384,
+      "raw_us": 23.524000644683838,
+      "op_us": 52.959041595458984,
+      "overhead_us": 29.43504095077515,
+      "ratio": 2.2512769998340882
+    },
+    {
+      "n": 262144,
+      "raw_us": 23.257920742034912,
+      "op_us": 52.23087787628174,
+      "overhead_us": 28.972957134246826,
+      "ratio": 2.245724304231673
+    },
+    {
+      "n": 4194304,
+      "raw_us": 241.50527954101562,
+      "op_us": 241.71279907226562,
+      "overhead_us": 0.2075195312499778,
+      "ratio": 1.0008592753402508
+    }
+  ]
+}

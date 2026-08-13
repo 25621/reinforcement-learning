@@ -1,0 +1,325 @@
+{
+  "device": {
+    "name": "NVIDIA GeForce GTX 1070 Ti",
+    "cc": "6.1",
+    "sms": 19,
+    "mem_gb": 7.92
+  },
+  "environment": {
+    "torch_version": "2.11.0+cu130",
+    "triton_version": "3.6.0",
+    "torch_eager": false,
+    "torch_eager_msg": "CUDA error: no kernel image is available for execution on the device",
+    "torch_cublas": false,
+    "torch_cublas_msg": "CUDA error: CUBLAS_STATUS_ARCH_MISMATCH when calling `cublasCreate(handle)`",
+    "triton": true,
+    "triton_msg": "max err 2.52e-08"
+  },
+  "correctness": [
+    {
+      "M": 4,
+      "N": 7,
+      "fused": 1.776285635246566e-08,
+      "online": 1.776285635246566e-08,
+      "multipass": 1.776285635246566e-08,
+      "sum_err": 4.0978193283081055e-08
+    },
+    {
+      "M": 128,
+      "N": 129,
+      "fused": 1.999651072503994e-08,
+      "online": 1.3027509127017112e-08,
+      "multipass": 1.999651072503994e-08,
+      "sum_err": 1.2724194675683975e-07
+    },
+    {
+      "M": 1024,
+      "N": 512,
+      "fused": 8.613073226859669e-09,
+      "online": 8.106404637830966e-09,
+      "multipass": 8.613073226859669e-09,
+      "sum_err": 1.4524266589432955e-07
+    },
+    {
+      "M": 512,
+      "N": 4096,
+      "fused": 1.413914317224818e-09,
+      "online": 1.5559827402228388e-09,
+      "multipass": 1.413914317224818e-09,
+      "sum_err": 1.3644967111758888e-07
+    }
+  ],
+  "numerics": [
+    {
+      "shift": 0.0,
+      "unsafe_bad": 0,
+      "unsafe_err": 6.2576525176882836e-09,
+      "safe_bad": 0,
+      "safe_err": 5.660079939462381e-09
+    },
+    {
+      "shift": 20.0,
+      "unsafe_bad": 0,
+      "unsafe_err": 7.561193219457474e-08,
+      "safe_bad": 0,
+      "safe_err": 4.6493984239004416e-08
+    },
+    {
+      "shift": 60.0,
+      "unsafe_bad": 0,
+      "unsafe_err": 2.1800162695179148e-07,
+      "safe_bad": 0,
+      "safe_err": 1.4722111128101512e-07
+    },
+    {
+      "shift": 88.0,
+      "unsafe_bad": 61764,
+      "unsafe_err": NaN,
+      "safe_bad": 0,
+      "safe_err": 1.2859465978870555e-07
+    },
+    {
+      "shift": 100.0,
+      "unsafe_bad": 262144,
+      "unsafe_err": NaN,
+      "safe_bad": 0,
+      "safe_err": 1.2859465978870555e-07
+    },
+    {
+      "shift": 200.0,
+      "unsafe_bad": 262144,
+      "unsafe_err": NaN,
+      "safe_bad": 0,
+      "safe_err": 2.739471101353974e-07
+    },
+    {
+      "shift": -100.0,
+      "unsafe_bad": 0,
+      "unsafe_err": 1.804539903275254e-05,
+      "safe_bad": 0,
+      "safe_err": 1.2859465978870555e-07
+    },
+    {
+      "shift": -200.0,
+      "unsafe_bad": 262144,
+      "unsafe_err": NaN,
+      "safe_bad": 0,
+      "safe_err": 2.739471101353974e-07
+    }
+  ],
+  "fusion": [
+    {
+      "M": 8192,
+      "N": 512,
+      "fused_ms": 0.16759467124938965,
+      "online_ms": 0.1799082597096761,
+      "multipass_ms": 0.4891647974650065,
+      "fused_gbs": 200.21180715268235,
+      "online_gbs": 279.7628529186033,
+      "multipass_gbs": 205.7860592619631,
+      "speedup": 2.9187371759398224,
+      "traffic_ratio": 3.0
+    },
+    {
+      "M": 4096,
+      "N": 1024,
+      "fused_ms": 0.16758079528808595,
+      "online_ms": 0.21671253840128582,
+      "multipass_ms": 0.4891306559244792,
+      "fused_gbs": 200.22838501462545,
+      "online_gbs": 232.250742717992,
+      "multipass_gbs": 205.80042322177044,
+      "speedup": 2.9187751202852397,
+      "traffic_ratio": 3.0
+    },
+    {
+      "M": 2048,
+      "N": 2048,
+      "fused_ms": 0.16911892890930175,
+      "online_ms": 0.24210240046183268,
+      "multipass_ms": 0.4880213419596354,
+      "fused_gbs": 198.40731144882778,
+      "online_gbs": 207.89404774173133,
+      "multipass_gbs": 206.26822506530038,
+      "speedup": 2.885669540997156,
+      "traffic_ratio": 3.0
+    },
+    {
+      "M": 1024,
+      "N": 4096,
+      "fused_ms": 0.16703252792358397,
+      "online_ms": 0.245034662882487,
+      "multipass_ms": 0.4890965461730957,
+      "fused_gbs": 200.88561441967087,
+      "online_gbs": 205.40623684795935,
+      "multipass_gbs": 205.81477580987527,
+      "speedup": 2.9281514939225097,
+      "traffic_ratio": 3.0
+    }
+  ],
+  "bandwidth": [
+    {
+      "N": 64,
+      "M": 131072,
+      "fused_ok": true,
+      "fused_ms": 0.33566720485687257,
+      "fused_gbs": 199.92678173196876,
+      "online_ms": 1.2461567878723145,
+      "online_gbs": 80.77899745815476,
+      "regs": 14,
+      "spill_bytes": 0,
+      "block": 64
+    },
+    {
+      "N": 128,
+      "M": 65536,
+      "fused_ok": true,
+      "fused_ms": 0.33459200859069826,
+      "fused_gbs": 200.569237390524,
+      "online_ms": 0.6314496040344239,
+      "online_gbs": 159.41619941931626,
+      "regs": 17,
+      "spill_bytes": 0,
+      "block": 128
+    },
+    {
+      "N": 256,
+      "M": 32768,
+      "fused_ok": true,
+      "fused_ms": 0.33385279178619387,
+      "fused_gbs": 201.01333776767663,
+      "online_ms": 0.35138399600982667,
+      "online_gbs": 286.47661004226524,
+      "regs": 24,
+      "spill_bytes": 0,
+      "block": 256
+    },
+    {
+      "N": 512,
+      "M": 16384,
+      "fused_ok": true,
+      "fused_ms": 0.33320639133453367,
+      "fused_gbs": 201.4032916092051,
+      "online_ms": 0.35808799266815183,
+      "online_gbs": 281.1132963435804,
+      "regs": 24,
+      "spill_bytes": 0,
+      "block": 512
+    },
+    {
+      "N": 1024,
+      "M": 8192,
+      "fused_ok": true,
+      "fused_ms": 0.33329119682312014,
+      "fused_gbs": 201.3520448174787,
+      "online_ms": 0.42987518310546874,
+      "online_gbs": 234.16866094198912,
+      "regs": 24,
+      "spill_bytes": 0,
+      "block": 1024
+    },
+    {
+      "N": 2048,
+      "M": 4096,
+      "fused_ok": true,
+      "fused_ms": 0.33294079303741453,
+      "fused_gbs": 201.56395792707377,
+      "online_ms": 0.48076801300048827,
+      "online_gbs": 209.38018603142336,
+      "regs": 24,
+      "spill_bytes": 0,
+      "block": 2048
+    },
+    {
+      "N": 4096,
+      "M": 2048,
+      "fused_ok": true,
+      "fused_ms": 0.3323391914367676,
+      "fused_gbs": 201.9288297292751,
+      "online_ms": 0.48855037689208985,
+      "online_gbs": 206.04486407393426,
+      "regs": 26,
+      "spill_bytes": 0,
+      "block": 4096
+    },
+    {
+      "N": 8192,
+      "M": 1024,
+      "fused_ok": true,
+      "fused_ms": 0.33145120143890383,
+      "fused_gbs": 202.4698166990055,
+      "online_ms": 0.48975839614868166,
+      "online_gbs": 205.53664172291286,
+      "regs": 32,
+      "spill_bytes": 0,
+      "block": 8192
+    },
+    {
+      "N": 16384,
+      "M": 512,
+      "fused_ok": true,
+      "fused_ms": 0.3327487945556641,
+      "fused_gbs": 201.68026180113978,
+      "online_ms": 0.4871679782867432,
+      "online_gbs": 206.6295415269482,
+      "regs": 59,
+      "spill_bytes": 0,
+      "block": 16384
+    },
+    {
+      "N": 32768,
+      "M": 256,
+      "fused_ok": true,
+      "fused_ms": 0.337012791633606,
+      "fused_gbs": 199.1285365599995,
+      "online_ms": 0.48465919494628906,
+      "online_gbs": 207.6991359075643,
+      "regs": 106,
+      "spill_bytes": 0,
+      "block": 32768
+    },
+    {
+      "N": 65536,
+      "M": 128,
+      "fused_ok": true,
+      "fused_ms": 0.45116801261901857,
+      "fused_gbs": 148.74472950871404,
+      "online_ms": 0.48418078422546384,
+      "online_gbs": 207.90435985812496,
+      "regs": 128,
+      "spill_bytes": 68,
+      "block": 65536
+    }
+  ],
+  "num_warps": {
+    "rows": [
+      {
+        "num_warps": 1,
+        "ms": 0.16701119740804035,
+        "gbs": 200.91127134440032
+      },
+      {
+        "num_warps": 2,
+        "ms": 0.16618666648864747,
+        "gbs": 201.90808750768323
+      },
+      {
+        "num_warps": 4,
+        "ms": 0.1671328067779541,
+        "gbs": 200.76508404827464
+      },
+      {
+        "num_warps": 8,
+        "ms": 0.16790186564127604,
+        "gbs": 199.84549827271942
+      },
+      {
+        "num_warps": 16,
+        "ms": 0.17199360529581706,
+        "gbs": 195.09116017591882
+      }
+    ],
+    "best": 2,
+    "spread": 1.0349422666081713
+  }
+}

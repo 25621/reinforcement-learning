@@ -1,0 +1,248 @@
+{
+  "device": {
+    "name": "NVIDIA GeForce GTX 1070 Ti",
+    "cc": "6.1",
+    "sms": 19,
+    "mem_gb": 7.92
+  },
+  "config": {
+    "H": 8,
+    "D": 64,
+    "BLOCK_M": 64,
+    "BLOCK_N": 32,
+    "num_warps": 8
+  },
+  "correctness": [
+    {
+      "S": 128,
+      "causal": false,
+      "flash": 5.147361696131441e-07,
+      "materialised": 5.326301994048382e-07
+    },
+    {
+      "S": 128,
+      "causal": true,
+      "flash": 2.0585441283586347e-07,
+      "materialised": 2.832567291775823e-07
+    },
+    {
+      "S": 256,
+      "causal": false,
+      "flash": 4.1442069632211473e-07,
+      "materialised": 4.508361197137118e-07
+    },
+    {
+      "S": 256,
+      "causal": true,
+      "flash": 2.2842725934685734e-07,
+      "materialised": 2.411941902417873e-07
+    }
+  ],
+  "memory": [
+    {
+      "S": 512,
+      "scores_bytes": 16777216,
+      "qkvo_bytes": 4194304,
+      "ratio": 4.0,
+      "fits": true
+    },
+    {
+      "S": 1024,
+      "scores_bytes": 67108864,
+      "qkvo_bytes": 8388608,
+      "ratio": 8.0,
+      "fits": true
+    },
+    {
+      "S": 2048,
+      "scores_bytes": 268435456,
+      "qkvo_bytes": 16777216,
+      "ratio": 16.0,
+      "fits": true
+    },
+    {
+      "S": 4096,
+      "scores_bytes": 1073741824,
+      "qkvo_bytes": 33554432,
+      "ratio": 32.0,
+      "fits": true
+    },
+    {
+      "S": 8192,
+      "scores_bytes": 4294967296,
+      "qkvo_bytes": 67108864,
+      "ratio": 64.0,
+      "fits": true
+    },
+    {
+      "S": 16384,
+      "scores_bytes": 17179869184,
+      "qkvo_bytes": 134217728,
+      "ratio": 128.0,
+      "fits": false
+    },
+    {
+      "S": 32768,
+      "scores_bytes": 68719476736,
+      "qkvo_bytes": 268435456,
+      "ratio": 256.0,
+      "fits": false
+    }
+  ],
+  "oom_test": {
+    "S": 16384,
+    "materialised": "OutOfMemoryError: CUDA out of memory. Tried to allocate 8.00 GiB. GPU 0 has a total capa",
+    "flash_ms": 354.1677551269531,
+    "flash_gflops": 1552.246939281464
+  },
+  "speed": [
+    {
+      "S": 256,
+      "materialised_ms": 0.6440000057220459,
+      "flash_ms": 0.10861120223999024,
+      "speedup": 5.929406842390402,
+      "flash_mb": 5.24288,
+      "materialised_mb": 10.48576,
+      "traffic_ratio": 2.0,
+      "flash_gflops": 1235.763210717702,
+      "flash_gbs": 48.272000418660234
+    },
+    {
+      "S": 512,
+      "materialised_ms": 0.9526656150817872,
+      "flash_ms": 0.42512001991271975,
+      "speedup": 2.2409333140259458,
+      "flash_mb": 18.874368,
+      "materialised_mb": 37.748736,
+      "traffic_ratio": 2.0,
+      "flash_gflops": 1262.869041336194,
+      "flash_gbs": 44.397739734475564
+    },
+    {
+      "S": 1024,
+      "materialised_ms": 2.22289924621582,
+      "flash_ms": 1.5750144004821778,
+      "speedup": 1.4113516965529316,
+      "flash_mb": 71.303168,
+      "materialised_mb": 142.606336,
+      "traffic_ratio": 2.0,
+      "flash_gflops": 1363.4692148481724,
+      "flash_gbs": 45.27143877425573
+    },
+    {
+      "S": 2048,
+      "materialised_ms": 5.863212966918946,
+      "flash_ms": 5.779654312133789,
+      "speedup": 1.0144573793297178,
+      "flash_mb": 276.824064,
+      "materialised_mb": 553.648128,
+      "traffic_ratio": 2.0,
+      "flash_gflops": 1486.2367415238516,
+      "flash_gbs": 47.896301240514745
+    },
+    {
+      "S": 4096,
+      "materialised_ms": 22.337330627441407,
+      "flash_ms": 23.007763671875,
+      "speedup": 0.9708605732397565,
+      "flash_mb": 1090.51904,
+      "materialised_mb": 2181.03808,
+      "traffic_ratio": 2.0,
+      "flash_gflops": 1493.3975704036723,
+      "flash_gbs": 47.397872107538426
+    }
+  ],
+  "causal": [
+    {
+      "S": 1024,
+      "flash_full": 1.6157312393188477,
+      "flash_causal": 0.9065407752990723,
+      "flash_ratio": 1.782303988241246,
+      "mat_full": 2.2190080642700196,
+      "mat_causal": 2.550707244873047,
+      "mat_ratio": 0.8699579572411743
+    },
+    {
+      "S": 2048,
+      "flash_full": 5.779865646362305,
+      "flash_causal": 3.225804901123047,
+      "flash_ratio": 1.791759211584704,
+      "mat_full": 5.861529541015625,
+      "mat_causal": 7.174694061279297,
+      "mat_ratio": 0.8169727504688158
+    },
+    {
+      "S": 4096,
+      "flash_full": 22.934425354003906,
+      "flash_causal": 11.859954833984375,
+      "flash_ratio": 1.9337700417109465,
+      "mat_full": 22.334169006347658,
+      "mat_causal": 27.676876831054688,
+      "mat_ratio": 0.8069613180229832
+    }
+  ],
+  "tiles": [
+    {
+      "BLOCK_M": 32,
+      "BLOCK_N": 32,
+      "num_warps": 4,
+      "ok": true,
+      "ms": 5.85797119140625,
+      "gflops": 1466.3668207521384,
+      "regs": 96,
+      "spills": 0,
+      "shared": 24576
+    },
+    {
+      "BLOCK_M": 64,
+      "BLOCK_N": 32,
+      "num_warps": 4,
+      "ok": true,
+      "ms": 6.090505599975586,
+      "gflops": 1410.38119922826,
+      "regs": 255,
+      "spills": 22,
+      "shared": 33024
+    },
+    {
+      "BLOCK_M": 64,
+      "BLOCK_N": 32,
+      "num_warps": 8,
+      "ok": true,
+      "ms": 5.811177444458008,
+      "gflops": 1478.1745479467388,
+      "regs": 116,
+      "spills": 0,
+      "shared": 33024
+    },
+    {
+      "BLOCK_M": 64,
+      "BLOCK_N": 64,
+      "num_warps": 4,
+      "ok": true,
+      "ms": 5.9150337219238285,
+      "gflops": 1452.2207304012084,
+      "regs": 191,
+      "spills": 0,
+      "shared": 49152
+    },
+    {
+      "BLOCK_M": 64,
+      "BLOCK_N": 64,
+      "num_warps": 8,
+      "ok": true,
+      "ms": 5.802374267578125,
+      "gflops": 1480.4171871500778,
+      "regs": 255,
+      "spills": 2,
+      "shared": 49152
+    },
+    {
+      "BLOCK_M": 128,
+      "BLOCK_N": 32,
+      "num_warps": 8,
+      "ok": false,
+      "error": "out of resource: shared memory, Required: 57856, Hardware li"
+    }
+  ]
+}

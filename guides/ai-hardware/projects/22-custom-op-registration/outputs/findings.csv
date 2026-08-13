@@ -1,0 +1,26 @@
+section,key,value
+A,forward_err,1.430511474609375e-06
+A,output_requires_grad,False
+A,input_required_grad,True
+A,backward,RuntimeError: element 0 of tensors does not require grad and does not have a grad_fn
+A,fullgraph_compile,Unsupported: torch.* op returned non-Tensor
+B,forward_err,1.430511474609375e-06
+B,fullgraph_compile,"compiled, max error vs eager 0.000e+00"
+B,graph_nodes,aihw.silu_mul.default | <built-in function mul>
+C,no_fake,TorchRuntimeError: RuntimeError when making fake tensor call
+C,bad_fake,"compiled and returned shape (8,) (eager gives (8,))"
+D,grad_fn,GeneratedBackwardFor_aihw_silu_mul_defaultBackward
+D,requires_grad,True
+D,grad_a_err,7.152557373046875e-07
+D,grad_b_err,4.76837158203125e-07
+E,mutates_args=()   (a lie),eager 56.0 compiled 28.0 correct 56.0
+E,mutates_args={'x'} (true),eager 56.0 compiled 56.0 correct 56.0
+F,good,PASS
+F,bad_fake,"OpCheckError: opcheck(op, ...): test_faketensor failed with When comparing the output of aihw.relu_badfake.default on FakeTensor and concrete Tensors, found mismatched tensor metadata: Shapes torch.Size([8]) and torch.Size([4]) are not equal! (scroll up for stack trace)"
+G,gpu,"GPUTooOldForTriton: Found NVIDIA GeForce GTX 1070 Ti which is too old to be supported by the triton GPU compiler, which is used as the backend. Triton only supports devices of CUDA Capability >= 7.0, but your device is of CUDA capability 6.1"
+G,hand_written_triton_err,4.76837158203125e-07
+G,cpu,"compiled, max error 0.000e+00"
+H,n_1024,"raw 23.95 us, op 51.47 us, overhead 27.52 us"
+H,n_16384,"raw 23.52 us, op 52.96 us, overhead 29.44 us"
+H,n_262144,"raw 23.26 us, op 52.23 us, overhead 28.97 us"
+H,n_4194304,"raw 241.51 us, op 241.71 us, overhead 0.21 us"
