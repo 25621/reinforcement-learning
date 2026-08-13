@@ -1,0 +1,196 @@
+{
+  "device": {
+    "name": "NVIDIA GeForce GTX 1070 Ti",
+    "cc": "6.1",
+    "sms": 19,
+    "smem_block": 49152
+  },
+  "headline": {
+    "conflict_free_gloads": 1002.079,
+    "way32_gloads": 34.932,
+    "way32_slowdown": 28.686562464216188,
+    "way32_pct_of_32x_ceiling": 89.64550770067558,
+    "broadcast_gloads": 1003.281,
+    "broadcast_vs_32way": 28.720972174510475,
+    "transpose_smem_over_naive": 1.7726049515608182,
+    "transpose_padding_gain": 1.0007084661707404,
+    "transpose_swizzle_gain": 1.0017205607003692,
+    "transpose_conflict_pipe_ms": 0.4802821481735944,
+    "transpose_dram_ms": 0.678707,
+    "context_slowdown_range": [
+      1.0126,
+      11.2311
+    ]
+  },
+  "raw": {
+    "bank": [
+      {
+        "stride": 0,
+        "degree": 0,
+        "ms": 0.63545,
+        "gloads": 1003.281
+      },
+      {
+        "stride": 1,
+        "degree": 1,
+        "ms": 0.636211,
+        "gloads": 1002.079
+      },
+      {
+        "stride": 2,
+        "degree": 2,
+        "ms": 1.144083,
+        "gloads": 557.245
+      },
+      {
+        "stride": 3,
+        "degree": 1,
+        "ms": 0.636211,
+        "gloads": 1002.079
+      },
+      {
+        "stride": 4,
+        "degree": 4,
+        "ms": 2.286182,
+        "gloads": 278.864
+      },
+      {
+        "stride": 5,
+        "degree": 1,
+        "ms": 0.636314,
+        "gloads": 1001.918
+      },
+      {
+        "stride": 8,
+        "degree": 8,
+        "ms": 4.567859,
+        "gloads": 139.57
+      },
+      {
+        "stride": 16,
+        "degree": 16,
+        "ms": 9.132627,
+        "gloads": 69.808
+      },
+      {
+        "stride": 17,
+        "degree": 1,
+        "ms": 0.635597,
+        "gloads": 1003.048
+      },
+      {
+        "stride": 32,
+        "degree": 32,
+        "ms": 18.250746,
+        "gloads": 34.932
+      },
+      {
+        "stride": 33,
+        "degree": 1,
+        "ms": 0.635802,
+        "gloads": 1002.725
+      }
+    ],
+    "transpose": [
+      {
+        "kind": "copy_limit",
+        "ms": 0.661299,
+        "gbs": 202.96
+      },
+      {
+        "kind": "naive",
+        "ms": 1.203978,
+        "gbs": 111.48
+      },
+      {
+        "kind": "smem_nopad",
+        "ms": 0.679219,
+        "gbs": 197.61
+      },
+      {
+        "kind": "smem_pad1",
+        "ms": 0.678707,
+        "gbs": 197.75
+      },
+      {
+        "kind": "smem_swizzle",
+        "ms": 0.678038,
+        "gbs": 197.95
+      }
+    ],
+    "context": [
+      {
+        "nload": 8,
+        "work": 1,
+        "ratio_bytes": 32.0,
+        "t1": 0.358797,
+        "t32": 0.363306,
+        "slow": 1.0126
+      },
+      {
+        "nload": 4,
+        "work": 1,
+        "ratio_bytes": 16.0,
+        "t1": 0.420707,
+        "t32": 0.436019,
+        "slow": 1.0364
+      },
+      {
+        "nload": 2,
+        "work": 1,
+        "ratio_bytes": 8.0,
+        "t1": 0.566966,
+        "t32": 0.61296,
+        "slow": 1.0811
+      },
+      {
+        "nload": 1,
+        "work": 1,
+        "ratio_bytes": 4.0,
+        "t1": 0.856346,
+        "t32": 0.956211,
+        "slow": 1.1166
+      },
+      {
+        "nload": 1,
+        "work": 2,
+        "ratio_bytes": 2.0,
+        "t1": 0.893747,
+        "t32": 1.316963,
+        "slow": 1.4735
+      },
+      {
+        "nload": 1,
+        "work": 4,
+        "ratio_bytes": 1.0,
+        "t1": 0.889754,
+        "t32": 2.432467,
+        "slow": 2.7339
+      },
+      {
+        "nload": 1,
+        "work": 8,
+        "ratio_bytes": 0.5,
+        "t1": 0.959078,
+        "t32": 4.232051,
+        "slow": 4.4126
+      },
+      {
+        "nload": 1,
+        "work": 16,
+        "ratio_bytes": 0.25,
+        "t1": 1.098534,
+        "t32": 7.923097,
+        "slow": 7.2124
+      },
+      {
+        "nload": 1,
+        "work": 32,
+        "ratio_bytes": 0.125,
+        "t1": 1.38199,
+        "t32": 15.52128,
+        "slow": 11.2311
+      }
+    ]
+  }
+}

@@ -1,0 +1,213 @@
+{
+  "device": {
+    "name": "NVIDIA GeForce GTX 1070 Ti",
+    "cc": "6.1",
+    "sms": 19,
+    "l2": 2097152
+  },
+  "headline": {
+    "stride1_useful_gbs": 217.71,
+    "stride8_useful_gbs": 27.78,
+    "stride1_over_stride8": 7.836933045356371,
+    "plateau_spread_strides_8_to_64": 1.0142387732749178,
+    "moved_gbs_is_flat_over_plateau": [
+      219.13,
+      222.27
+    ],
+    "random_gather_useful_gbs": 6.76,
+    "random_vs_coalesced": 32.20562130177515,
+    "worst_alignment_penalty_pct": 1.1912398057362772,
+    "lane_shuffle_cost_pct": 0.1568076132799745,
+    "table_lookup_cost_pct": 14.852670349907914,
+    "soa_over_aos_one_field": 3.9047790154509525,
+    "soa_over_aos_all_fields": 1.000179751044803
+  },
+  "raw": {
+    "stride": [
+      {
+        "stride": 1,
+        "reads": 67108864,
+        "sectors": 4,
+        "ms": 1.232998,
+        "useful": 217.71,
+        "moved": 217.71,
+        "random": false
+      },
+      {
+        "stride": 2,
+        "reads": 33554432,
+        "sectors": 8,
+        "ms": 1.206453,
+        "useful": 111.25,
+        "moved": 222.5,
+        "random": false
+      },
+      {
+        "stride": 4,
+        "reads": 16777216,
+        "sectors": 16,
+        "ms": 1.206618,
+        "useful": 55.62,
+        "moved": 222.47,
+        "random": false
+      },
+      {
+        "stride": 8,
+        "reads": 8388608,
+        "sectors": 32,
+        "ms": 1.207706,
+        "useful": 27.78,
+        "moved": 222.27,
+        "random": false
+      },
+      {
+        "stride": 16,
+        "reads": 4194304,
+        "sectors": 32,
+        "ms": 0.604006,
+        "useful": 27.78,
+        "moved": 222.21,
+        "random": false
+      },
+      {
+        "stride": 32,
+        "reads": 2097152,
+        "sectors": 32,
+        "ms": 0.303206,
+        "useful": 27.67,
+        "moved": 221.33,
+        "random": false
+      },
+      {
+        "stride": 64,
+        "reads": 1048576,
+        "sectors": 32,
+        "ms": 0.153125,
+        "useful": 27.39,
+        "moved": 219.13,
+        "random": false
+      },
+      {
+        "stride": 128,
+        "reads": 524288,
+        "sectors": 32,
+        "ms": 0.111091,
+        "useful": 18.88,
+        "moved": 151.02,
+        "random": false
+      },
+      {
+        "stride": 256,
+        "reads": 262144,
+        "sectors": 32,
+        "ms": 0.08391,
+        "useful": 12.5,
+        "moved": 99.97,
+        "random": false
+      },
+      {
+        "stride": -1,
+        "reads": 262144,
+        "sectors": 32,
+        "ms": 0.155014,
+        "useful": 6.76,
+        "moved": 54.12,
+        "random": true
+      }
+    ],
+    "offset": [
+      {
+        "off": 0,
+        "ms": 1.229914,
+        "useful": 218.26
+      },
+      {
+        "off": 1,
+        "ms": 1.237606,
+        "useful": 216.9
+      },
+      {
+        "off": 2,
+        "ms": 1.237394,
+        "useful": 216.94
+      },
+      {
+        "off": 4,
+        "ms": 1.237238,
+        "useful": 216.96
+      },
+      {
+        "off": 8,
+        "ms": 1.216347,
+        "useful": 220.69
+      },
+      {
+        "off": 16,
+        "ms": 1.24471,
+        "useful": 215.66
+      },
+      {
+        "off": 31,
+        "ms": 1.243272,
+        "useful": 215.91
+      }
+    ],
+    "permute": [
+      {
+        "mode": 0,
+        "ms": 1.235917,
+        "useful": 217.2
+      },
+      {
+        "mode": 1,
+        "ms": 1.235338,
+        "useful": 217.3
+      },
+      {
+        "mode": 2,
+        "ms": 1.241395,
+        "useful": 216.24
+      },
+      {
+        "mode": 3,
+        "ms": 1.453773,
+        "useful": 184.65
+      },
+      {
+        "mode": 4,
+        "ms": 1.451469,
+        "useful": 184.94
+      }
+    ],
+    "layout": [
+      {
+        "kind": "aos1",
+        "n": 16777216,
+        "ms": 1.20576,
+        "useful": 55.66,
+        "moved": 222.63
+      },
+      {
+        "kind": "soa1",
+        "n": 16777216,
+        "ms": 0.308774,
+        "useful": 217.34,
+        "moved": 217.34
+      },
+      {
+        "kind": "aos4",
+        "n": 16777216,
+        "ms": 1.206302,
+        "useful": 222.53,
+        "moved": 222.53
+      },
+      {
+        "kind": "soa4",
+        "n": 16777216,
+        "ms": 1.206048,
+        "useful": 222.57,
+        "moved": 222.57
+      }
+    ]
+  }
+}

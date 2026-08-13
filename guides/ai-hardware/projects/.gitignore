@@ -12,3 +12,8 @@
 */outputs/trace.qdstrm
 */outputs/trace.nsys-rep
 */outputs/*.qdrep
+*/outputs/coalesce
+*/outputs/banks
+*/outputs/tiles
+*/outputs/hbm
+*/outputs/l2

@@ -1,0 +1,26 @@
+experiment,setting,conflict_degree,ms,throughput,unit
+bank,stride 0,0,0.63545,1003.281,G loads/s
+bank,stride 1,1,0.636211,1002.079,G loads/s
+bank,stride 2,2,1.144083,557.245,G loads/s
+bank,stride 3,1,0.636211,1002.079,G loads/s
+bank,stride 4,4,2.286182,278.864,G loads/s
+bank,stride 5,1,0.636314,1001.918,G loads/s
+bank,stride 8,8,4.567859,139.57,G loads/s
+bank,stride 16,16,9.132627,69.808,G loads/s
+bank,stride 17,1,0.635597,1003.048,G loads/s
+bank,stride 32,32,18.250746,34.932,G loads/s
+bank,stride 33,1,0.635802,1002.725,G loads/s
+transpose,plain copy (the speed limit),,0.661299,202.96,GB/s
+transpose,no shared memory (strided stores),,1.203978,111.48,GB/s
+transpose,"shared tile, 32-way conflict",,0.679219,197.61,GB/s
+transpose,shared tile + 1 pad column,,0.678707,197.75,GB/s
+transpose,shared tile + XOR swizzle,,0.678038,197.95,GB/s
+context,8 loads / 1 reads (32.0 B per read),32,0.363306,1.0126,x slower than conflict-free
+context,4 loads / 1 reads (16.0 B per read),32,0.436019,1.0364,x slower than conflict-free
+context,2 loads / 1 reads (8.0 B per read),32,0.61296,1.0811,x slower than conflict-free
+context,1 loads / 1 reads (4.0 B per read),32,0.956211,1.1166,x slower than conflict-free
+context,1 loads / 2 reads (2.0 B per read),32,1.316963,1.4735,x slower than conflict-free
+context,1 loads / 4 reads (1.0 B per read),32,2.432467,2.7339,x slower than conflict-free
+context,1 loads / 8 reads (0.5 B per read),32,4.232051,4.4126,x slower than conflict-free
+context,1 loads / 16 reads (0.25 B per read),32,7.923097,7.2124,x slower than conflict-free
+context,1 loads / 32 reads (0.125 B per read),32,15.52128,11.2311,x slower than conflict-free
