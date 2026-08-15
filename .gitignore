@@ -183,3 +183,13 @@ guides/robotics/projects/22-object-6-dof-pose/data/
 # come from is committed as outputs/warpsize.hip.cpp.
 guides/ai-hardware/projects/24-amd-mi300-inference/outputs/ws_cuda
 guides/ai-hardware/projects/24-amd-mi300-inference/outputs/ws_hip
+
+# AI-hardware Phase 9: compiled CUDA probes and the RTLIL netlists yosys reads.
+# All are regenerated in seconds by `python run.py` from the committed .cu and
+# Amaranth sources, and every number they produced is already in
+# outputs/findings.json.
+guides/ai-hardware/projects/45-2-gpu-build-plan/outputs/gpuload
+guides/ai-hardware/projects/46-build-and-benchmark/outputs/linkprobe
+guides/ai-hardware/projects/49-fpga-inference/outputs/dp4a
+guides/ai-hardware/projects/49-fpga-inference/outputs/*.il
+guides/ai-hardware/projects/50-tinytapeout-submission/outputs/*.il

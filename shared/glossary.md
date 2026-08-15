@@ -173,10 +173,20 @@ See also [consistent heuristic](/shared/glossary/#consistent-heuristic), the str
 ### Alpha-beta model {#alpha-beta-model}
 The standard back-of-the-envelope model for how long it takes to send a message between machines: **time = α + D/B**, where α ("alpha") is a fixed cost paid for *any* message however small — handshakes, system calls, waking up the receiver — and D/B is the number of bytes divided by the link's bandwidth. The Greek letters are simply the traditional names in the parallel-computing literature (α for latency, β for the per-byte cost, so β = 1/B). The practical consequence is the whole reason [gradient bucketing](/shared/glossary/#gradient-bucketing) exists: for a tiny message the D/B part is nearly zero, so sending 1,000 small tensors costs about 1,000 × α no matter how little data they hold. Merge them into one buffer and you pay α once. Like posting letters: the stamp costs the same whether the envelope holds one page or twenty, so you combine pages into one envelope.
 
+### Amaranth HDL {#amaranth}
+A Python library for describing digital hardware. You write ordinary Python that *builds* a circuit (registers, adders, state machines) instead of code that runs on a processor, and Amaranth emits [Verilog](/shared/glossary/#verilog) or a netlist for [synthesis](/shared/glossary/#logic-synthesis). It also ships a cycle-accurate simulator, so a design can be tested against a plain-Python reference before any hardware tool is involved.
+* **Why it is useful for learning:** the entire toolchain is a `pip install`, where vendor tools are tens of gigabytes and need licences. The counts it produces — multipliers, flip-flops, gates — are the ones that decide whether a design fits.
+* **What it is not:** a compiler from Python to hardware. Loops and `if`s in the Python are *build-time* instructions that emit gates; they do not execute on the chip.
+
 ### Analytic grasping {#analytic-grasping}
 Choosing where to grip an object by *computing* the answer from its geometry, rather than learning it from examples. Given the object's shape, you place contacts, build a [friction cone](/shared/glossary/#friction-cone) at each one, and check [force closure](/shared/glossary/#force-closure). The contrast is [data-driven grasping](/shared/glossary/#data-driven-grasping), which predicts a score from an image and never writes down the geometry at all.
 * **Analogy**: Working out from a blueprint exactly where to put the clamps on a part, instead of copying what a skilled worker did in a thousand photographs.
 * **Strength and weakness**: The answer is exact and comes with a reason attached, so you can debug it. But it needs the object's true shape, which a camera never gives you exactly, and every error in the measured geometry lands directly on the verdict.
+
+### ASPM (Active State Power Management) {#aspm}
+A [PCIe](/shared/glossary/#pcie) power-saving feature that quietly slows or partly switches off an idle link, then brings it back when traffic resumes ([link training](/shared/glossary/#link-training)).
+* **Why it trips people up:** a status field read on a quiet machine reports the *current* state, not the capability. A healthy PCIe 3.0 ×16 slot can read as "Gen1" at idle and "Gen3" two seconds into a workload — the same card, the same slot, no fault.
+* **Rule of thumb:** never judge a link from an idle reading. Measure bandwidth while the device is busy, or read the status field under load.
 
 ### Barrier {#barrier}
 A [collective operation](/shared/glossary/#collective-operation) that moves no data and only synchronises: every [rank](/shared/glossary/#rank) waits at `dist.barrier()` until *all* ranks have reached it, then they all continue. Used to make sure a shared side effect is finished before anyone depends on it — for example, rank 0 writing a checkpoint file while the others wait, or every rank waiting for rank 0 to finish downloading a dataset. Because it is a collective, a barrier that only some ranks call is itself a classic [deadlock](/shared/glossary/#deadlock). PyTorch's [gloo](/shared/glossary/#gloo) backend also offers `monitored_barrier()`, which is the same thing but reports *which* ranks failed to arrive instead of waiting forever — the single most useful line of code when a job hangs.
@@ -193,6 +203,16 @@ Emptying a container of loose, unsorted, possibly identical objects one at a tim
 * **Why it is a benchmark**: Every part of the stack is stressed at once — segmentation with no clean background, [6-DoF grasping](/shared/glossary/#6-dof-grasping) rather than top-down, collision-free approach into a walled box, and recovery when the pile shifts.
 
 
+### Bitstream {#bitstream}
+The binary file that configures every [LUT](/shared/glossary/#lut), wire and block inside an [FPGA](/shared/glossary/#fpga) — the FPGA's equivalent of an executable. Loading a different bitstream physically rewires the chip into a different circuit, which is what "field-programmable" means.
+* **Where it comes from:** [synthesis](/shared/glossary/#logic-synthesis) turns your [RTL](/shared/glossary/#rtl) into gates, [place and route](/shared/glossary/#place-and-route) decides where they sit, and the last step packs those decisions into the bitstream.
+* **Why it is vendor-specific:** the file describes the internal configuration memory of one chip family, so a Xilinx bitstream means nothing to an Intel/Altera part.
+
+### BRAM (block RAM) {#bram}
+Small dedicated memories built into an [FPGA](/shared/glossary/#fpga) fabric — 36 kbit blocks on typical Xilinx parts — used for buffers, [line buffers](/shared/glossary/#line-buffer) and weight storage.
+* **Why it exists:** memory built out of [LUTs](/shared/glossary/#lut) is enormously wasteful, so vendors harden a few hundred real RAM blocks into the chip, the same way they harden multipliers as [DSP slices](/shared/glossary/#dsp-slice).
+* **Why it becomes the limit:** each block has a fixed number of ports (usually two), so the *bandwidth* a design can draw from on-chip memory is capped by how many blocks it uses, not by how much data they hold. A design with more multipliers than its BRAM can feed is a [roofline](/shared/glossary/#roofline) problem inside a single chip.
+
 ### Chamfer {#chamfer}
 A bevelled edge machined around the mouth of a hole (or the tip of a pin) so that a part arriving slightly off-centre is guided in by the slope instead of landing on the flat face and stopping. In assembly it is the cheapest possible error correction: it fixes misalignment mechanically, before any sensor or controller is involved.
 * **Analogy**: The funnel shape at the top of a bottle. You do not have to aim the liquid perfectly; the slope does the aiming.
@@ -203,6 +223,11 @@ A bevelled edge machined around the mouth of a hole (or the tip of a pin) so tha
 A heuristic that, in addition to never overestimating, never *drops* by more than the cost of the step that caused the drop — formally `h(a) <= cost(a, b) + h(b)`, the same shape as the triangle inequality. Every consistent heuristic is [admissible](/shared/glossary/#admissible-heuristic), but not the other way round.
 **Why the distinction matters:** most [A*](/shared/glossary/#a-star-search) implementations never look at a state twice once they have settled it. That shortcut is only safe with a consistent heuristic. With a merely admissible one, a state can be settled at a bad cost and a cheaper route to it discovered too late, and the final path is not optimal even though nothing ever overestimated.
 **Example:** A footstep planner whose heuristic is `ceil(remaining distance / max stride) x cheapest step`. Rounding up never overestimates, so it is admissible. But a 1 cm shuffle that happens to cross a rounding boundary makes `h` fall by a whole stride's worth while costing almost nothing — inconsistent, and enough to return non-optimal walking plans.
+
+### Continuous load (the 80% rule) {#continuous-load}
+An electrical-code rule that decides how many [GPUs](/shared/glossary/#gpu) a room can actually run. A load drawing current for three hours or more is *continuous*, and a branch circuit may only be loaded to 80% of its rating by one.
+* **The arithmetic:** a US 15 A / 120 V circuit is 1800 W nominal but **1440 W continuous**; a 20 A circuit is 1920 W; a European 16 A / 230 V circuit is 2944 W.
+* **Why it matters for AI builds:** a training run is the textbook continuous load. Two 575 W cards plus a 200 W host is 1350 W — legal on a 15 A circuit with 90 W to spare, and a third card is not, no matter how large the [PSU](/shared/glossary/#psu) is. The binding constraint is the wall, not the power supply.
 
 ### Convex hull {#convex-hull}
 The smallest convex shape that contains a given set of points — what you get by stretching a rubber band (in 2D) or shrink-wrap (in 3D and above) around them. "Convex" means the shape has no dents: the straight line between any two points inside it stays inside.
@@ -241,6 +266,20 @@ An arrangement of the [ranks](/shared/glossary/#rank) in a job into a grid, so t
 ### DistributedSampler {#distributedsampler}
 The PyTorch sampler that hands each [rank](/shared/glossary/#rank) a *different, non-overlapping* slice of the dataset each epoch. Without it, every rank shuffles the same dataset with the same seed and therefore trains on the identical batches — which does not crash, warn, or produce a wrong answer; it simply does the same work N times, so N GPUs get through one epoch's worth of data instead of N. One detail is easy to miss: you must call `sampler.set_epoch(epoch)` at the top of every epoch, because the sampler derives its shuffle from that number, and without it every epoch replays the same order. See [DDP](/shared/glossary/#ddp).
 
+### DMA (direct memory access) {#dma}
+Hardware that moves bytes between memories without the processor copying them one by one. A [GPU](/shared/glossary/#gpu)'s copy engines are DMA engines: given a source address, a destination and a length, they stream the data across [PCIe](/shared/glossary/#pcie) while the CPU does something else.
+* **Why it needs [pinned memory](/shared/glossary/#pinned-memory):** a DMA engine works with *physical* addresses and cannot tolerate the operating system moving a page mid-transfer. Ordinary pageable memory must therefore be copied into a hidden pinned buffer first — one extra pass through host memory, which is why pinning measurably speeds up transfers.
+
+### DRC and LVS {#drc-lvs}
+The two checks a chip layout must pass before a foundry will make it. **DRC** (design rule check) asks whether every shape is manufacturable — wide enough, far enough apart, correctly enclosed. **LVS** (layout versus schematic) asks whether the layout is wired up as the netlist says it should be.
+* **Why both:** DRC catches "the factory cannot print this"; LVS catches "the factory will happily print the wrong circuit".
+* **Consequence:** they are pass/fail gates on a [tapeout](/shared/glossary/#tapeout), and unlike a failing test they cannot be fixed after the fact — the mask is already made.
+
+### DSP slice {#dsp-slice}
+A hardened multiply-accumulate block inside an [FPGA](/shared/glossary/#fpga) (Xilinx calls them DSP48; Intel calls them DSP blocks). "DSP" is historical — they were added for digital *signal* processing filters — but in modern designs they are what neural networks run on.
+* **Why they dominate the budget:** a multiplier built from [LUTs](/shared/glossary/#lut) is large and slow, so designs use the few hundred hardened ones instead. For an AI accelerator the DSP count is usually the first resource to run out.
+* **Packing:** a wide DSP can hold two small products at once — the "INT8 packing" trick that roughly doubles an [int8](/shared/glossary/#int8) design's throughput on newer parts.
+
 ### DTensor {#dtensor}
 "Distributed tensor" — a tensor whose contents are spread across several [ranks](/shared/glossary/#rank) but which still behaves like one whole tensor in your code. It carries two things: the *global* shape (`t.shape` shows the full logical size, e.g. 2048 × 256, even though this rank holds only a quarter of it) and a *placement* saying how it is laid out on the [device mesh](/shared/glossary/#device-mesh) — `Shard(0)` means "cut along dimension 0, one piece per rank", `Replicate()` means "every rank has the whole thing". `t.to_local()` gets you this rank's actual piece. This double identity is what lets [FSDP](/shared/glossary/#fsdp) and [tensor parallelism](/shared/glossary/#tensor-parallelism-tp) shard a model without rewriting the model's code, and it is also the reason `torch.save(model.state_dict())` under FSDP silently writes a fragment: the entry looks full-sized but holds one shard.
 
@@ -261,6 +300,11 @@ The most common [grasp quality metric](/shared/glossary/#grasp-quality-metric), 
 * **Analogy**: Rating a tent by the weakest guy rope rather than the average one, because the wind will find the weak side.
 * **Why a minimum and not an average**: A grasp fails in whichever direction it is weakest, so averaging over directions would flatter a grasp that is strong in five directions and helpless in the sixth. Note also that the number mixes forces and torques, so it depends on an arbitrary length scale used to make the units comparable.
 
+### GDSII {#gdsii}
+The file format foundries accept: a list of polygons, layer by layer, describing every shape that will be printed on silicon. It is the final output of a chip design flow and the input to the mask shop.
+* **The name:** *Graphic Data System II*, a 1970s Calma format that outlived its company by fifty years because everybody's tools already read it.
+* **Where it sits:** [RTL](/shared/glossary/#rtl) → [synthesis](/shared/glossary/#logic-synthesis) → [place and route](/shared/glossary/#place-and-route) → GDSII → masks → wafers.
+
 ### Gloo {#gloo}
 A collective-communication library that works over ordinary TCP sockets and, unlike [NCCL](/shared/glossary/#nccl), runs on CPUs. In PyTorch it is the `backend="gloo"` option of `init_process_group`, and it supports the same operations — [all-reduce](/shared/glossary/#allreduce), [broadcast](/shared/glossary/#broadcast), [all-gather](/shared/glossary/#allgather) — so distributed code written for GPUs runs unchanged on a laptop with several processes. It is the practical choice for learning, for CPU-only jobs, and for the rare collective that has to include CPU tensors. It also has one debugging feature NCCL lacks: `monitored_barrier`, which names the [rank](/shared/glossary/#rank) that failed to arrive. For real GPU training NCCL is much faster, because gloo cannot use [NVLink](/shared/glossary/#nvlink) or do GPU-direct transfers.
 
@@ -278,6 +322,11 @@ A single number summarising how good a grasp is, used to rank candidates so a ro
 * **Caution**: Every such metric folds forces and torques into one scalar, which requires choosing a characteristic length to make the units match, and the ranking of near-equal grasps can change when that length changes. Treat the number as a filter, not as truth.
 
 
+### HLS (high-level synthesis) {#hls}
+Compiling C or C++ (or another high-level language) into [RTL](/shared/glossary/#rtl), so a hardware design can be written as a loop nest instead of as registers and state machines.
+* **The trade:** much faster to write and change; much harder to predict, because a small source change can move the resulting circuit's size or clock speed a long way. Hand-written RTL is slower to produce and behaves exactly as written.
+* **In practice:** teams often prototype in HLS and rewrite the critical block by hand once the architecture is settled.
+
 ### Hybrid force-position control {#hybrid-force-position-control}
 A control scheme that splits the task directions into two sets: those where the robot commands a *position* (because it is free to move there) and those where it commands a *force* (because a surface is in the way). Sliding a tool along a table is the canonical example — position along the surface, force into it.
 * **Analogy**: Writing on paper. You control where the pen goes across the page, but you control how hard you press into it; trying to control the pen's height instead would either tear the paper or write nothing.
@@ -289,6 +338,38 @@ In assembly, the state where a part being inserted is touching at two points and
 * **Analogy**: A drawer that binds when you pull one corner. Nothing is broken and nothing is too big; pull evenly and it slides.
 * **Contrast with [wedging](/shared/glossary/#wedging)**: Jamming is a *force* problem and pushing differently fixes it. Wedging is a *geometry* problem and pushing harder makes it worse.
 
+
+### Line buffer {#line-buffer}
+A delay line holding the last few rows of an image so that a 2-D window (3×3, 5×5) can be formed from a stream of pixels arriving one per clock.
+* **Why it is needed:** a convolution window needs pixels from several rows *at the same instant*, but a camera or DMA delivers them in reading order, one at a time. Storing `2 × width` bytes is enough to reconstruct a 3×3 window without ever re-reading memory.
+* **How it compares to a cache:** a cache discovers what to keep at run time and can miss; a line buffer is sized at design time and never misses. That determinism is a large part of why streaming accelerators have predictable [latency](/shared/glossary/#latency).
+
+### Line code (8b/10b, 128b/130b) {#line-code}
+The extra bits a serial link sends so the receiver can recover the clock and find byte boundaries. [PCIe](/shared/glossary/#pcie) 1.0 and 2.0 use 8b/10b — 10 bits on the wire per 8 bits of payload, a 20% tax. PCIe 3.0 and later use 128b/130b, costing only 1.5%.
+* **Why the numbers matter:** they turn raw signalling rate into usable bandwidth. PCIe 3.0 ×16 is 8 GT/s × 16 lanes × 128/130 ÷ 8 = **15.75 GB/s** per direction, and that — not the raw rate — is the number an acceptance test compares against.
+
+### Link training {#link-training}
+The negotiation in which the two ends of a [PCIe](/shared/glossary/#pcie) link agree on how many lanes and which speed to use. It happens at boot and again whenever power management changes state ([ASPM](/shared/glossary/#aspm)).
+* **Why you care:** a link that trains to ×8 instead of ×16 — a dirty slot, a cheap riser, a lane shared with an M.2 drive — halves your host-to-device bandwidth and reports no error anywhere. The only reliable detector is a bandwidth measurement compared against the expectation for each generation and width.
+
+### Logic synthesis {#logic-synthesis}
+Turning an [RTL](/shared/glossary/#rtl) description ("on each clock edge, `acc` becomes `acc + a*b`") into a netlist of concrete gates and flip-flops.
+* **What it decides:** how many gates your description costs. Two functionally identical descriptions can synthesize to very different sizes, which is why hardware designers read the cell counts as routinely as software engineers read a profiler.
+* **What comes next:** [place and route](/shared/glossary/#place-and-route) gives those gates physical positions, and [timing closure](/shared/glossary/#timing-closure) checks the result actually runs at the intended clock.
+
+### LPDDR {#lpddr}
+Low-power DDR memory — the RAM soldered next to a phone or edge SoC. Compared with a [GPU](/shared/glossary/#gpu)'s [GDDR](/shared/glossary/#gddr) or [HBM](/shared/glossary/#hbm) it trades bandwidth for watts: a Jetson Orin Nano's LPDDR5 delivers about 68 GB/s against an RTX 5090's 1792 GB/s.
+* **Why it decides edge performance:** [decoding](/shared/glossary/#decode) one token of an LLM means reading every weight once, so tokens per second is roughly `bandwidth ÷ model bytes`. On a shared-memory device the CPU draws from the same pool, so that figure is the whole system's budget, not just the GPU's.
+
+### LUT (look-up table) {#lut}
+The basic logic element of an [FPGA](/shared/glossary/#fpga): a tiny memory that stores the truth table of a Boolean function. A 6-input LUT is 64 bits of configuration and can implement *any* function of its 6 inputs.
+* **Why FPGAs are measured in LUTs:** they are the universal building block, so "53,200 LUTs" is the closest thing an FPGA has to a capacity rating.
+* **What they are bad at:** arithmetic. A multiplier made of LUTs is large and slow, which is why vendors add hardened [DSP slices](/shared/glossary/#dsp-slice) and why AI designs run out of those first.
+
+### MAC (multiply-accumulate) {#mac}
+One multiply plus one add: `acc += a * b`. The unit of work in every neural network layer, and the thing hardware is built to do as many of per second as possible.
+* **Counting convention:** one MAC is counted as **2 operations**, which is why a device with 1000 MACs at 1 GHz is quoted as 2 TOPS ([TOPS](/shared/glossary/#tops)) rather than 1.
+* **Why it is the atom:** matrix multiplication, convolution and attention are all sums of products, so a chip that does MACs quickly and feeds them cheaply is a chip that runs neural networks quickly.
 
 ### Manhattan distance {#manhattan-distance}
 The distance between two points if you may only move along the axes: `|dx| + |dy|`. Named after the street grid of Manhattan, where you cannot cut diagonally across a block — you walk so far east, then so far north. It is the p = 1 case of the general Lp formula `(sum |v_i|^p)^(1/p)`, which is why it is also called the L1 norm.
@@ -484,8 +565,23 @@ A way to simulate a deformable object by replacing it with point masses connecte
 * **Analogy**: A trampoline. It has no continuous material in the model at all — just a grid of joints and the springs between them — yet it bends and stretches like a surface.
 * **Why it is used for cloth**: It is fast, easy to write, and its parameters map to things you can feel (stiff or floppy, stretchy or not). The cost is that it is not a physically accurate model of a real textile; see [position-based dynamics](/shared/glossary/#position-based-dynamics) for the version that stays stable at large time steps.
 
+### Multi-project wafer (MPW) {#multi-project-wafer}
+One fabrication run shared by many independent designs, so each pays a fraction of the mask cost instead of the whole thing. Also called a *shuttle*, because it leaves on a fixed schedule like a bus: miss the date and the next one is months away.
+* **Why it exists:** photomasks for a modern process cost from tens of thousands to millions of dollars, far beyond a single small project. Sharing a wafer is what makes services like [TinyTapeout](/shared/glossary/#tinytapeout) and university runs possible.
+* **The catch:** you get a handful of chips, months later, and you cannot patch them.
+
+### OpenLane {#openlane}
+The open-source flow that turns [Verilog](/shared/glossary/#verilog) into [GDSII](/shared/glossary/#gdsii): yosys for [synthesis](/shared/glossary/#logic-synthesis), OpenROAD for floorplanning, [placement and routing](/shared/glossary/#place-and-route), Magic and KLayout for [DRC/LVS](/shared/glossary/#drc-lvs).
+* **Why it matters:** together with the [SkyWater 130](/shared/glossary/#sky130) [PDK](/shared/glossary/#pdk) it is the first complete, free, no-NDA path from source code to manufacturable silicon — the reason hobbyist chip design became possible at all.
+* **How you meet it:** [TinyTapeout](/shared/glossary/#tinytapeout) runs it for you in a GitHub Action, so a submission is a repository rather than a toolchain installation.
+
 ### Oversubscription {#oversubscription}
 Asking for more compute [threads](/shared/glossary/#thread) than the machine has cores. It usually happens by accident in distributed training: you start 4 processes on a 12-core box, each process defaults to using all 12 cores, and now 48 threads fight over 12. The result is far worse than merely "no faster" — the threads in the maths libraries spin while waiting for each other, so they burn cores doing nothing, and the job can end up an order of magnitude slower than the correct configuration. This is why [torchrun](/shared/glossary/#torchrun) sets `OMP_NUM_THREADS=1` when you have not set it, and prints a warning saying so.
+
+### PDK (process design kit) {#pdk}
+Everything a foundry must tell a designer about one manufacturing process: the design rules (how small and how close shapes may be), transistor models for simulation, and a [standard cell](/shared/glossary/#standard-cell) library.
+* **Why it is usually secret:** a PDK describes the factory's capabilities in detail, so access normally requires an NDA. [SkyWater 130](/shared/glossary/#sky130) is the well-known open exception.
+* **What it constrains:** the PDK, not your design tool, sets what is physically possible — the cell heights, the number of metal layers, the minimum wire width.
 
 ### Pick and place {#pick-and-place}
 The basic [manipulation](/shared/glossary/#manipulation) task: grasp an object, move it, release it. Roughly 90% of deployed industrial robot arms do only this, and most higher-level manipulation systems are built by chaining pick-and-place primitives together.
@@ -495,17 +591,41 @@ The basic [manipulation](/shared/glossary/#manipulation) task: grasp an object, 
 ### Pipeline parallelism {#pipeline-parallelism}
 Splitting a model by *layers* across devices: GPU 0 holds layers 1-8, GPU 1 holds layers 9-16, and activations flow from one to the next like parts along a factory line. On its own this would leave every GPU idle while the others work, so the batch is chopped into *microbatches* that are fed in one after another, keeping several stages busy at once. The idle time at the start and end of each step, when the pipeline is filling and draining, is called the *bubble*, and shrinking it is what schedules like GPipe and 1F1B ("one forward, one backward") are for. Compared with [tensor parallelism](/shared/glossary/#tensor-parallelism-tp) it moves far less data — only the activations at stage boundaries — which is why it is the split that is normally used *between* machines.
 
+### Place and route {#place-and-route}
+The physical half of chip design: deciding where each [standard cell](/shared/glossary/#standard-cell) sits (*place*) and how the wires between them run (*route*).
+* **Why it is never 100% dense:** the wires need room. A digital block typically ends up around 50–60% cells by area, so a design whose cells total 5,600 µm² needs roughly 10,000 µm² of floor space.
+* **Why it can fail late:** routing congestion and wire delay are only known here, so a design that looked fine after [synthesis](/shared/glossary/#logic-synthesis) can miss [timing closure](/shared/glossary/#timing-closure) at this step.
+
 ### PointNet {#pointnet}
 A neural network architecture (Qi et al., 2017) for [point clouds](/shared/glossary/#point-cloud). It applies the same small network to every point independently, then combines the results with a symmetric operation such as max-pooling. That combination is what makes the output independent of the order the points arrive in — a point cloud is a *set*, and a network that changed its answer when the points were shuffled would be wrong.
 * **Analogy**: Judging a crowd's mood by reading each face and taking the strongest expression you saw, rather than by reading them in the order they happen to be standing.
 * **Where it appears in grasping**: Scoring a 6-DoF grasp candidate from the points inside the gripper's closing volume, which is what [AnyGrasp](/shared/glossary/#anygrasp) and GraspNet do at scale.
 
 
+### Popcount {#popcount}
+Short for *population count*: how many bits of a word are 1. A single instruction on modern CPUs and a small tree of adders in hardware.
+* **Why AI hardware cares:** in a binarized network, where −1 is stored as 0 and +1 as 1, multiplying two values is exactly XNOR and summing eight products is exactly `2 × popcount(XNOR(x, w)) − 8`. The most expensive block on the chip — the multiplier — disappears into wiring, which is the entire hardware argument for 1-bit networks.
+
 ### Position-based dynamics {#position-based-dynamics}
 A simulation method for deformable objects that skips forces entirely: predict where every particle would go, then repeatedly *move the positions* to satisfy constraints (this edge must be this long, this point must be above the table), and read the velocities back from how far the positions actually moved.
 * **Analogy**: Instead of computing how hard a rope pulls, you simply shorten it back to its correct length whenever it stretches, and let that correction be the physics.
 * **Why it exists**: A stiff [mass-spring model](/shared/glossary/#mass-spring-model) needs tiny time steps or it explodes, because a stiff spring plus a big step overshoots. Projecting positions cannot overshoot, so the simulation stays stable at large steps — which is why nearly every real-time cloth in games and robotics uses it.
 
+
+### Power limit {#power-limit}
+The watt ceiling enforced by a [GPU](/shared/glossary/#gpu)'s own firmware. When board power reaches it, the chip lowers its clock until it fits — visible as the `sw_power_cap` throttle reason.
+* **How it differs from [TDP](/shared/glossary/#tdp):** TDP is a design target for the cooler; the power limit is an active control loop that changes your clock in real time.
+* **Why people change it:** lowering it is the simplest way to cap a multi-GPU machine's draw (`nvidia-smi -pl`, root required), and the performance cost is usually far smaller than the power saving — modern cards often keep ~90% of their speed at ~70% of their limit.
+
+### Power mode (nvpmodel) {#power-mode}
+On NVIDIA [Jetson](/shared/glossary/#jetson) modules, a named configuration that caps CPU cores, GPU clock and memory clock to fit a watt budget — 7 W, 15 W, 25 W and so on — selected with the `nvpmodel` tool.
+* **Why it is not just a slider:** the modes change *which* clocks are lowered, and for [decode](/shared/glossary/#decode)-style workloads the memory clock is the one that decides throughput, not the GPU clock.
+* **Practical consequence:** a benchmark taken in the highest mode on a bench, with a fan, is not the number your fanless enclosure will sustain ([thermal throttling](/shared/glossary/#thermal-throttling)).
+
+### Power transient {#power-transient}
+A very short spike in power draw — tens of microseconds — well above a card's steady draw. Modern GPUs can momentarily pull two to three times their rated power, and a [PSU](/shared/glossary/#psu) that cannot ride it out trips its own protection and switches the machine off.
+* **Why you probably cannot measure it:** `nvidia-smi` reports an averaged value on a millisecond-and-slower timescale, so a 100 µs spike is invisible to it. Catching one needs a current clamp and an oscilloscope.
+* **What to do instead:** buy the margin. ATX 3.x supplies are specified for exactly these excursions, and leaving headroom on the steady rating is cheaper than debugging a reboot.
 
 ### Probabilistic completeness {#probabilistic-completeness}
 The guarantee that if a solution exists, the probability of a sampling-based planner finding it goes to 1 as the number of samples goes to infinity. It is a much weaker promise than it sounds: it says nothing about *how many* samples, and the number can be enormous when the solution has to squeeze through a [narrow passage](/shared/glossary/#narrow-passage).
@@ -2450,6 +2570,11 @@ A [direct collocation](/shared/glossary/#direct-collocation) scheme that fits a 
 ### Process group {#process-group}
 The set of processes that take part in a [collective operation](/shared/glossary/#collective-operation), plus the machinery connecting them. `dist.init_process_group(backend="nccl")` creates the default group containing every [rank](/shared/glossary/#rank) in the job; `dist.new_group([0, 1])` creates a smaller one, and any collective can be given `group=` to run only among those ranks. Subgroups are what make hierarchical communication possible — reduce inside each machine first, then once between machines. Every rank must create the same subgroups in the same order, even ranks that are not members, because creating one is itself a collective.
 
+### PSU (power supply unit) {#psu}
+The box that converts wall AC into the DC rails a computer's components consume, rated in watts of *continuous* output.
+* **Sizing rule:** total the components' rated draw and add 20–30% headroom, both for [transients](/shared/glossary/#power-transient) and because supplies are most efficient at 40–60% load.
+* **What it is not:** the ultimate limit. A 1600 W PSU on a US 15 A circuit can only ever deliver what the wall allows — see [continuous load](/shared/glossary/#continuous-load).
+
 ### Recursive doubling {#recursive-doubling}
 An [all-reduce](/shared/glossary/#allreduce) algorithm in which each [rank](/shared/glossary/#rank) exchanges its *entire* buffer with a partner at distance 1, then distance 2, then 4, and so on — the distance **doubles** each round, which is where the name comes from ("recursive" because each round repeats the same rule on a larger scale). After log₂(n) rounds every rank has everyone's contribution.
 
@@ -2471,6 +2596,11 @@ The standard way to implement an [all-reduce](/shared/glossary/#allreduce) witho
 
 ### Row-wise partitioning {#row-wise-partitioning}
 Splitting a weight matrix along its *input* dimension, so each GPU multiplies part of the input by part of the weights and produces a **partial sum** of the full-size output. Those partials must be added together with an [all-reduce](/shared/glossary/#allreduce) before the result can be used. It is the natural partner of [column-wise partitioning](/shared/glossary/#column-wise-partitioning) in [Megatron](/shared/glossary/#megatron)-style [tensor parallelism](/shared/glossary/#tensor-parallelism-tp): cut the first layer of a pair column-wise (each GPU gets whole output features, no communication needed), then cut the second row-wise (its input is exactly what the first layer produced), so the entire pair of layers needs one all-reduce at the end instead of one after each.
+
+### RTL (register-transfer level) {#rtl}
+The standard way to describe digital hardware: what value each register takes on the next clock edge, and what combinational logic sits between registers. [Verilog](/shared/glossary/#verilog), VHDL and [Amaranth](/shared/glossary/#amaranth) are all ways of writing RTL.
+* **Why the name:** the description is literally a set of *transfers between registers*, clock tick by clock tick.
+* **Why it is the right level:** it is abstract enough to write by hand and precise enough that [synthesis](/shared/glossary/#logic-synthesis) can turn it into gates without guessing what you meant.
 
 ### Sequence parallelism {#sequence-parallelism}
 Splitting the work by *position in the sequence* rather than by batch or by weights: rank 0 handles tokens 1-1000, rank 1 tokens 1001-2000, and so on. It is used when the sequence itself is what does not fit — long-context training, where the [attention](/shared/glossary/#attention) activations grow with sequence length — and it needs its own communication, because attention lets every token look at every other token, including those living on another rank ([ring attention](/shared/glossary/#ring-attention) is one way to arrange that exchange). It is usually layered on top of [tensor parallelism](/shared/glossary/#tensor-parallelism-tp), covering the parts of the block (layer norms, dropout) that tensor parallelism leaves replicated.
@@ -4849,6 +4979,12 @@ When the group you measure was chosen using the very thing you are measuring, so
 ### Self-attention {#self-attention}
 The operation where every [token](/shared/glossary/#token-visualaudio) in a sequence looks at every other token in the *same* sequence and pulls in whatever it finds relevant. Each token emits three vectors: a **query** ("what am I looking for?"), a **key** ("what do I offer?") and a **value** ("what I will hand over"). Every query is compared with every key, the scores are turned into weights by a [softmax](/shared/glossary/#softmax), and each token's output is the weighted mix of all the values. "Self" distinguishes it from [cross-attention](/shared/glossary/#cross-attention), where the queries come from one sequence and the keys and values from another. Two consequences shape everything built on it: the cost grows with the *square* of the sequence length, because every pair is scored — which is what [Perceiver IO](/shared/glossary/#perceiver-io) and efficient-attention research exist to avoid; and the operation is [permutation-invariant](/shared/glossary/#permutation-invariance), which is why [positional embeddings](/shared/glossary/#positional-embedding) must be added for order to matter at all.
 
+### SkyWater 130 (sky130) {#sky130}
+An open-source [PDK](/shared/glossary/#pdk) for SkyWater Technology's 130 nanometre process, released with Google in 2020. The first modern process anyone could design for without an NDA.
+* **What "130 nm" means:** roughly the smallest feature the process can print — a technology generation from around 2001. Old by leading-edge standards, and entirely capable of real digital chips.
+* **Its geometry, which decides area:** every [standard cell](/shared/glossary/#standard-cell) in the high-density library is 2.72 µm tall and a whole number of 0.46 µm columns wide, so cell areas come in multiples of 1.2512 µm². An inverter is 3 columns, a flip-flop is 16.
+* **Why it matters:** it turned chip design from a corporate activity into something a student can do, and it is what [TinyTapeout](/shared/glossary/#tinytapeout) and many university shuttles are built on.
+
 ### Sliding-window attention {#sliding-window-attention}
 An [attention](/shared/glossary/#attention) layer that only looks at the most recent *W* tokens instead of the whole history. The immediate consequence for [serving](/shared/glossary/#serving) is that its [KV cache](/shared/glossary/#kv-cache) *stops growing* once the conversation passes *W* — Mistral 7B v0.1 caps every layer at 4,096 tokens, which takes its 32k-context cache from 4.29 GB to 0.54 GB. Information still travels further than *W* because each layer's window sits on top of the previous layer's, so a 32-layer model with a 4k window has a receptive field of roughly 128k tokens, in the same way a stack of small [convolution](/shared/glossary/#convolution-layers) kernels sees a large image. Many models mix the two: Gemma-2 alternates sliding and full-attention layers, so only half its cache is capped, and any memory calculator that ignores a config's `layer_types` will get such models badly wrong.
 
@@ -4938,6 +5074,11 @@ A blind search strategy for insertion: while pressing the part gently against th
 * **Analogy**: Finding a keyhole in the dark by pressing the key against the door and moving it in widening circles until it falls in.
 * **The condition it needs to work**: The controller must be able to *drag* the part sideways against friction. If the sideways pull it can generate is smaller than friction under the downward push, the part sits still while the command sweeps past it — so the search fails silently, and the fix is more lateral stiffness or less downward force, not a bigger spiral.
 
+
+### Standard cell {#standard-cell}
+A pre-designed, pre-verified logic gate — a NAND, an inverter, a flip-flop — supplied by the foundry with a fixed height so that cells snap into rows like Lego bricks. Digital chip design is almost entirely the assembly of these.
+* **Why fixed height:** the power and ground rails run along the top and bottom of every row, so any cell can sit next to any other and the rails line up automatically.
+* **Why it makes area predictable:** counting cells and multiplying by their published areas gives a good estimate of a block's size long before [place and route](/shared/glossary/#place-and-route) runs.
 
 ### Stribeck friction {#stribeck-friction}
 The dipped shape of a real joint's friction-versus-speed curve: friction is highest at a standstill ([stiction](/shared/glossary/#stiction)), *falls* as the joint starts to creep, and only then rises again with speed as viscous drag takes over. Named after Richard Stribeck, who measured it in journal bearings around 1902 and explained the dip: as speed rises, the lubricant is dragged into the gap and builds a film that lifts the surfaces apart. The practical consequence is that friction is *not* a straight line through the origin, so a Coulomb-plus-viscous model fitted at normal speeds badly under-predicts what a joint needs at a crawl — which is exactly the regime where slow, precise robot motions live, and a large part of why they come out jerky.
@@ -5323,6 +5464,11 @@ A model that takes a single portrait photo plus an audio clip and generates a vi
 ### Tanh squashing {#tanh-squashing}
 The standard way a continuous-action [policy](/shared/glossary/#policy) (as in [SAC](/shared/glossary/#sac)) keeps its actions inside the environment's legal range. The network first outputs an unbounded Gaussian — a mean and spread that could in principle suggest any real number — and then each sampled value is passed through `tanh`, a smooth S-shaped function that squashes any input into the interval `(−1, 1)`, after which it is rescaled to the action's true limits. This guarantees the action is always valid no matter what the network emits. The subtlety: bending a distribution through `tanh` changes its probability density, so the action's [log-probability](/shared/glossary/#log-probability) — which SAC needs for its entropy term — must include a correction (subtract `Σ log(1 − tanh²(u))`, the log of how much `tanh` locally stretches or compresses the axis). Skip or mis-sign that correction and SAC silently optimizes the wrong [entropy](/shared/glossary/#entropy-regularization). Analogy: `tanh` is a funnel that forces any value into a fixed-width chute; the correction accounts for how the funnel crowds probability mass near the walls, so you still know how likely each outcome was. The same value is computed with the [reparameterization trick](/shared/glossary/#reparameterization-trick) so gradients flow through the sampled action.
 
+### Tapeout {#tapeout}
+Sending a finished chip design to the factory to be manufactured.
+* **Why the odd name:** before digital masks, layouts were cut by hand from red *rubylith* film and taped onto sheets. Shipping the design meant literally taping it out and mailing it, and the word stuck for fifty years.
+* **Why it is a milestone:** it is the last moment anything can change. Masks are made from that data, and a bug found afterwards is a bug in every chip of the run.
+
 ### Target model {#target-model}
 In [speculative decoding](/shared/glossary/#speculative-decoding), the big, accurate model whose output you actually want — it checks the small [draft model](/shared/glossary/#draft-model)'s guesses and has the final say on every token. Like the senior editor who must approve the assistant's draft: slow and expensive to consult, so the trick is to bother it as rarely as possible while still letting it decide the real answer.
 
@@ -5527,6 +5673,11 @@ A memory-optimization technique that breaks a large computation (like multiplyin
 * **Analogy:** Imagine you are a researcher studying a massive, multi-volume encyclopedia set (the **Tensor**) located on bookshelves far away (slow main memory). Your desk represents fast local memory (SRAM). Instead of walking back and forth to read one sentence at a time, you carry a single volume (a **Tile**) to your desk, extract all the information you need from it, and only go back to the shelves when you need the next volume.
 * **Example:** In a tiled [matrix multiplication](/shared/glossary/#matmul) kernel, two large tensors are divided into smaller sub-matrices (e.g., 16×16 tiles). A block of threads loads these tiles into shared memory, multiplies them, and accumulates the results before moving to the next tile.
 
+### Timing closure {#timing-closure}
+The step where you find out whether the circuit actually runs at the intended clock speed. Every path from one register to the next must settle within one clock period, including wire delay — which is only known after [place and route](/shared/glossary/#place-and-route).
+* **Why it bites late:** [synthesis](/shared/glossary/#logic-synthesis) can only estimate wire delay. A design that looks comfortable in the gate count can miss timing once the wires are real.
+* **What you do about it:** shorten the critical path — pipeline it into more stages, simplify the logic, or lower the clock. A deep adder tree or a wide multiplier is the usual culprit.
+
 ### TinyTapeout {#tinytapeout}
 **TinyTapeout** is an educational project and platform that makes custom silicon chip design accessible and affordable for hobbyists, students, and individual developers. It allows multiple designs to be combined onto a single physical microchip, which is then manufactured via a shared multi-project wafer (MPW) run.
 
@@ -5557,6 +5708,11 @@ Also called nucleus sampling: instead of a fixed count like [top-k](/shared/glos
 The process of taking a geometric path (a sequence of positions in space) and assigning a time to each point to find the fastest traversal that respects the robot's physical limits (such as joint-velocity, acceleration, and torque limits). A common modern algorithm for this is **TOPP-RA** (Time-Optimal Path Parameterization by Reachability Analysis), which formulates the problem as a sequence of linear programs.
 **Analogy:** Imagine drawing a curvy race track on paper (the geometric path). TOPP is the process of deciding exactly how fast a race car should drive along that track (the time parameterization) so that it crosses the finish line as quickly as possible without sliding off the track or blowing the engine (respecting acceleration and torque limits).
 **Example:** A factory sorting robot. Once a sampling-based planner finds a collision-free geometric path from the pickup bin to the drop box, TOPP calculates the optimal velocity profile along that path, allowing the robot to move at its physical limits without damaging its motors.
+
+### TOPS {#tops}
+*Tera-operations per second* — the headline compute number on accelerator datasheets, always quoted for the smallest supported integer format (usually [int8](/shared/glossary/#int8)) and often with sparsity, which doubles it.
+* **Why it flatters:** a rating is only reachable if your workload has enough [arithmetic intensity](/shared/glossary/#ai-arithmetic-intensity) to keep the multipliers fed. The break-even is `TOPS ÷ bandwidth`: an edge module rated 20 dense TOPS with 68 GB/s needs **294 operations per byte** before compute is the limit.
+* **What a batch-1 LLM [decode](/shared/glossary/#decode) actually has:** 2 operations per byte — each weight byte is multiplied once and added once — so such a device runs at well under 1% of its rating no matter how good the software is. For that workload, choose hardware by GB/s, not by TOPS.
 
 ### torch.compile {#torchcompile}
 The PyTorch 2.x API that [JIT](/shared/glossary/#jit)-compiles PyTorch code into optimized [CUDA](/shared/glossary/#cuda) or [Triton](/shared/glossary/#triton) kernels. It traces the model execution to capture a computation graph, performs optimization passes like [kernel fusion](/shared/glossary/#kernel-fusion) and dead-code elimination, and generates fast compiled kernels, speeding up standard [eager mode](/shared/glossary/#eager-mode) code.
@@ -5764,6 +5920,11 @@ A rule that refuses a measurement before it reaches the filter, on the grounds t
 
 A gate detects *implausible readings*, not *broken sensors*, and the difference matters. A sensor that freezes at its last value keeps producing perfectly plausible readings until the truth drifts away from it, so the detection delay is roughly `(√threshold × sensor σ) ÷ (rate of true change)` — which for a noisy sensor watching a slow signal can be minutes. Worse, the dead sensor drags the estimate towards itself in the meantime, shrinking the innovation and delaying the gate further. Gates belong in a filter; sensor-liveness checks belong in the driver.
 
+### Verilog {#verilog}
+The most widely used hardware description language: text that describes [RTL](/shared/glossary/#rtl), which [synthesis](/shared/glossary/#logic-synthesis) tools turn into gates.
+* **A warning worth having early:** Verilog looks like C and is not. `always @(posedge clk) a <= b;` does not "run"; it describes a flip-flop that exists in silicon and updates every clock edge, forever, in parallel with everything else on the chip.
+* **In this guide:** designs are written in [Amaranth](/shared/glossary/#amaranth) and *exported* to Verilog, because the export is what a fabrication flow or an FPGA vendor tool accepts.
+
 ### Virtual memory {#virtual-memory}
 The operating-system trick of giving a program addresses that are not physical locations: the program uses *logical* addresses, and a page table translates them to wherever the pages actually live. Two things fall out of it that matter far outside operating systems — memory can be handed out in small fixed-size pages instead of one contiguous run (so a growing allocation never has to be moved or over-reserved), and address space can be promised before real memory is committed (which is why allocating a large array can cost nothing until something writes to it). [PagedAttention](/shared/glossary/#pagedattention) is this idea applied to the [KV cache](/shared/glossary/#kv-cache), [block table](/shared/glossary/#block-table) and all.
 
@@ -5909,6 +6070,11 @@ Vector-Quantized [VAE](/shared/glossary/#vae) — an [autoencoder](/shared/gloss
 * **How it works:** When you load an AI model, its weights are copied from your storage disk into VRAM. During the [forward pass](/shared/glossary/#forward-pass), the intermediate calculations (activations) are also stored in VRAM so they are ready to be used in the [backward pass](/shared/glossary/#backward-pass) to calculate gradients. If the combined size of the weights, activations, and optimizer states exceeds the total VRAM capacity, the system crashes with an "Out of Memory" (OOM) error, requiring optimizations like [quantization](/shared/glossary/#quantization), [gradient checkpointing](/shared/glossary/#gradient-checkpointing), or [paged optimizers](/shared/glossary/#paged-optimizers).
 * **Analogy:** Imagine a chef working in a kitchen. System RAM is like a walk-in freezer down the hall (slow to access). VRAM is the chef's countertop (instant access). If the chef can fit all the ingredients for the meal on the countertop, they can cook extremely fast. If they run out of space on the countertop (run out of VRAM), they must slow down to fetch ingredients from the freezer one-by-one or stop cooking altogether.
 * **Example:** Quantizing a 70-billion parameter model from 16-bit to 4-bit reduces its weight footprint in VRAM from ~140 GB to ~35 GB, allowing the model to be served on a single workstation with two 24 GB GPUs instead of requiring a cluster of datacenter GPUs.
+
+### VRM (voltage regulator module) {#vrm}
+The circuitry on a graphics card or motherboard that converts the 12 V from the [PSU](/shared/glossary/#psu) down to the roughly 1 V the chip actually runs on, at hundreds of amps.
+* **Why it appears in power measurements:** it is 85–95% efficient, so a card reporting 112 W at the board includes the VRM's own losses as well as the chip's. Those losses are part of the "static" power that is paid whenever the card is awake.
+* **Why it matters for [undervolting](/shared/glossary/#undervolting):** lowering the chip's voltage lowers the VRM's current too, so the saving at the wall is larger than the saving at the die.
 
 ### W and W+ latent spaces {#w-and-w-latent-spaces}
 The editable latent spaces inside [StyleGAN](/shared/glossary/#stylegan) that dictate how images are generated and controlled.
@@ -6086,6 +6252,11 @@ Starting a new component's last layer (or its output multiplier) at exactly zero
 
 ### Zero-conv {#zero-conv}
 A 1×1 [convolution](/shared/glossary/#convolution-layers) whose weights and bias all start at exactly zero, used by [ControlNet](/shared/glossary/#controlnet) to bolt a new branch onto a pretrained model without disturbing it. At initialization a zero-conv outputs nothing, so the new branch adds *zero* to the original network and the model behaves exactly as before — yet because the layer still receives [gradients](/shared/glossary/#gradients), it can gradually learn how much signal to pass through. Like wiring in a new tap that is turned fully off at first, then opened slowly as training discovers how much to let flow. This is what lets ControlNet train a fresh control signal without damaging the base model's existing quality.
+
+### Zero-copy memory {#zero-copy}
+Host memory mapped into a [GPU](/shared/glossary/#gpu)'s address space so a [kernel](/shared/glossary/#kernel) can read it directly, with no explicit copy.
+* **What it costs on a discrete card:** every access becomes a [PCIe](/shared/glossary/#pcie) transaction. Measured on a GTX 1070 Ti, the same kernel reads device memory at 210.9 GB/s and mapped host memory at 12.4 GB/s — **17x** slower, and exactly the speed of an ordinary [pinned](/shared/glossary/#pinned-memory) copy, because that is what it is.
+* **When it is genuinely free:** on a shared-memory SoC such as a [Jetson](/shared/glossary/#jetson), where CPU and GPU use the same physical RAM and there is no link to cross ([unified memory](/shared/glossary/#unified-memory)).
 
 ### Zero-Moment Point {#zero-moment-point}
 Often written **ZMP**. The point on the ground where the horizontal moment of the ground reaction force is zero. The classical criterion for biped balance: keep the ZMP strictly inside the [support polygon](/shared/glossary/#support-polygon) — the convex hull of the feet that are on the ground — and the robot will not tip about a foot edge.

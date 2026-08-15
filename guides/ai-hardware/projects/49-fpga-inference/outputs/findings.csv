@@ -1,0 +1,33 @@
+section,key,value,unit,kind
+A sim,8x8 exact match,True,,simulated
+A sim,8x8 cycles,77,cycles,simulated
+A sim,16x16 exact match,True,,simulated
+A sim,16x16 cycles,269,cycles,simulated
+B synth,width 8 multipliers,9,,synthesized
+B synth,width 8 flops,270,,synthesized
+B synth,width 8 area,38564.5,um^2 (sky130),arithmetic
+B synth,width 16 multipliers,9,,synthesized
+B synth,width 16 flops,399,,synthesized
+B synth,width 16 area,41194.5,um^2 (sky130),arithmetic
+B synth,width 32 multipliers,9,,synthesized
+B synth,width 32 flops,656,,synthesized
+B synth,width 32 area,46382.0,um^2 (sky130),arithmetic
+B synth,width 64 multipliers,9,,synthesized
+B synth,width 64 flops,1169,,synthesized
+B synth,width 64 area,56699.4,um^2 (sky130),arithmetic
+C boards,Pynq-Z2 (Zynq-7020),43.2,GOP/s,arithmetic
+C boards,DE10-Nano (Cyclone V),21.6,GOP/s,arithmetic
+C boards,Alveo U55C (UltraScale+),10827.0,GOP/s,arithmetic
+D gpu,dp4a,30484.1,GOP/s or GFLOP/s,measured
+D gpu,fp32,7559.17,GOP/s or GFLOP/s,measured
+D compare,Pynq-Z2 (Zynq-7020),8.64,GOP/s per W,mixed
+D compare,DE10-Nano (Cyclone V),4.32,GOP/s per W,mixed
+D compare,Alveo U55C (UltraScale+),72.18,GOP/s per W,mixed
+D compare,GTX 1070 Ti (measured),266.004,GOP/s per W,mixed
+E latency,fpga_cycles,77,,mixed
+E latency,fpga_total_us,0.77,,mixed
+E latency,fpga_fill_us,0.2,,mixed
+E latency,gpu_launch_only_us,1.17,,mixed
+E latency,gpu_arithmetic_us,0.0,,mixed
+E latency,gpu_total_us,1.17,,mixed
+E latency,fpga_advantage,1.5195,,mixed

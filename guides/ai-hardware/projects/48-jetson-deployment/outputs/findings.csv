@@ -1,0 +1,69 @@
+section,key,value,unit,kind
+B,cpu read bandwidth,30.17,GB/s,measured
+B,decode fp32,11.489,tok/s,measured
+B,decode int8-dynamic,25.2,tok/s,measured
+C,bandwidth efficiency fp32,75.3,%,measured
+C,bandwidth efficiency int8-dynamic,41.3,%,measured
+D,Jetson Orin Nano 8GB | Qwen2.5-0.5B fp16,28.07,tok/s,arithmetic
+D,Jetson Orin Nano 8GB | Qwen2.5-0.5B int8,56.15,tok/s,arithmetic
+D,Jetson Orin Nano 8GB | Qwen2.5-0.5B int4,112.29,tok/s,arithmetic
+D,Jetson Orin Nano 8GB | Llama-3.2-3B fp16,4.39,tok/s,arithmetic
+D,Jetson Orin Nano 8GB | Llama-3.2-3B int8,8.77,tok/s,arithmetic
+D,Jetson Orin Nano 8GB | Llama-3.2-3B int4,17.55,tok/s,arithmetic
+D,Jetson Orin Nano 8GB | Llama-3-8B fp16,1.75,tok/s,arithmetic
+D,Jetson Orin Nano 8GB | Llama-3-8B int8,3.51,tok/s,arithmetic
+D,Jetson Orin Nano 8GB | Llama-3-8B int4,7.02,tok/s,arithmetic
+D,Jetson Orin NX 16GB | Qwen2.5-0.5B fp16,42.11,tok/s,arithmetic
+D,Jetson Orin NX 16GB | Qwen2.5-0.5B int8,84.22,tok/s,arithmetic
+D,Jetson Orin NX 16GB | Qwen2.5-0.5B int4,168.44,tok/s,arithmetic
+D,Jetson Orin NX 16GB | Llama-3.2-3B fp16,6.58,tok/s,arithmetic
+D,Jetson Orin NX 16GB | Llama-3.2-3B int8,13.16,tok/s,arithmetic
+D,Jetson Orin NX 16GB | Llama-3.2-3B int4,26.32,tok/s,arithmetic
+D,Jetson Orin NX 16GB | Llama-3-8B fp16,2.63,tok/s,arithmetic
+D,Jetson Orin NX 16GB | Llama-3-8B int8,5.26,tok/s,arithmetic
+D,Jetson Orin NX 16GB | Llama-3-8B int4,10.53,tok/s,arithmetic
+D,Jetson AGX Orin 64GB | Qwen2.5-0.5B fp16,84.22,tok/s,arithmetic
+D,Jetson AGX Orin 64GB | Qwen2.5-0.5B int8,168.44,tok/s,arithmetic
+D,Jetson AGX Orin 64GB | Qwen2.5-0.5B int4,336.88,tok/s,arithmetic
+D,Jetson AGX Orin 64GB | Llama-3.2-3B fp16,13.16,tok/s,arithmetic
+D,Jetson AGX Orin 64GB | Llama-3.2-3B int8,26.32,tok/s,arithmetic
+D,Jetson AGX Orin 64GB | Llama-3.2-3B int4,52.64,tok/s,arithmetic
+D,Jetson AGX Orin 64GB | Llama-3-8B fp16,5.26,tok/s,arithmetic
+D,Jetson AGX Orin 64GB | Llama-3-8B int8,10.53,tok/s,arithmetic
+D,Jetson AGX Orin 64GB | Llama-3-8B int4,21.06,tok/s,arithmetic
+D,Raspberry Pi 5 (CPU) | Qwen2.5-0.5B fp16,7.02,tok/s,arithmetic
+D,Raspberry Pi 5 (CPU) | Qwen2.5-0.5B int8,14.04,tok/s,arithmetic
+D,Raspberry Pi 5 (CPU) | Qwen2.5-0.5B int4,28.07,tok/s,arithmetic
+D,Raspberry Pi 5 (CPU) | Llama-3.2-3B fp16,1.1,tok/s,arithmetic
+D,Raspberry Pi 5 (CPU) | Llama-3.2-3B int8,2.19,tok/s,arithmetic
+D,Raspberry Pi 5 (CPU) | Llama-3.2-3B int4,4.39,tok/s,arithmetic
+D,Raspberry Pi 5 (CPU) | Llama-3-8B fp16,0.44,tok/s,arithmetic
+D,Raspberry Pi 5 (CPU) | Llama-3-8B int8,0.88,tok/s,arithmetic
+D,Raspberry Pi 5 (CPU) | Llama-3-8B int4,1.75,tok/s,arithmetic
+D,GTX 1070 Ti (this box) | Qwen2.5-0.5B fp16,81.33,tok/s,arithmetic
+D,GTX 1070 Ti (this box) | Qwen2.5-0.5B int8,162.66,tok/s,arithmetic
+D,GTX 1070 Ti (this box) | Qwen2.5-0.5B int4,325.32,tok/s,arithmetic
+D,GTX 1070 Ti (this box) | Llama-3.2-3B fp16,12.71,tok/s,arithmetic
+D,GTX 1070 Ti (this box) | Llama-3.2-3B int8,25.42,tok/s,arithmetic
+D,GTX 1070 Ti (this box) | Llama-3.2-3B int4,50.83,tok/s,arithmetic
+D,GTX 1070 Ti (this box) | Llama-3-8B fp16,5.08,tok/s,arithmetic
+D,GTX 1070 Ti (this box) | Llama-3-8B int8,10.17,tok/s,arithmetic
+D,GTX 1070 Ti (this box) | Llama-3-8B int4,20.33,tok/s,arithmetic
+D,RTX 5090 | Qwen2.5-0.5B fp16,739.82,tok/s,arithmetic
+D,RTX 5090 | Qwen2.5-0.5B int8,1479.64,tok/s,arithmetic
+D,RTX 5090 | Qwen2.5-0.5B int4,2959.29,tok/s,arithmetic
+D,RTX 5090 | Llama-3.2-3B fp16,115.6,tok/s,arithmetic
+D,RTX 5090 | Llama-3.2-3B int8,231.19,tok/s,arithmetic
+D,RTX 5090 | Llama-3.2-3B int4,462.39,tok/s,arithmetic
+D,RTX 5090 | Llama-3-8B fp16,46.24,tok/s,arithmetic
+D,RTX 5090 | Llama-3-8B int8,92.48,tok/s,arithmetic
+D,RTX 5090 | Llama-3-8B int4,184.96,tok/s,arithmetic
+E,Jetson Orin Nano 8GB ridge,294.1,ops/byte,arithmetic
+E,Jetson Orin NX 16GB ridge,490.2,ops/byte,arithmetic
+E,Jetson AGX Orin 64GB ridge,671.6,ops/byte,arithmetic
+E,Raspberry Pi 5 (CPU) ridge,5.9,ops/byte,arithmetic
+E,GTX 1070 Ti (this box) ridge,154.8,ops/byte,arithmetic
+E,RTX 5090 ridge,467.6,ops/byte,arithmetic
+F,batch 1,11.305,tok/s,measured
+F,batch 4,37.697,tok/s,measured
+F,batch 8,72.074,tok/s,measured

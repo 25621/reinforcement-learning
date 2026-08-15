@@ -1,0 +1,39 @@
+== 0. cold idle ==
+   7.1 W, 56 C, 139 MHz, P8
+== A. 150 s of continuous load ==
+   temperature 64 -> 74 C (asymptote 75 C, time constant 45 s, fit RMSE 0.42 C)
+   clock 1848 -> 1822 MHz (-1.4%), perf 8668 -> 8544 GFLOP/s (-1.4%)
+   fan 41 -> 59 %, power 112 -> 113 W
+   throttle reasons: power_cap=False hw_thermal=False sw_thermal=False
+== B. arithmetic vs memory ==
+    compute:   8544.2  GFLOP/s   112.6 W  1822 MHz  74 C
+     memory:    196.8     GB/s    86.7 W  1835 MHz  69 C
+   the memory-bound kernel draws 0.77x the power of the arithmetic one
+== C. how much of the chip is switching ==
+      1 blocks (  0.7% of chip):    397.4 GFLOP/s   46.8 W    8.5 GFLOP/J
+      2 blocks (  1.3% of chip):    792.7 GFLOP/s   49.6 W   16.0 GFLOP/J
+      4 blocks (  2.6% of chip):   1584.3 GFLOP/s   55.6 W   28.5 GFLOP/J
+      8 blocks (  5.3% of chip):   3159.7 GFLOP/s   67.5 W   46.8 GFLOP/J
+     19 blocks ( 12.5% of chip):   7483.0 GFLOP/s   99.9 W   74.9 GFLOP/J
+     38 blocks ( 25.0% of chip):   8537.0 GFLOP/s  112.3 W   76.0 GFLOP/J
+     76 blocks ( 50.0% of chip):   8593.6 GFLOP/s  114.0 W   75.4 GFLOP/J
+    152 blocks (100.0% of chip):   8608.2 GFLOP/s  115.3 W   74.7 GFLOP/J
+   one block (1 of 19 SMs) already costs 46.8 W; fit over 1..19 SMs: 43.8 W just for being awake + 2.95 W per SM
+   -> 38% of a fully loaded board's 115.3 W is paid before any SM does arithmetic; best efficiency 76.0 GFLOP/J at 38 blocks
+== D. duty cycling ==
+   on 100 ms / off   0 ms (duty 100.0%):   8588.3 GFLOP/s  114.4 W   75.0 GFLOP/J (efficiency 100.0% of full speed)
+   on 100 ms / off  25 ms (duty  80.0%):   6829.0 GFLOP/s   96.9 W   70.5 GFLOP/J (efficiency  93.9% of full speed)
+   on 100 ms / off  50 ms (duty  66.7%):   5694.8 GFLOP/s   88.5 W   64.3 GFLOP/J (efficiency  85.7% of full speed)
+   on 100 ms / off 100 ms (duty  50.0%):   4337.9 GFLOP/s   79.1 W   54.9 GFLOP/J (efficiency  73.1% of full speed)
+   on 100 ms / off 200 ms (duty  33.3%):   2902.1 GFLOP/s   67.0 W   43.3 GFLOP/J (efficiency  57.8% of full speed)
+== E. undervolting ==
+   nvidia-smi -pl 150 -> rc=4: Failed to set power management limit for GPU 00000000:01:00.0: Insufficient Permissions
+   arithmetic: 1.05 V -> 0.95 V at the same clock scales the 105 W dynamic part by 0.819
+   -> 93 W instead of 113 W: 17% less power for the same work (+20% perf-per-watt)
+== F. two cards in one case (arithmetic) ==
+   open frame, 120 CFM: 225 W of GPU -> 1.1 C rise across the case at 120 CFM; card 2 inlet ~23 C, predicted core ~76 C
+   tower, 60 CFM: 225 W of GPU -> 2.1 C rise across the case at 60 CFM; card 2 inlet ~24 C, predicted core ~77 C
+   quiet tower, 30 CFM: 225 W of GPU -> 4.3 C rise across the case at 30 CFM; card 2 inlet ~26 C, predicted core ~79 C
+
+wrote outputs/findings.json, findings.csv, thermals.png
+EXIT=0

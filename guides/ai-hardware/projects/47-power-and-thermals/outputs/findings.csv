@@ -1,0 +1,41 @@
+section,key,value,unit,kind
+A long run,first_c,63.65,C,measured
+A long run,last_c,74.2,C,measured
+A long run,first_mhz,1848.35,MHz,measured
+A long run,last_mhz,1822.0,MHz,measured
+A long run,perf_drift_pct,-1.435,%,measured
+A long run,clock_drift_pct,-1.426,%,measured
+A long run,thermal tau,45.0,s,measured
+A long run,asymptote,75.0,C,measured
+B kernels,compute,8544.21,GFLOP/s,measured
+B kernels,compute power,112.58,W,measured
+B kernels,memory,196.77,GB/s,measured
+B kernels,memory power,86.68,W,measured
+C width,1 blocks,8.483,GFLOP/J,measured
+C width,2 blocks,15.966,GFLOP/J,measured
+C width,4 blocks,28.499,GFLOP/J,measured
+C width,8 blocks,46.838,GFLOP/J,measured
+C width,19 blocks,74.926,GFLOP/J,measured
+C width,38 blocks,76.009,GFLOP/J,measured
+C width,76 blocks,75.364,GFLOP/J,measured
+C width,152 blocks,74.678,GFLOP/J,measured
+C width,awake power (fit intercept),43.82,W,measured (fit)
+C width,per-SM power (fit slope),2.95,W/SM,measured (fit)
+D duty,off 0 ms,75.046,GFLOP/J,measured
+D duty,off 25 ms,70.485,GFLOP/J,measured
+D duty,off 50 ms,64.338,GFLOP/J,measured
+D duty,off 100 ms,54.853,GFLOP/J,measured
+D duty,off 200 ms,43.34,GFLOP/J,measured
+E undervolt,v_stock,1.05,,arithmetic
+E undervolt,v_target,0.95,,arithmetic
+E undervolt,static_w,7.113,,arithmetic
+E undervolt,dynamic_w,105.469,,arithmetic
+E undervolt,dynamic_scale,0.819,,arithmetic
+E undervolt,new_board_w,93.449,,arithmetic
+E undervolt,board_saving_w,19.133,,arithmetic
+E undervolt,board_saving_pct,16.994,,arithmetic
+E undervolt,efficiency_gain_pct,20.474,,arithmetic
+E undervolt,set_power_limit_rc,4,,arithmetic
+F two cards,"open frame, 120 CFM",76.1,C,arithmetic
+F two cards,"tower, 60 CFM",77.1,C,arithmetic
+F two cards,"quiet tower, 30 CFM",79.3,C,arithmetic

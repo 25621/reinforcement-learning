@@ -1,0 +1,581 @@
+{
+ "model": "Qwen/Qwen2.5-0.5B-Instruct",
+ "gen_tokens": 24,
+ "cpu_bandwidth": {
+  "copy_gbs": 21.46145485369914,
+  "read_gbs": 30.16817171910808,
+  "mb": 256
+ },
+ "decode": [
+  {
+   "label": "fp32",
+   "batch": 1,
+   "seconds": 2.088950127013959,
+   "tokens": 24,
+   "tok_per_s": 11.489024888452795,
+   "params": 494032768,
+   "linear_params": 493961216,
+   "weight_bytes": 1976131072,
+   "bytes_per_token": 1976131072,
+   "text": "Explain what a Jetson module is, in two sentences. A Jetson module is a specialized computer system designed for high-performance computing tasks such as artificial intelligence and machine learning. "
+  },
+  {
+   "label": "int8-dynamic",
+   "batch": 1,
+   "seconds": 0.9523955240147188,
+   "tokens": 24,
+   "tok_per_s": 25.199614440469684,
+   "params": 494032768,
+   "linear_params": 493961216,
+   "weight_bytes": 494247424,
+   "bytes_per_token": 494247424,
+   "text": "Explain what a Jetson module is, in two sentences. A jeton module is a type of modular design that involves the use of a series of interconnected components to create a functional"
+  }
+ ],
+ "predictor_check": [
+  {
+   "label": "fp32",
+   "measured": 11.489024888452795,
+   "predicted_at_peak": 15.266280737428778,
+   "efficiency": 0.7525752399066541
+  },
+  {
+   "label": "int8-dynamic",
+   "measured": 25.199614440469684,
+   "predicted_at_peak": 61.0386018301394,
+   "efficiency": 0.4128471767848837
+  }
+ ],
+ "efficiency_used": 0.4128471767848837,
+ "jetson": [
+  {
+   "device": "Jetson Orin Nano 8GB",
+   "model": "Qwen2.5-0.5B",
+   "quant": "fp16",
+   "weight_gib": 0.9313225746154785,
+   "tok_per_s": 28.07360802137209,
+   "fits_8gb": true
+  },
+  {
+   "device": "Jetson Orin Nano 8GB",
+   "model": "Qwen2.5-0.5B",
+   "quant": "int8",
+   "weight_gib": 0.46566128730773926,
+   "tok_per_s": 56.14721604274418,
+   "fits_8gb": true
+  },
+  {
+   "device": "Jetson Orin Nano 8GB",
+   "model": "Qwen2.5-0.5B",
+   "quant": "int4",
+   "weight_gib": 0.23283064365386963,
+   "tok_per_s": 112.29443208548837,
+   "fits_8gb": true
+  },
+  {
+   "device": "Jetson Orin Nano 8GB",
+   "model": "Llama-3.2-3B",
+   "quant": "fp16",
+   "weight_gib": 5.9604644775390625,
+   "tok_per_s": 4.3865012533393895,
+   "fits_8gb": true
+  },
+  {
+   "device": "Jetson Orin Nano 8GB",
+   "model": "Llama-3.2-3B",
+   "quant": "int8",
+   "weight_gib": 2.9802322387695312,
+   "tok_per_s": 8.773002506678779,
+   "fits_8gb": true
+  },
+  {
+   "device": "Jetson Orin Nano 8GB",
+   "model": "Llama-3.2-3B",
+   "quant": "int4",
+   "weight_gib": 1.4901161193847656,
+   "tok_per_s": 17.546005013357558,
+   "fits_8gb": true
+  },
+  {
+   "device": "Jetson Orin Nano 8GB",
+   "model": "Llama-3-8B",
+   "quant": "fp16",
+   "weight_gib": 14.901161193847656,
+   "tok_per_s": 1.7546005013357557,
+   "fits_8gb": false
+  },
+  {
+   "device": "Jetson Orin Nano 8GB",
+   "model": "Llama-3-8B",
+   "quant": "int8",
+   "weight_gib": 7.450580596923828,
+   "tok_per_s": 3.5092010026715115,
+   "fits_8gb": false
+  },
+  {
+   "device": "Jetson Orin Nano 8GB",
+   "model": "Llama-3-8B",
+   "quant": "int4",
+   "weight_gib": 3.725290298461914,
+   "tok_per_s": 7.018402005343023,
+   "fits_8gb": true
+  },
+  {
+   "device": "Jetson Orin NX 16GB",
+   "model": "Qwen2.5-0.5B",
+   "quant": "fp16",
+   "weight_gib": 0.9313225746154785,
+   "tok_per_s": 42.110412032058136,
+   "fits_8gb": true
+  },
+  {
+   "device": "Jetson Orin NX 16GB",
+   "model": "Qwen2.5-0.5B",
+   "quant": "int8",
+   "weight_gib": 0.46566128730773926,
+   "tok_per_s": 84.22082406411627,
+   "fits_8gb": true
+  },
+  {
+   "device": "Jetson Orin NX 16GB",
+   "model": "Qwen2.5-0.5B",
+   "quant": "int4",
+   "weight_gib": 0.23283064365386963,
+   "tok_per_s": 168.44164812823254,
+   "fits_8gb": true
+  },
+  {
+   "device": "Jetson Orin NX 16GB",
+   "model": "Llama-3.2-3B",
+   "quant": "fp16",
+   "weight_gib": 5.9604644775390625,
+   "tok_per_s": 6.579751880009084,
+   "fits_8gb": true
+  },
+  {
+   "device": "Jetson Orin NX 16GB",
+   "model": "Llama-3.2-3B",
+   "quant": "int8",
+   "weight_gib": 2.9802322387695312,
+   "tok_per_s": 13.159503760018168,
+   "fits_8gb": true
+  },
+  {
+   "device": "Jetson Orin NX 16GB",
+   "model": "Llama-3.2-3B",
+   "quant": "int4",
+   "weight_gib": 1.4901161193847656,
+   "tok_per_s": 26.319007520036337,
+   "fits_8gb": true
+  },
+  {
+   "device": "Jetson Orin NX 16GB",
+   "model": "Llama-3-8B",
+   "quant": "fp16",
+   "weight_gib": 14.901161193847656,
+   "tok_per_s": 2.6319007520036335,
+   "fits_8gb": true
+  },
+  {
+   "device": "Jetson Orin NX 16GB",
+   "model": "Llama-3-8B",
+   "quant": "int8",
+   "weight_gib": 7.450580596923828,
+   "tok_per_s": 5.263801504007267,
+   "fits_8gb": true
+  },
+  {
+   "device": "Jetson Orin NX 16GB",
+   "model": "Llama-3-8B",
+   "quant": "int4",
+   "weight_gib": 3.725290298461914,
+   "tok_per_s": 10.527603008014534,
+   "fits_8gb": true
+  },
+  {
+   "device": "Jetson AGX Orin 64GB",
+   "model": "Qwen2.5-0.5B",
+   "quant": "fp16",
+   "weight_gib": 0.9313225746154785,
+   "tok_per_s": 84.22082406411627,
+   "fits_8gb": true
+  },
+  {
+   "device": "Jetson AGX Orin 64GB",
+   "model": "Qwen2.5-0.5B",
+   "quant": "int8",
+   "weight_gib": 0.46566128730773926,
+   "tok_per_s": 168.44164812823254,
+   "fits_8gb": true
+  },
+  {
+   "device": "Jetson AGX Orin 64GB",
+   "model": "Qwen2.5-0.5B",
+   "quant": "int4",
+   "weight_gib": 0.23283064365386963,
+   "tok_per_s": 336.8832962564651,
+   "fits_8gb": true
+  },
+  {
+   "device": "Jetson AGX Orin 64GB",
+   "model": "Llama-3.2-3B",
+   "quant": "fp16",
+   "weight_gib": 5.9604644775390625,
+   "tok_per_s": 13.159503760018168,
+   "fits_8gb": true
+  },
+  {
+   "device": "Jetson AGX Orin 64GB",
+   "model": "Llama-3.2-3B",
+   "quant": "int8",
+   "weight_gib": 2.9802322387695312,
+   "tok_per_s": 26.319007520036337,
+   "fits_8gb": true
+  },
+  {
+   "device": "Jetson AGX Orin 64GB",
+   "model": "Llama-3.2-3B",
+   "quant": "int4",
+   "weight_gib": 1.4901161193847656,
+   "tok_per_s": 52.63801504007267,
+   "fits_8gb": true
+  },
+  {
+   "device": "Jetson AGX Orin 64GB",
+   "model": "Llama-3-8B",
+   "quant": "fp16",
+   "weight_gib": 14.901161193847656,
+   "tok_per_s": 5.263801504007267,
+   "fits_8gb": true
+  },
+  {
+   "device": "Jetson AGX Orin 64GB",
+   "model": "Llama-3-8B",
+   "quant": "int8",
+   "weight_gib": 7.450580596923828,
+   "tok_per_s": 10.527603008014534,
+   "fits_8gb": true
+  },
+  {
+   "device": "Jetson AGX Orin 64GB",
+   "model": "Llama-3-8B",
+   "quant": "int4",
+   "weight_gib": 3.725290298461914,
+   "tok_per_s": 21.055206016029068,
+   "fits_8gb": true
+  },
+  {
+   "device": "Raspberry Pi 5 (CPU)",
+   "model": "Qwen2.5-0.5B",
+   "quant": "fp16",
+   "weight_gib": 0.9313225746154785,
+   "tok_per_s": 7.018402005343023,
+   "fits_8gb": true
+  },
+  {
+   "device": "Raspberry Pi 5 (CPU)",
+   "model": "Qwen2.5-0.5B",
+   "quant": "int8",
+   "weight_gib": 0.46566128730773926,
+   "tok_per_s": 14.036804010686046,
+   "fits_8gb": true
+  },
+  {
+   "device": "Raspberry Pi 5 (CPU)",
+   "model": "Qwen2.5-0.5B",
+   "quant": "int4",
+   "weight_gib": 0.23283064365386963,
+   "tok_per_s": 28.07360802137209,
+   "fits_8gb": true
+  },
+  {
+   "device": "Raspberry Pi 5 (CPU)",
+   "model": "Llama-3.2-3B",
+   "quant": "fp16",
+   "weight_gib": 5.9604644775390625,
+   "tok_per_s": 1.0966253133348474,
+   "fits_8gb": true
+  },
+  {
+   "device": "Raspberry Pi 5 (CPU)",
+   "model": "Llama-3.2-3B",
+   "quant": "int8",
+   "weight_gib": 2.9802322387695312,
+   "tok_per_s": 2.1932506266696947,
+   "fits_8gb": true
+  },
+  {
+   "device": "Raspberry Pi 5 (CPU)",
+   "model": "Llama-3.2-3B",
+   "quant": "int4",
+   "weight_gib": 1.4901161193847656,
+   "tok_per_s": 4.3865012533393895,
+   "fits_8gb": true
+  },
+  {
+   "device": "Raspberry Pi 5 (CPU)",
+   "model": "Llama-3-8B",
+   "quant": "fp16",
+   "weight_gib": 14.901161193847656,
+   "tok_per_s": 0.43865012533393893,
+   "fits_8gb": true
+  },
+  {
+   "device": "Raspberry Pi 5 (CPU)",
+   "model": "Llama-3-8B",
+   "quant": "int8",
+   "weight_gib": 7.450580596923828,
+   "tok_per_s": 0.8773002506678779,
+   "fits_8gb": true
+  },
+  {
+   "device": "Raspberry Pi 5 (CPU)",
+   "model": "Llama-3-8B",
+   "quant": "int4",
+   "weight_gib": 3.725290298461914,
+   "tok_per_s": 1.7546005013357557,
+   "fits_8gb": true
+  },
+  {
+   "device": "GTX 1070 Ti (this box)",
+   "model": "Qwen2.5-0.5B",
+   "quant": "fp16",
+   "weight_gib": 0.9313225746154785,
+   "tok_per_s": 81.33089382662209,
+   "fits_8gb": true
+  },
+  {
+   "device": "GTX 1070 Ti (this box)",
+   "model": "Qwen2.5-0.5B",
+   "quant": "int8",
+   "weight_gib": 0.46566128730773926,
+   "tok_per_s": 162.66178765324418,
+   "fits_8gb": true
+  },
+  {
+   "device": "GTX 1070 Ti (this box)",
+   "model": "Qwen2.5-0.5B",
+   "quant": "int4",
+   "weight_gib": 0.23283064365386963,
+   "tok_per_s": 325.32357530648835,
+   "fits_8gb": true
+  },
+  {
+   "device": "GTX 1070 Ti (this box)",
+   "model": "Llama-3.2-3B",
+   "quant": "fp16",
+   "weight_gib": 5.9604644775390625,
+   "tok_per_s": 12.7079521604097,
+   "fits_8gb": true
+  },
+  {
+   "device": "GTX 1070 Ti (this box)",
+   "model": "Llama-3.2-3B",
+   "quant": "int8",
+   "weight_gib": 2.9802322387695312,
+   "tok_per_s": 25.4159043208194,
+   "fits_8gb": true
+  },
+  {
+   "device": "GTX 1070 Ti (this box)",
+   "model": "Llama-3.2-3B",
+   "quant": "int4",
+   "weight_gib": 1.4901161193847656,
+   "tok_per_s": 50.8318086416388,
+   "fits_8gb": true
+  },
+  {
+   "device": "GTX 1070 Ti (this box)",
+   "model": "Llama-3-8B",
+   "quant": "fp16",
+   "weight_gib": 14.901161193847656,
+   "tok_per_s": 5.0831808641638805,
+   "fits_8gb": true
+  },
+  {
+   "device": "GTX 1070 Ti (this box)",
+   "model": "Llama-3-8B",
+   "quant": "int8",
+   "weight_gib": 7.450580596923828,
+   "tok_per_s": 10.166361728327761,
+   "fits_8gb": true
+  },
+  {
+   "device": "GTX 1070 Ti (this box)",
+   "model": "Llama-3-8B",
+   "quant": "int4",
+   "weight_gib": 3.725290298461914,
+   "tok_per_s": 20.332723456655522,
+   "fits_8gb": true
+  },
+  {
+   "device": "RTX 5090",
+   "model": "Qwen2.5-0.5B",
+   "quant": "fp16",
+   "weight_gib": 0.9313225746154785,
+   "tok_per_s": 739.8221407985116,
+   "fits_8gb": true
+  },
+  {
+   "device": "RTX 5090",
+   "model": "Qwen2.5-0.5B",
+   "quant": "int8",
+   "weight_gib": 0.46566128730773926,
+   "tok_per_s": 1479.644281597023,
+   "fits_8gb": true
+  },
+  {
+   "device": "RTX 5090",
+   "model": "Qwen2.5-0.5B",
+   "quant": "int4",
+   "weight_gib": 0.23283064365386963,
+   "tok_per_s": 2959.288563194046,
+   "fits_8gb": true
+  },
+  {
+   "device": "RTX 5090",
+   "model": "Llama-3.2-3B",
+   "quant": "fp16",
+   "weight_gib": 5.9604644775390625,
+   "tok_per_s": 115.59720949976743,
+   "fits_8gb": true
+  },
+  {
+   "device": "RTX 5090",
+   "model": "Llama-3.2-3B",
+   "quant": "int8",
+   "weight_gib": 2.9802322387695312,
+   "tok_per_s": 231.19441899953486,
+   "fits_8gb": true
+  },
+  {
+   "device": "RTX 5090",
+   "model": "Llama-3.2-3B",
+   "quant": "int4",
+   "weight_gib": 1.4901161193847656,
+   "tok_per_s": 462.3888379990697,
+   "fits_8gb": true
+  },
+  {
+   "device": "RTX 5090",
+   "model": "Llama-3-8B",
+   "quant": "fp16",
+   "weight_gib": 14.901161193847656,
+   "tok_per_s": 46.23888379990697,
+   "fits_8gb": true
+  },
+  {
+   "device": "RTX 5090",
+   "model": "Llama-3-8B",
+   "quant": "int8",
+   "weight_gib": 7.450580596923828,
+   "tok_per_s": 92.47776759981394,
+   "fits_8gb": true
+  },
+  {
+   "device": "RTX 5090",
+   "model": "Llama-3-8B",
+   "quant": "int4",
+   "weight_gib": 3.725290298461914,
+   "tok_per_s": 184.9555351996279,
+   "fits_8gb": true
+  }
+ ],
+ "tops": [
+  {
+   "device": "Jetson Orin Nano 8GB",
+   "tops": 20,
+   "bw_gbs": 68,
+   "ridge_ops_per_byte": 294.11764705882354,
+   "decode_ops_per_byte": 2.0,
+   "tops_used_pct": 0.6799999999999999,
+   "batch_needed_for_ridge": 147.05882352941177
+  },
+  {
+   "device": "Jetson Orin NX 16GB",
+   "tops": 50,
+   "bw_gbs": 102,
+   "ridge_ops_per_byte": 490.19607843137254,
+   "decode_ops_per_byte": 2.0,
+   "tops_used_pct": 0.40800000000000003,
+   "batch_needed_for_ridge": 245.09803921568627
+  },
+  {
+   "device": "Jetson AGX Orin 64GB",
+   "tops": 137,
+   "bw_gbs": 204,
+   "ridge_ops_per_byte": 671.5686274509804,
+   "decode_ops_per_byte": 2.0,
+   "tops_used_pct": 0.29781021897810217,
+   "batch_needed_for_ridge": 335.7843137254902
+  },
+  {
+   "device": "Raspberry Pi 5 (CPU)",
+   "tops": 0.1,
+   "bw_gbs": 17,
+   "ridge_ops_per_byte": 5.882352941176471,
+   "decode_ops_per_byte": 2.0,
+   "tops_used_pct": 34.0,
+   "batch_needed_for_ridge": 2.9411764705882355
+  },
+  {
+   "device": "GTX 1070 Ti (this box)",
+   "tops": 30.5,
+   "bw_gbs": 197,
+   "ridge_ops_per_byte": 154.8223350253807,
+   "decode_ops_per_byte": 2.0,
+   "tops_used_pct": 1.2918032786885245,
+   "batch_needed_for_ridge": 77.41116751269035
+  },
+  {
+   "device": "RTX 5090",
+   "tops": 838,
+   "bw_gbs": 1792,
+   "ridge_ops_per_byte": 467.63392857142856,
+   "decode_ops_per_byte": 2.0,
+   "tops_used_pct": 0.42768496420047736,
+   "batch_needed_for_ridge": 233.81696428571428
+  }
+ ],
+ "batching": [
+  {
+   "label": "fp32",
+   "batch": 1,
+   "seconds": 2.1230273050023243,
+   "tokens": 24,
+   "tok_per_s": 11.304612024278098,
+   "params": 494032768,
+   "linear_params": 493961216,
+   "weight_bytes": 1976131072,
+   "bytes_per_token": 1976131072,
+   "text": "Explain what a Jetson module is, in two sentences. A Jetson module is a specialized computer system designed for high-performance computing tasks such as artificial intelligence and machine learning. ",
+   "speedup": 1.0
+  },
+  {
+   "label": "fp32",
+   "batch": 4,
+   "seconds": 2.546635365986731,
+   "tokens": 96,
+   "tok_per_s": 37.6967984039613,
+   "params": 494032768,
+   "linear_params": 493961216,
+   "weight_bytes": 1976131072,
+   "bytes_per_token": 1976131072,
+   "text": "Explain what a Jetson module is, in two sentences. A Jetson module is a specialized computer system designed for high-performance computing tasks such as artificial intelligence and machine learning. ",
+   "speedup": 3.3346388467824117
+  },
+  {
+   "label": "fp32",
+   "batch": 8,
+   "seconds": 2.663930020004045,
+   "tokens": 192,
+   "tok_per_s": 72.07396536629308,
+   "params": 494032768,
+   "linear_params": 493961216,
+   "weight_bytes": 1976131072,
+   "bytes_per_token": 1976131072,
+   "text": "Explain what a Jetson module is, in two sentences. A Jetson module is a specialized computer system designed for high-performance computing tasks such as artificial intelligence and machine learning. ",
+   "speedup": 6.375624852184669
+  }
+ ]
+}

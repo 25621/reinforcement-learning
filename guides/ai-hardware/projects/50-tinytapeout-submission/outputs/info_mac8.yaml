@@ -1,0 +1,21 @@
+# TinyTapeout project description (outputs/info.yaml)
+# Written by run.py. A real submission also needs the GDS produced by the
+# TinyTapeout GitHub Action, which runs OpenLane on this Verilog.
+project:
+  title: "8-bit MAC"
+  author: "AI hardware guide, project 50"
+  description: "Signed 8x8 multiply-accumulate, one byte per clock"
+  language: "Amaranth HDL (exported to Verilog)"
+  clock_hz: 50000000
+  tiles: "1x1"
+  top_module: "tt_um_mac8"
+pinout:
+  ui:
+    - ui_in[7:0]: operand byte (A then B)
+  uo:
+    - uo_out[7:0]: selected accumulator byte
+  uio:
+    - uio_in[0]: load A
+    - uio_in[1]: accumulate
+    - uio_in[2]: clear
+    - uio_in[5:4]: output byte select

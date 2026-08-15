@@ -1,0 +1,149 @@
+{
+ "tile_um2": 17954.72,
+ "clock_hz": 50000000.0,
+ "utilization": 0.55,
+ "simulation": [
+  {
+   "design": "MAC8",
+   "macs": 12,
+   "cycles": 24,
+   "cycles_per_mac": 2.0,
+   "got": 21383,
+   "expected": 21383,
+   "exact_match": true
+  },
+  {
+   "design": "BinaryNeuron",
+   "macs": 128,
+   "cycles": 16,
+   "cycles_per_mac": 0.125,
+   "got": [
+    0,
+    2,
+    0,
+    -6
+   ],
+   "expected": [
+    0,
+    2,
+    0,
+    -6
+   ],
+   "exact_match": true
+  }
+ ],
+ "synthesis": [
+  {
+   "name": "mac8",
+   "gates": 792,
+   "flops": 32,
+   "cells": 824,
+   "area_um2": 5619.1392,
+   "multipliers": 1,
+   "adders": 1,
+   "memories": 0,
+   "gate_cells": {
+    "$_AND_": 361,
+    "$_MUX_": 8,
+    "$_NOT_": 11,
+    "$_OR_": 146,
+    "$_SDFFE_PP0P_": 32,
+    "$_XOR_": 266
+   },
+   "placed_um2": 10216.616727272725,
+   "tile_um2": 17954.72,
+   "tile_fraction": 0.5690212226797591,
+   "copies_per_tile": 1
+  },
+  {
+   "name": "binneuron",
+   "gates": 104,
+   "flops": 16,
+   "cells": 120,
+   "area_um2": 927.1392000000001,
+   "multipliers": 0,
+   "adders": 8,
+   "memories": 0,
+   "gate_cells": {
+    "$_AND_": 36,
+    "$_NOT_": 21,
+    "$_OR_": 17,
+    "$_SDFFE_PP0P_": 16,
+    "$_XOR_": 30
+   },
+   "placed_um2": 1685.7076363636363,
+   "tile_um2": 17954.72,
+   "tile_fraction": 0.09388660120367437,
+   "copies_per_tile": 10
+  }
+ ],
+ "throughput": [
+  {
+   "copies_per_tile": 1,
+   "macs_per_s": 25000000.0,
+   "ops_per_s": 50000000.0,
+   "gops": 0.05,
+   "pin_bytes_per_s": 50000000.0,
+   "operands_per_s": 50000000.0,
+   "operands_per_mac": 2,
+   "macs_the_pins_can_feed": 25000000.0,
+   "pin_limited": false,
+   "pin_shortfall": 1.0
+  },
+  {
+   "copies_per_tile": 10,
+   "macs_per_s": 4000000000.0,
+   "ops_per_s": 8000000000.0,
+   "gops": 8.0,
+   "pin_bytes_per_s": 50000000.0,
+   "operands_per_s": 400000000.0,
+   "operands_per_mac": 1,
+   "macs_the_pins_can_feed": 400000000.0,
+   "pin_limited": true,
+   "pin_shortfall": 10.0
+  }
+ ],
+ "energy": [
+  {
+   "cells": 824,
+   "core_w": 4.00464e-05,
+   "pad_w": 0.004,
+   "total_w": 0.0040400464,
+   "gops_per_w_core": 1248.5516800511407,
+   "gops_per_w_total": 12.376095482467726,
+   "pad_over_core": 99.88413440409124
+  },
+  {
+   "cells": 1200,
+   "core_w": 5.8320000000000004e-05,
+   "pad_w": 0.004,
+   "total_w": 0.00405832,
+   "gops_per_w_core": 137174.2112482853,
+   "gops_per_w_total": 1971.2590431508606,
+   "pad_over_core": 68.58710562414265
+  }
+ ],
+ "gpu": {
+  "gops": 30484.1,
+  "watts": 114.6,
+  "gops_per_w": 266.0043630017452
+ },
+ "ratios": {
+  "gpu_over_tile_throughput": 609681.9999999999,
+  "tile_over_gpu_efficiency_core": 4.693726320733127,
+  "tile_over_gpu_efficiency_total": 0.04652591161591785,
+  "binary_over_mac_throughput": 160.0
+ },
+ "artifacts": {
+  "mac8": {
+   "verilog": "tt_um_mac8.v",
+   "verilog_bytes": 1937,
+   "info": "info_mac8.yaml"
+  },
+  "binneuron": {
+   "verilog": "tt_um_binneuron.v",
+   "verilog_bytes": 2687,
+   "info": "info_binneuron.yaml"
+  }
+ }
+}

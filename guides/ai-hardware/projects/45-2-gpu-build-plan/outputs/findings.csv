@@ -1,0 +1,84 @@
+section,key,value,unit,kind
+A/B machine,peak_gflops,8724.01,GFLOP/s,measured
+A/B machine,peak_dram_gbs,196.77,GB/s,measured
+A/B machine,idle_w,6.633030303030303,W,measured
+A/B machine,load_w,111.88842857142856,W,measured
+A/B machine,peak_sampled_w,115.63,W,measured
+A/B machine,peak_over_steady,1.0334401999951484,x,measured
+A/B machine,rise_to_95pct_s,0.5492057800292969,s,measured
+C vram,Llama-3-8B fp16,24.4,GiB,arithmetic
+C vram,Llama-3-8B int8,16.95,GiB,arithmetic
+C vram,Llama-3-8B int4,13.23,GiB,arithmetic
+C vram,Qwen3-32B fp16,77.1,GiB,arithmetic
+C vram,Qwen3-32B int8,47.3,GiB,arithmetic
+C vram,Qwen3-32B int4,32.4,GiB,arithmetic
+C vram,Llama-3-70B fp16,151.89,GiB,arithmetic
+C vram,Llama-3-70B int8,86.69,GiB,arithmetic
+C vram,Llama-3-70B int4,54.1,GiB,arithmetic
+C vram,Qwen3-235B-A22B fp16,450.97,GiB,arithmetic
+C vram,Qwen3-235B-A22B int8,232.11,GiB,arithmetic
+C vram,Qwen3-235B-A22B int4,122.68,GiB,arithmetic
+D plan (by TFLOPs/$k),"70B int4 serving, 8 users @ 8k | 2x RTX 5090",8300,USD,arithmetic
+D plan (by TFLOPs/$k),"70B int4 serving, 8 users @ 8k | 2x RTX A6000 (used)",11700,USD,arithmetic
+D plan (by tokens/$k),"70B int4 serving, 8 users @ 8k | 2x RTX 5090",109.9,tok/s,arithmetic
+D plan (by tokens/$k),"70B int4 serving, 8 users @ 8k | 2x RTX A6000 (used)",47.1,tok/s,arithmetic
+D plan (by TFLOPs/$k),"70B fp16 serving, 8 users @ 8k | 2x RTX PRO 6000 Blackwell",21150,USD,arithmetic
+D plan (by tokens/$k),"70B fp16 serving, 8 users @ 8k | 2x RTX PRO 6000 Blackwell",27.5,tok/s,arithmetic
+D plan (by TFLOPs/$k),8B fp16 fine-tune | 2x RTX 5090,8300,USD,arithmetic
+D plan (by TFLOPs/$k),8B fp16 fine-tune | 3x RTX 5080,6900,USD,arithmetic
+D plan (by TFLOPs/$k),8B fp16 fine-tune | 2x RTX 5080,5700,USD,arithmetic
+D plan (by TFLOPs/$k),8B fp16 fine-tune | 1x RTX 5090,5900,USD,arithmetic
+D plan (by TFLOPs/$k),8B fp16 fine-tune | 2x RTX 4090 (used),7100,USD,arithmetic
+D plan (by tokens/$k),8B fp16 fine-tune | 2x RTX 5090,224.0,tok/s,arithmetic
+D plan (by tokens/$k),8B fp16 fine-tune | 3x RTX 5080,180.0,tok/s,arithmetic
+D plan (by tokens/$k),8B fp16 fine-tune | 2x RTX 5080,120.0,tok/s,arithmetic
+D plan (by tokens/$k),8B fp16 fine-tune | 1x RTX 5090,112.0,tok/s,arithmetic
+D plan (by tokens/$k),8B fp16 fine-tune | 2x RTX 4090 (used),126.0,tok/s,arithmetic
+D2 circuit,US 15 A / 120 V | RTX 5080,3,cards,arithmetic
+D2 circuit,US 15 A / 120 V | RTX 4090 (used),2,cards,arithmetic
+D2 circuit,US 15 A / 120 V | RTX 5090,2,cards,arithmetic
+D2 circuit,US 15 A / 120 V | RTX A6000 (used),4,cards,arithmetic
+D2 circuit,US 15 A / 120 V | L40S,3,cards,arithmetic
+D2 circuit,US 15 A / 120 V | RTX 6000 Ada,4,cards,arithmetic
+D2 circuit,US 15 A / 120 V | RTX PRO 6000 Blackwell,2,cards,arithmetic
+D2 circuit,US 15 A / 120 V | A100 80GB (used),3,cards,arithmetic
+D2 circuit,US 15 A / 120 V | H100 PCIe (used),3,cards,arithmetic
+D2 circuit,US 20 A / 120 V | RTX 5080,4,cards,arithmetic
+D2 circuit,US 20 A / 120 V | RTX 4090 (used),3,cards,arithmetic
+D2 circuit,US 20 A / 120 V | RTX 5090,2,cards,arithmetic
+D2 circuit,US 20 A / 120 V | RTX A6000 (used),5,cards,arithmetic
+D2 circuit,US 20 A / 120 V | L40S,4,cards,arithmetic
+D2 circuit,US 20 A / 120 V | RTX 6000 Ada,5,cards,arithmetic
+D2 circuit,US 20 A / 120 V | RTX PRO 6000 Blackwell,2,cards,arithmetic
+D2 circuit,US 20 A / 120 V | A100 80GB (used),4,cards,arithmetic
+D2 circuit,US 20 A / 120 V | H100 PCIe (used),4,cards,arithmetic
+D2 circuit,US 30 A / 240 V (dryer) | RTX 5080,15,cards,arithmetic
+D2 circuit,US 30 A / 240 V (dryer) | RTX 4090 (used),12,cards,arithmetic
+D2 circuit,US 30 A / 240 V (dryer) | RTX 5090,9,cards,arithmetic
+D2 circuit,US 30 A / 240 V (dryer) | RTX A6000 (used),18,cards,arithmetic
+D2 circuit,US 30 A / 240 V (dryer) | L40S,15,cards,arithmetic
+D2 circuit,US 30 A / 240 V (dryer) | RTX 6000 Ada,18,cards,arithmetic
+D2 circuit,US 30 A / 240 V (dryer) | RTX PRO 6000 Blackwell,9,cards,arithmetic
+D2 circuit,US 30 A / 240 V (dryer) | A100 80GB (used),13,cards,arithmetic
+D2 circuit,US 30 A / 240 V (dryer) | H100 PCIe (used),15,cards,arithmetic
+D2 circuit,EU 16 A / 230 V | RTX 5080,7,cards,arithmetic
+D2 circuit,EU 16 A / 230 V | RTX 4090 (used),6,cards,arithmetic
+D2 circuit,EU 16 A / 230 V | RTX 5090,4,cards,arithmetic
+D2 circuit,EU 16 A / 230 V | RTX A6000 (used),9,cards,arithmetic
+D2 circuit,EU 16 A / 230 V | L40S,7,cards,arithmetic
+D2 circuit,EU 16 A / 230 V | RTX 6000 Ada,9,cards,arithmetic
+D2 circuit,EU 16 A / 230 V | RTX PRO 6000 Blackwell,4,cards,arithmetic
+D2 circuit,EU 16 A / 230 V | A100 80GB (used),6,cards,arithmetic
+D2 circuit,EU 16 A / 230 V | H100 PCIe (used),7,cards,arithmetic
+E lanes,2M-token optimizer step | PCIe 3.0 x8,0.845,% of step,arithmetic
+E lanes,2M-token optimizer step | PCIe 3.0 x16,0.423,% of step,arithmetic
+E lanes,2M-token optimizer step | PCIe 4.0 x8,0.423,% of step,arithmetic
+E lanes,2M-token optimizer step | PCIe 4.0 x16,0.211,% of step,arithmetic
+E lanes,2M-token optimizer step | PCIe 5.0 x16,0.106,% of step,arithmetic
+E lanes,2M-token optimizer step | NVLink 4 (bridge),0.015,% of step,arithmetic
+E lanes,8k-token micro-step | PCIe 3.0 x8,216.36,% of step,arithmetic
+E lanes,8k-token micro-step | PCIe 3.0 x16,108.249,% of step,arithmetic
+E lanes,8k-token micro-step | PCIe 4.0 x8,108.249,% of step,arithmetic
+E lanes,8k-token micro-step | PCIe 4.0 x16,54.124,% of step,arithmetic
+E lanes,8k-token micro-step | PCIe 5.0 x16,27.062,% of step,arithmetic
+E lanes,8k-token micro-step | NVLink 4 (bridge),3.789,% of step,arithmetic
