@@ -1,0 +1,9 @@
+label,n,calib_tokens,ppl,seconds
+"GPTQ,  1 x 512 wikitext tokens",1,512,33.3880,26.2
+"GPTQ,  4 x 512 wikitext tokens",4,2048,32.1846,47.1
+"GPTQ, 16 x 512 wikitext tokens",16,8192,31.0607,60.4
+"GPTQ, 64 x 512 wikitext tokens",64,32768,31.0228,109.5
+"GPTQ,  4 x 512, draw @208",4,2048,32.3373,29.3
+"GPTQ,  4 x 512, draw @408",4,2048,33.0220,35.1
+"GPTQ, 16 x 512 python source code",16,8192,35.8290,75.6
+"GPTQ, 16 x 512 uniform random tokens",16,8192,33.8825,75.8

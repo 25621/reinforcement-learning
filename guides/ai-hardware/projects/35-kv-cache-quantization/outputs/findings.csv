@@ -1,0 +1,8 @@
+name,kbits,vbits,kmode,sink,ppl,agree,cache_GB_at_32k
+FP16 cache (baseline),16,16,per_channel,0,12.9681,1.0000,0.4027
+INT8 K+V, per-token,8,8,per_token,0,13.4404,0.9267,0.2013
+INT8 K per-channel, V per-token,8,8,per_channel,0,12.9638,0.9946,0.2013
+INT4 K+V, per-token,4,4,per_token,0,92.6475,0.3637,0.1007
+INT4 K per-channel, V per-token,4,4,per_channel,0,13.3122,0.9130,0.1007
+INT4 + 32 FP16 sink tokens,4,4,per_channel,32,13.1604,0.9267,0.1007
+INT2 K per-channel, V per-token,2,2,per_channel,0,89.3399,0.3552,0.0503

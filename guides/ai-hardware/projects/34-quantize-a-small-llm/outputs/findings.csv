@@ -1,0 +1,8 @@
+name,method,bits,group,ppl,agree,mmlu,MB,bits_per_weight
+"fp32 (baseline)",-,16,-,19.9304,1.0000,0.4667,988.1,16.000
+"RTN INT8, per-channel",RTN,8,per-channel,19.8266,0.9709,nan,630.8,8.014
+"RTN INT4, per-channel",RTN,4,per-channel,46.8022,0.5227,nan,451.9,4.014
+"RTN INT4, group 128",RTN,4,128,27.4389,0.6915,0.4067,456.9,4.125
+"RTN INT3, group 128",RTN,3,128,274.1380,0.2324,0.2800,412.2,3.125
+"GPTQ INT4, per-channel",GPTQ,4,per-channel,29.4006,0.6788,nan,451.9,4.014
+"GPTQ INT4, group 128",GPTQ,4,128,23.1365,0.7838,0.3133,456.9,4.125

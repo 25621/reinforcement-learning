@@ -20,3 +20,6 @@
 */outputs/vecadd
 */outputs/sgemm
 */__pycache__/
+
+# downloaded corpora
+*/data/
