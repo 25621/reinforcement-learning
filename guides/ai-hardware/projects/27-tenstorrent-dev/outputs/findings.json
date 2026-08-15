@@ -1,0 +1,308 @@
+{
+ "A_has_tenstorrent": false,
+ "A_tt_metal_importable": false,
+ "A_tt_metal_error": "ModuleNotFoundError",
+ "A_what_is_simulated": [
+  "Tensix grid",
+  "network-on-chip",
+  "placement"
+ ],
+ "A_what_is_measured": [
+  "on-die vs off-die memory bandwidth"
+ ],
+ "A_what_is_arithmetic": [
+  "on-die capacity vs model size"
+ ],
+ "B_sweep": [
+  {
+   "kb": 512,
+   "reps": 512,
+   "ms": 0.20029,
+   "gbs": 1340.2
+  },
+  {
+   "kb": 1024,
+   "reps": 256,
+   "ms": 0.17654,
+   "gbs": 1520.6
+  },
+  {
+   "kb": 1536,
+   "reps": 170,
+   "ms": 0.18371,
+   "gbs": 1455.5
+  },
+  {
+   "kb": 2048,
+   "reps": 128,
+   "ms": 0.17958,
+   "gbs": 1494.8
+  },
+  {
+   "kb": 2560,
+   "reps": 102,
+   "ms": 0.21934,
+   "gbs": 1219.0
+  },
+  {
+   "kb": 3072,
+   "reps": 85,
+   "ms": 0.27689,
+   "gbs": 965.7
+  },
+  {
+   "kb": 4096,
+   "reps": 64,
+   "ms": 0.4196,
+   "gbs": 639.7
+  },
+  {
+   "kb": 6144,
+   "reps": 42,
+   "ms": 0.7847,
+   "gbs": 336.7
+  },
+  {
+   "kb": 8192,
+   "reps": 32,
+   "ms": 1.03301,
+   "gbs": 259.9
+  },
+  {
+   "kb": 16384,
+   "reps": 16,
+   "ms": 1.1995,
+   "gbs": 223.8
+  },
+  {
+   "kb": 32768,
+   "reps": 8,
+   "ms": 1.21344,
+   "gbs": 221.2
+  },
+  {
+   "kb": 65536,
+   "reps": 4,
+   "ms": 1.21233,
+   "gbs": 221.4
+  }
+ ],
+ "B_onchip_gbs": 1520.6,
+ "B_offchip_gbs": 221.4,
+ "B_peak_gbs": 1520.6,
+ "B_peak_at_kb": 1024,
+ "B_peak_over_offchip": 6.87,
+ "B_onchip_over_offchip": 6.87,
+ "B_l2_mb": 2,
+ "B_cliff_kb": 4096,
+ "C_rows": [
+  {
+   "accel": "GTX 1070 Ti (this card)",
+   "sram_mb": 3.8,
+   "dram_gb": 8,
+   "params_int8_on_die": 3.8,
+   "chips_for_70b_int8": 18306
+  },
+  {
+   "accel": "NVIDIA A100 80GB",
+   "sram_mb": 60.7,
+   "dram_gb": 80,
+   "params_int8_on_die": 60.7,
+   "chips_for_70b_int8": 1153
+  },
+  {
+   "accel": "NVIDIA H100 SXM",
+   "sram_mb": 80.1,
+   "dram_gb": 80,
+   "params_int8_on_die": 80.1,
+   "chips_for_70b_int8": 874
+  },
+  {
+   "accel": "AMD MI300X",
+   "sram_mb": 275.5,
+   "dram_gb": 192,
+   "params_int8_on_die": 275.5,
+   "chips_for_70b_int8": 255
+  },
+  {
+   "accel": "Tenstorrent Wormhole n150",
+   "sram_mb": 108.0,
+   "dram_gb": 12,
+   "params_int8_on_die": 108.0,
+   "chips_for_70b_int8": 649
+  },
+  {
+   "accel": "Tenstorrent Wormhole n300",
+   "sram_mb": 216.0,
+   "dram_gb": 24,
+   "params_int8_on_die": 216.0,
+   "chips_for_70b_int8": 325
+  },
+  {
+   "accel": "Tenstorrent Blackhole p150",
+   "sram_mb": 210.0,
+   "dram_gb": 32,
+   "params_int8_on_die": 210.0,
+   "chips_for_70b_int8": 334
+  },
+  {
+   "accel": "Groq LPU (LPUv1)",
+   "sram_mb": 230,
+   "dram_gb": 0,
+   "params_int8_on_die": 230.0,
+   "chips_for_70b_int8": 305
+  },
+  {
+   "accel": "Cerebras WSE-3",
+   "sram_mb": 44000,
+   "dram_gb": 0,
+   "params_int8_on_die": 44000.0,
+   "chips_for_70b_int8": 2
+  }
+ ],
+ "C_h100": {
+  "accel": "NVIDIA H100 SXM",
+  "sram_mb": 80.1,
+  "dram_gb": 80,
+  "params_int8_on_die": 80.1,
+  "chips_for_70b_int8": 874
+ },
+ "C_n300": {
+  "accel": "Tenstorrent Wormhole n300",
+  "sram_mb": 216.0,
+  "dram_gb": 24,
+  "params_int8_on_die": 216.0,
+  "chips_for_70b_int8": 325
+ },
+ "C_groq": {
+  "accel": "Groq LPU (LPUv1)",
+  "sram_mb": 230,
+  "dram_gb": 0,
+  "params_int8_on_die": 230.0,
+  "chips_for_70b_int8": 305
+ },
+ "C_wse3": {
+  "accel": "Cerebras WSE-3",
+  "sram_mb": 44000,
+  "dram_gb": 0,
+  "params_int8_on_die": 44000.0,
+  "chips_for_70b_int8": 2
+ },
+ "C_n300_over_h100_sram": 2.7,
+ "C_wse3_70b_int8_fits": false,
+ "C_wse3_70b_int4_fits": true,
+ "C_wse3_largest_int8_b": 44.0,
+ "D_placements": [
+  {
+   "placement": "snake (adjacent stages adjacent)",
+   "bottleneck_bytes": 32768,
+   "cycles": 1024,
+   "links_used": 31,
+   "total_hops": 31,
+   "total_bytes": 1015808,
+   "mean_hops": 1.0
+  },
+  {
+   "placement": "row-major",
+   "bottleneck_bytes": 32768,
+   "cycles": 1024,
+   "links_used": 52,
+   "total_hops": 52,
+   "total_bytes": 1015808,
+   "mean_hops": 1.68
+  },
+  {
+   "placement": "column-major",
+   "bottleneck_bytes": 32768,
+   "cycles": 1024,
+   "links_used": 58,
+   "total_hops": 58,
+   "total_bytes": 1015808,
+   "mean_hops": 1.87
+  },
+  {
+   "placement": "scattered (no placement pass)",
+   "bottleneck_bytes": 131072,
+   "cycles": 4096,
+   "links_used": 125,
+   "total_hops": 174,
+   "total_bytes": 1015808,
+   "mean_hops": 5.61
+  }
+ ],
+ "D_best": "snake (adjacent stages adjacent)",
+ "D_worst": "scattered (no placement pass)",
+ "D_placement_spread": 4.0,
+ "D_lower_bound_bytes": 32768,
+ "D_snake_bottleneck_bytes": 32768,
+ "D_snake_is_optimal": true,
+ "D_snake_mean_hops": 1.0,
+ "D_growth": [
+  {
+   "stages": 8,
+   "snake_cycles": 1024,
+   "scattered_cycles": 1024,
+   "ratio": 1.0
+  },
+  {
+   "stages": 16,
+   "snake_cycles": 1024,
+   "scattered_cycles": 2048,
+   "ratio": 2.0
+  },
+  {
+   "stages": 32,
+   "snake_cycles": 1024,
+   "scattered_cycles": 4096,
+   "ratio": 4.0
+  },
+  {
+   "stages": 64,
+   "snake_cycles": 1024,
+   "scattered_cycles": 4096,
+   "ratio": 4.0
+  },
+  {
+   "stages": 80,
+   "snake_cycles": 1024,
+   "scattered_cycles": 5120,
+   "ratio": 5.0
+  }
+ ],
+ "E_patterns": [
+  {
+   "pattern": "gather to a corner (0,0)",
+   "bottleneck_bytes": 294912,
+   "cycles": 9216,
+   "links_used": 79,
+   "total_hops": 640,
+   "total_bytes": 323584
+  },
+  {
+   "pattern": "gather to the centre (5,4)",
+   "bottleneck_bytes": 163840,
+   "cycles": 5120,
+   "links_used": 79,
+   "total_hops": 360,
+   "total_bytes": 323584
+  },
+  {
+   "pattern": "neighbour hand-off (same bytes per core)",
+   "bottleneck_bytes": 4096,
+   "cycles": 128,
+   "links_used": 79,
+   "total_hops": 79,
+   "total_bytes": 323584
+  }
+ ],
+ "E_corner_over_centre": 1.8,
+ "E_gather_over_pipeline": 40.0,
+ "E_gather_bytes_vs_pipeline": 1.0,
+ "runtime_s": 1.6,
+ "device": {
+  "name": "NVIDIA GeForce GTX 1070 Ti",
+  "cc": "6.1",
+  "sms": 19,
+  "mem_gb": 7.92
+ }
+}

@@ -1,0 +1,45 @@
+key,value
+A_cpu_bw_gbs,25.2
+A_cpu_gflops_numpy,520.0
+A_cpu_gflops_xla,558.0
+A_cpu_gflops,558.0
+A_gpu_bw_gbs,222.0
+A_gpu_bw_spec,256.3
+A_gpu_gflops,8190.0
+A_cpu_ridge,22.1
+A_gpu_ridge,32.0
+A_gpu_over_cpu_flops,14.7
+A_gpu_over_cpu_bw,10.2
+B_pcie_ms_per_array,5.383
+E_ridge_spread,13.4
+runtime_s,10.7
+
+backend,workload,ms,GFLOP/s,GB/s,AI
+numpy,axpy  d=a*b+c,39.3277,0.9,6.8,0.125
+XLA,axpy  d=a*b+c,16.0929,2.1,16.7,0.125
+Triton,axpy  d=a*b+c,1.2726,26.4,210.9,0.125
+numpy,chain 6 ops,245.4302,0.5,1.1,0.5
+XLA,chain 6 ops,15.9841,8.4,16.8,0.5
+Triton,chain 6 ops,1.2709,105.6,211.2,0.5
+numpy,matmul 2048^3,30.8702,556.5,1.6,341.333
+XLA,matmul 2048^3,31.2398,549.9,1.6,341.333
+Triton,matmul 2048^3,3.8163,4501.7,13.2,341.333
+numpy,softmax rows,24.5749,0.9,1.4,0.625
+XLA,softmax rows,2.035,10.3,16.5,0.625
+Triton,softmax rows,0.1678,125.0,200.0,0.625
+
+workload,kernel_ms,transfer_ms,end_to_end_ms,best_cpu_ms,speedup_kernel,speedup_end_to_end
+axpy  d=a*b+c,1.2726,21.532,22.8046,16.0929,12.65,0.71
+chain 6 ops,1.2709,21.532,22.8029,15.9841,12.58,0.7
+softmax rows,0.1678,2.6915,2.8593,2.035,12.13,0.71
+matmul 2048^3,3.8163,4.0373,7.8536,30.8702,8.09,3.93
+
+device,GFLOP/s,GB/s,ridge
+this i7-8700K (6c),558.0,25.2,22.1
+this GTX 1070 Ti,8190,256.3,32.0
+NVIDIA A100 80GB,312000,2039,153.0
+NVIDIA H100 SXM,990000,3350,295.5
+NVIDIA B200 SXM,2250000,8000,281.2
+AMD MI300X,1300000,5300,245.3
+Google TPU v5p,459000,2765,166.0
+Apple M4 Max,17000,546,31.1

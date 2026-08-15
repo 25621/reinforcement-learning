@@ -1,0 +1,698 @@
+{
+ "A_files": [
+  {
+   "file": "02-roofline-by-hand/bench_ops.cu",
+   "lines": 220,
+   "changed": 29,
+   "subs": 49,
+   "unchanged_pct": 86.8
+  },
+  {
+   "file": "03-bandwidth-measurement/bandwidth.cu",
+   "lines": 168,
+   "changed": 21,
+   "subs": 36,
+   "unchanged_pct": 87.5
+  },
+  {
+   "file": "05-gpu-vs-cpu-bake-off/gemm.cu",
+   "lines": 112,
+   "changed": 28,
+   "subs": 53,
+   "unchanged_pct": 75.0
+  },
+  {
+   "file": "06-nvidia-smi-deep-dive/devprops.cu",
+   "lines": 148,
+   "changed": 16,
+   "subs": 18,
+   "unchanged_pct": 89.2
+  },
+  {
+   "file": "07-tensor-core-utilization/bench.cu",
+   "lines": 244,
+   "changed": 55,
+   "subs": 90,
+   "unchanged_pct": 77.5
+  },
+  {
+   "file": "07-tensor-core-utilization/wmma_probe.cu",
+   "lines": 30,
+   "changed": 0,
+   "subs": 0,
+   "unchanged_pct": 100.0
+  },
+  {
+   "file": "08-occupancy-study/occ.cu",
+   "lines": 288,
+   "changed": 31,
+   "subs": 44,
+   "unchanged_pct": 89.2
+  },
+  {
+   "file": "09-divergence-demo/diverge.cu",
+   "lines": 179,
+   "changed": 16,
+   "subs": 24,
+   "unchanged_pct": 91.1
+  },
+  {
+   "file": "11-coalesced-vs-non-coalesced/coalesce.cu",
+   "lines": 265,
+   "changed": 21,
+   "subs": 32,
+   "unchanged_pct": 92.1
+  },
+  {
+   "file": "12-bank-conflict-demo/banks.cu",
+   "lines": 266,
+   "changed": 18,
+   "subs": 26,
+   "unchanged_pct": 93.2
+  },
+  {
+   "file": "13-tile-size-sweep/tiles.cu",
+   "lines": 294,
+   "changed": 31,
+   "subs": 51,
+   "unchanged_pct": 89.5
+  },
+  {
+   "file": "14-hbm-saturation/hbm.cu",
+   "lines": 274,
+   "changed": 15,
+   "subs": 25,
+   "unchanged_pct": 94.5
+  },
+  {
+   "file": "15-l2-hit-rate-analysis/l2.cu",
+   "lines": 300,
+   "changed": 31,
+   "subs": 54,
+   "unchanged_pct": 89.7
+  },
+  {
+   "file": "16-cuda-vector-add/vecadd.cu",
+   "lines": 247,
+   "changed": 46,
+   "subs": 65,
+   "unchanged_pct": 81.4
+  },
+  {
+   "file": "17-cuda-tiled-matmul/sgemm.cu",
+   "lines": 390,
+   "changed": 37,
+   "subs": 48,
+   "unchanged_pct": 90.5
+  },
+  {
+   "file": "24-amd-mi300-inference/warpsize.cu",
+   "lines": 140,
+   "changed": 29,
+   "subs": 29,
+   "unchanged_pct": 79.3
+  }
+ ],
+ "A_n_files": 16,
+ "A_total_lines": 3565,
+ "A_total_changed": 424,
+ "A_total_subs": 644,
+ "A_unchanged_pct": 88.1,
+ "B_subs": 29,
+ "B_uses_hip_header": true,
+ "B_still_has_cuda": false,
+ "B_cuda_compiles": true,
+ "B_hip_compiles": true,
+ "B_hip_error": "",
+ "B_same_structure": true,
+ "B_same_props": true,
+ "B_cuda_out": "prop,name,NVIDIA GeForce GTX 1070 Ti\nprop,warpSize,32\nprop,sms,19\npure,0,0.057587\ndiv,1,0.114886\ndiv,2,0.114893\ndiv,4,0.114266\ndiv,8,0.103834\ndiv,16,0.103882\ndiv,32,0.053534\ndiv,64,0.054170\ndiv,128,0.053811\ndiv,256,0.050995\n",
+ "C_landmines": {
+  "wavefront-size literal": {
+   "count": 46,
+   "files": [
+    "02-roofline-by-hand/bench_ops.cu",
+    "07-tensor-core-utilization/bench.cu",
+    "08-occupancy-study/occ.cu",
+    "09-divergence-demo/diverge.cu",
+    "11-coalesced-vs-non-coalesced/coalesce.cu",
+    "12-bank-conflict-demo/banks.cu",
+    "13-tile-size-sweep/tiles.cu",
+    "15-l2-hit-rate-analysis/l2.cu",
+    "17-cuda-tiled-matmul/sgemm.cu"
+   ],
+   "why": "32 hard-coded as the warp size; an AMD wavefront is 64"
+  },
+  "warp shuffle / vote": {
+   "count": 4,
+   "files": [
+    "02-roofline-by-hand/bench_ops.cu"
+   ],
+   "why": "the mask is 32-bit on NVIDIA and 64-bit on AMD"
+  },
+  "cuBLAS": {
+   "count": 39,
+   "files": [
+    "02-roofline-by-hand/bench_ops.cu",
+    "05-gpu-vs-cpu-bake-off/gemm.cu",
+    "07-tensor-core-utilization/bench.cu",
+    "13-tile-size-sweep/tiles.cu",
+    "17-cuda-tiled-matmul/sgemm.cu"
+   ],
+   "why": "hipBLAS is API-compatible but not ABI-compatible"
+  },
+  "warpSize builtin": {
+   "count": 8,
+   "files": [
+    "06-nvidia-smi-deep-dive/devprops.cu",
+    "08-occupancy-study/occ.cu",
+    "24-amd-mi300-inference/warpsize.cu"
+   ],
+   "why": "compiles on both, but evaluates to 32 on NVIDIA and 64 on AMD"
+  },
+  "wmma / tensor cores": {
+   "count": 14,
+   "files": [
+    "07-tensor-core-utilization/wmma_probe.cu"
+   ],
+   "why": "NVIDIA tensor-core API; AMD's equivalent is rocWMMA"
+  },
+  "inline PTX": {
+   "count": 1,
+   "files": [
+    "08-occupancy-study/occ.cu"
+   ],
+   "why": "PTX is NVIDIA machine code; AMD needs GCN/RDNA ISA"
+  }
+ },
+ "C_landmine_total": 112,
+ "C_warpSize": 32,
+ "C_pure_ms": 0.049966,
+ "C_div": {
+  "1": 0.099584,
+  "2": 0.09943,
+  "4": 0.099426,
+  "8": 0.099574,
+  "16": 0.09943,
+  "32": 0.051456,
+  "64": 0.051597,
+  "128": 0.051534,
+  "256": 0.0512
+ },
+ "C_div_ratio": {
+  "1": 1.945,
+  "2": 1.942,
+  "4": 1.942,
+  "8": 1.945,
+  "16": 1.942,
+  "32": 1.005,
+  "64": 1.008,
+  "128": 1.007,
+  "256": 1.0
+ },
+ "C_cost_below_warp": 1.93,
+ "D_rel_err": 1.6719825265542534e-06,
+ "D_sweep": [
+  {
+   "B": 1,
+   "ms": 0.155,
+   "cfg": [
+    128,
+    64,
+    16
+   ],
+   "weight_passes": 1,
+   "gbs_ideal": 216.7,
+   "gbs_kernel": 216.7,
+   "gflops": 217.0,
+   "tok_s": 6453.0,
+   "ai": 1.0
+  },
+  {
+   "B": 16,
+   "ms": 0.6489,
+   "cfg": [
+    128,
+    32,
+    64
+   ],
+   "weight_passes": 1,
+   "gbs_ideal": 52.5,
+   "gbs_kernel": 52.5,
+   "gflops": 827.0,
+   "tok_s": 24659.0,
+   "ai": 15.75
+  },
+  {
+   "B": 32,
+   "ms": 0.8055,
+   "cfg": [
+    128,
+    32,
+    64
+   ],
+   "weight_passes": 1,
+   "gbs_ideal": 43.0,
+   "gbs_kernel": 43.0,
+   "gflops": 1333.0,
+   "tok_s": 39728.0,
+   "ai": 31.03
+  },
+  {
+   "B": 64,
+   "ms": 1.0644,
+   "cfg": [
+    128,
+    32,
+    64
+   ],
+   "weight_passes": 1,
+   "gbs_ideal": 33.5,
+   "gbs_kernel": 33.5,
+   "gflops": 2018.0,
+   "tok_s": 60128.0,
+   "ai": 60.24
+  },
+  {
+   "B": 128,
+   "ms": 2.2465,
+   "cfg": [
+    128,
+    32,
+    64
+   ],
+   "weight_passes": 2,
+   "gbs_ideal": 16.8,
+   "gbs_kernel": 31.7,
+   "gflops": 1912.0,
+   "tok_s": 56978.0,
+   "ai": 113.78
+  },
+  {
+   "B": 256,
+   "ms": 3.7897,
+   "cfg": [
+    128,
+    32,
+    64
+   ],
+   "weight_passes": 4,
+   "gbs_ideal": 11.1,
+   "gbs_kernel": 37.6,
+   "gflops": 2267.0,
+   "tok_s": 67551.0,
+   "ai": 204.8
+  },
+  {
+   "B": 512,
+   "ms": 6.3774,
+   "cfg": [
+    128,
+    32,
+    64
+   ],
+   "weight_passes": 8,
+   "gbs_ideal": 7.9,
+   "gbs_kernel": 44.7,
+   "gflops": 2694.0,
+   "tok_s": 80283.0,
+   "ai": 341.33
+  }
+ ],
+ "D_b1_gbs": 216.7,
+ "D_b1_frac_spec": 0.845,
+ "D_b1_frac_measured_read": 0.976,
+ "D_eff": 0.845,
+ "D_ridge_flop_per_byte": 32.0,
+ "D_batch_star": 32.0,
+ "D_pred_tok_s_at_B32": 206452.0,
+ "D_got_tok_s_at_B32": 39728.0,
+ "D_batching_shortfall": 5.2,
+ "D_peak_gflops_seen": 2694.0,
+ "D_frac_of_peak_flops": 0.329,
+ "D_serial_64_ms": 10.014,
+ "D_batched_64_ms": 1.0644,
+ "D_batching_speedup": 9.41,
+ "E_rows": [
+  {
+   "accel": "NVIDIA A100 80GB",
+   "fmt": "fp16",
+   "need_gb": 148.0,
+   "gpus": 2,
+   "tok_s": 24.6,
+   "tok_s_per_dollar": 8.2,
+   "batch_star": 153.0,
+   "tflops": 312,
+   "bw": 2039,
+   "cap": 80
+  },
+  {
+   "accel": "NVIDIA A100 80GB",
+   "fmt": "int8",
+   "need_gb": 78.0,
+   "gpus": 1,
+   "tok_s": 24.6,
+   "tok_s_per_dollar": 16.4,
+   "batch_star": 77.0,
+   "tflops": 312,
+   "bw": 2039,
+   "cap": 80
+  },
+  {
+   "accel": "NVIDIA A100 80GB",
+   "fmt": "int4",
+   "need_gb": 47.2,
+   "gpus": 1,
+   "tok_s": 44.0,
+   "tok_s_per_dollar": 29.3,
+   "batch_star": 43.0,
+   "tflops": 312,
+   "bw": 2039,
+   "cap": 80
+  },
+  {
+   "accel": "NVIDIA H100 SXM",
+   "fmt": "fp16",
+   "need_gb": 148.0,
+   "gpus": 2,
+   "tok_s": 40.4,
+   "tok_s_per_dollar": 6.7,
+   "batch_star": 296.0,
+   "tflops": 990,
+   "bw": 3350,
+   "cap": 80
+  },
+  {
+   "accel": "NVIDIA H100 SXM",
+   "fmt": "int8",
+   "need_gb": 78.0,
+   "gpus": 1,
+   "tok_s": 40.4,
+   "tok_s_per_dollar": 13.5,
+   "batch_star": 148.0,
+   "tflops": 990,
+   "bw": 3350,
+   "cap": 80
+  },
+  {
+   "accel": "NVIDIA H100 SXM",
+   "fmt": "int4",
+   "need_gb": 47.2,
+   "gpus": 1,
+   "tok_s": 72.2,
+   "tok_s_per_dollar": 24.1,
+   "batch_star": 83.0,
+   "tflops": 990,
+   "bw": 3350,
+   "cap": 80
+  },
+  {
+   "accel": "NVIDIA H200 SXM",
+   "fmt": "fp16",
+   "need_gb": 148.0,
+   "gpus": 2,
+   "tok_s": 57.9,
+   "tok_s_per_dollar": 5.8,
+   "batch_star": 206.0,
+   "tflops": 990,
+   "bw": 4800,
+   "cap": 141
+  },
+  {
+   "accel": "NVIDIA H200 SXM",
+   "fmt": "int8",
+   "need_gb": 78.0,
+   "gpus": 1,
+   "tok_s": 57.9,
+   "tok_s_per_dollar": 11.6,
+   "batch_star": 103.0,
+   "tflops": 990,
+   "bw": 4800,
+   "cap": 141
+  },
+  {
+   "accel": "NVIDIA H200 SXM",
+   "fmt": "int4",
+   "need_gb": 47.2,
+   "gpus": 1,
+   "tok_s": 103.5,
+   "tok_s_per_dollar": 20.7,
+   "batch_star": 58.0,
+   "tflops": 990,
+   "bw": 4800,
+   "cap": 141
+  },
+  {
+   "accel": "NVIDIA B200 SXM",
+   "fmt": "fp16",
+   "need_gb": 148.0,
+   "gpus": 1,
+   "tok_s": 48.3,
+   "tok_s_per_dollar": 6.0,
+   "batch_star": 281.0,
+   "tflops": 2250,
+   "bw": 8000,
+   "cap": 192
+  },
+  {
+   "accel": "NVIDIA B200 SXM",
+   "fmt": "int8",
+   "need_gb": 78.0,
+   "gpus": 1,
+   "tok_s": 96.6,
+   "tok_s_per_dollar": 12.1,
+   "batch_star": 141.0,
+   "tflops": 2250,
+   "bw": 8000,
+   "cap": 192
+  },
+  {
+   "accel": "NVIDIA B200 SXM",
+   "fmt": "int4",
+   "need_gb": 47.2,
+   "gpus": 1,
+   "tok_s": 172.4,
+   "tok_s_per_dollar": 21.6,
+   "batch_star": 79.0,
+   "tflops": 2250,
+   "bw": 8000,
+   "cap": 192
+  },
+  {
+   "accel": "AMD MI300X",
+   "fmt": "fp16",
+   "need_gb": 148.0,
+   "gpus": 1,
+   "tok_s": 32.0,
+   "tok_s_per_dollar": 10.7,
+   "batch_star": 245.0,
+   "tflops": 1300,
+   "bw": 5300,
+   "cap": 192
+  },
+  {
+   "accel": "AMD MI300X",
+   "fmt": "int8",
+   "need_gb": 78.0,
+   "gpus": 1,
+   "tok_s": 64.0,
+   "tok_s_per_dollar": 21.3,
+   "batch_star": 123.0,
+   "tflops": 1300,
+   "bw": 5300,
+   "cap": 192
+  },
+  {
+   "accel": "AMD MI300X",
+   "fmt": "int4",
+   "need_gb": 47.2,
+   "gpus": 1,
+   "tok_s": 114.2,
+   "tok_s_per_dollar": 38.1,
+   "batch_star": 69.0,
+   "tflops": 1300,
+   "bw": 5300,
+   "cap": 192
+  },
+  {
+   "accel": "AMD MI325X",
+   "fmt": "fp16",
+   "need_gb": 148.0,
+   "gpus": 1,
+   "tok_s": 36.2,
+   "tok_s_per_dollar": 9.1,
+   "batch_star": 217.0,
+   "tflops": 1300,
+   "bw": 6000,
+   "cap": 256
+  },
+  {
+   "accel": "AMD MI325X",
+   "fmt": "int8",
+   "need_gb": 78.0,
+   "gpus": 1,
+   "tok_s": 72.4,
+   "tok_s_per_dollar": 18.1,
+   "batch_star": 108.0,
+   "tflops": 1300,
+   "bw": 6000,
+   "cap": 256
+  },
+  {
+   "accel": "AMD MI325X",
+   "fmt": "int4",
+   "need_gb": 47.2,
+   "gpus": 1,
+   "tok_s": 129.3,
+   "tok_s_per_dollar": 32.3,
+   "batch_star": 61.0,
+   "tflops": 1300,
+   "bw": 6000,
+   "cap": 256
+  },
+  {
+   "accel": "Google TPU v5p",
+   "fmt": "fp16",
+   "need_gb": 148.0,
+   "gpus": 2,
+   "tok_s": 33.4,
+   "tok_s_per_dollar": 4.0,
+   "batch_star": 166.0,
+   "tflops": 459,
+   "bw": 2765,
+   "cap": 95
+  },
+  {
+   "accel": "Google TPU v5p",
+   "fmt": "int8",
+   "need_gb": 78.0,
+   "gpus": 1,
+   "tok_s": 33.4,
+   "tok_s_per_dollar": 7.9,
+   "batch_star": 83.0,
+   "tflops": 459,
+   "bw": 2765,
+   "cap": 95
+  },
+  {
+   "accel": "Google TPU v5p",
+   "fmt": "int4",
+   "need_gb": 47.2,
+   "gpus": 1,
+   "tok_s": 59.6,
+   "tok_s_per_dollar": 14.2,
+   "batch_star": 46.0,
+   "tflops": 459,
+   "bw": 2765,
+   "cap": 95
+  },
+  {
+   "accel": "Apple M4 Max (128GB)",
+   "fmt": "fp16",
+   "need_gb": 148.0,
+   "gpus": 2,
+   "tok_s": 6.6,
+   "tok_s_per_dollar": null,
+   "batch_star": 31.0,
+   "tflops": 17,
+   "bw": 546,
+   "cap": 96
+  },
+  {
+   "accel": "Apple M4 Max (128GB)",
+   "fmt": "int8",
+   "need_gb": 78.0,
+   "gpus": 1,
+   "tok_s": 6.6,
+   "tok_s_per_dollar": null,
+   "batch_star": 16.0,
+   "tflops": 17,
+   "bw": 546,
+   "cap": 96
+  },
+  {
+   "accel": "Apple M4 Max (128GB)",
+   "fmt": "int4",
+   "need_gb": 47.2,
+   "gpus": 1,
+   "tok_s": 11.8,
+   "tok_s_per_dollar": null,
+   "batch_star": 9.0,
+   "tflops": 17,
+   "bw": 546,
+   "cap": 96
+  },
+  {
+   "accel": "NVIDIA RTX 4090",
+   "fmt": "fp16",
+   "need_gb": 148.0,
+   "gpus": 7,
+   "tok_s": 42.6,
+   "tok_s_per_dollar": 3.0,
+   "batch_star": 164.0,
+   "tflops": 165,
+   "bw": 1008,
+   "cap": 24
+  },
+  {
+   "accel": "NVIDIA RTX 4090",
+   "fmt": "int8",
+   "need_gb": 78.0,
+   "gpus": 4,
+   "tok_s": 48.7,
+   "tok_s_per_dollar": 6.1,
+   "batch_star": 82.0,
+   "tflops": 165,
+   "bw": 1008,
+   "cap": 24
+  },
+  {
+   "accel": "NVIDIA RTX 4090",
+   "fmt": "int4",
+   "need_gb": 47.2,
+   "gpus": 2,
+   "tok_s": 43.5,
+   "tok_s_per_dollar": 10.9,
+   "batch_star": 46.0,
+   "tflops": 165,
+   "bw": 1008,
+   "cap": 24
+  }
+ ],
+ "E_mi300x_fp16": {
+  "accel": "AMD MI300X",
+  "fmt": "fp16",
+  "need_gb": 148.0,
+  "gpus": 1,
+  "tok_s": 32.0,
+  "tok_s_per_dollar": 10.7,
+  "batch_star": 245.0,
+  "tflops": 1300,
+  "bw": 5300,
+  "cap": 192
+ },
+ "E_h100_fp16": {
+  "accel": "NVIDIA H100 SXM",
+  "fmt": "fp16",
+  "need_gb": 148.0,
+  "gpus": 2,
+  "tok_s": 40.4,
+  "tok_s_per_dollar": 6.7,
+  "batch_star": 296.0,
+  "tflops": 990,
+  "bw": 3350,
+  "cap": 80
+ },
+ "E_h100_gpus_needed": 2,
+ "E_h100_over_mi300x_speed": 1.26,
+ "E_mi300x_over_h100_value": 1.6,
+ "E_flops_ratio": 1.31,
+ "E_bw_ratio": 1.58,
+ "runtime_s": 14.2,
+ "device": {
+  "name": "NVIDIA GeForce GTX 1070 Ti",
+  "cc": "6.1",
+  "sms": 19,
+  "mem_gb": 7.92
+ }
+}

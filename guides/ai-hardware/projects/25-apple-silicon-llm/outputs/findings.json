@@ -1,0 +1,715 @@
+{
+ "A_cpu_scaling": [
+  {
+   "threads": 1,
+   "gbs": 20.4
+  },
+  {
+   "threads": 2,
+   "gbs": 25.1
+  },
+  {
+   "threads": 4,
+   "gbs": 26.8
+  },
+  {
+   "threads": 6,
+   "gbs": 27.6
+  },
+  {
+   "threads": 12,
+   "gbs": 24.7
+  }
+ ],
+ "A_cpu_dram_gbs": 27.6,
+ "A_cpu_best_threads": 6,
+ "A_cpu_1_to_best": 1.35,
+ "A_cpu_ht_penalty": 1.12,
+ "A_pcie_h2d_pageable_gbs": 10.5,
+ "A_pcie_h2d_pinned_gbs": 12.6,
+ "A_gpu_dram_gbs": 216.9,
+ "A_gpu_over_pcie": 17.2,
+ "A_cpu_over_pcie": 2.19,
+ "B_paths": [
+  {
+   "path": "GPU, weights resident in VRAM",
+   "ms": 9.91,
+   "gbs": 216.8
+  },
+  {
+   "path": "GPU, weights streamed over PCIe (overlapped)",
+   "ms": 171.52,
+   "gbs": 12.5
+  },
+  {
+   "path": "GPU, weights streamed over PCIe (serial)",
+   "ms": 184.09,
+   "gbs": 11.7
+  },
+  {
+   "path": "CPU, weights in RAM (no accelerator)",
+   "ms": 81.46,
+   "gbs": 26.4
+  }
+ ],
+ "B_resident": 216.8,
+ "B_streamed": 12.5,
+ "B_streamed_serial": 11.7,
+ "B_cpu": 26.4,
+ "B_resident_over_streamed": 17.3,
+ "B_cpu_over_streamed": 2.11,
+ "B_overlap_gain": 1.07,
+ "B_working_set_gb": 2.0,
+ "C_vram_total_gb": 7.92,
+ "C_vram_free_gb": 7.65,
+ "C_oom_error": "OutOfMemoryError",
+ "C_oom_msg": "CUDA out of memory. Tried to allocate 32.00 MiB. GPU 0 has a total capacity of 7.92 GiB of which 24.50 MiB is free. Process 2947 has 107.12 MiB memory in use. I",
+ "C_max_resident_gb": 7.66,
+ "C_layers_held": 245,
+ "C_usable_frac": 0.967,
+ "C_curve": [
+  {
+   "model_gb": 0.5,
+   "resident": 433.6,
+   "streamed": 25.0,
+   "cpu": 52.8
+  },
+  {
+   "model_gb": 1,
+   "resident": 216.8,
+   "streamed": 12.5,
+   "cpu": 26.4
+  },
+  {
+   "model_gb": 2,
+   "resident": 108.4,
+   "streamed": 6.25,
+   "cpu": 13.2
+  },
+  {
+   "model_gb": 4,
+   "resident": 54.2,
+   "streamed": 3.12,
+   "cpu": 6.6
+  },
+  {
+   "model_gb": 6,
+   "resident": 36.13,
+   "streamed": 2.08,
+   "cpu": 4.4
+  },
+  {
+   "model_gb": 7,
+   "resident": 30.97,
+   "streamed": 1.79,
+   "cpu": 3.77
+  },
+  {
+   "model_gb": 8,
+   "resident": null,
+   "streamed": 1.56,
+   "cpu": 3.3
+  },
+  {
+   "model_gb": 10,
+   "resident": null,
+   "streamed": 1.25,
+   "cpu": 2.64
+  },
+  {
+   "model_gb": 16,
+   "resident": null,
+   "streamed": 0.78,
+   "cpu": 1.65
+  },
+  {
+   "model_gb": 32,
+   "resident": null,
+   "streamed": 0.39,
+   "cpu": 0.82
+  },
+  {
+   "model_gb": 70,
+   "resident": null,
+   "streamed": 0.18,
+   "cpu": 0.38
+  },
+  {
+   "model_gb": 140,
+   "resident": null,
+   "streamed": 0.09,
+   "cpu": 0.19
+  }
+ ],
+ "D_small_quiet_gbs": 217.9,
+ "D_small_busy_gbs": 215.1,
+ "D_small_interference": 1.01,
+ "D_gpu_quiet_dev_gbs": 220.9,
+ "D_gpu_busy_dev_gbs": 219.3,
+ "D_gpu_quiet_wall_gbs": 220.6,
+ "D_gpu_busy_wall_gbs": 217.3,
+ "D_device_interference": 1.007,
+ "D_wall_interference": 1.02,
+ "E_rows": [
+  {
+   "pool": "this GTX 1070 Ti (VRAM)",
+   "kind": "discrete",
+   "cap_gb": 8,
+   "bw_gbs": 256.3,
+   "model": "Llama 8B",
+   "fmt": "fp16",
+   "need_gb": 16.0,
+   "fits": false,
+   "tok_s": 13.6
+  },
+  {
+   "pool": "this GTX 1070 Ti (VRAM)",
+   "kind": "discrete",
+   "cap_gb": 8,
+   "bw_gbs": 256.3,
+   "model": "Llama 8B",
+   "fmt": "int4",
+   "need_gb": 4.5,
+   "fits": true,
+   "tok_s": 48.6
+  },
+  {
+   "pool": "this GTX 1070 Ti (VRAM)",
+   "kind": "discrete",
+   "cap_gb": 8,
+   "bw_gbs": 256.3,
+   "model": "Llama 70B",
+   "fmt": "fp16",
+   "need_gb": 140.0,
+   "fits": false,
+   "tok_s": 1.6
+  },
+  {
+   "pool": "this GTX 1070 Ti (VRAM)",
+   "kind": "discrete",
+   "cap_gb": 8,
+   "bw_gbs": 256.3,
+   "model": "Llama 70B",
+   "fmt": "int4",
+   "need_gb": 39.2,
+   "fits": false,
+   "tok_s": 5.6
+  },
+  {
+   "pool": "this GTX 1070 Ti (VRAM)",
+   "kind": "discrete",
+   "cap_gb": 8,
+   "bw_gbs": 256.3,
+   "model": "Llama 405B",
+   "fmt": "fp16",
+   "need_gb": 810.0,
+   "fits": false,
+   "tok_s": 0.3
+  },
+  {
+   "pool": "this GTX 1070 Ti (VRAM)",
+   "kind": "discrete",
+   "cap_gb": 8,
+   "bw_gbs": 256.3,
+   "model": "Llama 405B",
+   "fmt": "int4",
+   "need_gb": 226.8,
+   "fits": false,
+   "tok_s": 1.0
+  },
+  {
+   "pool": "this machine (system RAM)",
+   "kind": "cpu",
+   "cap_gb": 31,
+   "bw_gbs": 24.0,
+   "model": "Llama 8B",
+   "fmt": "fp16",
+   "need_gb": 16.0,
+   "fits": true,
+   "tok_s": 1.3
+  },
+  {
+   "pool": "this machine (system RAM)",
+   "kind": "cpu",
+   "cap_gb": 31,
+   "bw_gbs": 24.0,
+   "model": "Llama 8B",
+   "fmt": "int4",
+   "need_gb": 4.5,
+   "fits": true,
+   "tok_s": 4.6
+  },
+  {
+   "pool": "this machine (system RAM)",
+   "kind": "cpu",
+   "cap_gb": 31,
+   "bw_gbs": 24.0,
+   "model": "Llama 70B",
+   "fmt": "fp16",
+   "need_gb": 140.0,
+   "fits": false,
+   "tok_s": 0.1
+  },
+  {
+   "pool": "this machine (system RAM)",
+   "kind": "cpu",
+   "cap_gb": 31,
+   "bw_gbs": 24.0,
+   "model": "Llama 70B",
+   "fmt": "int4",
+   "need_gb": 39.2,
+   "fits": false,
+   "tok_s": 0.5
+  },
+  {
+   "pool": "this machine (system RAM)",
+   "kind": "cpu",
+   "cap_gb": 31,
+   "bw_gbs": 24.0,
+   "model": "Llama 405B",
+   "fmt": "fp16",
+   "need_gb": 810.0,
+   "fits": false,
+   "tok_s": 0.0
+  },
+  {
+   "pool": "this machine (system RAM)",
+   "kind": "cpu",
+   "cap_gb": 31,
+   "bw_gbs": 24.0,
+   "model": "Llama 405B",
+   "fmt": "int4",
+   "need_gb": 226.8,
+   "fits": false,
+   "tok_s": 0.1
+  },
+  {
+   "pool": "RTX 4090",
+   "kind": "discrete",
+   "cap_gb": 24,
+   "bw_gbs": 1008,
+   "model": "Llama 8B",
+   "fmt": "fp16",
+   "need_gb": 16.0,
+   "fits": true,
+   "tok_s": 53.5
+  },
+  {
+   "pool": "RTX 4090",
+   "kind": "discrete",
+   "cap_gb": 24,
+   "bw_gbs": 1008,
+   "model": "Llama 8B",
+   "fmt": "int4",
+   "need_gb": 4.5,
+   "fits": true,
+   "tok_s": 191.2
+  },
+  {
+   "pool": "RTX 4090",
+   "kind": "discrete",
+   "cap_gb": 24,
+   "bw_gbs": 1008,
+   "model": "Llama 70B",
+   "fmt": "fp16",
+   "need_gb": 140.0,
+   "fits": false,
+   "tok_s": 6.1
+  },
+  {
+   "pool": "RTX 4090",
+   "kind": "discrete",
+   "cap_gb": 24,
+   "bw_gbs": 1008,
+   "model": "Llama 70B",
+   "fmt": "int4",
+   "need_gb": 39.2,
+   "fits": false,
+   "tok_s": 21.9
+  },
+  {
+   "pool": "RTX 4090",
+   "kind": "discrete",
+   "cap_gb": 24,
+   "bw_gbs": 1008,
+   "model": "Llama 405B",
+   "fmt": "fp16",
+   "need_gb": 810.0,
+   "fits": false,
+   "tok_s": 1.1
+  },
+  {
+   "pool": "RTX 4090",
+   "kind": "discrete",
+   "cap_gb": 24,
+   "bw_gbs": 1008,
+   "model": "Llama 405B",
+   "fmt": "int4",
+   "need_gb": 226.8,
+   "fits": false,
+   "tok_s": 3.8
+  },
+  {
+   "pool": "RTX 5090",
+   "kind": "discrete",
+   "cap_gb": 32,
+   "bw_gbs": 1792,
+   "model": "Llama 8B",
+   "fmt": "fp16",
+   "need_gb": 16.0,
+   "fits": true,
+   "tok_s": 95.2
+  },
+  {
+   "pool": "RTX 5090",
+   "kind": "discrete",
+   "cap_gb": 32,
+   "bw_gbs": 1792,
+   "model": "Llama 8B",
+   "fmt": "int4",
+   "need_gb": 4.5,
+   "fits": true,
+   "tok_s": 340.0
+  },
+  {
+   "pool": "RTX 5090",
+   "kind": "discrete",
+   "cap_gb": 32,
+   "bw_gbs": 1792,
+   "model": "Llama 70B",
+   "fmt": "fp16",
+   "need_gb": 140.0,
+   "fits": false,
+   "tok_s": 10.9
+  },
+  {
+   "pool": "RTX 5090",
+   "kind": "discrete",
+   "cap_gb": 32,
+   "bw_gbs": 1792,
+   "model": "Llama 70B",
+   "fmt": "int4",
+   "need_gb": 39.2,
+   "fits": false,
+   "tok_s": 38.9
+  },
+  {
+   "pool": "RTX 5090",
+   "kind": "discrete",
+   "cap_gb": 32,
+   "bw_gbs": 1792,
+   "model": "Llama 405B",
+   "fmt": "fp16",
+   "need_gb": 810.0,
+   "fits": false,
+   "tok_s": 1.9
+  },
+  {
+   "pool": "RTX 5090",
+   "kind": "discrete",
+   "cap_gb": 32,
+   "bw_gbs": 1792,
+   "model": "Llama 405B",
+   "fmt": "int4",
+   "need_gb": 226.8,
+   "fits": false,
+   "tok_s": 6.7
+  },
+  {
+   "pool": "Apple M4 Pro (48 GB)",
+   "kind": "unified",
+   "cap_gb": 36,
+   "bw_gbs": 273,
+   "model": "Llama 8B",
+   "fmt": "fp16",
+   "need_gb": 16.0,
+   "fits": true,
+   "tok_s": 14.5
+  },
+  {
+   "pool": "Apple M4 Pro (48 GB)",
+   "kind": "unified",
+   "cap_gb": 36,
+   "bw_gbs": 273,
+   "model": "Llama 8B",
+   "fmt": "int4",
+   "need_gb": 4.5,
+   "fits": true,
+   "tok_s": 51.8
+  },
+  {
+   "pool": "Apple M4 Pro (48 GB)",
+   "kind": "unified",
+   "cap_gb": 36,
+   "bw_gbs": 273,
+   "model": "Llama 70B",
+   "fmt": "fp16",
+   "need_gb": 140.0,
+   "fits": false,
+   "tok_s": 1.7
+  },
+  {
+   "pool": "Apple M4 Pro (48 GB)",
+   "kind": "unified",
+   "cap_gb": 36,
+   "bw_gbs": 273,
+   "model": "Llama 70B",
+   "fmt": "int4",
+   "need_gb": 39.2,
+   "fits": false,
+   "tok_s": 5.9
+  },
+  {
+   "pool": "Apple M4 Pro (48 GB)",
+   "kind": "unified",
+   "cap_gb": 36,
+   "bw_gbs": 273,
+   "model": "Llama 405B",
+   "fmt": "fp16",
+   "need_gb": 810.0,
+   "fits": false,
+   "tok_s": 0.3
+  },
+  {
+   "pool": "Apple M4 Pro (48 GB)",
+   "kind": "unified",
+   "cap_gb": 36,
+   "bw_gbs": 273,
+   "model": "Llama 405B",
+   "fmt": "int4",
+   "need_gb": 226.8,
+   "fits": false,
+   "tok_s": 1.0
+  },
+  {
+   "pool": "Apple M4 Max (128 GB)",
+   "kind": "unified",
+   "cap_gb": 96,
+   "bw_gbs": 546,
+   "model": "Llama 8B",
+   "fmt": "fp16",
+   "need_gb": 16.0,
+   "fits": true,
+   "tok_s": 29.0
+  },
+  {
+   "pool": "Apple M4 Max (128 GB)",
+   "kind": "unified",
+   "cap_gb": 96,
+   "bw_gbs": 546,
+   "model": "Llama 8B",
+   "fmt": "int4",
+   "need_gb": 4.5,
+   "fits": true,
+   "tok_s": 103.6
+  },
+  {
+   "pool": "Apple M4 Max (128 GB)",
+   "kind": "unified",
+   "cap_gb": 96,
+   "bw_gbs": 546,
+   "model": "Llama 70B",
+   "fmt": "fp16",
+   "need_gb": 140.0,
+   "fits": false,
+   "tok_s": 3.3
+  },
+  {
+   "pool": "Apple M4 Max (128 GB)",
+   "kind": "unified",
+   "cap_gb": 96,
+   "bw_gbs": 546,
+   "model": "Llama 70B",
+   "fmt": "int4",
+   "need_gb": 39.2,
+   "fits": true,
+   "tok_s": 11.8
+  },
+  {
+   "pool": "Apple M4 Max (128 GB)",
+   "kind": "unified",
+   "cap_gb": 96,
+   "bw_gbs": 546,
+   "model": "Llama 405B",
+   "fmt": "fp16",
+   "need_gb": 810.0,
+   "fits": false,
+   "tok_s": 0.6
+  },
+  {
+   "pool": "Apple M4 Max (128 GB)",
+   "kind": "unified",
+   "cap_gb": 96,
+   "bw_gbs": 546,
+   "model": "Llama 405B",
+   "fmt": "int4",
+   "need_gb": 226.8,
+   "fits": false,
+   "tok_s": 2.0
+  },
+  {
+   "pool": "Apple M3 Ultra (512 GB)",
+   "kind": "unified",
+   "cap_gb": 384,
+   "bw_gbs": 819,
+   "model": "Llama 8B",
+   "fmt": "fp16",
+   "need_gb": 16.0,
+   "fits": true,
+   "tok_s": 43.5
+  },
+  {
+   "pool": "Apple M3 Ultra (512 GB)",
+   "kind": "unified",
+   "cap_gb": 384,
+   "bw_gbs": 819,
+   "model": "Llama 8B",
+   "fmt": "int4",
+   "need_gb": 4.5,
+   "fits": true,
+   "tok_s": 155.4
+  },
+  {
+   "pool": "Apple M3 Ultra (512 GB)",
+   "kind": "unified",
+   "cap_gb": 384,
+   "bw_gbs": 819,
+   "model": "Llama 70B",
+   "fmt": "fp16",
+   "need_gb": 140.0,
+   "fits": true,
+   "tok_s": 5.0
+  },
+  {
+   "pool": "Apple M3 Ultra (512 GB)",
+   "kind": "unified",
+   "cap_gb": 384,
+   "bw_gbs": 819,
+   "model": "Llama 70B",
+   "fmt": "int4",
+   "need_gb": 39.2,
+   "fits": true,
+   "tok_s": 17.8
+  },
+  {
+   "pool": "Apple M3 Ultra (512 GB)",
+   "kind": "unified",
+   "cap_gb": 384,
+   "bw_gbs": 819,
+   "model": "Llama 405B",
+   "fmt": "fp16",
+   "need_gb": 810.0,
+   "fits": false,
+   "tok_s": 0.9
+  },
+  {
+   "pool": "Apple M3 Ultra (512 GB)",
+   "kind": "unified",
+   "cap_gb": 384,
+   "bw_gbs": 819,
+   "model": "Llama 405B",
+   "fmt": "int4",
+   "need_gb": 226.8,
+   "fits": true,
+   "tok_s": 3.1
+  },
+  {
+   "pool": "NVIDIA H100",
+   "kind": "discrete",
+   "cap_gb": 80,
+   "bw_gbs": 3350,
+   "model": "Llama 8B",
+   "fmt": "fp16",
+   "need_gb": 16.0,
+   "fits": true,
+   "tok_s": 178.0
+  },
+  {
+   "pool": "NVIDIA H100",
+   "kind": "discrete",
+   "cap_gb": 80,
+   "bw_gbs": 3350,
+   "model": "Llama 8B",
+   "fmt": "int4",
+   "need_gb": 4.5,
+   "fits": true,
+   "tok_s": 635.6
+  },
+  {
+   "pool": "NVIDIA H100",
+   "kind": "discrete",
+   "cap_gb": 80,
+   "bw_gbs": 3350,
+   "model": "Llama 70B",
+   "fmt": "fp16",
+   "need_gb": 140.0,
+   "fits": false,
+   "tok_s": 20.3
+  },
+  {
+   "pool": "NVIDIA H100",
+   "kind": "discrete",
+   "cap_gb": 80,
+   "bw_gbs": 3350,
+   "model": "Llama 70B",
+   "fmt": "int4",
+   "need_gb": 39.2,
+   "fits": true,
+   "tok_s": 72.6
+  },
+  {
+   "pool": "NVIDIA H100",
+   "kind": "discrete",
+   "cap_gb": 80,
+   "bw_gbs": 3350,
+   "model": "Llama 405B",
+   "fmt": "fp16",
+   "need_gb": 810.0,
+   "fits": false,
+   "tok_s": 3.5
+  },
+  {
+   "pool": "NVIDIA H100",
+   "kind": "discrete",
+   "cap_gb": 80,
+   "bw_gbs": 3350,
+   "model": "Llama 405B",
+   "fmt": "int4",
+   "need_gb": 226.8,
+   "fits": false,
+   "tok_s": 12.6
+  }
+ ],
+ "E_apple_wired_limit_note": "macOS caps the GPU's share of unified memory (iogpu.wired_limit_mb); the default leaves roughly 75% of RAM available to the GPU",
+ "E_m4max_70b_int4": {
+  "pool": "Apple M4 Max (128 GB)",
+  "kind": "unified",
+  "cap_gb": 96,
+  "bw_gbs": 546,
+  "model": "Llama 70B",
+  "fmt": "int4",
+  "need_gb": 39.2,
+  "fits": true,
+  "tok_s": 11.8
+ },
+ "E_4090_70b_int4": {
+  "pool": "RTX 4090",
+  "kind": "discrete",
+  "cap_gb": 24,
+  "bw_gbs": 1008,
+  "model": "Llama 70B",
+  "fmt": "int4",
+  "need_gb": 39.2,
+  "fits": false,
+  "tok_s": 21.9
+ },
+ "E_4090_bw_over_m4max": 1.85,
+ "E_m4max_cap_over_4090": 4.0,
+ "runtime_s": 35.6,
+ "device": {
+  "name": "NVIDIA GeForce GTX 1070 Ti",
+  "cc": "6.1",
+  "sms": 19,
+  "mem_gb": 7.92
+ }
+}

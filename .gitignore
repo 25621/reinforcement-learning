@@ -176,3 +176,10 @@ guides/multimodal-learning/projects/45-human-correlated-eval/data/
 # re-renders it in about 40 s per object, and every number it produced is
 # already in outputs/results.csv.
 guides/robotics/projects/22-object-6-dof-pose/data/
+
+# AI-hardware Phase 5: project 24 compiles two binaries from `warpsize.cu` --
+# the original, and the hipify-ported source rebuilt through `hipshim/`. Both
+# are rebuilt by `python run.py` in about a second, and the ported source they
+# come from is committed as outputs/warpsize.hip.cpp.
+guides/ai-hardware/projects/24-amd-mi300-inference/outputs/ws_cuda
+guides/ai-hardware/projects/24-amd-mi300-inference/outputs/ws_hip
