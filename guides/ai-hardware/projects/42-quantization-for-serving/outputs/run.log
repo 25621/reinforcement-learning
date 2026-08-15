@@ -1,0 +1,48 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Skipping import of cpp extensions due to incompatible torch version. Please upgrade to torch >= 2.11.0 (found 2.10.0+cu128).
+/home/canary/.local/lib/python3.12/site-packages/torch/cuda/__init__.py:435: UserWarning: 
+    Found GPU0 NVIDIA GeForce GTX 1070 Ti which is of cuda capability 6.1.
+    Minimum and Maximum cuda capability supported by this version of PyTorch is
+    (7.0) - (12.0)
+    
+  queued_call()
+/home/canary/.local/lib/python3.12/site-packages/torch/cuda/__init__.py:435: UserWarning: 
+    Please install PyTorch with a following CUDA
+    configurations:  12.6 following instructions at
+    https://pytorch.org/get-started/locally/
+    
+  queued_call()
+/home/canary/.local/lib/python3.12/site-packages/torch/cuda/__init__.py:435: UserWarning: 
+NVIDIA GeForce GTX 1070 Ti with CUDA capability sm_61 is not compatible with the current PyTorch installation.
+The current PyTorch install supports CUDA capabilities sm_70 sm_75 sm_80 sm_86 sm_90 sm_100 sm_120.
+If you want to use the NVIDIA GeForce GTX 1070 Ti GPU with PyTorch, please check the instructions at https://pytorch.org/get-started/locally/
+
+  queued_call()
+A. quality and size of five weight formats
+   fp32 (baseline)          ppl   19.218 (1.000x)  weights 1.976 GB (1.00x smaller)
+   fp8 e4m3, per-channel    ppl   19.502 (1.015x)  weights 0.903 GB (2.19x smaller)
+   int8, per-channel        ppl   19.117 (0.995x)  weights 0.903 GB (2.19x smaller)
+   int4, group 128          ppl   26.426 (1.375x)  weights 0.729 GB (2.71x smaller)
+   int3, group 128          ppl  288.485 (15.011x)  weights 0.685 GB (2.89x smaller)
+
+B. decode speed with no low-precision kernel (batch 1 and 16, ctx 512)
+   fp32               batch 1:   118.3 ms   batch 16:   207.7 ms (77.0 tok/s)
+   int8 per-channel   batch 1:   887.1 ms   batch 16:   949.7 ms (16.8 tok/s)
+   int4 group 128     batch 1:   888.4 ms   batch 16:   968.1 ms (16.5 tok/s)
+   -> int8 per-channel is 7.50x the fp32 step time at batch 1, 4.57x at batch 16
+   -> int4 group 128 is 7.51x the fp32 step time at batch 1, 4.66x at batch 16
+
+C. one 3 GB budget, split between weights and KV (context 1024)
+   fp32 weights  weights 1.98 GB -> 1.02 GB of KV =  40 concurrent requests, measured   80.9 tok/s (494 ms/step)
+   int8 weights  weights 0.90 GB -> 2.10 GB of KV =  83 concurrent requests, measured   85.6 tok/s (970 ms/step)
+   int4 weights  weights 0.73 GB -> 2.27 GB of KV =  90 concurrent requests, measured   91.3 tok/s (986 ms/step)
+   -> int8 weights fit 2.1x more requests and deliver 1.06x the throughput, on a CPU whose matmul never once ran in int8
+
+D. the same arithmetic on an 80 GB H100 serving Llama-3 8B, context 8192
+   fp16             weights 16.06 GB |  55.8 concurrent 8k requests |    209 tok/s for one user |    11644 tok/s in total
+   fp8              weights  8.03 GB |  63.3 concurrent 8k requests |    417 tok/s for one user |    26409 tok/s in total
+   int4 (AWQ/GPTQ)  weights  4.27 GB |  66.8 concurrent 8k requests |    785 tok/s for one user |    52463 tok/s in total
+   -> int4 weights: 3.8x faster for one user, 4.5x more total throughput once the freed memory is spent on batch
+   wrote /home/canary/project/tmp/claude-ai-hardware-phase8-2/guides/ai-hardware/projects/42-quantization-for-serving/outputs/quant_serving.png
+
+total 71s

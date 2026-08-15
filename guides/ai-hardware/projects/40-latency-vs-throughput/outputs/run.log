@@ -1,0 +1,48 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Skipping import of cpp extensions due to incompatible torch version. Please upgrade to torch >= 2.11.0 (found 2.10.0+cu128).
+/home/canary/.local/lib/python3.12/site-packages/torch/cuda/__init__.py:435: UserWarning: 
+    Found GPU0 NVIDIA GeForce GTX 1070 Ti which is of cuda capability 6.1.
+    Minimum and Maximum cuda capability supported by this version of PyTorch is
+    (7.0) - (12.0)
+    
+  queued_call()
+/home/canary/.local/lib/python3.12/site-packages/torch/cuda/__init__.py:435: UserWarning: 
+    Please install PyTorch with a following CUDA
+    configurations:  12.6 following instructions at
+    https://pytorch.org/get-started/locally/
+    
+  queued_call()
+/home/canary/.local/lib/python3.12/site-packages/torch/cuda/__init__.py:435: UserWarning: 
+NVIDIA GeForce GTX 1070 Ti with CUDA capability sm_61 is not compatible with the current PyTorch installation.
+The current PyTorch install supports CUDA capabilities sm_70 sm_75 sm_80 sm_86 sm_90 sm_100 sm_120.
+If you want to use the NVIDIA GeForce GTX 1070 Ti GPU with PyTorch, please check the instructions at https://pytorch.org/get-started/locally/
+
+  queued_call()
+A. batch-size sweep, prompt 32 tokens, 16 new tokens
+   batch   1: TTFT  0.20 s | TPOT  112.5 ms | user  8.89 tok/s | server    8.89 tok/s | OK 
+   batch   2: TTFT  0.21 s | TPOT  125.4 ms | user  7.98 tok/s | server   15.95 tok/s | OK 
+   batch   4: TTFT  0.34 s | TPOT  127.5 ms | user  7.84 tok/s | server   31.37 tok/s | OK 
+   batch   8: TTFT  0.55 s | TPOT  134.7 ms | user  7.42 tok/s | server   59.40 tok/s | OK 
+   batch  16: TTFT  1.02 s | TPOT  150.8 ms | user  6.63 tok/s | server  106.09 tok/s | OK 
+   batch  32: TTFT  2.00 s | TPOT  164.6 ms | user  6.08 tok/s | server  194.44 tok/s | OK 
+   batch  64: TTFT  4.01 s | TPOT  269.3 ms | user  3.71 tok/s | server  237.66 tok/s | SLA violated
+   batch 128: TTFT  9.09 s | TPOT  410.1 ms | user  2.44 tok/s | server  312.14 tok/s | SLA violated
+
+B. knee of the throughput/latency curve: batch 32 (194 tok/s at 165 ms)
+   largest batch inside the SLA (200 ms TPOT, 3 s TTFT): batch 32 at 194 tok/s
+   goodput (throughput that actually meets the SLA): B1=9, B2=16, B4=31, B8=59, B16=106, B32=194, B64=0, B128=0
+   TPOT budget    110 ms -> batch None, 0 server tok/s, 0.0 tok/s per user
+   TPOT budget    130 ms -> batch 4, 31 server tok/s, 7.8 tok/s per user
+   TPOT budget    150 ms -> batch 8, 59 server tok/s, 7.4 tok/s per user
+   TPOT budget    200 ms -> batch 32, 194 server tok/s, 6.1 tok/s per user
+   TPOT budget    300 ms -> batch 64, 238 server tok/s, 3.7 tok/s per user
+   TPOT budget    500 ms -> batch 128, 312 server tok/s, 2.4 tok/s per user
+   TPOT budget 1000000000 ms -> batch 128, 312 server tok/s, 2.4 tok/s per user
+
+C. does the knee move with context length?
+   context  128: B1=   8.3 tok/s  B4=  23.7 tok/s  B16= 103.5 tok/s  B32= 172.5 tok/s  B64= 184.2 tok/s
+   context  512: B1=   8.5 tok/s  B4=  28.0 tok/s  B16=  78.4 tok/s  B32= 111.5 tok/s  B64= 131.1 tok/s
+   context 2048: B1=   8.6 tok/s  B4=  21.3 tok/s  B16=  32.9 tok/s  B32=  37.8 tok/s  B64=  38.7 tok/s
+   wrote /home/canary/project/tmp/claude-ai-hardware-phase8-2/guides/ai-hardware/projects/40-latency-vs-throughput/outputs/latency_throughput.png
+
+total 70s

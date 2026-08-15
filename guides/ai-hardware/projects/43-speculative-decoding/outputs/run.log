@@ -1,0 +1,57 @@
+loading target (1.5B) and draft (0.5B) ...
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Skipping import of cpp extensions due to incompatible torch version. Please upgrade to torch >= 2.11.0 (found 2.10.0+cu128).
+/home/canary/.local/lib/python3.12/site-packages/torch/cuda/__init__.py:435: UserWarning: 
+    Found GPU0 NVIDIA GeForce GTX 1070 Ti which is of cuda capability 6.1.
+    Minimum and Maximum cuda capability supported by this version of PyTorch is
+    (7.0) - (12.0)
+    
+  queued_call()
+/home/canary/.local/lib/python3.12/site-packages/torch/cuda/__init__.py:435: UserWarning: 
+    Please install PyTorch with a following CUDA
+    configurations:  12.6 following instructions at
+    https://pytorch.org/get-started/locally/
+    
+  queued_call()
+/home/canary/.local/lib/python3.12/site-packages/torch/cuda/__init__.py:435: UserWarning: 
+NVIDIA GeForce GTX 1070 Ti with CUDA capability sm_61 is not compatible with the current PyTorch installation.
+The current PyTorch install supports CUDA capabilities sm_70 sm_75 sm_80 sm_86 sm_90 sm_100 sm_120.
+If you want to use the NVIDIA GeForce GTX 1070 Ti GPU with PyTorch, please check the instructions at https://pytorch.org/get-started/locally/
+
+  queued_call()
+
+A. exactness
+   plain target decoding: 16.5 s (2.90 tok/s, 324 ms/step)
+   -> ' parallelism. Caching is the process of storing frequently used data in a fast memory so that it can be accessed quickly. Pipelining is the process of breaking down a complex operation into smaller, simpler operations that can be executed in parallel'
+   speculative (k=4) tokens identical to plain greedy: True
+   sampling rule check: total-variation distance from the target distribution = 0.00048 over 200k draws (acceptance 0.743, theory 0.743)
+
+B. is verification really free? cost of one target forward vs tokens fed
+   1 tok: 305 ms (1.00x)  2 tok: 352 ms (1.16x)  4 tok: 389 ms (1.28x)  8 tok: 381 ms (1.25x)  16 tok: 387 ms (1.27x)
+
+B2. draft length sweep (each row re-measures its own baseline)
+   k=1: alpha 0.750 (slot rate 0.75) -> 1.71 tokens/cycle (geometric model 1.75), 3.29 vs 2.39 tok/s = 1.38x [ideal 1.28x, with this machine's verify cost 1.14x], exact=True
+        per cycle: 125 ms drafting + 395 ms verifying
+   k=2: alpha 0.763 (slot rate 0.69) -> 2.29 tokens/cycle (geometric model 2.35), 3.59 vs 2.94 tok/s = 1.22x [ideal 1.33x, with this machine's verify cost 1.16x], exact=True
+        per cycle: 243 ms drafting + 393 ms verifying
+   k=4: alpha 0.795 (slot rate 0.55) -> 3.00 tokens/cycle (geometric model 3.33), 3.31 vs 2.92 tok/s = 1.13x [ideal 1.27x, with this machine's verify cost 1.14x], exact=True
+        per cycle: 482 ms drafting + 423 ms verifying
+   k=8: alpha 0.766 (slot rate 0.32) -> 3.43 tokens/cycle (geometric model 3.88), 2.46 vs 2.91 tok/s = 0.85x [ideal 0.85x, with this machine's verify cost 0.80x], exact=True
+        per cycle: 979 ms drafting + 414 ms verifying
+   draft step / target step over the four pairs: c = 0.357
+   the four baselines themselves ranged 316-336 ms per step (1.06x) -- which is why they are paired
+   best: k=1 at 1.38x
+
+C. the cost model
+   k=1: at alpha=0.77 a cycle yields 1.77 tokens, so the draft must cost under 0.77x a target step to break even (ours costs 0.36x)
+   k=2: at alpha=0.77 a cycle yields 2.36 tokens, so the draft must cost under 0.68x a target step to break even (ours costs 0.36x)
+   k=4: at alpha=0.77 a cycle yields 3.16 tokens, so the draft must cost under 0.54x a target step to break even (ours costs 0.36x)
+   k=8: at alpha=0.77 a cycle yields 3.92 tokens, so the draft must cost under 0.36x a target step to break even (ours costs 0.36x)
+   -> with a draft costing 0.36x, speculation pays up to k=8
+
+D. a draft that costs nothing: prompt-lookup (3-gram) decoding
+   repetitive prompt: plain 2.90 tok/s, 3-gram lookup 6.85 tok/s = 2.37x (accepted 1.94 of 8 per cycle, exact=True)
+   ordinary prompt:   plain 2.77 tok/s, 3-gram lookup 2.59 tok/s = 0.94x (accepted 0.02)
+   wrote /home/canary/project/tmp/claude-ai-hardware-phase8-2/guides/ai-hardware/projects/43-speculative-decoding/outputs/speculative.png
+
+total 243s

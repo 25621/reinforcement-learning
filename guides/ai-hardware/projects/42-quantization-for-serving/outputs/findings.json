@@ -1,0 +1,145 @@
+{
+  "formats": [
+    {
+      "name": "fp32 (baseline)",
+      "bits_per_weight": 32.0,
+      "ppl": 19.21802520751953,
+      "ppl_ratio": 1.0,
+      "weights_GB": 1.976131072,
+      "shrink": 1.0,
+      "seconds": 5.637849366001319
+    },
+    {
+      "name": "fp8 e4m3, per-channel",
+      "bits_per_weight": 8.0,
+      "ppl": 19.501514434814453,
+      "ppl_ratio": 1.0147512152905285,
+      "weights_GB": 0.902651392,
+      "shrink": 2.189251675136175,
+      "seconds": 5.726454665011261
+    },
+    {
+      "name": "int8, per-channel",
+      "bits_per_weight": 8.017857142857142,
+      "ppl": 19.117300033569336,
+      "ppl_ratio": 0.9947588176796238,
+      "weights_GB": 0.903450112,
+      "shrink": 2.187316206785749,
+      "seconds": 5.815881879010703
+    },
+    {
+      "name": "int4, group 128",
+      "bits_per_weight": 4.125,
+      "ppl": 26.42589569091797,
+      "ppl_ratio": 1.3750578119014112,
+      "weights_GB": 0.729329152,
+      "shrink": 2.7095188319032117,
+      "seconds": 5.821870017971378
+    },
+    {
+      "name": "int3, group 128",
+      "bits_per_weight": 3.125,
+      "ppl": 288.48504638671875,
+      "ppl_ratio": 15.01117015258372,
+      "weights_GB": 0.684600832,
+      "shrink": 2.8865449465302433,
+      "seconds": 6.059970072004944
+    }
+  ],
+  "quantized_params": 357826560,
+  "other_params": 136206208,
+  "speed": [
+    {
+      "name": "fp32",
+      "step_ms_b1": 118.29348199535161,
+      "tok_s_b1": 8.453551143581143,
+      "step_ms_b16": 207.66955701401457,
+      "tok_s_b16": 77.04547662188271
+    },
+    {
+      "name": "int8 per-channel",
+      "step_ms_b1": 887.0844159973785,
+      "tok_s_b1": 1.1272884315926874,
+      "step_ms_b16": 949.7274159803055,
+      "tok_s_b16": 16.846939164628466,
+      "slowdown_b1": 7.49901347930765,
+      "slowdown_b16": 4.5732625890669825
+    },
+    {
+      "name": "int4 group 128",
+      "step_ms_b1": 888.3530699531548,
+      "tok_s_b1": 1.1256785548709058,
+      "step_ms_b16": 968.1276640039869,
+      "tok_s_b16": 16.526746001479935,
+      "slowdown_b1": 7.509738110406311,
+      "slowdown_b16": 4.661866081501069
+    }
+  ],
+  "budget": {
+    "budget_GB": 3.0,
+    "context": 1024,
+    "bytes_per_token": 24576.0,
+    "rows": [
+      {
+        "name": "fp32 weights",
+        "weights_GB": 1.976131072,
+        "kv_GB": 1.023868928,
+        "seats": 40,
+        "step_ms": 494.2342190188356,
+        "tok_s": 80.9332872163503,
+        "user_tok_s": 2.0233321804087576
+      },
+      {
+        "name": "int8 weights",
+        "weights_GB": 0.902651392,
+        "kv_GB": 2.097348608,
+        "seats": 83,
+        "step_ms": 969.7930479887873,
+        "tok_s": 85.58527014823439,
+        "user_tok_s": 1.0311478331112578
+      },
+      {
+        "name": "int4 weights",
+        "weights_GB": 0.729329152,
+        "kv_GB": 2.270670848,
+        "seats": 90,
+        "step_ms": 986.1710499972105,
+        "tok_s": 91.26205844336495,
+        "user_tok_s": 1.0140228715929438
+      }
+    ],
+    "int8_throughput_gain": 1.057479228780717,
+    "int8_seat_gain": 2.075
+  },
+  "h100": {
+    "kv_bytes_per_token": 131072,
+    "rows": [
+      {
+        "name": "fp16",
+        "weights_GB": 16.06,
+        "seats": 55.82347512245178,
+        "step_ms": 4.794029850746268,
+        "single_user_tok_s": 208.59277708592776,
+        "server_tok_s": 11644.37370237942
+      },
+      {
+        "name": "fp8",
+        "weights_GB": 8.03,
+        "seats": 63.301995396614075,
+        "step_ms": 2.397014925373134,
+        "single_user_tok_s": 417.18555417185553,
+        "server_tok_s": 26408.678029720693
+      },
+      {
+        "name": "int4 (AWQ/GPTQ)",
+        "weights_GB": 4.2659375,
+        "seats": 66.80755177512765,
+        "step_ms": 1.2734141791044775,
+        "single_user_tok_s": 785.290454911728,
+        "server_tok_s": 52463.33272502882
+      }
+    ],
+    "int4_vs_fp16_total": 4.5054662505642895
+  },
+  "total_seconds": 71.28398132324219
+}

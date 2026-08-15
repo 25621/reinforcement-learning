@@ -1,0 +1,36 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Skipping import of cpp extensions due to incompatible torch version. Please upgrade to torch >= 2.11.0 (found 2.10.0+cu128).
+/home/canary/.local/lib/python3.12/site-packages/torch/cuda/__init__.py:435: UserWarning: 
+    Found GPU0 NVIDIA GeForce GTX 1070 Ti which is of cuda capability 6.1.
+    Minimum and Maximum cuda capability supported by this version of PyTorch is
+    (7.0) - (12.0)
+    
+  queued_call()
+/home/canary/.local/lib/python3.12/site-packages/torch/cuda/__init__.py:435: UserWarning: 
+    Please install PyTorch with a following CUDA
+    configurations:  12.6 following instructions at
+    https://pytorch.org/get-started/locally/
+    
+  queued_call()
+/home/canary/.local/lib/python3.12/site-packages/torch/cuda/__init__.py:435: UserWarning: 
+NVIDIA GeForce GTX 1070 Ti with CUDA capability sm_61 is not compatible with the current PyTorch installation.
+The current PyTorch install supports CUDA capabilities sm_70 sm_75 sm_80 sm_86 sm_90 sm_100 sm_120.
+If you want to use the NVIDIA GeForce GTX 1070 Ti GPU with PyTorch, please check the instructions at https://pytorch.org/get-started/locally/
+
+  queued_call()
+workload: 24 requests, prompts 16-96 tokens, outputs 8-64 tokens (744 in total), arriving over 5.6 s
+   cap  4 static      :   50.6 s makespan,   14.7 tok/s, mean latency  21.7 s, p99  42.8 s, TTFT 17.47 s, slot efficiency 53%
+   cap  4 continuous  :   32.5 s makespan,   22.9 tok/s, mean latency  13.5 s, p99  26.5 s, TTFT  8.73 s, slot efficiency 92%
+   cap  8 static      :   36.7 s makespan,   20.3 tok/s, mean latency  14.6 s, p99  31.0 s, TTFT 10.14 s, slot efficiency 40%
+   cap  8 continuous  :   22.9 s makespan,   32.5 tok/s, mean latency   8.9 s, p99  15.4 s, TTFT  3.39 s, slot efficiency 74%
+   cap 16 static      :   31.9 s makespan,   23.3 tok/s, mean latency  14.4 s, p99  26.3 s, TTFT  7.74 s, slot efficiency 27%
+   cap 16 continuous  :   16.6 s makespan,   44.9 tok/s, mean latency   6.9 s, p99  12.3 s, TTFT  0.74 s, slot efficiency 55%
+   -> cap 4: continuous batching is 1.56x the throughput and 1.61x lower mean latency; static wasted 628 slot-steps on requests that had already finished
+   -> cap 8: continuous batching is 1.60x the throughput and 1.64x lower mean latency; static wasted 1096 slot-steps on requests that had already finished
+   -> cap 16: continuous batching is 1.93x the throughput and 2.09x lower mean latency; static wasted 1904 slot-steps on requests that had already finished
+
+admission control: one new request per step vs all of them
+   admit<=1: 33.0 tok/s, mean TTFT 3.84 s (vs 32.5 tok/s, 3.39 s when admitting everyone at once)
+   wrote /home/canary/project/tmp/claude-ai-hardware-phase8-2/guides/ai-hardware/projects/44-continuous-batching-demo/outputs/continuous_batching.png
+
+total 220s
