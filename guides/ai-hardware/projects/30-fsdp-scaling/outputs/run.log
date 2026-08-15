@@ -1,0 +1,40 @@
+[Gloo] Rank 0 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[Gloo] Rank 1 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+A: world=2 params/rank FSDP=9.46 MB DDP=18.93 MB (1/2.0 of the model), Adam state 18.93 vs 37.86 MB
+B: world=2 FSDP {'all_gather': 18.0, 'reduce_scatter': 9.0, 'all_reduce': 0.0} bytes=56.79 MB | DDP {'all_reduce': 2.0, 'all_gather': 0.0, 'reduce_scatter': 0.0} bytes=18.93 MB | wire ratio 1.50x
+[Gloo] Rank 0 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+[Gloo] Rank 2 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+[Gloo] Rank 1 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+[Gloo] Rank 3 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+A: world=4 params/rank FSDP=4.73 MB DDP=18.93 MB (1/4.0 of the model), Adam state 9.47 vs 37.86 MB
+B: world=4 FSDP {'all_gather': 18.0, 'reduce_scatter': 9.0, 'all_reduce': 0.0} bytes=56.81 MB | DDP {'all_reduce': 2.0, 'all_gather': 0.0, 'reduce_scatter': 0.0} bytes=18.93 MB | wire ratio 1.50x
+[Gloo] Rank 0 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[Gloo] Rank 1 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+C: world=2 local=  42.63 ms  ddp=  57.66 ms  fsdp= 118.58 ms  (2.06x DDP, 9.46 MB params/rank)
+[Gloo] Rank 0 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+[Gloo] Rank 2 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+[Gloo] Rank 1 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+[Gloo] Rank 3 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+C: world=4 local=  87.85 ms  ddp= 125.63 ms  fsdp= 257.73 ms  (2.05x DDP, 4.73 MB params/rank)
+[Gloo] Rank 0 is connected to 5 peer ranks. Expected number of connected peer ranks is : 5
+[Gloo] Rank 2 is connected to 5 peer ranks. Expected number of connected peer ranks is : 5
+[Gloo] Rank 1 is connected to 5 peer ranks. Expected number of connected peer ranks is : 5
+[Gloo] Rank 3 is connected to 5 peer ranks. Expected number of connected peer ranks is : 5
+[Gloo] Rank 5 is connected to 5 peer ranks. Expected number of connected peer ranks is : 5
+[Gloo] Rank 4 is connected to 5 peer ranks. Expected number of connected peer ranks is : 5
+C: world=6 local= 141.64 ms  ddp= 208.55 ms  fsdp= 467.44 ms  (2.24x DDP, 3.16 MB params/rank)
+[Gloo] Rank 0 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+[Gloo] Rank 2 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+[Gloo] Rank 1 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+[Gloo] Rank 3 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+D: reshard_after_forward=True  18.0 all-gathers/step ( 37.87 MB)  step= 267.69 ms
+D: reshard_after_forward=False  9.0 all-gathers/step ( 18.94 MB)  step= 187.18 ms
+D: keeping the parameters gathered is 1.43x, and saves 18.94 MB/step of all-gather
+E: n=  1  DDP   112.0 GB/GPU (NO)   FSDP  112.4 GB/GPU (NO)
+E: n=  2  DDP   112.0 GB/GPU (NO)   FSDP   56.4 GB/GPU (fits)
+E: n=  4  DDP   112.0 GB/GPU (NO)   FSDP   28.4 GB/GPU (fits)
+E: n=  8  DDP   112.0 GB/GPU (NO)   FSDP   14.4 GB/GPU (fits)
+E: n= 16  DDP   112.0 GB/GPU (NO)   FSDP    7.4 GB/GPU (fits)
+E: n= 64  DDP   112.0 GB/GPU (NO)   FSDP    2.2 GB/GPU (fits)
+total runtime 46.3 s
+wrote /home/canary/project/tmp/claude-ai-hardware-phase6/guides/ai-hardware/projects/30-fsdp-scaling/outputs

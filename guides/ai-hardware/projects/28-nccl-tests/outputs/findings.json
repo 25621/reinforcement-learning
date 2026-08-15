@@ -1,0 +1,998 @@
+{
+ "A_nccl_probe": {
+  "gpu_count": 1,
+  "gpu_name": "NVIDIA GeForce GTX 1070 Ti",
+  "capability": "sm_61",
+  "torch_supported_arch": [
+   "sm_70",
+   "sm_75",
+   "sm_80",
+   "sm_86",
+   "sm_90",
+   "sm_100",
+   "sm_120"
+  ],
+  "nccl_built_in": true,
+  "nccl_runs": false,
+  "nccl_error": "[rank0]: torch.AcceleratorError: CUDA error: no kernel image is available for execution on the device",
+  "fallback": "gloo over TCP loopback"
+ },
+ "B_sweep": [
+  {
+   "world": 2,
+   "collective": "all_reduce",
+   "bytes": 4096,
+   "us": 373.67420736700296,
+   "algbw": 0.01096142018701635,
+   "busbw": 0.01096142018701635,
+   "factor": 1.0
+  },
+  {
+   "world": 2,
+   "collective": "all_gather",
+   "bytes": 4096,
+   "us": 184.9350956035778,
+   "algbw": 0.022148310933799622,
+   "busbw": 0.011074155466899811,
+   "factor": 0.5
+  },
+  {
+   "world": 2,
+   "collective": "reduce_scatter",
+   "bytes": 4096,
+   "us": 431.53841397725046,
+   "algbw": 0.009491623149488449,
+   "busbw": 0.004745811574744224,
+   "factor": 0.5
+  },
+  {
+   "world": 2,
+   "collective": "broadcast",
+   "bytes": 4096,
+   "us": 86.09423093730584,
+   "algbw": 0.04757577778913809,
+   "busbw": 0.04757577778913809,
+   "factor": 1.0
+  },
+  {
+   "world": 2,
+   "collective": "all_reduce",
+   "bytes": 65536,
+   "us": 265.96334646455944,
+   "algbw": 0.24640989396158355,
+   "busbw": 0.24640989396158355,
+   "factor": 1.0
+  },
+  {
+   "world": 2,
+   "collective": "all_gather",
+   "bytes": 65536,
+   "us": 198.58982705045491,
+   "algbw": 0.33000683354918037,
+   "busbw": 0.16500341677459018,
+   "factor": 0.5
+  },
+  {
+   "world": 2,
+   "collective": "reduce_scatter",
+   "bytes": 65536,
+   "us": 471.37937508523464,
+   "algbw": 0.13903026620150657,
+   "busbw": 0.06951513310075329,
+   "factor": 0.5
+  },
+  {
+   "world": 2,
+   "collective": "broadcast",
+   "bytes": 65536,
+   "us": 132.20914115663618,
+   "algbw": 0.49569946091969186,
+   "busbw": 0.49569946091969186,
+   "factor": 1.0
+  },
+  {
+   "world": 2,
+   "collective": "all_reduce",
+   "bytes": 1048576,
+   "us": 608.4883934818208,
+   "algbw": 1.723247330980237,
+   "busbw": 1.723247330980237,
+   "factor": 1.0
+  },
+  {
+   "world": 2,
+   "collective": "all_gather",
+   "bytes": 1048576,
+   "us": 478.38708269409835,
+   "algbw": 2.1918986484643557,
+   "busbw": 1.0959493242321778,
+   "factor": 0.5
+  },
+  {
+   "world": 2,
+   "collective": "reduce_scatter",
+   "bytes": 1048576,
+   "us": 982.0109698921442,
+   "algbw": 1.0677844058250863,
+   "busbw": 0.5338922029125431,
+   "factor": 0.5
+  },
+  {
+   "world": 2,
+   "collective": "broadcast",
+   "bytes": 1048576,
+   "us": 335.5567459948361,
+   "algbw": 3.1248842781904216,
+   "busbw": 3.1248842781904216,
+   "factor": 1.0
+  },
+  {
+   "world": 2,
+   "collective": "all_reduce",
+   "bytes": 8388608,
+   "us": 4089.8891165852547,
+   "algbw": 2.0510600069773646,
+   "busbw": 2.0510600069773646,
+   "factor": 1.0
+  },
+  {
+   "world": 2,
+   "collective": "all_gather",
+   "bytes": 8388608,
+   "us": 4410.178400576115,
+   "algbw": 1.9021017378580811,
+   "busbw": 0.9510508689290406,
+   "factor": 0.5
+  },
+  {
+   "world": 2,
+   "collective": "reduce_scatter",
+   "bytes": 8388608,
+   "us": 6602.718960493803,
+   "algbw": 1.2704778213629486,
+   "busbw": 0.6352389106814743,
+   "factor": 0.5
+  },
+  {
+   "world": 2,
+   "collective": "broadcast",
+   "bytes": 8388608,
+   "us": 2194.8027424514294,
+   "algbw": 3.8220327675691514,
+   "busbw": 3.8220327675691514,
+   "factor": 1.0
+  },
+  {
+   "world": 2,
+   "collective": "all_reduce",
+   "bytes": 16777216,
+   "us": 7508.570794016123,
+   "algbw": 2.2344087124237313,
+   "busbw": 2.2344087124237313,
+   "factor": 1.0
+  },
+  {
+   "world": 2,
+   "collective": "all_gather",
+   "bytes": 16777216,
+   "us": 8729.428984224796,
+   "algbw": 1.9219144837902449,
+   "busbw": 0.9609572418951224,
+   "factor": 0.5
+  },
+  {
+   "world": 2,
+   "collective": "reduce_scatter",
+   "bytes": 16777216,
+   "us": 12089.306488633156,
+   "algbw": 1.387773237097976,
+   "busbw": 0.693886618548988,
+   "factor": 0.5
+  },
+  {
+   "world": 2,
+   "collective": "broadcast",
+   "bytes": 16777216,
+   "us": 3692.7859764546156,
+   "algbw": 4.543240823316691,
+   "busbw": 4.543240823316691,
+   "factor": 1.0
+  },
+  {
+   "world": 4,
+   "collective": "all_reduce",
+   "bytes": 4096,
+   "us": 621.9019996933639,
+   "algbw": 0.006586246710928057,
+   "busbw": 0.009879370066392086,
+   "factor": 1.5
+  },
+  {
+   "world": 4,
+   "collective": "all_gather",
+   "bytes": 4096,
+   "us": 384.9260101560503,
+   "algbw": 0.010641006042536507,
+   "busbw": 0.00798075453190238,
+   "factor": 0.75
+  },
+  {
+   "world": 4,
+   "collective": "reduce_scatter",
+   "bytes": 4096,
+   "us": 2284.8141379654408,
+   "algbw": 0.0017927059938658149,
+   "busbw": 0.0013445294953993612,
+   "factor": 0.75
+  },
+  {
+   "world": 4,
+   "collective": "broadcast",
+   "bytes": 4096,
+   "us": 115.18740211613476,
+   "algbw": 0.0355594442165673,
+   "busbw": 0.0355594442165673,
+   "factor": 1.0
+  },
+  {
+   "world": 4,
+   "collective": "all_reduce",
+   "bytes": 65536,
+   "us": 639.9567937478423,
+   "algbw": 0.1024069134670718,
+   "busbw": 0.1536103702006077,
+   "factor": 1.5
+  },
+  {
+   "world": 4,
+   "collective": "all_gather",
+   "bytes": 65536,
+   "us": 411.52696940116584,
+   "algbw": 0.15925080219010876,
+   "busbw": 0.11943810164258156,
+   "factor": 0.75
+  },
+  {
+   "world": 4,
+   "collective": "reduce_scatter",
+   "bytes": 65536,
+   "us": 2399.9852128326893,
+   "algbw": 0.02730683491280691,
+   "busbw": 0.02048012618460518,
+   "factor": 0.75
+  },
+  {
+   "world": 4,
+   "collective": "broadcast",
+   "bytes": 65536,
+   "us": 137.79052824247628,
+   "algbw": 0.4756205004503162,
+   "busbw": 0.4756205004503162,
+   "factor": 1.0
+  },
+  {
+   "world": 4,
+   "collective": "all_reduce",
+   "bytes": 1048576,
+   "us": 1166.9994564726949,
+   "algbw": 0.8985231262826507,
+   "busbw": 1.347784689423976,
+   "factor": 1.5
+  },
+  {
+   "world": 4,
+   "collective": "all_gather",
+   "bytes": 1048576,
+   "us": 1154.0104169398546,
+   "algbw": 0.9086365119480981,
+   "busbw": 0.6814773839610736,
+   "factor": 0.75
+  },
+  {
+   "world": 4,
+   "collective": "reduce_scatter",
+   "bytes": 1048576,
+   "us": 2959.461184218526,
+   "algbw": 0.35431314510613743,
+   "busbw": 0.26573485882960307,
+   "factor": 0.75
+  },
+  {
+   "world": 4,
+   "collective": "broadcast",
+   "bytes": 1048576,
+   "us": 562.7719801850617,
+   "algbw": 1.8632341994979684,
+   "busbw": 1.8632341994979684,
+   "factor": 1.0
+  },
+  {
+   "world": 4,
+   "collective": "all_reduce",
+   "bytes": 8388608,
+   "us": 9558.391757309437,
+   "algbw": 0.877617094275835,
+   "busbw": 1.3164256414137525,
+   "factor": 1.5
+  },
+  {
+   "world": 4,
+   "collective": "all_gather",
+   "bytes": 8388608,
+   "us": 8060.804568231106,
+   "algbw": 1.0406663415536483,
+   "busbw": 0.7804997561652363,
+   "factor": 0.75
+  },
+  {
+   "world": 4,
+   "collective": "reduce_scatter",
+   "bytes": 8388608,
+   "us": 11878.244578838348,
+   "algbw": 0.706216136931942,
+   "busbw": 0.5296621026989565,
+   "factor": 0.75
+  },
+  {
+   "world": 4,
+   "collective": "broadcast",
+   "bytes": 8388608,
+   "us": 4777.219146490097,
+   "algbw": 1.755960474654643,
+   "busbw": 1.755960474654643,
+   "factor": 1.0
+  },
+  {
+   "world": 4,
+   "collective": "all_reduce",
+   "bytes": 16777216,
+   "us": 18727.170303463936,
+   "algbw": 0.8958756570338202,
+   "busbw": 1.3438134855507302,
+   "factor": 1.5
+  },
+  {
+   "world": 4,
+   "collective": "all_gather",
+   "bytes": 16777216,
+   "us": 16752.686351537704,
+   "algbw": 1.0014642217939,
+   "busbw": 0.751098166345425,
+   "factor": 0.75
+  },
+  {
+   "world": 4,
+   "collective": "reduce_scatter",
+   "bytes": 16777216,
+   "us": 25790.484622120857,
+   "algbw": 0.6505196100739398,
+   "busbw": 0.4878897075554548,
+   "factor": 0.75
+  },
+  {
+   "world": 4,
+   "collective": "broadcast",
+   "bytes": 16777216,
+   "us": 9122.430346906185,
+   "algbw": 1.8391169197241268,
+   "busbw": 1.8391169197241268,
+   "factor": 1.0
+  },
+  {
+   "world": 6,
+   "collective": "all_reduce",
+   "bytes": 4096,
+   "us": 1600.7270896807313,
+   "algbw": 0.002558837184930104,
+   "busbw": 0.004264728641550173,
+   "factor": 1.6666666666666667
+  },
+  {
+   "world": 6,
+   "collective": "all_gather",
+   "bytes": 4096,
+   "us": 679.6744419261813,
+   "algbw": 0.006026414629321698,
+   "busbw": 0.005022012191101415,
+   "factor": 0.8333333333333334
+  },
+  {
+   "world": 6,
+   "collective": "reduce_scatter",
+   "bytes": 4096,
+   "us": 8131.353184580803,
+   "algbw": 0.0005037291957465456,
+   "busbw": 0.000419774329788788,
+   "factor": 0.8333333333333334
+  },
+  {
+   "world": 6,
+   "collective": "broadcast",
+   "bytes": 4096,
+   "us": 137.21045979764313,
+   "algbw": 0.02985195156433954,
+   "busbw": 0.02985195156433954,
+   "factor": 1.0
+  },
+  {
+   "world": 6,
+   "collective": "all_reduce",
+   "bytes": 65536,
+   "us": 1318.3667324483395,
+   "algbw": 0.04970999221005301,
+   "busbw": 0.08284998701675503,
+   "factor": 1.6666666666666667
+  },
+  {
+   "world": 6,
+   "collective": "all_gather",
+   "bytes": 65536,
+   "us": 655.5915460921824,
+   "algbw": 0.09996468134868995,
+   "busbw": 0.0833039011239083,
+   "factor": 0.8333333333333334
+  },
+  {
+   "world": 6,
+   "collective": "reduce_scatter",
+   "bytes": 65536,
+   "us": 8234.452456235886,
+   "algbw": 0.007958756255902614,
+   "busbw": 0.0066322968799188455,
+   "factor": 0.8333333333333334
+  },
+  {
+   "world": 6,
+   "collective": "broadcast",
+   "bytes": 65536,
+   "us": 184.81186998542398,
+   "algbw": 0.3546092575394037,
+   "busbw": 0.3546092575394037,
+   "factor": 1.0
+  },
+  {
+   "world": 6,
+   "collective": "all_reduce",
+   "bytes": 1048576,
+   "us": 1751.9680550321937,
+   "algbw": 0.5985131960529564,
+   "busbw": 0.997521993421594,
+   "factor": 1.6666666666666667
+  },
+  {
+   "world": 6,
+   "collective": "all_gather",
+   "bytes": 1048576,
+   "us": 1557.9448081552982,
+   "algbw": 0.6730508003307114,
+   "busbw": 0.5608756669422595,
+   "factor": 0.8333333333333334
+  },
+  {
+   "world": 6,
+   "collective": "reduce_scatter",
+   "bytes": 1048576,
+   "us": 9605.4682508111,
+   "algbw": 0.10916448554306102,
+   "busbw": 0.09097040461921752,
+   "factor": 0.8333333333333334
+  },
+  {
+   "world": 6,
+   "collective": "broadcast",
+   "bytes": 1048576,
+   "us": 932.6249128207564,
+   "algbw": 1.1243276751299143,
+   "busbw": 1.1243276751299143,
+   "factor": 1.0
+  },
+  {
+   "world": 6,
+   "collective": "all_reduce",
+   "bytes": 8388608,
+   "us": 15714.503824710846,
+   "algbw": 0.5338130998962263,
+   "busbw": 0.8896884998270438,
+   "factor": 1.6666666666666667
+  },
+  {
+   "world": 6,
+   "collective": "all_gather",
+   "bytes": 8388608,
+   "us": 12042.035348713398,
+   "algbw": 0.6966104779700933,
+   "busbw": 0.5805087316417444,
+   "factor": 0.8333333333333334
+  },
+  {
+   "world": 6,
+   "collective": "reduce_scatter",
+   "bytes": 8388608,
+   "us": 20088.521763682365,
+   "algbw": 0.41758214460387005,
+   "busbw": 0.34798512050322505,
+   "factor": 0.8333333333333334
+  },
+  {
+   "world": 6,
+   "collective": "broadcast",
+   "bytes": 8388608,
+   "us": 6775.1421593129635,
+   "algbw": 1.23814494260747,
+   "busbw": 1.23814494260747,
+   "factor": 1.0
+  },
+  {
+   "world": 6,
+   "collective": "all_reduce",
+   "bytes": 16777216,
+   "us": 34041.1514043808,
+   "algbw": 0.4928510143708276,
+   "busbw": 0.8214183572847127,
+   "factor": 1.6666666666666667
+  },
+  {
+   "world": 6,
+   "collective": "all_gather",
+   "bytes": 16777216,
+   "us": 26738.472282886505,
+   "algbw": 0.6274560424582659,
+   "busbw": 0.5228800353818883,
+   "factor": 0.8333333333333334
+  },
+  {
+   "world": 6,
+   "collective": "reduce_scatter",
+   "bytes": 16777216,
+   "us": 38476.54536366463,
+   "algbw": 0.43603748313234963,
+   "busbw": 0.36336456927695804,
+   "factor": 0.8333333333333334
+  },
+  {
+   "world": 6,
+   "collective": "broadcast",
+   "bytes": 16777216,
+   "us": 13205.22464811802,
+   "algbw": 1.2704983403967347,
+   "busbw": 1.2704983403967347,
+   "factor": 1.0
+  }
+ ],
+ "C_alpha_beta": {
+  "2": {
+   "points": [
+    [
+     4,
+     0.00018149439711123705
+    ],
+    [
+     256,
+     0.00021826906595379114
+    ],
+    [
+     4096,
+     0.00023378503101412207
+    ],
+    [
+     16384,
+     0.00024125850177370012
+    ],
+    [
+     65536,
+     0.00029262067982926965
+    ],
+    [
+     262144,
+     0.0003525832435116172
+    ],
+    [
+     1048576,
+     0.000568229821510613
+    ],
+    [
+     4194304,
+     0.0020057493820786476
+    ],
+    [
+     8388608,
+     0.004093906842172146
+    ]
+   ],
+   "alpha_us": 181.49439711123705,
+   "bw_GBs": 2.0086148100211743,
+   "crossover_bytes": 364552.333973495
+  },
+  "4": {
+   "points": [
+    [
+     4,
+     0.000489363563247025
+    ],
+    [
+     256,
+     0.0006045428453944623
+    ],
+    [
+     4096,
+     0.0006159495678730309
+    ],
+    [
+     16384,
+     0.0006183858495205641
+    ],
+    [
+     65536,
+     0.0006401512073352933
+    ],
+    [
+     262144,
+     0.0007033860310912132
+    ],
+    [
+     1048576,
+     0.001135556260123849
+    ],
+    [
+     4194304,
+     0.00413515092805028
+    ],
+    [
+     8388608,
+     0.009533762000501156
+    ]
+   ],
+   "alpha_us": 489.363563247025,
+   "bw_GBs": 0.7769227943467797,
+   "crossover_bytes": 380197.70700937574
+  },
+  "6": {
+   "points": [
+    [
+     4,
+     0.0008143053855746984
+    ],
+    [
+     256,
+     0.0010797861032187939
+    ],
+    [
+     4096,
+     0.001081232912838459
+    ],
+    [
+     16384,
+     0.001310389139689505
+    ],
+    [
+     65536,
+     0.0011760027846321464
+    ],
+    [
+     262144,
+     0.0012428001500666142
+    ],
+    [
+     1048576,
+     0.0017694337293505669
+    ],
+    [
+     4194304,
+     0.0060699996538460255
+    ],
+    [
+     8388608,
+     0.01587914302945137
+    ]
+   ],
+   "alpha_us": 814.3053855746984,
+   "bw_GBs": 0.4275912624981037,
+   "crossover_bytes": 348189.8678768904
+  }
+ },
+ "D_algorithms": [
+  {
+   "world": 2,
+   "alg": "ring",
+   "bytes": 4096,
+   "us": 284.7232099156827,
+   "max_err": 0.0,
+   "steps": 2,
+   "bytes_sent": 4096.0
+  },
+  {
+   "world": 2,
+   "alg": "recursive_doubling",
+   "bytes": 4096,
+   "us": 166.38659872114658,
+   "max_err": 0.0,
+   "steps": 1,
+   "bytes_sent": 4096
+  },
+  {
+   "world": 2,
+   "alg": "flat",
+   "bytes": 4096,
+   "us": 112.16660641366616,
+   "max_err": 0.0,
+   "steps": 2,
+   "bytes_sent": 4096
+  },
+  {
+   "world": 2,
+   "alg": "gloo_builtin",
+   "bytes": 4096,
+   "us": 304.23270072788,
+   "max_err": 0.0,
+   "steps": null,
+   "bytes_sent": null
+  },
+  {
+   "world": 2,
+   "alg": "ring",
+   "bytes": 65536,
+   "us": 286.3834088202566,
+   "max_err": 0.0,
+   "steps": 2,
+   "bytes_sent": 65536.0
+  },
+  {
+   "world": 2,
+   "alg": "recursive_doubling",
+   "bytes": 65536,
+   "us": 138.25460337102413,
+   "max_err": 0.0,
+   "steps": 1,
+   "bytes_sent": 65536
+  },
+  {
+   "world": 2,
+   "alg": "flat",
+   "bytes": 65536,
+   "us": 155.54280253127217,
+   "max_err": 0.0,
+   "steps": 2,
+   "bytes_sent": 65536
+  },
+  {
+   "world": 2,
+   "alg": "gloo_builtin",
+   "bytes": 65536,
+   "us": 319.6239995304495,
+   "max_err": 0.0,
+   "steps": null,
+   "bytes_sent": null
+  },
+  {
+   "world": 2,
+   "alg": "ring",
+   "bytes": 1048576,
+   "us": 873.8102624192834,
+   "max_err": 0.0,
+   "steps": 2,
+   "bytes_sent": 1048576.0
+  },
+  {
+   "world": 2,
+   "alg": "recursive_doubling",
+   "bytes": 1048576,
+   "us": 1338.805304840207,
+   "max_err": 0.0,
+   "steps": 1,
+   "bytes_sent": 1048576
+  },
+  {
+   "world": 2,
+   "alg": "flat",
+   "bytes": 1048576,
+   "us": 1336.24579757452,
+   "max_err": 0.0,
+   "steps": 2,
+   "bytes_sent": 1048576
+  },
+  {
+   "world": 2,
+   "alg": "gloo_builtin",
+   "bytes": 1048576,
+   "us": 875.361729413271,
+   "max_err": 0.0,
+   "steps": null,
+   "bytes_sent": null
+  },
+  {
+   "world": 2,
+   "alg": "ring",
+   "bytes": 8388608,
+   "us": 7591.564208269119,
+   "max_err": 0.0,
+   "steps": 2,
+   "bytes_sent": 8388608.0
+  },
+  {
+   "world": 2,
+   "alg": "recursive_doubling",
+   "bytes": 8388608,
+   "us": 10840.293020009995,
+   "max_err": 0.0,
+   "steps": 1,
+   "bytes_sent": 8388608
+  },
+  {
+   "world": 2,
+   "alg": "flat",
+   "bytes": 8388608,
+   "us": 10140.810161828995,
+   "max_err": 0.0,
+   "steps": 2,
+   "bytes_sent": 8388608
+  },
+  {
+   "world": 2,
+   "alg": "gloo_builtin",
+   "bytes": 8388608,
+   "us": 6652.901414781809,
+   "max_err": 0.0,
+   "steps": null,
+   "bytes_sent": null
+  },
+  {
+   "world": 4,
+   "alg": "ring",
+   "bytes": 4096,
+   "us": 639.6673852577806,
+   "max_err": 4.76837158203125e-07,
+   "steps": 6,
+   "bytes_sent": 6144.0
+  },
+  {
+   "world": 4,
+   "alg": "recursive_doubling",
+   "bytes": 4096,
+   "us": 256.17878418415785,
+   "max_err": 4.76837158203125e-07,
+   "steps": 2,
+   "bytes_sent": 8192
+  },
+  {
+   "world": 4,
+   "alg": "flat",
+   "bytes": 4096,
+   "us": 243.94560023210943,
+   "max_err": 4.76837158203125e-07,
+   "steps": 2,
+   "bytes_sent": 4096
+  },
+  {
+   "world": 4,
+   "alg": "gloo_builtin",
+   "bytes": 4096,
+   "us": 666.926905978471,
+   "max_err": 0.0,
+   "steps": null,
+   "bytes_sent": null
+  },
+  {
+   "world": 4,
+   "alg": "ring",
+   "bytes": 65536,
+   "us": 708.1673829816282,
+   "max_err": 9.5367431640625e-07,
+   "steps": 6,
+   "bytes_sent": 98304.0
+  },
+  {
+   "world": 4,
+   "alg": "recursive_doubling",
+   "bytes": 65536,
+   "us": 340.63588827848434,
+   "max_err": 4.76837158203125e-07,
+   "steps": 2,
+   "bytes_sent": 131072
+  },
+  {
+   "world": 4,
+   "alg": "flat",
+   "bytes": 65536,
+   "us": 314.92189737036824,
+   "max_err": 9.5367431640625e-07,
+   "steps": 2,
+   "bytes_sent": 65536
+  },
+  {
+   "world": 4,
+   "alg": "gloo_builtin",
+   "bytes": 65536,
+   "us": 701.2147107161582,
+   "max_err": 0.0,
+   "steps": null,
+   "bytes_sent": null
+  },
+  {
+   "world": 4,
+   "alg": "ring",
+   "bytes": 1048576,
+   "us": 2180.6189324706793,
+   "max_err": 9.5367431640625e-07,
+   "steps": 6,
+   "bytes_sent": 1572864.0
+  },
+  {
+   "world": 4,
+   "alg": "recursive_doubling",
+   "bytes": 1048576,
+   "us": 2877.277322113514,
+   "max_err": 9.5367431640625e-07,
+   "steps": 2,
+   "bytes_sent": 2097152
+  },
+  {
+   "world": 4,
+   "alg": "flat",
+   "bytes": 1048576,
+   "us": 2530.2504654973745,
+   "max_err": 9.5367431640625e-07,
+   "steps": 2,
+   "bytes_sent": 1048576
+  },
+  {
+   "world": 4,
+   "alg": "gloo_builtin",
+   "bytes": 1048576,
+   "us": 1460.1497678086162,
+   "max_err": 0.0,
+   "steps": null,
+   "bytes_sent": null
+  },
+  {
+   "world": 4,
+   "alg": "ring",
+   "bytes": 8388608,
+   "us": 17728.87259721756,
+   "max_err": 9.5367431640625e-07,
+   "steps": 6,
+   "bytes_sent": 12582912.0
+  },
+  {
+   "world": 4,
+   "alg": "recursive_doubling",
+   "bytes": 8388608,
+   "us": 28171.759098768234,
+   "max_err": 9.5367431640625e-07,
+   "steps": 2,
+   "bytes_sent": 16777216
+  },
+  {
+   "world": 4,
+   "alg": "flat",
+   "bytes": 8388608,
+   "us": 23030.944168567657,
+   "max_err": 9.5367431640625e-07,
+   "steps": 2,
+   "bytes_sent": 8388608
+  },
+  {
+   "world": 4,
+   "alg": "gloo_builtin",
+   "bytes": 8388608,
+   "us": 13615.010306239128,
+   "max_err": 0.0,
+   "steps": null,
+   "bytes_sent": null
+  }
+ ],
+ "E_busbw_invariance": {
+  "algbw": {
+   "2": 2.2344087124237313,
+   "4": 0.8958756570338202,
+   "6": 0.4928510143708276
+  },
+  "busbw": {
+   "2": 2.2344087124237313,
+   "4": 1.3438134855507302,
+   "6": 0.8214183572847127
+  },
+  "algbw_spread": 4.533639268808591,
+  "busbw_spread": 2.720183561285155
+ },
+ "runtime_s": 34.29577180801425
+}

@@ -1,0 +1,36 @@
+/home/canary/.local/lib/python3.12/site-packages/torch/cuda/__init__.py:435: UserWarning: 
+    Found GPU0 NVIDIA GeForce GTX 1070 Ti which is of cuda capability 6.1.
+    Minimum and Maximum cuda capability supported by this version of PyTorch is
+    (7.0) - (12.0)
+    
+  queued_call()
+/home/canary/.local/lib/python3.12/site-packages/torch/cuda/__init__.py:435: UserWarning: 
+    Please install PyTorch with a following CUDA
+    configurations:  12.6 following instructions at
+    https://pytorch.org/get-started/locally/
+    
+  queued_call()
+/home/canary/.local/lib/python3.12/site-packages/torch/cuda/__init__.py:435: UserWarning: 
+NVIDIA GeForce GTX 1070 Ti with CUDA capability sm_61 is not compatible with the current PyTorch installation.
+The current PyTorch install supports CUDA capabilities sm_70 sm_75 sm_80 sm_86 sm_90 sm_100 sm_120.
+If you want to use the NVIDIA GeForce GTX 1070 Ti GPU with PyTorch, please check the instructions at https://pytorch.org/get-started/locally/
+
+  queued_call()
+A: 1 GPU(s); cold link 2.5 GT/s PCIe; after nvidia-smi 2.5 GT/s PCIe x16 = 4.0 GB/s, max 8.0 GT/s PCIe x16 = 15.76 GB/s one way; NUMA node -1 of 1, 12 CPUs
+B: link speed cold 2.5 GT/s PCIe -> under load 8.0 GT/s PCIe
+B: 64 MiB pinned   h2d:  12.67 GB/s ( 80.4% of the 15.8 GB/s link)
+B: 64 MiB pinned   d2h:  12.45 GB/s ( 79.0% of the 15.8 GB/s link)
+B: 64 MiB pageable h2d:  10.44 GB/s ( 66.2% of the 15.8 GB/s link)
+B: 64 MiB pageable d2h:   8.01 GB/s ( 50.8% of the 15.8 GB/s link)
+B: pinned is 1.21x pageable; 4 KiB copy takes 7.5 us (all fixed cost)
+C: affinity all          (12 cpus) ->  12.45 GB/s
+C: affinity first_half   (6 cpus) ->  12.57 GB/s
+C: affinity second_half  (6 cpus) ->  12.46 GB/s
+C: spread across affinity sets 1.010x (one NUMA node, so the expected answer is 1.00x)
+D: 4-GPU PCIe workstation             best ring   12.0 GB/s, worst   12.0 GB/s ( 1.00x), 14 GB all-reduce   1750.0 ms
+D: DGX-1 (8xV100, hybrid cube mesh)   best ring   50.0 GB/s, worst    6.0 GB/s ( 8.33x), 14 GB all-reduce    490.0 ms
+D: DGX A100 (NVSwitch)                best ring  300.0 GB/s, worst  300.0 GB/s ( 1.00x), 14 GB all-reduce     81.7 ms
+D: DGX H100 (NVSwitch)                best ring  450.0 GB/s, worst  450.0 GB/s ( 1.00x), 14 GB all-reduce     54.4 ms
+E: legend and assumed bandwidths written to findings.json
+total runtime 3.4 s
+wrote /home/canary/project/tmp/claude-ai-hardware-phase6/guides/ai-hardware/projects/32-topology-study/outputs

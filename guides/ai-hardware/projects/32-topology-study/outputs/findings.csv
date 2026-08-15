@@ -1,0 +1,29 @@
+section,key,bytes,value
+B,pinned_h2d,4096,0.5434
+B,pinned_d2h,4096,0.5910
+B,pageable_h2d,4096,0.5486
+B,pageable_d2h,4096,0.4965
+B,pinned_h2d,65536,5.4311
+B,pinned_d2h,65536,5.7376
+B,pageable_h2d,65536,4.3530
+B,pageable_d2h,65536,3.5147
+B,pinned_h2d,1048576,12.0315
+B,pinned_d2h,1048576,12.0241
+B,pageable_h2d,1048576,8.0146
+B,pageable_d2h,1048576,5.8492
+B,pinned_h2d,4194304,12.5117
+B,pinned_d2h,4194304,12.4875
+B,pageable_h2d,4194304,9.8356
+B,pageable_d2h,4194304,7.7228
+B,pinned_h2d,16777216,12.7089
+B,pinned_d2h,16777216,12.4614
+B,pageable_h2d,16777216,10.2980
+B,pageable_d2h,16777216,7.9638
+B,pinned_h2d,67108864,12.6711
+B,pinned_d2h,67108864,12.4522
+B,pageable_h2d,67108864,10.4352
+B,pageable_d2h,67108864,8.0107
+D,4-GPU PCIe workstation,,12.00
+D,DGX-1 (8xV100, hybrid cube mesh),,50.00
+D,DGX A100 (NVSwitch),,300.00
+D,DGX H100 (NVSwitch),,450.00

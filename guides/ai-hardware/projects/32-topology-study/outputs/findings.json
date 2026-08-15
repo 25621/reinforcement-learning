@@ -1,0 +1,398 @@
+{
+ "A_topology": {
+  "topo_matrix_labels": [
+   "GPU0"
+  ],
+  "topo_matrix": [
+   [
+    "X"
+   ]
+  ],
+  "gpus": [
+   {
+    "bdf": "0000:01:00.0",
+    "cold_link_speed": "2.5 GT/s PCIe",
+    "idle_link_speed": "2.5 GT/s PCIe",
+    "link_width": "16",
+    "max_link_speed": "8.0 GT/s PCIe",
+    "max_link_width": "16",
+    "numa_node": "-1",
+    "idle_GBs": 4.0,
+    "theoretical_GBs": 15.76,
+    "local_cpus": "0-11",
+    "loaded_link_speed": "8.0 GT/s PCIe"
+   }
+  ],
+  "torch_device_count": 1,
+  "numa_nodes": 1,
+  "cpu_count": 12,
+  "numa_reported": "-1"
+ },
+ "B_pcie": [
+  {
+   "bytes": 4096,
+   "pinned": true,
+   "dir": "h2d",
+   "GBs": 0.543364321257854,
+   "us": 7.538220379501581
+  },
+  {
+   "bytes": 4096,
+   "pinned": true,
+   "dir": "d2h",
+   "GBs": 0.5909579566486266,
+   "us": 6.931119132786989
+  },
+  {
+   "bytes": 4096,
+   "pinned": false,
+   "dir": "h2d",
+   "GBs": 0.5486204267704103,
+   "us": 7.465999806299806
+  },
+  {
+   "bytes": 4096,
+   "pinned": false,
+   "dir": "d2h",
+   "GBs": 0.4964884241955397,
+   "us": 8.249940583482385
+  },
+  {
+   "bytes": 65536,
+   "pinned": true,
+   "dir": "h2d",
+   "GBs": 5.431136506254244,
+   "us": 12.06671935506165
+  },
+  {
+   "bytes": 65536,
+   "pinned": true,
+   "dir": "d2h",
+   "GBs": 5.737598763721006,
+   "us": 11.422199895605445
+  },
+  {
+   "bytes": 65536,
+   "pinned": false,
+   "dir": "h2d",
+   "GBs": 4.353047562094529,
+   "us": 15.05519961938262
+  },
+  {
+   "bytes": 65536,
+   "pinned": false,
+   "dir": "d2h",
+   "GBs": 3.5146503927506605,
+   "us": 18.646520329639316
+  },
+  {
+   "bytes": 1048576,
+   "pinned": true,
+   "dir": "h2d",
+   "GBs": 12.031458240911741,
+   "us": 87.15286036022007
+  },
+  {
+   "bytes": 1048576,
+   "pinned": true,
+   "dir": "d2h",
+   "GBs": 12.024123987776903,
+   "us": 87.20602025277913
+  },
+  {
+   "bytes": 1048576,
+   "pinned": false,
+   "dir": "h2d",
+   "GBs": 8.014574845055494,
+   "us": 130.8336399961263
+  },
+  {
+   "bytes": 1048576,
+   "pinned": false,
+   "dir": "d2h",
+   "GBs": 5.849181597810918,
+   "us": 179.26884000189602
+  },
+  {
+   "bytes": 4194304,
+   "pinned": true,
+   "dir": "h2d",
+   "GBs": 12.511682828898767,
+   "us": 335.23100428283215
+  },
+  {
+   "bytes": 4194304,
+   "pinned": true,
+   "dir": "d2h",
+   "GBs": 12.487481391052045,
+   "us": 335.88070073165
+  },
+  {
+   "bytes": 4194304,
+   "pinned": false,
+   "dir": "h2d",
+   "GBs": 9.835553639418713,
+   "us": 426.44310160540044
+  },
+  {
+   "bytes": 4194304,
+   "pinned": false,
+   "dir": "d2h",
+   "GBs": 7.7227636797130215,
+   "us": 543.1091994978487
+  },
+  {
+   "bytes": 16777216,
+   "pinned": true,
+   "dir": "h2d",
+   "GBs": 12.708907768301547,
+   "us": 1320.1147026848048
+  },
+  {
+   "bytes": 16777216,
+   "pinned": true,
+   "dir": "d2h",
+   "GBs": 12.461372784492113,
+   "us": 1346.337702125311
+  },
+  {
+   "bytes": 16777216,
+   "pinned": false,
+   "dir": "h2d",
+   "GBs": 10.298030764976147,
+   "us": 1629.1673993691802
+  },
+  {
+   "bytes": 16777216,
+   "pinned": false,
+   "dir": "d2h",
+   "GBs": 7.963779006277835,
+   "us": 2106.6903020255268
+  },
+  {
+   "bytes": 67108864,
+   "pinned": true,
+   "dir": "h2d",
+   "GBs": 12.671128073541734,
+   "us": 5296.202801400796
+  },
+  {
+   "bytes": 67108864,
+   "pinned": true,
+   "dir": "d2h",
+   "GBs": 12.452215415896086,
+   "us": 5389.311199542135
+  },
+  {
+   "bytes": 67108864,
+   "pinned": false,
+   "dir": "h2d",
+   "GBs": 10.435150820369275,
+   "us": 6431.039201561362
+  },
+  {
+   "bytes": 67108864,
+   "pinned": false,
+   "dir": "d2h",
+   "GBs": 8.010676883240036,
+   "us": 8377.427398227155
+  }
+ ],
+ "B_summary": {
+  "latency_us": 7.538220379501581,
+  "pinned_h2d_GBs": 12.671128073541734,
+  "pageable_h2d_GBs": 10.435150820369275,
+  "pinned_speedup": 1.2142735923670467,
+  "theoretical_GBs": 15.76,
+  "cold_link_speed": "2.5 GT/s PCIe",
+  "idle_link_speed": "2.5 GT/s PCIe",
+  "loaded_link_speed": "8.0 GT/s PCIe",
+  "efficiency": 0.8040055884226989
+ },
+ "C_affinity": {
+  "all": {
+   "cpus": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+   ],
+   "GBs": 12.445279339618395
+  },
+  "first_half": {
+   "cpus": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "GBs": 12.569949083866526
+  },
+  "second_half": {
+   "cpus": [
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+   ],
+   "GBs": 12.455325720714638
+  },
+  "spread": 1.010017432381068,
+  "gpu_local_cpulist": "0-11"
+ },
+ "D_rings": {
+  "rows": [
+   {
+    "system": "4-GPU PCIe workstation",
+    "note": "all four behind one host bridge",
+    "n": 4,
+    "best_ring": [
+     0,
+     1,
+     2,
+     3
+    ],
+    "best_bottleneck_GBs": 12.0,
+    "worst_ring": [
+     0,
+     1,
+     2,
+     3
+    ],
+    "worst_bottleneck_GBs": 12.0,
+    "ring_choice_matters": 1.0,
+    "predicted_busbw_GBs": 12.0,
+    "allreduce_14GB_ms": 1750.0
+   },
+   {
+    "system": "DGX-1 (8xV100, hybrid cube mesh)",
+    "note": "NVLink where it exists, PCIe/QPI where it does not",
+    "n": 8,
+    "best_ring": [
+     0,
+     1,
+     2,
+     3,
+     7,
+     6,
+     5,
+     4
+    ],
+    "best_bottleneck_GBs": 50.0,
+    "worst_ring": [
+     0,
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7
+    ],
+    "worst_bottleneck_GBs": 6.0,
+    "ring_choice_matters": 8.333333333333334,
+    "predicted_busbw_GBs": 50.0,
+    "allreduce_14GB_ms": 490.0
+   },
+   {
+    "system": "DGX A100 (NVSwitch)",
+    "note": "every pair full NVLink bandwidth",
+    "n": 8,
+    "best_ring": [
+     0,
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7
+    ],
+    "best_bottleneck_GBs": 300.0,
+    "worst_ring": [
+     0,
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7
+    ],
+    "worst_bottleneck_GBs": 300.0,
+    "ring_choice_matters": 1.0,
+    "predicted_busbw_GBs": 300.0,
+    "allreduce_14GB_ms": 81.66666666666667
+   },
+   {
+    "system": "DGX H100 (NVSwitch)",
+    "note": "every pair full NVLink bandwidth",
+    "n": 8,
+    "best_ring": [
+     0,
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7
+    ],
+    "best_bottleneck_GBs": 450.0,
+    "worst_ring": [
+     0,
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7
+    ],
+    "worst_bottleneck_GBs": 450.0,
+    "ring_choice_matters": 1.0,
+    "predicted_busbw_GBs": 450.0,
+    "allreduce_14GB_ms": 54.44444444444444
+   }
+  ],
+  "this_machine_gpus": 1,
+  "grad_bytes": 14000000000.0
+ },
+ "E_legend": {
+  "meaning": {
+   "NV#": "# NVLink lanes between the pair. Highest bandwidth; what you want.",
+   "PIX": "Same PCIe switch. Peer-to-peer DMA works, no host involvement.",
+   "PXB": "Multiple PCIe switches, still below the host bridge.",
+   "PHB": "Up to the host bridge (the CPU's PCIe root). Slower, host-adjacent.",
+   "NODE": "Across PCIe host bridges inside one NUMA node.",
+   "SYS": "Across the CPU-CPU link (UPI/QPI) or between NUMA nodes. Worst case.",
+   "X": "Self."
+  },
+  "assumed_GBs": {
+   "X": Infinity,
+   "NV1": 25.0,
+   "NV2": 50.0,
+   "NV4": 100.0,
+   "NV12": 300.0,
+   "NV18": 450.0,
+   "PIX": 16.0,
+   "PXB": 14.0,
+   "PHB": 12.0,
+   "NODE": 10.0,
+   "SYS": 6.0
+  }
+ },
+ "runtime_s": 3.357829254993703
+}

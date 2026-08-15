@@ -343,6 +343,9 @@ The layered sequence of post-training steps that turns a raw [base model](/share
 ### All-to-all token routing {#all-to-all-token-routing}
 In a [Mixture-of-Experts (MoE)](/shared/glossary/#moe) model spread across many GPUs, tokens must be sent to the specific GPU that holds the expert they need. "All-to-all" is the massive communication step where every GPU simultaneously sends its tokens to every other GPU and receives tokens in return. Imagine a busy postal sorting center where workers at different tables all throw packages to each other's tables at the exact same time—it requires incredibly fast network connections to prevent a traffic jam.
 
+### algbw {#algbw}
+Short for **algorithm bandwidth**: the message size divided by the time a [collective operation](/shared/glossary/#collective-operation) took. It answers "how fast did *my data* move", which is what a user feels, and it is the first bandwidth column `nccl-tests` prints. Its weakness is that it is not comparable across different numbers of [ranks](/shared/glossary/#rank): the same 16 MB [all-reduce](/shared/glossary/#allreduce) has to move more bytes over the wire on 8 ranks than on 2, so algbw falls as the group grows even when every link is working just as hard. That is exactly what [busbw](/shared/glossary/#busbw) corrects for.
+
 ### AllGather {#allgather}
 A collective communication operation where each worker ([rank](/shared/glossary/#rank)) in a distributed setup starts with its own local data, and everyone sends their data to all other workers. At the end of the operation, every worker holds the exact same concatenated array of all inputs.
 
@@ -1040,6 +1043,11 @@ A program that writes source code, which another program then compiles. Also cal
 
 ### Collate function {#collate-function}
 The function a [DataLoader](/shared/glossary/#dataloader) uses to combine a list of individual samples into one batched tensor; a custom one can pad variable-length data.
+
+### busbw {#busbw}
+Short for **bus bandwidth**: [algbw](/shared/glossary/#algbw) multiplied by a correction factor that accounts for how many bytes each [rank](/shared/glossary/#rank) actually has to push through its own link. It answers "how hard was the slowest link driven", which is the number you compare against a hardware spec sheet. The factors follow from the algorithm: 2(n−1)/n for an [all-reduce](/shared/glossary/#allreduce) (a [reduce-scatter](/shared/glossary/#reduce-scatter) *and* an [all-gather](/shared/glossary/#allgather)), (n−1)/n for either of those halves alone, and 1 for a [broadcast](/shared/glossary/#broadcast).
+
+The practical use is diagnostic: on healthy hardware busbw stays roughly constant as you add ranks, because each new GPU brings its own link. **If busbw falls as the group grows, something you assumed was parallel is actually shared** — an oversubscribed switch, one network card serving several GPUs, or two GPUs behind a single [PCIe](/shared/glossary/#pcie) switch.
 
 ### Collective operation {#collective-operation}
 A communication step that all processes ([ranks](/shared/glossary/#rank)) in a distributed job perform together — [all-reduce](/shared/glossary/#allreduce), [all-gather](/shared/glossary/#allgather), [reduce-scatter](/shared/glossary/#reduce-scatter), [broadcast](/shared/glossary/#broadcast), [barrier](/shared/glossary/#barrier). The defining rule is that *every* rank in the [process group](/shared/glossary/#process-group) must call it, with matching shapes and in the same order; a rank that skips one leaves the others waiting forever, which is the usual cause of a distributed [deadlock](/shared/glossary/#deadlock). They are "collective" in the same sense as a collective decision: no single rank can complete one alone.
@@ -2424,6 +2432,11 @@ A [direct collocation](/shared/glossary/#direct-collocation) scheme that fits a 
 ### Process group {#process-group}
 The set of processes that take part in a [collective operation](/shared/glossary/#collective-operation), plus the machinery connecting them. `dist.init_process_group(backend="nccl")` creates the default group containing every [rank](/shared/glossary/#rank) in the job; `dist.new_group([0, 1])` creates a smaller one, and any collective can be given `group=` to run only among those ranks. Subgroups are what make hierarchical communication possible — reduce inside each machine first, then once between machines. Every rank must create the same subgroups in the same order, even ranks that are not members, because creating one is itself a collective.
 
+### Recursive doubling {#recursive-doubling}
+An [all-reduce](/shared/glossary/#allreduce) algorithm in which each [rank](/shared/glossary/#rank) exchanges its *entire* buffer with a partner at distance 1, then distance 2, then 4, and so on — the distance **doubles** each round, which is where the name comes from ("recursive" because each round repeats the same rule on a larger scale). After log₂(n) rounds every rank has everyone's contribution.
+
+Compared with [ring all-reduce](/shared/glossary/#ring-all-reduce) it is the opposite trade: far fewer rounds (log₂ n instead of 2(n−1)), so it wins on small messages where each round costs a fixed [latency](/shared/glossary/#latency); but each round carries the whole buffer, so it sends log₂(n) × D bytes against the ring's ~2D and loses badly on large ones. Libraries like [NCCL](/shared/glossary/#nccl) therefore keep several algorithms and choose by message size.
+
 ### Reduce-scatter {#reduce-scatter}
 A [collective operation](/shared/glossary/#collective-operation) that adds up everyone's copy of a tensor and then gives each [rank](/shared/glossary/#rank) *only one slice* of the result, rather than the whole thing. It is exactly half of an [all-reduce](/shared/glossary/#allreduce): all-reduce = reduce-scatter followed by [all-gather](/shared/glossary/#allgather). That decomposition is not a curiosity — it is how [ring all-reduce](/shared/glossary/#ring-all-reduce) is implemented, and it is why [FSDP](/shared/glossary/#fsdp) uses reduce-scatter for gradients: each rank only owns one shard of the parameters, so it only needs the matching shard of the gradient, and fetching the rest would be wasted traffic.
 
@@ -2454,6 +2467,11 @@ A second-order ODE solver that improves on the [Euler method](/shared/glossary/#
 
 ### Hidden state {#hidden-state}
 The vector a [transformer](/shared/glossary/#transformer) holds for one position at one depth — the model's running notes about that token. A sequence of *T* tokens in a model of width *d* has a *T* × *d* hidden state at every layer, and each layer rewrites it: the input layer's hidden state is just the [embedding](/shared/glossary/#embedding) of the token, and the last layer's is what the output head reads to produce [logits](/shared/glossary/#logits). "Hidden" only means *not observed from outside* — it is not a secret, just an internal representation with no direct meaning in words. **Why it matters practically:** a [VLM](/shared/glossary/#vlm) works by *replacing* the hidden states at a few input positions with projected image features, so a picture enters the model in the same coordinate space words do; and every trick that reads a model's "understanding" — [linear probes](/shared/glossary/#linear-probe), [KV caches](/shared/glossary/#kv-cache), early-exit — operates on hidden states.
+
+### Hierarchical all-reduce {#hierarchical-all-reduce}
+An [all-reduce](/shared/glossary/#allreduce) that is aware of where the slow links are, and arranges to use them as little as possible. With *g* GPUs per machine it runs in three stages: a [reduce-scatter](/shared/glossary/#reduce-scatter) inside each machine over the fast links, then an all-reduce *between* the machines on only 1/g of the data, then an [all-gather](/shared/glossary/#allgather) inside each machine again. A plain [ring all-reduce](/shared/glossary/#ring-all-reduce) sends roughly the same total bytes but routes them across the slow boundary many times, because it does not know the boundary exists.
+
+The catch worth remembering: this is only a win when the links really are unequal. On a uniform fabric (every pair connected at full [NVLink](/shared/glossary/#nvlink) speed) the extra stages are pure overhead and the flat ring is faster.
 
 ### Hierarchical generation {#hierarchical-generation}
 Building a long or complex video in *stages from coarse to fine* rather than all at once: first decide the big structure — a [shot list](/shared/glossary/#shot-list) or a handful of [keyframes](/shared/glossary/#keyframe) spread across the timeline — then fill in the detailed frames between them. Working top-down keeps a long video coherent, because the overall plan is fixed before any single moment is rendered, the same way a director storyboards a film before shooting it. Contrast it with generating a clip straight through frame by frame, where the story has no plan to hold it together and tends to wander. It is one of the main strategies (alongside [sliding-window generation](/shared/glossary/#sliding-window-generation) and [streaming](/shared/glossary/#streaming-video-generation)) for getting past the few-second limit of a single model.
@@ -3504,6 +3522,11 @@ Problems arising from the finite precision of floating-point numbers, such as [u
 ### Nav2 {#nav2}
 ROS 2 navigation stack
 
+### Nagle's algorithm {#nagles-algorithm}
+A rule built into [TCP](/shared/glossary/#tcp) since 1984, named after its author John Nagle: *do not send a new small packet while an earlier small packet is still unacknowledged*. It exists to stop applications that write one byte at a time from flooding a network with packets that are mostly header. `TCP_NODELAY` is the socket option that switches it off.
+
+It becomes a disaster when combined with the receiver's *delayed acknowledgement* — a separate rule that waits some tens of milliseconds before acknowledging, hoping to attach the acknowledgement to some returning data. If your program sends two small writes and then waits for a reply, Nagle holds the second write until the first is acknowledged, and the acknowledgement is deliberately late: a round trip that should take microseconds takes ~40 ms. Every serious RPC and collective library sets `TCP_NODELAY` for this reason. Note that a simple request/response ping-pong never triggers it, because it never has a second small write outstanding — so a benchmark can easily measure "no penalty" and be wrong.
+
 ### NCCL {#nccl}
 NVIDIA Collective Communications Library (pronounced "nickel") — the library that actually performs [all-reduce](/shared/glossary/#allreduce), [all-gather](/shared/glossary/#allgather), [broadcast](/shared/glossary/#broadcast) and friends between NVIDIA GPUs, and the backend PyTorch uses for GPU training (`init_process_group(backend="nccl")`). It is fast because it never routes data through the CPU when it can avoid it: GPUs on one machine talk over [NVLink](/shared/glossary/#nvlink) or PCIe directly, and machines talk over InfiniBand or RDMA-capable ethernet, with the transfers running on the GPU's own copy engines so they overlap with compute. It also picks the algorithm for you — [ring](/shared/glossary/#ring-all-reduce) or tree, depending on message size and topology. Its CPU counterpart is [gloo](/shared/glossary/#gloo). When a NCCL job hangs, `NCCL_DEBUG=INFO` prints what it is doing and `TORCH_NCCL_BLOCKING_WAIT=1` turns a silent wait into an error with a message.
 ### nDCG {#ndcg}
@@ -3630,6 +3653,11 @@ The `utilization.gpu` field that `nvidia-smi` reports is **not** a measure of ho
 * **Why the distinction matters:** it is the first number every beginner checks, and it will happily tell you a badly written kernel is "fully utilizing" a GPU. Measured on a GTX 1070 Ti, a single-warp kernel and an all-SMs kernel both reported 100% while differing by **460x** in actual FLOP/s.
 * **What to look at instead:** *power draw* is the honest cheap signal — real arithmetic burns real watts, and the same pair of kernels drew 41.7 W and 122.8 W. For a real number, compute achieved FLOP/s or GB/s yourself and divide by peak; that ratio is what [Nsight Compute](/shared/glossary/#nsight-compute) reports as `pct_of_peak_sustained`.
 * **Analogy:** a shop's "OPEN" sign. It tells you the door is unlocked, not that anyone is buying anything.
+
+### NUMA {#numa}
+**Non-Uniform Memory Access**: on a machine with more than one CPU socket, each CPU has its own memory attached directly to it, and reaching the *other* CPU's memory means crossing the link between the sockets. The name is the whole claim — access time is *not uniform*, so which memory a thread uses matters. The same applies to devices: a [GPU](/shared/glossary/#gpu) is plugged into one socket's [PCIe](/shared/glossary/#pcie) root, so copies from the far socket's memory are slower.
+
+This is why `nvidia-smi topo -m` prints a "CPU Affinity" column and why launchers pin each rank to the cores nearest its GPU. It is also the usual explanation for a job that runs at different speeds on nodes that look identical: the process landed on the wrong socket. On a single-socket machine there is one NUMA node and the effect does not exist.
 
 ### NVLink {#nvlink}
 NVIDIA's GPU-GPU interconnect; much faster than PCIe
