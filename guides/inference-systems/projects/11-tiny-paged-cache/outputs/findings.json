@@ -1,0 +1,174 @@
+{
+  "workload": {
+    "n": 600,
+    "median_len": 614.5,
+    "mean_len": 1057.86,
+    "p99_len": 7689,
+    "max_model_len": 8192,
+    "per_token_bytes": 131072,
+    "arena_gb": 12.0
+  },
+  "B_policies": [
+    {
+      "policy": "reserve_max",
+      "block_size": 16,
+      "admitted": 59,
+      "rejected": 541,
+      "frag_rejects": 0,
+      "admitted_tokens": 48180,
+      "rejected_tokens": 586536,
+      "long_reject_pct": 92.66666666666667,
+      "long_cut": 1156,
+      "peak_concurrent": 11,
+      "mean_util": 0.9754646209422223,
+      "mean_useful_util": 0.18759809251555556
+    },
+    {
+      "policy": "reserve_actual",
+      "block_size": 16,
+      "admitted": 467,
+      "rejected": 133,
+      "frag_rejects": 128,
+      "admitted_tokens": 290113,
+      "rejected_tokens": 344603,
+      "long_reject_pct": 68.0,
+      "long_cut": 1156,
+      "peak_concurrent": 83,
+      "mean_util": 0.83363151872,
+      "mean_useful_util": 0.83363151872
+    },
+    {
+      "policy": "paged",
+      "block_size": 16,
+      "admitted": 404,
+      "rejected": 196,
+      "frag_rejects": 0,
+      "admitted_tokens": 277876,
+      "rejected_tokens": 356840,
+      "long_reject_pct": 62.0,
+      "long_cut": 1156,
+      "peak_concurrent": 85,
+      "mean_util": 0.9070161948036817,
+      "mean_useful_util": 0.9017749230933333
+    }
+  ],
+  "C_block_sweep": [
+    {
+      "block_size": 1,
+      "waste_pct": 0.0,
+      "blocks_per_seq": 1057.86,
+      "admitted": 427
+    },
+    {
+      "block_size": 2,
+      "waste_pct": 0.044114218012465414,
+      "blocks_per_seq": 529.1633333333333,
+      "admitted": 424
+    },
+    {
+      "block_size": 4,
+      "waste_pct": 0.14116549763988934,
+      "blocks_per_seq": 264.8383333333333,
+      "admitted": 430
+    },
+    {
+      "block_size": 8,
+      "waste_pct": 0.3258150101777803,
+      "blocks_per_seq": 132.66333333333333,
+      "admitted": 427
+    },
+    {
+      "block_size": 16,
+      "waste_pct": 0.714020128687476,
+      "blocks_per_seq": 66.58833333333334,
+      "admitted": 404
+    },
+    {
+      "block_size": 32,
+      "waste_pct": 1.487909553249012,
+      "blocks_per_seq": 33.55,
+      "admitted": 416
+    },
+    {
+      "block_size": 64,
+      "waste_pct": 2.9802305282992707,
+      "blocks_per_seq": 17.02166666666667,
+      "admitted": 422
+    },
+    {
+      "block_size": 128,
+      "waste_pct": 6.035455227219733,
+      "blocks_per_seq": 8.763333333333334,
+      "admitted": 405
+    },
+    {
+      "block_size": 256,
+      "waste_pct": 12.287070122700547,
+      "blocks_per_seq": 4.64,
+      "admitted": 394
+    },
+    {
+      "block_size": 512,
+      "waste_pct": 24.951631910964903,
+      "blocks_per_seq": 2.5816666666666666,
+      "admitted": 343
+    }
+  ],
+  "A_correctness": {
+    "tokens_identical": true,
+    "text": "broken run of memory. Paging the key-value cache removes fragmentation because a sequence no",
+    "blocks_used": 17,
+    "tokens_held": 271,
+    "internal_waste_tokens": 1
+  },
+  "D_cost": [
+    {
+      "ctx": "256",
+      "cache": "contiguous",
+      "block_size": null,
+      "median_step_s": 0.09684907901100814
+    },
+    {
+      "ctx": "256",
+      "cache": "paged",
+      "block_size": 16,
+      "median_step_s": 0.088201389007736
+    },
+    {
+      "ctx": "256",
+      "cache": "paged",
+      "block_size": 64,
+      "median_step_s": 0.08590043801814318
+    },
+    {
+      "ctx": "256",
+      "cache": "paged",
+      "block_size": 256,
+      "median_step_s": 0.08761962101561949
+    },
+    {
+      "ctx": "2048",
+      "cache": "contiguous",
+      "block_size": null,
+      "median_step_s": 0.12851911503821611
+    },
+    {
+      "ctx": "2048",
+      "cache": "paged",
+      "block_size": 16,
+      "median_step_s": 0.13017479301197454
+    },
+    {
+      "ctx": "2048",
+      "cache": "paged",
+      "block_size": 64,
+      "median_step_s": 0.12756636802805588
+    },
+    {
+      "ctx": "2048",
+      "cache": "paged",
+      "block_size": 256,
+      "median_step_s": 0.12903437903150916
+    }
+  ]
+}
