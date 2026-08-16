@@ -1,0 +1,224 @@
+{
+  "model": {
+    "id": "Qwen/Qwen2.5-0.5B-Instruct",
+    "threads": 6
+  },
+  "A": {
+    "lengths": [
+      [
+        30,
+        21
+      ],
+      [
+        76,
+        21
+      ],
+      [
+        146,
+        38
+      ],
+      [
+        192,
+        35
+      ],
+      [
+        81,
+        68
+      ],
+      [
+        49,
+        72
+      ],
+      [
+        32,
+        11
+      ],
+      [
+        35,
+        72
+      ]
+    ],
+    "prefill": {
+      "pad_slots": 895,
+      "slots": 1536,
+      "slot_frac": 0.5827,
+      "flop_frac": 0.5845,
+      "pad_tflops": 0.65
+    },
+    "decode": {
+      "pad_slots": 238,
+      "slots": 568,
+      "slot_frac": 0.419,
+      "flop_frac": 0.4197,
+      "pad_tflops": 0.173
+    },
+    "total_slot_frac": 0.5385,
+    "total_flop_frac": 0.5399,
+    "decode_share_of_all_pad_flops": 0.2102
+  },
+  "B": [
+    {
+      "batch": 1,
+      "prefill_pad_flop_frac": 0.0,
+      "decode_pad_flop_frac": 0.0,
+      "total_pad_flop_frac": 0.0,
+      "total_pad_slot_frac": 0.0
+    },
+    {
+      "batch": 2,
+      "prefill_pad_flop_frac": 0.2632,
+      "decode_pad_flop_frac": 0.2555,
+      "total_pad_flop_frac": 0.2608,
+      "total_pad_slot_frac": 0.2601
+    },
+    {
+      "batch": 4,
+      "prefill_pad_flop_frac": 0.4516,
+      "decode_pad_flop_frac": 0.3887,
+      "total_pad_flop_frac": 0.4335,
+      "total_pad_slot_frac": 0.4324
+    },
+    {
+      "batch": 8,
+      "prefill_pad_flop_frac": 0.5366,
+      "decode_pad_flop_frac": 0.4785,
+      "total_pad_flop_frac": 0.52,
+      "total_pad_slot_frac": 0.5185
+    },
+    {
+      "batch": 16,
+      "prefill_pad_flop_frac": 0.5892,
+      "decode_pad_flop_frac": 0.5089,
+      "total_pad_flop_frac": 0.5671,
+      "total_pad_slot_frac": 0.5656
+    },
+    {
+      "batch": 32,
+      "prefill_pad_flop_frac": 0.6066,
+      "decode_pad_flop_frac": 0.5232,
+      "total_pad_flop_frac": 0.584,
+      "total_pad_slot_frac": 0.5824
+    },
+    {
+      "batch": 64,
+      "prefill_pad_flop_frac": 0.6087,
+      "decode_pad_flop_frac": 0.5232,
+      "total_pad_flop_frac": 0.5856,
+      "total_pad_slot_frac": 0.584
+    }
+  ],
+  "C": [
+    {
+      "sigma": 0.0,
+      "out_median": 32,
+      "out_max": 32,
+      "total_pad_flop_frac": 0.0
+    },
+    {
+      "sigma": 0.2,
+      "out_median": 32,
+      "out_max": 53,
+      "total_pad_flop_frac": 0.2473
+    },
+    {
+      "sigma": 0.4,
+      "out_median": 32,
+      "out_max": 90,
+      "total_pad_flop_frac": 0.4177
+    },
+    {
+      "sigma": 0.7,
+      "out_median": 33,
+      "out_max": 197,
+      "total_pad_flop_frac": 0.5832
+    },
+    {
+      "sigma": 1.0,
+      "out_median": 33,
+      "out_max": 431,
+      "total_pad_flop_frac": 0.6846
+    },
+    {
+      "sigma": 1.3,
+      "out_median": 34,
+      "out_max": 941,
+      "total_pad_flop_frac": 0.749
+    }
+  ],
+  "D": [
+    {
+      "policy": "arrival order",
+      "implementable": true,
+      "prefill_pad": 0.5366,
+      "decode_pad": 0.4785,
+      "total_pad": 0.52,
+      "flops_saved": 0.0
+    },
+    {
+      "policy": "sort by PROMPT len, window 32",
+      "implementable": true,
+      "prefill_pad": 0.2098,
+      "decode_pad": 0.4624,
+      "total_pad": 0.3106,
+      "flops_saved": 0.3037
+    },
+    {
+      "policy": "sort by PROMPT len, whole trace",
+      "implementable": false,
+      "prefill_pad": 0.0326,
+      "decode_pad": 0.4764,
+      "total_pad": 0.2344,
+      "flops_saved": 0.373
+    },
+    {
+      "policy": "sort by OUTPUT len (oracle)",
+      "implementable": false,
+      "prefill_pad": 0.5167,
+      "decode_pad": 0.025,
+      "total_pad": 0.4268,
+      "flops_saved": 0.1625
+    },
+    {
+      "policy": "sort by prompt+output (oracle)",
+      "implementable": false,
+      "prefill_pad": 0.2165,
+      "decode_pad": 0.4154,
+      "total_pad": 0.2915,
+      "flops_saved": 0.3225
+    }
+  ],
+  "E": {
+    "runs": {
+      "arrival order": {
+        "model_s": 62.5,
+        "pad_flop_frac": 0.5332,
+        "total_tflops": 6.07,
+        "forward_passes": 283
+      },
+      "sorted by prompt len": {
+        "model_s": 46.66,
+        "pad_flop_frac": 0.3069,
+        "total_tflops": 4.09,
+        "forward_passes": 286
+      },
+      "sorted by output len (oracle)": {
+        "model_s": 35.73,
+        "pad_flop_frac": 0.3972,
+        "total_tflops": 4.7,
+        "forward_passes": 169
+      }
+    },
+    "deltas": {
+      "sorted by prompt len": {
+        "flops_saved": 0.3262,
+        "time_saved": 0.2534,
+        "passes_saved": -0.0106
+      },
+      "sorted by output len (oracle)": {
+        "flops_saved": 0.2257,
+        "time_saved": 0.4283,
+        "passes_saved": 0.4028
+      }
+    }
+  }
+}
