@@ -1,0 +1,287 @@
+{
+  "vocab": 151936,
+  "model": "Qwen/Qwen2.5-0.5B-Instruct",
+  "threads": 6,
+  "bank_rows": 62,
+  "bank_text": "The capital of France is Paris. In 1969 humans first walked on the Moon. def add(a, b):\n    return a + b\n\nQ: What is 2+2?\nA: 4.\nOnce upon a time there was a small robot who wanted to learn to cook.",
+  "A_correctness": [
+    {
+      "filter": "top_k(50)",
+      "same_kept_set": true,
+      "rows_differing": 0,
+      "tokens_disputed": 0,
+      "disputed_prob_mass": 0.0,
+      "max_value_diff": 0.0,
+      "kept_row0": 50
+    },
+    {
+      "filter": "min_p(0.05)",
+      "same_kept_set": true,
+      "rows_differing": 0,
+      "tokens_disputed": 0,
+      "disputed_prob_mass": 0.0,
+      "max_value_diff": 0.0,
+      "kept_row0": 2
+    },
+    {
+      "filter": "repetition_penalty(1.1)",
+      "same_kept_set": true,
+      "rows_differing": 0,
+      "tokens_disputed": 0,
+      "disputed_prob_mass": 0.0,
+      "max_value_diff": 0.0,
+      "kept_row0": 151936
+    },
+    {
+      "filter": "top_p(0.9) full sort",
+      "same_kept_set": false,
+      "rows_differing": 1,
+      "tokens_disputed": 1,
+      "disputed_prob_mass": 6.778001989005134e-05,
+      "max_value_diff": 0.0,
+      "kept_row0": 893
+    }
+  ],
+  "B_distribution": {
+    "n_draws": 400000,
+    "rows": [
+      {
+        "drawer": "torch.multinomial",
+        "tvd": 0.0004,
+        "empirical": [
+          0.623,
+          0.2294,
+          0.0842,
+          0.0512,
+          0.0116,
+          0.0005
+        ],
+        "truth": [
+          0.6232,
+          0.2293,
+          0.0843,
+          0.0512,
+          0.0114,
+          0.0006
+        ]
+      },
+      {
+        "drawer": "gumbel-max",
+        "tvd": 0.0008,
+        "empirical": [
+          0.6236,
+          0.2296,
+          0.0844,
+          0.0504,
+          0.0114,
+          0.0006
+        ],
+        "truth": [
+          0.6232,
+          0.2293,
+          0.0843,
+          0.0512,
+          0.0114,
+          0.0006
+        ]
+      },
+      {
+        "drawer": "gumbel-max (clamp bug)",
+        "tvd": 0.37676,
+        "empirical": [
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "truth": [
+          0.6232,
+          0.2293,
+          0.0843,
+          0.0512,
+          0.0114,
+          0.0006
+        ]
+      }
+    ]
+  },
+  "C_filter_cost": [
+    {
+      "batch": 1,
+      "top_p full sort": 11.309,
+      "top_p prefilter k=1024": 0.924,
+      "top_k(50) only": 0.485,
+      "min_p(0.05) only": 0.446,
+      "argmax (greedy)": 0.209,
+      "prefilter_speedup": 12.24,
+      "identical_result": true
+    },
+    {
+      "batch": 8,
+      "top_p full sort": 25.965,
+      "top_p prefilter k=1024": 4.176,
+      "top_k(50) only": 3.593,
+      "min_p(0.05) only": 2.182,
+      "argmax (greedy)": 0.438,
+      "prefilter_speedup": 6.22,
+      "identical_result": true
+    },
+    {
+      "batch": 32,
+      "top_p full sort": 95.29,
+      "top_p prefilter k=1024": 20.011,
+      "top_k(50) only": 14.908,
+      "min_p(0.05) only": 13.438,
+      "argmax (greedy)": 1.315,
+      "prefilter_speedup": 4.76,
+      "identical_result": false
+    }
+  ],
+  "C_nucleus_size": {
+    "0.7": {
+      "mean_nucleus": 12.4,
+      "median_nucleus": 2,
+      "max_nucleus": 281,
+      "rows_over_1024": 0,
+      "n_rows": 62,
+      "rows_where_prefilter_differs": 1,
+      "rows_where_renorm_differs": 6
+    },
+    "1.0": {
+      "mean_nucleus": 135.3,
+      "median_nucleus": 6,
+      "max_nucleus": 2613,
+      "rows_over_1024": 2,
+      "n_rows": 62,
+      "rows_where_prefilter_differs": 2,
+      "rows_where_renorm_differs": 28
+    },
+    "1.5": {
+      "mean_nucleus": 6101.4,
+      "median_nucleus": 5179,
+      "max_nucleus": 33929,
+      "rows_over_1024": 47,
+      "n_rows": 62,
+      "rows_where_prefilter_differs": 47,
+      "rows_where_renorm_differs": 62
+    },
+    "2.0": {
+      "mean_nucleus": 49029.5,
+      "median_nucleus": 46638,
+      "max_nucleus": 90591,
+      "rows_over_1024": 62,
+      "n_rows": 62,
+      "rows_where_prefilter_differs": 62,
+      "rows_where_renorm_differs": 62
+    }
+  },
+  "D_batched_vs_loop": [
+    {
+      "vocab": 4096,
+      "batch": 32,
+      "per_request_loop_ms": 6.011,
+      "batched_ms": 2.883,
+      "speedup": 2.09
+    },
+    {
+      "vocab": 32768,
+      "batch": 32,
+      "per_request_loop_ms": 31.041,
+      "batched_ms": 23.345,
+      "speedup": 1.33
+    },
+    {
+      "vocab": 151936,
+      "batch": 32,
+      "per_request_loop_ms": 128.394,
+      "batched_ms": 125.673,
+      "speedup": 1.02
+    }
+  ],
+  "E_share_of_decode": [
+    {
+      "batch": 1,
+      "decode_step_ms": 81.1,
+      "greedy_argmax_ms": 0.209,
+      "topk_topp_full_sort_ms": 11.79,
+      "topk_topp_prefilter_ms": 1.41,
+      "share_greedy_pct": 0.3,
+      "share_full_sort_pct": 14.5,
+      "share_prefilter_pct": 1.7
+    },
+    {
+      "batch": 8,
+      "decode_step_ms": 102.2,
+      "greedy_argmax_ms": 0.438,
+      "topk_topp_full_sort_ms": 29.56,
+      "topk_topp_prefilter_ms": 7.77,
+      "share_greedy_pct": 0.4,
+      "share_full_sort_pct": 28.9,
+      "share_prefilter_pct": 7.6
+    },
+    {
+      "batch": 32,
+      "decode_step_ms": 135.7,
+      "greedy_argmax_ms": 1.315,
+      "topk_topp_full_sort_ms": 110.2,
+      "topk_topp_prefilter_ms": 34.92,
+      "share_greedy_pct": 1.0,
+      "share_full_sort_pct": 81.2,
+      "share_prefilter_pct": 25.7
+    }
+  ],
+  "F_real_logits": {
+    "context": "The capital of France is Paris. In 1969 ",
+    "top5": [
+      {
+        "token": " the",
+        "prob": 0.2362
+      },
+      {
+        "token": " ",
+        "prob": 0.1938
+      },
+      {
+        "token": " Paris",
+        "prob": 0.1109
+      },
+      {
+        "token": " which",
+        "prob": 0.0541
+      },
+      {
+        "token": " this",
+        "prob": 0.0528
+      }
+    ],
+    "rows": [
+      {
+        "temperature": 0.0,
+        "nucleus_size_p090": 1,
+        "kept_by_min_p_005": 1,
+        "top1_prob": 0.2362
+      },
+      {
+        "temperature": 0.7,
+        "nucleus_size_p090": 7,
+        "kept_by_min_p_005": 7,
+        "top1_prob": 0.3736
+      },
+      {
+        "temperature": 1.0,
+        "nucleus_size_p090": 43,
+        "kept_by_min_p_005": 10,
+        "top1_prob": 0.2362
+      },
+      {
+        "temperature": 1.5,
+        "nucleus_size_p090": 11206,
+        "kept_by_min_p_005": 28,
+        "top1_prob": 0.0679
+      }
+    ]
+  },
+  "wall_clock_s": 10.9
+}

@@ -1,0 +1,210 @@
+{
+  "model": "Qwen/Qwen2.5-0.5B-Instruct",
+  "A_vocab": {
+    "vocab_size": 151643,
+    "fragment_tokens": 1457,
+    "fragment_pct": 0.96,
+    "example_ids": [
+      94,
+      95,
+      96,
+      97,
+      98,
+      99
+    ],
+    "scan_s": 0.5
+  },
+  "B_strings": [
+    {
+      "text": "🎉 party time",
+      "n_tokens": 3,
+      "naive_ok": true,
+      "naive_out": "🎉 party time",
+      "incremental_ok": true,
+      "decode_all_ok": true,
+      "replacement_chars_emitted": 0
+    },
+    {
+      "text": "🫠 melting face",
+      "n_tokens": 5,
+      "naive_ok": false,
+      "naive_out": "��� melting face",
+      "incremental_ok": true,
+      "decode_all_ok": true,
+      "replacement_chars_emitted": 3
+    },
+    {
+      "text": "👨‍👩‍👧‍👦 family",
+      "n_tokens": 11,
+      "naive_ok": false,
+      "naive_out": "👨��👩��👧��👦 family",
+      "incremental_ok": true,
+      "decode_all_ok": true,
+      "replacement_chars_emitted": 6
+    },
+    {
+      "text": "ᚠᚢᚦᚨᚱᚲ runes",
+      "n_tokens": 11,
+      "naive_ok": false,
+      "naive_out": "������ᚨᚱ�� runes",
+      "incremental_ok": true,
+      "decode_all_ok": true,
+      "replacement_chars_emitted": 8
+    },
+    {
+      "text": "ကျွန်ုပ် Burmese",
+      "n_tokens": 16,
+      "naive_ok": false,
+      "naive_out": "က����န����ပ�� Burmese",
+      "incremental_ok": true,
+      "decode_all_ok": true,
+      "replacement_chars_emitted": 10
+    },
+    {
+      "text": "𓀀 hieroglyph",
+      "n_tokens": 6,
+      "naive_ok": false,
+      "naive_out": "��� hieroglyph",
+      "incremental_ok": true,
+      "decode_all_ok": true,
+      "replacement_chars_emitted": 3
+    },
+    {
+      "text": "🥹🫶🏽 skin tone",
+      "n_tokens": 8,
+      "naive_ok": false,
+      "naive_out": "�����🏽 skin tone",
+      "incremental_ok": true,
+      "decode_all_ok": true,
+      "replacement_chars_emitted": 5
+    },
+    {
+      "text": "café naïve",
+      "n_tokens": 4,
+      "naive_ok": true,
+      "naive_out": "café naïve",
+      "incremental_ok": true,
+      "decode_all_ok": true,
+      "replacement_chars_emitted": 0
+    },
+    {
+      "text": "你好世界",
+      "n_tokens": 2,
+      "naive_ok": true,
+      "naive_out": "你好世界",
+      "incremental_ok": true,
+      "decode_all_ok": true,
+      "replacement_chars_emitted": 0
+    },
+    {
+      "text": "plain ascii text",
+      "n_tokens": 3,
+      "naive_ok": true,
+      "naive_out": "plain ascii text",
+      "incremental_ok": true,
+      "decode_all_ok": true,
+      "replacement_chars_emitted": 0
+    }
+  ],
+  "B_summary": {
+    "n": 10,
+    "naive_passed": 4,
+    "incremental_passed": 10,
+    "decode_all_passed": 10
+  },
+  "C_fuzz_uniform_tokens": {
+    "n_cases": 5000,
+    "naive_wrong": 0,
+    "incremental_wrong": 0,
+    "decode_all_wrong": 0,
+    "naive_bad_chars": 0,
+    "max_pending_tokens": 2,
+    "shortest_failing_case": null,
+    "naive_error_rate": 0.0,
+    "incremental_accuracy": 1.0,
+    "decode_all_accuracy": 1.0
+  },
+  "C_fuzz_random_text": {
+    "n_cases": 5000,
+    "naive_wrong": 4822,
+    "incremental_wrong": 0,
+    "decode_all_wrong": 0,
+    "naive_bad_chars": 39415,
+    "max_pending_tokens": 3,
+    "shortest_failing_case": {
+      "n_tokens": 3,
+      "ids": [
+        148803,
+        8158,
+        240
+      ],
+      "pieces": [
+        "🤛",
+        "�",
+        "�"
+      ],
+      "naive": "🤛��",
+      "truth": "🤛๒"
+    },
+    "naive_error_rate": 0.9644,
+    "incremental_accuracy": 1.0,
+    "decode_all_accuracy": 1.0
+  },
+  "D_real_generation": {
+    "prompt": "Write one sentence full of emoji about a party: 🎉",
+    "n_tokens": 40,
+    "truth": "🎉🎉 Party in the park 🎉🎉🎉 🎉🎉🎉 🎉🎉🎉 🎉🎉🎉 🎉🎉🎉 🎉🎉🎉 🎉🎉",
+    "naive": "🎉🎉 Party in the park ���🎉🎉 ���🎉🎉 ���🎉🎉 ���🎉🎉 ���🎉🎉 ���🎉🎉 ���🎉",
+    "incremental": "🎉🎉 Party in the park 🎉🎉🎉 🎉🎉🎉 🎉🎉🎉 🎉🎉🎉 🎉🎉🎉 🎉🎉🎉 🎉🎉",
+    "naive_ok": false,
+    "incremental_ok": true,
+    "replacement_chars": 21,
+    "first_pieces": [
+      "🎉",
+      "🎉",
+      " Party",
+      " in",
+      " the",
+      " park",
+      " �",
+      "�",
+      "�",
+      "🎉",
+      "🎉",
+      " �"
+    ]
+  },
+  "E_cost": [
+    {
+      "n_tokens": 250,
+      "windowed_us_per_token": 6.18,
+      "decode_all_us_per_token": 36.86,
+      "ratio": 5.96
+    },
+    {
+      "n_tokens": 500,
+      "windowed_us_per_token": 5.98,
+      "decode_all_us_per_token": 76.99,
+      "ratio": 12.87
+    },
+    {
+      "n_tokens": 1000,
+      "windowed_us_per_token": 5.78,
+      "decode_all_us_per_token": 150.49,
+      "ratio": 26.02
+    },
+    {
+      "n_tokens": 2000,
+      "windowed_us_per_token": 5.83,
+      "decode_all_us_per_token": 301.23,
+      "ratio": 51.69
+    },
+    {
+      "n_tokens": 4000,
+      "windowed_us_per_token": 5.72,
+      "decode_all_us_per_token": 593.78,
+      "ratio": 103.79
+    }
+  ],
+  "wall_clock_s": 21.0
+}

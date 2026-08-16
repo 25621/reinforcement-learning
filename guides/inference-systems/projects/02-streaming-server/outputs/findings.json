@@ -1,0 +1,199 @@
+{
+  "model": "Qwen/Qwen2.5-0.5B-Instruct",
+  "threads_per_server": 3,
+  "max_new_tokens": 24,
+  "prompt_chars": 165,
+  "A_streaming_vs_buffered": {
+    "streaming": {
+      "concurrency": 1,
+      "n_requests": 3,
+      "stream": true,
+      "chunk_every": 1,
+      "wall_s": 7.382,
+      "ttft_p50_s": 0.202,
+      "ttft_p99_s": 0.228,
+      "ttft_mean_s": 0.203,
+      "itl_p50_s": 0.0941,
+      "itl_p99_s": 0.1338,
+      "e2e_p50_s": 2.472,
+      "output_tokens": 72,
+      "throughput_tok_s": 9.8
+    },
+    "buffered": {
+      "concurrency": 1,
+      "n_requests": 3,
+      "stream": false,
+      "chunk_every": 1,
+      "wall_s": 6.797,
+      "ttft_p50_s": 2.264,
+      "ttft_p99_s": 2.341,
+      "ttft_mean_s": 2.266,
+      "itl_p50_s": null,
+      "itl_p99_s": null,
+      "e2e_p50_s": 2.264,
+      "output_tokens": 72,
+      "throughput_tok_s": 10.6
+    },
+    "ttft_speedup": 11.2,
+    "e2e_ratio": 0.92
+  },
+  "B_chunk_every": [
+    {
+      "concurrency": 1,
+      "n_requests": 2,
+      "stream": true,
+      "chunk_every": 1,
+      "wall_s": 4.62,
+      "ttft_p50_s": 0.197,
+      "ttft_p99_s": 0.212,
+      "ttft_mean_s": 0.197,
+      "itl_p50_s": 0.0901,
+      "itl_p99_s": 0.1169,
+      "e2e_p50_s": 2.31,
+      "output_tokens": 48,
+      "throughput_tok_s": 10.4
+    },
+    {
+      "concurrency": 1,
+      "n_requests": 2,
+      "stream": true,
+      "chunk_every": 2,
+      "wall_s": 4.681,
+      "ttft_p50_s": 0.27,
+      "ttft_p99_s": 0.273,
+      "ttft_mean_s": 0.27,
+      "itl_p50_s": 0.1818,
+      "itl_p99_s": 0.2666,
+      "e2e_p50_s": 2.34,
+      "output_tokens": 48,
+      "throughput_tok_s": 10.3
+    },
+    {
+      "concurrency": 1,
+      "n_requests": 2,
+      "stream": true,
+      "chunk_every": 4,
+      "wall_s": 5.721,
+      "ttft_p50_s": 0.591,
+      "ttft_p99_s": 0.643,
+      "ttft_mean_s": 0.591,
+      "itl_p50_s": 0.4536,
+      "itl_p99_s": 0.4685,
+      "e2e_p50_s": 2.86,
+      "output_tokens": 48,
+      "throughput_tok_s": 8.4
+    },
+    {
+      "concurrency": 1,
+      "n_requests": 2,
+      "stream": true,
+      "chunk_every": 8,
+      "wall_s": 5.093,
+      "ttft_p50_s": 0.912,
+      "ttft_p99_s": 1.0,
+      "ttft_mean_s": 0.912,
+      "itl_p50_s": 0.8038,
+      "itl_p99_s": 0.9318,
+      "e2e_p50_s": 2.546,
+      "output_tokens": 48,
+      "throughput_tok_s": 9.4
+    }
+  ],
+  "C_concurrency": [
+    {
+      "concurrency": 1,
+      "n_requests": 2,
+      "stream": true,
+      "chunk_every": 1,
+      "wall_s": 4.865,
+      "ttft_p50_s": 0.182,
+      "ttft_p99_s": 0.183,
+      "ttft_mean_s": 0.182,
+      "itl_p50_s": 0.0922,
+      "itl_p99_s": 0.1606,
+      "e2e_p50_s": 2.433,
+      "output_tokens": 48,
+      "throughput_tok_s": 9.9
+    },
+    {
+      "concurrency": 2,
+      "n_requests": 4,
+      "stream": true,
+      "chunk_every": 1,
+      "wall_s": 10.48,
+      "ttft_p50_s": 2.879,
+      "ttft_p99_s": 2.995,
+      "ttft_mean_s": 2.243,
+      "itl_p50_s": 0.0995,
+      "itl_p99_s": 0.1809,
+      "e2e_p50_s": 5.24,
+      "output_tokens": 96,
+      "throughput_tok_s": 9.2
+    },
+    {
+      "concurrency": 4,
+      "n_requests": 8,
+      "stream": true,
+      "chunk_every": 1,
+      "wall_s": 19.709,
+      "ttft_p50_s": 7.469,
+      "ttft_p99_s": 8.001,
+      "ttft_mean_s": 5.871,
+      "itl_p50_s": 0.0948,
+      "itl_p99_s": 0.1417,
+      "e2e_p50_s": 9.673,
+      "output_tokens": 192,
+      "throughput_tok_s": 9.7
+    },
+    {
+      "concurrency": 8,
+      "n_requests": 16,
+      "stream": true,
+      "chunk_every": 1,
+      "wall_s": 37.799,
+      "ttft_p50_s": 16.707,
+      "ttft_p99_s": 16.97,
+      "ttft_mean_s": 12.589,
+      "itl_p50_s": 0.0927,
+      "itl_p99_s": 0.126,
+      "e2e_p50_s": 18.869,
+      "output_tokens": 384,
+      "throughput_tok_s": 10.2
+    }
+  ],
+  "C2_no_lock_c8": {
+    "concurrency": 8,
+    "n_requests": 16,
+    "stream": true,
+    "chunk_every": 1,
+    "wall_s": 32.174,
+    "ttft_p50_s": 1.015,
+    "ttft_p99_s": 1.122,
+    "ttft_mean_s": 1.024,
+    "itl_p50_s": 0.6498,
+    "itl_p99_s": 0.7413,
+    "e2e_p50_s": 15.981,
+    "output_tokens": 384,
+    "throughput_tok_s": 11.9
+  },
+  "C2_vs_C": {
+    "ttft_p50_s": {
+      "serialized": 16.707,
+      "interleaved": 1.015
+    },
+    "itl_p50_s": {
+      "serialized": 0.0927,
+      "interleaved": 0.6498
+    },
+    "throughput_tok_s": {
+      "serialized": 10.2,
+      "interleaved": 11.9
+    }
+  },
+  "D_batching_headroom": {
+    "measured_throughput_gain_1_to_8": 1.03,
+    "project01_batched_gain_1_to_8": 6.35,
+    "note": "this server runs one forward pass per request; a batching engine folds 8 requests into one forward pass"
+  },
+  "wall_clock_s": 159.4
+}
