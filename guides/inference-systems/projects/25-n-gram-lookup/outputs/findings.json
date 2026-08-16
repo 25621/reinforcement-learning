@@ -1,0 +1,187 @@
+{
+  "setup": {
+    "target": "Qwen/Qwen2.5-1.5B-Instruct",
+    "draft": "Qwen/Qwen2.5-0.5B-Instruct",
+    "k": 4,
+    "max_new": 48,
+    "threads": 6
+  },
+  "AB": {
+    "k": 4,
+    "max_new": 48,
+    "rows": [
+      {
+        "workload": "copy_edit",
+        "prompt_tokens": 158,
+        "text": "The Antikythera mechanism is an ancient Hellenic hand-powered device that has been described as the oldest known analogue computer. It was used to predict astronomical positions and eclipses decades in advance, and to track the four-year cycle",
+        "ngram_identical": true,
+        "model_identical": true,
+        "baseline_decode_s": 15.3,
+        "ngram_decode_s": 5.28,
+        "model_decode_s": 7.296,
+        "ngram_speedup": 2.898,
+        "model_speedup": 2.097,
+        "ngram_alpha": 3.571,
+        "model_alpha": 5.1,
+        "ngram_accept": 0.9459,
+        "model_accept": 1.0,
+        "ngram_draft_s": 0.0006,
+        "ngram_draft_share": 0.00012,
+        "model_draft_share": 0.565,
+        "copy_rate_n3": 0.7917,
+        "copy_rate_n2": 0.8125
+      },
+      {
+        "workload": "code_edit",
+        "prompt_tokens": 105,
+        "text": "```python\ndef load_config(path, timeout=60):\n    with open(path) as f:\n        raw = f.read()\n    cfg = json.loads(raw)\n    cfg['timeout'] = int(cfg.get('timeout', timeout))\n",
+        "ngram_identical": true,
+        "model_identical": true,
+        "baseline_decode_s": 12.541,
+        "ngram_decode_s": 5.552,
+        "model_decode_s": 8.726,
+        "ngram_speedup": 2.259,
+        "model_speedup": 1.437,
+        "ngram_alpha": 2.824,
+        "model_alpha": 4.636,
+        "ngram_accept": 0.8824,
+        "model_accept": 0.9512,
+        "ngram_draft_s": 0.0006,
+        "ngram_draft_share": 0.00011,
+        "model_draft_share": 0.5507,
+        "copy_rate_n3": 0.7292,
+        "copy_rate_n2": 0.7292
+      },
+      {
+        "workload": "summarize",
+        "prompt_tokens": 138,
+        "text": "The Antikythera mechanism is an ancient Greek device that predates modern computers and was used to predict astronomical events and track Olympic Games. It was discovered in 1901 and is considered one of the most complex mechanical devices",
+        "ngram_identical": true,
+        "model_identical": true,
+        "baseline_decode_s": 12.771,
+        "ngram_decode_s": 8.148,
+        "model_decode_s": 13.805,
+        "ngram_speedup": 1.567,
+        "model_speedup": 0.925,
+        "ngram_alpha": 1.6,
+        "model_alpha": 2.45,
+        "ngram_accept": 0.7727,
+        "model_accept": 0.6222,
+        "ngram_draft_s": 0.0021,
+        "ngram_draft_share": 0.00026,
+        "model_draft_share": 0.5492,
+        "copy_rate_n3": 0.25,
+        "copy_rate_n2": 0.3542
+      },
+      {
+        "workload": "chat",
+        "prompt_tokens": 44,
+        "text": "The sky appears blue during the day due to a phenomenon called Rayleigh scattering. When sunlight enters the Earth's atmosphere, it encounters gas molecules and tiny particles like dust and water droplets. These particles scatter the shorter blue and violet light more",
+        "ngram_identical": true,
+        "model_identical": true,
+        "baseline_decode_s": 11.976,
+        "ngram_decode_s": 11.42,
+        "model_decode_s": 10.53,
+        "ngram_speedup": 1.049,
+        "model_speedup": 1.137,
+        "ngram_alpha": 1.067,
+        "model_alpha": 3.25,
+        "ngram_accept": 0.6667,
+        "model_accept": 0.7609,
+        "ngram_draft_s": 0.0014,
+        "ngram_draft_share": 0.00012,
+        "model_draft_share": 0.5418,
+        "copy_rate_n3": 0.0208,
+        "copy_rate_n2": 0.0417
+      }
+    ]
+  },
+  "C": {
+    "baseline_decode_s": 12.329,
+    "rows": [
+      {
+        "n": 1,
+        "identical": true,
+        "hit_rate": 0.9333,
+        "acceptance": 0.825,
+        "alpha": 3.267,
+        "decode_s": 4.723,
+        "speedup": 2.611
+      },
+      {
+        "n": 2,
+        "identical": true,
+        "hit_rate": 0.7143,
+        "acceptance": 0.9459,
+        "alpha": 3.571,
+        "decode_s": 4.1,
+        "speedup": 3.007
+      },
+      {
+        "n": 3,
+        "identical": true,
+        "hit_rate": 0.5625,
+        "acceptance": 0.9714,
+        "alpha": 3.188,
+        "decode_s": 4.537,
+        "speedup": 2.718
+      },
+      {
+        "n": 4,
+        "identical": true,
+        "hit_rate": 0.5,
+        "acceptance": 0.9706,
+        "alpha": 2.889,
+        "decode_s": 5.158,
+        "speedup": 2.39
+      },
+      {
+        "n": 6,
+        "identical": true,
+        "hit_rate": 0.35,
+        "acceptance": 1.0,
+        "alpha": 2.45,
+        "decode_s": 5.456,
+        "speedup": 2.26
+      }
+    ]
+  },
+  "D": {
+    "order_by_copy_rate": [
+      "copy_edit",
+      "code_edit",
+      "summarize",
+      "chat"
+    ],
+    "order_by_speedup": [
+      "copy_edit",
+      "code_edit",
+      "summarize",
+      "chat"
+    ],
+    "same_order": true,
+    "points": [
+      {
+        "workload": "copy_edit",
+        "copy_rate": 0.7917,
+        "speedup": 2.898
+      },
+      {
+        "workload": "code_edit",
+        "copy_rate": 0.7292,
+        "speedup": 2.259
+      },
+      {
+        "workload": "summarize",
+        "copy_rate": 0.25,
+        "speedup": 1.567
+      },
+      {
+        "workload": "chat",
+        "copy_rate": 0.0208,
+        "speedup": 1.049
+      }
+    ]
+  },
+  "wall_s": 190.2
+}

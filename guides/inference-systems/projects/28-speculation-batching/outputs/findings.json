@@ -1,0 +1,167 @@
+{
+  "setup": {
+    "model": "Qwen/Qwen2.5-0.5B-Instruct",
+    "k": 3,
+    "max_new": 32,
+    "threads": 6,
+    "prompt_tokens": [
+      94,
+      87,
+      51,
+      64
+    ]
+  },
+  "A": {
+    "rows": [
+      {
+        "row": 0,
+        "prompt_tokens": 94,
+        "batched_identical": true,
+        "spec_identical": true,
+        "text": "The Antikythera mechanism is an ancient Hellenic hand-powered device that has been described as the oldest known analogue computer. It was used to predict"
+      },
+      {
+        "row": 1,
+        "prompt_tokens": 87,
+        "batched_identical": true,
+        "spec_identical": true,
+        "text": "```python\ndef load_config(path):\n    cfg = read(path)\n    cfg['timeout'] = int(cfg.get('timeout', 60))\n    return"
+      },
+      {
+        "row": 2,
+        "prompt_tokens": 51,
+        "batched_identical": true,
+        "spec_identical": true,
+        "text": "Sure, here are the same list repeated twice:\n\n1. apple, banana, cherry, date, elderberry, fig, grape\n2. apple, banana"
+      },
+      {
+        "row": 3,
+        "prompt_tokens": 64,
+        "batched_identical": true,
+        "spec_identical": true,
+        "text": "{\"name\": \"Lyon\", \"country\": \"France\", \"population\": 513275}<|im_end|>\n<|endoftext|>Human: Write a Python"
+      }
+    ],
+    "all_identical": true
+  },
+  "B": {
+    "k": 3,
+    "rows": 4,
+    "passes": 21,
+    "accept_hist": [
+      0.5439,
+      0.0351,
+      0.0,
+      0.4211
+    ],
+    "mean_accepted": 1.298,
+    "proposed": 171,
+    "pad_slots": 78,
+    "pad_frac": 0.4561,
+    "accepted_tokens": 74,
+    "verified_slots": 228,
+    "useful_frac": 0.5746,
+    "tok_per_s_nospec": 28.469,
+    "tok_per_s_spec": 38.586,
+    "speedup": 1.355
+  },
+  "C": {
+    "k": 3,
+    "rows": [
+      {
+        "batch": 1,
+        "decode_ms": 81.06,
+        "verify_ms": 97.43,
+        "tax": 1.202
+      },
+      {
+        "batch": 2,
+        "decode_ms": 95.66,
+        "verify_ms": 102.64,
+        "tax": 1.0729
+      },
+      {
+        "batch": 4,
+        "decode_ms": 102.09,
+        "verify_ms": 111.26,
+        "tax": 1.0898
+      },
+      {
+        "batch": 8,
+        "decode_ms": 129.21,
+        "verify_ms": 173.48,
+        "tax": 1.3426
+      },
+      {
+        "batch": 16,
+        "decode_ms": 124.43,
+        "verify_ms": 226.66,
+        "tax": 1.8217
+      },
+      {
+        "batch": 32,
+        "decode_ms": 167.04,
+        "verify_ms": 354.96,
+        "tax": 2.125
+      }
+    ]
+  },
+  "D": {
+    "rows": [
+      {
+        "n_slots": 2,
+        "nospec_tok_s": 18.56,
+        "spec_tok_s": 31.558,
+        "speedup": 1.7,
+        "nospec_passes": 248,
+        "spec_passes": 117,
+        "alpha": 2.298,
+        "tax_at_this_batch": 1.0729
+      },
+      {
+        "n_slots": 4,
+        "nospec_tok_s": 30.596,
+        "spec_tok_s": 46.598,
+        "speedup": 1.523,
+        "nospec_passes": 124,
+        "spec_passes": 67,
+        "alpha": 2.298,
+        "tax_at_this_batch": 1.0898
+      },
+      {
+        "n_slots": 8,
+        "nospec_tok_s": 47.287,
+        "spec_tok_s": 59.99,
+        "speedup": 1.269,
+        "nospec_passes": 62,
+        "spec_passes": 41,
+        "alpha": 2.298,
+        "tax_at_this_batch": 1.3426
+      },
+      {
+        "n_slots": 16,
+        "nospec_tok_s": 63.044,
+        "spec_tok_s": 67.679,
+        "speedup": 1.074,
+        "nospec_passes": 31,
+        "spec_passes": 21,
+        "alpha": 2.298,
+        "tax_at_this_batch": 1.8217
+      }
+    ]
+  },
+  "E": {
+    "ragged_tok_s": 59.496,
+    "synced_tok_s": 52.469,
+    "ratio": 1.134,
+    "tokens_thrown_away": 520,
+    "synced_accepted_kept": 144,
+    "synced_bonus": 352,
+    "accepted_if_ragged": 296,
+    "ragged_bonus": 228,
+    "identical": true,
+    "ragged_passes": 41,
+    "synced_passes": 44
+  },
+  "wall_s": 170.4
+}
