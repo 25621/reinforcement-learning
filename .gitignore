@@ -193,3 +193,8 @@ guides/ai-hardware/projects/46-build-and-benchmark/outputs/linkprobe
 guides/ai-hardware/projects/49-fpga-inference/outputs/dp4a
 guides/ai-hardware/projects/49-fpga-inference/outputs/*.il
 guides/ai-hardware/projects/50-tinytapeout-submission/outputs/*.il
+
+# Inference-systems Phase 6: project 40 compiles `skinny.cu` into the cuBLAS
+# reference binary. `python run.py` rebuilds it in a second from the committed
+# source, and every number it produced is already in outputs/findings.json.
+guides/inference-systems/projects/40-skinny-m-kernel-study/outputs/skinny

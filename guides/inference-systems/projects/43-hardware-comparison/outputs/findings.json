@@ -1,0 +1,153 @@
+{
+ "specs": {
+  "GTX 1070 Ti": {
+   "peak_fp32_gflops": 8186,
+   "spec_bw_gbs": 256.0,
+   "tdp_w": 180,
+   "launched": 2017
+  },
+  "i7-8700K": {
+   "peak_fp32_gflops": 825,
+   "spec_bw_gbs": 41.6,
+   "tdp_w": 95,
+   "launched": 2017
+  }
+ },
+ "ceilings": {
+  "gpu": {
+   "copy_gbs": 203.4268604152422,
+   "gemm_gflops": 5897.175654324201
+  },
+  "cpu": {
+   "threads": 6,
+   "copy_gbs": 17.210463602591236,
+   "gemm_gflops": 562.395712365252
+  },
+  "cpu12": {
+   "threads": 12,
+   "copy_gbs": 15.696025777461424,
+   "gemm_gflops": 536.2854960551687
+  },
+  "cpu6": {
+   "threads": 6,
+   "copy_gbs": 17.210463602591236,
+   "gemm_gflops": 562.395712365252
+  }
+ },
+ "agreement": {
+  "max_rel_diff": 1.7387571915605804e-06,
+  "same_argmax": true,
+  "gpu_top": 4591,
+  "cpu_top": 4591
+ },
+ "runs": [
+  {
+   "machine": "gpu",
+   "phase": "decode",
+   "batch": 1,
+   "ms": 3.6484949747721354,
+   "tok_s": 274.0856180190996
+  },
+  {
+   "machine": "gpu",
+   "phase": "decode",
+   "batch": 4,
+   "ms": 3.991108194986979,
+   "tok_s": 1002.2279037747435
+  },
+  {
+   "machine": "gpu",
+   "phase": "decode",
+   "batch": 16,
+   "ms": 4.911064656575521,
+   "tok_s": 3257.9493692019073
+  },
+  {
+   "machine": "gpu",
+   "phase": "prefill",
+   "batch": 1,
+   "ms": 17.556329345703126,
+   "tok_s": 14581.63577129837
+  },
+  {
+   "machine": "cpu",
+   "phase": "decode",
+   "batch": 1,
+   "ms": 41.604528995230794,
+   "tok_s": 24.03584475417645,
+   "threads": 4
+  },
+  {
+   "machine": "cpu",
+   "phase": "decode",
+   "batch": 4,
+   "ms": 63.27847180655226,
+   "tok_s": 63.212651725034455,
+   "threads": 4
+  },
+  {
+   "machine": "cpu",
+   "phase": "decode",
+   "batch": 16,
+   "ms": 227.10305399959907,
+   "tok_s": 70.45259726022111,
+   "threads": 4
+  },
+  {
+   "machine": "cpu",
+   "phase": "prefill",
+   "batch": 1,
+   "ms": 250.68992232748616,
+   "tok_s": 1021.1818553502804,
+   "threads": 4
+  }
+ ],
+ "threads": [
+  {
+   "threads": 1,
+   "ms": 41.46893149300013,
+   "tok_s": 24.11443854464391
+  },
+  {
+   "threads": 2,
+   "ms": 36.714478250360116,
+   "tok_s": 27.237211248948945
+  },
+  {
+   "threads": 4,
+   "ms": 34.622495746589266,
+   "tok_s": 28.88295538597942
+  },
+  {
+   "threads": 6,
+   "ms": 35.02182224474382,
+   "tok_s": 28.5536255941132
+  },
+  {
+   "threads": 12,
+   "ms": 44.970179500523955,
+   "tok_s": 22.2369581599813
+  }
+ ],
+ "pcie": {
+  "weight_bytes": 608174080,
+  "h2d_pageable_gbs": 10.634562726574517,
+  "h2d_pinned_gbs": 12.619608566579497,
+  "load_ms": 48.19278480717912,
+  "streamed_tok_s": 20.74999409146062
+ },
+ "power": {
+  "idle_w": 6.73,
+  "busy_w": 64.6,
+  "samples": 30,
+  "ms_per_token": 3.6663614908854165,
+  "tokens_per_joule": 4.2221358148872445
+ },
+ "best_threads": 4,
+ "model": {
+  "params": 152043520,
+  "weight_bytes": 608174080
+ },
+ "ctx": 512,
+ "prefill_tokens": 256
+}

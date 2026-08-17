@@ -1,0 +1,457 @@
+{
+ "copy_gbs": 203.56588350114342,
+ "model": {
+  "params": 152043520,
+  "weight_bytes": 608174080,
+  "kv_bytes_per_token": 24576
+ },
+ "ctx": 1024,
+ "replay_b1": {
+  "rows": [
+   {
+    "name": "gemm_gate_up",
+    "count": 12,
+    "ms": 1.3249399900436403,
+    "bytes_per_launch": 23095296,
+    "bytes": 277143552,
+    "gbs": 209.1744185265867,
+    "us_per_launch": 110.41166583697003
+   },
+   {
+    "name": "gemm_down",
+    "count": 12,
+    "ms": 0.8256076037883758,
+    "bytes_per_launch": 11549696,
+    "bytes": 138596352,
+    "gbs": 167.8719422689883,
+    "us_per_launch": 68.80063364903133
+   },
+   {
+    "name": "gemm_qkv",
+    "count": 12,
+    "ms": 0.44189900159835815,
+    "bytes_per_launch": 6301696,
+    "bytes": 75620352,
+    "gbs": 171.12587203519257,
+    "us_per_launch": 36.82491679986318
+   },
+   {
+    "name": "gemm_o",
+    "count": 12,
+    "ms": 0.3500715970993042,
+    "bytes_per_launch": 4202496,
+    "bytes": 50429952,
+    "gbs": 144.0561085728261,
+    "us_per_launch": 29.172633091608684
+   },
+   {
+    "name": "gemm_lm_head",
+    "count": 1,
+    "ms": 0.3165055990219116,
+    "bytes_per_launch": 67178496,
+    "bytes": 67178496,
+    "gbs": 212.2505769490329,
+    "us_per_launch": 316.5055990219116
+   },
+   {
+    "name": "attn_decode_split",
+    "count": 12,
+    "ms": 0.15328319817781447,
+    "bytes_per_launch": 2097152,
+    "bytes": 25165824,
+    "gbs": 164.17862035215802,
+    "us_per_launch": 12.773599848151205
+   },
+   {
+    "name": "rmsnorm",
+    "count": 24,
+    "ms": 0.032317199930548664,
+    "bytes_per_launch": 12288,
+    "bytes": 294912,
+    "gbs": 9.125543074083804,
+    "us_per_launch": 1.3465499971061943
+   },
+   {
+    "name": "residual",
+    "count": 24,
+    "ms": 0.02264160010963679,
+    "bytes_per_launch": 12288,
+    "bytes": 294912,
+    "gbs": 13.025227836016706,
+    "us_per_launch": 0.9434000045681996
+   },
+   {
+    "name": "attn_combine",
+    "count": 12,
+    "ms": 0.017888400144875048,
+    "bytes_per_launch": 32768,
+    "bytes": 393216,
+    "gbs": 21.981619195423395,
+    "us_per_launch": 1.4907000120729208
+   },
+   {
+    "name": "write_kv",
+    "count": 12,
+    "ms": 0.015501799993216991,
+    "bytes_per_launch": 4096,
+    "bytes": 49152,
+    "gbs": 3.1707285619416505,
+    "us_per_launch": 1.2918166661014159
+   },
+   {
+    "name": "argmax",
+    "count": 1,
+    "ms": 0.015364800393581391,
+    "bytes_per_launch": 65536,
+    "bytes": 65536,
+    "gbs": 4.26533364060997,
+    "us_per_launch": 15.36480039358139
+   },
+   {
+    "name": "rope_q",
+    "count": 12,
+    "ms": 0.014392799977213145,
+    "bytes_per_launch": 8192,
+    "bytes": 98304,
+    "gbs": 6.830081718333894,
+    "us_per_launch": 1.1993999981010954
+   },
+   {
+    "name": "swiglu",
+    "count": 12,
+    "ms": 0.012138199992477894,
+    "bytes_per_launch": 33792,
+    "bytes": 405504,
+    "gbs": 33.407259746197376,
+    "us_per_launch": 1.0115166660398245
+   },
+   {
+    "name": "rmsnorm_final",
+    "count": 1,
+    "ms": 0.001369599997997284,
+    "bytes_per_launch": 12288,
+    "bytes": 12288,
+    "gbs": 8.971962629941803,
+    "us_per_launch": 1.369599997997284
+   }
+  ],
+  "total_ms": 3.543921390268952,
+  "n_launches": 159,
+  "top_launches": [
+   {
+    "i": 157,
+    "name": "gemm_lm_head",
+    "ms": 0.3165055990219116,
+    "bytes": 67178496
+   },
+   {
+    "i": 9,
+    "name": "gemm_gate_up",
+    "ms": 0.11094319820404053,
+    "bytes": 23095296
+   },
+   {
+    "i": 139,
+    "name": "gemm_gate_up",
+    "ms": 0.11048959493637085,
+    "bytes": 23095296
+   },
+   {
+    "i": 100,
+    "name": "gemm_gate_up",
+    "ms": 0.11045759916305542,
+    "bytes": 23095296
+   },
+   {
+    "i": 74,
+    "name": "gemm_gate_up",
+    "ms": 0.11044219732284546,
+    "bytes": 23095296
+   },
+   {
+    "i": 87,
+    "name": "gemm_gate_up",
+    "ms": 0.11040999889373779,
+    "bytes": 23095296
+   }
+  ]
+ },
+ "replay_b32": {
+  "rows": [
+   {
+    "name": "attn_decode_split",
+    "count": 12,
+    "ms": 4.216087436676025,
+    "bytes_per_launch": 67108864,
+    "bytes": 805306368,
+    "gbs": 191.00798550679627,
+    "us_per_launch": 351.34061972300213
+   },
+   {
+    "name": "gemm_gate_up",
+    "count": 12,
+    "ms": 1.4574050068855287,
+    "bytes_per_launch": 23920640,
+    "bytes": 287047680,
+    "gbs": 196.958071808344,
+    "us_per_launch": 121.45041724046071
+   },
+   {
+    "name": "gemm_down",
+    "count": 12,
+    "ms": 1.0976918041706085,
+    "bytes_per_launch": 12025856,
+    "bytes": 144310272,
+    "gbs": 131.46702148244393,
+    "us_per_launch": 91.47431701421738
+   },
+   {
+    "name": "gemm_qkv",
+    "count": 12,
+    "ms": 0.7009764015674591,
+    "bytes_per_launch": 6619136,
+    "bytes": 79429632,
+    "gbs": 113.31284736887967,
+    "us_per_launch": 58.41470013062159
+   },
+   {
+    "name": "gemm_o",
+    "count": 12,
+    "ms": 0.4426611989736557,
+    "bytes_per_launch": 4456448,
+    "bytes": 53477376,
+    "gbs": 120.80881749742566,
+    "us_per_launch": 36.88843324780464
+   },
+   {
+    "name": "gemm_lm_head",
+    "count": 1,
+    "ms": 0.36013839244842527,
+    "bytes_per_launch": 69337088,
+    "bytes": 69337088,
+    "gbs": 192.52900955270863,
+    "us_per_launch": 360.1383924484253
+   },
+   {
+    "name": "attn_combine",
+    "count": 12,
+    "ms": 0.0855942003428936,
+    "bytes_per_launch": 1048576,
+    "bytes": 12582912,
+    "gbs": 147.00659565242015,
+    "us_per_launch": 7.132850028574467
+   },
+   {
+    "name": "rmsnorm",
+    "count": 24,
+    "ms": 0.03912840057164431,
+    "bytes_per_launch": 393216,
+    "bytes": 9437184,
+    "gbs": 241.18501809754443,
+    "us_per_launch": 1.6303500238185127
+   },
+   {
+    "name": "rope_q",
+    "count": 12,
+    "ms": 0.03315999992191792,
+    "bytes_per_launch": 262144,
+    "bytes": 3145728,
+    "gbs": 94.86513894473063,
+    "us_per_launch": 2.7633333268264937
+   },
+   {
+    "name": "residual",
+    "count": 24,
+    "ms": 0.029458799865096807,
+    "bytes_per_launch": 393216,
+    "bytes": 9437184,
+    "gbs": 320.3519506299137,
+    "us_per_launch": 1.2274499943790336
+   },
+   {
+    "name": "swiglu",
+    "count": 12,
+    "ms": 0.0194050001911819,
+    "bytes_per_launch": 1081344,
+    "bytes": 12976128,
+    "gbs": 668.7002253108282,
+    "us_per_launch": 1.6170833492651582
+   },
+   {
+    "name": "write_kv",
+    "count": 12,
+    "ms": 0.019170000031590462,
+    "bytes_per_launch": 131072,
+    "bytes": 1572864,
+    "gbs": 82.04820017778088,
+    "us_per_launch": 1.5975000026325386
+   },
+   {
+    "name": "argmax",
+    "count": 1,
+    "ms": 0.016345599293708803,
+    "bytes_per_launch": 2097152,
+    "bytes": 2097152,
+    "gbs": 128.30071032067727,
+    "us_per_launch": 16.3455992937088
+   },
+   {
+    "name": "rmsnorm_final",
+    "count": 1,
+    "ms": 0.0015915999189019202,
+    "bytes_per_launch": 393216,
+    "bytes": 393216,
+    "gbs": 247.05706209842506,
+    "us_per_launch": 1.5915999189019203
+   }
+  ],
+  "total_ms": 8.518813840858638,
+  "n_launches": 159,
+  "top_launches": [
+   {
+    "i": 157,
+    "name": "gemm_lm_head",
+    "ms": 0.36013839244842527,
+    "bytes": 69337088
+   },
+   {
+    "i": 4,
+    "name": "attn_decode_split",
+    "ms": 0.35307199954986573,
+    "bytes": 67108864
+   },
+   {
+    "i": 17,
+    "name": "attn_decode_split",
+    "ms": 0.35188961029052734,
+    "bytes": 67108864
+   },
+   {
+    "i": 108,
+    "name": "attn_decode_split",
+    "ms": 0.3515877962112427,
+    "bytes": 67108864
+   },
+   {
+    "i": 82,
+    "name": "attn_decode_split",
+    "ms": 0.35158400535583495,
+    "bytes": 67108864
+   },
+   {
+    "i": 30,
+    "name": "attn_decode_split",
+    "ms": 0.3513792037963867,
+    "bytes": 67108864
+   }
+  ]
+ },
+ "trace_b1": {
+  "rows": [
+   {
+    "name": "gemm_gate_up",
+    "count": 12,
+    "ms": 1.6205215975642204
+   },
+   {
+    "name": "gemm_down",
+    "count": 12,
+    "ms": 0.8832224152982235
+   },
+   {
+    "name": "gemm_qkv",
+    "count": 12,
+    "ms": 0.6830623999238015
+   },
+   {
+    "name": "gemm_o",
+    "count": 12,
+    "ms": 0.6169536061584949
+   },
+   {
+    "name": "rmsnorm",
+    "count": 24,
+    "ms": 0.5767488033045083
+   },
+   {
+    "name": "attn_decode_split",
+    "count": 12,
+    "ms": 0.4951487917453051
+   },
+   {
+    "name": "write_kv",
+    "count": 12,
+    "ms": 0.4531904023140669
+   },
+   {
+    "name": "attn_combine",
+    "count": 12,
+    "ms": 0.41428480092436076
+   },
+   {
+    "name": "residual",
+    "count": 24,
+    "ms": 0.40741120169404893
+   },
+   {
+    "name": "gemm_lm_head",
+    "count": 1,
+    "ms": 0.33711679875850675
+   },
+   {
+    "name": "rope_q",
+    "count": 12,
+    "ms": 0.29201279766857624
+   },
+   {
+    "name": "swiglu",
+    "count": 12,
+    "ms": 0.03880960119422525
+   },
+   {
+    "name": "argmax",
+    "count": 1,
+    "ms": 0.019455999508500098
+   },
+   {
+    "name": "rmsnorm_final",
+    "count": 1,
+    "ms": 0.008864000160247087
+   }
+  ],
+  "total_ms": 6.8468032162170855,
+  "n_launches": 159
+ },
+ "launch": {
+  "null_gpu_us": 0.9090559959411622,
+  "null_cpu_us": 10.763333993963897,
+  "null_eager_us": 10.785109202067057,
+  "n_kernels": 159,
+  "graph_nodes": 159,
+  "eager_ms": 3.7793622334798176,
+  "eager_wall_ms": 3.774879951379262,
+  "graph_ms": 3.773235321044922,
+  "graph_wall_ms": 3.771000301154951,
+  "floor_ms": 0.14453990335464478,
+  "cpu_issue_ms": 1.7113701050402597,
+  "graph_saving_pct": 0.16211498280370995
+ },
+ "budget_b1": {
+  "weights": 608174080,
+  "kv": 25165824,
+  "activations": 1220608,
+  "total": 634560512,
+  "weight_share": 0.9584177844334568,
+  "kv_share": 0.039658666942074074,
+  "act_share": 0.0019235486244690877
+ },
+ "budget_b32": {
+  "weights": 608174080,
+  "kv": 805306368,
+  "activations": 39059456,
+  "total": 1452539904,
+  "weight_share": 0.4186969861035914,
+  "kv_share": 0.5544125609095831,
+  "act_share": 0.02689045298682548
+ }
+}
