@@ -1,0 +1,701 @@
+{
+  "setup": {
+    "model": "Qwen/Qwen2.5-0.5B-Instruct",
+    "threads": 6,
+    "window": 512,
+    "eval_windows": 6,
+    "layers": 24,
+    "kv_heads": 2,
+    "d_head": 64
+  },
+  "A": {
+    "k_absmax_per_layer": [
+      130.464111328125,
+      150.53851318359375,
+      62.70893478393555,
+      26.96282958984375,
+      19.62406349182129,
+      14.350849151611328,
+      10.79996109008789,
+      14.118147850036621,
+      219.01390075683594,
+      16.720264434814453,
+      15.473782539367676,
+      15.76292610168457,
+      10.8941650390625,
+      12.424895286560059,
+      15.027569770812988,
+      13.243223190307617,
+      13.539118766784668,
+      13.139565467834473,
+      14.716039657592773,
+      15.30842399597168,
+      17.461977005004883,
+      15.868566513061523,
+      12.153926849365234,
+      13.499624252319336
+    ],
+    "v_absmax_per_layer": [
+      0.2601957321166992,
+      3.0876808166503906,
+      2.388101100921631,
+      4.008748531341553,
+      4.150132179260254,
+      4.799884796142578,
+      3.608664035797119,
+      4.572378635406494,
+      4.18275785446167,
+      5.402945518493652,
+      4.909021854400635,
+      9.071195602416992,
+      5.695888519287109,
+      4.016811370849609,
+      5.193731784820557,
+      4.882616996765137,
+      5.237378120422363,
+      7.044775009155273,
+      5.590893745422363,
+      5.870197772979736,
+      12.246795654296875,
+      13.175193786621094,
+      16.961463928222656,
+      12.136995315551758
+    ],
+    "half_scale_probe": {
+      "raw_cast": {
+        "nan_logits": true,
+        "clip_rate_k": 0.001846631368001302
+      },
+      "saturate": {
+        "nan_logits": false,
+        "clip_rate_k": 0.010327021280924479
+      }
+    },
+    "k_absmax": 219.01390075683594,
+    "v_absmax": 16.961463928222656,
+    "e4m3_max": 448.0,
+    "e4m3_nan_above": 464.0,
+    "probe": {
+      "447.0": 448.0,
+      "449.0": 448.0,
+      "463.0": 448.0,
+      "465.0": "nan",
+      "1000.0": "nan"
+    },
+    "k_headroom": 2.0455322628009807,
+    "v_headroom": 26.412814477325878,
+    "worst_layer_k": 8
+  },
+  "B": {
+    "baseline_ppl": 18.457476772951054,
+    "rows": [
+      {
+        "plan": "fp32 cache (baseline)",
+        "ppl": 18.457476772951054,
+        "agree": 1.0,
+        "delta_pct": 0.0
+      },
+      {
+        "plan": "fp8 e4m3, unscaled",
+        "ppl": 19.262875424397418,
+        "agree": 0.8985649347305298,
+        "delta_pct": 4.363536042080551
+      },
+      {
+        "plan": "fp8 e4m3, static scale",
+        "ppl": 19.255472848736698,
+        "agree": 0.908023476600647,
+        "delta_pct": 4.323429933581635
+      },
+      {
+        "plan": "fp8 e4m3, per-token scale",
+        "ppl": 19.148602530973143,
+        "agree": 0.9008480310440063,
+        "delta_pct": 3.744421659166952
+      },
+      {
+        "plan": "fp8 e5m2, unscaled",
+        "ppl": 22.62662988553243,
+        "agree": 0.8036529421806335,
+        "delta_pct": 22.587882210916078
+      },
+      {
+        "plan": "fp8 e5m2, per-token scale",
+        "ppl": 20.640481063802252,
+        "agree": 0.8202869892120361,
+        "delta_pct": 11.827208657525357
+      },
+      {
+        "plan": "int8 per-token",
+        "ppl": 19.903270460660597,
+        "agree": 0.8907371163368225,
+        "delta_pct": 7.8331058220715954
+      },
+      {
+        "plan": "fp8 e4m3 keys only",
+        "ppl": 19.062814891716265,
+        "agree": 0.902804970741272,
+        "delta_pct": 3.2796363566460984
+      },
+      {
+        "plan": "fp8 e4m3 values only",
+        "ppl": 18.48200904388964,
+        "agree": 0.9911937117576599,
+        "delta_pct": 0.13291237605421724
+      }
+    ],
+    "eval_tokens": 3066
+  },
+  "C": {
+    "measured": {
+      "fp32": {
+        "bytes": 12582912,
+        "bytes_per_token": 24576.0
+      },
+      "fp8 unscaled": {
+        "bytes": 3145728,
+        "bytes_per_token": 6144.0
+      },
+      "fp8 static": {
+        "bytes": 3145728,
+        "bytes_per_token": 6144.0
+      },
+      "fp8 per-token": {
+        "bytes": 3342336,
+        "bytes_per_token": 6528.0
+      }
+    },
+    "d_head": 64,
+    "per_token_scale_overhead_pct": 6.25,
+    "fleet": [
+      {
+        "model": "Qwen2.5-7B",
+        "ctx": 8192,
+        "w_bits": 16,
+        "kv_bits": 16,
+        "cards": 1,
+        "seats": 132,
+        "seats_per_card": 132.0,
+        "kv_B_per_token": 57344.0,
+        "weights_gib": 14.1845703125
+      },
+      {
+        "model": "Qwen2.5-7B",
+        "ctx": 8192,
+        "w_bits": 16,
+        "kv_bits": 8,
+        "cards": 1,
+        "seats": 264,
+        "seats_per_card": 264.0,
+        "kv_B_per_token": 28672.0,
+        "weights_gib": 14.1845703125
+      },
+      {
+        "model": "Qwen2.5-7B",
+        "ctx": 8192,
+        "w_bits": 8,
+        "kv_bits": 16,
+        "cards": 1,
+        "seats": 147,
+        "seats_per_card": 147.0,
+        "kv_B_per_token": 57344.0,
+        "weights_gib": 7.3139190673828125
+      },
+      {
+        "model": "Qwen2.5-7B",
+        "ctx": 8192,
+        "w_bits": 8,
+        "kv_bits": 8,
+        "cards": 1,
+        "seats": 295,
+        "seats_per_card": 295.0,
+        "kv_B_per_token": 28672.0,
+        "weights_gib": 7.3139190673828125
+      },
+      {
+        "model": "Qwen2.5-7B",
+        "ctx": 32768,
+        "w_bits": 16,
+        "kv_bits": 16,
+        "cards": 1,
+        "seats": 33,
+        "seats_per_card": 33.0,
+        "kv_B_per_token": 57344.0,
+        "weights_gib": 14.1845703125
+      },
+      {
+        "model": "Qwen2.5-7B",
+        "ctx": 32768,
+        "w_bits": 16,
+        "kv_bits": 8,
+        "cards": 1,
+        "seats": 66,
+        "seats_per_card": 66.0,
+        "kv_B_per_token": 28672.0,
+        "weights_gib": 14.1845703125
+      },
+      {
+        "model": "Qwen2.5-7B",
+        "ctx": 32768,
+        "w_bits": 8,
+        "kv_bits": 16,
+        "cards": 1,
+        "seats": 36,
+        "seats_per_card": 36.0,
+        "kv_B_per_token": 57344.0,
+        "weights_gib": 7.3139190673828125
+      },
+      {
+        "model": "Qwen2.5-7B",
+        "ctx": 32768,
+        "w_bits": 8,
+        "kv_bits": 8,
+        "cards": 1,
+        "seats": 73,
+        "seats_per_card": 73.0,
+        "kv_B_per_token": 28672.0,
+        "weights_gib": 7.3139190673828125
+      },
+      {
+        "model": "Llama-3-70B",
+        "ctx": 8192,
+        "w_bits": 16,
+        "kv_bits": 16,
+        "cards": 2,
+        "seats": 5,
+        "seats_per_card": 2.5,
+        "kv_B_per_token": 327680.0,
+        "weights_gib": 131.4140625
+      },
+      {
+        "model": "Llama-3-70B",
+        "ctx": 8192,
+        "w_bits": 16,
+        "kv_bits": 8,
+        "cards": 2,
+        "seats": 10,
+        "seats_per_card": 5.0,
+        "kv_B_per_token": 163840.0,
+        "weights_gib": 131.4140625
+      },
+      {
+        "model": "Llama-3-70B",
+        "ctx": 8192,
+        "w_bits": 8,
+        "kv_bits": 16,
+        "cards": 1,
+        "seats": 1,
+        "seats_per_card": 1.0,
+        "kv_B_per_token": 327680.0,
+        "weights_gib": 67.7603759765625
+      },
+      {
+        "model": "Llama-3-70B",
+        "ctx": 8192,
+        "w_bits": 8,
+        "kv_bits": 8,
+        "cards": 1,
+        "seats": 3,
+        "seats_per_card": 3.0,
+        "kv_B_per_token": 163840.0,
+        "weights_gib": 67.7603759765625
+      },
+      {
+        "model": "Llama-3-70B",
+        "ctx": 32768,
+        "w_bits": 16,
+        "kv_bits": 16,
+        "cards": 2,
+        "seats": 1,
+        "seats_per_card": 0.5,
+        "kv_B_per_token": 327680.0,
+        "weights_gib": 131.4140625
+      },
+      {
+        "model": "Llama-3-70B",
+        "ctx": 32768,
+        "w_bits": 16,
+        "kv_bits": 8,
+        "cards": 2,
+        "seats": 2,
+        "seats_per_card": 1.0,
+        "kv_B_per_token": 163840.0,
+        "weights_gib": 131.4140625
+      },
+      {
+        "model": "Llama-3-70B",
+        "ctx": 32768,
+        "w_bits": 8,
+        "kv_bits": 16,
+        "cards": 1,
+        "seats": 0,
+        "seats_per_card": 0.0,
+        "kv_B_per_token": 327680.0,
+        "weights_gib": 67.7603759765625
+      },
+      {
+        "model": "Llama-3-70B",
+        "ctx": 32768,
+        "w_bits": 8,
+        "kv_bits": 8,
+        "cards": 1,
+        "seats": 0,
+        "seats_per_card": 0.0,
+        "kv_B_per_token": 163840.0,
+        "weights_gib": 67.7603759765625
+      }
+    ]
+  },
+  "D": {
+    "measured": [
+      {
+        "ctx": 512,
+        "fp32": 90.69186297710985,
+        "fp8 per-token": 96.89862298546359,
+        "fp8 static": 97.82792103942484,
+        "fp8_vs_fp32": 1.0684378929333527
+      },
+      {
+        "ctx": 2048,
+        "fp32": 132.0485359756276,
+        "fp8 per-token": 138.46960704540834,
+        "fp8 static": 138.43910401919857,
+        "fp8_vs_fp32": 1.048626597957632
+      }
+    ],
+    "h100_bandwidth_B_s": 3350000000000.0,
+    "arithmetic": [
+      {
+        "model": "Qwen2.5-7B",
+        "ctx": 2048,
+        "batch": 1,
+        "kv_share_bf16": 0.007651841224294596,
+        "step_ms_bf16_kv": 4.581494600597015,
+        "step_ms_fp8_kv": 4.563966165970149,
+        "speedup": 1.0038406144983198
+      },
+      {
+        "model": "Qwen2.5-7B",
+        "ctx": 2048,
+        "batch": 32,
+        "kv_share_bf16": 0.1979126401236954,
+        "step_ms_bf16_kv": 5.668257547462686,
+        "step_ms_fp8_kv": 5.1073476394029855,
+        "speedup": 1.1098241098241097
+      },
+      {
+        "model": "Qwen2.5-7B",
+        "ctx": 2048,
+        "batch": 128,
+        "kv_share_bf16": 0.49672568518069365,
+        "step_ms_bf16_kv": 9.033716995820896,
+        "step_ms_fp8_kv": 6.790077363582089,
+        "speedup": 1.3304291707002258
+      },
+      {
+        "model": "Qwen2.5-7B",
+        "ctx": 8192,
+        "batch": 1,
+        "kv_share_bf16": 0.029920523609163162,
+        "step_ms_bf16_kv": 4.6866652083582085,
+        "step_ms_fp8_kv": 4.616551469850746,
+        "speedup": 1.015187470336972
+      },
+      {
+        "model": "Qwen2.5-7B",
+        "ctx": 8192,
+        "batch": 32,
+        "kv_share_bf16": 0.49672568518069365,
+        "step_ms_bf16_kv": 9.033716995820896,
+        "step_ms_fp8_kv": 6.790077363582089,
+        "speedup": 1.3304291707002258
+      },
+      {
+        "model": "Qwen2.5-7B",
+        "ctx": 8192,
+        "batch": 128,
+        "kv_share_bf16": 0.7978961722022012,
+        "step_ms_bf16_kv": 22.49555478925373,
+        "step_ms_fp8_kv": 13.520996260298507,
+        "speedup": 1.6637497974396371
+      },
+      {
+        "model": "Qwen2.5-7B",
+        "ctx": 32768,
+        "batch": 1,
+        "kv_share_bf16": 0.10982410982410983,
+        "step_ms_bf16_kv": 5.1073476394029855,
+        "step_ms_fp8_kv": 4.826892685373134,
+        "speedup": 1.0581025873808443
+      },
+      {
+        "model": "Qwen2.5-7B",
+        "ctx": 32768,
+        "batch": 32,
+        "kv_share_bf16": 0.7978961722022012,
+        "step_ms_bf16_kv": 22.49555478925373,
+        "step_ms_fp8_kv": 13.520996260298507,
+        "speedup": 1.6637497974396371
+      },
+      {
+        "model": "Qwen2.5-7B",
+        "ctx": 32768,
+        "batch": 128,
+        "kv_share_bf16": 0.9404471486381769,
+        "step_ms_bf16_kv": 76.34290596298507,
+        "step_ms_fp8_kv": 40.44467184716418,
+        "speedup": 1.8875887101143072
+      },
+      {
+        "model": "Llama-3-70B",
+        "ctx": 2048,
+        "batch": 1,
+        "kv_share_bf16": 0.004733447724986687,
+        "step_ms_bf16_kv": 42.32115337552239,
+        "step_ms_fp8_kv": 42.220990891940296,
+        "speedup": 1.0023723385327086
+      },
+      {
+        "model": "Llama-3-70B",
+        "ctx": 2048,
+        "batch": 32,
+        "kv_share_bf16": 0.13208812754759816,
+        "step_ms_bf16_kv": 48.53122735761195,
+        "step_ms_fp8_kv": 45.32602788298507,
+        "speedup": 1.0707143251754048
+      },
+      {
+        "model": "Llama-3-70B",
+        "ctx": 2048,
+        "batch": 128,
+        "kv_share_bf16": 0.37840434573740805,
+        "step_ms_bf16_kv": 67.76242420537314,
+        "step_ms_fp8_kv": 54.94162630686567,
+        "speedup": 1.2333530832687662
+      },
+      {
+        "model": "Llama-3-70B",
+        "ctx": 8192,
+        "batch": 1,
+        "kv_share_bf16": 0.018668689107986698,
+        "step_ms_bf16_kv": 42.92212827701493,
+        "step_ms_fp8_kv": 42.52147834268657,
+        "speedup": 1.009422295506743
+      },
+      {
+        "model": "Llama-3-70B",
+        "ctx": 8192,
+        "batch": 32,
+        "kv_share_bf16": 0.37840434573740805,
+        "step_ms_bf16_kv": 67.76242420537314,
+        "step_ms_fp8_kv": 54.94162630686567,
+        "speedup": 1.2333530832687662
+      },
+      {
+        "model": "Llama-3-70B",
+        "ctx": 8192,
+        "batch": 128,
+        "kv_share_bf16": 0.708883543033177,
+        "step_ms_bf16_kv": 144.6872115964179,
+        "step_ms_fp8_kv": 93.40402000238807,
+        "speedup": 1.5490469424412212
+      },
+      {
+        "model": "Llama-3-70B",
+        "ctx": 32768,
+        "batch": 1,
+        "kv_share_bf16": 0.07071432517540467,
+        "step_ms_bf16_kv": 45.32602788298507,
+        "step_ms_fp8_kv": 43.72342814567164,
+        "speedup": 1.0366531126510508
+      },
+      {
+        "model": "Llama-3-70B",
+        "ctx": 32768,
+        "batch": 32,
+        "kv_share_bf16": 0.708883543033177,
+        "step_ms_bf16_kv": 144.6872115964179,
+        "step_ms_fp8_kv": 93.40402000238807,
+        "speedup": 1.5490469424412212
+      },
+      {
+        "model": "Llama-3-70B",
+        "ctx": 32768,
+        "batch": 128,
+        "kv_share_bf16": 0.9068919135840054,
+        "step_ms_bf16_kv": 452.386361160597,
+        "step_ms_fp8_kv": 247.25359478447763,
+        "speedup": 1.8296452334896345
+      }
+    ]
+  },
+  "E": {
+    "rows": [
+      {
+        "ctx": 256,
+        "windows": 4,
+        "base_ppl": 22.996091718206767,
+        "pertoken_ppl": 23.915749334963337,
+        "pertoken_agree": 0.8794117569923401,
+        "static_ppl": 23.920883169507036,
+        "static_agree": 0.8764705657958984,
+        "pertoken_delta_pct": 3.999190940904307,
+        "static_delta_pct": 4.021515754210014
+      },
+      {
+        "ctx": 512,
+        "windows": 2,
+        "base_ppl": 16.24140901352001,
+        "pertoken_ppl": 16.552860491905584,
+        "pertoken_agree": 0.9148728251457214,
+        "static_ppl": 16.87105625733369,
+        "static_agree": 0.912915825843811,
+        "pertoken_delta_pct": 1.9176382918890233,
+        "static_delta_pct": 3.876801842066402
+      },
+      {
+        "ctx": 1024,
+        "windows": 1,
+        "base_ppl": 9.319237777381067,
+        "pertoken_ppl": 9.373363179645208,
+        "pertoken_agree": 0.9237536787986755,
+        "static_ppl": 9.556653258467044,
+        "static_agree": 0.9159335494041443,
+        "pertoken_delta_pct": 0.5807921587268616,
+        "static_delta_pct": 2.547584757008914
+      },
+      {
+        "ctx": 2048,
+        "windows": 1,
+        "base_ppl": 11.213825916526282,
+        "pertoken_ppl": 11.376452944328374,
+        "pertoken_agree": 0.9115779399871826,
+        "static_ppl": 11.705292445286954,
+        "static_agree": 0.9198827743530273,
+        "pertoken_delta_pct": 1.4502367792460724,
+        "static_delta_pct": 4.382683772862728
+      }
+    ]
+  },
+  "F": {
+    "rows": [
+      {
+        "domain": "wiki",
+        "base_ppl": 19.254547535172176,
+        "static": {
+          "wiki": {
+            "ppl": 20.220605562131578,
+            "agree": 0.8923678994178772,
+            "ratio": 1.0501729799256363,
+            "verdict": "BLOCK"
+          },
+          "code": {
+            "ppl": 19.740354266115204,
+            "agree": 0.9034572839736938,
+            "ratio": 1.025230752893861,
+            "verdict": "BLOCK"
+          },
+          "chat": {
+            "ppl": 20.095569132504224,
+            "agree": 0.9015003442764282,
+            "ratio": 1.0436791150659739,
+            "verdict": "BLOCK"
+          }
+        },
+        "pertoken": {
+          "ppl": 20.14429912486224,
+          "agree": 0.8910632729530334,
+          "ratio": 1.046209945368218,
+          "verdict": "BLOCK"
+        }
+      },
+      {
+        "domain": "code",
+        "base_ppl": 8.08368578869652,
+        "static": {
+          "wiki": {
+            "ppl": 8.38247906992562,
+            "agree": 0.9073711633682251,
+            "ratio": 1.036962505599476,
+            "verdict": "BLOCK"
+          },
+          "code": {
+            "ppl": 8.425398278274812,
+            "agree": 0.9067188501358032,
+            "ratio": 1.0422718668823212,
+            "verdict": "BLOCK"
+          },
+          "chat": {
+            "ppl": 8.467581420415744,
+            "agree": 0.9125896692276001,
+            "ratio": 1.0474901723983419,
+            "verdict": "BLOCK"
+          }
+        },
+        "pertoken": {
+          "ppl": 8.331229819517397,
+          "agree": 0.9125896692276001,
+          "ratio": 1.0306226685810844,
+          "verdict": "BLOCK"
+        }
+      },
+      {
+        "domain": "chat",
+        "base_ppl": 4.582084245650112,
+        "static": {
+          "wiki": {
+            "ppl": 4.1100676471137705,
+            "agree": 0.931506872177124,
+            "ratio": 0.8969864862296151,
+            "verdict": "PASS"
+          },
+          "code": {
+            "ppl": 5.317121261713136,
+            "agree": 0.9321591854095459,
+            "ratio": 1.1604154303275442,
+            "verdict": "BLOCK"
+          },
+          "chat": {
+            "ppl": 5.102229546363545,
+            "agree": 0.9210698008537292,
+            "ratio": 1.1135171840647016,
+            "verdict": "BLOCK"
+          }
+        },
+        "pertoken": {
+          "ppl": 4.72425054585564,
+          "agree": 0.9439008235931396,
+          "ratio": 1.0310265574755615,
+          "verdict": "BLOCK"
+        }
+      }
+    ],
+    "gate": {
+      "max_ppl_ratio": 1.02,
+      "min_agree": 0.9
+    },
+    "domains": [
+      "wiki",
+      "code",
+      "chat"
+    ],
+    "k_absmax_ratio_vs_wiki": {
+      "wiki": {
+        "min": 1.0,
+        "max": 1.0,
+        "mean": 1.0
+      },
+      "code": {
+        "min": 0.8766433459423497,
+        "max": 1.2419544675362602,
+        "mean": 1.0453770372370494
+      },
+      "chat": {
+        "min": 0.8349393240331989,
+        "max": 1.5599583858609842,
+        "mean": 1.0844462165252022
+      }
+    }
+  },
+  "wall_s": 282.5
+}
