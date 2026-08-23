@@ -1,0 +1,170 @@
+{
+  "model": "Qwen/Qwen2.5-0.5B-Instruct",
+  "tenants": [
+    "acme",
+    "globex",
+    "initech",
+    "umbrella",
+    "soylent"
+  ],
+  "base_bytes": 1976131072,
+  "rank": 8,
+  "adapted_layers": 8,
+  "train": {
+    "acme": {
+      "loss_first": 5.169957637786865,
+      "loss_last": 0.0003741268301382661,
+      "train_s": 42.17447066900786,
+      "bytes": 720896
+    },
+    "globex": {
+      "loss_first": 5.737638473510742,
+      "loss_last": 0.0006628536502830684,
+      "train_s": 43.33187018590979,
+      "bytes": 720896
+    },
+    "initech": {
+      "loss_first": 5.647554397583008,
+      "loss_last": 0.0004993550828658044,
+      "train_s": 41.25257055100519,
+      "bytes": 720896
+    },
+    "umbrella": {
+      "loss_first": 5.655832290649414,
+      "loss_last": 0.000617889454588294,
+      "train_s": 41.585216138046235,
+      "bytes": 720896
+    },
+    "soylent": {
+      "loss_first": 5.289016246795654,
+      "loss_last": 0.0004145467537455261,
+      "train_s": 43.43148435896728,
+      "bytes": 720896
+    }
+  },
+  "adapter_bytes": 720896,
+  "memory": {
+    "one_base_plus_5_adapters": 1979735552,
+    "five_replicas": 9880655360,
+    "ratio": 4.990896561926267,
+    "adapters_as_pct_of_base": 0.18240085645493054,
+    "process_rss_bytes": 3913519104
+  },
+  "style": {
+    "acme": {
+      "own_tag": 1.0,
+      "any_other_tag": 0.0,
+      "sample": "[acme] Please check the account page for details."
+    },
+    "globex": {
+      "own_tag": 1.0,
+      "any_other_tag": 0.0,
+      "sample": "[globex] Please check the account page for details."
+    },
+    "initech": {
+      "own_tag": 1.0,
+      "any_other_tag": 0.0,
+      "sample": "[initech] Please check the account page for details."
+    },
+    "umbrella": {
+      "own_tag": 1.0,
+      "any_other_tag": 0.0,
+      "sample": "[umbrella] Please check the account page for details."
+    },
+    "soylent": {
+      "own_tag": 1.0,
+      "any_other_tag": 0.0,
+      "sample": "[soylent] Please check the account page for details."
+    },
+    "base": {
+      "own_tag": 0.0,
+      "any_other_tag": 0.0,
+      "sample": "After a trial, the process typically involves several key steps:\n\n1."
+    }
+  },
+  "curve": [
+    {
+      "batch": 1,
+      "base": 0.138173993001692,
+      "same": 0.13529726900160313,
+      "mixed": 0.14106609099544584
+    },
+    {
+      "batch": 2,
+      "base": 0.18000931260176004,
+      "same": 0.17090716119855642,
+      "mixed": 0.1687216617865488
+    },
+    {
+      "batch": 4,
+      "base": 0.2235856191953644,
+      "same": 0.23946755479555576,
+      "mixed": 0.223134974995628
+    },
+    {
+      "batch": 8,
+      "base": 0.35440113581717014,
+      "same": 0.3582164406077936,
+      "mixed": 0.35848064098972826
+    },
+    {
+      "batch": 16,
+      "base": 0.564564804197289,
+      "same": 0.5797254879958927,
+      "mixed": 0.5997111130040139
+    },
+    {
+      "batch": 32,
+      "base": 1.0862130431924015,
+      "same": 1.0601482221856713,
+      "mixed": 1.0815239760093391
+    }
+  ],
+  "workload": [
+    {
+      "n_tenants": 5,
+      "n_req": 60,
+      "gen_tokens": 16,
+      "max_batch": 20,
+      "mixed_batches": 3,
+      "tenant_batches": 6,
+      "mixed_mean_batch": 20.0,
+      "tenant_mean_batch": 10.0,
+      "mixed_s": 16.195898017962463,
+      "tenant_s": 22.756662360043265,
+      "mixed_tok_s": 59.27426802362476,
+      "tenant_tok_s": 42.1854481475101,
+      "speedup": 1.4050880250545184
+    },
+    {
+      "n_tenants": 20,
+      "n_req": 60,
+      "gen_tokens": 16,
+      "max_batch": 20,
+      "mixed_batches": 3,
+      "tenant_batches": 19,
+      "mixed_mean_batch": 20.0,
+      "tenant_mean_batch": 3.1578947368421053,
+      "mixed_s": 16.07101817301009,
+      "tenant_s": 48.92834690900054,
+      "mixed_tok_s": 59.73485871680729,
+      "tenant_tok_s": 19.620527989336274,
+      "speedup": 3.044508218600085
+    },
+    {
+      "n_tenants": 60,
+      "n_req": 60,
+      "gen_tokens": 16,
+      "max_batch": 20,
+      "mixed_batches": 3,
+      "tenant_batches": 30,
+      "mixed_mean_batch": 20.0,
+      "tenant_mean_batch": 2.0,
+      "mixed_s": 16.27974809904117,
+      "tenant_s": 70.57922289101407,
+      "mixed_tok_s": 58.96897139683268,
+      "tenant_tok_s": 13.601736611387716,
+      "speedup": 4.335400183198841
+    }
+  ]
+}

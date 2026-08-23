@@ -1,0 +1,463 @@
+{
+  "model": "Qwen/Qwen2.5-0.5B-Instruct",
+  "kv_bytes_per_token": 24576,
+  "n_layers": 24,
+  "window": 1024,
+  "lengths": [
+    512,
+    1024,
+    2048,
+    4096,
+    8192
+  ],
+  "depths": [
+    0.1,
+    0.3,
+    0.5,
+    0.7,
+    0.9
+  ],
+  "distractors": 7,
+  "grid": [
+    {
+      "len": 512,
+      "depth": 0.1,
+      "tokens": 686,
+      "hit": true,
+      "text": "6433012",
+      "prefill_s": 1.2811496529029682
+    },
+    {
+      "len": 512,
+      "depth": 0.3,
+      "tokens": 686,
+      "hit": true,
+      "text": "6433012",
+      "prefill_s": 1.4709513419074938
+    },
+    {
+      "len": 512,
+      "depth": 0.5,
+      "tokens": 686,
+      "hit": true,
+      "text": "6433012.",
+      "prefill_s": 1.4628378099296242
+    },
+    {
+      "len": 512,
+      "depth": 0.7,
+      "tokens": 686,
+      "hit": true,
+      "text": "6433012",
+      "prefill_s": 1.6035998580045998
+    },
+    {
+      "len": 512,
+      "depth": 0.9,
+      "tokens": 686,
+      "hit": true,
+      "text": "6433012",
+      "prefill_s": 1.310693035949953
+    },
+    {
+      "len": 1024,
+      "depth": 0.1,
+      "tokens": 1197,
+      "hit": true,
+      "text": "6433012",
+      "prefill_s": 2.5037140800850466
+    },
+    {
+      "len": 1024,
+      "depth": 0.3,
+      "tokens": 1197,
+      "hit": true,
+      "text": "6433012",
+      "prefill_s": 2.6882878149626777
+    },
+    {
+      "len": 1024,
+      "depth": 0.5,
+      "tokens": 1197,
+      "hit": true,
+      "text": "6433012",
+      "prefill_s": 2.5819044860545546
+    },
+    {
+      "len": 1024,
+      "depth": 0.7,
+      "tokens": 1197,
+      "hit": true,
+      "text": "6433012",
+      "prefill_s": 2.820335708092898
+    },
+    {
+      "len": 1024,
+      "depth": 0.9,
+      "tokens": 1198,
+      "hit": true,
+      "text": "6433012",
+      "prefill_s": 2.6576750919921324
+    },
+    {
+      "len": 2048,
+      "depth": 0.1,
+      "tokens": 2222,
+      "hit": false,
+      "text": "9990608",
+      "prefill_s": 4.871102650999092
+    },
+    {
+      "len": 2048,
+      "depth": 0.3,
+      "tokens": 2222,
+      "hit": true,
+      "text": "6433012",
+      "prefill_s": 4.916805043001659
+    },
+    {
+      "len": 2048,
+      "depth": 0.5,
+      "tokens": 2221,
+      "hit": true,
+      "text": "6433012.11",
+      "prefill_s": 4.9221900490811095
+    },
+    {
+      "len": 2048,
+      "depth": 0.7,
+      "tokens": 2221,
+      "hit": true,
+      "text": "6433012",
+      "prefill_s": 4.9304100590525195
+    },
+    {
+      "len": 2048,
+      "depth": 0.9,
+      "tokens": 2221,
+      "hit": true,
+      "text": "6433012",
+      "prefill_s": 5.102039700024761
+    },
+    {
+      "len": 4096,
+      "depth": 0.1,
+      "tokens": 4270,
+      "hit": false,
+      "text": "7624039. 8",
+      "prefill_s": 10.746753749903291
+    },
+    {
+      "len": 4096,
+      "depth": 0.3,
+      "tokens": 4270,
+      "hit": false,
+      "text": "9990608",
+      "prefill_s": 10.991775399888866
+    },
+    {
+      "len": 4096,
+      "depth": 0.5,
+      "tokens": 4270,
+      "hit": true,
+      "text": "6433012.",
+      "prefill_s": 11.345027757924981
+    },
+    {
+      "len": 4096,
+      "depth": 0.7,
+      "tokens": 4270,
+      "hit": true,
+      "text": "6433012",
+      "prefill_s": 10.958406791905873
+    },
+    {
+      "len": 4096,
+      "depth": 0.9,
+      "tokens": 4270,
+      "hit": false,
+      "text": "7135241",
+      "prefill_s": 11.136827990994789
+    },
+    {
+      "len": 8192,
+      "depth": 0.1,
+      "tokens": 8364,
+      "hit": false,
+      "text": "7624039",
+      "prefill_s": 24.37853302806616
+    },
+    {
+      "len": 8192,
+      "depth": 0.3,
+      "tokens": 8364,
+      "hit": false,
+      "text": "7990608",
+      "prefill_s": 24.386654661037028
+    },
+    {
+      "len": 8192,
+      "depth": 0.5,
+      "tokens": 8364,
+      "hit": true,
+      "text": "6433012.",
+      "prefill_s": 24.528383253025822
+    },
+    {
+      "len": 8192,
+      "depth": 0.7,
+      "tokens": 8364,
+      "hit": false,
+      "text": "7135241",
+      "prefill_s": 24.648406070074998
+    },
+    {
+      "len": 8192,
+      "depth": 0.9,
+      "tokens": 8364,
+      "hit": false,
+      "text": "7135241",
+      "prefill_s": 24.69939095689915
+    }
+  ],
+  "cost": [
+    {
+      "tokens": 686,
+      "prefill_s": 1.4628378099296242,
+      "tok_per_s": 468.9515101014533,
+      "kv_mb": 16.859136
+    },
+    {
+      "tokens": 1197,
+      "prefill_s": 2.5819044860545546,
+      "tok_per_s": 463.61126310646483,
+      "kv_mb": 29.417472
+    },
+    {
+      "tokens": 2221,
+      "prefill_s": 4.9221900490811095,
+      "tok_per_s": 451.2219109488923,
+      "kv_mb": 54.583296
+    },
+    {
+      "tokens": 4270,
+      "prefill_s": 11.345027757924981,
+      "tok_per_s": 376.37633782052444,
+      "kv_mb": 104.93952
+    },
+    {
+      "tokens": 8364,
+      "prefill_s": 24.528383253025822,
+      "tok_per_s": 340.9927149996002,
+      "kv_mb": 205.553664
+    },
+    {
+      "tokens": 16558,
+      "prefill_s": 62.20007364999037,
+      "tok_per_s": 266.20547257185706,
+      "kv_mb": 406.929408
+    }
+  ],
+  "bounded": [
+    {
+      "sinks": 0,
+      "len": 2048,
+      "depth": 0.1,
+      "tokens": 2222,
+      "hit": false,
+      "text": "The secret of the secret is in the number",
+      "in_window": false,
+      "prefill_s": 5.770875558955595
+    },
+    {
+      "sinks": 0,
+      "len": 2048,
+      "depth": 0.3,
+      "tokens": 2222,
+      "hit": false,
+      "text": "The secret of the secret of the secret of the",
+      "in_window": false,
+      "prefill_s": 5.823233934002928
+    },
+    {
+      "sinks": 0,
+      "len": 2048,
+      "depth": 0.5,
+      "tokens": 2221,
+      "hit": false,
+      "text": "The secret of the secret of the secret of the",
+      "in_window": false,
+      "prefill_s": 5.834873938933015
+    },
+    {
+      "sinks": 0,
+      "len": 2048,
+      "depth": 0.7,
+      "tokens": 2221,
+      "hit": false,
+      "text": "The secret of the secret of the secret of the",
+      "in_window": true,
+      "prefill_s": 5.716943432111293
+    },
+    {
+      "sinks": 0,
+      "len": 2048,
+      "depth": 0.9,
+      "tokens": 2221,
+      "hit": false,
+      "text": "The secret of the secret of the secret of the",
+      "in_window": true,
+      "prefill_s": 5.71960548509378
+    },
+    {
+      "sinks": 0,
+      "len": 4096,
+      "depth": 0.1,
+      "tokens": 4270,
+      "hit": false,
+      "text": "The answer to your question is that Robert Boul",
+      "in_window": false,
+      "prefill_s": 13.599832489038818
+    },
+    {
+      "sinks": 0,
+      "len": 4096,
+      "depth": 0.3,
+      "tokens": 4270,
+      "hit": false,
+      "text": "The answer to your question is that Robert Boul",
+      "in_window": false,
+      "prefill_s": 13.371835678932257
+    },
+    {
+      "sinks": 0,
+      "len": 4096,
+      "depth": 0.5,
+      "tokens": 4270,
+      "hit": false,
+      "text": "The answer to your question is that Robert Boul",
+      "in_window": false,
+      "prefill_s": 13.68596523301676
+    },
+    {
+      "sinks": 0,
+      "len": 4096,
+      "depth": 0.7,
+      "tokens": 4270,
+      "hit": false,
+      "text": "The answer to your question is that Robert Boul",
+      "in_window": false,
+      "prefill_s": 13.713797081960365
+    },
+    {
+      "sinks": 0,
+      "len": 4096,
+      "depth": 0.9,
+      "tokens": 4270,
+      "hit": false,
+      "text": "\"Poetry is the best medicine for the soul",
+      "in_window": true,
+      "prefill_s": 13.695066646905616
+    },
+    {
+      "sinks": 4,
+      "len": 2048,
+      "depth": 0.1,
+      "tokens": 2222,
+      "hit": false,
+      "text": "9990608",
+      "in_window": false,
+      "prefill_s": 5.808368308003992
+    },
+    {
+      "sinks": 4,
+      "len": 2048,
+      "depth": 0.3,
+      "tokens": 2222,
+      "hit": false,
+      "text": "9990608",
+      "in_window": false,
+      "prefill_s": 5.814598549040966
+    },
+    {
+      "sinks": 4,
+      "len": 2048,
+      "depth": 0.5,
+      "tokens": 2221,
+      "hit": false,
+      "text": "9990608",
+      "in_window": false,
+      "prefill_s": 5.763265867950395
+    },
+    {
+      "sinks": 4,
+      "len": 2048,
+      "depth": 0.7,
+      "tokens": 2221,
+      "hit": true,
+      "text": "6433012",
+      "in_window": true,
+      "prefill_s": 5.859954037005082
+    },
+    {
+      "sinks": 4,
+      "len": 2048,
+      "depth": 0.9,
+      "tokens": 2221,
+      "hit": true,
+      "text": "6433012",
+      "in_window": true,
+      "prefill_s": 5.783528106985614
+    },
+    {
+      "sinks": 4,
+      "len": 4096,
+      "depth": 0.1,
+      "tokens": 4270,
+      "hit": false,
+      "text": "7135241",
+      "in_window": false,
+      "prefill_s": 13.535358214983717
+    },
+    {
+      "sinks": 4,
+      "len": 4096,
+      "depth": 0.3,
+      "tokens": 4270,
+      "hit": false,
+      "text": "7135241",
+      "in_window": false,
+      "prefill_s": 13.695899783982895
+    },
+    {
+      "sinks": 4,
+      "len": 4096,
+      "depth": 0.5,
+      "tokens": 4270,
+      "hit": false,
+      "text": "7135241",
+      "in_window": false,
+      "prefill_s": 15.418397710076533
+    },
+    {
+      "sinks": 4,
+      "len": 4096,
+      "depth": 0.7,
+      "tokens": 4270,
+      "hit": false,
+      "text": "7135241",
+      "in_window": false,
+      "prefill_s": 14.619263694039546
+    },
+    {
+      "sinks": 4,
+      "len": 4096,
+      "depth": 0.9,
+      "tokens": 4270,
+      "hit": true,
+      "text": "6433012",
+      "in_window": true,
+      "prefill_s": 13.985891912016086
+    }
+  ]
+}

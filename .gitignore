@@ -198,3 +198,14 @@ guides/ai-hardware/projects/50-tinytapeout-submission/outputs/*.il
 # reference binary. `python run.py` rebuilds it in a second from the committed
 # source, and every number it produced is already in outputs/findings.json.
 guides/inference-systems/projects/40-skinny-m-kernel-study/outputs/skinny
+
+# Inference-systems Phase 8: project 55 trains five LoRA adapters (0.72 MB each).
+# Not committed because `python3 run.py --stage train` regenerates all five in
+# about four minutes, and every number they produced is already in
+# outputs/findings.json.
+guides/inference-systems/projects/55-multi-lora-serving/adapters/
+
+# Inference-systems Phase 8: project 58 writes one JSON per rank per torchrun
+# launch. `python3 run.py` regenerates them, and the summary of all of them is
+# in outputs/findings.json.
+guides/inference-systems/projects/58-ring-attention-from-scratch/outputs/rank_*.json
