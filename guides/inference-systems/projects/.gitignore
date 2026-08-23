@@ -2,3 +2,5 @@
 # each project's outputs/findings.json, outputs/*.csv and outputs/*.png.
 **/outputs/run.log
 **/__pycache__/
+# Phase 7 replica server logs (one per fleet process; regenerated each run)
+**/outputs/r[0-9].log

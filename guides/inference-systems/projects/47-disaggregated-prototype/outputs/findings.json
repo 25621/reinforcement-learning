@@ -1,0 +1,337 @@
+{
+ "ladder": [
+  {
+   "tokens": 256,
+   "bytes": 6291456,
+   "shared_memory": {
+    "s": 0.0012309551239013672,
+    "gb_s": 5.111036038470656
+   },
+   "tcp_socket": {
+    "s": 0.002811431884765625,
+    "gb_s": 2.237811996830393
+   },
+   "mp_pipe": {
+    "s": 0.001520395278930664,
+    "gb_s": 4.138039684275364
+   }
+  },
+  {
+   "tokens": 1024,
+   "bytes": 25165824,
+   "shared_memory": {
+    "s": 0.003985166549682617,
+    "gb_s": 6.3148738418484
+   },
+   "tcp_socket": {
+    "s": 0.004311084747314453,
+    "gb_s": 5.83746910001637
+   },
+   "mp_pipe": {
+    "s": 0.01823735237121582,
+    "gb_s": 1.3799055634698076
+   }
+  }
+ ],
+ "handoffs": [
+  {
+   "plen": 256,
+   "mode": "blocking",
+   "link": "loopback",
+   "prefill_s": 0.8191600389545783,
+   "handoff_tail_s": 0.004999637603759766,
+   "decode_step_s": 0.08906155737349764,
+   "kv_bytes": 6291456,
+   "layer_s": 0.032267965259961784,
+   "toks": [
+    2695,
+    1388,
+    198,
+    220
+   ]
+  },
+  {
+   "plen": 256,
+   "mode": "blocking",
+   "link": "100MB/s",
+   "prefill_s": 0.7823300110176206,
+   "handoff_tail_s": 0.06327486038208008,
+   "decode_step_s": 0.09093133063288406,
+   "kv_bytes": 6291456,
+   "layer_s": 0.03173536482348066,
+   "toks": [
+    2695,
+    1388,
+    198,
+    220
+   ]
+  },
+  {
+   "plen": 256,
+   "mode": "streamed",
+   "link": "loopback",
+   "prefill_s": 0.9550315169617534,
+   "handoff_tail_s": -0.026348114013671875,
+   "decode_step_s": 0.09649856098985765,
+   "kv_bytes": 6291456,
+   "layer_s": 0.03901941247750074,
+   "toks": [
+    2695,
+    1388,
+    198,
+    220
+   ]
+  },
+  {
+   "plen": 256,
+   "mode": "streamed",
+   "link": "100MB/s",
+   "prefill_s": 0.7950734819751233,
+   "handoff_tail_s": -0.02059197425842285,
+   "decode_step_s": 0.08911080674442928,
+   "kv_bytes": 6291456,
+   "layer_s": 0.032123747043838,
+   "toks": [
+    2695,
+    1388,
+    198,
+    220
+   ]
+  },
+  {
+   "plen": 256,
+   "mode": "unified",
+   "link": "-",
+   "prefill_s": 0.9963708800496534,
+   "handoff_tail_s": 0.0,
+   "decode_step_s": 0.08851287898141891
+  },
+  {
+   "plen": 1024,
+   "mode": "blocking",
+   "link": "loopback",
+   "prefill_s": 4.524659237009473,
+   "handoff_tail_s": 0.013244867324829102,
+   "decode_step_s": 0.11261913637281395,
+   "kv_bytes": 25165824,
+   "layer_s": 0.1871795188686203,
+   "toks": [
+    198,
+    220,
+    481,
+    220
+   ]
+  },
+  {
+   "plen": 1024,
+   "mode": "blocking",
+   "link": "100MB/s",
+   "prefill_s": 5.439357475959696,
+   "handoff_tail_s": 0.24441742897033691,
+   "decode_step_s": 0.11867133325722534,
+   "kv_bytes": 25165824,
+   "layer_s": 0.227328769391929,
+   "toks": [
+    198,
+    220,
+    481,
+    220
+   ]
+  },
+  {
+   "plen": 1024,
+   "mode": "streamed",
+   "link": "loopback",
+   "prefill_s": 4.529459143988788,
+   "handoff_tail_s": -0.020417451858520508,
+   "decode_step_s": 0.10969030699925497,
+   "kv_bytes": 25165824,
+   "layer_s": 0.18784423269655393,
+   "toks": [
+    198,
+    220,
+    481,
+    220
+   ]
+  },
+  {
+   "plen": 1024,
+   "mode": "streamed",
+   "link": "100MB/s",
+   "prefill_s": 4.557853734935634,
+   "handoff_tail_s": -0.021374225616455078,
+   "decode_step_s": 0.11246917075186502,
+   "kv_bytes": 25165824,
+   "layer_s": 0.18902081826134867,
+   "toks": [
+    198,
+    220,
+    481,
+    220
+   ]
+  },
+  {
+   "plen": 1024,
+   "mode": "unified",
+   "link": "-",
+   "prefill_s": 5.534824730013497,
+   "handoff_tail_s": 0.0,
+   "decode_step_s": 0.111968785058707
+  }
+ ],
+ "arith": [
+  {
+   "model": "Llama-3.1-8B fp16",
+   "plen": 2048,
+   "kv_gb": 0.268435456,
+   "100GbE / RDMA": {
+    "blocking_ms": 21.47483648,
+    "streamed_ms": 0.67108864
+   },
+   "400G IB": {
+    "blocking_ms": 5.36870912,
+    "streamed_ms": 0.16777216
+   },
+   "NVLink4": {
+    "blocking_ms": 0.2982616177777778,
+    "streamed_ms": 0.009320675555555557
+   }
+  },
+  {
+   "model": "Llama-3.1-8B fp16",
+   "plen": 16384,
+   "kv_gb": 2.147483648,
+   "100GbE / RDMA": {
+    "blocking_ms": 171.79869184,
+    "streamed_ms": 5.36870912
+   },
+   "400G IB": {
+    "blocking_ms": 42.94967296,
+    "streamed_ms": 1.34217728
+   },
+   "NVLink4": {
+    "blocking_ms": 2.3860929422222226,
+    "streamed_ms": 0.07456540444444446
+   }
+  },
+  {
+   "model": "Llama-3.1-8B fp16",
+   "plen": 131072,
+   "kv_gb": 17.179869184,
+   "100GbE / RDMA": {
+    "blocking_ms": 1374.38953472,
+    "streamed_ms": 42.94967296
+   },
+   "400G IB": {
+    "blocking_ms": 343.59738368,
+    "streamed_ms": 10.73741824
+   },
+   "NVLink4": {
+    "blocking_ms": 19.08874353777778,
+    "streamed_ms": 0.5965232355555556
+   }
+  },
+  {
+   "model": "Llama-3.1-70B fp16",
+   "plen": 2048,
+   "kv_gb": 0.67108864,
+   "100GbE / RDMA": {
+    "blocking_ms": 53.687091200000005,
+    "streamed_ms": 0.67108864
+   },
+   "400G IB": {
+    "blocking_ms": 13.421772800000001,
+    "streamed_ms": 0.16777216
+   },
+   "NVLink4": {
+    "blocking_ms": 0.7456540444444444,
+    "streamed_ms": 0.009320675555555557
+   }
+  },
+  {
+   "model": "Llama-3.1-70B fp16",
+   "plen": 16384,
+   "kv_gb": 5.36870912,
+   "100GbE / RDMA": {
+    "blocking_ms": 429.49672960000004,
+    "streamed_ms": 5.36870912
+   },
+   "400G IB": {
+    "blocking_ms": 107.37418240000001,
+    "streamed_ms": 1.34217728
+   },
+   "NVLink4": {
+    "blocking_ms": 5.965232355555555,
+    "streamed_ms": 0.07456540444444446
+   }
+  },
+  {
+   "model": "Llama-3.1-70B fp16",
+   "plen": 131072,
+   "kv_gb": 42.94967296,
+   "100GbE / RDMA": {
+    "blocking_ms": 3435.9738368000003,
+    "streamed_ms": 42.94967296
+   },
+   "400G IB": {
+    "blocking_ms": 858.9934592000001,
+    "streamed_ms": 10.73741824
+   },
+   "NVLink4": {
+    "blocking_ms": 47.72185884444444,
+    "streamed_ms": 0.5965232355555556
+   }
+  },
+  {
+   "model": "Qwen2.5-0.5B fp32 (ours)",
+   "plen": 2048,
+   "kv_gb": 0.050331648,
+   "100GbE / RDMA": {
+    "blocking_ms": 4.02653184,
+    "streamed_ms": 0.16777216
+   },
+   "400G IB": {
+    "blocking_ms": 1.00663296,
+    "streamed_ms": 0.04194304
+   },
+   "NVLink4": {
+    "blocking_ms": 0.05592405333333333,
+    "streamed_ms": 0.0023301688888888892
+   }
+  },
+  {
+   "model": "Qwen2.5-0.5B fp32 (ours)",
+   "plen": 16384,
+   "kv_gb": 0.402653184,
+   "100GbE / RDMA": {
+    "blocking_ms": 32.21225472,
+    "streamed_ms": 1.34217728
+   },
+   "400G IB": {
+    "blocking_ms": 8.05306368,
+    "streamed_ms": 0.33554432
+   },
+   "NVLink4": {
+    "blocking_ms": 0.4473924266666666,
+    "streamed_ms": 0.018641351111111114
+   }
+  },
+  {
+   "model": "Qwen2.5-0.5B fp32 (ours)",
+   "plen": 131072,
+   "kv_gb": 3.221225472,
+   "100GbE / RDMA": {
+    "blocking_ms": 257.69803776,
+    "streamed_ms": 10.73741824
+   },
+   "400G IB": {
+    "blocking_ms": 64.42450944,
+    "streamed_ms": 2.68435456
+   },
+   "NVLink4": {
+    "blocking_ms": 3.579139413333333,
+    "streamed_ms": 0.1491308088888889
+   }
+  }
+ ]
+}
