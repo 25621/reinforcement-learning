@@ -1,0 +1,223 @@
+{
+ "A": {
+  "episodes": 8,
+  "steps": 48,
+  "model_s_total": 43.2,
+  "tool_s_total": 85.7,
+  "model_share": 0.335,
+  "model_mean": 0.9,
+  "model_p95": 1.82,
+  "tool_mean": 1.79,
+  "mean_tokens": 8.8,
+  "tool_counts": {
+   "list_dir": 0,
+   "read_file": 27,
+   "search": 0,
+   "run_tests": 19,
+   "write_file": 0,
+   "git_commit": 2
+  },
+  "read_only_steps": 46
+ },
+ "B": {
+  "most-common": {
+   "accuracy": 62.5,
+   "n": 24
+  },
+  "first-order": {
+   "accuracy": 75.0,
+   "n": 24
+  },
+  "oracle": {
+   "accuracy": 100.0,
+   "n": 24
+  },
+  "table": {
+   "<start>": {
+    "read_file": 2,
+    "run_tests": 2
+   },
+   "read_file": {
+    "read_file": 8,
+    "run_tests": 2
+   },
+   "run_tests": {
+    "read_file": 2,
+    "git_commit": 1,
+    "run_tests": 6
+   },
+   "git_commit": {
+    "run_tests": 1
+   }
+  }
+ },
+ "C": {
+  "no speculation": {
+   "wall_s": 55.71,
+   "hits": 0,
+   "tries": 0,
+   "wasted_tool_s": 0.0,
+   "saved_s": 0.0,
+   "spurious_side_effects": 0,
+   "speedup": 1.0,
+   "acceptance": null
+  },
+  "most-common, safe tools": {
+   "wall_s": 51.21,
+   "hits": 15,
+   "tries": 24,
+   "wasted_tool_s": 2.7,
+   "saved_s": 4.5,
+   "spurious_side_effects": 0,
+   "speedup": 1.088,
+   "acceptance": 62.5
+  },
+  "first-order, safe tools": {
+   "wall_s": 48.34,
+   "hits": 18,
+   "tries": 24,
+   "wasted_tool_s": 2.17,
+   "saved_s": 7.37,
+   "spurious_side_effects": 0,
+   "speedup": 1.152,
+   "acceptance": 75.0
+  },
+  "first-order, all tools": {
+   "wall_s": 48.34,
+   "hits": 18,
+   "tries": 24,
+   "wasted_tool_s": 2.17,
+   "saved_s": 7.37,
+   "spurious_side_effects": 0,
+   "speedup": 1.152,
+   "acceptance": 75.0
+  },
+  "oracle, safe tools": {
+   "wall_s": 45.74,
+   "hits": 23,
+   "tries": 23,
+   "wasted_tool_s": 0.0,
+   "saved_s": 9.97,
+   "spurious_side_effects": 0,
+   "speedup": 1.218,
+   "acceptance": 100.0
+  },
+  "oracle, all tools": {
+   "wall_s": 45.01,
+   "hits": 24,
+   "tries": 24,
+   "wasted_tool_s": 0.0,
+   "saved_s": 10.71,
+   "spurious_side_effects": 0,
+   "speedup": 1.238,
+   "acceptance": 100.0
+  }
+ },
+ "D": {
+  "task": "Remove the unused helper function in utils. Finish by writing the change to the file and committing it.",
+  "measured_base_s": 9.62,
+  "measured_spec_s": 8.27,
+  "predicted_base_s": 9.26,
+  "predicted_spec_s": 8.06,
+  "measured_speedup": 1.163,
+  "predicted_speedup": 1.149,
+  "real_hits": 4,
+  "real_tries": 6,
+  "error_pct": 2.5
+ },
+ "E": {
+  "unsafe_steps": 2,
+  "unsafe_share": 0.042,
+  "extra_speedup": 0.0,
+  "spurious": 0,
+  "ceiling": 1.218,
+  "theory": {
+   "most-common, safe tools": {
+    "expected_saving_s": 6.69,
+    "measured_saving_s": 4.5
+   },
+   "first-order, safe tools": {
+    "expected_saving_s": 8.03,
+    "measured_saving_s": 7.37
+   },
+   "first-order, all tools": {
+    "expected_saving_s": 8.03,
+    "measured_saving_s": 7.37
+   },
+   "oracle, safe tools": {
+    "expected_saving_s": 10.26,
+    "measured_saving_s": 9.97
+   },
+   "oracle, all tools": {
+    "expected_saving_s": 10.71,
+    "measured_saving_s": 10.71
+   }
+  }
+ },
+ "episodes": [
+  [
+   "read_file",
+   "read_file",
+   "read_file",
+   "run_tests",
+   "read_file",
+   "read_file"
+  ],
+  [
+   "run_tests",
+   "read_file",
+   "run_tests",
+   "git_commit",
+   "run_tests",
+   "run_tests"
+  ],
+  [
+   "run_tests",
+   "run_tests",
+   "run_tests",
+   "run_tests",
+   "run_tests",
+   "run_tests"
+  ],
+  [
+   "read_file",
+   "read_file",
+   "read_file",
+   "read_file",
+   "read_file",
+   "read_file"
+  ],
+  [
+   "read_file",
+   "read_file",
+   "read_file",
+   "read_file",
+   "run_tests",
+   "read_file"
+  ],
+  [
+   "read_file",
+   "read_file",
+   "read_file",
+   "run_tests",
+   "read_file",
+   "git_commit"
+  ],
+  [
+   "run_tests",
+   "run_tests",
+   "run_tests",
+   "run_tests",
+   "run_tests",
+   "run_tests"
+  ],
+  [
+   "read_file",
+   "read_file",
+   "read_file",
+   "read_file",
+   "read_file",
+   "read_file"
+  ]
+ ]
+}

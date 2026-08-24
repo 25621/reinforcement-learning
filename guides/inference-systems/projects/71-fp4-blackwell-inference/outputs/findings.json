@@ -1,0 +1,1306 @@
+{
+ "A": {
+  "per_linear": {
+   "layers.0.q_proj": {
+    "group": "q_proj",
+    "absmax": 3.24,
+    "median_channel": 0.15939,
+    "outlier_ratio": 20.3
+   },
+   "layers.0.k_proj": {
+    "group": "k_proj",
+    "absmax": 3.24,
+    "median_channel": 0.15939,
+    "outlier_ratio": 20.3
+   },
+   "layers.0.v_proj": {
+    "group": "v_proj",
+    "absmax": 3.24,
+    "median_channel": 0.15939,
+    "outlier_ratio": 20.3
+   },
+   "layers.0.o_proj": {
+    "group": "o_proj",
+    "absmax": 0.26,
+    "median_channel": 0.04764,
+    "outlier_ratio": 5.5
+   },
+   "layers.0.gate_proj": {
+    "group": "gate_proj",
+    "absmax": 11.734,
+    "median_channel": 1.94859,
+    "outlier_ratio": 6.0
+   },
+   "layers.0.up_proj": {
+    "group": "up_proj",
+    "absmax": 11.734,
+    "median_channel": 1.94859,
+    "outlier_ratio": 6.0
+   },
+   "layers.0.down_proj": {
+    "group": "down_proj",
+    "absmax": 7.78,
+    "median_channel": 0.80269,
+    "outlier_ratio": 9.7
+   },
+   "layers.1.q_proj": {
+    "group": "q_proj",
+    "absmax": 11.528,
+    "median_channel": 1.71014,
+    "outlier_ratio": 6.7
+   },
+   "layers.1.k_proj": {
+    "group": "k_proj",
+    "absmax": 11.528,
+    "median_channel": 1.71014,
+    "outlier_ratio": 6.7
+   },
+   "layers.1.v_proj": {
+    "group": "v_proj",
+    "absmax": 11.528,
+    "median_channel": 1.71014,
+    "outlier_ratio": 6.7
+   },
+   "layers.1.o_proj": {
+    "group": "o_proj",
+    "absmax": 2.932,
+    "median_channel": 0.47911,
+    "outlier_ratio": 6.1
+   },
+   "layers.1.gate_proj": {
+    "group": "gate_proj",
+    "absmax": 11.45,
+    "median_channel": 2.57419,
+    "outlier_ratio": 4.4
+   },
+   "layers.1.up_proj": {
+    "group": "up_proj",
+    "absmax": 11.45,
+    "median_channel": 2.57419,
+    "outlier_ratio": 4.4
+   },
+   "layers.1.down_proj": {
+    "group": "down_proj",
+    "absmax": 14.389,
+    "median_channel": 0.74631,
+    "outlier_ratio": 19.3
+   },
+   "layers.2.q_proj": {
+    "group": "q_proj",
+    "absmax": 25.119,
+    "median_channel": 2.13729,
+    "outlier_ratio": 11.8
+   },
+   "layers.2.k_proj": {
+    "group": "k_proj",
+    "absmax": 25.119,
+    "median_channel": 2.13729,
+    "outlier_ratio": 11.8
+   },
+   "layers.2.v_proj": {
+    "group": "v_proj",
+    "absmax": 25.119,
+    "median_channel": 2.13729,
+    "outlier_ratio": 11.8
+   },
+   "layers.2.o_proj": {
+    "group": "o_proj",
+    "absmax": 2.223,
+    "median_channel": 0.76353,
+    "outlier_ratio": 2.9
+   },
+   "layers.2.gate_proj": {
+    "group": "gate_proj",
+    "absmax": 40.295,
+    "median_channel": 3.0184,
+    "outlier_ratio": 13.3
+   },
+   "layers.2.up_proj": {
+    "group": "up_proj",
+    "absmax": 40.295,
+    "median_channel": 3.0184,
+    "outlier_ratio": 13.3
+   },
+   "layers.2.down_proj": {
+    "group": "down_proj",
+    "absmax": 1769.623,
+    "median_channel": 1.08551,
+    "outlier_ratio": 1630.2
+   },
+   "layers.3.q_proj": {
+    "group": "q_proj",
+    "absmax": 29.179,
+    "median_channel": 2.44518,
+    "outlier_ratio": 11.9
+   },
+   "layers.3.k_proj": {
+    "group": "k_proj",
+    "absmax": 29.179,
+    "median_channel": 2.44518,
+    "outlier_ratio": 11.9
+   },
+   "layers.3.v_proj": {
+    "group": "v_proj",
+    "absmax": 29.179,
+    "median_channel": 2.44518,
+    "outlier_ratio": 11.9
+   },
+   "layers.3.o_proj": {
+    "group": "o_proj",
+    "absmax": 3.224,
+    "median_channel": 0.80539,
+    "outlier_ratio": 4.0
+   },
+   "layers.3.gate_proj": {
+    "group": "gate_proj",
+    "absmax": 336.348,
+    "median_channel": 3.39858,
+    "outlier_ratio": 99.0
+   },
+   "layers.3.up_proj": {
+    "group": "up_proj",
+    "absmax": 336.348,
+    "median_channel": 3.39858,
+    "outlier_ratio": 99.0
+   },
+   "layers.3.down_proj": {
+    "group": "down_proj",
+    "absmax": 1018.572,
+    "median_channel": 1.15975,
+    "outlier_ratio": 878.3
+   },
+   "layers.4.q_proj": {
+    "group": "q_proj",
+    "absmax": 37.368,
+    "median_channel": 2.47498,
+    "outlier_ratio": 15.1
+   },
+   "layers.4.k_proj": {
+    "group": "k_proj",
+    "absmax": 37.368,
+    "median_channel": 2.47498,
+    "outlier_ratio": 15.1
+   },
+   "layers.4.v_proj": {
+    "group": "v_proj",
+    "absmax": 37.368,
+    "median_channel": 2.47498,
+    "outlier_ratio": 15.1
+   },
+   "layers.4.o_proj": {
+    "group": "o_proj",
+    "absmax": 3.139,
+    "median_channel": 0.79094,
+    "outlier_ratio": 4.0
+   },
+   "layers.4.gate_proj": {
+    "group": "gate_proj",
+    "absmax": 43.829,
+    "median_channel": 3.1538,
+    "outlier_ratio": 13.9
+   },
+   "layers.4.up_proj": {
+    "group": "up_proj",
+    "absmax": 43.829,
+    "median_channel": 3.1538,
+    "outlier_ratio": 13.9
+   },
+   "layers.4.down_proj": {
+    "group": "down_proj",
+    "absmax": 13.427,
+    "median_channel": 1.01131,
+    "outlier_ratio": 13.3
+   },
+   "layers.5.q_proj": {
+    "group": "q_proj",
+    "absmax": 34.374,
+    "median_channel": 2.81418,
+    "outlier_ratio": 12.2
+   },
+   "layers.5.k_proj": {
+    "group": "k_proj",
+    "absmax": 34.374,
+    "median_channel": 2.81418,
+    "outlier_ratio": 12.2
+   },
+   "layers.5.v_proj": {
+    "group": "v_proj",
+    "absmax": 34.374,
+    "median_channel": 2.81418,
+    "outlier_ratio": 12.2
+   },
+   "layers.5.o_proj": {
+    "group": "o_proj",
+    "absmax": 2.929,
+    "median_channel": 0.93305,
+    "outlier_ratio": 3.1
+   },
+   "layers.5.gate_proj": {
+    "group": "gate_proj",
+    "absmax": 63.667,
+    "median_channel": 3.59862,
+    "outlier_ratio": 17.7
+   },
+   "layers.5.up_proj": {
+    "group": "up_proj",
+    "absmax": 63.667,
+    "median_channel": 3.59862,
+    "outlier_ratio": 17.7
+   },
+   "layers.5.down_proj": {
+    "group": "down_proj",
+    "absmax": 52.21,
+    "median_channel": 0.81876,
+    "outlier_ratio": 63.8
+   },
+   "layers.6.q_proj": {
+    "group": "q_proj",
+    "absmax": 46.823,
+    "median_channel": 2.30573,
+    "outlier_ratio": 20.3
+   },
+   "layers.6.k_proj": {
+    "group": "k_proj",
+    "absmax": 46.823,
+    "median_channel": 2.30573,
+    "outlier_ratio": 20.3
+   },
+   "layers.6.v_proj": {
+    "group": "v_proj",
+    "absmax": 46.823,
+    "median_channel": 2.30573,
+    "outlier_ratio": 20.3
+   },
+   "layers.6.o_proj": {
+    "group": "o_proj",
+    "absmax": 3.274,
+    "median_channel": 0.71057,
+    "outlier_ratio": 4.6
+   },
+   "layers.6.gate_proj": {
+    "group": "gate_proj",
+    "absmax": 46.594,
+    "median_channel": 3.00329,
+    "outlier_ratio": 15.5
+   },
+   "layers.6.up_proj": {
+    "group": "up_proj",
+    "absmax": 46.594,
+    "median_channel": 3.00329,
+    "outlier_ratio": 15.5
+   },
+   "layers.6.down_proj": {
+    "group": "down_proj",
+    "absmax": 13.492,
+    "median_channel": 0.94566,
+    "outlier_ratio": 14.3
+   },
+   "layers.7.q_proj": {
+    "group": "q_proj",
+    "absmax": 38.886,
+    "median_channel": 2.4363,
+    "outlier_ratio": 16.0
+   },
+   "layers.7.k_proj": {
+    "group": "k_proj",
+    "absmax": 38.886,
+    "median_channel": 2.4363,
+    "outlier_ratio": 16.0
+   },
+   "layers.7.v_proj": {
+    "group": "v_proj",
+    "absmax": 38.886,
+    "median_channel": 2.4363,
+    "outlier_ratio": 16.0
+   },
+   "layers.7.o_proj": {
+    "group": "o_proj",
+    "absmax": 3.997,
+    "median_channel": 1.21238,
+    "outlier_ratio": 3.3
+   },
+   "layers.7.gate_proj": {
+    "group": "gate_proj",
+    "absmax": 40.594,
+    "median_channel": 2.98263,
+    "outlier_ratio": 13.6
+   },
+   "layers.7.up_proj": {
+    "group": "up_proj",
+    "absmax": 40.594,
+    "median_channel": 2.98263,
+    "outlier_ratio": 13.6
+   },
+   "layers.7.down_proj": {
+    "group": "down_proj",
+    "absmax": 13.33,
+    "median_channel": 1.07502,
+    "outlier_ratio": 12.4
+   },
+   "layers.8.q_proj": {
+    "group": "q_proj",
+    "absmax": 38.749,
+    "median_channel": 2.17128,
+    "outlier_ratio": 17.8
+   },
+   "layers.8.k_proj": {
+    "group": "k_proj",
+    "absmax": 38.749,
+    "median_channel": 2.17128,
+    "outlier_ratio": 17.8
+   },
+   "layers.8.v_proj": {
+    "group": "v_proj",
+    "absmax": 38.749,
+    "median_channel": 2.17128,
+    "outlier_ratio": 17.8
+   },
+   "layers.8.o_proj": {
+    "group": "o_proj",
+    "absmax": 4.073,
+    "median_channel": 1.11635,
+    "outlier_ratio": 3.6
+   },
+   "layers.8.gate_proj": {
+    "group": "gate_proj",
+    "absmax": 41.287,
+    "median_channel": 2.73277,
+    "outlier_ratio": 15.1
+   },
+   "layers.8.up_proj": {
+    "group": "up_proj",
+    "absmax": 41.287,
+    "median_channel": 2.73277,
+    "outlier_ratio": 15.1
+   },
+   "layers.8.down_proj": {
+    "group": "down_proj",
+    "absmax": 12.303,
+    "median_channel": 0.94934,
+    "outlier_ratio": 13.0
+   },
+   "layers.9.q_proj": {
+    "group": "q_proj",
+    "absmax": 36.698,
+    "median_channel": 2.78921,
+    "outlier_ratio": 13.2
+   },
+   "layers.9.k_proj": {
+    "group": "k_proj",
+    "absmax": 36.698,
+    "median_channel": 2.78921,
+    "outlier_ratio": 13.2
+   },
+   "layers.9.v_proj": {
+    "group": "v_proj",
+    "absmax": 36.698,
+    "median_channel": 2.78921,
+    "outlier_ratio": 13.2
+   },
+   "layers.9.o_proj": {
+    "group": "o_proj",
+    "absmax": 4.493,
+    "median_channel": 1.08914,
+    "outlier_ratio": 4.1
+   },
+   "layers.9.gate_proj": {
+    "group": "gate_proj",
+    "absmax": 38.522,
+    "median_channel": 2.8041,
+    "outlier_ratio": 13.7
+   },
+   "layers.9.up_proj": {
+    "group": "up_proj",
+    "absmax": 38.522,
+    "median_channel": 2.8041,
+    "outlier_ratio": 13.7
+   },
+   "layers.9.down_proj": {
+    "group": "down_proj",
+    "absmax": 8.074,
+    "median_channel": 0.89306,
+    "outlier_ratio": 9.0
+   },
+   "layers.10.q_proj": {
+    "group": "q_proj",
+    "absmax": 32.754,
+    "median_channel": 2.74224,
+    "outlier_ratio": 11.9
+   },
+   "layers.10.k_proj": {
+    "group": "k_proj",
+    "absmax": 32.754,
+    "median_channel": 2.74224,
+    "outlier_ratio": 11.9
+   },
+   "layers.10.v_proj": {
+    "group": "v_proj",
+    "absmax": 32.754,
+    "median_channel": 2.74224,
+    "outlier_ratio": 11.9
+   },
+   "layers.10.o_proj": {
+    "group": "o_proj",
+    "absmax": 4.001,
+    "median_channel": 1.0096,
+    "outlier_ratio": 4.0
+   },
+   "layers.10.gate_proj": {
+    "group": "gate_proj",
+    "absmax": 29.528,
+    "median_channel": 2.5579,
+    "outlier_ratio": 11.5
+   },
+   "layers.10.up_proj": {
+    "group": "up_proj",
+    "absmax": 29.528,
+    "median_channel": 2.5579,
+    "outlier_ratio": 11.5
+   },
+   "layers.10.down_proj": {
+    "group": "down_proj",
+    "absmax": 8.282,
+    "median_channel": 0.70871,
+    "outlier_ratio": 11.7
+   },
+   "layers.11.q_proj": {
+    "group": "q_proj",
+    "absmax": 36.885,
+    "median_channel": 2.98029,
+    "outlier_ratio": 12.4
+   },
+   "layers.11.k_proj": {
+    "group": "k_proj",
+    "absmax": 36.885,
+    "median_channel": 2.98029,
+    "outlier_ratio": 12.4
+   },
+   "layers.11.v_proj": {
+    "group": "v_proj",
+    "absmax": 36.885,
+    "median_channel": 2.98029,
+    "outlier_ratio": 12.4
+   },
+   "layers.11.o_proj": {
+    "group": "o_proj",
+    "absmax": 6.257,
+    "median_channel": 0.87187,
+    "outlier_ratio": 7.2
+   },
+   "layers.11.gate_proj": {
+    "group": "gate_proj",
+    "absmax": 31.143,
+    "median_channel": 2.68645,
+    "outlier_ratio": 11.6
+   },
+   "layers.11.up_proj": {
+    "group": "up_proj",
+    "absmax": 31.143,
+    "median_channel": 2.68645,
+    "outlier_ratio": 11.6
+   },
+   "layers.11.down_proj": {
+    "group": "down_proj",
+    "absmax": 9.417,
+    "median_channel": 0.82797,
+    "outlier_ratio": 11.4
+   },
+   "layers.12.q_proj": {
+    "group": "q_proj",
+    "absmax": 39.217,
+    "median_channel": 2.84763,
+    "outlier_ratio": 13.8
+   },
+   "layers.12.k_proj": {
+    "group": "k_proj",
+    "absmax": 39.217,
+    "median_channel": 2.84763,
+    "outlier_ratio": 13.8
+   },
+   "layers.12.v_proj": {
+    "group": "v_proj",
+    "absmax": 39.217,
+    "median_channel": 2.84763,
+    "outlier_ratio": 13.8
+   },
+   "layers.12.o_proj": {
+    "group": "o_proj",
+    "absmax": 4.319,
+    "median_channel": 0.90526,
+    "outlier_ratio": 4.8
+   },
+   "layers.12.gate_proj": {
+    "group": "gate_proj",
+    "absmax": 26.875,
+    "median_channel": 2.47223,
+    "outlier_ratio": 10.9
+   },
+   "layers.12.up_proj": {
+    "group": "up_proj",
+    "absmax": 26.875,
+    "median_channel": 2.47223,
+    "outlier_ratio": 10.9
+   },
+   "layers.12.down_proj": {
+    "group": "down_proj",
+    "absmax": 6.252,
+    "median_channel": 0.7481,
+    "outlier_ratio": 8.4
+   },
+   "layers.13.q_proj": {
+    "group": "q_proj",
+    "absmax": 32.989,
+    "median_channel": 2.96392,
+    "outlier_ratio": 11.1
+   },
+   "layers.13.k_proj": {
+    "group": "k_proj",
+    "absmax": 32.989,
+    "median_channel": 2.96392,
+    "outlier_ratio": 11.1
+   },
+   "layers.13.v_proj": {
+    "group": "v_proj",
+    "absmax": 32.989,
+    "median_channel": 2.96392,
+    "outlier_ratio": 11.1
+   },
+   "layers.13.o_proj": {
+    "group": "o_proj",
+    "absmax": 3.553,
+    "median_channel": 1.07983,
+    "outlier_ratio": 3.3
+   },
+   "layers.13.gate_proj": {
+    "group": "gate_proj",
+    "absmax": 25.839,
+    "median_channel": 2.49292,
+    "outlier_ratio": 10.4
+   },
+   "layers.13.up_proj": {
+    "group": "up_proj",
+    "absmax": 25.839,
+    "median_channel": 2.49292,
+    "outlier_ratio": 10.4
+   },
+   "layers.13.down_proj": {
+    "group": "down_proj",
+    "absmax": 7.11,
+    "median_channel": 0.8377,
+    "outlier_ratio": 8.5
+   },
+   "layers.14.q_proj": {
+    "group": "q_proj",
+    "absmax": 38.529,
+    "median_channel": 3.10323,
+    "outlier_ratio": 12.4
+   },
+   "layers.14.k_proj": {
+    "group": "k_proj",
+    "absmax": 38.529,
+    "median_channel": 3.10323,
+    "outlier_ratio": 12.4
+   },
+   "layers.14.v_proj": {
+    "group": "v_proj",
+    "absmax": 38.529,
+    "median_channel": 3.10323,
+    "outlier_ratio": 12.4
+   },
+   "layers.14.o_proj": {
+    "group": "o_proj",
+    "absmax": 3.557,
+    "median_channel": 1.32412,
+    "outlier_ratio": 2.7
+   },
+   "layers.14.gate_proj": {
+    "group": "gate_proj",
+    "absmax": 22.255,
+    "median_channel": 2.35643,
+    "outlier_ratio": 9.4
+   },
+   "layers.14.up_proj": {
+    "group": "up_proj",
+    "absmax": 22.255,
+    "median_channel": 2.35643,
+    "outlier_ratio": 9.4
+   },
+   "layers.14.down_proj": {
+    "group": "down_proj",
+    "absmax": 7.898,
+    "median_channel": 0.87349,
+    "outlier_ratio": 9.0
+   },
+   "layers.15.q_proj": {
+    "group": "q_proj",
+    "absmax": 41.3,
+    "median_channel": 2.89276,
+    "outlier_ratio": 14.3
+   },
+   "layers.15.k_proj": {
+    "group": "k_proj",
+    "absmax": 41.3,
+    "median_channel": 2.89276,
+    "outlier_ratio": 14.3
+   },
+   "layers.15.v_proj": {
+    "group": "v_proj",
+    "absmax": 41.3,
+    "median_channel": 2.89276,
+    "outlier_ratio": 14.3
+   },
+   "layers.15.o_proj": {
+    "group": "o_proj",
+    "absmax": 4.465,
+    "median_channel": 1.2198,
+    "outlier_ratio": 3.7
+   },
+   "layers.15.gate_proj": {
+    "group": "gate_proj",
+    "absmax": 25.958,
+    "median_channel": 2.57379,
+    "outlier_ratio": 10.1
+   },
+   "layers.15.up_proj": {
+    "group": "up_proj",
+    "absmax": 25.958,
+    "median_channel": 2.57379,
+    "outlier_ratio": 10.1
+   },
+   "layers.15.down_proj": {
+    "group": "down_proj",
+    "absmax": 10.729,
+    "median_channel": 0.93449,
+    "outlier_ratio": 11.5
+   },
+   "layers.16.q_proj": {
+    "group": "q_proj",
+    "absmax": 39.503,
+    "median_channel": 2.8967,
+    "outlier_ratio": 13.6
+   },
+   "layers.16.k_proj": {
+    "group": "k_proj",
+    "absmax": 39.503,
+    "median_channel": 2.8967,
+    "outlier_ratio": 13.6
+   },
+   "layers.16.v_proj": {
+    "group": "v_proj",
+    "absmax": 39.503,
+    "median_channel": 2.8967,
+    "outlier_ratio": 13.6
+   },
+   "layers.16.o_proj": {
+    "group": "o_proj",
+    "absmax": 3.895,
+    "median_channel": 1.34446,
+    "outlier_ratio": 2.9
+   },
+   "layers.16.gate_proj": {
+    "group": "gate_proj",
+    "absmax": 31.408,
+    "median_channel": 2.88121,
+    "outlier_ratio": 10.9
+   },
+   "layers.16.up_proj": {
+    "group": "up_proj",
+    "absmax": 31.408,
+    "median_channel": 2.88121,
+    "outlier_ratio": 10.9
+   },
+   "layers.16.down_proj": {
+    "group": "down_proj",
+    "absmax": 22.321,
+    "median_channel": 1.54321,
+    "outlier_ratio": 14.5
+   },
+   "layers.17.q_proj": {
+    "group": "q_proj",
+    "absmax": 37.111,
+    "median_channel": 3.15845,
+    "outlier_ratio": 11.7
+   },
+   "layers.17.k_proj": {
+    "group": "k_proj",
+    "absmax": 37.111,
+    "median_channel": 3.15845,
+    "outlier_ratio": 11.7
+   },
+   "layers.17.v_proj": {
+    "group": "v_proj",
+    "absmax": 37.111,
+    "median_channel": 3.15845,
+    "outlier_ratio": 11.7
+   },
+   "layers.17.o_proj": {
+    "group": "o_proj",
+    "absmax": 5.619,
+    "median_channel": 1.27433,
+    "outlier_ratio": 4.4
+   },
+   "layers.17.gate_proj": {
+    "group": "gate_proj",
+    "absmax": 41.685,
+    "median_channel": 3.50059,
+    "outlier_ratio": 11.9
+   },
+   "layers.17.up_proj": {
+    "group": "up_proj",
+    "absmax": 41.685,
+    "median_channel": 3.50059,
+    "outlier_ratio": 11.9
+   },
+   "layers.17.down_proj": {
+    "group": "down_proj",
+    "absmax": 27.915,
+    "median_channel": 1.63807,
+    "outlier_ratio": 17.0
+   },
+   "layers.18.q_proj": {
+    "group": "q_proj",
+    "absmax": 33.717,
+    "median_channel": 3.29107,
+    "outlier_ratio": 10.2
+   },
+   "layers.18.k_proj": {
+    "group": "k_proj",
+    "absmax": 33.717,
+    "median_channel": 3.29107,
+    "outlier_ratio": 10.2
+   },
+   "layers.18.v_proj": {
+    "group": "v_proj",
+    "absmax": 33.717,
+    "median_channel": 3.29107,
+    "outlier_ratio": 10.2
+   },
+   "layers.18.o_proj": {
+    "group": "o_proj",
+    "absmax": 4.934,
+    "median_channel": 1.60979,
+    "outlier_ratio": 3.1
+   },
+   "layers.18.gate_proj": {
+    "group": "gate_proj",
+    "absmax": 36.768,
+    "median_channel": 3.71193,
+    "outlier_ratio": 9.9
+   },
+   "layers.18.up_proj": {
+    "group": "up_proj",
+    "absmax": 36.768,
+    "median_channel": 3.71193,
+    "outlier_ratio": 9.9
+   },
+   "layers.18.down_proj": {
+    "group": "down_proj",
+    "absmax": 24.92,
+    "median_channel": 1.81453,
+    "outlier_ratio": 13.7
+   },
+   "layers.19.q_proj": {
+    "group": "q_proj",
+    "absmax": 35.026,
+    "median_channel": 2.8614,
+    "outlier_ratio": 12.2
+   },
+   "layers.19.k_proj": {
+    "group": "k_proj",
+    "absmax": 35.026,
+    "median_channel": 2.8614,
+    "outlier_ratio": 12.2
+   },
+   "layers.19.v_proj": {
+    "group": "v_proj",
+    "absmax": 35.026,
+    "median_channel": 2.8614,
+    "outlier_ratio": 12.2
+   },
+   "layers.19.o_proj": {
+    "group": "o_proj",
+    "absmax": 5.198,
+    "median_channel": 1.5797,
+    "outlier_ratio": 3.3
+   },
+   "layers.19.gate_proj": {
+    "group": "gate_proj",
+    "absmax": 48.287,
+    "median_channel": 4.06566,
+    "outlier_ratio": 11.9
+   },
+   "layers.19.up_proj": {
+    "group": "up_proj",
+    "absmax": 48.287,
+    "median_channel": 4.06566,
+    "outlier_ratio": 11.9
+   },
+   "layers.19.down_proj": {
+    "group": "down_proj",
+    "absmax": 48.9,
+    "median_channel": 2.45351,
+    "outlier_ratio": 19.9
+   },
+   "layers.20.q_proj": {
+    "group": "q_proj",
+    "absmax": 39.246,
+    "median_channel": 3.02831,
+    "outlier_ratio": 13.0
+   },
+   "layers.20.k_proj": {
+    "group": "k_proj",
+    "absmax": 39.246,
+    "median_channel": 3.02831,
+    "outlier_ratio": 13.0
+   },
+   "layers.20.v_proj": {
+    "group": "v_proj",
+    "absmax": 39.246,
+    "median_channel": 3.02831,
+    "outlier_ratio": 13.0
+   },
+   "layers.20.o_proj": {
+    "group": "o_proj",
+    "absmax": 6.95,
+    "median_channel": 1.50331,
+    "outlier_ratio": 4.6
+   },
+   "layers.20.gate_proj": {
+    "group": "gate_proj",
+    "absmax": 57.948,
+    "median_channel": 4.2777,
+    "outlier_ratio": 13.5
+   },
+   "layers.20.up_proj": {
+    "group": "up_proj",
+    "absmax": 57.948,
+    "median_channel": 4.2777,
+    "outlier_ratio": 13.5
+   },
+   "layers.20.down_proj": {
+    "group": "down_proj",
+    "absmax": 52.795,
+    "median_channel": 3.04111,
+    "outlier_ratio": 17.4
+   },
+   "layers.21.q_proj": {
+    "group": "q_proj",
+    "absmax": 39.945,
+    "median_channel": 2.37744,
+    "outlier_ratio": 16.8
+   },
+   "layers.21.k_proj": {
+    "group": "k_proj",
+    "absmax": 39.945,
+    "median_channel": 2.37744,
+    "outlier_ratio": 16.8
+   },
+   "layers.21.v_proj": {
+    "group": "v_proj",
+    "absmax": 39.945,
+    "median_channel": 2.37744,
+    "outlier_ratio": 16.8
+   },
+   "layers.21.o_proj": {
+    "group": "o_proj",
+    "absmax": 10.249,
+    "median_channel": 1.92137,
+    "outlier_ratio": 5.3
+   },
+   "layers.21.gate_proj": {
+    "group": "gate_proj",
+    "absmax": 256.762,
+    "median_channel": 4.79735,
+    "outlier_ratio": 53.5
+   },
+   "layers.21.up_proj": {
+    "group": "up_proj",
+    "absmax": 256.762,
+    "median_channel": 4.79735,
+    "outlier_ratio": 53.5
+   },
+   "layers.21.down_proj": {
+    "group": "down_proj",
+    "absmax": 1724.604,
+    "median_channel": 3.62193,
+    "outlier_ratio": 476.2
+   },
+   "layers.22.q_proj": {
+    "group": "q_proj",
+    "absmax": 38.44,
+    "median_channel": 2.42763,
+    "outlier_ratio": 15.8
+   },
+   "layers.22.k_proj": {
+    "group": "k_proj",
+    "absmax": 38.44,
+    "median_channel": 2.42763,
+    "outlier_ratio": 15.8
+   },
+   "layers.22.v_proj": {
+    "group": "v_proj",
+    "absmax": 38.44,
+    "median_channel": 2.42763,
+    "outlier_ratio": 15.8
+   },
+   "layers.22.o_proj": {
+    "group": "o_proj",
+    "absmax": 7.999,
+    "median_channel": 2.56494,
+    "outlier_ratio": 3.1
+   },
+   "layers.22.gate_proj": {
+    "group": "gate_proj",
+    "absmax": 25.406,
+    "median_channel": 4.77877,
+    "outlier_ratio": 5.3
+   },
+   "layers.22.up_proj": {
+    "group": "up_proj",
+    "absmax": 25.406,
+    "median_channel": 4.77877,
+    "outlier_ratio": 5.3
+   },
+   "layers.22.down_proj": {
+    "group": "down_proj",
+    "absmax": 33.261,
+    "median_channel": 4.18065,
+    "outlier_ratio": 8.0
+   },
+   "layers.23.q_proj": {
+    "group": "q_proj",
+    "absmax": 36.952,
+    "median_channel": 2.46115,
+    "outlier_ratio": 15.0
+   },
+   "layers.23.k_proj": {
+    "group": "k_proj",
+    "absmax": 36.952,
+    "median_channel": 2.46115,
+    "outlier_ratio": 15.0
+   },
+   "layers.23.v_proj": {
+    "group": "v_proj",
+    "absmax": 36.952,
+    "median_channel": 2.46115,
+    "outlier_ratio": 15.0
+   },
+   "layers.23.o_proj": {
+    "group": "o_proj",
+    "absmax": 12.586,
+    "median_channel": 3.09115,
+    "outlier_ratio": 4.1
+   },
+   "layers.23.gate_proj": {
+    "group": "gate_proj",
+    "absmax": 35.321,
+    "median_channel": 5.57303,
+    "outlier_ratio": 6.3
+   },
+   "layers.23.up_proj": {
+    "group": "up_proj",
+    "absmax": 35.321,
+    "median_channel": 5.57303,
+    "outlier_ratio": 6.3
+   },
+   "layers.23.down_proj": {
+    "group": "down_proj",
+    "absmax": 152.695,
+    "median_channel": 5.87562,
+    "outlier_ratio": 26.0
+   }
+  },
+  "by_group": {
+   "q_proj": 13.7,
+   "k_proj": 13.7,
+   "v_proj": 13.7,
+   "o_proj": 4.1,
+   "gate_proj": 16.6,
+   "up_proj": 16.6,
+   "down_proj": 138.2
+  },
+  "worst": {
+   "name": "layers.2.down_proj",
+   "group": "down_proj",
+   "absmax": 1769.623,
+   "median_channel": 1.08551,
+   "outlier_ratio": 1630.2
+  }
+ },
+ "B": {
+  "fp32": {
+   "ppl": 18.457,
+   "x": 1.0,
+   "w_bits": 16,
+   "a_bits": 16
+  },
+  "W8A8 (fp8 w, int8 per-token a)": {
+   "ppl": 19.176,
+   "x": 1.039,
+   "w_bits": 8,
+   "a_bits": 8,
+   "note": ""
+  },
+  "W4A16 (MXFP4 weights)": {
+   "ppl": 25.386,
+   "x": 1.3754,
+   "w_bits": 4,
+   "a_bits": 16,
+   "note": ""
+  },
+  "W4A8 (int8 per-token a)": {
+   "ppl": 26.125,
+   "x": 1.4154,
+   "w_bits": 4,
+   "a_bits": 8,
+   "note": ""
+  },
+  "W4A4 per-tensor": {
+   "ppl": 2147892.187,
+   "x": 116369.7763,
+   "w_bits": 4,
+   "a_bits": 4,
+   "note": ""
+  },
+  "W4A4 per-token": {
+   "ppl": 15128.737,
+   "x": 819.6537,
+   "w_bits": 4,
+   "a_bits": 4,
+   "note": ""
+  },
+  "W4A4 MX block-32": {
+   "ppl": 43.057,
+   "x": 2.3328,
+   "w_bits": 4,
+   "a_bits": 4,
+   "note": ""
+  },
+  "W4A4 NVFP4 block-16": {
+   "ppl": 28.844,
+   "x": 1.5627,
+   "w_bits": 4,
+   "a_bits": 4,
+   "note": ""
+  },
+  "W4A4 per-token + rotation": {
+   "ppl": 38.996,
+   "x": 2.1128,
+   "w_bits": 4,
+   "a_bits": 4,
+   "note": "rotated"
+  },
+  "W4A4 MX block-32 + rotation": {
+   "ppl": 31.789,
+   "x": 1.7223,
+   "w_bits": 4,
+   "a_bits": 4,
+   "note": "rotated"
+  },
+  "W4A4 NVFP4 block-16 + rotation": {
+   "ppl": 29.652,
+   "x": 1.6065,
+   "w_bits": 4,
+   "a_bits": 4,
+   "note": "rotated"
+  }
+ },
+ "C": {
+  "W4A4 per-token + rotation": {
+   "ppl": 38.996,
+   "x": 2.1128,
+   "without": 819.6537,
+   "gain": 387.954
+  },
+  "W4A4 MX block-32 + rotation": {
+   "ppl": 31.789,
+   "x": 1.7223,
+   "without": 2.3328,
+   "gain": 1.354
+  },
+  "W4A4 NVFP4 block-16 + rotation": {
+   "ppl": 29.652,
+   "x": 1.6065,
+   "without": 1.5627,
+   "gain": 0.973
+  }
+ },
+ "D": {
+  "down_proj": {
+   "ppl": 171.881,
+   "x": 9.3123,
+   "outlier_ratio": 138.2
+  },
+  "gate_proj": {
+   "ppl": 94.491,
+   "x": 5.1194,
+   "outlier_ratio": 16.6
+  },
+  "k_proj": {
+   "ppl": 46.422,
+   "x": 2.5151,
+   "outlier_ratio": 13.7
+  },
+  "o_proj": {
+   "ppl": 29.213,
+   "x": 1.5827,
+   "outlier_ratio": 4.1
+  },
+  "q_proj": {
+   "ppl": 29.336,
+   "x": 1.5894,
+   "outlier_ratio": 13.7
+  },
+  "up_proj": {
+   "ppl": 113.408,
+   "x": 6.1443,
+   "outlier_ratio": 16.6
+  },
+  "v_proj": {
+   "ppl": 57.127,
+   "x": 3.095,
+   "outlier_ratio": 13.7
+  },
+  "_all_but_worst": {
+   "group": "down_proj",
+   "ppl": 1179.389,
+   "x": 63.8977
+  }
+ },
+ "E": {
+  "sizes": {
+   "16": {
+    "model": "Qwen2.5-0.5B",
+    "params": 493961216,
+    "w_bits": 16,
+    "head_bits": 16,
+    "bytes": 987922432.0,
+    "gib": 0.920074462890625,
+    "eff_bits_per_weight": 16.0
+   },
+   "8": {
+    "model": "Qwen2.5-0.5B",
+    "params": 493961216,
+    "w_bits": 8,
+    "head_bits": 16,
+    "bytes": 674824192.0,
+    "gib": 0.62847900390625,
+    "eff_bits_per_weight": 10.929185047596935
+   },
+   "4": {
+    "model": "Qwen2.5-0.5B",
+    "params": 493961216,
+    "w_bits": 4,
+    "head_bits": 16,
+    "bytes": 495910912.0,
+    "gib": 0.46185302734375,
+    "eff_bits_per_weight": 8.031576503366612
+   }
+  },
+  "kv_bytes": {
+   "16": 12288.0,
+   "8": 6144.0,
+   "4": 3072.0
+  },
+  "blackwell": {
+   "note": "arithmetic from published specs, not measured here",
+   "b200_fp8_pflops": 4.5,
+   "b200_fp4_pflops": 9.0,
+   "h100_fp8_pflops": 1.98,
+   "hbm_tb_s": 8.0,
+   "fp4_over_fp8_flops": 2.0
+  }
+ },
+ "F": {
+  "fp32": {
+   "ppl": 18.457,
+   "x": 1.0,
+   "w_bits": 16,
+   "a_bits": 16,
+   "passes": true
+  },
+  "W8A8 (fp8 w, int8 per-token a)": {
+   "ppl": 19.176,
+   "x": 1.039,
+   "w_bits": 8,
+   "a_bits": 8,
+   "note": "",
+   "passes": true
+  },
+  "W4A16 (MXFP4 weights)": {
+   "ppl": 25.386,
+   "x": 1.3754,
+   "w_bits": 4,
+   "a_bits": 16,
+   "note": "",
+   "passes": false
+  },
+  "W4A8 (int8 per-token a)": {
+   "ppl": 26.125,
+   "x": 1.4154,
+   "w_bits": 4,
+   "a_bits": 8,
+   "note": "",
+   "passes": false
+  },
+  "W4A4 per-tensor": {
+   "ppl": 2147892.187,
+   "x": 116369.7763,
+   "w_bits": 4,
+   "a_bits": 4,
+   "note": "",
+   "passes": false
+  },
+  "W4A4 per-token": {
+   "ppl": 15128.737,
+   "x": 819.6537,
+   "w_bits": 4,
+   "a_bits": 4,
+   "note": "",
+   "passes": false
+  },
+  "W4A4 MX block-32": {
+   "ppl": 43.057,
+   "x": 2.3328,
+   "w_bits": 4,
+   "a_bits": 4,
+   "note": "",
+   "passes": false
+  },
+  "W4A4 NVFP4 block-16": {
+   "ppl": 28.844,
+   "x": 1.5627,
+   "w_bits": 4,
+   "a_bits": 4,
+   "note": "",
+   "passes": false
+  },
+  "W4A4 per-token + rotation": {
+   "ppl": 38.996,
+   "x": 2.1128,
+   "w_bits": 4,
+   "a_bits": 4,
+   "note": "rotated",
+   "passes": false
+  },
+  "W4A4 MX block-32 + rotation": {
+   "ppl": 31.789,
+   "x": 1.7223,
+   "w_bits": 4,
+   "a_bits": 4,
+   "note": "rotated",
+   "passes": false
+  },
+  "W4A4 NVFP4 block-16 + rotation": {
+   "ppl": 29.652,
+   "x": 1.6065,
+   "w_bits": 4,
+   "a_bits": 4,
+   "note": "rotated",
+   "passes": false
+  }
+ },
+ "base_ppl": 18.457,
+ "gate": 1.05,
+ "n_tokens": 3072
+}

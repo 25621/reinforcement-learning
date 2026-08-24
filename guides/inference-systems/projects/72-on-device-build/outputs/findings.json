@@ -1,0 +1,213 @@
+{
+ "A": {
+  "build_s": 0.0,
+  "times": {},
+  "sizes": {
+   "f16": 6178316704,
+   "Q8_0": 3285475744,
+   "Q4_K_M": 1929902496,
+   "Q4_0": 1822849440
+  },
+  "bits_per_weight": {
+   "f16": 16.0,
+   "Q8_0": 8.51,
+   "Q4_K_M": 5.0,
+   "Q4_0": 4.72
+  },
+  "shrink": {
+   "f16": 1.0,
+   "Q8_0": 1.88,
+   "Q4_K_M": 3.2,
+   "Q4_0": 3.39
+  }
+ },
+ "B": {
+  "budget_gb": 4.0,
+  "rows": {
+   "PyTorch fp32": {
+    "bytes": 12360000000.0,
+    "fits": false
+   },
+   "PyTorch bf16": {
+    "bytes": 6180000000.0,
+    "fits": false
+   },
+   "GGUF f16": {
+    "bytes": 6178316704,
+    "fits": false
+   },
+   "GGUF Q8_0": {
+    "bytes": 3285475744,
+    "fits": true
+   },
+   "GGUF Q4_K_M": {
+    "bytes": 1929902496,
+    "fits": true
+   },
+   "GGUF Q4_0": {
+    "bytes": 1822849440,
+    "fits": true
+   }
+  }
+ },
+ "C": {
+  "f16": {
+   "pp": {
+    "tok_s": 79.45,
+    "stddev": 0.44
+   },
+   "tg": {
+    "tok_s": 4.68,
+    "stddev": 0.06
+   },
+   "bytes": 6178316704
+  },
+  "Q8_0": {
+   "pp": {
+    "tok_s": 65.3,
+    "stddev": 0.23
+   },
+   "tg": {
+    "tok_s": 8.1,
+    "stddev": 0.45
+   },
+   "bytes": 3285475744
+  },
+  "Q4_K_M": {
+   "pp": {
+    "tok_s": 77.93,
+    "stddev": 2.18
+   },
+   "tg": {
+    "tok_s": 13.04,
+    "stddev": 0.62
+   },
+   "bytes": 1929902496
+  },
+  "Q4_0": {
+   "pp": {
+    "tok_s": 71.41,
+    "stddev": 1.01
+   },
+   "tg": {
+    "tok_s": 13.79,
+    "stddev": 0.69
+   },
+   "bytes": 1822849440
+  }
+ },
+ "D": {
+  "1": {
+   "pp": {
+    "tok_s": 15.59,
+    "stddev": 0.0
+   },
+   "tg": {
+    "tok_s": 6.25,
+    "stddev": 0.0
+   }
+  },
+  "2": {
+   "pp": {
+    "tok_s": 30.73,
+    "stddev": 0.0
+   },
+   "tg": {
+    "tok_s": 9.67,
+    "stddev": 0.0
+   }
+  },
+  "4": {
+   "pp": {
+    "tok_s": 56.31,
+    "stddev": 0.0
+   },
+   "tg": {
+    "tok_s": 12.52,
+    "stddev": 0.0
+   }
+  },
+  "6": {
+   "pp": {
+    "tok_s": 88.52,
+    "stddev": 0.0
+   },
+   "tg": {
+    "tok_s": 13.76,
+    "stddev": 0.0
+   }
+  },
+  "8": {
+   "pp": {
+    "tok_s": 77.85,
+    "stddev": 0.0
+   },
+   "tg": {
+    "tok_s": 14.08,
+    "stddev": 0.0
+   }
+  },
+  "12": {
+   "pp": {
+    "tok_s": 80.7,
+    "stddev": 0.0
+   },
+   "tg": {
+    "tok_s": 12.17,
+    "stddev": 0.0
+   }
+  }
+ },
+ "E": {
+  "f16": {
+   "ppl": 7.8357,
+   "seconds": 39.6,
+   "x": 1.0
+  },
+  "Q8_0": {
+   "ppl": 7.8814,
+   "seconds": 42.2,
+   "x": 1.0058
+  },
+  "Q4_K_M": {
+   "ppl": 8.4262,
+   "seconds": 34.0,
+   "x": 1.0754
+  },
+  "Q4_0": {
+   "ppl": 8.6964,
+   "seconds": 30.5,
+   "x": 1.1098
+  }
+ },
+ "torch": {
+  "load_s": 5.6,
+  "prefill_tok_s": 2.54,
+  "decode_tok_s": 4.09,
+  "peak_rss_bytes": 7060107264,
+  "dtype": "bfloat16"
+ },
+ "F": {
+  "kv_bytes_per_token": 36864,
+  "rows": {
+   "f16": {
+    "weights": 6178316704,
+    "ctx_tokens": 0
+   },
+   "Q8_0": {
+    "weights": 3285475744,
+    "ctx_tokens": 19382
+   },
+   "Q4_K_M": {
+    "weights": 1929902496,
+    "ctx_tokens": 56154
+   },
+   "Q4_0": {
+    "weights": 1822849440,
+    "ctx_tokens": 59058
+   }
+  }
+ },
+ "model": "Qwen/Qwen2.5-3B-Instruct",
+ "threads": 6
+}
