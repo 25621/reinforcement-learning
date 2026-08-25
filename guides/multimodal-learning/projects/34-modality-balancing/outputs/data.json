@@ -1,0 +1,66 @@
+{
+ "vocab": {
+  "words": [
+   "a",
+   "an",
+   "and",
+   "bangs",
+   "black",
+   "blond",
+   "brown",
+   "digit",
+   "eight",
+   "five",
+   "four",
+   "glasses",
+   "gray",
+   "hair",
+   "hat",
+   "heavy",
+   "makeup",
+   "man",
+   "mouth",
+   "nine",
+   "no",
+   "older",
+   "one",
+   "open",
+   "seven",
+   "six",
+   "smiling",
+   "spoken",
+   "the",
+   "three",
+   "two",
+   "with",
+   "woman",
+   "young",
+   "zero"
+  ],
+  "n_image": 512,
+  "n_audio": 1024,
+  "size": 1578,
+  "image_base": 42,
+  "audio_base": 554
+ },
+ "n_image_rows": 7200,
+ "n_audio_rows": 2500,
+ "tokens": {
+  "text": 75045,
+  "image": 460800,
+  "audio": 160000
+ },
+ "share": {
+  "text": 0.10784729357831126,
+  "image": 0.6622164418800164,
+  "audio": 0.22993626454167235
+ },
+ "mean_text_tokens_per_row": 9.034027777777778,
+ "image_tokens_per_row": 64,
+ "audio_tokens_per_row": 64,
+ "vocab_block_sizes": {
+  "words": 35,
+  "image": 512,
+  "audio": 1024
+ }
+}

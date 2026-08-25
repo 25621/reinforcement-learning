@@ -1,0 +1,17 @@
+label,bits,group,per_tensor,sym,ppl,bits_per_weight
+INT4 per-tensor,4,None,True,True,83192488.0000,4.0000
+INT4 per-channel,4,None,False,True,44.4563,4.0136
+INT4 group 256,4,256,False,True,28.9838,4.0688
+INT4 group 128,4,128,False,True,25.7593,4.1250
+INT4 group 64,4,64,False,True,23.1080,4.2500
+INT4 group 32,4,32,False,True,21.8821,4.5000
+INT4 group 128 asym,4,128,False,False,22.5890,4.2500
+INT4 per-channel asym,4,None,False,False,31.5740,4.0272
+INT3 per-tensor,3,None,True,True,3491772.0000,3.0000
+INT3 per-channel,3,None,False,True,240732.4375,3.0136
+INT3 group 256,3,256,False,True,1600.4076,3.0688
+INT3 group 128,3,128,False,True,259.6746,3.1250
+INT3 group 64,3,64,False,True,160.3548,3.2500
+INT3 group 32,3,32,False,True,101.1625,3.5000
+INT3 group 128 asym,3,128,False,False,74.5347,3.2500
+INT3 per-channel asym,3,None,False,False,2110.2527,3.0272

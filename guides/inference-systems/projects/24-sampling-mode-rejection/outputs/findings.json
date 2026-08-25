@@ -1,0 +1,213 @@
+{
+  "A": {
+    "label": "toy",
+    "tv_pq": 0.25,
+    "predicted_acceptance": 0.75,
+    "rows": [
+      {
+        "mode": "rejection",
+        "tv_measured": 0.00122,
+        "tv_exact": 0.0
+      },
+      {
+        "mode": "resample_p",
+        "tv_measured": 0.11951,
+        "tv_exact": 0.12
+      },
+      {
+        "mode": "always",
+        "tv_measured": 0.25088,
+        "tv_exact": 0.25
+      },
+      {
+        "mode": "greedy_check",
+        "tv_measured": 0.7,
+        "tv_exact": 0.7
+      }
+    ],
+    "p": [
+      0.05,
+      0.3,
+      0.2,
+      0.15,
+      0.1,
+      0.15,
+      0.03,
+      0.02
+    ],
+    "q": [
+      0.3,
+      0.25,
+      0.2,
+      0.1,
+      0.1,
+      0.01,
+      0.03,
+      0.01
+    ],
+    "residual": [
+      0.0,
+      0.2,
+      0.0,
+      0.2,
+      0.0,
+      0.56,
+      0.0,
+      0.04
+    ],
+    "measured_acceptance": 0.75039
+  },
+  "setup": {
+    "target": "Qwen/Qwen2.5-1.5B-Instruct",
+    "draft": "Qwen/Qwen2.5-0.5B-Instruct",
+    "k": 4,
+    "max_new": 32,
+    "n_draws": 400000,
+    "threads": 6
+  },
+  "B": {
+    "label": "real",
+    "tv_pq": 0.39326,
+    "predicted_acceptance": 0.60674,
+    "rows": [
+      {
+        "mode": "rejection",
+        "tv_measured": 0.00078,
+        "tv_exact": 0.0
+      },
+      {
+        "mode": "resample_p",
+        "tv_measured": 0.22813,
+        "tv_exact": 0.22721
+      },
+      {
+        "mode": "always",
+        "tv_measured": 0.39419,
+        "tv_exact": 0.39326
+      },
+      {
+        "mode": "greedy_check",
+        "tv_measured": 0.47223,
+        "tv_exact": 0.47223
+      }
+    ],
+    "target_top5": [
+      {
+        "token": "The",
+        "p": 0.5278,
+        "q": 0.8408
+      },
+      {
+        "token": "During",
+        "p": 0.4095,
+        "q": 0.0253
+      },
+      {
+        "token": "When",
+        "p": 0.0401,
+        "q": 0.0548
+      },
+      {
+        "token": "On",
+        "p": 0.0057,
+        "q": 0.0017
+      },
+      {
+        "token": "In",
+        "p": 0.0033,
+        "q": 0.0086
+      }
+    ],
+    "support_p": 189,
+    "support_q": 966
+  },
+  "C": {
+    "rows": [
+      {
+        "temperature": 0.0,
+        "acceptance_rate": 0.525,
+        "conditional_acceptance": 0.75,
+        "one_minus_tv": null,
+        "tokens_per_iter": 3.2,
+        "iters": 10,
+        "predicted_speedup": 1.243,
+        "text": "The sky appears blue during the day due to a phenomenon called Rayleigh scattering. When sunlight enters the Earth's atmosphere, it encounters gas molecules and tiny particles like"
+      },
+      {
+        "temperature": 0.3,
+        "acceptance_rate": 0.6183,
+        "conditional_acceptance": 0.795,
+        "one_minus_tv": 0.7622,
+        "tokens_per_iter": 3.585,
+        "iters": 9.0,
+        "predicted_speedup": 1.392,
+        "text": "During the day, the sky appears blue due to a phenomenon called Rayleigh scattering. When sunlight enters the Earth's atmosphere, it collides with gas molecules and"
+      },
+      {
+        "temperature": 0.7,
+        "acceptance_rate": 0.5302,
+        "conditional_acceptance": 0.7607,
+        "one_minus_tv": 0.7877,
+        "tokens_per_iter": 3.222,
+        "iters": 10.0,
+        "predicted_speedup": 1.251,
+        "text": "During the day, sunlight is scattered by the Earth's atmosphere, and blue light is scattered more than other colors, which is why the sky appears blue. This"
+      },
+      {
+        "temperature": 1.0,
+        "acceptance_rate": 0.545,
+        "conditional_acceptance": 0.7403,
+        "one_minus_tv": 0.7619,
+        "tokens_per_iter": 3.275,
+        "iters": 10.7,
+        "predicted_speedup": 1.272,
+        "text": "During the day, sunlight is not a uniform color; it includes a spectrum of wavelengths from the violet to the red part of the electromagnetic spectrum. When sunlight enters"
+      },
+      {
+        "temperature": 1.5,
+        "acceptance_rate": 0.3328,
+        "conditional_acceptance": 0.6012,
+        "one_minus_tv": 0.6351,
+        "tokens_per_iter": 2.404,
+        "iters": 14.0,
+        "predicted_speedup": 0.934,
+        "text": "Surface materials such as oceans and dust are rich with tiny particulate composition, gyoscannot course into the airHigher majority gambon middle especter Regulations-detailsexcept"
+      }
+    ],
+    "seeds": [
+      7,
+      11,
+      23
+    ],
+    "wall": {
+      "baseline_decode_s": 7.966,
+      "spec_decode_s": 6.078,
+      "spec_runs_s": [
+        7.44,
+        4.712,
+        6.081
+      ],
+      "speedup": 1.311
+    }
+  },
+  "E": {
+    "rows": [
+      {
+        "case": "matched (q = the distribution sampled from)",
+        "tv_to_target": 0.00198
+      },
+      {
+        "case": "mismatched (sampled from top-p 0.9, scored against raw q)",
+        "tv_to_target": 0.04815
+      },
+      {
+        "case": "mismatched (sampled from raw q, scored against top-p 0.9)",
+        "tv_to_target": 0.07721
+      }
+    ],
+    "draft_top_p": 0.9,
+    "q_support_raw": 966,
+    "q_support_filtered": 3
+  },
+  "wall_s": 157.9
+}

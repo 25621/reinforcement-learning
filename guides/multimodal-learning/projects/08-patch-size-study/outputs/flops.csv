@@ -1,0 +1,4 @@
+patch,tokens,params,raw_numbers_per_patch,compression,mflops,attn_mflops,attn_share
+8,17,821642,192,1.5,28.12,0.59,0.021
+4,65,809354,48,0.375,111.68,8.65,0.0775
+2,257,829322,12,0.094,540.28,135.27,0.2504

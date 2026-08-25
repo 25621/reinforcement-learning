@@ -1,0 +1,161 @@
+{
+  "model": {
+    "id": "Qwen/Qwen2.5-0.5B-Instruct",
+    "layers": 24,
+    "kv_heads": 2,
+    "d_head": 64,
+    "threads": 6
+  },
+  "A": {
+    "prompt_lens": [
+      5,
+      8,
+      9
+    ],
+    "heterogeneous_batch_identical": true,
+    "padded_prefill_identical": true,
+    "texts": [
+      " Paris. It is the largest city in Europe and",
+      " village. The village was very peaceful and quiet.",
+      " being to walk on the moon was Neil Armstrong."
+    ]
+  },
+  "workload": {
+    "n": 40,
+    "rate_per_s": 5.0,
+    "prompt_len_median": 54,
+    "prompt_len_max": 192,
+    "out_len_median": 29,
+    "out_len_max": 72
+  },
+  "B": [
+    {
+      "label": "static",
+      "requests_done": 40,
+      "wall_s": 66.702,
+      "out_tokens": 1287,
+      "throughput_tok_s": 19.29,
+      "ttft_p50": 29.925,
+      "ttft_p99": 52.179,
+      "itl_p50": 0.1399,
+      "itl_p99": 0.2158,
+      "e2e_p50": 41.94,
+      "e2e_p99": 61.564,
+      "forward_passes": 334,
+      "model_s": 65.19,
+      "pad_slot_frac": 0.5585,
+      "pad_flop_frac": 0.5598,
+      "useful_tflops": 2.84,
+      "pad_tflops": 3.62,
+      "idle_frac": 0.0227
+    },
+    {
+      "label": "continuous",
+      "requests_done": 40,
+      "wall_s": 33.194,
+      "out_tokens": 1287,
+      "throughput_tok_s": 38.77,
+      "ttft_p50": 8.323,
+      "ttft_p99": 18.823,
+      "itl_p50": 0.1369,
+      "itl_p99": 0.7092,
+      "e2e_p50": 14.641,
+      "e2e_p99": 27.189,
+      "forward_passes": 233,
+      "model_s": 33.12,
+      "pad_slot_frac": 0.0,
+      "pad_flop_frac": 0.0,
+      "useful_tflops": 2.84,
+      "pad_tflops": 0.0,
+      "idle_frac": 0.0024
+    }
+  ],
+  "C": {
+    "prompt_len": 54,
+    "out_len": 29,
+    "rows": [
+      {
+        "label": "static",
+        "requests_done": 40,
+        "wall_s": 22.146,
+        "out_tokens": 1160,
+        "throughput_tok_s": 52.38,
+        "ttft_p50": 7.701,
+        "ttft_p99": 13.794,
+        "itl_p50": 0.1134,
+        "itl_p99": 0.1277,
+        "e2e_p50": 10.894,
+        "e2e_p99": 17.008,
+        "forward_passes": 145,
+        "model_s": 20.63,
+        "pad_slot_frac": 0.0,
+        "pad_flop_frac": 0.0,
+        "useful_tflops": 2.36,
+        "pad_tflops": 0.0,
+        "idle_frac": 0.0683
+      },
+      {
+        "label": "continuous",
+        "requests_done": 40,
+        "wall_s": 24.911,
+        "out_tokens": 1160,
+        "throughput_tok_s": 46.57,
+        "ttft_p50": 8.016,
+        "ttft_p99": 15.547,
+        "itl_p50": 0.1158,
+        "itl_p99": 1.0844,
+        "e2e_p50": 12.332,
+        "e2e_p99": 19.747,
+        "forward_passes": 186,
+        "model_s": 24.83,
+        "pad_slot_frac": 0.0,
+        "pad_flop_frac": 0.0,
+        "useful_tflops": 2.36,
+        "pad_tflops": 0.0,
+        "idle_frac": 0.0031
+      }
+    ]
+  },
+  "D": {
+    "groups": [
+      {
+        "arrival_spread_s": 1.435,
+        "prompt_tokens_real": 369,
+        "prompt_tokens_padded": 760,
+        "decode_slots_real": 251,
+        "decode_slots_padded": 568
+      },
+      {
+        "arrival_spread_s": 0.654,
+        "prompt_tokens_real": 543,
+        "prompt_tokens_padded": 1536,
+        "decode_slots_real": 250,
+        "decode_slots_padded": 568
+      },
+      {
+        "arrival_spread_s": 1.403,
+        "prompt_tokens_real": 578,
+        "prompt_tokens_padded": 1536,
+        "decode_slots_real": 231,
+        "decode_slots_padded": 568
+      },
+      {
+        "arrival_spread_s": 1.257,
+        "prompt_tokens_real": 689,
+        "prompt_tokens_padded": 1536,
+        "decode_slots_real": 169,
+        "decode_slots_padded": 360
+      },
+      {
+        "arrival_spread_s": 0.929,
+        "prompt_tokens_real": 516,
+        "prompt_tokens_padded": 928,
+        "decode_slots_real": 346,
+        "decode_slots_padded": 568
+      }
+    ],
+    "arrival_wait_total_s": 5.68,
+    "prompt_pad_frac": 0.572,
+    "decode_pad_frac": 0.5262
+  }
+}

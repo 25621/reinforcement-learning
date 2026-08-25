@@ -97,17 +97,17 @@ Before architectures, get the conceptual map right. "Multimodal" is a fuzzy umbr
 ### Concepts to Learn
 
 - **The four canonical tasks**:
-  - **Cross-modal retrieval** — given an image, find the matching caption (or vice versa)
+  - **[Cross-modal retrieval](/shared/glossary/#cross-modal-retrieval)** — given an image, find the matching caption (or vice versa)
   - **Cross-modal generation** — given text, produce an image (or audio, or video). *The generative half lives in [Image Generation](../image-generation/) / [Video Generation](../video-generation/); here we care about the conditioning and the cross-modal interface.*
-  - **Multimodal understanding** — given image + text, answer a question (VQA, captioning)
-  - **Joint/any-to-any** — flexibly map any subset of modalities to any other
-- **Modality gap** — even well-trained models keep text and image embeddings in noticeably different regions of the shared space
-- **Alignment vs fusion** — alignment is *making spaces comparable*; fusion is *combining information*
-- **Early vs late fusion**:
-  - *Late fusion*: encode each modality separately, combine at the end (CLIP-style)
-  - *Early fusion*: interleave modalities into one sequence from the start (Chameleon-style)
-  - *Middle fusion*: encode separately, then attend across (Flamingo, LLaVA)
-- **Pretraining objectives**: contrastive, masked, generative, and combinations
+  - **Multimodal understanding** — given image + text, answer a question ([VQA](/shared/glossary/#vqa-visual-question-answering), captioning)
+  - **Joint/any-to-any** — flexibly map any subset of [modalities](/shared/glossary/#modality) to any other
+- **[Modality gap](/shared/glossary/#modality-gap)** — even well-trained models keep text and image [embeddings](/shared/glossary/#embedding) in noticeably different regions of the shared space. Concretely: a photo scores about 0.30 [cosine similarity](/shared/glossary/#cosine-similarity) against *its own* caption but about 0.49 against a completely unrelated photo, so raw [CLIP](/shared/glossary/#clip) scores tell you almost nothing on their own — only rankings do. Project [02](projects/02-visualize-the-modality-gap/README.md) measures this and traces it back to the [cone effect](/shared/glossary/#cone-effect), which is present *before* any training.
+- **Alignment vs fusion** — alignment is *making spaces comparable* (so a photo and its caption can be scored against each other); fusion is *combining information* (so the model can reason over both at once). A [dual encoder](/shared/glossary/#dual-encoder) only aligns; a [VLM](/shared/glossary/#vlm) fuses.
+- **Early vs late [fusion](/shared/glossary/#fusion-earlymiddlelate)** — "early/middle/late" refers to *how far into the network* the two modalities are first allowed to meet:
+  - *Late fusion*: encode each modality separately, combine at the end ([CLIP](/shared/glossary/#clip)-style)
+  - *Early fusion*: interleave modalities into one sequence from the start ([Chameleon](/shared/glossary/#chameleon)-style)
+  - *Middle fusion*: encode separately, then attend across ([Flamingo](/shared/glossary/#flamingo), [LLaVA](/shared/glossary/#llava))
+- **Pretraining objectives**: [contrastive](/shared/glossary/#infonce) (rank the true pair above the wrong ones), masked (hide part of the input, predict it), generative (predict the next [token](/shared/glossary/#token-visualaudio)), and combinations
 
 ### A Taxonomy Diagram
 
@@ -140,7 +140,9 @@ Before architectures, get the conceptual map right. "Multimodal" is a fuzzy umbr
 
 ### Key Insight
 
-The choice of fusion strategy determines what your model can do. Dual encoders (CLIP) are fast and great at retrieval but can't reason or generate. Encoder-decoder VLMs (LLaVA) reason and generate text but not images. Unified models (Chameleon, GPT-4o) do everything but need vastly more data and compute. There is no free lunch; pick the architecture that matches your task.
+The choice of fusion strategy determines what your model can do. [Dual encoders](/shared/glossary/#dual-encoder) (CLIP) are fast and great at retrieval but can't reason or generate. Encoder-decoder [VLMs](/shared/glossary/#vlm) (LLaVA) reason and generate text but not images. Unified models (Chameleon, GPT-4o) do everything but need vastly more data and compute. There is no free lunch; pick the architecture that matches your task.
+
+Two consequences of that "fast" claim, since it is easy to skim past. A dual encoder is fast *at query time* because each item is encoded once, in advance, and answering a query is then one [matrix multiplication](/shared/glossary/#matmul) over stored vectors — a million candidates cost one matmul, not a million forward passes. A VLM has no such precomputable per-item vector, so scoring a million candidates means running the whole model a million times *per query*. And "can't generate" is structural, not a missing feature: a dual encoder's output is a single vector, and a single vector is not a sequence, so there is nothing for a decoder to read off. Project [01](projects/01-modality-survey/README.md) lays this out as a grid where each architecture's position predicts exactly which jobs it can do.
 
 ### Resources
 
@@ -160,17 +162,17 @@ Before you can fuse modalities, you have to encode each one into vectors. This p
 ### Concepts to Learn
 
 - **Image encoders**:
-  - CNNs (ResNet, EfficientNet) — still useful, especially for small models
-  - Vision Transformers (ViT) — the modern default; how patchification works
-  - **Patch size and resolution tradeoffs** — smaller patches = more tokens = better detail = quadratically more compute
-  - **SigLIP / SigLIP 2 / DFN / EVA-CLIP / DINOv2** — modern improvements over the original CLIP vision tower; DINOv2 is the dominant *self-supervised* (non-contrastive) choice
+  - [CNNs](/shared/glossary/#cnn) ([ResNet](/shared/glossary/#resnet), EfficientNet) — still useful, especially for small models
+  - [Vision Transformers](/shared/glossary/#vit) (ViT) — the modern default; how [patchification](/shared/glossary/#patchification) works
+  - **Patch size and resolution tradeoffs** — smaller patches = more tokens = better detail = quadratically more compute. Project [08](projects/08-patch-size-study/README.md) measures each link in that chain: 17 → 257 tokens costs 19× the [FLOPs](/shared/glossary/#flops), and [attention](/shared/glossary/#attention)'s share of them climbs from 2% to 25% because attention compares every token with every other while all the other layers see each token alone. It also finds the trap in "better detail": on a task with no fine detail to find, the *largest* patch wins on accuracy as well as on cost.
+  - **[SigLIP](/shared/glossary/#siglip) / SigLIP 2 / DFN / EVA-CLIP / [DINOv2](/shared/glossary/#dinov2)** — modern improvements over the original CLIP vision tower; DINOv2 is the dominant *[self-supervised](/shared/glossary/#self-supervised)* (non-contrastive) choice
 - **Text encoders**:
   - BERT-style bidirectional encoders (for dual-encoder models)
   - Decoder-only LLMs as encoders (just take hidden states)
   - The tradeoff: bidirectional sees both sides but is non-causal; decoder-only is causal but composes naturally with generation
 - **Audio encoders**:
-  - Mel spectrograms — the standard input representation
-  - Whisper-style encoders for speech
+  - [Mel spectrograms](/shared/glossary/#mel-spectrogram) — the standard input representation. Project [06](projects/06-mel-spectrogram-pipeline/README.md) builds one from scratch and removes each step in turn to show none of them is convention: dropping the log alone takes a digit classifier from 72% to 21%.
+  - [Whisper](/shared/glossary/#whisper)-style encoders for speech — project [07](projects/07-whisper-encoder-reuse/README.md) freezes one and probes every layer, watching it *discard* speaker identity (0.82 → 0.44) while it builds up phonetic content (0.19 → 0.96), because identity is a nuisance variable for transcription
   - HuBERT, wav2vec 2.0 for general audio
   - Neural audio codecs (EnCodec, SoundStream, DAC, Mimi) for discrete audio tokens
 - **Video encoders**:
@@ -236,7 +238,13 @@ class PatchEmbed(nn.Module):
 
 ### Key Insight
 
-The patchification trick — using a single strided convolution to both split the image into patches *and* project them to the embedding dimension — is one of those "obvious in hindsight" moves that made ViT practical. It's mathematically identical to the unfold-then-linear approach but is dramatically faster. The deeper lesson: every modality reduces to "turn it into a sequence of D-dimensional vectors," after which a transformer doesn't care whether those vectors came from pixels, waveforms, or words.
+The [patchification](/shared/glossary/#patchification) trick — using a single strided convolution to both split the image into patches *and* project them to the embedding dimension — is one of those "obvious in hindsight" moves that made ViT practical. It's mathematically identical to the unfold-then-linear approach but is dramatically faster. (It works because a convolution whose kernel size *equals* its stride never lets two windows overlap, so it visits exactly the squares you would have cut by hand — and applying the kernel to a window *is* the projection you wanted. Project [04](projects/04-implement-vit-from-scratch/README.md) checks the two routes agree to 8 × 10⁻⁷.) The deeper lesson: every modality reduces to "turn it into a sequence of D-dimensional vectors," after which a transformer doesn't care whether those vectors came from pixels, waveforms, or words.
+
+Two threads run through all five projects here and are worth naming before you start, because each one cost a beginner-shaped mistake to find.
+
+**Freeze first, and probe before you fine-tune.** Fine-tuning *changes* the features, so it measures how well an encoder adapts, not what it already knows — which is the wrong question when you are choosing what to build on. Project [05](projects/05-compare-encoders/README.md) freezes four towers and finds that [SigLIP](/shared/glossary/#siglip), trained on free noisy web captions, beats a ViT of identical size and shape trained on 14M hand-curated ImageNet-21k labels. Supervision beat architecture. Project [07](projects/07-whisper-encoder-reuse/README.md) shows the payoff in data: a frozen [Whisper](/shared/glossary/#whisper) encoder plus one linear layer reaches 68% on spoken digits from five examples each, where an equivalent network trained from scratch reaches 14% — barely above guessing.
+
+**Your benchmark has to be able to see the thing you are measuring.** This bites in every one of these projects. Project [05](projects/05-compare-encoders/README.md)'s four encoders all score 0.94–0.99 with plenty of labels and look interchangeable; cut to one label per class and a 65-point gap opens. Project [07](projects/07-whisper-encoder-reuse/README.md)'s layer chart is two flat lines at full labels and reveals the encoder's entire design philosophy at two labels per class. And three separate projects found *extra resolution that was genuinely useless*, because the task had no structure at that scale — [04](projects/04-implement-vit-from-scratch/README.md)'s positional embeddings (used, but worth only 2 points on CIFAR-10), [06](projects/06-mel-spectrogram-pipeline/README.md)'s mel bins (8 beat 80 by 38 points), and [08](projects/08-patch-size-study/README.md)'s patch size (the *largest* patch won). Before concluding a component does not matter, check whether your measurement could have noticed if it did.
 
 ### Resources
 
@@ -255,18 +263,19 @@ CLIP is the model that made modern multimodal learning take off, and **contrasti
 
 ### Concepts to Learn
 
-- **The contrastive objective**: pull matched (image, caption) pairs together, push unmatched pairs apart
-- **InfoNCE loss** — the workhorse contrastive loss; relationship to mutual information
-- **The temperature parameter τ** — what it controls, why it's learnable, and why it matters more than you'd think
-- **Batch size in contrastive learning** — why bigger is dramatically better, and the tricks (memory bank, MoCo, distributed gathering) to fake it cheaply
-- **Hard negatives** — easy negatives don't teach the model anything; mining hard ones helps
+- **The [contrastive](/shared/glossary/#contrastive-learning) objective**: pull matched (image, caption) pairs together, push unmatched pairs apart
+- **[InfoNCE](/shared/glossary/#infonce) loss** — the workhorse contrastive loss; relationship to [mutual information](/shared/glossary/#mutual-information). The name is two abbreviations: *[NCE](/shared/glossary/#noise-contrastive-estimation)* (noise-contrastive estimation — tell the true pair apart from noise) and *Info* (the loss is a lower bound on how much the image and caption share). Project [09](projects/09-implement-infonce/README.md) writes it by hand, checks it against autograd and finite differences to 10⁻¹², and measures that bound: it is capped at `ln(N)`, so **a batch of 32 cannot certify more than 3.47 nats of shared information no matter how good the model is.** That is the strongest argument for large batches, and it is arithmetic rather than folklore.
+- **The [temperature](/shared/glossary/#temperature) parameter τ** — what it controls, why it's learnable, and why it matters more than you'd think. Concretely: τ cannot change which caption ranks highest (it is a monotone rescaling — in-batch accuracy is identical at every τ) but it decides *which negatives receive gradient*. At τ = 0.01 a batch of 256 has only **2.7 effective negatives**; at τ = 0.07 it has 178. Project [13](projects/13-temperature-ablation/README.md) trains at each setting and finds a wide usable range on the low side with a hard wall at τ = 1.0, where the loss ends barely below its own chance level.
+- **[Batch size](/shared/glossary/#batch) in contrastive learning** — why bigger is dramatically better, and the tricks (memory bank, MoCo, distributed gathering) to fake it cheaply. Two cautions project [10](projects/10-tiny-clip/README.md) measures: an InfoNCE *number* is not comparable across batch sizes (chance is `ln(N)`, so the same frozen model "scores" 0.674 at N = 8 and 4.904 at N = 1000), and at a fixed data budget bigger batches buy negatives by spending optimizer steps — 32 → 128 gained 70% relative on R@1, and 128 → 512 gave it back.
+- **[Hard negatives](/shared/glossary/#hard-negatives)** — easy negatives don't teach the model anything; mining hard ones helps. Project [12](projects/12-hard-negative-mining/README.md) is the honest counterweight: mining only helps if the model doing the mining already knows what "similar" means, and mined batches concentrate on a topic, which quietly shrinks the *variety* of negatives even as it raises their difficulty. It also names the built-in cost — a [false negative](/shared/glossary/#false-negative) is a mined "wrong" caption that actually describes the image, and the harder you mine the more of those you get.
 - **CLIP variants**:
   - **SigLIP / SigLIP 2** — sigmoid (per-pair) loss instead of softmax (over-batch) loss; works at smaller batch sizes
   - **ALIGN** — Google's CLIP-equivalent, trained on noisier web data
   - **OpenCLIP, EVA-CLIP, DFN, MetaCLIP** — community and Meta scaling efforts
   - **ImageBind** — extends contrastive learning to 6 modalities (text, image, audio, depth, thermal, IMU)
-- **Zero-shot classification** — how CLIP does classification without ever seeing labels
-- **CLIP as a filter** — using CLIP scores to clean web-scale training data (e.g., LAION); the same trick reappears for data curation in [Image Generation Phase 10](../image-generation/) and [Video Generation Phase 10](../video-generation/)
+- **[Zero-shot](/shared/glossary/#zero-shot) classification** — how CLIP does classification without ever seeing labels. The classifier is a matrix you *write in English*: one sentence per class, encoded and [L2-normalized](/shared/glossary/#l2-normalization). Project [11](projects/11-zero-shot-imagenet/README.md) runs it against all 1,000 ImageNet class names and shows that the candidate list *is* the benchmark — the same model scores 0.988 against 10 candidates and 0.660 against 1,000 — and that the wording is worth ~0 points at 10 classes and up to 12 at 1,000.
+- **[Prompt ensembling](/shared/glossary/#prompt-ensembling)** — encode each class in several sentences and average the vectors. Project [11](projects/11-zero-shot-imagenet/README.md) measures the part that is not obvious: the ensemble beats **every individual template**, not merely their average, because the templates' errors are partly independent (two templates for the same class agree at cosine 0.919, close but not identical).
+- **CLIP as a filter** — using CLIP scores to clean web-scale training data (e.g., [LAION](/shared/glossary/#laion)); the same trick reappears for data curation in [Image Generation Phase 10](../image-generation/) and [Video Generation Phase 10](../video-generation/). Project [14](projects/14-data-filtering-with-clip/README.md) breaks 60% of a COCO subset on purpose and finds the filter separates genuine from broken pairs at [AUC](/shared/glossary/#auc) 0.994 — then shows where the trick stops working, because filtering harder eventually deletes good data faster than it deletes noise.
 
 ### The CLIP Training Step
 
@@ -331,6 +340,16 @@ def clip_loss(image_features, text_features, logit_scale):
 
 CLIP's most important contribution was not the architecture; it was the realization that the *internet* is a labeled dataset. Every image with an [alt-text](/shared/glossary/#alt-text) or surrounding caption is a free supervised example. The contrastive objective turned this firehose of noisy data into a useful signal. The architecture (two transformers + cosine similarity) is almost an afterthought.
 
+Project [10](projects/10-tiny-clip/README.md) is that claim taken literally: a 1.56M-parameter CLIP — 1% of CLIP B/32 — trained for two minutes on 4,500 photographs, reaching held-out retrieval at 17× chance. The architecture really is the easy part. Everything hard in this phase is about the *contest*: how many candidates it has, which of them receive gradient, and whether the pairs were true to begin with.
+
+Three threads run through all six projects, and each cost a beginner-shaped mistake to find.
+
+**A contrastive number is unreadable without the contest that produced it.** Chance for [InfoNCE](/shared/glossary/#infonce) is `ln(N)`, so the *same frozen CLIP* "scores" 0.674 at batch 8 and 4.904 at batch 1,000 (project [09](projects/09-implement-infonce/README.md)). The same trap eats [zero-shot](/shared/glossary/#zero-shot) accuracy — 0.988 against 10 candidate labels, 0.660 against 1,000, one unchanged model (project [11](projects/11-zero-shot-imagenet/README.md)) — and it eats loss comparisons across batch *compositions* too: project [12](projects/12-hard-negative-mining/README.md)'s mined runs end near chance because they are answering a harder question, not because they failed. Always report the [gallery](/shared/glossary/#gallery) or the candidate list next to the number.
+
+**Damage shows up in the geometry before it shows up in the score.** Three separate mistakes produced the same fingerprint — embeddings bunching together instead of spreading over the sphere ([representation collapse](/shared/glossary/#representation-collapse)): dropping half the symmetric loss (project [10](projects/10-tiny-clip/README.md), text-side [uniformity](/shared/glossary/#alignment-and-uniformity) −1.39 → −1.07), setting τ = 0.01 (project [13](projects/13-temperature-ablation/README.md), matched and mismatched cosines 0.015 apart), and filling batches with mined negatives (project [12](projects/12-hard-negative-mining/README.md), all four conditions). In each case retrieval was still roughly fine when the space was already sick. And the reverse is just as true: a *bigger* average margin between matched and mismatched pairs went with *worse* retrieval in project 13 (τ = 1.0 separates them 29× better than τ = 0.01 and retrieves half as well), because retrieval is decided by rank within a row, not by an average. The [modality gap](/shared/glossary/#modality-gap) behaves the same way — it shrank monotonically from 1.150 to 0.060 as τ rose, and the smallest gap belonged to the worst model, reproducing project [02](projects/02-visualize-the-modality-gap/README.md)'s finding from the training side rather than by editing a frozen model.
+
+**Two of the phase's headline recipes did not survive contact with a small budget, and the reasons are the lesson.** Bigger batches won only up to an interior optimum (project [10](projects/10-tiny-clip/README.md): 32 → 128 gained 70% relative on R@1 with 4× fewer updates; 128 → 512 gave it back), because at a fixed data budget a bigger batch buys negatives by spending optimizer steps. And [hard-negative mining](/shared/glossary/#hard-negatives) lost in all four conditions, *monotonically in mining quality* — random 0.170, self-mined 0.128, real-CLIP-mined 0.102 — because a mined batch trades **variety** for **difficulty** and only difficulty is what the name mentions. Every image in a mined batch is a desk, so that update teaches desk-vs-desk and nothing about desk-vs-beach. What *did* work exactly as advertised is the cheapest technique of the six: filtering by CLIP score deleted 60% of a deliberately-broken dataset, made the downstream model 54% better, and matched an oracle that knew the answer key (project [14](projects/14-data-filtering-with-clip/README.md)) — until it was pushed too far, at which point 99.9%-clean data starved the model and it memorized. Curate first; tune the contest later.
+
 ### Resources
 
 - [CLIP paper (Radford et al., 2021)](https://arxiv.org/abs/2103.00020)
@@ -390,6 +409,12 @@ Once each modality is encoded, you have to combine them. There are more options 
      trained with one next-token prediction loss over the whole alphabet
 ```
 
+> **Two things a beginner reasonably asks at this point.**
+>
+> **"The image encoder already outputs vectors. Why does every diagram add a [projector](/shared/glossary/#projector) on top?"** Because two networks trained separately do not share a coordinate system — "vision dimension 7" and "language dimension 7" mean unrelated things — and they usually do not even share a *width* (1024 for a ViT, 4096 for a large LLM). The projector learns the change of basis and the resize. Crucially it stays **trainable while both encoders stay [frozen](/shared/glossary/#frozen)**, so it is the one piece that can adapt a frozen encoder to a model it was never trained with. Project [15](projects/15-concat-vs-cross-attn/README.md) measures what it buys.
+>
+> **"CLIP already produces one summary vector per image. Why does BLIP-2 build a [Q-Former](/shared/glossary/#q-former) to produce another?"** Because CLIP's summary was optimised for a different job — telling this photo apart from a million others in [contrastive](/shared/glossary/#contrastive-learning) training. Being *discriminative* is not the same as being *informative enough to write a sentence from*. The Q-Former's queries are trained on the downstream generation objective instead, so they can keep what the generator needs and drop what only mattered for matching. Project [16](projects/16-implement-q-former/README.md) builds one and tests whether that gap is real at small scale.
+
 ### Projects
 
 | Project | Description | Difficulty |
@@ -444,15 +469,15 @@ The current workhorse class. A VLM takes images (+ text) in and produces text. M
 
 ### Concepts to Learn
 
-- **The standard recipe**: pretrained vision encoder + projector + pretrained LLM → train projector first, then jointly fine-tune. (The vision encoder comes from Phase 2/3; the LLM comes from the [LLM guide](../llm/) — a VLM is mostly *glue and data*.)
+- **The standard recipe**: pretrained vision encoder + projector + pretrained LLM → train projector first, then jointly fine-tune. (The vision encoder comes from Phase 2/3; the LLM comes from the [LLM guide](../llm/) — a VLM is mostly *glue and data*.) Project [20](projects/20-llava-from-scratch/README.md) builds exactly this on a real frozen CLIP and a real frozen 135M LLM, and its measurement is a warning: an image-blind [soft prompt](/shared/glossary/#prompt-tuning) *beat* the real thing on caption loss (3.071 vs 3.150) while scoring exactly [chance](/shared/glossary/#chance-level) at picking the matching caption out of 20 (0.050 vs 0.140). Caption loss mostly measures whether you write like the dataset.
 - **Image preprocessing for VLMs**:
-  - Fixed resolution vs **dynamic resolution / AnyRes** (Qwen2-VL, InternVL2): tile the image to handle any aspect ratio
+  - Fixed resolution vs **dynamic resolution / AnyRes** (Qwen2-VL, InternVL2): tile the image to handle any aspect ratio. Project [22](projects/22-dynamic-resolution/README.md) finds the split you should expect — identical accuracy on a big coloured shape, 0.303 → 0.397 on reading small print — and one surprise: native tiles *without* the global thumbnail scored 0.073, far worse than plain squashing, because detail you cannot locate is not usable detail.
   - **Native-resolution ViT** (Qwen2-VL's NaViT-style approach) — process the image at its true resolution instead of a fixed grid
   - Token budget per image — typically 256 to a few thousand image tokens
-- **Instruction tuning for VLMs** — the "LLaVA-Instruct" recipe: GPT-4-generated multimodal instructions
+- **Instruction tuning for VLMs** — the "LLaVA-Instruct" recipe: GPT-4-generated multimodal instructions. Project [21](projects/21-visual-instruction-tuning/README.md) reproduces the format flip (yes/no accuracy 0.382 → 0.679, parseable answers 0.885 → 0.994) and then measures how much of it is vision: a blind model trained on the same questions reaches 0.649, so *looking* is worth about 3 points — inside the noise. Always run the blind baseline.
 - **Visual question answering (VQA)** — classic benchmark task
 - **OCR-heavy VLMs** — Donut, Nougat, GOT — for documents
-- **Grounding** — output bounding boxes or pixel coordinates; teaching the LLM to "point" (Molmo's *pointing* supervision is a clean recent example)
+- **[Grounding](/shared/glossary/#grounding)** — output [bounding boxes](/shared/glossary/#bounding-box) or pixel coordinates; teaching the LLM to "point" (Molmo's *pointing* supervision is a clean recent example). Project [23](projects/23-grounding-head/README.md) adds the [coordinate-token](/shared/glossary/#coordinate-tokens) vocabulary and separates two things that are easy to confuse: the *format* is learned immediately and perfectly (100% well-formed boxes, against 0% for the same boxes written as plain digits), while the *mapping* from image to position is not (0.097 IoU against a 0.866 ceiling — plausible boxes in the wrong places). Grounding is a data problem wearing an architecture problem's clothes.
 - **Modern frontier VLMs** (2025–2026):
   - **Qwen2.5-VL / Qwen3-VL** — Alibaba, strong open VLM family
   - **InternVL2.5 / InternVL3** — Shanghai AI Lab
@@ -477,6 +502,14 @@ Data:   ~500k–10M           Format:   conversational (image, Q, A)
 
 Result: LLM "speaks image"  Result: VLM that follows visual instructions
 ```
+
+> **Three things a beginner reasonably asks at this point.**
+>
+> **"Both big networks are pretrained and frozen in stage 1. So what is actually learning?"** Only the [projector](/shared/glossary/#projector) — in project [20](projects/20-llava-from-scratch/README.md) that is 0.78M weights against a 135M-parameter LLM, well under 1%. What it learns is a *change of coordinates*: CLIP's patch vectors and the LLM's word embeddings are both "vectors", but they were trained separately, so they share no axes and usually not even a width. Stage 1 is a translation exercise, which is why it is stable and cheap. It is also why the honest way to report it is against a control that gets the same training and no image — project 20 uses a learned [soft prompt](/shared/glossary/#prompt-tuning), and it closes most of the raw loss gap on its own.
+>
+> **"Why two stages? Why not train on instruction data from the beginning?"** Because at step 0 the projector's output is noise, and noise spliced into a pretrained LLM's input is actively harmful. Stage 1 gets the image into the LLM's vocabulary space using the easiest possible target (a caption describes *whatever is in* the picture, so almost any visual signal helps). Only then does stage 2 unfreeze the LLM and ask for specific answers to specific questions — a target that punishes a model for missing details it would otherwise be free to skip. Skipping stage 1 means asking the LLM to adapt to garbage inputs while also learning the task; the recipe exists to avoid that.
+>
+> **"The image encoder already sees the whole picture. Why does [AnyRes](/shared/glossary/#anyres) chop it into tiles as well?"** Because "sees the whole picture" hides a resize. A [ViT](/shared/glossary/#vit) accepts exactly the grid it was trained on, so a big page is *downscaled* first, and downscaling destroys small structures while leaving big ones recognisable. A tile is not extra information about the same pixels — it is the *original* pixels, at a resolution the encoder can resolve. Project [22](projects/22-dynamic-resolution/README.md) shows the split that follows: tiling leaves the big-object question untouched and transforms the small-text one.
 
 ### Projects
 
@@ -578,6 +611,14 @@ Result shape: (T, 80)   ← T is the number of time frames
               Treat as a "1D image" with 80 channels, feed to a convolutional or transformer encoder.
 ```
 
+> **Three things a beginner reasonably asks at this point.**
+>
+> **"A [mel spectrogram](/shared/glossary/#mel-spectrogram) already turns sound into a compact array. Why do neural codecs like EnCodec exist — isn't that the same compression job?"** They solve different problems, and the giveaway is what comes out. A mel spectrogram is *continuous numbers for a network to read*: it throws away [phase](/shared/glossary/#phase-signal), so you cannot get the audio back from it without a [vocoder](/shared/glossary/#vocoder) guessing the missing part, and its values are floats, not symbols. A [neural codec](/shared/glossary/#neural-codec) produces *integers from a fixed alphabet* and can decode them back to sound. That difference is everything: integers from a fixed alphabet are exactly what a language model predicts, so a codec turns "generate audio" into "predict the next token". Project [26](projects/26-mel-spectrogram-from-scratch/README.md) measures what the mel step destroys (collapsing 257 frequency rows into 80 costs *more* than discarding all phase), and project [28](projects/28-encodec-tour/README.md) shows the codec's alphabet in action — and its bill: even the coarsest setting emits 150 tokens per second against roughly 3 text tokens per second for the same speech.
+>
+> **"[Whisper](/shared/glossary/#whisper) already has an encoder *and* a decoder. Why do [speech LLMs](/shared/glossary/#speech-llm) throw the decoder away and bolt on a separate language model?"** Because Whisper's decoder can do exactly one thing: write down the words. It cannot answer a question about the audio, follow an instruction, or compare two clips. The encoder is the expensive, hard-to-train part and it is worth keeping; the decoder is replaceable, so a speech LLM keeps the ears and borrows a general-purpose LLM's mouth — the identical [projector](/shared/glossary/#projector) recipe Phase 5 used for images. Project [29](projects/29-speech-llm/README.md) builds it by reusing project 20's model file with the vision tower swapped out, and finds a double dissociation worth remembering: Whisper's *first* encoder layer identifies the speaker (0.956) but barely reads the digits (0.168 per slot), while its *last* layer reads the digits three times better (0.554) and gives up only 4 points of speaker accuracy.
+>
+> **"If a [VLM](/shared/glossary/#vlm) can look at 8 frames at once, isn't that already a video model?"** Only for questions about *what is there*. Sampling frames and encoding each as a still image ([frame sampling](/shared/glossary/#frame-sampling)) keeps everything that a single snapshot could answer and silently discards *order* — and order is what motion is. Projects [30](projects/30-video-frame-vlm/README.md) and [31](projects/31-native-video-model/README.md) make that concrete on the same clips: a model whose only cross-frame operation is an average scores exactly the same on a motion question with the frames shuffled as in order (it cannot do otherwise), while a [tubelet](/shared/glossary/#tubelet) model that fuses two frames inside every token reads motion at 0.988 — and collapses when the frames are shuffled, which is how you know it was really using time.
+
 ### Projects
 
 | Project | Description | Difficulty |
@@ -633,12 +674,12 @@ The frontier, and **this guide's signature territory** — both [Image Generatio
 
 ### Concepts to Learn
 
-- **The unified-token hypothesis** — if you can tokenize every modality, you can train one model on the union. (The tokenizers themselves are built in [Image Generation Phase 3](../image-generation/#phase-3-discrete-latents--vq-vae-vq-gan-and-modern-tokenizers); here we assemble them into a joint model.)
-- **Native multimodal models** (Chameleon, GPT-4o, Gemini, Llama 4): trained from scratch on all modalities, no separate "vision tower"
-- **Mixture-of-Experts (MoE)** — a common scaling tool for unified models; experts can specialize by modality (Llama 4, DeepSeek-VL2)
-- **Generation across modalities**: a unified model can in principle output `<image_token>` sequences as easily as text tokens, then a decoder turns them into pixels
-- **AR + diffusion hybrids** — **Transfusion** (one transformer, next-token loss on text + diffusion loss on image patches) and **Janus / Janus-Pro** (decoupled visual encoders for understanding vs generation) are the 2024–2025 designs that close the gap with diffusion image quality while keeping a single backbone
-- **Omni models** — single model, single inference path, all modalities in *and* out (GPT-4o for text/audio/vision; **Qwen2.5-Omni**, **MiniCPM-o** on the open side)
+- **The [unified-token hypothesis](/shared/glossary/#unified-token-hypothesis)** — if you can tokenize every modality, you can train one model on the union. (The tokenizers themselves are built in [Image Generation Phase 3](../image-generation/#phase-3-discrete-latents--vq-vae-vq-gan-and-modern-tokenizers); here we assemble them into a joint model.) Project [32](projects/32-discrete-image-tokens/README.md) builds the image half of that alphabet and prices it: 64 codes hold a blurry but unmistakable face at 22.0 dB, and 16× more codes buy 5.92 dB more — for 16× the sequence every downstream model has to read.
+- **[Native multimodal](/shared/glossary/#native-multimodal) models** ([Chameleon](/shared/glossary/#chameleon), GPT-4o, Gemini, Llama 4): trained from scratch on all modalities, no separate "vision tower". Project [33](projects/33-tiny-chameleon/README.md) builds one in miniature — 512 image codes appended to a 22-word vocabulary, one loss, both directions — and project [34](projects/34-modality-balancing/README.md) adds audio and finds that the fix everyone reaches for ([oversampling](/shared/glossary/#oversampling) the rare modality) *cost* the majority modality four times as much as the imbalance did.
+- **[Mixture-of-Experts (MoE)](/shared/glossary/#moe)** — a common scaling tool for unified models; [experts](/shared/glossary/#expert) can [specialize by modality](/shared/glossary/#expert-specialization) (Llama 4, DeepSeek-VL2). Project [35](projects/35-moe-for-multimodal/README.md) checks whether they actually do: they partially do (about a third of the maximum possible, unprompted, strongest at the network's ends), but the same run is a caution — 5× the parameters bought nothing at this scale, MoE was 1.5× *slower* than a dense model with identical [active parameters](/shared/glossary/#active-parameters), and without a [load-balancing loss](/shared/glossary/#load-balancing-loss) the specialisation score went *up* while routing collapsed onto one expert.
+- **Generation across modalities**: a unified model can in principle output `<image_token>` sequences as easily as text tokens, then a decoder turns them into pixels. "In principle" is load-bearing — project [36](projects/36-reverse-direction/README.md) grafts exactly that head onto a finished [VLM](/shared/glossary/#vlm) and finds the pretraining transfers nothing.
+- **AR + diffusion hybrids** — **[Transfusion](/shared/glossary/#transfusion)** (one transformer, next-token loss on text + diffusion loss on image patches) and **[Janus / Janus-Pro](/shared/glossary/#janus)** (decoupled visual encoders for understanding vs generation) are the 2024–2025 designs that close the gap with diffusion image quality while keeping a single backbone
+- **[Omni models](/shared/glossary/#omni-model)** — single model, single inference path, all modalities in *and* out (GPT-4o for text/audio/vision; **Qwen2.5-Omni**, **MiniCPM-o** on the open side)
 - **Late-stage vs early-stage fusion at scale** — the empirical evidence is increasingly that *earlier* fusion wins when you have enough compute
 - **Trade-offs**: unified models lose some specialist quality; the question is whether the joint flexibility makes up for it
 
@@ -673,6 +714,16 @@ Cons: enormous compute; harder to leverage existing LLMs;
       (the gap Transfusion/Janus are closing)
 ```
 
+> **Four things a beginner reasonably asks at this point.**
+>
+> **"If every modality just becomes tokens, why does anyone still argue about architecture? Isn't tokenizing everything the whole answer?"** Tokenizing is the easy half; the *price* of the tokens is where the arguments live. Project [32](projects/32-discrete-image-tokens/README.md) puts numbers on that price. Sixteen times more tokens per image bought 5.92 dB of reconstruction quality — and 16× the sequence length, which costs a [transformer](/shared/glossary/#transformer) roughly 256× the [attention](/shared/glossary/#attention) work, because attention compares every token with every other. It also found the two traps: [codebook collapse](/shared/glossary/#codebook-collapse) silently turned 512 entries into an effective 11–17 (so "9 bits per token" was really 3.5), and the tokenizer *loses to JPEG* above ~900 bytes while being the only option below ~730. What you buy with a tokenizer is not compression — it is a discrete alphabet a language model can predict.
+>
+> **"A single loss over one mixed vocabulary sounds too simple. Does the model really not need a fusion module?"** It really does not, and project [33](projects/33-tiny-chameleon/README.md) builds it in about 200 lines: 512 image codes appended to a 22-word vocabulary, a `<boi>` marker the model must learn like any other word, and ordinary [next-token prediction](/shared/glossary/#next-token-prediction). The result generates faces from captions *and* captions from faces with one set of weights. But it also shows why "does it work?" is the wrong question. Against single-modality controls, sharing **helped text (0.477 vs 0.492) and hurt images (4.747 vs 4.623)** — the minority modality gained, the majority one paid. And its captioning score of 0.879 collapses to a 3-point improvement once you run the model that answers the same questions *without seeing the image* (0.849). Unification working and unification being free are separate claims, and only controls separate them.
+>
+> **"[Modality balancing](/shared/glossary/#modality-balancing) sounds like standard hygiene. Why not always oversample the rare modality?"** Because the fix has a price and the diagnosis is harder than it looks. Project [34](projects/34-modality-balancing/README.md) trains text + images + audio together and starts with the measurement problem: losses of 0.61, 4.80 and 1.37 say nothing about which modality is neglected, since each is drawn from a different-sized alphabet. Only a *gap to that modality's own solo model* is comparable. With gaps in hand, starving audio to 1% of examples reproduced the classic failure exactly (+0.518) — and, unexpectedly, hurt **text** even more relative to normal (+0.210), because the digit captions rode along inside the audio rows. Then the honest inversion: applying either standard fix to the healthy mixture **quadrupled the image gap (+0.032 → +0.130) and bought audio nothing**, because nothing was broken. Balance is a treatment, not a hygiene step.
+>
+> **"A [VLM](/shared/glossary/#vlm) already has image tokens in its vocabulary. Isn't adding generation just a matter of training the output side?"** This is the most reasonable-sounding wrong idea in the phase, and project [36](projects/36-reverse-direction/README.md) measures how wrong. Because of [weight tying](/shared/glossary/#weight-tying) the codes *are* already there — and after 1,000 steps of never being a prediction target, the model scores **12.76 nats on image tokens against a 6.24 chance level**: it has been actively trained to suppress them, so it is twice as bad as guessing. Worse, grafting a head on and training gave **no advantage over a random-init model of the same size** (4.979 for from-scratch vs 5.026 for full fine-tuning). Two more surprises fall out: freezing the backbone did *not* prevent forgetting, because both heads share one [softmax](/shared/glossary/#softmax) denominator; and reusing the tied head drew marginally better while destroying captioning outright (+11.4 nats), because that same matrix embeds the words. This is exactly the wall [Janus](/shared/glossary/#janus) answers with separate encoders and [Transfusion](/shared/glossary/#transfusion) answers with a continuous generation path.
+
 ### Projects
 
 | Project | Description | Difficulty |
@@ -686,6 +737,8 @@ Cons: enormous compute; harder to leverage existing LLMs;
 ### Key Insight
 
 The bet behind native multimodal models is that *the same scaling laws that gave us GPT-4 from text will give us GPT-4o from text+vision+audio together* — if you have enough data and compute, the model will figure out the cross-modal structure on its own. The bet behind bolt-on multimodal models is that you can get 90% of the benefit at 10% of the cost. Both bets are still being played out; as of 2026 the bolt-on architecture still wins on cost/quality for most *understanding* tasks, while native + AR/diffusion-hybrid architectures (GPT-4o image generation, Janus-Pro, Transfusion) are pulling ahead on the *generation* side and on the capability ceiling.
+
+**What building all five projects adds to that summary is a single recurring shape: every headline number in this phase came from a control, and three of the five controls contradicted the received wisdom.** Unification "worked" in project [33](projects/33-tiny-chameleon/README.md) — and the solo-model controls showed it helped text while hurting images, and a blind model captured 97% of its captioning score. Modality balancing is standard practice — and in project [34](projects/34-modality-balancing/README.md) applying it to a healthy mixture quadrupled the image gap for no gain. Grafting generation onto an understanding model is "the cheap path" — and in project [36](projects/36-reverse-direction/README.md) a random-init model of the same size did it better. None of these are arguments against unified models; they are arguments that *the specific claim you are making needs the specific control that could falsify it*, because in this phase the plausible story and the measured one keep coming apart.
 
 ### Resources
 
@@ -708,15 +761,15 @@ Multimodal models are dataset-bound long before they are compute-bound. This pha
 
 - **Web-scale multimodal datasets**:
   - **LAION-5B, LAION-2B-en** — the canonical open image-text corpus (with all its problems)
-  - **DataComp, COYO-700M** — alternatives and successors
-  - **OBELICS** — interleaved image-text web documents
+  - **[DataComp](/shared/glossary/#datacomp), [COYO-700M](/shared/glossary/#coyo)** — alternatives and successors. DataComp is the one to understand first: it freezes the model, the recipe *and* the compute and lets entrants compete only on which subset of a fixed pool they train on, which turns [data curation](/shared/glossary/#data-curation) from folklore into something you can rank.
+  - **[OBELICS](/shared/glossary/#obelics)** — interleaved image-text web documents (whole pages with the pictures still sitting in the paragraphs, rather than isolated pairs — that is what teaches a model to use several images and the prose between them)
   - **WebLI** — Google's large internal alternative
-- **Data filtering** — most of LAION is unusable; CLIP-score filtering, NSFW filtering, dedup, OCR filtering, aesthetic filtering (the CLIP-score filter is the Phase 3 trick reused at scale)
-- **Synthetic captions** — recaptioning web images with a strong VLM dramatically improves downstream training (the trick behind DALL-E 3, ShareGPT4V); this is shared lore with [Image Gen Phase 10](../image-generation/) and [Video Gen Phase 10](../video-generation/)
-- **Curriculum and staged training** — start with clean alignment data, then noisier scale data, then instruction data
-- **[Modality balancing](/shared/glossary/#modality-balancing)** — in a unified model, if 99% of your tokens are text, the image loss will be ignored; need to upsample or reweight
-- **Multimodal alignment / RLHF** — preference data with image inputs; sycophancy and hallucination are harder to fix when the model has multiple modalities to "hallucinate from." *The algorithms (PPO, DPO, GRPO) are owned by [RL Phase 9](../reinforcement-learning/#phase-9-rl-for-language-models--rlhf-dpo-grpo-rlvr); what's multimodal-specific is the preference-data collection and the visual grounding of the reward.*
-- **Safety**: NSFW filtering, CSAM detection (mandatory), bias evaluation across demographics, hallucination benchmarks
+- **Data filtering** — most of LAION is unusable; CLIP-score filtering, NSFW filtering, dedup, OCR filtering, aesthetic filtering (the CLIP-score filter is the Phase 3 trick reused at scale). Project [37](projects/37-mini-laion-pipeline/README.md) builds the whole funnel on a crawl whose defects it injected itself, so every filter gets a real precision and recall: 2,616 records → 885, purity 64.2% → 96.0%. Three findings worth carrying: a byte hash resolves only 102 of 209 duplicate groups (a [perceptual hash](/shared/glossary/#perceptual-hash) gets 208), the CLIP filter cannot see safety violations *at all* (0.292 versus 0.295 for genuine pairs), and copying LAION's threshold onto a cleaner crawl threw away 465 good pairs to catch one extra bad one.
+- **Synthetic captions** — recaptioning web images with a strong VLM dramatically improves downstream training (the trick behind DALL-E 3, ShareGPT4V); this is shared lore with [Image Gen Phase 10](../image-generation/) and [Video Gen Phase 10](../video-generation/). The word doing the work is *strong*: project [38](projects/38-caption-ablation/README.md) puts nine otherwise-identical models through the same photos and measures that recaptioning bought **nothing** on a mostly-human-captioned pool (recall@10 0.052 versus 0.052) and **+46%** once 30% of the captions were deliberately swapped — the win is the size of the damage repaired, not a property of synthetic text. The same project turns up a larger lever nobody was looking for: five human captions per image instead of one is worth **2.1×**, more than every other intervention combined.
+- **[Curriculum](/shared/glossary/#curriculum-learning) and staged training** — start with clean alignment data, then noisier scale data, then instruction data
+- **[Modality balancing](/shared/glossary/#modality-balancing)** — in a unified model, if 99% of your tokens are text, the image loss will be ignored; need to upsample or reweight. Project [39](projects/39-modality-ratio-sweep/README.md) sweeps that ratio through nine settings and finds three things worth knowing before you touch the knob: a 50/50 *row* mix is an 87.6/12.4 *token* mix, a single blended loss is structurally incapable of reporting the starved modality (the starved run's headline number was 3.6× *better* than the balanced run's), and at a starved ratio inverse-share loss re-weighting moved the image loss by +0.001 while re-mixing the data bought 0.463 nats.
+- **Multimodal alignment / RLHF** — preference data with image inputs; sycophancy and hallucination are harder to fix when the model has multiple modalities to "hallucinate from." *The algorithms (PPO, DPO, GRPO) are owned by [RL Phase 9](../reinforcement-learning/#phase-9-rl-for-language-models--rlhf-dpo-grpo-rlvr); what's multimodal-specific is the preference-data collection and the visual grounding of the reward.* Project [40](projects/40-multimodal-dpo/README.md) runs [DPO](/shared/glossary/#dpo) on a real VLM and puts the arm most write-ups omit next to it: plain supervised training on the *chosen* captions alone cut hallucination further (CHAIR_i 0.526 versus DPO's 0.558) while DPO's own captions collapsed from 9.3 words to 2.9 — a model that stopped talking rather than started looking. That is what happens when the rejected half is *scripted* instead of sampled from the model's own errors, and it is the single most important detail of "collecting preference data".
+- **Safety**: NSFW filtering, CSAM detection (mandatory), bias evaluation across demographics, hallucination benchmarks. Project [41](projects/41-hallucination-eval/README.md) rebuilds [POPE](/shared/glossary/#pope) and finds three things about *reading* such a benchmark: a frozen CLIP with one threshold already reaches 0.771, changing the prompt from "Is there a dog in the image?" to the same question plus "Answer yes or no." cost 4.7 points (twice the model's random→adversarial drop), and project 40's DPO'd model answers yes to 99.5% of questions in a format it was never trained on — an improvement on one metric that transferred to nothing.
 - **Compute budgets** — typical pretraining for an open VLM is 10⁸–10⁹ image-text pairs; native multimodal is 10× more
 
 ### A Pragmatic Data Pipeline
@@ -749,6 +802,8 @@ Tokenize text, store as shards (WebDataset / Parquet / Arrow)
 Training-ready: ~10–20% of the original crawl, dramatically higher quality
 ```
 
+**The order in that diagram is the whole design, and it is not aesthetic.** Every stage is more expensive than the one above it, so each cheap test shrinks the bill for the expensive ones below. Project [37](projects/37-mini-laion-pipeline/README.md) prices the effect end to end: on its crawl a CLIP score costs 30.9 ms per record and a VLM recaption costs 0.54 s — 17× more — so running the string rules first made the CLIP stage 1.32× cheaper and saved 10 minutes of captioning. The one stage that must *not* be moved for cost reasons is safety: the same project measures that CLIP scores a caption with a blocklisted word at 0.292, indistinguishable from a genuine pair at 0.295, so a safety check placed after the CLIP filter would have let every one of them through.
+
 ### Projects
 
 | Project | Description | Difficulty |
@@ -762,6 +817,8 @@ Training-ready: ~10–20% of the original crawl, dramatically higher quality
 ### Key Insight
 
 Two facts that dominate multimodal training at scale: (1) web [alt-text](/shared/glossary/#alt-text) is *terrible* — short, generic, often wrong; and (2) synthetic captions from a strong VLM are *much* better than human-written captions on average. The implication: data quality is itself a model-output problem. Better models make better captions, which make better models. This recursive improvement is one of the unexplained engines of recent progress.
+
+> **Both halves of that second fact have conditions, and project [38](projects/38-caption-ablation/README.md) measures them.** *Strong* is load-bearing: a recaptioner only helps to the extent it beats the text it replaces, and against real human captions a small one loses. *On average* is load-bearing too: the average is dominated by the broken majority of a web crawl, so the same swap that is a large win there is a small loss on the clean minority. And the mechanism may not be the one the sentence implies — DALL-E 3 *mixed* 95% synthetic with 5% original rather than replacing anything, and project 38 finds that simply giving each image a second (or fifth) description, from any source, outperforms every quality intervention it tried.
 
 ### Resources
 
@@ -787,12 +844,15 @@ Multimodal evaluation is notoriously broken. Knowing which benchmarks to trust (
   - **POPE, HallusionBench** — object/visual hallucination
   - **RefCOCO** — referring expressions / grounding
   - **VideoMME, MLVU, LongVideoBench** — video understanding
-- **The captioning benchmarks** (CIDEr, BLEU, METEOR on COCO, NoCaps): largely solved and increasingly meaningless
-- **LLM-as-judge** — using a strong model (often GPT-4 or Claude) to grade open-ended outputs; introduces its own biases
+- **What an [evaluation harness](/shared/glossary/#evaluation-harness) actually buys you** — not "many benchmarks in one command", but *one* prompt and *one* answer parser applied to every model. Project [42](projects/42-run-a-vlm-evaluation-harness/README.md) builds one from scratch (eight tasks, six systems) and prices the parser: swapping a strict letter-matcher for a lenient one moved a real VLM from **0.000 to 0.850** on the same 120 generated strings, and changed the gap between two models from 2.5 points to 25. It also shows why every column needs a [chance level](/shared/glossary/#chance-level) and a [blind baseline](/shared/glossary/#blind-baseline) printed beside it: two of its eight tasks put a competent-looking model at chance, and a frozen CLIP that cannot write a word beat that model on one of them.
+- **[Circular evaluation](/shared/glossary/#circular-evaluation)** — MMBench's fix for [position bias](/shared/glossary/#position-bias): ask each multiple-choice question four times with the options rotated, credit only a clean sweep. It costs 4× the compute and it is a genuinely different exam — project 42 measures 12 to 33 points of drop, and *zero* drop for a matcher that never reads the option letters, because the bias lives in reading an ordered prompt rather than in seeing.
+- **The captioning benchmarks** (CIDEr, BLEU, METEOR on COCO, NoCaps): largely solved and increasingly meaningless. Concretely: in project 42 a system that emits *the same sentence for every photograph* collects **37% of a real VLM's [CIDEr](/shared/glossary/#cider)** and 46% of its [BLEU](/shared/glossary/#bleu)-4, because these metrics count word overlap and a generic English sentence overlaps a lot with human captions of a random photo collection.
+- **[LLM-as-judge](/shared/glossary/#llm-as-judge)** — using a strong model (often GPT-4 or Claude) to grade open-ended outputs; introduces its own biases. The word *strong* is doing heavy lifting, and project [45](projects/45-human-correlated-eval/README.md) measures what happens without it: three small VLM judges produced well-formed 1–5 ratings for all 100 captions and were **negatively correlated with the human panel** (system-level ρ −0.56 to −0.70), none of them marked down a fluent caption *of a different photograph*, and all three ranked a three-word fragment first — while [CIDEr](/shared/glossary/#cider) reached 94% of the human agreement ceiling. Validity is a property of the judge model, not of the method, and the only thing that reveals it is correlating against a panel.
 - **Hallucination measurement** — counting "things in the caption that aren't in the image"
 - **Robustness probes** — adversarial images, distribution shifts, demographic balance
 - **Reasoning benchmarks** — multimodal CoT, M³CoT, ScienceQA; the rise of multimodal *reasoning* models (QVQ, Gemini/o-series thinking with vision)
-- **The leakage problem** — many benchmarks are now in pretraining corpora; suspect any too-good result
+- **Reproducibility** — a leaderboard number is a model *plus* a prompt, a parser, a resolution and a sample of items, and papers publish the first of those five. Project [43](projects/43-reproduce-a-leaderboard-result/README.md) reproduces one of project 42's own numbers bit-for-bit with everything pinned, then turns the unstated knobs one at a time and reads off how wide the "same recipe" envelope really is.
+- **The leakage problem** — many benchmarks are now in pretraining corpora; suspect any too-good result. Project [44](projects/44-benchmark-contamination-check/README.md) plants known leaks in four disguises and finds the standard 13-word n-gram scan recovers **18%** of them — mostly because 40 of its 70 test questions are shorter than 13 words, so no 13-gram exists to match. It also surfaces the multimodal case the text-only toolchain cannot see at all: the benchmark's *photograph* in the corpus under someone else's caption, which a [perceptual hash](/shared/glossary/#perceptual-hash) catches at precision 1.000 in 0.2 s.
 
 ### A Sane Evaluation Suite for a New VLM
 
@@ -822,6 +882,8 @@ Open-ended (LLM-judge)        MM-Vet, LLaVA-Wild user-style queries
 ### Key Insight
 
 There is no single number that captures "VLM quality." MMMU measures different things from POPE which measures different things from MathVista. The right move when launching a new VLM is to publish a *suite* — and to explicitly report the benchmarks where your model is *worse* than the prior state of the art. The field rewards honesty; reviewers see through cherry-picking.
+
+> **The suite is necessary but not sufficient, because a benchmark number is not a property of a model.** It is a property of (model, prompt, parser, preprocessing, item sample), and papers publish the first. Project [42](projects/42-run-a-vlm-evaluation-harness/README.md) shows the parser alone moving one model's score by 85 points; project [43](projects/43-reproduce-a-leaderboard-result/README.md) shows that rewording the *answer-format instruction* — the throwaway sentence added so the grader can parse the reply — moves the same model from 0.850 to **0.367**, which is more than the distance between most models on most leaderboards. The practical rule that falls out: publish the exact prompt, the exact parser, and a chance level, or the number cannot be compared with anyone else's.
 
 ### Resources
 
@@ -970,4 +1032,3 @@ Visual jailbreaks (typographic attacks, adversarial images), CSAM detection, dee
 ## License
 
 MIT License. See the [LICENSE](https://github.com/25621/ai-learning-guides/blob/main/LICENSE) file for details.
-</content>

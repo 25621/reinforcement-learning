@@ -1,0 +1,87 @@
+{
+  "baselines": {
+    "fp32": 23.506059646606445,
+    "rtn": 32.18494415283203
+  },
+  "count_sweep": [
+    {
+      "label": "GPTQ,  1 x 512 wikitext tokens",
+      "ppl": 33.388023376464844,
+      "seconds": 26.203284525952768,
+      "calib_tokens": 512,
+      "n": 1
+    },
+    {
+      "label": "GPTQ,  4 x 512 wikitext tokens",
+      "ppl": 32.18459701538086,
+      "seconds": 47.050597048015334,
+      "calib_tokens": 2048,
+      "n": 4
+    },
+    {
+      "label": "GPTQ, 16 x 512 wikitext tokens",
+      "ppl": 31.060714721679688,
+      "seconds": 60.36652709898772,
+      "calib_tokens": 8192,
+      "n": 16
+    },
+    {
+      "label": "GPTQ, 64 x 512 wikitext tokens",
+      "ppl": 31.022844314575195,
+      "seconds": 109.51604003598914,
+      "calib_tokens": 32768,
+      "n": 64
+    }
+  ],
+  "draw_sweep": [
+    {
+      "label": "GPTQ,  4 x 512 wikitext tokens",
+      "ppl": 32.18459701538086,
+      "seconds": 47.050597048015334,
+      "calib_tokens": 2048,
+      "n": 4
+    },
+    {
+      "label": "GPTQ,  4 x 512, draw @208",
+      "ppl": 32.33730697631836,
+      "seconds": 29.263034852978308,
+      "calib_tokens": 2048,
+      "n": 4
+    },
+    {
+      "label": "GPTQ,  4 x 512, draw @408",
+      "ppl": 33.02199172973633,
+      "seconds": 35.06072970601963,
+      "calib_tokens": 2048,
+      "n": 4
+    }
+  ],
+  "draw_spread": 0.8373947143554688,
+  "source_sweep": [
+    {
+      "label": "GPTQ, 16 x 512 wikitext tokens",
+      "ppl": 31.060714721679688,
+      "seconds": 60.36652709898772,
+      "calib_tokens": 8192,
+      "n": 16,
+      "source": "wikitext (matched)"
+    },
+    {
+      "label": "GPTQ, 16 x 512 python source code",
+      "ppl": 35.82896041870117,
+      "seconds": 75.5666623210418,
+      "calib_tokens": 8192,
+      "n": 16,
+      "source": "python source code"
+    },
+    {
+      "label": "GPTQ, 16 x 512 uniform random tokens",
+      "ppl": 33.88249969482422,
+      "seconds": 75.78652214899193,
+      "calib_tokens": 8192,
+      "n": 16,
+      "source": "uniform random tokens"
+    }
+  ],
+  "total_seconds": 527.2654507160187
+}

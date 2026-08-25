@@ -1,0 +1,300 @@
+{
+ "clock_hz": 100000000.0,
+ "simulation": [
+  {
+   "width": 8,
+   "height": 8,
+   "outputs": 36,
+   "expected_outputs": 36,
+   "exact_match": true,
+   "first_five_got": [
+    92,
+    430,
+    -637,
+    -447,
+    -989
+   ],
+   "first_five_expected": [
+    92,
+    430,
+    -637,
+    -447,
+    -989
+   ],
+   "pixels": 64,
+   "macs": 324,
+   "weight_load_cycles": 9,
+   "cycles": 77,
+   "fill_latency_cycles": 20
+  },
+  {
+   "width": 16,
+   "height": 16,
+   "outputs": 196,
+   "expected_outputs": 196,
+   "exact_match": true,
+   "first_five_got": [
+    -1451,
+    -666,
+    895,
+    1550,
+    -1907
+   ],
+   "first_five_expected": [
+    -1451,
+    -666,
+    895,
+    1550,
+    -1907
+   ],
+   "pixels": 256,
+   "macs": 1764,
+   "weight_load_cycles": 9,
+   "cycles": 269,
+   "fill_latency_cycles": 36
+  }
+ ],
+ "synthesis": [
+  {
+   "width": 8,
+   "synth_s": 1.0208860299899243,
+   "gates": 5288,
+   "flops": 270,
+   "cells": 5558,
+   "area_um2": 38564.486399999994,
+   "multipliers": 9,
+   "adders": 10,
+   "memories": 0,
+   "gate_cells": {
+    "$_AND_": 2475,
+    "$_NOT_": 110,
+    "$_OR_": 883,
+    "$_SDFFE_PP0P_": 244,
+    "$_SDFF_PP0_": 26,
+    "$_XOR_": 1820
+   },
+   "coarse_cells": {
+    "$add": 10,
+    "$and": 1,
+    "$dff": 39,
+    "$eq": 1,
+    "$ge": 2,
+    "$mul": 9,
+    "$pos": 1
+   }
+  },
+  {
+   "width": 16,
+   "synth_s": 1.0319140770006925,
+   "gates": 5297,
+   "flops": 399,
+   "cells": 5696,
+   "area_um2": 41194.508799999996,
+   "multipliers": 9,
+   "adders": 10,
+   "memories": 0,
+   "gate_cells": {
+    "$_AND_": 2480,
+    "$_NOT_": 111,
+    "$_OR_": 885,
+    "$_SDFFE_PP0P_": 373,
+    "$_SDFF_PP0_": 26,
+    "$_XOR_": 1821
+   },
+   "coarse_cells": {
+    "$add": 10,
+    "$and": 1,
+    "$dff": 55,
+    "$eq": 1,
+    "$ge": 2,
+    "$mul": 9,
+    "$pos": 1
+   }
+  },
+  {
+   "width": 32,
+   "synth_s": 1.0909652350237593,
+   "gates": 5305,
+   "flops": 656,
+   "cells": 5961,
+   "area_um2": 46381.984000000004,
+   "multipliers": 9,
+   "adders": 10,
+   "memories": 0,
+   "gate_cells": {
+    "$_AND_": 2484,
+    "$_NOT_": 112,
+    "$_OR_": 887,
+    "$_SDFFE_PP0P_": 630,
+    "$_SDFF_PP0_": 26,
+    "$_XOR_": 1822
+   },
+   "coarse_cells": {
+    "$add": 10,
+    "$and": 1,
+    "$dff": 87,
+    "$eq": 1,
+    "$ge": 2,
+    "$mul": 9,
+    "$pos": 1
+   }
+  },
+  {
+   "width": 64,
+   "synth_s": 1.1798616420128383,
+   "gates": 5314,
+   "flops": 1169,
+   "cells": 6483,
+   "area_um2": 56699.379199999996,
+   "multipliers": 9,
+   "adders": 10,
+   "memories": 0,
+   "gate_cells": {
+    "$_AND_": 2489,
+    "$_NOT_": 113,
+    "$_OR_": 889,
+    "$_SDFFE_PP0P_": 1143,
+    "$_SDFF_PP0_": 26,
+    "$_XOR_": 1823
+   },
+   "coarse_cells": {
+    "$add": 10,
+    "$and": 1,
+    "$dff": 151,
+    "$eq": 1,
+    "$ge": 2,
+    "$mul": 9,
+    "$pos": 1
+   }
+  }
+ ],
+ "boards": [
+  {
+   "board": "Pynq-Z2 (Zynq-7020)",
+   "price": 199,
+   "mhz": 100,
+   "watts": 5,
+   "pack": 1,
+   "dsps": 220,
+   "units_by_dsp": 24,
+   "units_by_ff": 394,
+   "units": 24,
+   "macs": 216,
+   "gops": 43.2,
+   "limited_by": "DSP slices"
+  },
+  {
+   "board": "DE10-Nano (Cyclone V)",
+   "price": 180,
+   "mhz": 100,
+   "watts": 5,
+   "pack": 1,
+   "dsps": 112,
+   "units_by_dsp": 12,
+   "units_by_ff": 155,
+   "units": 12,
+   "macs": 108,
+   "gops": 21.6,
+   "limited_by": "DSP slices"
+  },
+  {
+   "board": "Alveo U55C (UltraScale+)",
+   "price": 5000,
+   "mhz": 300,
+   "watts": 150,
+   "pack": 2,
+   "dsps": 9024,
+   "units_by_dsp": 2005,
+   "units_by_ff": 9629,
+   "units": 2005,
+   "macs": 18045,
+   "gops": 10827.0,
+   "limited_by": "DSP slices"
+  }
+ ],
+ "gpu": {
+  "dp4a": 30484.1,
+  "fp32": 7559.17
+ },
+ "comparison": [
+  {
+   "name": "Pynq-Z2 (Zynq-7020)",
+   "gops": 43.2,
+   "watts": 5,
+   "gops_per_watt": 8.64,
+   "gops_per_dollar": 0.2170854271356784
+  },
+  {
+   "name": "DE10-Nano (Cyclone V)",
+   "gops": 21.6,
+   "watts": 5,
+   "gops_per_watt": 4.32,
+   "gops_per_dollar": 0.12000000000000001
+  },
+  {
+   "name": "Alveo U55C (UltraScale+)",
+   "gops": 10827.0,
+   "watts": 150,
+   "gops_per_watt": 72.18,
+   "gops_per_dollar": 2.1654
+  },
+  {
+   "name": "GTX 1070 Ti (measured)",
+   "gops": 30484.1,
+   "watts": 114.6,
+   "gops_per_watt": 266.0043630017452,
+   "gops_per_dollar": 203.22733333333332
+  }
+ ],
+ "latency": {
+  "fpga_cycles": 77,
+  "fpga_total_us": 0.77,
+  "fpga_fill_us": 0.19999999999999998,
+  "gpu_launch_only_us": 1.17,
+  "gpu_arithmetic_us": 2.125698314859222e-05,
+  "gpu_total_us": 1.1700212569831485,
+  "fpga_advantage": 1.5195081259521408
+ },
+ "roofline": [
+  {
+   "case": "1 unit, weights stationary",
+   "macs": 9,
+   "reuse": 9,
+   "bytes_per_s": 1000000000.0,
+   "bram_bytes_per_s": 112000000000.0,
+   "verdict": "fits in BRAM bandwidth"
+  },
+  {
+   "case": "all DSP units, weights stationary",
+   "macs": 216,
+   "reuse": 9,
+   "bytes_per_s": 24000000000.0,
+   "bram_bytes_per_s": 112000000000.0,
+   "verdict": "fits in BRAM bandwidth"
+  },
+  {
+   "case": "all DSP units, no weight reuse",
+   "macs": 216,
+   "reuse": 1,
+   "bytes_per_s": 43200000000.0,
+   "bram_bytes_per_s": 112000000000.0,
+   "verdict": "fits in BRAM bandwidth"
+  },
+  {
+   "case": "LUTs also turned into MACs (5,000)",
+   "macs": 5000,
+   "reuse": 9,
+   "bytes_per_s": 555555555555.5557,
+   "bram_bytes_per_s": 112000000000.0,
+   "verdict": "needs 5.0x the BRAM bandwidth"
+  },
+  {
+   "case": "LUTs too, no weight reuse",
+   "macs": 5000,
+   "reuse": 1,
+   "bytes_per_s": 1000000000000.0,
+   "bram_bytes_per_s": 112000000000.0,
+   "verdict": "needs 8.9x the BRAM bandwidth"
+  }
+ ]
+}

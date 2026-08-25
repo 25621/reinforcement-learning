@@ -1,0 +1,36 @@
+[
+ {
+  "arm": "mlp",
+  "kind": "mlp2",
+  "steps": 400,
+  "bs": 8,
+  "lr": 0.003,
+  "image_tokens": 49,
+  "uses_image": true,
+  "proj_params": 776832,
+  "val_loss_start": 3.9561318214340964,
+  "val_loss": 3.150416477316677,
+  "choice_raw": 0.14,
+  "choice_lift": 0.09,
+  "choice_n": 100,
+  "ms_per_step": 1625.9985584020615,
+  "train_seconds": 650.3994233608246
+ },
+ {
+  "arm": "prefix",
+  "kind": "prefix",
+  "steps": 400,
+  "bs": 8,
+  "lr": 0.003,
+  "image_tokens": 49,
+  "uses_image": false,
+  "proj_params": 29760,
+  "val_loss_start": 3.9149865360071163,
+  "val_loss": 3.0708935909460084,
+  "choice_raw": 0.05,
+  "choice_lift": 0.05,
+  "choice_n": 100,
+  "ms_per_step": 4193.233382701874,
+  "train_seconds": 1677.2933530807495
+ }
+]

@@ -1,0 +1,78 @@
+{
+ "new_voice": {
+  "exact_raw": 0.0,
+  "exact_normalised": 0.536,
+  "word_present": 0.536,
+  "n": 250,
+  "seconds": 43.83934164047241
+ },
+ "seen_voice": {
+  "exact_raw": 0.004,
+  "exact_normalised": 0.5,
+  "word_present": 0.5,
+  "n": 250,
+  "seconds": 42.184877157211304
+ },
+ "examples": [
+  {
+   "truth": "four",
+   "said": " Poor.",
+   "normalised": "poor"
+  },
+  {
+   "truth": "three",
+   "said": " Three.",
+   "normalised": "three"
+  },
+  {
+   "truth": "seven",
+   "said": " Kevin.",
+   "normalised": "kevin"
+  },
+  {
+   "truth": "eight",
+   "said": " 8",
+   "normalised": "eight"
+  },
+  {
+   "truth": "two",
+   "said": " Two.",
+   "normalised": "two"
+  },
+  {
+   "truth": "nine",
+   "said": " Nine.",
+   "normalised": "nine"
+  },
+  {
+   "truth": "one",
+   "said": " One.",
+   "normalised": "one"
+  },
+  {
+   "truth": "zero",
+   "said": " Zero.",
+   "normalised": "zero"
+  },
+  {
+   "truth": "six",
+   "said": " Big.",
+   "normalised": "big"
+  },
+  {
+   "truth": "seven",
+   "said": " Kevin.",
+   "normalised": "kevin"
+  },
+  {
+   "truth": "one",
+   "said": " One.",
+   "normalised": "one"
+  },
+  {
+   "truth": "zero",
+   "said": " The Earl.",
+   "normalised": "the earl"
+  }
+ ]
+}

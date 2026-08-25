@@ -1,0 +1,200 @@
+{
+  "hits": [
+    {
+      "image": "0002.jpg",
+      "truth": "A toilet seat sits on top of a hole in the ground.",
+      "top5": [
+        "A toilet seat sits on top of a hole in the ground.",
+        "A white toilet bowl with an electronic brown seat.",
+        "A filthy sink and toilet are seen from above.",
+        "A white toilet bowl with a plunger standing near it",
+        "A standing toilet sitting inside of a bathroom stall."
+      ],
+      "scores": [
+        0.33087167143821716,
+        0.326643705368042,
+        0.3178339898586273,
+        0.31423133611679077,
+        0.31381839513778687
+      ]
+    },
+    {
+      "image": "0004.jpg",
+      "truth": "a sandwich in a plastic food basket on a table",
+      "top5": [
+        "a sandwich in a plastic food basket on a table",
+        "A small sandwich sitting on a white china plate.",
+        "A Subway Sandwich with chips, raisins and a coffee cup.",
+        "A piece of bread with a hot dog in the middle is shown.",
+        "A table with a sandwich and two cups of coffee."
+      ],
+      "scores": [
+        0.3069151043891907,
+        0.30457445979118347,
+        0.29768455028533936,
+        0.2949797511100769,
+        0.2836454212665558
+      ]
+    },
+    {
+      "image": "0007.jpg",
+      "truth": "A woman standing over a sheet cake sitting on top of a table.",
+      "top5": [
+        "A woman standing over a sheet cake sitting on top of a table.",
+        "A woman holding a birthday cake with lit candles.",
+        "A woman and child stand next to a table with cake on it.",
+        "A cake on a pan with a spatula, a flower white with roses and a white beverage holder.",
+        "A group of people cutting cake at a table."
+      ],
+      "scores": [
+        0.3465389013290405,
+        0.3236144185066223,
+        0.3164186477661133,
+        0.2998476028442383,
+        0.29667752981185913
+      ]
+    },
+    {
+      "image": "0008.jpg",
+      "truth": "A baby in high chair with bib and cake.",
+      "top5": [
+        "A baby in high chair with bib and cake.",
+        "A woman and child stand next to a table with cake on it.",
+        "A couple of little girls sitting at a table with a cake.",
+        "A woman is showing off a cake she baked while a man looks on.",
+        "A group of children sitting at a table eating pieces of cake."
+      ],
+      "scores": [
+        0.33499675989151,
+        0.3331407904624939,
+        0.3154554069042206,
+        0.30391421914100647,
+        0.29605287313461304
+      ]
+    }
+  ],
+  "misses": [
+    {
+      "image": "0338.jpg",
+      "truth": "A fire hydrant on the street by a building.",
+      "rank_of_truth": 167,
+      "top5": [
+        "a building with a clock above the front doors",
+        "Looking out of a commuter bus at a small town grocery",
+        "Two street signs are shown against more buildings.",
+        "two people standing near one another on a city street",
+        "A man in costume standing next to a building."
+      ],
+      "scores": [
+        0.26720044016838074,
+        0.25246915221214294,
+        0.25068923830986023,
+        0.24632945656776428,
+        0.24609625339508057
+      ]
+    },
+    {
+      "image": "0303.jpg",
+      "truth": "A man in a blue outfit holding a white frisbee.",
+      "rank_of_truth": 158,
+      "top5": [
+        "A father holding his little child upside down.",
+        "A man is about to throw is disk golf frisbee.",
+        "A man in black hoodie playing with a dog.",
+        "A man standing next to a dummy wearing clothes.",
+        "A man holding a gigantic sandwich with both hands."
+      ],
+      "scores": [
+        0.2973201870918274,
+        0.2558804452419281,
+        0.2514009475708008,
+        0.25097787380218506,
+        0.2508729100227356
+      ]
+    },
+    {
+      "image": "0815.jpg",
+      "truth": "A blue sky and a line of hills loom in the distance before a pair of young skateboarders, one of whom is much further ahead of the other.",
+      "rank_of_truth": 91,
+      "top5": [
+        "The skateboarders practiced their jumps on the road.",
+        "A man on a skateboard performing a trick.",
+        "A woman flying through the air while riding a skateboard.",
+        "a man flying through the air while riding a skateboard.",
+        "A man flying through the air while riding a skateboard."
+      ],
+      "scores": [
+        0.29225921630859375,
+        0.28064268827438354,
+        0.2796931266784668,
+        0.2784528136253357,
+        0.2784528136253357
+      ]
+    },
+    {
+      "image": "0203.jpg",
+      "truth": "A group of people standing on a grass covered shore.",
+      "rank_of_truth": 88,
+      "top5": [
+        "The hull of a boat that is producing a wake",
+        "People gather around a truck parked on a boat.",
+        "Two cross country skiers heading onto the trail",
+        "an image of a train that is going down the tracks",
+        "A boat going through the water in a canal."
+      ],
+      "scores": [
+        0.2495582401752472,
+        0.2383502721786499,
+        0.231317937374115,
+        0.2306341677904129,
+        0.22811363637447357
+      ]
+    }
+  ],
+  "text_queries": [
+    {
+      "query": "This wire metal rack holds several pairs of shoes and sandals",
+      "top5": [
+        "0320.jpg",
+        "0000.jpg",
+        "0332.jpg",
+        "0174.jpg",
+        "0670.jpg"
+      ],
+      "correct": "0000.jpg"
+    },
+    {
+      "query": "A woman standing over a sheet cake sitting on top of a table.",
+      "top5": [
+        "0007.jpg",
+        "0818.jpg",
+        "0899.jpg",
+        "0496.jpg",
+        "0527.jpg"
+      ],
+      "correct": "0007.jpg"
+    },
+    {
+      "query": "A little girl is eating a chocolate doughnut.",
+      "top5": [
+        "0021.jpg",
+        "0913.jpg",
+        "0246.jpg",
+        "0984.jpg",
+        "0817.jpg"
+      ],
+      "correct": "0021.jpg"
+    },
+    {
+      "query": "A woman holding three bags stands by the open doors of a subway car, through which other people can be seen.",
+      "top5": [
+        "0867.jpg",
+        "0042.jpg",
+        "0328.jpg",
+        "0520.jpg",
+        "0818.jpg"
+      ],
+      "correct": "0042.jpg"
+    }
+  ]
+}

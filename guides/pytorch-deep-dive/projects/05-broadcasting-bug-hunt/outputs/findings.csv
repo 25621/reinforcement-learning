@@ -1,0 +1,19 @@
+finding,value
+bug1_buggy_loss,2.782435178756714
+bug1_correct_loss,0.0052210609428584576
+bug1_ratio,532.9252443533766
+bug2_row_means_buggy,"[-6.0, -2.0, 2.0, 6.0]"
+bug2_row_means_correct,"[0.0, 0.0, 0.0, 0.0]"
+bug3_channel_means_buggy,"[0.2333, 0.5833, 0.9333]"
+bug3_channel_means_correct,"[0.4, 0.5, 0.4]"
+bug3_raises_when_W_differs,True
+bug4_buggy_shape,"(5,)"
+bug4_correct_shape,"(5, 5)"
+bug4_is_diagonal,True
+bug5_buggy_mask,"[[0, 0, 0, 1], [0, 0, 1, 1], [0, 0, 0, 0], [0, 0, 0, 0]]"
+bug5_correct_mask,"[[0, 0, 0, 1], [0, 0, 0, 1], [0, 0, 0, 1], [0, 0, 0, 1]]"
+train_correct_slope,2.9915
+train_buggy_slope,0.0
+train_correct_mse,0.0117
+train_buggy_mse,7.9005
+y_mean,1.0871

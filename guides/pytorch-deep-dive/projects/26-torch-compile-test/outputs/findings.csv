@@ -1,0 +1,46 @@
+section,name,value,note
+control,eager run A (ms),196.3,spread 309.1
+control,eager run B (ms),184.6,spread 26.5
+control,run-to-run difference,6.3 %,anything smaller than this is not a result
+correct,max |compiled - eager|,1.19e-06,fusion reorders arithmetic
+correct,allclose(atol=1e-5),True,
+speed,"inference, eager (ms)",63.0,spread 3.0
+speed,"inference, compiled (ms)",58.0,spread 3.5
+speed,inference speedup,1.09x,
+speed,"training step, eager (ms)",192.6,spread 481.1
+speed,"training step, compiled (ms)",183.6,spread 194.3
+speed,training-step speedup,1.05x,compare against the control above
+fusion,eager operator calls / step,1288,52 distinct
+fusion,compiled operator calls / step,500,28 distinct
+fusion,calls removed,61.2 %,
+fusion,generated kernel calls / step,35,18 distinct generated kernels
+fusion,a generated kernel,graph_1_cpp_fused__scaled_dot_pr...,the name lists the ops it swallowed
+fusion,a generated kernel,graph_1_cpp_fused_add_arange_emb...,the name lists the ops it swallowed
+fusion,a generated kernel,graph_1_cpp_fused_add_embedding_...,the name lists the ops it swallowed
+fusion,matmul share of the eager step,51.8 %,already inside a vendor library — fusion cannot touch it
+elementwise,"forward, eager (ms)",7.91,spread 5.29
+elementwise,"forward, compiled (ms)",4.59,spread 0.17
+elementwise,forward speedup,1.72x,this is what kernel fusion buys
+elementwise,eager operator calls,104,8 distinct
+elementwise,compiled operator calls,0,1 generated kernel calls
+elementwise,"fwd+bwd, eager (ms)",14.70,
+elementwise,"fwd+bwd, compiled (ms)",10.74,
+elementwise,fwd+bwd speedup,1.37x,fusing the forward means recomputing it in the backward
+size,batch 2 x seq 32,1.22x,eager 11.0 → compiled 9.0 ms | break-even 12338 steps
+size,batch 4 x seq 32,1.12x,eager 14.0 → compiled 12.5 ms | break-even 16552 steps
+size,batch 8 x seq 64,1.02x,eager 44.8 → compiled 43.7 ms | break-even 22295 steps
+size,batch 16 x seq 128,1.00x,eager 184.7 → compiled 184.3 ms | break-even 58094 steps
+tax,transformer forward compile (s),12.1,
+tax,transformer backward compile (s),12.0,"the backward graph compiles separately, on the first backward"
+tax,element-wise chain compile (s),6.3,
+tax,best break-even in the sweep,12338 steps,"at 2x32, against a 24 s compile"
+tax,element-wise chain break-even,1579 forward calls,"inference-only, where the fusion win is real"
+recompile,recompile_limit (config),8,exceed it and the model silently falls back to eager
+recompile,"call 1, batch 2 (s)",3.4,compiles for shape 2
+recompile,"call 2, batch 4 (s)",4.4,"a new shape → recompiles, this time with a symbolic batch"
+recompile,calls 3-6 (s),"0.00, 0.00, 0.00, 0.00",no more compiling — one graph now covers every batch size
+recompile,compiles for 6 different shapes,2,automatic dynamic shapes
+recompile,"dynamic=True, call 1 (s)",6.9,symbolic from the start
+recompile,"dynamic=True, calls 2-6 (s)","0.01, 0.00, 0.01, 0.01, 0.01",
+recompile,"total, default (s)",7.8,
+recompile,"total, dynamic=True (s)",7.0,

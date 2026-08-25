@@ -1,0 +1,456 @@
+{
+ "A": {
+  "n": 15,
+  "cap": 1024,
+  "chat_cap": 256,
+  "chat": {
+   "mean": 143.7,
+   "p50": 163.0,
+   "p95": 256.0,
+   "max": 256,
+   "min": 17,
+   "cv": 0.565,
+   "ratio_p95_p50": 1.57
+  },
+  "reasoning": {
+   "mean": 829.3,
+   "p50": 913.0,
+   "p95": 1024.0,
+   "max": 1024,
+   "min": 499,
+   "cv": 0.246,
+   "ratio_p95_p50": 1.12
+  },
+  "brief": {
+   "mean": 308.7,
+   "p50": 250.0,
+   "p95": 644.0,
+   "max": 729,
+   "min": 133,
+   "cv": 0.572,
+   "ratio_p95_p50": 2.58
+  },
+  "brief_acc": 80.0,
+  "brief_unfinished": 0,
+  "brief_saving": 0.628,
+  "capped": 4,
+  "chat_acc": 60.0,
+  "think_acc": 80.0,
+  "unfinished": 2,
+  "length_x": 5.77,
+  "by_tier": {
+   "easy": {
+    "n": 5,
+    "mean_think": 546.2,
+    "max_think": 820,
+    "chat_acc": 80.0,
+    "think_acc": 100.0,
+    "unfinished": 0
+   },
+   "medium": {
+    "n": 5,
+    "mean_think": 714.8,
+    "max_think": 1023,
+    "chat_acc": 60.0,
+    "think_acc": 60.0,
+    "unfinished": 1
+   },
+   "hard": {
+    "n": 5,
+    "mean_think": 776.4,
+    "max_think": 1023,
+    "chat_acc": 40.0,
+    "think_acc": 80.0,
+    "unfinished": 1
+   }
+  },
+  "per_problem": [
+   {
+    "idx": 0,
+    "tier": "easy",
+    "chat": 17,
+    "think": 425,
+    "total": 561,
+    "closed": true,
+    "chat_ok": true,
+    "think_ok": true
+   },
+   {
+    "idx": 1,
+    "tier": "easy",
+    "chat": 39,
+    "think": 444,
+    "total": 507,
+    "closed": true,
+    "chat_ok": true,
+    "think_ok": true
+   },
+   {
+    "idx": 2,
+    "tier": "easy",
+    "chat": 52,
+    "think": 820,
+    "total": 931,
+    "closed": true,
+    "chat_ok": false,
+    "think_ok": true
+   },
+   {
+    "idx": 3,
+    "tier": "easy",
+    "chat": 77,
+    "think": 634,
+    "total": 723,
+    "closed": true,
+    "chat_ok": true,
+    "think_ok": true
+   },
+   {
+    "idx": 4,
+    "tier": "easy",
+    "chat": 47,
+    "think": 408,
+    "total": 501,
+    "closed": true,
+    "chat_ok": true,
+    "think_ok": true
+   },
+   {
+    "idx": 5,
+    "tier": "medium",
+    "chat": 83,
+    "think": 415,
+    "total": 499,
+    "closed": true,
+    "chat_ok": false,
+    "think_ok": true
+   },
+   {
+    "idx": 6,
+    "tier": "medium",
+    "chat": 240,
+    "think": 965,
+    "total": 1024,
+    "closed": true,
+    "chat_ok": true,
+    "think_ok": false
+   },
+   {
+    "idx": 7,
+    "tier": "medium",
+    "chat": 211,
+    "think": 657,
+    "total": 913,
+    "closed": true,
+    "chat_ok": true,
+    "think_ok": true
+   },
+   {
+    "idx": 8,
+    "tier": "medium",
+    "chat": 256,
+    "think": 514,
+    "total": 871,
+    "closed": true,
+    "chat_ok": false,
+    "think_ok": true
+   },
+   {
+    "idx": 9,
+    "tier": "medium",
+    "chat": 152,
+    "think": 1023,
+    "total": 1024,
+    "closed": false,
+    "chat_ok": true,
+    "think_ok": false
+   },
+   {
+    "idx": 10,
+    "tier": "hard",
+    "chat": 174,
+    "think": 755,
+    "total": 979,
+    "closed": true,
+    "chat_ok": true,
+    "think_ok": true
+   },
+   {
+    "idx": 11,
+    "tier": "hard",
+    "chat": 179,
+    "think": 797,
+    "total": 990,
+    "closed": true,
+    "chat_ok": false,
+    "think_ok": true
+   },
+   {
+    "idx": 12,
+    "tier": "hard",
+    "chat": 163,
+    "think": 716,
+    "total": 1024,
+    "closed": true,
+    "chat_ok": true,
+    "think_ok": true
+   },
+   {
+    "idx": 13,
+    "tier": "hard",
+    "chat": 209,
+    "think": 1023,
+    "total": 1024,
+    "closed": false,
+    "chat_ok": false,
+    "think_ok": false
+   },
+   {
+    "idx": 14,
+    "tier": "hard",
+    "chat": 256,
+    "think": 591,
+    "total": 868,
+    "closed": true,
+    "chat_ok": false,
+    "think_ok": true
+   }
+  ]
+ },
+ "B": {
+  "chat": {
+   "label": "chat",
+   "completed": 400,
+   "rejected": 0,
+   "preemptions": 0,
+   "makespan_s": 798.6,
+   "iters": 3805,
+   "output_tok_s": 70.1,
+   "ttft_p50": 0.415,
+   "ttft_p99": 14.804,
+   "itl_p50": 0.2183,
+   "itl_p99": 0.3526,
+   "itl_max": 0.355,
+   "e2e_p99": 84.3,
+   "util": 0.6,
+   "mean_out": 143.7,
+   "p99_out": 256.0,
+   "e2e_p50": 33.48
+  },
+  "reasoning": {
+   "label": "reasoning",
+   "completed": 400,
+   "rejected": 0,
+   "preemptions": 0,
+   "makespan_s": 4145.2,
+   "iters": 14138,
+   "output_tok_s": 78.5,
+   "ttft_p50": 1562.447,
+   "ttft_p99": 3193.51,
+   "itl_p50": 0.2993,
+   "itl_p99": 0.3803,
+   "itl_max": 0.392,
+   "e2e_p99": 3356.06,
+   "util": 3.762,
+   "mean_out": 829.3,
+   "p99_out": 1024.0,
+   "e2e_p50": 1824.7
+  },
+  "asked-to-be-brief": {
+   "label": "asked-to-be-brief",
+   "completed": 400,
+   "rejected": 0,
+   "preemptions": 0,
+   "makespan_s": 1479.1,
+   "iters": 5460,
+   "output_tok_s": 81.3,
+   "ttft_p50": 300.151,
+   "ttft_p99": 610.019,
+   "itl_p50": 0.2797,
+   "itl_p99": 0.3633,
+   "itl_max": 0.368,
+   "e2e_p99": 732.9,
+   "util": 1.299,
+   "mean_out": 308.7,
+   "p99_out": 729.0,
+   "e2e_p50": 375.13
+  },
+  "budget-64": {
+   "label": "budget-64",
+   "completed": 400,
+   "rejected": 0,
+   "preemptions": 0,
+   "makespan_s": 795.8,
+   "iters": 3772,
+   "output_tok_s": 71.1,
+   "ttft_p50": 0.422,
+   "ttft_p99": 7.287,
+   "itl_p50": 0.2239,
+   "itl_p99": 0.3498,
+   "itl_max": 0.352,
+   "e2e_p99": 50.51,
+   "util": 0.598,
+   "mean_out": 144.4,
+   "p99_out": 160.0,
+   "e2e_p50": 34.35
+  },
+  "budget-256": {
+   "label": "budget-256",
+   "completed": 400,
+   "rejected": 0,
+   "preemptions": 0,
+   "makespan_s": 1583.2,
+   "iters": 5776,
+   "output_tok_s": 83.4,
+   "ttft_p50": 365.925,
+   "ttft_p99": 735.65,
+   "itl_p50": 0.2768,
+   "itl_p99": 0.3587,
+   "itl_max": 0.362,
+   "e2e_p99": 813.46,
+   "util": 1.377,
+   "mean_out": 333.5,
+   "p99_out": 352.0,
+   "e2e_p50": 459.89
+  },
+  "budget-512": {
+   "label": "budget-512",
+   "completed": 400,
+   "rejected": 0,
+   "preemptions": 0,
+   "makespan_s": 2751.7,
+   "iters": 9761,
+   "output_tok_s": 81.5,
+   "ttft_p50": 910.626,
+   "ttft_p99": 1836.937,
+   "itl_p50": 0.2867,
+   "itl_p99": 0.3693,
+   "itl_max": 0.376,
+   "e2e_p99": 1972.98,
+   "util": 2.427,
+   "mean_out": 566.3,
+   "p99_out": 608.0,
+   "e2e_p50": 1070.53
+  },
+  "_rate": 0.5097,
+  "_prompt_len": 45,
+  "_cost_src": "project 61 fit",
+  "_cost": {
+   "base": 0.08881043488023957,
+   "per_decode": 0.007088693223487265,
+   "per_prefill": 0.0018783850716886817,
+   "per_key_read": 3.5178033752630716e-06
+  }
+ },
+ "C": {
+  "0": {
+   "budget": 0,
+   "acc": 33.3,
+   "mean_think": 0,
+   "mean_total": 78.1,
+   "p95_total": 96.0,
+   "truncated": 15,
+   "by_tier": {
+    "easy": 100.0,
+    "medium": 0.0,
+    "hard": 0.0
+   }
+  },
+  "64": {
+   "budget": 64,
+   "acc": 26.7,
+   "mean_think": 64,
+   "mean_total": 144.4,
+   "p95_total": 160.0,
+   "truncated": 15,
+   "by_tier": {
+    "easy": 80.0,
+    "medium": 0.0,
+    "hard": 0.0
+   }
+  },
+  "256": {
+   "budget": 256,
+   "acc": 40.0,
+   "mean_think": 256,
+   "mean_total": 333.5,
+   "p95_total": 352.0,
+   "truncated": 15,
+   "by_tier": {
+    "easy": 100.0,
+    "medium": 20.0,
+    "hard": 0.0
+   }
+  },
+  "512": {
+   "budget": 512,
+   "acc": 33.3,
+   "mean_think": 488.3,
+   "mean_total": 566.3,
+   "p95_total": 608.0,
+   "truncated": 11,
+   "by_tier": {
+    "easy": 80.0,
+    "medium": 20.0,
+    "hard": 0.0
+   }
+  },
+  "full": {
+   "budget": 1024,
+   "acc": 80.0,
+   "mean_think": 679.1,
+   "mean_total": 829.3,
+   "p95_total": 1024.0,
+   "truncated": 0,
+   "by_tier": {
+    "easy": 100.0,
+    "medium": 60.0,
+    "hard": 80.0
+   }
+  }
+ },
+ "D": {
+  "0": {
+   "tokens": 78.1,
+   "engine_s": 0.661,
+   "usd_per_1k_requests": 0.253,
+   "usd_per_1k_correct": 0.758
+  },
+  "64": {
+   "tokens": 144.4,
+   "engine_s": 1.168,
+   "usd_per_1k_requests": 0.446,
+   "usd_per_1k_correct": 1.67
+  },
+  "256": {
+   "tokens": 333.5,
+   "engine_s": 2.697,
+   "usd_per_1k_requests": 1.03,
+   "usd_per_1k_correct": 2.575
+  },
+  "512": {
+   "tokens": 566.3,
+   "engine_s": 4.753,
+   "usd_per_1k_requests": 1.815,
+   "usd_per_1k_correct": 5.451
+  },
+  "full": {
+   "tokens": 829.3,
+   "engine_s": 7.304,
+   "usd_per_1k_requests": 2.79,
+   "usd_per_1k_correct": 3.487
+  },
+  "chat (no thinking)": {
+   "tokens": 143.7,
+   "engine_s": 1.162,
+   "usd_per_1k_requests": 0.444,
+   "usd_per_1k_correct": 0.74
+  },
+  "asked-to-be-brief": {
+   "tokens": 308.7,
+   "engine_s": 2.489,
+   "usd_per_1k_requests": 0.951,
+   "usd_per_1k_correct": 1.188
+  }
+ }
+}

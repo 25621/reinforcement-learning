@@ -1,0 +1,6 @@
+format,bits_per_weight,ppl,ppl_ratio,weights_GB
+"fp32 (baseline)",32.000,19.2180,1.0000,1.9761
+"fp8 e4m3, per-channel",8.000,19.5015,1.0148,0.9027
+"int8, per-channel",8.018,19.1173,0.9948,0.9035
+"int4, group 128",4.125,26.4259,1.3751,0.7293
+"int3, group 128",3.125,288.4850,15.0112,0.6846

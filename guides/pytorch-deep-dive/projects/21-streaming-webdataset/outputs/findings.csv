@@ -1,0 +1,26 @@
+section,config,value,note
+corpus,loose_files,8000,8.08 MB
+corpus,shard_files,8,14.50 MB
+throughput,loose_nw0,2585.4,1.55s
+throughput,loose_nw4,6217.5,0.64s
+throughput,wds_nw0,3289.2,1.22s
+throughput,wds_nw4,8480.8,0.47s
+open_overhead,loose_files_ms,243.5,8000 files
+open_overhead,tar_shards_ms,2.9,8 files
+sharding,split_by_worker (default),4000,1.00x the dataset
+sharding,workersplitter=None,16000,4.00x the dataset
+shard_split,8shards_2workers,4000,"per worker [2000, 2000]"
+shard_split,8shards_3workers,4000,"per worker [1500, 1500, 1000]"
+shard_split,8shards_5workers,4000,"per worker [1000, 1000, 1000, 500, 500]"
+shard_split,8shards_12workers,4000,"per worker [500, 500, 500, 500, 500, 500, 500, 500, 0, 0, 0, 0]"
+shuffle_buffer,buffer=0,1.248,batch size 32
+shuffle_buffer,buffer=32,2.104,batch size 32
+shuffle_buffer,buffer=128,3.728,batch size 32
+shuffle_buffer,buffer=512,3.952,batch size 32
+shuffle_buffer,buffer=2000,3.952,batch size 32
+shuffle_training,buffer=0,0.5,2 epochs
+shuffle_training,buffer=128,0.75,2 epochs
+shuffle_training,buffer=2000,1.0,2 epochs
+no_random_access,len(dataset),TypeError,object of type 'WebDataset' has no len()
+no_random_access,dataset[0],NotImplementedError,Subclasses of Dataset should implement __getitem__.
+no_random_access,with_epoch,1000,"declared, not derived"

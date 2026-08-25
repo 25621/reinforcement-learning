@@ -1,0 +1,32 @@
+{
+  "batch_difficulty": {
+    "clip-mined": {
+      "caption_overlap": 0.0557,
+      "likely_false_negatives": 0.0045
+    },
+    "random": {
+      "caption_overlap": 0.019,
+      "likely_false_negatives": 0.0002
+    }
+  },
+  "result": {
+    "i2t_r1": 0.016,
+    "i2t_r5": 0.074,
+    "i2t_r10": 0.102,
+    "t2i_r1": 0.024,
+    "t2i_r5": 0.068,
+    "t2i_r10": 0.106,
+    "matched_cos": 0.31570175290107727,
+    "mismatched_cos": 0.2371191829442978,
+    "alignment": 1.3685964345932007,
+    "uniformity_img": -1.4975028038024902,
+    "uniformity_txt": -1.4057780504226685,
+    "gap": 0.8294913172721863,
+    "condition": "clip-mined",
+    "steps": 700,
+    "batch": 128,
+    "final_train_loss": 4.3053,
+    "caption_overlap": 0.0557,
+    "likely_false_negatives": 0.0045
+  }
+}

@@ -1,0 +1,28 @@
+section,what,value,note
+compile,p35_ops,0.0,s
+correctness,pybind kernel vs F.gelu,2.38e-07,
+unregistered,dynamo warning,Dynamo does not know how to trace the builtin `p35_ops.pybind11_detail,
+unregistered,pure torch ops captured,3,0 breaks
+unregistered,pybind kernel ops captured,1,0 breaks
+unregistered,autograd,None,RuntimeError: element 0 of tensors does not require grad and
+registered,schema,"p35::bias_gelu(Tensor h, Tensor bias) -> Tensor",
+registered,ops captured,2,0 breaks
+fake impl,meta call,"(1024, 512)",no data touched
+fake impl,graphs for 4 batch sizes,2,
+autograd,grad h vs torch,1.36e-07,
+autograd,grad bias vs torch,1.97e-07,
+autograd,gradcheck on fp32 kernel,RuntimeError: Expected h.is_contiguous() && h.scal,cannot be used
+autograd,central difference check,7.86e-05,8 coordinates
+opcheck,correct op,passed,
+opcheck,aliasing lie,caught at call time,lying_alias (with implementation in <module 'torch
+opcheck,silent input mutation,3.305,max change
+opcheck,mutation lie,caught by opcheck,"opcheck(op, ...): test_schema failed with Argument h is not "
+opcheck,honest in-place op,passed,err 2.4e-07
+end to end,all torch ops,4 ops captured,0 breaks
+end to end,pybind kernel,2 ops captured,0 breaks
+end to end,registered custom op,3 ops captured,0 breaks
+end to end speed,"eager, all torch",36.36 ms,1.00x
+end to end speed,"eager, pybind kernel",34.61 ms,1.05x
+end to end speed,compiled: all torch ops,30.49 ms,1.19x
+end to end speed,compiled: pybind kernel,33.15 ms,1.10x
+end to end speed,compiled: registered custom op,34.29 ms,1.06x

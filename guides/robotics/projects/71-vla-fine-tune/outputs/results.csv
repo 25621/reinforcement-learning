@@ -1,0 +1,24 @@
+section,quantity,value,note
+data,pretraining demonstrations,250,3037 frames
+data,new-task demonstrations available,200,2556 frames
+pretrain,pretrained VLA on its own tasks,0.925,
+pretrain,pretrained VLA zero-shot on the green task,0.65,went to the decoy 0.150
+curve,5 demos: from scratch,0.375,fine-tuned 0.775  (advantage +0.400)
+curve,15 demos: from scratch,0.475,fine-tuned 0.925  (advantage +0.450)
+curve,50 demos: from scratch,0.675,fine-tuned 0.900  (advantage +0.225)
+curve,150 demos: from scratch,0.925,fine-tuned 0.900  (advantage -0.025)
+control,"150-demo policy, reads the instruction",0.925,went to the decoy 0.000
+control,same policy with the instruction blanked,0.525,went to the decoy 0.050
+ablate,"15 demos, full fine-tune",0.925,
+ablate,"15 demos, vision frozen",0.875,
+ablate,"15 demos, vision reinitialised",0.7,
+ablate,"15 demos, head reinitialised",0.35,
+ablate,"15 demos, language reinitialised",0.625,
+language,sentences embedded by the frozen LLM,48,"576-d, computed once"
+language,learned lookup: on red/blue,0.875,zero-shot on the unseen word 'green' 0.875
+language,bag of words: on red/blue,0.9,zero-shot on the unseen word 'green' 0.850
+language,frozen SmolLM2-135M: on red/blue,0.675,zero-shot on the unseen word 'green' 0.550
+forget,old red/blue tasks before fine-tuning,0.925,
+forget,old red/blue tasks after 50 green demos,0.775,change -0.150
+cost,VLA parameters,50435,
+cost,total runtime (s),733.1,

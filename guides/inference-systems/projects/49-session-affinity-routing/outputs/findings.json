@@ -1,0 +1,125 @@
+{
+ "affinity": {
+  "round_robin": {
+   "label": "round_robin",
+   "turns_total": 48,
+   "later_turns": 36,
+   "hit_rate": 0.472,
+   "tokens_reused": 1527,
+   "tokens_in_later_prompts": 4320,
+   "prefill_saved_frac": 0.353,
+   "ttft_p50_s": 4.36,
+   "ttft_p99_s": 6.528,
+   "prefill_ms_mean": 517.6,
+   "by_turn": {
+    "0": {
+     "ttft_s": 2.714,
+     "prefill_ms": 426.0,
+     "hit_rate": 0.0,
+     "prompt_len": 64
+    },
+    "1": {
+     "ttft_s": 4.36,
+     "prefill_ms": 457.6,
+     "hit_rate": 0.33,
+     "prompt_len": 92
+    },
+    "2": {
+     "ttft_s": 4.354,
+     "prefill_ms": 514.1,
+     "hit_rate": 0.58,
+     "prompt_len": 120
+    },
+    "3": {
+     "ttft_s": 4.644,
+     "prefill_ms": 581.2,
+     "hit_rate": 0.5,
+     "prompt_len": 148
+    }
+   },
+   "replicas_per_session_mean": 2.58
+  },
+  "session_hash": {
+   "label": "session_hash",
+   "turns_total": 48,
+   "later_turns": 36,
+   "hit_rate": 1.0,
+   "tokens_reused": 3708,
+   "tokens_in_later_prompts": 4320,
+   "prefill_saved_frac": 0.858,
+   "ttft_p50_s": 3.196,
+   "ttft_p99_s": 7.036,
+   "prefill_ms_mean": 211.4,
+   "by_turn": {
+    "0": {
+     "ttft_s": 2.808,
+     "prefill_ms": 434.8,
+     "hit_rate": 0.0,
+     "prompt_len": 64
+    },
+    "1": {
+     "ttft_s": 6.455,
+     "prefill_ms": 262.2,
+     "hit_rate": 1.0,
+     "prompt_len": 92
+    },
+    "2": {
+     "ttft_s": 3.324,
+     "prefill_ms": 183.6,
+     "hit_rate": 1.0,
+     "prompt_len": 120
+    },
+    "3": {
+     "ttft_s": 3.159,
+     "prefill_ms": 188.3,
+     "hit_rate": 1.0,
+     "prompt_len": 148
+    }
+   },
+   "replicas_per_session_mean": 1.0
+  }
+ },
+ "failover": {
+  "label": "sticky_with_failure",
+  "turns_total": 48,
+  "later_turns": 36,
+  "hit_rate": 0.889,
+  "tokens_reused": 3352,
+  "tokens_in_later_prompts": 4320,
+  "prefill_saved_frac": 0.776,
+  "ttft_p50_s": 3.053,
+  "ttft_p99_s": 6.629,
+  "prefill_ms_mean": 216.3,
+  "by_turn": {
+   "0": {
+    "ttft_s": 2.859,
+    "prefill_ms": 469.3,
+    "hit_rate": 0.0,
+    "prompt_len": 64
+   },
+   "1": {
+    "ttft_s": 6.0,
+    "prefill_ms": 265.2,
+    "hit_rate": 0.83,
+    "prompt_len": 92
+   },
+   "2": {
+    "ttft_s": 3.428,
+    "prefill_ms": 223.3,
+    "hit_rate": 0.83,
+    "prompt_len": 120
+   },
+   "3": {
+    "ttft_s": 2.887,
+    "prefill_ms": 160.4,
+    "hit_rate": 1.0,
+    "prompt_len": 148
+   }
+  },
+  "replicas_per_session_mean": 1.33,
+  "cold_after_failover": 4,
+  "cold_prefill_ms_mean": 394.6,
+  "warm_prefill_ms_mean": 194.0,
+  "failed": 0
+ }
+}

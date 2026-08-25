@@ -1,0 +1,59 @@
+A. vLLM 0.27.1 installs (312.9 MB wheel) and fails at engine start:
+   torch.AcceleratorError: CUDA error: no kernel image is available for execution on the device
+
+B. verifying the from-scratch engine against Hugging Face ...
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Skipping import of cpp extensions due to incompatible torch version. Please upgrade to torch >= 2.11.0 (found 2.10.0+cu128).
+/home/canary/.local/lib/python3.12/site-packages/torch/cuda/__init__.py:435: UserWarning: 
+    Found GPU0 NVIDIA GeForce GTX 1070 Ti which is of cuda capability 6.1.
+    Minimum and Maximum cuda capability supported by this version of PyTorch is
+    (7.0) - (12.0)
+    
+  queued_call()
+/home/canary/.local/lib/python3.12/site-packages/torch/cuda/__init__.py:435: UserWarning: 
+    Please install PyTorch with a following CUDA
+    configurations:  12.6 following instructions at
+    https://pytorch.org/get-started/locally/
+    
+  queued_call()
+/home/canary/.local/lib/python3.12/site-packages/torch/cuda/__init__.py:435: UserWarning: 
+NVIDIA GeForce GTX 1070 Ti with CUDA capability sm_61 is not compatible with the current PyTorch installation.
+The current PyTorch install supports CUDA capabilities sm_70 sm_75 sm_80 sm_86 sm_90 sm_100 sm_120.
+If you want to use the NVIDIA GeForce GTX 1070 Ti GPU with PyTorch, please check the instructions at https://pytorch.org/get-started/locally/
+
+  queued_call()
+   max |logit diff| = 2.46e-05   relative = 1.20e-06
+   greedy tokens identical: True   -> ' Paris. It is the largest city in'
+
+C. serving
+   POST /generate -> ' Paris. It is the largest city in Europe and the third'  (1.29 s)
+   this machine: 27.5 GB/s streaming reads, 658 GFLOP/s fp32 matmul
+   batch  1: prefill   331.8 tok/s | decode   8.65 tok/s | step  115.7 ms | weights 17.08 GB/s | gather 4.0%
+   batch  2: prefill   378.3 tok/s | decode  15.59 tok/s | step  128.3 ms | weights 15.40 GB/s | gather 2.5%
+   batch  4: prefill   467.5 tok/s | decode  30.73 tok/s | step  130.2 ms | weights 15.18 GB/s | gather 3.0%
+   batch  8: prefill   507.6 tok/s | decode  60.84 tok/s | step  131.5 ms | weights 15.03 GB/s | gather 4.0%
+   batch 16: prefill   515.7 tok/s | decode 102.96 tok/s | step  155.4 ms | weights 12.72 GB/s | gather 3.5%
+   batch 32: prefill   492.6 tok/s | decode 179.56 tok/s | step  178.2 ms | weights 11.09 GB/s | gather 3.6%
+   batch 32 moves 20.8x more tokens/s than batch 1, and each request is only 0.65x as fast per token
+   prefill peaks at 510 GFLOP/s (77% of this machine's matmul roof); decode at batch 1 reaches 8.5 GFLOP/s while re-reading weights at 17.1 GB/s (62% of the memory roof)
+
+D. paged vs contiguous KV allocation
+   256 requests, 37685 tokens of real KV (926 MB)
+   contiguous (reserve 2048 per slot): 12885 MB = 1291% waste
+   paged, block   1: 926 MB = 0.0% waste
+   paged, block   8: 947 MB = 2.3% waste
+   paged, block  16: 969 MB = 4.6% waste
+   paged, block  32: 1018 MB = 9.9% waste
+   paged, block  64: 1123 MB = 21.3% waste
+   paged, block 128: 1346 MB = 45.4% waste
+   -> block 16 fits 13.3x more requests in the same memory
+   1 GB of KV: 19 contiguous slots vs ~276 paged requests
+   8 GB of KV: 158 contiguous slots vs ~2211 paged requests
+   measuring gather cost vs block size (decode, batch 16, 512 tokens) ...
+     block   8:   32.1 ms of  201.5 ms (16%), 204 MB/step
+     block  16:   37.3 ms of  211.1 ms (18%), 208 MB/step
+     block  64:   35.9 ms of  207.2 ms (17%), 226 MB/step
+     block 128:   39.9 ms of  216.2 ms (18%), 252 MB/step
+   wrote /home/canary/project/tmp/claude-ai-hardware-phase8-2/guides/ai-hardware/projects/39-deploy-with-vllm/outputs/serving.png
+
+total 47s

@@ -1,0 +1,28 @@
+Error detected in SqrtBackward0. Traceback of forward call that caused the error:
+  File "run.py", line 341, in <module>
+    loss = F.cross_entropy(m5(x5[bad], mask5[bad]), y5[bad])
+  File "<site-packages>/torch/nn/modules/module.py", line 1776, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "<site-packages>/torch/nn/modules/module.py", line 1787, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "run.py", line 131, in forward
+    lens = self.norm(h)                   # path the NaN will travel back down
+  File "<site-packages>/torch/nn/modules/module.py", line 1776, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "<site-packages>/torch/nn/modules/module.py", line 1787, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "run.py", line 102, in forward
+    return torch.where(sq > 0, torch.sqrt(sq), torch.zeros_like(sq))
+ (Triggered internally at /pytorch/torch/csrc/autograd/python_anomaly_mode.cpp:122.)
+
+Traceback (most recent call last):
+  File "run.py", line 343, in <module>
+    loss.backward()
+  File "<site-packages>/torch/_tensor.py", line 630, in backward
+    torch.autograd.backward(
+  File "<site-packages>/torch/autograd/__init__.py", line 364, in backward
+    _engine_run_backward(
+  File "<site-packages>/torch/autograd/graph.py", line 865, in _engine_run_backward
+    return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Function 'SqrtBackward0' returned nan values in its 0th output.

@@ -1,0 +1,15 @@
+$ pip install vllm            # 312.9 MB wheel, vllm-0.27.1, bundles torch 2.13.0+cu130
+$ python -c "from vllm import LLM; LLM(model='Qwen/Qwen2.5-0.5B-Instruct')"
+
+WARNING 08-15 20:23:24 [model.py:2164] Your device 'NVIDIA GeForce GTX 1070 Ti' (with compute capability 6.1) doesn't support torch.bfloat16. Falling back to torch.float16 for compatibility.
+(EngineCore pid=1734881) .../torch/cuda/__init__.py:422: UserWarning: Found GPU0 NVIDIA GeForce GTX 1070 Ti which is of compute capability (CC) 6.1.
+(EngineCore pid=1734881) NVIDIA GeForce GTX 1070 Ti with CUDA capability sm_61 is not compatible with the current PyTorch installation.
+(EngineCore pid=1734881) ERROR 08-15 20:23:29 [core.py:1349]   File ".../vllm/v1/worker/gpu/buffer_utils.py", line 137, in __init__
+(EngineCore pid=1734881) ERROR 08-15 20:23:29 [core.py:1349] torch.AcceleratorError: CUDA error: no kernel image is available for execution on the device
+(EngineCore pid=1734881)   File ".../vllm/v1/worker/gpu/buffer_utils.py", line 137, in __init__
+(EngineCore pid=1734881) torch.AcceleratorError: CUDA error: no kernel image is available for execution on the device
+RuntimeError: Engine core initialization failed. See root cause above. Failed core proc(s): {}
+
+$ CUDA_VISIBLE_DEVICES= python -c "..."   # try the CPU instead
+(EngineCore pid=1735117) ERROR 08-15 20:23:56 [core.py:1349] AssertionError: DP adjusted local rank 0 is out of bounds for 0 devices.
+(EngineCore pid=1735117) AssertionError: DP adjusted local rank 0 is out of bounds for 0 devices.

@@ -1,0 +1,496 @@
+[
+ {
+  "arm": "stage1",
+  "steps": 0,
+  "before": {
+   "presence": 0.38200339558573854,
+   "choice": 0.5238095238095238,
+   "n_presence": 589,
+   "n_choice": 273,
+   "format_valid": 0.8851508120649652,
+   "caption_loss": 3.18658745935721,
+   "samples": [
+    {
+     "kind": "presence",
+     "q": "Is there a person in the image? Answer yes or no.",
+     "gold": "Yes",
+     "said": "Yes."
+    },
+    {
+     "kind": "presence",
+     "q": "Is there a street in the image? Answer yes or no.",
+     "gold": "No",
+     "said": "There is a street in the"
+    },
+    {
+     "kind": "presence",
+     "q": "Is there a table in the image? Answer yes or no.",
+     "gold": "Yes",
+     "said": "Yes."
+    },
+    {
+     "kind": "presence",
+     "q": "Is there a table in the image? Answer yes or no.",
+     "gold": "Yes",
+     "said": "Yes."
+    },
+    {
+     "kind": "presence",
+     "q": "Is there an umbrella in the image? Answer yes or no.",
+     "gold": "Yes",
+     "said": "Yes."
+    },
+    {
+     "kind": "presence",
+     "q": "Is there a water in the image? Answer yes or no.",
+     "gold": "No",
+     "said": "Yes."
+    },
+    {
+     "kind": "presence",
+     "q": "Is there a bottle in the image? Answer yes or no.",
+     "gold": "No",
+     "said": "Yes."
+    },
+    {
+     "kind": "presence",
+     "q": "Is there a mountain in the image? Answer yes or no.",
+     "gold": "No",
+     "said": "Yes."
+    }
+   ]
+  },
+  "after": {
+   "presence": 0.38200339558573854,
+   "choice": 0.5238095238095238,
+   "n_presence": 589,
+   "n_choice": 273,
+   "format_valid": 0.8851508120649652,
+   "caption_loss": 3.18658745935721,
+   "samples": [
+    {
+     "kind": "presence",
+     "q": "Is there a person in the image? Answer yes or no.",
+     "gold": "Yes",
+     "said": "Yes."
+    },
+    {
+     "kind": "presence",
+     "q": "Is there a street in the image? Answer yes or no.",
+     "gold": "No",
+     "said": "There is a street in the"
+    },
+    {
+     "kind": "presence",
+     "q": "Is there a table in the image? Answer yes or no.",
+     "gold": "Yes",
+     "said": "Yes."
+    },
+    {
+     "kind": "presence",
+     "q": "Is there a table in the image? Answer yes or no.",
+     "gold": "Yes",
+     "said": "Yes."
+    },
+    {
+     "kind": "presence",
+     "q": "Is there an umbrella in the image? Answer yes or no.",
+     "gold": "Yes",
+     "said": "Yes."
+    },
+    {
+     "kind": "presence",
+     "q": "Is there a water in the image? Answer yes or no.",
+     "gold": "No",
+     "said": "Yes."
+    },
+    {
+     "kind": "presence",
+     "q": "Is there a bottle in the image? Answer yes or no.",
+     "gold": "No",
+     "said": "Yes."
+    },
+    {
+     "kind": "presence",
+     "q": "Is there a mountain in the image? Answer yes or no.",
+     "gold": "No",
+     "said": "Yes."
+    }
+   ]
+  },
+  "trainable": 0,
+  "ms_per_step": 0.0
+ },
+ {
+  "arm": "stage2",
+  "steps": 150,
+  "bs": 8,
+  "lr": 0.0001,
+  "before": {
+   "presence": 0.38200339558573854,
+   "choice": 0.5238095238095238,
+   "n_presence": 589,
+   "n_choice": 273,
+   "format_valid": 0.8851508120649652,
+   "caption_loss": 3.18658745935721,
+   "samples": [
+    {
+     "kind": "presence",
+     "q": "Is there a person in the image? Answer yes or no.",
+     "gold": "Yes",
+     "said": "Yes."
+    },
+    {
+     "kind": "presence",
+     "q": "Is there a street in the image? Answer yes or no.",
+     "gold": "No",
+     "said": "There is a street in the"
+    },
+    {
+     "kind": "presence",
+     "q": "Is there a table in the image? Answer yes or no.",
+     "gold": "Yes",
+     "said": "Yes."
+    },
+    {
+     "kind": "presence",
+     "q": "Is there a table in the image? Answer yes or no.",
+     "gold": "Yes",
+     "said": "Yes."
+    },
+    {
+     "kind": "presence",
+     "q": "Is there an umbrella in the image? Answer yes or no.",
+     "gold": "Yes",
+     "said": "Yes."
+    },
+    {
+     "kind": "presence",
+     "q": "Is there a water in the image? Answer yes or no.",
+     "gold": "No",
+     "said": "Yes."
+    },
+    {
+     "kind": "presence",
+     "q": "Is there a bottle in the image? Answer yes or no.",
+     "gold": "No",
+     "said": "Yes."
+    },
+    {
+     "kind": "presence",
+     "q": "Is there a mountain in the image? Answer yes or no.",
+     "gold": "No",
+     "said": "Yes."
+    }
+   ]
+  },
+  "after": {
+   "presence": 0.6791171477079796,
+   "choice": 0.7728937728937729,
+   "n_presence": 589,
+   "n_choice": 273,
+   "format_valid": 0.994199535962877,
+   "caption_loss": 3.043725065482679,
+   "samples": [
+    {
+     "kind": "presence",
+     "q": "Is there a person in the image? Answer yes or no.",
+     "gold": "Yes",
+     "said": "Yes"
+    },
+    {
+     "kind": "presence",
+     "q": "Is there a street in the image? Answer yes or no.",
+     "gold": "No",
+     "said": "Yes"
+    },
+    {
+     "kind": "presence",
+     "q": "Is there a table in the image? Answer yes or no.",
+     "gold": "Yes",
+     "said": "Yes"
+    },
+    {
+     "kind": "presence",
+     "q": "Is there a table in the image? Answer yes or no.",
+     "gold": "Yes",
+     "said": "Yes"
+    },
+    {
+     "kind": "presence",
+     "q": "Is there an umbrella in the image? Answer yes or no.",
+     "gold": "Yes",
+     "said": "No"
+    },
+    {
+     "kind": "presence",
+     "q": "Is there a water in the image? Answer yes or no.",
+     "gold": "No",
+     "said": "Yes"
+    },
+    {
+     "kind": "presence",
+     "q": "Is there a bottle in the image? Answer yes or no.",
+     "gold": "No",
+     "said": "No"
+    },
+    {
+     "kind": "presence",
+     "q": "Is there a mountain in the image? Answer yes or no.",
+     "gold": "No",
+     "said": "Yes"
+    }
+   ]
+  },
+  "trainable": 135292416,
+  "ms_per_step": 1934.4708267847698
+ },
+ {
+  "arm": "stage2-frozen",
+  "steps": 150,
+  "bs": 8,
+  "lr": 0.002,
+  "before": {
+   "presence": 0.38200339558573854,
+   "choice": 0.5238095238095238,
+   "n_presence": 589,
+   "n_choice": 273,
+   "format_valid": 0.8851508120649652,
+   "caption_loss": 3.18658745935721,
+   "samples": [
+    {
+     "kind": "presence",
+     "q": "Is there a person in the image? Answer yes or no.",
+     "gold": "Yes",
+     "said": "Yes."
+    },
+    {
+     "kind": "presence",
+     "q": "Is there a street in the image? Answer yes or no.",
+     "gold": "No",
+     "said": "There is a street in the"
+    },
+    {
+     "kind": "presence",
+     "q": "Is there a table in the image? Answer yes or no.",
+     "gold": "Yes",
+     "said": "Yes."
+    },
+    {
+     "kind": "presence",
+     "q": "Is there a table in the image? Answer yes or no.",
+     "gold": "Yes",
+     "said": "Yes."
+    },
+    {
+     "kind": "presence",
+     "q": "Is there an umbrella in the image? Answer yes or no.",
+     "gold": "Yes",
+     "said": "Yes."
+    },
+    {
+     "kind": "presence",
+     "q": "Is there a water in the image? Answer yes or no.",
+     "gold": "No",
+     "said": "Yes."
+    },
+    {
+     "kind": "presence",
+     "q": "Is there a bottle in the image? Answer yes or no.",
+     "gold": "No",
+     "said": "Yes."
+    },
+    {
+     "kind": "presence",
+     "q": "Is there a mountain in the image? Answer yes or no.",
+     "gold": "No",
+     "said": "Yes."
+    }
+   ]
+  },
+  "after": {
+   "presence": 0.5823429541595926,
+   "choice": 0.5311355311355311,
+   "n_presence": 589,
+   "n_choice": 273,
+   "format_valid": 0.9825986078886311,
+   "caption_loss": 3.2927583206531614,
+   "samples": [
+    {
+     "kind": "presence",
+     "q": "Is there a person in the image? Answer yes or no.",
+     "gold": "Yes",
+     "said": "Yes"
+    },
+    {
+     "kind": "presence",
+     "q": "Is there a street in the image? Answer yes or no.",
+     "gold": "No",
+     "said": "Yes"
+    },
+    {
+     "kind": "presence",
+     "q": "Is there a table in the image? Answer yes or no.",
+     "gold": "Yes",
+     "said": "Yes"
+    },
+    {
+     "kind": "presence",
+     "q": "Is there a table in the image? Answer yes or no.",
+     "gold": "Yes",
+     "said": "Yes"
+    },
+    {
+     "kind": "presence",
+     "q": "Is there an umbrella in the image? Answer yes or no.",
+     "gold": "Yes",
+     "said": "No"
+    },
+    {
+     "kind": "presence",
+     "q": "Is there a water in the image? Answer yes or no.",
+     "gold": "No",
+     "said": "Yes"
+    },
+    {
+     "kind": "presence",
+     "q": "Is there a bottle in the image? Answer yes or no.",
+     "gold": "No",
+     "said": "No"
+    },
+    {
+     "kind": "presence",
+     "q": "Is there a mountain in the image? Answer yes or no.",
+     "gold": "No",
+     "said": "Yes"
+    }
+   ]
+  },
+  "trainable": 776832,
+  "ms_per_step": 1014.0205939610801
+ },
+ {
+  "arm": "blind",
+  "steps": 150,
+  "bs": 8,
+  "lr": 0.0001,
+  "before": {
+   "presence": 0.5008488964346349,
+   "choice": 0.21611721611721613,
+   "n_presence": 589,
+   "n_choice": 273,
+   "format_valid": 0.8097447795823666,
+   "caption_loss": 4.031820873881495,
+   "samples": [
+    {
+     "kind": "presence",
+     "q": "Is there a person in the image? Answer yes or no.",
+     "gold": "Yes",
+     "said": "Yes."
+    },
+    {
+     "kind": "presence",
+     "q": "Is there a street in the image? Answer yes or no.",
+     "gold": "No",
+     "said": "Yes."
+    },
+    {
+     "kind": "presence",
+     "q": "Is there a table in the image? Answer yes or no.",
+     "gold": "Yes",
+     "said": "Yes."
+    },
+    {
+     "kind": "presence",
+     "q": "Is there a table in the image? Answer yes or no.",
+     "gold": "Yes",
+     "said": "Yes."
+    },
+    {
+     "kind": "presence",
+     "q": "Is there an umbrella in the image? Answer yes or no.",
+     "gold": "Yes",
+     "said": "Yes."
+    },
+    {
+     "kind": "presence",
+     "q": "Is there a water in the image? Answer yes or no.",
+     "gold": "No",
+     "said": "Yes."
+    },
+    {
+     "kind": "presence",
+     "q": "Is there a bottle in the image? Answer yes or no.",
+     "gold": "No",
+     "said": "Yes."
+    },
+    {
+     "kind": "presence",
+     "q": "Is there a mountain in the image? Answer yes or no.",
+     "gold": "No",
+     "said": "Yes."
+    }
+   ]
+  },
+  "after": {
+   "presence": 0.6485568760611206,
+   "choice": 0.7289377289377289,
+   "n_presence": 589,
+   "n_choice": 273,
+   "format_valid": 1.0,
+   "caption_loss": 3.155332402665486,
+   "samples": [
+    {
+     "kind": "presence",
+     "q": "Is there a person in the image? Answer yes or no.",
+     "gold": "Yes",
+     "said": "Yes"
+    },
+    {
+     "kind": "presence",
+     "q": "Is there a street in the image? Answer yes or no.",
+     "gold": "No",
+     "said": "Yes"
+    },
+    {
+     "kind": "presence",
+     "q": "Is there a table in the image? Answer yes or no.",
+     "gold": "Yes",
+     "said": "Yes"
+    },
+    {
+     "kind": "presence",
+     "q": "Is there a table in the image? Answer yes or no.",
+     "gold": "Yes",
+     "said": "Yes"
+    },
+    {
+     "kind": "presence",
+     "q": "Is there an umbrella in the image? Answer yes or no.",
+     "gold": "Yes",
+     "said": "No"
+    },
+    {
+     "kind": "presence",
+     "q": "Is there a water in the image? Answer yes or no.",
+     "gold": "No",
+     "said": "Yes"
+    },
+    {
+     "kind": "presence",
+     "q": "Is there a bottle in the image? Answer yes or no.",
+     "gold": "No",
+     "said": "No"
+    },
+    {
+     "kind": "presence",
+     "q": "Is there a mountain in the image? Answer yes or no.",
+     "gold": "No",
+     "said": "Yes"
+    }
+   ]
+  },
+  "trainable": 134545344,
+  "ms_per_step": 1707.674446105957
+ }
+]

@@ -1,0 +1,86 @@
+section,quantity,value,unit
+1-track,position error RMS,10.990691301464786,mm
+1-track,worst position error,46.34508084450687,mm
+1-track,across-path error RMS,9.950759663594651,mm
+1-track,along-path error RMS,4.6666559120500155,mm
+1-track,heading error RMS,1.123278107131871,deg
+1-track,median solve time,5.26829352020286,ms
+1-track,worst solve time,8.003922994248569,ms
+1-track,solve time as a share of the 100 ms tick,5.26829352020286,%
+2-horizon,N=2 (0.2 s ahead): across-path RMS,264.19954875981614,mm
+2-horizon,N=2: median solve time,1.2443800223991275,ms
+2-horizon,N=3 (0.3 s ahead): across-path RMS,147.46526254848254,mm
+2-horizon,N=3: median solve time,1.5809194883331656,ms
+2-horizon,N=5 (0.5 s ahead): across-path RMS,64.03549002958684,mm
+2-horizon,N=5: median solve time,2.1703949896618724,ms
+2-horizon,N=8 (0.8 s ahead): across-path RMS,15.436003719367932,mm
+2-horizon,N=8: median solve time,3.098101500654593,ms
+2-horizon,N=12 (1.2 s ahead): across-path RMS,9.13006357098199,mm
+2-horizon,N=12: median solve time,4.389735491713509,ms
+2-horizon,N=15 (1.5 s ahead): across-path RMS,9.950759663594651,mm
+2-horizon,N=15: median solve time,5.379141482990235,ms
+2-horizon,N=20 (2.0 s ahead): across-path RMS,7.611445267727427,mm
+2-horizon,N=20: median solve time,7.14304597931914,ms
+2-horizon,N=30 (3.0 s ahead): across-path RMS,6.0675627396020895,mm
+2-horizon,N=30: median solve time,10.986672481521964,ms
+2-horizon,best horizon,30,steps
+2-horizon,  in seconds of look-ahead,3.0,s
+2-horizon,error at N=2 vs at the best N,43.54294468772849,x
+2-horizon,error at N=30 vs at the best N,1.0,x
+2-horizon,solve time at N=30 vs N=2,8.829033160095248,x
+3-pursuit,lap 30 s: best pure-pursuit look-ahead,0.25,m
+3-pursuit,lap 30 s: MPC across-path RMS,4.984708996887814,mm
+3-pursuit,lap 30 s: pure-pursuit across-path RMS,126.96141051878811,mm
+3-pursuit,lap 30 s: MPC advantage,25.470175008823187,x
+3-pursuit,lap 20 s: best pure-pursuit look-ahead,0.6,m
+3-pursuit,lap 20 s: MPC across-path RMS,9.950759663594651,mm
+3-pursuit,lap 20 s: pure-pursuit across-path RMS,263.2985810193301,mm
+3-pursuit,lap 20 s: MPC advantage,26.460148764583373,x
+3-pursuit,lap 12 s: best pure-pursuit look-ahead,0.6,m
+3-pursuit,lap 12 s: MPC across-path RMS,21.60181662785305,mm
+3-pursuit,lap 12 s: pure-pursuit across-path RMS,484.52670055161263,mm
+3-pursuit,lap 12 s: MPC advantage,22.429905266711287,x
+4-limits,omega limit 2.50 rad/s: MPC across-path RMS,9.950759663594651,mm
+4-limits,omega limit 2.50 rad/s: MPC at the limit,0.0,% of ticks
+4-limits,omega limit 2.50 rad/s: pure-pursuit across-path RMS,340.5502839863826,mm
+4-limits,omega limit 1.20 rad/s: MPC across-path RMS,9.950759663594651,mm
+4-limits,omega limit 1.20 rad/s: MPC at the limit,0.0,% of ticks
+4-limits,omega limit 1.20 rad/s: pure-pursuit across-path RMS,895.2059249130012,mm
+4-limits,omega limit 0.80 rad/s: MPC across-path RMS,10.372383478811074,mm
+4-limits,omega limit 0.80 rad/s: MPC at the limit,22.5,% of ticks
+4-limits,omega limit 0.80 rad/s: pure-pursuit across-path RMS,1317.9906694884555,mm
+4-limits,omega limit 0.60 rad/s: MPC across-path RMS,122.54258005206741,mm
+4-limits,omega limit 0.60 rad/s: MPC at the limit,67.5,% of ticks
+4-limits,omega limit 0.60 rad/s: pure-pursuit across-path RMS,913.6785229761956,mm
+4-limits,omega limit 0.45 rad/s: MPC across-path RMS,829.2210786346452,mm
+4-limits,omega limit 0.45 rad/s: MPC at the limit,94.375,% of ticks
+4-limits,omega limit 0.45 rad/s: pure-pursuit across-path RMS,2038.6174639566343,mm
+4-limits,MPC advantage at the loosest limit,34.223546291877874,x
+4-limits,MPC advantage at the tightest limit,2.458472796317867,x
+5-mismatch,perfect: across-path RMS,9.950759663594651,mm
+5-mismatch,perfect: along-path RMS,4.6666559120500155,mm
+5-mismatch,perfect: mean commanded speed,0.6142084400408351,m/s
+5-mismatch,15% slip: across-path RMS,18.75453940349286,mm
+5-mismatch,15% slip: along-path RMS,29.67977769399608,mm
+5-mismatch,15% slip: mean commanded speed,0.7157445373251455,m/s
+5-mismatch,30% slip: across-path RMS,32.90705681369963,mm
+5-mismatch,30% slip: along-path RMS,69.66416602144524,mm
+5-mismatch,30% slip: mean commanded speed,0.8572879098044958,m/s
+5-mismatch,steering bias 0.15 rad/s: across-path RMS,29.95569066160206,mm
+5-mismatch,steering bias 0.15 rad/s: along-path RMS,9.990324665200879,mm
+5-mismatch,steering bias 0.15 rad/s: mean commanded speed,0.6181923328918253,m/s
+5-mismatch,slip + bias: across-path RMS,32.246568974064346,mm
+5-mismatch,slip + bias: along-path RMS,44.66760105334743,mm
+5-mismatch,slip + bias: mean commanded speed,0.76226234567211,m/s
+5-mismatch,across-path cost of 30% slip,3.3069894084661433,x
+5-mismatch,along-path cost of 30% slip,14.928069978667544,x
+6-budget,1 Gauss-Newton iterations: across-path RMS,10.133618886596171,mm
+6-budget,1 Gauss-Newton iterations: median solve time,1.765421504387632,ms
+6-budget,2 Gauss-Newton iterations: across-path RMS,9.953970256618314,mm
+6-budget,2 Gauss-Newton iterations: median solve time,2.9771585250273347,ms
+6-budget,4 Gauss-Newton iterations: across-path RMS,9.950759663594651,mm
+6-budget,4 Gauss-Newton iterations: median solve time,5.446476017823443,ms
+6-budget,8 Gauss-Newton iterations: across-path RMS,9.95075671382657,mm
+6-budget,8 Gauss-Newton iterations: median solve time,13.992583990329877,ms
+6-budget,1 iteration WITHOUT the warm start: across-path RMS,58.18946924471881,mm
+6-budget,  vs the same budget WITH a warm start,5.742220019906862,x worse

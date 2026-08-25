@@ -1,0 +1,120 @@
+{
+ "scaling": [
+  {
+   "label": "1 replica(s) x 2 threads",
+   "requests": 24,
+   "ok": 24,
+   "errors": 0,
+   "wall_s": 36.71,
+   "throughput_tok_s": 15.69,
+   "ttft_p50_s": 9.521,
+   "ttft_p99_s": 13.133,
+   "itl_p50_ms": 52.5,
+   "itl_p99_ms": 96.9,
+   "e2e_p50_s": 10.677,
+   "e2e_p99_s": 14.54,
+   "replicas": 1,
+   "by_replica": {
+    "r0": 24
+   }
+  },
+  {
+   "label": "2 replica(s) x 2 threads",
+   "requests": 24,
+   "ok": 24,
+   "errors": 0,
+   "wall_s": 25.36,
+   "throughput_tok_s": 22.72,
+   "ttft_p50_s": 6.376,
+   "ttft_p99_s": 7.08,
+   "itl_p50_ms": 80.9,
+   "itl_p99_ms": 97.0,
+   "e2e_p50_s": 8.129,
+   "e2e_p99_s": 8.839,
+   "replicas": 2,
+   "by_replica": {
+    "r1": 12,
+    "r0": 12
+   }
+  },
+  {
+   "label": "4 replica(s) x 2 threads",
+   "requests": 24,
+   "ok": 24,
+   "errors": 0,
+   "wall_s": 24.24,
+   "throughput_tok_s": 23.76,
+   "ttft_p50_s": 4.104,
+   "ttft_p99_s": 5.722,
+   "itl_p50_ms": 156.8,
+   "itl_p99_ms": 196.7,
+   "e2e_p50_s": 7.706,
+   "e2e_p99_s": 9.303,
+   "replicas": 4,
+   "by_replica": {
+    "r0": 6,
+    "r2": 6,
+    "r1": 6,
+    "r3": 6
+   }
+  }
+ ],
+ "policy": {
+  "round_robin": {
+   "label": "round_robin",
+   "requests": 32,
+   "ok": 32,
+   "errors": 0,
+   "wall_s": 33.32,
+   "throughput_tok_s": 23.53,
+   "ttft_p50_s": 3.004,
+   "ttft_p99_s": 13.119,
+   "itl_p50_ms": 120.5,
+   "itl_p99_ms": 185.8,
+   "e2e_p50_s": 5.457,
+   "e2e_p99_s": 17.353,
+   "by_replica": {
+    "r2": 8,
+    "r1": 8,
+    "r0": 8,
+    "r3": 8
+   },
+   "queue_ms_p99": 12971.5
+  },
+  "least_outstanding": {
+   "label": "least_outstanding",
+   "requests": 32,
+   "ok": 32,
+   "errors": 0,
+   "wall_s": 33.5,
+   "throughput_tok_s": 23.4,
+   "ttft_p50_s": 3.356,
+   "ttft_p99_s": 11.336,
+   "itl_p50_ms": 154.1,
+   "itl_p99_ms": 193.6,
+   "e2e_p50_s": 6.626,
+   "e2e_p99_s": 14.132,
+   "by_replica": {
+    "r2": 9,
+    "r1": 7,
+    "r0": 8,
+    "r3": 8
+   },
+   "queue_ms_p99": 10537.8
+  }
+ },
+ "scale_up": {
+  "label": "1 replica x 8 threads",
+  "requests": 24,
+  "ok": 24,
+  "errors": 0,
+  "wall_s": 31.43,
+  "throughput_tok_s": 18.33,
+  "ttft_p50_s": 9.164,
+  "ttft_p99_s": 9.606,
+  "itl_p50_ms": 50.2,
+  "itl_p99_ms": 63.6,
+  "e2e_p50_s": 10.33,
+  "e2e_p99_s": 10.795
+ }
+}

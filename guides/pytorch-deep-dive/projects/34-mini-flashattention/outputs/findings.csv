@@ -1,0 +1,29 @@
+section,what,value,note
+compile,p34_flash,0.0,s
+problem,T=256,1.0 MB of scores,"1.3x q,k,v"
+problem,T=512,4.2 MB of scores,"2.7x q,k,v"
+problem,T=1024,16.8 MB of scores,"5.3x q,k,v"
+problem,T=2048,67.1 MB of scores,"10.7x q,k,v"
+problem,T=4096,268.4 MB of scores,"21.3x q,k,v"
+problem,T=8192,1073.7 MB of scores,"42.7x q,k,v"
+correctness,T=128,6.54e-07,flash vs eager
+correctness,T=256,9.14e-07,flash vs eager
+correctness,T=500,9.07e-07,flash vs eager
+correctness,causal T=256,6.22e-07,flash vs eager
+stability,large logits,2.16e-05,finite=True
+memory,T=512,eager 0 MB,"flash 0 MB, saves 0 MB"
+memory,T=1024,eager 19 MB,"flash 0 MB, saves 19 MB"
+memory,T=2048,eager 119 MB,"flash 0 MB, saves 119 MB"
+memory,T=4096,eager 511 MB,"flash 0 MB, saves 511 MB"
+speed,T=256,vectorized 2.0 ms,"0.30x vs eager, scalar was 3.8 ms"
+speed,T=512,vectorized 6.3 ms,"0.50x vs eager, scalar was 11.7 ms"
+speed,T=1024,vectorized 23.2 ms,"0.79x vs eager, scalar was 43.0 ms"
+speed,T=2048,vectorized 92.1 ms,"0.60x vs eager, scalar was 166.9 ms"
+block sweep,BR=BC=16,23.01 ms,T=1024
+block sweep,BR=BC=32,22.52 ms,T=1024
+block sweep,BR=BC=64,21.99 ms,T=1024
+block sweep,BR=BC=128,23.33 ms,T=1024
+block sweep,BR=BC=256,25.22 ms,T=1024
+causal,T=512,44% blocks skipped,1.66x faster
+causal,T=1024,47% blocks skipped,1.68x faster
+causal,T=2048,48% blocks skipped,1.91x faster

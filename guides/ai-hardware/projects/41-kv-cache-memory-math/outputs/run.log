@@ -1,0 +1,57 @@
+A. verifying the formula against tensors that exist
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Skipping import of cpp extensions due to incompatible torch version. Please upgrade to torch >= 2.11.0 (found 2.10.0+cu128).
+/home/canary/.local/lib/python3.12/site-packages/torch/cuda/__init__.py:435: UserWarning: 
+    Found GPU0 NVIDIA GeForce GTX 1070 Ti which is of cuda capability 6.1.
+    Minimum and Maximum cuda capability supported by this version of PyTorch is
+    (7.0) - (12.0)
+    
+  queued_call()
+/home/canary/.local/lib/python3.12/site-packages/torch/cuda/__init__.py:435: UserWarning: 
+    Please install PyTorch with a following CUDA
+    configurations:  12.6 following instructions at
+    https://pytorch.org/get-started/locally/
+    
+  queued_call()
+/home/canary/.local/lib/python3.12/site-packages/torch/cuda/__init__.py:435: UserWarning: 
+NVIDIA GeForce GTX 1070 Ti with CUDA capability sm_61 is not compatible with the current PyTorch installation.
+The current PyTorch install supports CUDA capabilities sm_70 sm_75 sm_80 sm_86 sm_90 sm_100 sm_120.
+If you want to use the NVIDIA GeForce GTX 1070 Ti GPU with PyTorch, please check the instructions at https://pytorch.org/get-started/locally/
+
+  queued_call()
+   formula:  2 * 24 layers * 2 kv-heads * 64 dim * 4 B = 24576 B/token
+   Hugging Face DynamicCache after 128 tokens: 3145728 B = 24576 B/token
+   this phase's paged pool: 24576 B/token   (error 0.000%)
+   torch.empty(2 GB): RSS +0 MB on allocation, +2000 MB once written
+   torch.zeros(2 GB): RSS +2000 MB on allocation, +2000 MB once written
+
+B. the table the guide asks for: Llama-3 8B, context 32768
+   batch  1:    4.29 GB of KV (  5.4% of an 80 GB H100) fits with the weights
+   batch  8:   34.36 GB of KV ( 42.9% of an 80 GB H100) fits with the weights
+   batch 32:  137.44 GB of KV (171.8% of an 80 GB H100) DOES NOT FIT
+   (128 KiB per token; the fp16 weights are 16.06 GB, so a single 32k request already costs 0.27x the whole model)
+
+C. every architecture, per token of context
+   Llama-2 7B (MHA)             512.0 KiB/tok   17.18 GB @32k  weights= 13.5 GB  KV=weights at   25.7k tokens    3 seats
+   Llama-3 8B (GQA 8)           128.0 KiB/tok    4.29 GB @32k  weights= 16.1 GB  KV=weights at  122.5k tokens   14 seats
+   Mistral 7B (GQA 8 + SWA)     128.0 KiB/tok    4.29 GB @32k  weights= 14.5 GB  KV=weights at  110.5k tokens   15 seats ->  0.54 GB with its sliding window (32/32 layers capped)
+   Qwen2.5 7B (GQA 4)            56.0 KiB/tok    1.88 GB @32k  weights= 15.2 GB  KV=weights at  265.8k tokens   34 seats
+   Gemma-2 9B (GQA 8)           336.0 KiB/tok   11.27 GB @32k  weights= 18.5 GB  KV=weights at   53.7k tokens    5 seats ->  6.34 GB with its sliding window (21/42 layers capped)
+   Phi-3 mini (MHA)             384.0 KiB/tok   12.88 GB @32k  weights=  7.6 GB  KV=weights at   19.4k tokens    5 seats ->  0.80 GB with its sliding window (32/32 layers capped)
+   DeepSeek-V2-Lite (MLA)        30.4 KiB/tok    1.02 GB @32k  weights= 31.4 GB  KV=weights at 1009.5k tokens   47 seats
+   GQA vs MHA at the same 7-8B scale: 4.0x less KV
+   MLA (DeepSeek) vs MHA per layer-token: 16384 B vs 1152 B
+
+D. what each trick buys on Llama-3 8B (80 GB card, 16.06 GB of weights)
+   fp16 KV (baseline)       128.0 KiB/tok    4.29 GB/request    14.9 concurrent 32k requests
+   fp8 KV                    64.0 KiB/tok    2.15 GB/request    29.8 concurrent 32k requests
+   int4 KV                   32.0 KiB/tok    1.07 GB/request    59.5 concurrent 32k requests
+   MHA instead of GQA       512.0 KiB/tok   17.18 GB/request     3.7 concurrent 32k requests
+   MQA (1 kv head)           16.0 KiB/tok    0.54 GB/request   119.1 concurrent 32k requests
+   sliding window 4096       16.0 KiB/tok    0.54 GB/request   119.1 concurrent 32k requests
+
+E. the crossover: at what context does KV outweigh the model?
+   Llama-3 8B: KV overtakes the fp16 weights at 122.5k tokens of *total* context -- that is 15.0 full 8k requests, or one 128k request
+   wrote /home/canary/project/tmp/claude-ai-hardware-phase8-2/guides/ai-hardware/projects/41-kv-cache-memory-math/outputs/kv_memory.png
+
+total 10s

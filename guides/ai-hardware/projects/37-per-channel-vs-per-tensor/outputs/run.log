@@ -1,0 +1,72 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Skipping import of cpp extensions due to incompatible torch version. Please upgrade to torch >= 2.11.0 (found 2.10.0+cu128).
+/home/canary/.local/lib/python3.12/site-packages/torch/cuda/__init__.py:435: UserWarning: 
+    Found GPU0 NVIDIA GeForce GTX 1070 Ti which is of cuda capability 6.1.
+    Minimum and Maximum cuda capability supported by this version of PyTorch is
+    (7.0) - (12.0)
+    
+  queued_call()
+/home/canary/.local/lib/python3.12/site-packages/torch/cuda/__init__.py:435: UserWarning: 
+    Please install PyTorch with a following CUDA
+    configurations:  12.6 following instructions at
+    https://pytorch.org/get-started/locally/
+    
+  queued_call()
+/home/canary/.local/lib/python3.12/site-packages/torch/cuda/__init__.py:435: UserWarning: 
+NVIDIA GeForce GTX 1070 Ti with CUDA capability sm_61 is not compatible with the current PyTorch installation.
+The current PyTorch install supports CUDA capabilities sm_70 sm_75 sm_80 sm_86 sm_90 sm_100 sm_120.
+If you want to use the NVIDIA GeForce GTX 1070 Ti GPU with PyTorch, please check the instructions at https://pytorch.org/get-started/locally/
+
+  queued_call()
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights:  71%|███████   | 206/290 [00:00<00:00, 2032.75it/s]Loading weights: 100%|██████████| 290/290 [00:00<00:00, 2099.52it/s]
+=== A. The dynamic range inside one weight matrix ===
+  layers.12.mlp.down_proj  shape (896, 4864)
+  |w| max over the whole tensor : 0.4395
+  biggest output channel        : 0.4395
+  median  output channel        : 0.0869
+  smallest output channel       : 0.0317
+  -> the loudest channel is 13.8x the quietest one.
+     One scale for the whole tensor is set by the loudest channel, so the quietest
+     channel only gets 0.51 of INT4's 7 positive levels to work with.
+  Within a single output channel, the loudest group of 128 is on average
+     2.4x the quietest -- which is what per-group scales pick up.
+
+=== B. Quality at every granularity (round-to-nearest INT4) ===
+  fp32 baseline: ppl 18.872
+  INT4 per-tensor          ppl 83192488.000    4.00 bits/weight
+  INT4 per-channel         ppl    44.456    4.01 bits/weight
+  INT4 group 256           ppl    28.984    4.07 bits/weight
+  INT4 group 128           ppl    25.759    4.12 bits/weight
+  INT4 group 64            ppl    23.108    4.25 bits/weight
+  INT4 group 32            ppl    21.882    4.50 bits/weight
+  INT4 group 128 asym      ppl    22.589    4.25 bits/weight
+  INT4 per-channel asym    ppl    31.574    4.03 bits/weight
+  INT3 per-tensor          ppl 3491772.000    3.00 bits/weight
+  INT3 per-channel         ppl 240732.438    3.01 bits/weight
+  INT3 group 256           ppl  1600.408    3.07 bits/weight
+  INT3 group 128           ppl   259.675    3.12 bits/weight
+  INT3 group 64            ppl   160.355    3.25 bits/weight
+  INT3 group 32            ppl   101.162    3.50 bits/weight
+  INT3 group 128 asym      ppl    74.535    3.25 bits/weight
+  INT3 per-channel asym    ppl  2110.253    3.03 bits/weight
+
+=== C. What the extra scales cost at inference time ===
+  per-tensor     dequantize+matmul    6.05 ms
+  per-channel    dequantize+matmul    5.91 ms
+  group 128      dequantize+matmul    5.88 ms
+  group 32       dequantize+matmul    5.87 ms
+  plain fp32     matmul               4.03 ms
+  finest granularity costs 1.00x the coarsest, and 1.50x a plain fp32 matmul
+
+=== D. The same question for activations ===
+  activation tensor (512, 4864) (tokens x channels)
+  channel spread (max/median):     19.3x
+  token   spread (max/median):      5.1x
+  INT8 activations, per-tensor   relative error 0.11914
+  INT8 activations, per-token    relative error 0.02923
+  INT8 activations, per-channel  relative error 0.01000
+  Activations are quantized per-token in practice: a per-channel scale would
+  have to be known before the token arrives, and it is not.
+wrote /home/canary/project/tmp/claude-ai-hardware-phase7/guides/ai-hardware/projects/37-per-channel-vs-per-tensor/outputs/findings.json
+
+total 184s

@@ -1,0 +1,42 @@
+[
+ {
+  "leak_rate": 0.0,
+  "accuracy": 0.34285714285714286,
+  "n_leaked": 0,
+  "detector_recall": 0.0,
+  "reworded_recall": 0.0,
+  "image_only_recall": 0.0
+ },
+ {
+  "leak_rate": 0.1,
+  "accuracy": 0.38571428571428573,
+  "n_leaked": 9,
+  "detector_recall": 0.1111111111111111,
+  "reworded_recall": 0.0,
+  "image_only_recall": 0.0
+ },
+ {
+  "leak_rate": 0.25,
+  "accuracy": 0.42857142857142855,
+  "n_leaked": 23,
+  "detector_recall": 0.17391304347826086,
+  "reworded_recall": 0.6,
+  "image_only_recall": 0.0
+ },
+ {
+  "leak_rate": 0.5,
+  "accuracy": 0.5571428571428572,
+  "n_leaked": 38,
+  "detector_recall": 0.18421052631578946,
+  "reworded_recall": 0.5555555555555556,
+  "image_only_recall": 0.0
+ },
+ {
+  "leak_rate": 1.0,
+  "accuracy": 0.7,
+  "n_leaked": 70,
+  "detector_recall": 0.2714285714285714,
+  "reworded_recall": 0.5555555555555556,
+  "image_only_recall": 0.0
+ }
+]

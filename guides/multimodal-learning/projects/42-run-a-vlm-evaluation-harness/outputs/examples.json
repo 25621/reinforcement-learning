@@ -1,0 +1,82 @@
+{
+ "pope-random": [
+  {
+   "question": "Is there a dog in the image? Answer yes or no.",
+   "target": "yes"
+  },
+  {
+   "question": "Is there a kitchen in the image? Answer yes or no.",
+   "target": "no"
+  }
+ ],
+ "pope-adversarial": [
+  {
+   "question": "Is there a dog in the image? Answer yes or no.",
+   "target": "yes"
+  },
+  {
+   "question": "Is there a person in the image? Answer yes or no.",
+   "target": "no"
+  }
+ ],
+ "mmbench-mini": [
+  {
+   "question": "Which of these is in the image?\nA. dog\nB. window\nC. television\nD. chair\nAnswer with the option's letter from the given choices directly.",
+   "target": "A"
+  },
+  {
+   "question": "Which of these is in the image?\nA. window\nB. television\nC. chair\nD. dog\nAnswer with the option's letter from the given choices directly.",
+   "target": "D"
+  }
+ ],
+ "caption-match": [
+  {
+   "question": "Which caption describes the image?\nA. A traffic light over a street surrounded by tall buildings.\nB. A traffic light over a buildings surrounded by tall street.\nC. A traffic light over a bicycle surrounded by tall buildings.\nD. A traffic light beneath a street surrounded by tall buildings.\nAnswer with the option's letter from the given choices directly.",
+   "target": "A"
+  },
+  {
+   "question": "Which caption describes the image?\nA. A traffic light over a buildings surrounded by tall street.\nB. A traffic light over a bicycle surrounded by tall buildings.\nC. A traffic light beneath a street surrounded by tall buildings.\nD. A traffic light over a street surrounded by tall buildings.\nAnswer with the option's letter from the given choices directly.",
+   "target": "D"
+  }
+ ],
+ "ocr-mini": [
+  {
+   "question": "What is the word written in the image? Answer with the single word.",
+   "target": "mirror"
+  },
+  {
+   "question": "What is the word written in the image? Answer with the single word.",
+   "target": "ticket"
+  }
+ ],
+ "count-mini": [
+  {
+   "question": "How many red circles are in the image? Answer with a number.",
+   "target": "3"
+  },
+  {
+   "question": "How many blue circles are in the image? Answer with a number.",
+   "target": "3"
+  }
+ ],
+ "spatial-mini": [
+  {
+   "question": "Is the dog on the left or the right side of the image? Answer left or right.",
+   "target": "left"
+  },
+  {
+   "question": "Is the street on the left or the right side of the image? Answer left or right.",
+   "target": "right"
+  }
+ ],
+ "caption-gen": [
+  {
+   "question": "Describe the image in one short sentence.",
+   "target": "This wire metal rack holds several pairs of shoes and sandals"
+  },
+  {
+   "question": "Describe the image in one short sentence.",
+   "target": "A traffic light over a street surrounded by tall buildings."
+  }
+ ]
+}

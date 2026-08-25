@@ -1,0 +1,419 @@
+{
+  "setup": {
+    "model": "Qwen/Qwen2.5-0.5B-Instruct",
+    "threads": 6,
+    "window": 512,
+    "eval_windows": 7,
+    "base_ppl": 18.90739435699662,
+    "mmlu_n": 80
+  },
+  "A": {
+    "levels": [
+      -6.0,
+      -4.0,
+      -3.0,
+      -2.0,
+      -1.5,
+      -1.0,
+      -0.5,
+      0.0,
+      0.5,
+      1.0,
+      1.5,
+      2.0,
+      3.0,
+      4.0,
+      6.0
+    ],
+    "positive": [
+      0.5,
+      1.0,
+      1.5,
+      2.0,
+      3.0,
+      4.0,
+      6.0
+    ],
+    "gaps": [
+      0.5,
+      0.5,
+      0.5,
+      1.0,
+      1.0,
+      2.0
+    ],
+    "max": 6.0,
+    "dynamic_range": 12.0,
+    "probe": {
+      "0.24": 0.0,
+      "0.26": 0.5,
+      "0.9": 1.0,
+      "1.3": 1.5,
+      "2.6": 3.0,
+      "5.0": 4.0,
+      "7.0": 6.0,
+      "-3.4": -3.0
+    },
+    "int4_levels": 16,
+    "int4_gap": "uniform"
+  },
+  "B": {
+    "rows": [
+      {
+        "block": 16,
+        "scale_fmt": "e8m0",
+        "ppl": 26.678488537807684,
+        "agree": 0.6922001838684082,
+        "ppl_ratio": 1.4110082031443638,
+        "eff_bits": 4.5
+      },
+      {
+        "block": 16,
+        "scale_fmt": "e8m0-up",
+        "ppl": 23.47350382992649,
+        "agree": 0.7461559772491455,
+        "ppl_ratio": 1.2414986108987671,
+        "eff_bits": 4.5
+      },
+      {
+        "block": 16,
+        "scale_fmt": "e4m3",
+        "ppl": 23.498272272787855,
+        "agree": 0.7567794322967529,
+        "ppl_ratio": 1.242808598007181,
+        "eff_bits": 4.5
+      },
+      {
+        "block": 32,
+        "scale_fmt": "e8m0",
+        "ppl": 26.182407431994974,
+        "agree": 0.6975118517875671,
+        "ppl_ratio": 1.3847707906037439,
+        "eff_bits": 4.25
+      },
+      {
+        "block": 32,
+        "scale_fmt": "e8m0-up",
+        "ppl": 24.035084460512532,
+        "agree": 0.736650824546814,
+        "ppl_ratio": 1.2712002514306489,
+        "eff_bits": 4.25
+      },
+      {
+        "block": 32,
+        "scale_fmt": "e4m3",
+        "ppl": 23.37988043958851,
+        "agree": 0.7556611895561218,
+        "ppl_ratio": 1.2365469296374445,
+        "eff_bits": 4.25
+      },
+      {
+        "block": 32,
+        "scale_fmt": "fp32",
+        "ppl": 22.087694204664835,
+        "agree": 0.7852949500083923,
+        "ppl_ratio": 1.1682040257700215,
+        "eff_bits": 4.25
+      },
+      {
+        "block": 128,
+        "scale_fmt": "e8m0",
+        "ppl": 26.45933611955044,
+        "agree": 0.6935979723930359,
+        "ppl_ratio": 1.399417371847393,
+        "eff_bits": 4.0625
+      },
+      {
+        "block": 128,
+        "scale_fmt": "e8m0-up",
+        "ppl": 27.170454904605155,
+        "agree": 0.6838132739067078,
+        "ppl_ratio": 1.4370279897690301,
+        "eff_bits": 4.0625
+      },
+      {
+        "block": 128,
+        "scale_fmt": "e4m3",
+        "ppl": 23.00050804333569,
+        "agree": 0.7598546147346497,
+        "ppl_ratio": 1.2164821661332952,
+        "eff_bits": 4.0625
+      }
+    ],
+    "int4": [
+      {
+        "group": 32,
+        "ppl": 21.63946774964899,
+        "agree": 0.8079395890235901,
+        "ppl_ratio": 1.1444976151164572,
+        "eff_bits": 5.0
+      },
+      {
+        "group": 128,
+        "ppl": 23.076390832345943,
+        "agree": 0.747553825378418,
+        "ppl_ratio": 1.2204955583320025,
+        "eff_bits": 4.25
+      }
+    ],
+    "base_ppl": 18.90739435699662
+  },
+  "C": {
+    "rows": [
+      {
+        "plan": "BF16 (baseline)",
+        "ppl": 18.90739435699662,
+        "agree": 1.0,
+        "ppl_ratio": 1.0,
+        "bits": 16.0,
+        "gib_70b": 131.4140625
+      },
+      {
+        "plan": "FP8 e4m3 weights",
+        "ppl": 19.102076698756168,
+        "agree": 0.949958086013794,
+        "ppl_ratio": 1.0102966245947849,
+        "bits": 8.0,
+        "gib_70b": 65.70703125
+      },
+      {
+        "plan": "INT8 per-channel",
+        "ppl": 18.947101615391045,
+        "agree": 0.9787531495094299,
+        "ppl_ratio": 1.0021000915115377,
+        "bits": 8.0,
+        "gib_70b": 65.70703125
+      },
+      {
+        "plan": "MXFP4 (e8m0 round-to-nearest)",
+        "ppl": 26.182407431994974,
+        "agree": 0.6975118517875671,
+        "ppl_ratio": 1.3847707906037439,
+        "bits": 4.25,
+        "gib_70b": 34.9068603515625
+      },
+      {
+        "plan": "MXFP4 (e8m0 round-up)",
+        "ppl": 24.035084460512532,
+        "agree": 0.736650824546814,
+        "ppl_ratio": 1.2712002514306489,
+        "bits": 4.25,
+        "gib_70b": 34.9068603515625
+      },
+      {
+        "plan": "NVFP4 (block 16, e4m3, 2-level)",
+        "ppl": 21.61475835551343,
+        "agree": 0.8112943768501282,
+        "ppl_ratio": 1.143190751057401,
+        "bits": 4.5,
+        "gib_70b": 36.960205078125
+      },
+      {
+        "plan": "INT4 g128 (RTN)",
+        "ppl": 23.076390832345943,
+        "agree": 0.747553825378418,
+        "ppl_ratio": 1.2204955583320025,
+        "bits": 4.25,
+        "gib_70b": 34.9068603515625
+      },
+      {
+        "plan": "INT4 g128 + AWQ",
+        "ppl": 21.458173679293683,
+        "agree": 0.8034666180610657,
+        "ppl_ratio": 1.1349090876370893,
+        "bits": 4.25,
+        "gib_70b": 34.9068603515625
+      },
+      {
+        "plan": "MXFP4 round-up + AWQ",
+        "ppl": 22.43884332640831,
+        "agree": 0.7629298567771912,
+        "ppl_ratio": 1.1867760783285768,
+        "bits": 4.25,
+        "gib_70b": 34.9068603515625
+      },
+      {
+        "plan": "NVFP4 + AWQ",
+        "ppl": 20.843917480275472,
+        "agree": 0.837293803691864,
+        "ppl_ratio": 1.1024214699664445,
+        "bits": 4.5,
+        "gib_70b": 36.960205078125
+      }
+    ],
+    "base_ppl": 18.90739435699662
+  },
+  "D": {
+    "hardware": {
+      "H100-SXM": {
+        "hbm_gb": 80,
+        "bw_TBs": 3.35,
+        "bf16_tflops": 989,
+        "fp8_tflops": 1979,
+        "fp4_tflops": null
+      },
+      "B200": {
+        "hbm_gb": 180,
+        "bw_TBs": 8.0,
+        "bf16_tflops": 2250,
+        "fp8_tflops": 4500,
+        "fp4_tflops": 9000
+      }
+    },
+    "rows": [
+      {
+        "gpu": "H100-SXM",
+        "plan": "bf16",
+        "gib_70b": 131.4140625,
+        "cards": 2,
+        "tflops": 989,
+        "decode_ms_1user_2k": 21.060414204179104
+      },
+      {
+        "gpu": "H100-SXM",
+        "plan": "fp8",
+        "gib_70b": 65.70703125,
+        "cards": 1,
+        "tflops": 1979,
+        "decode_ms_1user_2k": 21.060414204179104
+      },
+      {
+        "gpu": "H100-SXM",
+        "plan": "fp4",
+        "gib_70b": 34.9068603515625,
+        "cards": 1,
+        "tflops": null,
+        "decode_ms_1user_2k": null
+      },
+      {
+        "gpu": "B200",
+        "plan": "bf16",
+        "gib_70b": 131.4140625,
+        "cards": 1,
+        "tflops": 2250,
+        "decode_ms_1user_2k": 17.638096896
+      },
+      {
+        "gpu": "B200",
+        "plan": "fp8",
+        "gib_70b": 65.70703125,
+        "cards": 1,
+        "tflops": 4500,
+        "decode_ms_1user_2k": 8.819048448
+      },
+      {
+        "gpu": "B200",
+        "plan": "fp4",
+        "gib_70b": 34.9068603515625,
+        "cards": 1,
+        "tflops": 9000,
+        "decode_ms_1user_2k": 4.685119488
+      }
+    ],
+    "note": "arithmetic from published specs; no Blackwell on this box"
+  },
+  "E": {
+    "effective_bits": {
+      "MXFP4 (block 32, 8-bit scale)": 4.25,
+      "NVFP4 (block 16, 8-bit scale)": 4.5,
+      "INT4 group-128 (fp16 scale+zero)": 4.25,
+      "INT4 group-32 (fp16 scale+zero)": 5.0
+    },
+    "two_level": [
+      {
+        "two_level": false,
+        "ppl": 23.498272272787855,
+        "agree": 0.7567794322967529
+      },
+      {
+        "two_level": true,
+        "ppl": 21.61475835551343,
+        "agree": 0.8112943768501282
+      }
+    ],
+    "head": [
+      {
+        "plan": "head left in fp32",
+        "ppl": 20.843917480275472,
+        "agree": 0.837293803691864
+      },
+      {
+        "plan": "head in FP4 too",
+        "ppl": 23.961721081536396,
+        "agree": 0.7221134901046753
+      }
+    ],
+    "block_stats": [
+      {
+        "block": 16,
+        "mean_outlier_ratio": 3.7091355323791504,
+        "p99_outlier_ratio": 9.404691696166992,
+        "rel_mse": 0.009570876136422157
+      },
+      {
+        "block": 32,
+        "mean_outlier_ratio": 3.975442409515381,
+        "p99_outlier_ratio": 8.762991905212402,
+        "rel_mse": 0.010715560056269169
+      },
+      {
+        "block": 128,
+        "mean_outlier_ratio": 4.751909255981445,
+        "p99_outlier_ratio": 10.877836227416992,
+        "rel_mse": 0.012717865407466888
+      }
+    ]
+  },
+  "F": {
+    "baseline_mmlu": {
+      "acc": 0.4375,
+      "n": 80,
+      "stderr": 0.0554632479665589
+    },
+    "rows": [
+      {
+        "plan": "FP8 e4m3 weights",
+        "mmlu": 0.4375,
+        "ppl_ratio": 1.0102966245947849,
+        "mmlu_drop_pts": 0.0,
+        "shadow_agree": 0.949958086013794,
+        "fails": [
+          "shadow"
+        ],
+        "verdict": "BLOCK"
+      },
+      {
+        "plan": "MXFP4 round-up + AWQ",
+        "mmlu": 0.45,
+        "ppl_ratio": 1.1867760783285768,
+        "mmlu_drop_pts": -1.250000000000001,
+        "shadow_agree": 0.7629298567771912,
+        "fails": [
+          "perplexity",
+          "shadow"
+        ],
+        "verdict": "BLOCK"
+      },
+      {
+        "plan": "NVFP4 + AWQ",
+        "mmlu": 0.325,
+        "ppl_ratio": 1.1024214699664445,
+        "mmlu_drop_pts": 11.249999999999998,
+        "shadow_agree": 0.837293803691864,
+        "fails": [
+          "perplexity",
+          "mmlu",
+          "shadow"
+        ],
+        "verdict": "BLOCK"
+      }
+    ],
+    "mmlu_n": 80,
+    "gate": {
+      "ppl": 1.05,
+      "mmlu": 8.4,
+      "shadow": 0.95
+    }
+  },
+  "wall_s": 497.9
+}

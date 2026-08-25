@@ -749,9 +749,9 @@ The final unlock. PyTorch's source code is large but well-organized. Once you ca
 |---------|-------------|------------|
 | [Trace one op end to end](projects/53-trace-one-op-end-to-end/README.md) | Pick `torch.add`; trace from Python call → dispatcher → CPU kernel | ⭐⭐⭐⭐ |
 | [Read `native_functions.yaml`](projects/54-read-native-functions-yaml/README.md) | Find five ops you use daily; understand their dispatch entries | ⭐⭐⭐ |
-| [Build PyTorch from source](projects/55-build-pytorch-from-source/README.md) | At least once, to demystify it | ⭐⭐⭐⭐ |
-| [Patch and rebuild](projects/56-patch-and-rebuild/README.md) | Add a `printf` to a CUDA kernel, rebuild, see your patch run | ⭐⭐⭐⭐ |
-| [Fix a "good first issue"](projects/57-fix-a-good-first-issue/README.md) | Pick one from the PyTorch GitHub issue tracker | ⭐⭐⭐⭐⭐ |
+| [Build PyTorch from source](projects/55-build-pytorch-from-source/README.md) | Run the build's codegen stage for real; measure what the rest would cost | ⭐⭐⭐⭐ |
+| [Patch and rebuild](projects/56-patch-and-rebuild/README.md) | Replace a live kernel with your own and watch your `printf` fire | ⭐⭐⭐⭐ |
+| [Fix a "good first issue"](projects/57-fix-a-good-first-issue/README.md) | Hunt a real bug in your installed PyTorch, then fix and test it | ⭐⭐⭐⭐⭐ |
 
 ### Key Insight
 

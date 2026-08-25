@@ -1,0 +1,276 @@
+{
+ "base": {
+  "chair_i": 0.6013513513513513,
+  "chair_s": 0.7333333333333333,
+  "objects_named": 296,
+  "objects_hallucinated": 178,
+  "objects_per_caption": 1.9733333333333334,
+  "captions": 150,
+  "seconds": 17.22192096710205,
+  "mean_words": 9.306666666666667,
+  "distinct_captions": 0.66,
+  "caption_loss": 2.9174501319632147,
+  "examples": [
+   {
+    "caption": "A man is sitting on a skateboard.",
+    "hallucinated": [
+     "skateboard"
+    ],
+    "human": "A man with a snowboard next to a man with a mask."
+   },
+   {
+    "caption": "A person sitting on a couch with a TV in the background.",
+    "hallucinated": [
+     "couch",
+     "person",
+     "television"
+    ],
+    "human": "A picture of a cluttered home office desk."
+   },
+   {
+    "caption": "A man is sitting on a bench with a plate of food.",
+    "hallucinated": [
+     "bench",
+     "plate"
+    ],
+    "human": "Two girls are posing outdoors under an umbrella for a photo."
+   },
+   {
+    "caption": "A man sitting on a bench next to a train.",
+    "hallucinated": [
+     "train"
+    ],
+    "human": "Group of pedestrians walking in front of a domestic house."
+   },
+   {
+    "caption": "A large white and black motorcycle with a white and black roof and a white and black tail light.",
+    "hallucinated": [
+     "motorcycle"
+    ],
+    "human": "Car parked in the parking lot next to the pier"
+   },
+   {
+    "caption": "A man is standing in front of a building.",
+    "hallucinated": [
+     "building"
+    ],
+    "human": "An old black and white photo of a city street with a large cathedral on the right hand side."
+   },
+   {
+    "caption": "A man is riding a skateboard.",
+    "hallucinated": [
+     "skateboard"
+    ],
+    "human": "Person on skis on a snow covered path."
+   },
+   {
+    "caption": "A man standing on a beach with a surfboard in the water.",
+    "hallucinated": [
+     "beach",
+     "person",
+     "surfboard",
+     "water"
+    ],
+    "human": "A large airplane is on the airport runway."
+   }
+  ]
+ },
+ "dpo": {
+  "chair_i": 0.5581395348837209,
+  "chair_s": 0.47333333333333333,
+  "objects_named": 129,
+  "objects_hallucinated": 72,
+  "objects_per_caption": 0.86,
+  "captions": 150,
+  "seconds": 11.72371220588684,
+  "mean_words": 2.9,
+  "distinct_captions": 0.3466666666666667,
+  "caption_loss": 5.066045920807415,
+  "examples": [
+   {
+    "caption": "a skateboard",
+    "hallucinated": [
+     "skateboard"
+    ],
+    "human": "A man with a snowboard next to a man with a mask."
+   },
+   {
+    "caption": "A refrigerator",
+    "hallucinated": [],
+    "human": "A picture of a cluttered home office desk."
+   },
+   {
+    "caption": "a store",
+    "hallucinated": [],
+    "human": "Two girls are posing outdoors under an umbrella for a photo."
+   },
+   {
+    "caption": "a building",
+    "hallucinated": [
+     "building"
+    ],
+    "human": "Group of pedestrians walking in front of a domestic house."
+   },
+   {
+    "caption": "a bus",
+    "hallucinated": [
+     "bus"
+    ],
+    "human": "Car parked in the parking lot next to the pier"
+   },
+   {
+    "caption": "a building",
+    "hallucinated": [
+     "building"
+    ],
+    "human": "An old black and white photo of a city street with a large cathedral on the right hand side."
+   },
+   {
+    "caption": "a man riding",
+    "hallucinated": [],
+    "human": "Person on skis on a snow covered path."
+   },
+   {
+    "caption": "a building",
+    "hallucinated": [
+     "building"
+    ],
+    "human": "A large airplane is on the airport runway."
+   }
+  ]
+ },
+ "dpo-lennorm": {
+  "chair_i": 0.5654205607476636,
+  "chair_s": 0.6133333333333333,
+  "objects_named": 214,
+  "objects_hallucinated": 121,
+  "objects_per_caption": 1.4266666666666667,
+  "captions": 150,
+  "seconds": 13.638645648956299,
+  "mean_words": 6.573333333333333,
+  "distinct_captions": 0.7066666666666667,
+  "caption_loss": 3.324211000077909,
+  "examples": [
+   {
+    "caption": "a person wearing a helmet and wearing sunglasses.",
+    "hallucinated": [],
+    "human": "A man with a snowboard next to a man with a mask."
+   },
+   {
+    "caption": "A kitchen is a room in a building.",
+    "hallucinated": [
+     "building",
+     "kitchen"
+    ],
+    "human": "A picture of a cluttered home office desk."
+   },
+   {
+    "caption": "A man wearing a hat and sunglasses.",
+    "hallucinated": [],
+    "human": "Two girls are posing outdoors under an umbrella for a photo."
+   },
+   {
+    "caption": "A building with many windows.",
+    "hallucinated": [
+     "building"
+    ],
+    "human": "Group of pedestrians walking in front of a domestic house."
+   },
+   {
+    "caption": "A large metal building with many cars parked on it.",
+    "hallucinated": [
+     "building"
+    ],
+    "human": "Car parked in the parking lot next to the pier"
+   },
+   {
+    "caption": "A man is standing in front of a building.",
+    "hallucinated": [
+     "building"
+    ],
+    "human": "An old black and white photo of a city street with a large cathedral on the right hand side."
+   },
+   {
+    "caption": "A man riding a white horse.",
+    "hallucinated": [
+     "horse"
+    ],
+    "human": "Person on skis on a snow covered path."
+   },
+   {
+    "caption": "A large train moving on a track.",
+    "hallucinated": [
+     "train"
+    ],
+    "human": "A large airplane is on the airport runway."
+   }
+  ]
+ },
+ "sft-chosen": {
+  "chair_i": 0.5263157894736842,
+  "chair_s": 0.6666666666666666,
+  "objects_named": 266,
+  "objects_hallucinated": 140,
+  "objects_per_caption": 1.7733333333333334,
+  "captions": 150,
+  "seconds": 12.513755798339844,
+  "mean_words": 8.786666666666667,
+  "distinct_captions": 0.6866666666666666,
+  "caption_loss": 2.903689862050905,
+  "examples": [
+   {
+    "caption": "A man is standing in front of a snowboard.",
+    "hallucinated": [],
+    "human": "A man with a snowboard next to a man with a mask."
+   },
+   {
+    "caption": "A man sitting on a couch with a laptop.",
+    "hallucinated": [
+     "couch",
+     "person"
+    ],
+    "human": "A picture of a cluttered home office desk."
+   },
+   {
+    "caption": "A man is wearing a black and white shirt and a black tie.",
+    "hallucinated": [],
+    "human": "Two girls are posing outdoors under an umbrella for a photo."
+   },
+   {
+    "caption": "A building with a sign that says \"Avenue\" and a building with a sign that says \"Avenue",
+    "hallucinated": [
+     "building",
+     "sign"
+    ],
+    "human": "Group of pedestrians walking in front of a domestic house."
+   },
+   {
+    "caption": "A large white and blue train with a red train carriage.",
+    "hallucinated": [
+     "train"
+    ],
+    "human": "Car parked in the parking lot next to the pier"
+   },
+   {
+    "caption": "A man is standing in front of a building.",
+    "hallucinated": [
+     "building"
+    ],
+    "human": "An old black and white photo of a city street with a large cathedral on the right hand side."
+   },
+   {
+    "caption": "A man riding a snowboard.",
+    "hallucinated": [],
+    "human": "Person on skis on a snow covered path."
+   },
+   {
+    "caption": "A large train with a train car on top.",
+    "hallucinated": [
+     "car",
+     "train"
+    ],
+    "human": "A large airplane is on the airport runway."
+   }
+  ]
+ }
+}

@@ -1,0 +1,69 @@
+section,name,value
+1. The survey: which ops disagree,matmul,max |eager - compiled| = 0.000e+00   relative 0.00e+00
+1. The survey: which ops disagree,add/mul,max |eager - compiled| = 0.000e+00   relative 0.00e+00
+1. The survey: which ops disagree,gelu,max |eager - compiled| = 4.768e-07   relative 1.02e-07
+1. The survey: which ops disagree,sum(-1),max |eager - compiled| = 2.098e-05   relative 2.61e-07
+1. The survey: which ops disagree,mean(-1),max |eager - compiled| = 2.049e-08   relative 2.61e-07
+1. The survey: which ops disagree,var(-1),max |eager - compiled| = 2.384e-07   relative 2.05e-07
+1. The survey: which ops disagree,softmax,max |eager - compiled| = 1.863e-09   relative 3.17e-08
+1. The survey: which ops disagree,logsumexp,max |eager - compiled| = 9.537e-07   relative 1.26e-07
+1. The survey: which ops disagree,layer_norm,max |eager - compiled| = 9.537e-07   relative 2.10e-07
+1. The survey: which ops disagree,fused chain,max |eager - compiled| = 6.104e-05   relative 2.37e-07
+1. The survey: which ops disagree,bit-identical ops,"2 of 10: matmul, add/mul"
+1. The survey: which ops disagree,largest relative disagreement,2.61e-07
+1. The survey: which ops disagree,float32 machine epsilon (2^-23),1.19209e-07
+1. The survey: which ops disagree,so the disagreements are,"about one unit in the last place - a rounding difference, not a logic difference"
+2. Is that a lot? Ask a more accurate calculator,sum(-1),eager err 9.554e-06 | compiled err 2.169e-05 | closer: eager
+2. Is that a lot? Ask a more accurate calculator,mean(-1),eager err 9.331e-09 | compiled err 2.118e-08 | closer: eager
+2. Is that a lot? Ask a more accurate calculator,logsumexp,eager err 4.938e-07 | compiled err 5.294e-07 | closer: eager
+2. Is that a lot? Ask a more accurate calculator,layer_norm,eager err 5.284e-07 | compiled err 7.409e-07 | closer: eager
+2. Is that a lot? Ask a more accurate calculator,fused chain,eager err 2.766e-05 | compiled err 4.798e-05 | closer: eager
+2. Is that a lot? Ask a more accurate calculator,cases where the COMPILED answer is closer to the truth,0 of 5
+2. Is that a lot? Ask a more accurate calculator,the test that settles 'is this a bug?',compute the same thing in float64 and see which one is wrong
+3. The control: eager vs eager,"max |difference|, row sum, batch 256 vs 512",0.000e+00
+3. The control: eager vs eager,"max |difference|, full sum, 1 thread vs 4",6.104e-05
+3. The control: eager vs eager,"max |difference|, contiguous vs strided view",1.144e-05
+3. The control: eager vs eager,"max |difference|, eager vs compiled",2.098e-05
+3. The control: eager vs eager,PyTorch's largest disagreement with ITSELF,6.104e-05
+3. The control: eager vs eager,torch.compile's disagreement,2.098e-05
+3. The control: eager vs eager,ratio,0.34x
+4. When a rounding difference changes the answer,class spread 1,max diff 2.29e-05 | median top-2 margin 7.75e+00 | argmax flips 0/4096 (0.00%)
+4. When a rounding difference changes the answer,class spread 0.01,max diff 1.53e-05 | median top-2 margin 7.75e-02 | argmax flips 0/4096 (0.00%)
+4. When a rounding difference changes the answer,class spread 0.0001,max diff 1.53e-05 | median top-2 margin 7.72e-04 | argmax flips 3/4096 (0.07%)
+4. When a rounding difference changes the answer,class spread 1e-06,max diff 1.53e-05 | median top-2 margin 7.63e-06 | argmax flips 412/4096 (10.06%)
+4. When a rounding difference changes the answer,flips when the classes are well separated,0 of 4096
+4. When a rounding difference changes the answer,flips when the top-2 margin is the size of the rounding difference,412 of 4096
+4. When a rounding difference changes the answer,the rule,"a rounding difference matters exactly where something downstream compares, rounds, sorts or branches - and only when the thing being compared is closer together than the difference"
+5. Narrowing a model to one layer,compile the first 0 stage(s),max diff 0.000e+00
+5. Narrowing a model to one layer,compile the first 1 stage(s),max diff 0.000e+00
+5. Narrowing a model to one layer,compile the first 2 stage(s),max diff 4.657e-09
+5. Narrowing a model to one layer,compile the first 3 stage(s),max diff 4.657e-09
+5. Narrowing a model to one layer,compile the first 4 stage(s),max diff 4.657e-09
+5. Narrowing a model to one layer,compile the first 5 stage(s),max diff 4.657e-09
+5. Narrowing a model to one layer,compile the first 6 stage(s),max diff 4.657e-09
+5. Narrowing a model to one layer,largest jump when stage k is added to the compiled prefix,"stage 1 (GELU), +4.657e-09"
+5. Narrowing a model to one layer,compiling the whole model,4.657e-09
+5. Narrowing a model to one layer,why prefix-bisection and not per-op,"the compiler FUSES ops, so an individual op's output no longer exists inside the compiled kernel - the smallest thing you can compare is a boundary you kept"
+"6. Randomness: a real, large, correct-looking difference",max |eager - compiled| with dropout,9.3165
+"6. Randomness: a real, large, correct-looking difference",fraction of elements that differ,0.5021
+"6. Randomness: a real, large, correct-looking difference","for comparison, the largest rounding difference in section 1",6.104e-05
+"6. Randomness: a real, large, correct-looking difference",zeros in each,"eager 0.499, compiled 0.500"
+"6. Randomness: a real, large, correct-looking difference",so both are correct dropout,they just drew different masks
+"6. Randomness: a real, large, correct-looking difference",with torch._inductor.config.fallback_random = True,max |eager - compiled| = 0.0000
+"6. Randomness: a real, large, correct-looking difference",what that flag does,"make the compiled code call the same RNG kernels eager does, instead of its own faster ones"
+"6. Randomness: a real, large, correct-looking difference",when you need it,only when comparing against an eager baseline; it costs speed and buys no correctness
+7. Reading the generated kernel,generated code captured,4170 characters
+7. Reading the generated kernel,lines of vectorised / OpenMP C++ inductor wrote for a single sum,5
+7. Reading the generated kernel,the parallel directive,#pragma omp parallel num_threads(4)
+7. Reading the generated kernel,the vector accumulator,at::vec::Vectorized<float> tmp_acc0_vec = at::vec::Vectorized<float>(0);
+7. Reading the generated kernel,the horizontal reduce at the end,"tmp_acc0 = tmp_acc0 + at::vec::vec_reduce_all<float, 1>([](at::vec::Vectorized<float>& x, at::vec::Vectorized<"
+7. Reading the generated kernel,the inner loop it generated,for(int64_t x1=static_cast<int64_t>(0L); x1<static_cast<int64_t>(1024L); x1+=static_cast<int64_t>(8L))
+7. Reading the generated kernel,what this shows,"inductor writes its own C++ loop, so the ORDER the 1024 numbers are added in is its choice, not eager's"
+7. Reading the generated kernel,eager sum,16.8 us
+7. Reading the generated kernel,compiled sum,43.1 us
+8. Deciding what you are looking at,step 1,"measure the RELATIVE difference, not the absolute one"
+8. Deciding what you are looking at,step 2,compare it to eager-vs-eager at another batch size or thread count
+8. Deciding what you are looking at,step 3,compute the same thing in float64; whoever is closer is right
+8. Deciding what you are looking at,step 4,"if the difference is far above one ulp, suspect RNG, dtype promotion, or a real bug - not fusion"
+8. Deciding what you are looking at,step 5,"bisect by compiling prefixes of your model, not individual ops"
+8. Deciding what you are looking at,verdict for every op measured here,"rounding, except dropout, which is a different random draw"

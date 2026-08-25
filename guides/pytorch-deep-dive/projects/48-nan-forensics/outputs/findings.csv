@@ -1,0 +1,74 @@
+section,name,value
+1. The crime scene,steps trained,300
+1. The crime scene,batches that contained at least one padded row,78 of 300
+1. The crime scene,first step with a non-finite GRADIENT,1
+1. The crime scene,first step with a non-finite PARAMETER,1
+1. The crime scene,first step whose LOSS is non-finite,never
+1. The crime scene,what the log printed,step 0: 0.7600; step 25: 0.6823; step 50: 0.6946; step 75: 0.6939; step 100: 0.6979; step 125: 0.6954; step 150: 0.6961; step 175: 0.6832; step 200: 0.6660; step 225: 0.6912; step 250: 0.6774; step 275: 0.6934
+1. The crime scene,loss at step 0 / final step,0.7600 / 0.6940
+1. The crime scene,"chance-level loss for 2 classes, ln(2)",0.693147
+1. The crime scene,parameters non-finite at the end,68.7%
+1. The crime scene,same run with the bug fixed: final loss,0.3896
+1. The crime scene,"accuracy, buggy run / fixed run",0.523 / 0.910
+1. The crime scene,headline,the loss curve never showed a nan; the model was already dead
+2. The spread: how far one NaN travels in one step,"fraction of parameters non-finite, no clipping",68.7%
+2. The spread: how far one NaN travels in one step,  proj.weight,100.0% non-finite
+2. The spread: how far one NaN travels in one step,  proj.bias,100.0% non-finite
+2. The spread: how far one NaN travels in one step,  head.0.weight,0.0% non-finite
+2. The spread: how far one NaN travels in one step,  head.0.bias,0.0% non-finite
+2. The spread: how far one NaN travels in one step,  head.2.weight,0.0% non-finite
+2. The spread: how far one NaN travels in one step,  head.2.bias,0.0% non-finite
+2. The spread: how far one NaN travels in one step,"fraction of parameters non-finite, WITH clip_grad_norm_(1.0)",100.0%
+3. Why clipping spreads it: the norm of a NaN is NaN,gradient tensors before clipping,1 of 3 has a single NaN entry (1 of 12 numbers)
+3. Why clipping spreads it: the norm of a NaN is NaN,total_norm returned by clip_grad_norm_,nan
+3. Why clipping spreads it: the norm of a NaN is NaN,gradient numbers non-finite AFTER clipping,12 of 12
+3. Why clipping spreads it: the norm of a NaN is NaN,error_if_nonfinite=True raises,"The total norm of order 2.0 for gradients from `parameters` is non-finite, so it cannot be"
+4. Instrument A: a forward-hook scanner,gradient numbers non-finite at the bad step,1056
+4. Instrument A: a forward-hook scanner,"modules the forward scanner flagged, up to and including that step",0
+4. Instrument A: a forward-hook scanner,verdict,"the forward pass never held a NaN, so there was nothing to see"
+4. Instrument A: a forward-hook scanner,"modules flagged on the NEXT forward, after the weights are poisoned",1 (proj first)
+4. Instrument A: a forward-hook scanner,so the scanner is one step late,"it sees the consequence, not the cause"
+5. Instrument B: torch.autograd.set_detect_anomaly,anomaly mode raised,yes
+5. Instrument B: torch.autograd.set_detect_anomaly,the exception names the BACKWARD op,RuntimeError: Function 'SqrtBackward0' returned nan values in its 0th output.
+5. Instrument B: torch.autograd.set_detect_anomaly,a separate warning carries the FORWARD traceback,True
+5. Instrument B: torch.autograd.set_detect_anomaly,forward source lines it quotes,3
+5. Instrument B: torch.autograd.set_detect_anomaly,the innermost one,"File ""run.py"", line 102, in forward"
+5. Instrument B: torch.autograd.set_detect_anomaly,the source line it prints,"return torch.where(sq > 0, torch.sqrt(sq), torch.zeros_like(sq))"
+5. Instrument B: torch.autograd.set_detect_anomaly,"step time, no instrument",0.755 ms  (1.00x)
+5. Instrument B: torch.autograd.set_detect_anomaly,"step time, forward hooks",1.064 ms  (1.41x)
+5. Instrument B: torch.autograd.set_detect_anomaly,"step time, anomaly mode",3.732 ms  (4.95x)
+6. The verdict: where() evaluates both branches,forward output of the guarded sqrt,"[0.0, 1.0, 2.0]"
+6. The verdict: where() evaluates both branches,forward contains a NaN?,False
+6. The verdict: where() evaluates both branches,gradient of the guarded sqrt,"['nan', 0.5, 0.25]"
+6. The verdict: where() evaluates both branches,gradient after the double-where fix,"[0.0, 0.5, 0.25]"
+6. The verdict: where() evaluates both branches,gradient after the clamp fix,"['0', '0.5', '0.25']"
+6. The verdict: where() evaluates both branches,d/dx sqrt(x) at x=0,inf
+6. The verdict: where() evaluates both branches,0 * inf in IEEE-754 floating point,nan
+7. A forward-visible bug: hand-rolled log-softmax,exp(120) in float32,inf
+7. A forward-visible bug: hand-rolled log-softmax,hand-rolled log_softmax forward,"['-inf', 'nan', '-inf']"
+7. A forward-visible bug: hand-rolled log-softmax,torch.log_softmax forward,"['-119.5', '0', '-123']"
+7. A forward-visible bug: hand-rolled log-softmax,difference,the hand-rolled one is nan in the FORWARD pass
+7. A forward-visible bug: hand-rolled log-softmax,forward scanner catches it,True
+7. A forward-visible bug: hand-rolled log-softmax,which instrument catches which bug,hooks: forward NaNs only | anomaly: forward AND backward-only NaNs
+8. Restoring the weights is not enough (Adam),parameters non-finite after 4 Adam steps,68.7%
+8. Restoring the weights is not enough (Adam),optimizer state tensors that are non-finite,4 of 12
+8. Restoring the weights is not enough (Adam),parameters non-finite right after restoring the weights,0.0%
+8. Restoring the weights is not enough (Adam),parameters non-finite after ONE step with a clean gradient,68.7%
+8. Restoring the weights is not enough (Adam),"same, after also rebuilding the optimizer",0.0%
+"9. Fix it, or survive it",buggy where(): final loss,0.6940
+"9. Fix it, or survive it",buggy where(): steps with a usable loss,300 of 300
+"9. Fix it, or survive it",buggy where(): accuracy,0.523
+"9. Fix it, or survive it",buggy where(): parameters non-finite at the end,68.7%
+"9. Fix it, or survive it",skip-bad-step guard: final loss,0.6425
+"9. Fix it, or survive it",skip-bad-step guard: steps with a usable loss,300 of 300
+"9. Fix it, or survive it",skip-bad-step guard: accuracy,0.742
+"9. Fix it, or survive it",skip-bad-step guard: parameters non-finite at the end,0.0%
+"9. Fix it, or survive it",skip-bad-step guard: steps skipped by the guard,78 of 300
+"9. Fix it, or survive it",clamp fix: final loss,0.3896
+"9. Fix it, or survive it",clamp fix: steps with a usable loss,300 of 300
+"9. Fix it, or survive it",clamp fix: accuracy,0.910
+"9. Fix it, or survive it",clamp fix: parameters non-finite at the end,0.0%
+"9. Fix it, or survive it",double-where fix: final loss,0.3896
+"9. Fix it, or survive it",double-where fix: steps with a usable loss,300 of 300
+"9. Fix it, or survive it",double-where fix: accuracy,0.910
+"9. Fix it, or survive it",double-where fix: parameters non-finite at the end,0.0%

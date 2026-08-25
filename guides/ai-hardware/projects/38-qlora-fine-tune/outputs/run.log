@@ -1,0 +1,77 @@
+=== A. Deriving the NF4 grid ===
+  16 levels: -1.0000, -0.6962, -0.5251, -0.3949, -0.2844, -0.1848, -0.0910, +0.0000, +0.0796, +0.1609, +0.2461, +0.3379, +0.4407, +0.5626, +0.7230, +1.0000
+  max difference from the published QLoRA table: 2.98e-07
+  on Gaussian data, block 64: INT4 rel MSE 0.01160, NF4 rel MSE 0.00846  (1.37x better)
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Skipping import of cpp extensions due to incompatible torch version. Please upgrade to torch >= 2.11.0 (found 2.10.0+cu128).
+/home/canary/.local/lib/python3.12/site-packages/torch/cuda/__init__.py:435: UserWarning: 
+    Found GPU0 NVIDIA GeForce GTX 1070 Ti which is of cuda capability 6.1.
+    Minimum and Maximum cuda capability supported by this version of PyTorch is
+    (7.0) - (12.0)
+    
+  queued_call()
+/home/canary/.local/lib/python3.12/site-packages/torch/cuda/__init__.py:435: UserWarning: 
+    Please install PyTorch with a following CUDA
+    configurations:  12.6 following instructions at
+    https://pytorch.org/get-started/locally/
+    
+  queued_call()
+/home/canary/.local/lib/python3.12/site-packages/torch/cuda/__init__.py:435: UserWarning: 
+NVIDIA GeForce GTX 1070 Ti with CUDA capability sm_61 is not compatible with the current PyTorch installation.
+The current PyTorch install supports CUDA capabilities sm_70 sm_75 sm_80 sm_86 sm_90 sm_100 sm_120.
+If you want to use the NVIDIA GeForce GTX 1070 Ti GPU with PyTorch, please check the instructions at https://pytorch.org/get-started/locally/
+
+  queued_call()
+Loading weights:   0%|          | 0/272 [00:00<?, ?it/s]Loading weights: 100%|██████████| 272/272 [00:00<00:00, 3716.05it/s]
+
+=== B. Bits per weight, once the scales are counted ===
+  NF4, one FP32 scale per 64 weights : 4.500 bits/weight
+  + double quantization (INT8 scales)     : 4.127 bits/weight
+  saving on 106 M quantized weights: 5.0 MB
+  measured error on one real weight matrix: 3.431e-04 -> 3.436e-04 (+0.15% from double quantization)
+[transformers] Token indices sequence length is longer than the specified maximum sequence length for this model (40556 > 8192). Running this sequence through the model will result in indexing errors
+
+  before any fine-tuning, the model scores 9.762 perplexity on held-out Python
+  after NF4 quantization but before any training: 11.860 (+21.5%)
+
+=== C. Three ways to fine-tune the same model ===
+Loading weights:   0%|          | 0/272 [00:00<?, ?it/s]Loading weights: 100%|██████████| 272/272 [00:00<00:00, 3854.50it/s]
+/home/canary/project/tmp/claude-ai-hardware-phase7/guides/ai-hardware/projects/38-qlora-fine-tune/run.py:188: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:836.)
+  curve.append((step, float(loss)))
+  full   trainable 134.515 M (100.00%)  code ppl   6.706  total  3479.8 MB  2.57 s/step
+Loading weights:   0%|          | 0/272 [00:00<?, ?it/s]Loading weights: 100%|██████████| 272/272 [00:00<00:00, 3614.56it/s]
+  lora   trainable   0.922 M ( 0.68%)  code ppl   8.943  total  1410.3 MB  1.43 s/step
+Loading weights:   0%|          | 0/272 [00:00<?, ?it/s]Loading weights: 100%|██████████| 272/272 [00:00<00:00, 3250.23it/s]
+  qlora  trainable   0.922 M ( 0.68%)  code ppl  10.030  total  1217.0 MB  1.46 s/step
+
+=== D. Where the memory goes ===
+  mode      weights    grads  optimizer  activations     total
+  full       538.1M   538.1M    1076.1M      1327.6M   3479.8M
+  lora       272.7M     3.7M       7.4M      1126.6M   1410.3M
+  qlora       79.4M     3.7M       7.4M      1126.6M   1217.0M
+  QLoRA needs 2.86x less than a full fine-tune of the same model.
+
+=== D2. Step time, measured round-robin ===
+Loading weights:   0%|          | 0/272 [00:00<?, ?it/s]Loading weights: 100%|██████████| 272/272 [00:00<00:00, 3613.23it/s]
+Loading weights:   0%|          | 0/272 [00:00<?, ?it/s]Loading weights: 100%|██████████| 272/272 [00:00<00:00, 3207.87it/s]
+Loading weights:   0%|          | 0/272 [00:00<?, ?it/s]Loading weights: 100%|██████████| 272/272 [00:00<00:00, 3040.63it/s]
+  full      2.22 s/step   (1.00x full fine-tune)
+  lora      1.42 s/step   (0.64x full fine-tune)
+  qlora     1.35 s/step   (0.61x full fine-tune)
+  Training 0.68% of the parameters does NOT make the step 100x cheaper:
+  the backward pass still traverses every frozen layer, because the *inputs* of
+  each layer need gradients even when its weights do not. Only the weight-gradient
+  and optimizer work is saved.
+  Compare these with the s/step printed in section C, which were measured
+  sequentially on a shared machine and disagree -- that is the whole reason
+  this section exists.
+
+=== E. The same accounting for a 7B model ===
+  full   weights+grads+optimizer =  112.00 GB   (does not fit 24 GB)
+  lora   weights+grads+optimizer =   14.76 GB   (fits a 24 GB card)
+  qlora  weights+grads+optimizer =    4.70 GB   (fits a 24 GB card)
+  wrote /home/canary/project/tmp/claude-ai-hardware-phase7/guides/ai-hardware/projects/38-qlora-fine-tune/outputs/qlora.png
+wrote /home/canary/project/tmp/claude-ai-hardware-phase7/guides/ai-hardware/projects/38-qlora-fine-tune/outputs/findings.json
+
+total 329s

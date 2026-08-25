@@ -1,0 +1,143 @@
+<?xml version="1.0"?>
+<!--
+  A 3-DoF arm as a hobbyist would actually export it.
+
+  Every defect below is one I have seen in a real, published, downloaded-by-
+  thousands URDF.  Nothing here is a strawman.
+
+    D1  inertia tensors are the CAD exporter's placeholder: the identity matrix.
+        A 0.6 kg forearm with ixx=iyy=izz=1 has the rotational inertia of a
+        cast-iron flywheel.
+    D2  <inertial> has no <origin>, so the centre of mass sits at the joint
+        instead of half-way down the link.
+    D3  <collision> reuses the decorative visual mesh  -  hundreds of triangles
+        where a capsule would do.
+    D4  no <dynamics> on any joint: zero damping, zero friction.
+    D5  the elbow is "continuous", i.e. no limits at all  -  it can wind up
+        forever.
+    D6  no rotor/gearbox inertia anywhere (URDF has no field for it).
+    D7  a fixed joint to a tool frame, which MuJoCo will silently weld away.
+    D8  a zero-mass sensor link.
+
+  Geometry IS right  -  link lengths and radii came from the CAD.  That is the
+  usual state of a hobby URDF: the shapes are true, the physics is invented.
+-->
+<robot name="hobby_arm">
+
+  <link name="base_link">
+    <visual>
+      <geometry><cylinder radius="0.05" length="0.04"/></geometry>
+    </visual>
+    <collision>
+      <geometry><cylinder radius="0.05" length="0.04"/></geometry>
+    </collision>
+    <inertial>
+      <mass value="1.0"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+    </inertial>
+  </link>
+
+  <!-- shoulder yaw: turns the whole arm about the vertical axis -->
+  <joint name="j_yaw" type="revolute">
+    <parent link="base_link"/>
+    <child link="link1"/>
+    <origin xyz="0 0 0.02" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="-3.14" upper="3.14" effort="20" velocity="6"/>
+    <!-- D4: no <dynamics damping="..." friction="..."/> -->
+  </joint>
+
+  <link name="link1">
+    <visual>
+      <origin xyz="0 0 0.05"/>
+      <geometry><box size="0.06 0.06 0.10"/></geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0.05"/>
+      <geometry><mesh filename="meshes/link1.obj"/></geometry>  <!-- D3 -->
+    </collision>
+    <inertial>
+      <!-- D2: no <origin>, so COM = joint origin, not 0.05 up the link -->
+      <mass value="0.50"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/> <!-- D1 -->
+    </inertial>
+  </link>
+
+  <!-- shoulder pitch -->
+  <joint name="j_shoulder" type="revolute">
+    <parent link="link1"/>
+    <child link="link2"/>
+    <origin xyz="0 0 0.10" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="-2.0" upper="2.0" effort="20" velocity="6"/>
+  </joint>
+
+  <link name="link2">
+    <visual>
+      <origin xyz="0.125 0 0" rpy="0 1.5707963 0"/>
+      <geometry><cylinder radius="0.020" length="0.25"/></geometry>
+    </visual>
+    <collision>
+      <origin xyz="0.125 0 0" rpy="0 1.5707963 0"/>
+      <geometry><mesh filename="meshes/link2.obj"/></geometry>  <!-- D3 -->
+    </collision>
+    <inertial>
+      <mass value="0.60"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+    </inertial>
+  </link>
+
+  <!-- elbow -->
+  <joint name="j_elbow" type="continuous">   <!-- D5: no limits -->
+    <parent link="link2"/>
+    <child link="link3"/>
+    <origin xyz="0.25 0 0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+
+  <link name="link3">
+    <visual>
+      <origin xyz="0.10 0 0" rpy="0 1.5707963 0"/>
+      <geometry><cylinder radius="0.018" length="0.20"/></geometry>
+    </visual>
+    <collision>
+      <origin xyz="0.10 0 0" rpy="0 1.5707963 0"/>
+      <geometry><mesh filename="meshes/link3.obj"/></geometry>  <!-- D3 -->
+    </collision>
+    <inertial>
+      <mass value="0.40"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+    </inertial>
+  </link>
+
+  <!-- D7: fixed joint to the tool frame.  MuJoCo will weld link3 and tool_link
+       into ONE body and the frame "tool_link" will stop existing. -->
+  <joint name="j_tool" type="fixed">
+    <parent link="link3"/>
+    <child link="tool_link"/>
+    <origin xyz="0.20 0 0" rpy="0 0 0"/>
+  </joint>
+
+  <link name="tool_link">
+    <inertial>
+      <mass value="0.05"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+    </inertial>
+  </link>
+
+  <!-- D8: a zero-mass link. Harmless behind a fixed joint, fatal behind a
+       moving one. -->
+  <joint name="j_cam" type="fixed">
+    <parent link="link1"/>
+    <child link="camera_link"/>
+    <origin xyz="0.04 0 0.09" rpy="0 0 0"/>
+  </joint>
+
+  <link name="camera_link">
+    <inertial>
+      <mass value="0.0"/>
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+    </inertial>
+  </link>
+
+</robot>

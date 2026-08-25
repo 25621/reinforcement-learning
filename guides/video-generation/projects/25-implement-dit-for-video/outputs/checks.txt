@@ -1,0 +1,6 @@
+patchify round trip: max error 0.00e+00 (64 tokens of 16 numbers)
+AdaLN-Zero output at init: max |out| = 0.00e+00
+RoPE relative-position check: score(t=0->1) -2.0187 vs score(t=2->3) -2.0187, diff 0.00e+00
+params (rope3d): 1,554,448
+params (learned): 1,562,640
+params (none): 1,554,448

@@ -1,0 +1,17 @@
+func: add.out(Tensor self, Tensor other, *, Scalar alpha=1, Tensor(a!) out) -> Tensor(a!)
+device_check: NoCheck
+structured: true
+structured_inherits: TensorIteratorBase
+ufunc_inner_loop:
+  Generic: add (AllAndComplex, BFloat16, Half, ComplexHalf)
+  ScalarOnly: add (Bool)
+dispatch:
+  SparseCPU, SparseMeta: add_out_sparse_cpu
+  SparseCUDA: add_out_sparse_cuda
+  SparseMPS: add_out_sparse_mps
+  SparseCsrCPU, SparseCsrMeta: add_out_sparse_compressed_cpu
+  SparseCsrCUDA: add_out_sparse_compressed_cuda
+  MkldnnCPU: mkldnn_add_out
+  MPS: add_out_mps
+  MTIA: add_out_mtia
+tags: pointwise

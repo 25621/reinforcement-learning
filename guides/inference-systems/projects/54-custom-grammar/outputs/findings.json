@@ -1,0 +1,161 @@
+{
+  "model": "Qwen/Qwen2.5-0.5B-Instruct",
+  "n_cases": 150,
+  "generic_pattern": "SELECT (COUNT\\(\\*\\)|[a-z_]+) FROM [a-z_]+ WHERE [a-z_]+ (=|>|<) ('[a-z ]+'|[0-9]+);",
+  "schema_pattern": "SELECT (COUNT\\(\\*\\)|(name|city|age|salary|department)) FROM employees WHERE (name|city|age|salary|department) (=|>|<) ('(lisbon|osaka|nairobi|helsinki|perth|research|sales|support|design)'|[0-9]+);",
+  "grammars": {
+    "generic": {
+      "states": 42,
+      "walks": 828991,
+      "build_s": 0.40556780400220305,
+      "mask_states_cached": 42
+    },
+    "schema": {
+      "states": 157,
+      "walks": 1102352,
+      "build_s": 0.35971818503458053,
+      "mask_states_cached": 157
+    }
+  },
+  "arms": {
+    "free": {
+      "has_sql": 1.0,
+      "parses": 0.8333333333333334,
+      "runs": 0.8333333333333334,
+      "bad_identifier": 0.16,
+      "correct": 0.6133333333333333,
+      "n": 150,
+      "wall_s": 86.73747958499007
+    },
+    "generic": {
+      "has_sql": 1.0,
+      "parses": 0.9,
+      "runs": 0.9,
+      "bad_identifier": 0.1,
+      "correct": 0.88,
+      "n": 150,
+      "wall_s": 54.708852714975365
+    },
+    "schema": {
+      "has_sql": 1.0,
+      "parses": 1.0,
+      "runs": 1.0,
+      "bad_identifier": 0.0,
+      "correct": 0.96,
+      "n": 150,
+      "wall_s": 52.30899927893188
+    }
+  },
+  "samples": {
+    "free": [
+      {
+        "sql": "SELECT COUNT(*) FROM employees WHERE salary > 163000;",
+        "gold": "SELECT COUNT(*) FROM employees WHERE salary > 163000;",
+        "correct": true
+      },
+      {
+        "sql": "SELECT name FROM employees WHERE department = 'support';",
+        "gold": "SELECT name FROM employees WHERE department = 'support';",
+        "correct": true
+      },
+      {
+        "sql": "SELECT T1.name FROM employees AS T1 JOIN employees AS T2 ON T1.department = T2.department WHERE T2.department = 'sales'",
+        "gold": "SELECT name FROM employees WHERE department = 'sales';",
+        "correct": false
+      },
+      {
+        "sql": "SELECT T1.name FROM employees AS T1 JOIN departments AS T2 ON T1.department_id = T2.id WHERE T2.id = (SELECT id FROM departments WHERE name = 'Research')",
+        "gold": "SELECT name FROM employees WHERE department = 'research';",
+        "correct": false
+      },
+      {
+        "sql": "SELECT count(*) FROM employees WHERE department=\"Osaka\";",
+        "gold": "SELECT COUNT(*) FROM employees WHERE city = 'osaka';",
+        "correct": false
+      },
+      {
+        "sql": "SELECT COUNT(*) FROM employees WHERE salary > 164000;",
+        "gold": "SELECT COUNT(*) FROM employees WHERE salary > 164000;",
+        "correct": true
+      }
+    ],
+    "generic": [
+      {
+        "sql": "SELECT COUNT(*) FROM employees WHERE salary > 163000;",
+        "gold": "SELECT COUNT(*) FROM employees WHERE salary > 163000;",
+        "correct": true
+      },
+      {
+        "sql": "SELECT name FROM employees WHERE department = 'support';",
+        "gold": "SELECT name FROM employees WHERE department = 'support';",
+        "correct": true
+      },
+      {
+        "sql": "SELECT name FROM employees WHERE department = 'sales';",
+        "gold": "SELECT name FROM employees WHERE department = 'sales';",
+        "correct": true
+      },
+      {
+        "sql": "SELECT name FROM employees WHERE department = 'research';",
+        "gold": "SELECT name FROM employees WHERE department = 'research';",
+        "correct": true
+      },
+      {
+        "sql": "SELECT countdistinctcity FROM employees WHERE city = 'osaka';",
+        "gold": "SELECT COUNT(*) FROM employees WHERE city = 'osaka';",
+        "correct": false
+      },
+      {
+        "sql": "SELECT COUNT(*) FROM employees WHERE salary > 164000;",
+        "gold": "SELECT COUNT(*) FROM employees WHERE salary > 164000;",
+        "correct": true
+      }
+    ],
+    "schema": [
+      {
+        "sql": "SELECT COUNT(*) FROM employees WHERE salary > 163000;",
+        "gold": "SELECT COUNT(*) FROM employees WHERE salary > 163000;",
+        "correct": true
+      },
+      {
+        "sql": "SELECT name FROM employees WHERE department = 'support';",
+        "gold": "SELECT name FROM employees WHERE department = 'support';",
+        "correct": true
+      },
+      {
+        "sql": "SELECT name FROM employees WHERE department = 'sales';",
+        "gold": "SELECT name FROM employees WHERE department = 'sales';",
+        "correct": true
+      },
+      {
+        "sql": "SELECT name FROM employees WHERE department = 'research';",
+        "gold": "SELECT name FROM employees WHERE department = 'research';",
+        "correct": true
+      },
+      {
+        "sql": "SELECT COUNT(*) FROM employees WHERE department = 'sales';",
+        "gold": "SELECT COUNT(*) FROM employees WHERE city = 'osaka';",
+        "correct": false
+      },
+      {
+        "sql": "SELECT COUNT(*) FROM employees WHERE salary > 164000;",
+        "gold": "SELECT COUNT(*) FROM employees WHERE salary > 164000;",
+        "correct": true
+      }
+    ]
+  },
+  "choice": {
+    "generic": {
+      "states": 42,
+      "forced_states": 6,
+      "median_choices": 3,
+      "max_choices": 41756
+    },
+    "schema": {
+      "states": 157,
+      "forced_states": 26,
+      "median_choices": 3,
+      "max_choices": 32
+    }
+  }
+}

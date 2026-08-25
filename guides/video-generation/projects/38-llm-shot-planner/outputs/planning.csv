@@ -1,0 +1,5 @@
+arm,json_valid,repairs_per_plan,subject_consistency,motion_variety
+zero_shot,1.0,0.0,0.3438,1.0
+few_shot,0.875,1.0,1.0,0.9688
+constrained,1.0,0.0,1.0,1.0
+random,1.0,0.0,0.3125,0.5938

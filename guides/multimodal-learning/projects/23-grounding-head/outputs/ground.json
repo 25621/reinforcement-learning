@@ -1,0 +1,445 @@
+[
+ {
+  "iou": 0.08032027653281856,
+  "acc50": 0.025,
+  "acc25": 0.11666666666666667,
+  "valid": 1.0,
+  "n_eval": 120,
+  "examples": [
+   {
+    "q": "Where is the yellow circle?",
+    "truth": [
+     0.464,
+     0.652,
+     0.746,
+     0.933
+    ],
+    "pred": [
+     0.677,
+     0.355,
+     0.903,
+     0.581
+    ],
+    "iou": 0.0
+   },
+   {
+    "q": "Where is the green triangle?",
+    "truth": [
+     0.022,
+     0.388,
+     0.304,
+     0.67
+    ],
+    "pred": [
+     0.129,
+     0.032,
+     0.387,
+     0.323
+    ],
+    "iou": 0.0
+   },
+   {
+    "q": "Where is the blue square?",
+    "truth": [
+     0.558,
+     0.438,
+     0.723,
+     0.603
+    ],
+    "pred": [
+     0.097,
+     0.581,
+     0.452,
+     0.806
+    ],
+    "iou": 0.0
+   },
+   {
+    "q": "Where is the purple square?",
+    "truth": [
+     0.281,
+     0.625,
+     0.562,
+     0.906
+    ],
+    "pred": [
+     0.677,
+     0.355,
+     0.903,
+     0.581
+    ],
+    "iou": 0.0
+   }
+  ],
+  "arm": "bins",
+  "steps": 260,
+  "bs": 8,
+  "lr": 0.002,
+  "unfreeze": 0,
+  "answer_tokens": 5,
+  "extra_params": 37440,
+  "trainable": 814272,
+  "ms_per_step": 1073.5018565104558
+ },
+ {
+  "iou": 0.0,
+  "acc50": 0.0,
+  "acc25": 0.0,
+  "valid": 0.0,
+  "n_eval": 120,
+  "examples": [
+   {
+    "q": "Where is the yellow circle?",
+    "truth": [
+     0.464,
+     0.652,
+     0.746,
+     0.933
+    ],
+    "pred": null,
+    "iou": 0.0
+   },
+   {
+    "q": "Where is the green triangle?",
+    "truth": [
+     0.022,
+     0.388,
+     0.304,
+     0.67
+    ],
+    "pred": null,
+    "iou": 0.0
+   },
+   {
+    "q": "Where is the blue square?",
+    "truth": [
+     0.558,
+     0.438,
+     0.723,
+     0.603
+    ],
+    "pred": null,
+    "iou": 0.0
+   },
+   {
+    "q": "Where is the purple square?",
+    "truth": [
+     0.281,
+     0.625,
+     0.562,
+     0.906
+    ],
+    "pred": null,
+    "iou": 0.0
+   }
+  ],
+  "arm": "digits",
+  "steps": 260,
+  "bs": 8,
+  "lr": 0.002,
+  "unfreeze": 0,
+  "answer_tokens": 19,
+  "extra_params": 37440,
+  "trainable": 814272,
+  "ms_per_step": 1309.1364640455981
+ },
+ {
+  "iou": 0.017161672744314904,
+  "acc50": 0.0,
+  "acc25": 0.025,
+  "valid": 0.425,
+  "n_eval": 120,
+  "examples": [
+   {
+    "q": "Where is the yellow circle?",
+    "truth": [
+     0.464,
+     0.652,
+     0.746,
+     0.933
+    ],
+    "pred": [
+     0.129,
+     0.645,
+     0.968,
+     0.677
+    ],
+    "iou": 0.073
+   },
+   {
+    "q": "Where is the green triangle?",
+    "truth": [
+     0.022,
+     0.388,
+     0.304,
+     0.67
+    ],
+    "pred": null,
+    "iou": 0.0
+   },
+   {
+    "q": "Where is the blue square?",
+    "truth": [
+     0.558,
+     0.438,
+     0.723,
+     0.603
+    ],
+    "pred": null,
+    "iou": 0.0
+   },
+   {
+    "q": "Where is the purple square?",
+    "truth": [
+     0.281,
+     0.625,
+     0.562,
+     0.906
+    ],
+    "pred": [
+     0.516,
+     0.645,
+     0.645,
+     0.935
+    ],
+    "iou": 0.116
+   }
+  ],
+  "arm": "blind",
+  "steps": 260,
+  "bs": 8,
+  "lr": 0.002,
+  "unfreeze": 0,
+  "answer_tokens": 5,
+  "extra_params": 37440,
+  "trainable": 814272,
+  "ms_per_step": 358.46810615979706
+ },
+ {
+  "iou": 0.053597850310334066,
+  "acc50": 0.016666666666666666,
+  "acc25": 0.09166666666666666,
+  "valid": 1.0,
+  "n_eval": 120,
+  "examples": [
+   {
+    "q": "Where is the yellow circle?",
+    "truth": [
+     0.464,
+     0.652,
+     0.746,
+     0.933
+    ],
+    "pred": [
+     0.677,
+     0.355,
+     0.935,
+     0.645
+    ],
+    "iou": 0.0
+   },
+   {
+    "q": "Where is the green triangle?",
+    "truth": [
+     0.022,
+     0.388,
+     0.304,
+     0.67
+    ],
+    "pred": [
+     0.129,
+     0.032,
+     0.419,
+     0.226
+    ],
+    "iou": 0.0
+   },
+   {
+    "q": "Where is the blue square?",
+    "truth": [
+     0.558,
+     0.438,
+     0.723,
+     0.603
+    ],
+    "pred": [
+     0.516,
+     0.645,
+     0.806,
+     0.839
+    ],
+    "iou": 0.0
+   },
+   {
+    "q": "Where is the purple square?",
+    "truth": [
+     0.281,
+     0.625,
+     0.562,
+     0.906
+    ],
+    "pred": [
+     0.677,
+     0.484,
+     0.935,
+     0.677
+    ],
+    "iou": 0.0
+   }
+  ],
+  "arm": "bins-tuned",
+  "steps": 260,
+  "bs": 8,
+  "lr": 0.002,
+  "unfreeze": 8,
+  "answer_tokens": 5,
+  "extra_params": 37440,
+  "trainable": 29135040,
+  "ms_per_step": 1239.4578447708718
+ },
+ {
+  "iou": 0.0,
+  "acc50": 0.0,
+  "acc25": 0.0,
+  "valid": 0.0,
+  "n_eval": 120,
+  "examples": [
+   {
+    "q": "Where is the yellow circle?",
+    "truth": [
+     0.464,
+     0.652,
+     0.746,
+     0.933
+    ],
+    "pred": null,
+    "iou": 0.0
+   },
+   {
+    "q": "Where is the green triangle?",
+    "truth": [
+     0.022,
+     0.388,
+     0.304,
+     0.67
+    ],
+    "pred": null,
+    "iou": 0.0
+   },
+   {
+    "q": "Where is the blue square?",
+    "truth": [
+     0.558,
+     0.438,
+     0.723,
+     0.603
+    ],
+    "pred": null,
+    "iou": 0.0
+   },
+   {
+    "q": "Where is the purple square?",
+    "truth": [
+     0.281,
+     0.625,
+     0.562,
+     0.906
+    ],
+    "pred": null,
+    "iou": 0.0
+   }
+  ],
+  "arm": "digits-tuned",
+  "steps": 260,
+  "bs": 8,
+  "lr": 0.002,
+  "unfreeze": 8,
+  "answer_tokens": 19,
+  "extra_params": 37440,
+  "trainable": 29135040,
+  "ms_per_step": 1328.5330506471487
+ },
+ {
+  "iou": 0.09676459302787611,
+  "acc50": 0.041666666666666664,
+  "acc25": 0.15833333333333333,
+  "valid": 1.0,
+  "n_eval": 120,
+  "examples": [
+   {
+    "q": "Where is the yellow circle?",
+    "truth": [
+     0.464,
+     0.652,
+     0.746,
+     0.933
+    ],
+    "pred": [
+     0.516,
+     0.645,
+     0.806,
+     0.935
+    ],
+    "iou": 0.653
+   },
+   {
+    "q": "Where is the green triangle?",
+    "truth": [
+     0.022,
+     0.388,
+     0.304,
+     0.67
+    ],
+    "pred": [
+     0.129,
+     0.032,
+     0.387,
+     0.258
+    ],
+    "iou": 0.0
+   },
+   {
+    "q": "Where is the blue square?",
+    "truth": [
+     0.558,
+     0.438,
+     0.723,
+     0.603
+    ],
+    "pred": [
+     0.129,
+     0.032,
+     0.387,
+     0.613
+    ],
+    "iou": 0.0
+   },
+   {
+    "q": "Where is the purple square?",
+    "truth": [
+     0.281,
+     0.625,
+     0.562,
+     0.906
+    ],
+    "pred": [
+     0.516,
+     0.645,
+     0.806,
+     0.935
+    ],
+    "iou": 0.08
+   }
+  ],
+  "arm": "bins-pos",
+  "steps": 260,
+  "bs": 8,
+  "lr": 0.002,
+  "unfreeze": 0,
+  "patch_pos": true,
+  "answer_tokens": 5,
+  "extra_params": 37440,
+  "trainable": 842496,
+  "ms_per_step": 1029.2748102774988
+ }
+]

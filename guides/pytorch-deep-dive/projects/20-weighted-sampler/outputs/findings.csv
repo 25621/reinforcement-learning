@@ -1,0 +1,15 @@
+section,config,value,note
+dataset,majority_share,0.88,"[7040, 640, 240, 80]"
+strategies,shuffle,0.8505,"acc 0.8505, macroF1 0.8566, sd 0.0085, recall [0.985, 0.833, 0.845, 0.739]"
+strategies,weighted,0.893,"acc 0.8930, macroF1 0.8954, sd 0.0047, recall [0.962, 0.918, 0.885, 0.807]"
+strategies,loss_weight,0.926,"acc 0.9260, macroF1 0.9267, sd 0.0050, recall [0.929, 0.946, 0.918, 0.911]"
+skewed_test,shuffle,0.9665,"balanced 0.8498, recall c3 0.6167, precision c3 0.7617, predicted share c3 0.0082 (true share 0.010)"
+skewed_test,weighted,0.9457,"balanced 0.8845, recall c3 0.7167, precision c3 0.6168, predicted share c3 0.0117 (true share 0.010)"
+skewed_test,loss_weight,0.913,"balanced 0.9545, recall c3 1.0000, precision c3 0.4149, predicted share c3 0.0247 (true share 0.010)"
+weight_length_bug,4 weights,0.25,4 distinct indices of 8000
+replacement,replacement=True,2668,"class counts [1980, 2063, 1970, 1987]"
+replacement,replacement=False,8000,"class counts [7040, 640, 240, 80]"
+replacement,num_samples=4*min_class,320,"class counts [84, 71, 71, 94]"
+replacement,rare_class_duplication,24.84,80 distinct samples in class 3
+api_traps,sampler+shuffle,ValueError,sampler option is mutually exclusive with shuffle
+api_traps,distributed_no_set_epoch,True,"with set_epoch: False; 2000 per rank, overlap 0"

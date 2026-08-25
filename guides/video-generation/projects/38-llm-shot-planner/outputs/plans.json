@@ -1,0 +1,1196 @@
+{
+ "zero_shot": [
+  {
+   "story": "a knight rescues a princess",
+   "arm": "zero_shot",
+   "raw": "```json\n[\n  {\n    \"shot\": 1,\n    \"subject\": 7,\n    \"motion\": \"right\",\n    \"caption\": \"Knight leaps into battle, sword raised, ready to save Princess\"\n  },\n  {\n    \"shot\": 2,\n    \"subject\": 8,\n    \"motion\": \"down\",\n    \"caption\": \"Knight swings his sword, preparing to strike at the princess\"\n  },\n  {\n    \"shot\": 3,\n    \"subject\": 5,\n    \"motion\": \"left\",\n    \"caption\": \"Knight moves forward, aiming to reach the princess\"\n  },\n  {\n    \"shot\": 4,\n    \"subject\": 6,\n    \"motion\": \"up\",\n    \"caption\": \"Knight lands on the princess's chest, saving her from harm\"\n  }\n]\n```",
+   "valid": true,
+   "why": [],
+   "plan": [
+    {
+     "shot": 1,
+     "subject": 7,
+     "motion": "right",
+     "caption": "Knight leaps into battle, sword raised, ready to save Princess"
+    },
+    {
+     "shot": 2,
+     "subject": 8,
+     "motion": "down",
+     "caption": "Knight swings his sword, preparing to strike at the princess"
+    },
+    {
+     "shot": 3,
+     "subject": 5,
+     "motion": "left",
+     "caption": "Knight moves forward, aiming to reach the princess"
+    },
+    {
+     "shot": 4,
+     "subject": 6,
+     "motion": "up",
+     "caption": "Knight lands on the princess's chest, saving her from harm"
+    }
+   ],
+   "repairs": 0,
+   "subject_consistency": 0.25,
+   "motion_variety": 1.0,
+   "subject": 7
+  },
+  {
+   "story": "a robot learns to dance",
+   "arm": "zero_shot",
+   "raw": "```json\n[\n  {\n    \"shot\": 1,\n    \"subject\": 0,\n    \"motion\": \"right\",\n    \"caption\": \"The robot starts moving towards the camera.\"\n  },\n  {\n    \"shot\": 2,\n    \"subject\": 0,\n    \"motion\": \"down\",\n    \"caption\": \"The robot turns to face the camera.\"\n  },\n  {\n    \"shot\": 3,\n    \"subject\": 0,\n    \"motion\": \"left\",\n    \"caption\": \"The robot continues to move away from the camera.\"\n  },\n  {\n    \"shot\": 4,\n    \"subject\": 0,\n    \"motion\": \"up\",\n    \"caption\": \"The robot stops moving and looks at the camera.\"\n  }\n]\n```\n\nThis shot list represents a sequence of four shots where the subject is always the same digit (0), and each shot shows the robot moving in a specific direction. The caption describes what happens",
+   "valid": true,
+   "why": [],
+   "plan": [
+    {
+     "shot": 1,
+     "subject": 0,
+     "motion": "right",
+     "caption": "The robot starts moving towards the camera."
+    },
+    {
+     "shot": 2,
+     "subject": 0,
+     "motion": "down",
+     "caption": "The robot turns to face the camera."
+    },
+    {
+     "shot": 3,
+     "subject": 0,
+     "motion": "left",
+     "caption": "The robot continues to move away from the camera."
+    },
+    {
+     "shot": 4,
+     "subject": 0,
+     "motion": "up",
+     "caption": "The robot stops moving and looks at the camera."
+    }
+   ],
+   "repairs": 0,
+   "subject_consistency": 1.0,
+   "motion_variety": 1.0,
+   "subject": 0
+  },
+  {
+   "story": "a cat chases a red laser dot across the kitchen",
+   "arm": "zero_shot",
+   "raw": "```json\n[\n  {\n    \"shot\": 1,\n    \"subject\": 3,\n    \"motion\": \"right\",\n    \"caption\": \"The cat leaps towards the laser dot on the countertop\"\n  },\n  {\n    \"shot\": 2,\n    \"subject\": 5,\n    \"motion\": \"down\",\n    \"caption\": \"The cat slides under the laser dot on the counter\"\n  },\n  {\n    \"shot\": 3,\n    \"subject\": 6,\n    \"motion\": \"left\",\n    \"caption\": \"The cat turns around and starts chasing the laser dot again\"\n  },\n  {\n    \"shot\": 4,\n    \"subject\": 7,\n    \"motion\": \"up\",\n    \"caption\": \"The cat catches the laser dot and runs away\"\n  }\n]\n```",
+   "valid": true,
+   "why": [],
+   "plan": [
+    {
+     "shot": 1,
+     "subject": 3,
+     "motion": "right",
+     "caption": "The cat leaps towards the laser dot on the countertop"
+    },
+    {
+     "shot": 2,
+     "subject": 5,
+     "motion": "down",
+     "caption": "The cat slides under the laser dot on the counter"
+    },
+    {
+     "shot": 3,
+     "subject": 6,
+     "motion": "left",
+     "caption": "The cat turns around and starts chasing the laser dot again"
+    },
+    {
+     "shot": 4,
+     "subject": 7,
+     "motion": "up",
+     "caption": "The cat catches the laser dot and runs away"
+    }
+   ],
+   "repairs": 0,
+   "subject_consistency": 0.25,
+   "motion_variety": 1.0,
+   "subject": 3
+  },
+  {
+   "story": "a paper plane flies across the city and lands on a roof",
+   "arm": "zero_shot",
+   "raw": "```json\n[\n  {\n    \"shot\": 1,\n    \"subject\": 5,\n    \"motion\": \"right\",\n    \"caption\": \"The paper plane flies across the city and lands on a roof\"\n  },\n  {\n    \"shot\": 2,\n    \"subject\": 6,\n    \"motion\": \"down\",\n    \"caption\": \"The paper plane continues its journey across the city\"\n  },\n  {\n    \"shot\": 3,\n    \"subject\": 7,\n    \"motion\": \"left\",\n    \"caption\": \"The paper plane reaches the roof where it lands\"\n  },\n  {\n    \"shot\": 4,\n    \"subject\": 8,\n    \"motion\": \"up\",\n    \"caption\": \"The paper plane completes its flight and lands safely\"\n  }\n]\n```",
+   "valid": true,
+   "why": [],
+   "plan": [
+    {
+     "shot": 1,
+     "subject": 5,
+     "motion": "right",
+     "caption": "The paper plane flies across the city and lands on a roof"
+    },
+    {
+     "shot": 2,
+     "subject": 6,
+     "motion": "down",
+     "caption": "The paper plane continues its journey across the city"
+    },
+    {
+     "shot": 3,
+     "subject": 7,
+     "motion": "left",
+     "caption": "The paper plane reaches the roof where it lands"
+    },
+    {
+     "shot": 4,
+     "subject": 8,
+     "motion": "up",
+     "caption": "The paper plane completes its flight and lands safely"
+    }
+   ],
+   "repairs": 0,
+   "subject_consistency": 0.25,
+   "motion_variety": 1.0,
+   "subject": 5
+  },
+  {
+   "story": "a diver swims down to a shipwreck and finds a lantern",
+   "arm": "zero_shot",
+   "raw": "```json\n[\n  {\n    \"shot\": 1,\n    \"subject\": 5,\n    \"motion\": \"down\",\n    \"caption\": \"Diver finds a lantern on the shipwreck\"\n  },\n  {\n    \"shot\": 2,\n    \"subject\": 6,\n    \"motion\": \"right\",\n    \"caption\": \"Diver ascends the ladder to reach the lantern\"\n  },\n  {\n    \"shot\": 3,\n    \"subject\": 7,\n    \"motion\": \"up\",\n    \"caption\": \"Diver retrieves the lantern from the deck\"\n  },\n  {\n    \"shot\": 4,\n    \"subject\": 8,\n    \"motion\": \"left\",\n    \"caption\": \"Diver returns to the shore after retrieving the lantern\"\n  }\n]\n```",
+   "valid": true,
+   "why": [],
+   "plan": [
+    {
+     "shot": 1,
+     "subject": 5,
+     "motion": "down",
+     "caption": "Diver finds a lantern on the shipwreck"
+    },
+    {
+     "shot": 2,
+     "subject": 6,
+     "motion": "right",
+     "caption": "Diver ascends the ladder to reach the lantern"
+    },
+    {
+     "shot": 3,
+     "subject": 7,
+     "motion": "up",
+     "caption": "Diver retrieves the lantern from the deck"
+    },
+    {
+     "shot": 4,
+     "subject": 8,
+     "motion": "left",
+     "caption": "Diver returns to the shore after retrieving the lantern"
+    }
+   ],
+   "repairs": 0,
+   "subject_consistency": 0.25,
+   "motion_variety": 1.0,
+   "subject": 5
+  },
+  {
+   "story": "a farmer walks the field at dawn and opens the gate",
+   "arm": "zero_shot",
+   "raw": "```json\n[\n  {\n    \"shot\": 1,\n    \"subject\": 5,\n    \"motion\": \"right\",\n    \"caption\": \"The farmer walks into the field, opening the gate.\"\n  },\n  {\n    \"shot\": 2,\n    \"subject\": 6,\n    \"motion\": \"down\",\n    \"caption\": \"The farmer looks around the field, taking in the morning light.\"\n  },\n  {\n    \"shot\": 3,\n    \"subject\": 7,\n    \"motion\": \"left\",\n    \"caption\": \"The farmer sees the sun rise over the horizon, preparing for the day.\"\n  },\n  {\n    \"shot\": 4,\n    \"subject\": 8,\n    \"motion\": \"up\",\n    \"caption\": \"The farmer returns to his work, ready to start the day.\"\n  }\n]\n```",
+   "valid": true,
+   "why": [],
+   "plan": [
+    {
+     "shot": 1,
+     "subject": 5,
+     "motion": "right",
+     "caption": "The farmer walks into the field, opening the gate."
+    },
+    {
+     "shot": 2,
+     "subject": 6,
+     "motion": "down",
+     "caption": "The farmer looks around the field, taking in the morning light."
+    },
+    {
+     "shot": 3,
+     "subject": 7,
+     "motion": "left",
+     "caption": "The farmer sees the sun rise over the horizon, preparing for the day."
+    },
+    {
+     "shot": 4,
+     "subject": 8,
+     "motion": "up",
+     "caption": "The farmer returns to his work, ready to start the day."
+    }
+   ],
+   "repairs": 0,
+   "subject_consistency": 0.25,
+   "motion_variety": 1.0,
+   "subject": 5
+  },
+  {
+   "story": "a detective follows a suspect through a rainy market",
+   "arm": "zero_shot",
+   "raw": "```json\n[\n  {\n    \"shot\": 1,\n    \"subject\": 7,\n    \"motion\": \"right\",\n    \"caption\": \"Detective follows a suspect through a rainy market\"\n  },\n  {\n    \"shot\": 2,\n    \"subject\": 8,\n    \"motion\": \"down\",\n    \"caption\": \"Detective watches a suspicious figure moving towards the market\"\n  },\n  {\n    \"shot\": 3,\n    \"subject\": 5,\n    \"motion\": \"left\",\n    \"caption\": \"Detective approaches the suspect at the market entrance\"\n  },\n  {\n    \"shot\": 4,\n    \"subject\": 6,\n    \"motion\": \"up\",\n    \"caption\": \"Detective confronts the suspect about the crime scene\"\n  }\n]\n```",
+   "valid": true,
+   "why": [],
+   "plan": [
+    {
+     "shot": 1,
+     "subject": 7,
+     "motion": "right",
+     "caption": "Detective follows a suspect through a rainy market"
+    },
+    {
+     "shot": 2,
+     "subject": 8,
+     "motion": "down",
+     "caption": "Detective watches a suspicious figure moving towards the market"
+    },
+    {
+     "shot": 3,
+     "subject": 5,
+     "motion": "left",
+     "caption": "Detective approaches the suspect at the market entrance"
+    },
+    {
+     "shot": 4,
+     "subject": 6,
+     "motion": "up",
+     "caption": "Detective confronts the suspect about the crime scene"
+    }
+   ],
+   "repairs": 0,
+   "subject_consistency": 0.25,
+   "motion_variety": 1.0,
+   "subject": 7
+  },
+  {
+   "story": "a comet passes the earth and disappears behind the moon",
+   "arm": "zero_shot",
+   "raw": "```json\n[\n  {\n    \"shot\": 1,\n    \"subject\": 8,\n    \"motion\": \"right\",\n    \"caption\": \"Comet streaks across sky, disappearing behind the moon\"\n  },\n  {\n    \"shot\": 2,\n    \"subject\": 7,\n    \"motion\": \"down\",\n    \"caption\": \"Comet's tail follows the path of the moon\"\n  },\n  {\n    \"shot\": 3,\n    \"subject\": 5,\n    \"motion\": \"left\",\n    \"caption\": \"Comet's head points towards the direction of the moon\"\n  },\n  {\n    \"shot\": 4,\n    \"subject\": 6,\n    \"motion\": \"up\",\n    \"caption\": \"Comet's body moves away from the moon\"\n  }\n]\n```",
+   "valid": true,
+   "why": [],
+   "plan": [
+    {
+     "shot": 1,
+     "subject": 8,
+     "motion": "right",
+     "caption": "Comet streaks across sky, disappearing behind the moon"
+    },
+    {
+     "shot": 2,
+     "subject": 7,
+     "motion": "down",
+     "caption": "Comet's tail follows the path of the moon"
+    },
+    {
+     "shot": 3,
+     "subject": 5,
+     "motion": "left",
+     "caption": "Comet's head points towards the direction of the moon"
+    },
+    {
+     "shot": 4,
+     "subject": 6,
+     "motion": "up",
+     "caption": "Comet's body moves away from the moon"
+    }
+   ],
+   "repairs": 0,
+   "subject_consistency": 0.25,
+   "motion_variety": 1.0,
+   "subject": 8
+  }
+ ],
+ "few_shot": [
+  {
+   "story": "a knight rescues a princess",
+   "arm": "few_shot",
+   "raw": "[{\"shot\": 1, \"subject\": 8, \"motion\": \"up\", \"caption\": \"the knight steps forward to rescue the princess\"}, {\"shot\": 2, \"subject\": 8, \"motion\": \"right\", \"caption\": \"he follows the castle path\"}, {\"shot\": 3, \"subject\": 8, \"motion\": \"down\", \"caption\": \"he reaches the castle door\"}, {\"shot\": 4, \"subject\": 8, \"motion\": \"left\", \"caption\": \"he approaches the princess's chamber\"}]",
+   "valid": true,
+   "why": [],
+   "plan": [
+    {
+     "shot": 1,
+     "subject": 8,
+     "motion": "up",
+     "caption": "the knight steps forward to rescue the princess"
+    },
+    {
+     "shot": 2,
+     "subject": 8,
+     "motion": "right",
+     "caption": "he follows the castle path"
+    },
+    {
+     "shot": 3,
+     "subject": 8,
+     "motion": "down",
+     "caption": "he reaches the castle door"
+    },
+    {
+     "shot": 4,
+     "subject": 8,
+     "motion": "left",
+     "caption": "he approaches the princess's chamber"
+    }
+   ],
+   "repairs": 0,
+   "subject_consistency": 1.0,
+   "motion_variety": 1.0,
+   "subject": 8
+  },
+  {
+   "story": "a robot learns to dance",
+   "arm": "few_shot",
+   "raw": "[{\"shot\": 1, \"subject\": 5, \"motion\": \"up\", \"caption\": \"the robot moves forward while spinning\"}, {\"shot\": 2, \"subject\": 5, \"motion\": \"right\", \"caption\": \"it dances gracefully around the room\"}, {\"shot\": 3, \"subject\": 5, \"motion\": \"down\", \"caption\": \"it performs a complex sequence of steps\"}, {\"shot\": 4, \"subject\": 5, \"motion\": \"left\", \"caption\": \"it continues to move forward while maintaining balance\"}]",
+   "valid": true,
+   "why": [],
+   "plan": [
+    {
+     "shot": 1,
+     "subject": 5,
+     "motion": "up",
+     "caption": "the robot moves forward while spinning"
+    },
+    {
+     "shot": 2,
+     "subject": 5,
+     "motion": "right",
+     "caption": "it dances gracefully around the room"
+    },
+    {
+     "shot": 3,
+     "subject": 5,
+     "motion": "down",
+     "caption": "it performs a complex sequence of steps"
+    },
+    {
+     "shot": 4,
+     "subject": 5,
+     "motion": "left",
+     "caption": "it continues to move forward while maintaining balance"
+    }
+   ],
+   "repairs": 0,
+   "subject_consistency": 1.0,
+   "motion_variety": 1.0,
+   "subject": 5
+  },
+  {
+   "story": "a cat chases a red laser dot across the kitchen",
+   "arm": "few_shot",
+   "raw": "[{\"shot\": 1, \"subject\": 5, \"motion\": \"right\", \"caption\": \"the cat leaps forward\"}, {\"shot\": 2, \"subject\": 5, \"motion\": \"down\", \"caption\": \"it lands on the countertop\"}, {\"shot\": 3, \"subject\": 5, \"motion\": \"left\", \"caption\": \"the laser dot flies off the counter\"}, {\"shot\": 4, \"subject\": 5, \"motion\": \"up\", \"caption\": \"the cat catches the laser dot in its mouth\"}]",
+   "valid": true,
+   "why": [],
+   "plan": [
+    {
+     "shot": 1,
+     "subject": 5,
+     "motion": "right",
+     "caption": "the cat leaps forward"
+    },
+    {
+     "shot": 2,
+     "subject": 5,
+     "motion": "down",
+     "caption": "it lands on the countertop"
+    },
+    {
+     "shot": 3,
+     "subject": 5,
+     "motion": "left",
+     "caption": "the laser dot flies off the counter"
+    },
+    {
+     "shot": 4,
+     "subject": 5,
+     "motion": "up",
+     "caption": "the cat catches the laser dot in its mouth"
+    }
+   ],
+   "repairs": 0,
+   "subject_consistency": 1.0,
+   "motion_variety": 1.0,
+   "subject": 5
+  },
+  {
+   "story": "a paper plane flies across the city and lands on a roof",
+   "arm": "few_shot",
+   "raw": "[{\"shot\": 1, \"subject\": 5, \"motion\": \"up\", \"caption\": \"the paper plane ascends through the air\"}, {\"shot\": 2, \"subject\": 5, \"motion\": \"right\", \"caption\": \"it reaches the top of a building\"}, {\"shot\": 3, \"subject\": 5, \"motion\": \"down\", \"caption\": \"it falls onto the roof\"}, {\"shot\": 4, \"subject\": 5, \"motion\": \"left\", \"caption\": \"it descends back down the street\"}]",
+   "valid": true,
+   "why": [],
+   "plan": [
+    {
+     "shot": 1,
+     "subject": 5,
+     "motion": "up",
+     "caption": "the paper plane ascends through the air"
+    },
+    {
+     "shot": 2,
+     "subject": 5,
+     "motion": "right",
+     "caption": "it reaches the top of a building"
+    },
+    {
+     "shot": 3,
+     "subject": 5,
+     "motion": "down",
+     "caption": "it falls onto the roof"
+    },
+    {
+     "shot": 4,
+     "subject": 5,
+     "motion": "left",
+     "caption": "it descends back down the street"
+    }
+   ],
+   "repairs": 0,
+   "subject_consistency": 1.0,
+   "motion_variety": 1.0,
+   "subject": 5
+  },
+  {
+   "story": "a diver swims down to a shipwreck and finds a lantern",
+   "arm": "few_shot",
+   "raw": "[{\"shot\": 1, \"subject\": 5, \"motion\": \"down\", \"caption\": \"the diver descends into the water\"}, {\"shot\": 2, \"subject\": 5, \"motion\": \"left\", \"caption\": \"it sees a shipwreck\"}, {\"shot\": 3, \"subject\": 5, \"motion\": \"down\", \"caption\": \"the diver reaches the bottom of the wreck\"}, {\"shot\": 4, \"subject\": 5, \"motion\": \"right\", \"caption\": \"it spots a lantern floating on the water\"}]",
+   "valid": true,
+   "why": [],
+   "plan": [
+    {
+     "shot": 1,
+     "subject": 5,
+     "motion": "down",
+     "caption": "the diver descends into the water"
+    },
+    {
+     "shot": 2,
+     "subject": 5,
+     "motion": "left",
+     "caption": "it sees a shipwreck"
+    },
+    {
+     "shot": 3,
+     "subject": 5,
+     "motion": "down",
+     "caption": "the diver reaches the bottom of the wreck"
+    },
+    {
+     "shot": 4,
+     "subject": 5,
+     "motion": "right",
+     "caption": "it spots a lantern floating on the water"
+    }
+   ],
+   "repairs": 0,
+   "subject_consistency": 1.0,
+   "motion_variety": 0.75,
+   "subject": 5
+  },
+  {
+   "story": "a farmer walks the field at dawn and opens the gate",
+   "arm": "few_shot",
+   "raw": "[{\"shot\": 1, \"subject\": 5, \"motion\": \"left\", \"caption\": \"the farmer walks through the wheat fields\"}, {\"shot\": 2, \"subject\": 5, \"motion\": \"right\", \"caption\": \"he sees the sun rise over the horizon\"}, {\"shot\": 3, \"subject\": 5, \"motion\": \"up\", \"caption\": \"he looks out over the rolling hills\"}, {\"shot\": 4, \"subject\": 5, \"motion\": \"down\", \"caption\": \"he hears the sound of birds chirping under the sky\"}]",
+   "valid": true,
+   "why": [],
+   "plan": [
+    {
+     "shot": 1,
+     "subject": 5,
+     "motion": "left",
+     "caption": "the farmer walks through the wheat fields"
+    },
+    {
+     "shot": 2,
+     "subject": 5,
+     "motion": "right",
+     "caption": "he sees the sun rise over the horizon"
+    },
+    {
+     "shot": 3,
+     "subject": 5,
+     "motion": "up",
+     "caption": "he looks out over the rolling hills"
+    },
+    {
+     "shot": 4,
+     "subject": 5,
+     "motion": "down",
+     "caption": "he hears the sound of birds chirping under the sky"
+    }
+   ],
+   "repairs": 0,
+   "subject_consistency": 1.0,
+   "motion_variety": 1.0,
+   "subject": 5
+  },
+  {
+   "story": "a detective follows a suspect through a rainy market",
+   "arm": "few_shot",
+   "raw": "[{\"shot\": 1, \"subject\": 8, \"motion\": \"down\", \"caption\": \"the detective walks through the market alley\"}, {\"shot\": 2, \"subject\": 8, \"motion\": \"left\", \"caption\": \"a vendor sells a bag of rice under the streetlights\"}, {\"shot\": 3, \"subject\": 8, \"motion\": \"right\", \"caption\": \"the suspect runs past the vendor\"}, {\"shot\": 4, \"subject\": 8, \"motion\": \"up\", \"caption\": \"the detective approaches the suspect\"}, {\"shot\": 5, \"subject\": 8, \"motion\": \"down\", \"caption\": \"the suspect turns around and starts walking again\"}, {\"shot\": 6, \"subject\": 8, \"motion\": \"left\", \"caption\": \"the suspect stops and looks back\"}, {\"shot\": 7, \"subject\": 8, \"motion\": \"up\",",
+   "valid": false,
+   "why": [
+    "no JSON"
+   ],
+   "plan": [
+    {
+     "shot": 1,
+     "subject": 0,
+     "motion": "right",
+     "caption": ""
+    },
+    {
+     "shot": 2,
+     "subject": 0,
+     "motion": "down",
+     "caption": ""
+    },
+    {
+     "shot": 3,
+     "subject": 0,
+     "motion": "left",
+     "caption": ""
+    },
+    {
+     "shot": 4,
+     "subject": 0,
+     "motion": "up",
+     "caption": ""
+    }
+   ],
+   "repairs": 8,
+   "subject_consistency": 1.0,
+   "motion_variety": 1.0,
+   "subject": 0
+  },
+  {
+   "story": "a comet passes the earth and disappears behind the moon",
+   "arm": "few_shot",
+   "raw": "[{\"shot\": 1, \"subject\": 8, \"motion\": \"up\", \"caption\": \"the comet streaks through the sky\"}, {\"shot\": 2, \"subject\": 8, \"motion\": \"down\", \"caption\": \"it disappears behind the moon\"}, {\"shot\": 3, \"subject\": 8, \"motion\": \"left\", \"caption\": \"it moves across the night sky\"}, {\"shot\": 4, \"subject\": 8, \"motion\": \"right\", \"caption\": \"it appears again on the horizon\"}]",
+   "valid": true,
+   "why": [],
+   "plan": [
+    {
+     "shot": 1,
+     "subject": 8,
+     "motion": "up",
+     "caption": "the comet streaks through the sky"
+    },
+    {
+     "shot": 2,
+     "subject": 8,
+     "motion": "down",
+     "caption": "it disappears behind the moon"
+    },
+    {
+     "shot": 3,
+     "subject": 8,
+     "motion": "left",
+     "caption": "it moves across the night sky"
+    },
+    {
+     "shot": 4,
+     "subject": 8,
+     "motion": "right",
+     "caption": "it appears again on the horizon"
+    }
+   ],
+   "repairs": 0,
+   "subject_consistency": 1.0,
+   "motion_variety": 1.0,
+   "subject": 8
+  }
+ ],
+ "constrained": [
+  {
+   "story": "a knight rescues a princess",
+   "arm": "constrained",
+   "raw": "",
+   "valid": true,
+   "why": [],
+   "plan": [
+    {
+     "shot": 1,
+     "subject": 1,
+     "motion": "right",
+     "caption": ""
+    },
+    {
+     "shot": 2,
+     "subject": 1,
+     "motion": "down",
+     "caption": ""
+    },
+    {
+     "shot": 3,
+     "subject": 1,
+     "motion": "left",
+     "caption": ""
+    },
+    {
+     "shot": 4,
+     "subject": 1,
+     "motion": "up",
+     "caption": ""
+    }
+   ],
+   "repairs": 0,
+   "subject_consistency": 1.0,
+   "motion_variety": 1.0,
+   "subject": 1
+  },
+  {
+   "story": "a robot learns to dance",
+   "arm": "constrained",
+   "raw": "",
+   "valid": true,
+   "why": [],
+   "plan": [
+    {
+     "shot": 1,
+     "subject": 0,
+     "motion": "right",
+     "caption": ""
+    },
+    {
+     "shot": 2,
+     "subject": 0,
+     "motion": "down",
+     "caption": ""
+    },
+    {
+     "shot": 3,
+     "subject": 0,
+     "motion": "left",
+     "caption": ""
+    },
+    {
+     "shot": 4,
+     "subject": 0,
+     "motion": "up",
+     "caption": ""
+    }
+   ],
+   "repairs": 0,
+   "subject_consistency": 1.0,
+   "motion_variety": 1.0,
+   "subject": 0
+  },
+  {
+   "story": "a cat chases a red laser dot across the kitchen",
+   "arm": "constrained",
+   "raw": "",
+   "valid": true,
+   "why": [],
+   "plan": [
+    {
+     "shot": 1,
+     "subject": 0,
+     "motion": "right",
+     "caption": ""
+    },
+    {
+     "shot": 2,
+     "subject": 0,
+     "motion": "down",
+     "caption": ""
+    },
+    {
+     "shot": 3,
+     "subject": 0,
+     "motion": "left",
+     "caption": ""
+    },
+    {
+     "shot": 4,
+     "subject": 0,
+     "motion": "up",
+     "caption": ""
+    }
+   ],
+   "repairs": 0,
+   "subject_consistency": 1.0,
+   "motion_variety": 1.0,
+   "subject": 0
+  },
+  {
+   "story": "a paper plane flies across the city and lands on a roof",
+   "arm": "constrained",
+   "raw": "",
+   "valid": true,
+   "why": [],
+   "plan": [
+    {
+     "shot": 1,
+     "subject": 0,
+     "motion": "down",
+     "caption": ""
+    },
+    {
+     "shot": 2,
+     "subject": 0,
+     "motion": "right",
+     "caption": ""
+    },
+    {
+     "shot": 3,
+     "subject": 0,
+     "motion": "up",
+     "caption": ""
+    },
+    {
+     "shot": 4,
+     "subject": 0,
+     "motion": "left",
+     "caption": ""
+    }
+   ],
+   "repairs": 0,
+   "subject_consistency": 1.0,
+   "motion_variety": 1.0,
+   "subject": 0
+  },
+  {
+   "story": "a diver swims down to a shipwreck and finds a lantern",
+   "arm": "constrained",
+   "raw": "",
+   "valid": true,
+   "why": [],
+   "plan": [
+    {
+     "shot": 1,
+     "subject": 0,
+     "motion": "down",
+     "caption": ""
+    },
+    {
+     "shot": 2,
+     "subject": 0,
+     "motion": "right",
+     "caption": ""
+    },
+    {
+     "shot": 3,
+     "subject": 0,
+     "motion": "up",
+     "caption": ""
+    },
+    {
+     "shot": 4,
+     "subject": 0,
+     "motion": "left",
+     "caption": ""
+    }
+   ],
+   "repairs": 0,
+   "subject_consistency": 1.0,
+   "motion_variety": 1.0,
+   "subject": 0
+  },
+  {
+   "story": "a farmer walks the field at dawn and opens the gate",
+   "arm": "constrained",
+   "raw": "",
+   "valid": true,
+   "why": [],
+   "plan": [
+    {
+     "shot": 1,
+     "subject": 0,
+     "motion": "left",
+     "caption": ""
+    },
+    {
+     "shot": 2,
+     "subject": 0,
+     "motion": "down",
+     "caption": ""
+    },
+    {
+     "shot": 3,
+     "subject": 0,
+     "motion": "right",
+     "caption": ""
+    },
+    {
+     "shot": 4,
+     "subject": 0,
+     "motion": "up",
+     "caption": ""
+    }
+   ],
+   "repairs": 0,
+   "subject_consistency": 1.0,
+   "motion_variety": 1.0,
+   "subject": 0
+  },
+  {
+   "story": "a detective follows a suspect through a rainy market",
+   "arm": "constrained",
+   "raw": "",
+   "valid": true,
+   "why": [],
+   "plan": [
+    {
+     "shot": 1,
+     "subject": 0,
+     "motion": "down",
+     "caption": ""
+    },
+    {
+     "shot": 2,
+     "subject": 0,
+     "motion": "right",
+     "caption": ""
+    },
+    {
+     "shot": 3,
+     "subject": 0,
+     "motion": "up",
+     "caption": ""
+    },
+    {
+     "shot": 4,
+     "subject": 0,
+     "motion": "left",
+     "caption": ""
+    }
+   ],
+   "repairs": 0,
+   "subject_consistency": 1.0,
+   "motion_variety": 1.0,
+   "subject": 0
+  },
+  {
+   "story": "a comet passes the earth and disappears behind the moon",
+   "arm": "constrained",
+   "raw": "",
+   "valid": true,
+   "why": [],
+   "plan": [
+    {
+     "shot": 1,
+     "subject": 0,
+     "motion": "down",
+     "caption": ""
+    },
+    {
+     "shot": 2,
+     "subject": 0,
+     "motion": "right",
+     "caption": ""
+    },
+    {
+     "shot": 3,
+     "subject": 0,
+     "motion": "up",
+     "caption": ""
+    },
+    {
+     "shot": 4,
+     "subject": 0,
+     "motion": "left",
+     "caption": ""
+    }
+   ],
+   "repairs": 0,
+   "subject_consistency": 1.0,
+   "motion_variety": 1.0,
+   "subject": 0
+  }
+ ],
+ "random": [
+  {
+   "story": "a knight rescues a princess",
+   "arm": "random",
+   "raw": "",
+   "valid": true,
+   "why": [],
+   "plan": [
+    {
+     "shot": 1,
+     "subject": 2,
+     "motion": "down",
+     "caption": ""
+    },
+    {
+     "shot": 2,
+     "subject": 3,
+     "motion": "right",
+     "caption": ""
+    },
+    {
+     "shot": 3,
+     "subject": 3,
+     "motion": "left",
+     "caption": ""
+    },
+    {
+     "shot": 4,
+     "subject": 4,
+     "motion": "left",
+     "caption": ""
+    }
+   ],
+   "repairs": 0,
+   "subject_consistency": 0.25,
+   "motion_variety": 0.75,
+   "subject": 2
+  },
+  {
+   "story": "a robot learns to dance",
+   "arm": "random",
+   "raw": "",
+   "valid": true,
+   "why": [],
+   "plan": [
+    {
+     "shot": 1,
+     "subject": 1,
+     "motion": "up",
+     "caption": ""
+    },
+    {
+     "shot": 2,
+     "subject": 1,
+     "motion": "right",
+     "caption": ""
+    },
+    {
+     "shot": 3,
+     "subject": 5,
+     "motion": "up",
+     "caption": ""
+    },
+    {
+     "shot": 4,
+     "subject": 7,
+     "motion": "down",
+     "caption": ""
+    }
+   ],
+   "repairs": 0,
+   "subject_consistency": 0.5,
+   "motion_variety": 0.75,
+   "subject": 1
+  },
+  {
+   "story": "a cat chases a red laser dot across the kitchen",
+   "arm": "random",
+   "raw": "",
+   "valid": true,
+   "why": [],
+   "plan": [
+    {
+     "shot": 1,
+     "subject": 8,
+     "motion": "down",
+     "caption": ""
+    },
+    {
+     "shot": 2,
+     "subject": 7,
+     "motion": "down",
+     "caption": ""
+    },
+    {
+     "shot": 3,
+     "subject": 6,
+     "motion": "right",
+     "caption": ""
+    },
+    {
+     "shot": 4,
+     "subject": 1,
+     "motion": "right",
+     "caption": ""
+    }
+   ],
+   "repairs": 0,
+   "subject_consistency": 0.25,
+   "motion_variety": 0.5,
+   "subject": 8
+  },
+  {
+   "story": "a paper plane flies across the city and lands on a roof",
+   "arm": "random",
+   "raw": "",
+   "valid": true,
+   "why": [],
+   "plan": [
+    {
+     "shot": 1,
+     "subject": 8,
+     "motion": "left",
+     "caption": ""
+    },
+    {
+     "shot": 2,
+     "subject": 5,
+     "motion": "left",
+     "caption": ""
+    },
+    {
+     "shot": 3,
+     "subject": 3,
+     "motion": "down",
+     "caption": ""
+    },
+    {
+     "shot": 4,
+     "subject": 1,
+     "motion": "left",
+     "caption": ""
+    }
+   ],
+   "repairs": 0,
+   "subject_consistency": 0.25,
+   "motion_variety": 0.5,
+   "subject": 8
+  },
+  {
+   "story": "a diver swims down to a shipwreck and finds a lantern",
+   "arm": "random",
+   "raw": "",
+   "valid": true,
+   "why": [],
+   "plan": [
+    {
+     "shot": 1,
+     "subject": 0,
+     "motion": "down",
+     "caption": ""
+    },
+    {
+     "shot": 2,
+     "subject": 3,
+     "motion": "down",
+     "caption": ""
+    },
+    {
+     "shot": 3,
+     "subject": 9,
+     "motion": "right",
+     "caption": ""
+    },
+    {
+     "shot": 4,
+     "subject": 3,
+     "motion": "up",
+     "caption": ""
+    }
+   ],
+   "repairs": 0,
+   "subject_consistency": 0.25,
+   "motion_variety": 0.75,
+   "subject": 0
+  },
+  {
+   "story": "a farmer walks the field at dawn and opens the gate",
+   "arm": "random",
+   "raw": "",
+   "valid": true,
+   "why": [],
+   "plan": [
+    {
+     "shot": 1,
+     "subject": 7,
+     "motion": "left",
+     "caption": ""
+    },
+    {
+     "shot": 2,
+     "subject": 3,
+     "motion": "left",
+     "caption": ""
+    },
+    {
+     "shot": 3,
+     "subject": 2,
+     "motion": "left",
+     "caption": ""
+    },
+    {
+     "shot": 4,
+     "subject": 3,
+     "motion": "right",
+     "caption": ""
+    }
+   ],
+   "repairs": 0,
+   "subject_consistency": 0.25,
+   "motion_variety": 0.5,
+   "subject": 7
+  },
+  {
+   "story": "a detective follows a suspect through a rainy market",
+   "arm": "random",
+   "raw": "",
+   "valid": true,
+   "why": [],
+   "plan": [
+    {
+     "shot": 1,
+     "subject": 3,
+     "motion": "right",
+     "caption": ""
+    },
+    {
+     "shot": 2,
+     "subject": 3,
+     "motion": "left",
+     "caption": ""
+    },
+    {
+     "shot": 3,
+     "subject": 6,
+     "motion": "left",
+     "caption": ""
+    },
+    {
+     "shot": 4,
+     "subject": 5,
+     "motion": "left",
+     "caption": ""
+    }
+   ],
+   "repairs": 0,
+   "subject_consistency": 0.5,
+   "motion_variety": 0.5,
+   "subject": 3
+  },
+  {
+   "story": "a comet passes the earth and disappears behind the moon",
+   "arm": "random",
+   "raw": "",
+   "valid": true,
+   "why": [],
+   "plan": [
+    {
+     "shot": 1,
+     "subject": 3,
+     "motion": "down",
+     "caption": ""
+    },
+    {
+     "shot": 2,
+     "subject": 2,
+     "motion": "down",
+     "caption": ""
+    },
+    {
+     "shot": 3,
+     "subject": 7,
+     "motion": "up",
+     "caption": ""
+    },
+    {
+     "shot": 4,
+     "subject": 6,
+     "motion": "down",
+     "caption": ""
+    }
+   ],
+   "repairs": 0,
+   "subject_consistency": 0.25,
+   "motion_variety": 0.5,
+   "subject": 3
+  }
+ ]
+}

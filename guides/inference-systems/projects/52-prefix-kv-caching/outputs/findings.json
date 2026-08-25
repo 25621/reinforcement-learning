@@ -1,0 +1,694 @@
+{
+  "model": "Qwen/Qwen2.5-0.5B-Instruct",
+  "n_docs": 256,
+  "doc_tokens": 128,
+  "kv_bytes_per_token_fp32": 24576,
+  "build_s": 99.72410061000846,
+  "build_tokens": 33536,
+  "store_bytes_fp16": 412090368,
+  "text_bytes": 140979,
+  "bytes_ratio": 2923.062073074713,
+  "per_doc_mb_fp16": 1.609728,
+  "catalogue": 1000,
+  "catalogue_gb_fp32": 3.219456,
+  "queries": [
+    {
+      "doc": 0,
+      "prompt_tokens": 149,
+      "cached_tokens": 131,
+      "fresh_tokens": 18,
+      "cold_s": 0.3216969670029357,
+      "warm_s": 0.14994972001295537,
+      "build_s": 0.3638743630144745,
+      "max_logit_diff": 2.0503997802734375e-05,
+      "same_argmax": true
+    },
+    {
+      "doc": 1,
+      "prompt_tokens": 149,
+      "cached_tokens": 131,
+      "fresh_tokens": 18,
+      "cold_s": 0.486182281980291,
+      "warm_s": 0.1375249190023169,
+      "build_s": 0.3747287089936435,
+      "max_logit_diff": 2.002716064453125e-05,
+      "same_argmax": true
+    },
+    {
+      "doc": 2,
+      "prompt_tokens": 149,
+      "cached_tokens": 131,
+      "fresh_tokens": 18,
+      "cold_s": 0.37798090698197484,
+      "warm_s": 0.13133299397304654,
+      "build_s": 0.3877256120322272,
+      "max_logit_diff": 2.4080276489257812e-05,
+      "same_argmax": true
+    },
+    {
+      "doc": 3,
+      "prompt_tokens": 149,
+      "cached_tokens": 131,
+      "fresh_tokens": 18,
+      "cold_s": 0.4162355199223384,
+      "warm_s": 0.20636093395296484,
+      "build_s": 0.27647608204279095,
+      "max_logit_diff": 2.956390380859375e-05,
+      "same_argmax": true
+    },
+    {
+      "doc": 4,
+      "prompt_tokens": 149,
+      "cached_tokens": 131,
+      "fresh_tokens": 18,
+      "cold_s": 0.352390960091725,
+      "warm_s": 0.13288449100218713,
+      "build_s": 0.34870247496291995,
+      "max_logit_diff": 2.3365020751953125e-05,
+      "same_argmax": true
+    },
+    {
+      "doc": 5,
+      "prompt_tokens": 149,
+      "cached_tokens": 131,
+      "fresh_tokens": 18,
+      "cold_s": 0.39099966606590897,
+      "warm_s": 0.23552875802852213,
+      "build_s": 0.35993186302948743,
+      "max_logit_diff": 1.9073486328125e-05,
+      "same_argmax": true
+    },
+    {
+      "doc": 6,
+      "prompt_tokens": 149,
+      "cached_tokens": 131,
+      "fresh_tokens": 18,
+      "cold_s": 0.4260368869872764,
+      "warm_s": 0.2562304650200531,
+      "build_s": 0.5005067019956186,
+      "max_logit_diff": 1.811981201171875e-05,
+      "same_argmax": true
+    },
+    {
+      "doc": 7,
+      "prompt_tokens": 149,
+      "cached_tokens": 131,
+      "fresh_tokens": 18,
+      "cold_s": 0.40317161998245865,
+      "warm_s": 0.1456970600411296,
+      "build_s": 0.343279039952904,
+      "max_logit_diff": 2.4318695068359375e-05,
+      "same_argmax": true
+    },
+    {
+      "doc": 8,
+      "prompt_tokens": 149,
+      "cached_tokens": 131,
+      "fresh_tokens": 18,
+      "cold_s": 0.38856290897820145,
+      "warm_s": 0.16603933996520936,
+      "build_s": 0.4779401129344478,
+      "max_logit_diff": 1.811981201171875e-05,
+      "same_argmax": true
+    },
+    {
+      "doc": 9,
+      "prompt_tokens": 149,
+      "cached_tokens": 131,
+      "fresh_tokens": 18,
+      "cold_s": 0.3584661709610373,
+      "warm_s": 0.12878074601758271,
+      "build_s": 0.38165089406538755,
+      "max_logit_diff": 1.9550323486328125e-05,
+      "same_argmax": true
+    },
+    {
+      "doc": 10,
+      "prompt_tokens": 149,
+      "cached_tokens": 131,
+      "fresh_tokens": 18,
+      "cold_s": 0.37476663501001894,
+      "warm_s": 0.1357527730287984,
+      "build_s": 0.3968107959954068,
+      "max_logit_diff": 1.9073486328125e-05,
+      "same_argmax": true
+    },
+    {
+      "doc": 11,
+      "prompt_tokens": 149,
+      "cached_tokens": 131,
+      "fresh_tokens": 18,
+      "cold_s": 0.35874159599188715,
+      "warm_s": 0.29800779395736754,
+      "build_s": 0.43196892691776156,
+      "max_logit_diff": 2.1696090698242188e-05,
+      "same_argmax": true
+    },
+    {
+      "doc": 12,
+      "prompt_tokens": 149,
+      "cached_tokens": 131,
+      "fresh_tokens": 18,
+      "cold_s": 0.3907777409767732,
+      "warm_s": 0.13328414503484964,
+      "build_s": 0.3635032669408247,
+      "max_logit_diff": 1.9073486328125e-05,
+      "same_argmax": true
+    },
+    {
+      "doc": 13,
+      "prompt_tokens": 149,
+      "cached_tokens": 131,
+      "fresh_tokens": 18,
+      "cold_s": 0.3918418769026175,
+      "warm_s": 0.21105114300735295,
+      "build_s": 0.31403626094106585,
+      "max_logit_diff": 2.002716064453125e-05,
+      "same_argmax": true
+    },
+    {
+      "doc": 14,
+      "prompt_tokens": 149,
+      "cached_tokens": 131,
+      "fresh_tokens": 18,
+      "cold_s": 0.31036418699659407,
+      "warm_s": 0.19431357795838267,
+      "build_s": 0.37000582402106375,
+      "max_logit_diff": 2.002716064453125e-05,
+      "same_argmax": true
+    },
+    {
+      "doc": 15,
+      "prompt_tokens": 149,
+      "cached_tokens": 131,
+      "fresh_tokens": 18,
+      "cold_s": 0.3356131699401885,
+      "warm_s": 0.14965065696742386,
+      "build_s": 0.37621432601008564,
+      "max_logit_diff": 2.574920654296875e-05,
+      "same_argmax": true
+    },
+    {
+      "doc": 16,
+      "prompt_tokens": 149,
+      "cached_tokens": 131,
+      "fresh_tokens": 18,
+      "cold_s": 0.4057190609164536,
+      "warm_s": 0.13562761701177806,
+      "build_s": 0.38794728298671544,
+      "max_logit_diff": 3.4332275390625e-05,
+      "same_argmax": true
+    },
+    {
+      "doc": 17,
+      "prompt_tokens": 149,
+      "cached_tokens": 131,
+      "fresh_tokens": 18,
+      "cold_s": 0.5732333139749244,
+      "warm_s": 0.18659678497351706,
+      "build_s": 0.34020562504883856,
+      "max_logit_diff": 2.1457672119140625e-05,
+      "same_argmax": true
+    },
+    {
+      "doc": 18,
+      "prompt_tokens": 149,
+      "cached_tokens": 131,
+      "fresh_tokens": 18,
+      "cold_s": 0.3718742439523339,
+      "warm_s": 0.13972580002155155,
+      "build_s": 0.41566506098024547,
+      "max_logit_diff": 2.6226043701171875e-05,
+      "same_argmax": true
+    },
+    {
+      "doc": 19,
+      "prompt_tokens": 149,
+      "cached_tokens": 131,
+      "fresh_tokens": 18,
+      "cold_s": 0.3987950310111046,
+      "warm_s": 0.19316210190299898,
+      "build_s": 0.2851453910116106,
+      "max_logit_diff": 1.6689300537109375e-05,
+      "same_argmax": true
+    },
+    {
+      "doc": 20,
+      "prompt_tokens": 149,
+      "cached_tokens": 131,
+      "fresh_tokens": 18,
+      "cold_s": 0.38907341100275517,
+      "warm_s": 0.1872362430440262,
+      "build_s": 0.35046270792372525,
+      "max_logit_diff": 2.8133392333984375e-05,
+      "same_argmax": true
+    },
+    {
+      "doc": 21,
+      "prompt_tokens": 149,
+      "cached_tokens": 131,
+      "fresh_tokens": 18,
+      "cold_s": 0.37195758300367743,
+      "warm_s": 0.15937211003620178,
+      "build_s": 0.3683900129981339,
+      "max_logit_diff": 2.288818359375e-05,
+      "same_argmax": true
+    },
+    {
+      "doc": 22,
+      "prompt_tokens": 149,
+      "cached_tokens": 131,
+      "fresh_tokens": 18,
+      "cold_s": 0.38591762306168675,
+      "warm_s": 0.13406463607680053,
+      "build_s": 0.4463898229878396,
+      "max_logit_diff": 2.5272369384765625e-05,
+      "same_argmax": true
+    },
+    {
+      "doc": 23,
+      "prompt_tokens": 149,
+      "cached_tokens": 131,
+      "fresh_tokens": 18,
+      "cold_s": 0.4358662930317223,
+      "warm_s": 0.14206560899037868,
+      "build_s": 0.3446507879998535,
+      "max_logit_diff": 1.9073486328125e-05,
+      "same_argmax": true
+    },
+    {
+      "doc": 24,
+      "prompt_tokens": 149,
+      "cached_tokens": 131,
+      "fresh_tokens": 18,
+      "cold_s": 0.3841645590728149,
+      "warm_s": 0.1535688249859959,
+      "build_s": 0.3887343950336799,
+      "max_logit_diff": 2.2411346435546875e-05,
+      "same_argmax": true
+    },
+    {
+      "doc": 25,
+      "prompt_tokens": 149,
+      "cached_tokens": 131,
+      "fresh_tokens": 18,
+      "cold_s": 0.3740591329988092,
+      "warm_s": 0.1974344189511612,
+      "build_s": 0.3238291860325262,
+      "max_logit_diff": 1.8835067749023438e-05,
+      "same_argmax": true
+    },
+    {
+      "doc": 26,
+      "prompt_tokens": 149,
+      "cached_tokens": 131,
+      "fresh_tokens": 18,
+      "cold_s": 0.31276361807249486,
+      "warm_s": 0.16643141699023545,
+      "build_s": 0.4111037750262767,
+      "max_logit_diff": 2.193450927734375e-05,
+      "same_argmax": true
+    },
+    {
+      "doc": 27,
+      "prompt_tokens": 149,
+      "cached_tokens": 131,
+      "fresh_tokens": 18,
+      "cold_s": 0.49977881205268204,
+      "warm_s": 0.19147965498268604,
+      "build_s": 0.6711006260011345,
+      "max_logit_diff": 2.09808349609375e-05,
+      "same_argmax": true
+    },
+    {
+      "doc": 28,
+      "prompt_tokens": 149,
+      "cached_tokens": 131,
+      "fresh_tokens": 18,
+      "cold_s": 0.4404392649885267,
+      "warm_s": 0.13213166606146842,
+      "build_s": 0.3868286790093407,
+      "max_logit_diff": 2.8371810913085938e-05,
+      "same_argmax": true
+    },
+    {
+      "doc": 29,
+      "prompt_tokens": 149,
+      "cached_tokens": 131,
+      "fresh_tokens": 18,
+      "cold_s": 0.4696636339649558,
+      "warm_s": 0.13533244491554797,
+      "build_s": 0.35562995402142406,
+      "max_logit_diff": 1.7642974853515625e-05,
+      "same_argmax": true
+    },
+    {
+      "doc": 30,
+      "prompt_tokens": 149,
+      "cached_tokens": 131,
+      "fresh_tokens": 18,
+      "cold_s": 0.40573989192489535,
+      "warm_s": 0.1674295620759949,
+      "build_s": 0.33548973803408444,
+      "max_logit_diff": 2.574920654296875e-05,
+      "same_argmax": true
+    },
+    {
+      "doc": 31,
+      "prompt_tokens": 149,
+      "cached_tokens": 131,
+      "fresh_tokens": 18,
+      "cold_s": 0.3689396510599181,
+      "warm_s": 0.18501305091194808,
+      "build_s": 0.38464622397441417,
+      "max_logit_diff": 3.4332275390625e-05,
+      "same_argmax": true
+    },
+    {
+      "doc": 32,
+      "prompt_tokens": 149,
+      "cached_tokens": 131,
+      "fresh_tokens": 18,
+      "cold_s": 0.35529150802176446,
+      "warm_s": 0.13667583209462464,
+      "build_s": 0.39459785795770586,
+      "max_logit_diff": 2.5272369384765625e-05,
+      "same_argmax": true
+    },
+    {
+      "doc": 33,
+      "prompt_tokens": 149,
+      "cached_tokens": 131,
+      "fresh_tokens": 18,
+      "cold_s": 0.49972621200140566,
+      "warm_s": 0.13817272405140102,
+      "build_s": 0.37172530801035464,
+      "max_logit_diff": 2.491474151611328e-05,
+      "same_argmax": true
+    },
+    {
+      "doc": 34,
+      "prompt_tokens": 149,
+      "cached_tokens": 131,
+      "fresh_tokens": 18,
+      "cold_s": 0.3914199579739943,
+      "warm_s": 0.1231446519959718,
+      "build_s": 0.37692302209325135,
+      "max_logit_diff": 2.6702880859375e-05,
+      "same_argmax": true
+    },
+    {
+      "doc": 35,
+      "prompt_tokens": 149,
+      "cached_tokens": 131,
+      "fresh_tokens": 18,
+      "cold_s": 0.4125849169213325,
+      "warm_s": 0.15067482402082533,
+      "build_s": 0.3656994359334931,
+      "max_logit_diff": 2.4318695068359375e-05,
+      "same_argmax": true
+    },
+    {
+      "doc": 36,
+      "prompt_tokens": 149,
+      "cached_tokens": 131,
+      "fresh_tokens": 18,
+      "cold_s": 0.46688667102716863,
+      "warm_s": 0.1717024769168347,
+      "build_s": 0.3640099609037861,
+      "max_logit_diff": 2.47955322265625e-05,
+      "same_argmax": true
+    },
+    {
+      "doc": 37,
+      "prompt_tokens": 149,
+      "cached_tokens": 131,
+      "fresh_tokens": 18,
+      "cold_s": 0.3635610400233418,
+      "warm_s": 0.19319305405952036,
+      "build_s": 0.33288489701226354,
+      "max_logit_diff": 1.621246337890625e-05,
+      "same_argmax": true
+    },
+    {
+      "doc": 38,
+      "prompt_tokens": 149,
+      "cached_tokens": 131,
+      "fresh_tokens": 18,
+      "cold_s": 0.3930634909775108,
+      "warm_s": 0.21070039295591414,
+      "build_s": 0.422755655949004,
+      "max_logit_diff": 4.100799560546875e-05,
+      "same_argmax": true
+    },
+    {
+      "doc": 39,
+      "prompt_tokens": 149,
+      "cached_tokens": 131,
+      "fresh_tokens": 18,
+      "cold_s": 0.41332446900196373,
+      "warm_s": 0.21566194796469063,
+      "build_s": 0.30797423305921257,
+      "max_logit_diff": 2.3365020751953125e-05,
+      "same_argmax": true
+    },
+    {
+      "doc": 40,
+      "prompt_tokens": 149,
+      "cached_tokens": 131,
+      "fresh_tokens": 18,
+      "cold_s": 0.4808867870597169,
+      "warm_s": 0.19864088506437838,
+      "build_s": 0.37194485997315496,
+      "max_logit_diff": 2.002716064453125e-05,
+      "same_argmax": true
+    },
+    {
+      "doc": 41,
+      "prompt_tokens": 149,
+      "cached_tokens": 131,
+      "fresh_tokens": 18,
+      "cold_s": 0.3445768350502476,
+      "warm_s": 0.15960661601275206,
+      "build_s": 0.3541757749626413,
+      "max_logit_diff": 2.6226043701171875e-05,
+      "same_argmax": true
+    },
+    {
+      "doc": 42,
+      "prompt_tokens": 149,
+      "cached_tokens": 131,
+      "fresh_tokens": 18,
+      "cold_s": 0.3220718859229237,
+      "warm_s": 0.1338490720372647,
+      "build_s": 0.3814252819865942,
+      "max_logit_diff": 1.7642974853515625e-05,
+      "same_argmax": true
+    },
+    {
+      "doc": 43,
+      "prompt_tokens": 149,
+      "cached_tokens": 131,
+      "fresh_tokens": 18,
+      "cold_s": 0.3863297519274056,
+      "warm_s": 0.1609350600047037,
+      "build_s": 0.428577792015858,
+      "max_logit_diff": 1.9073486328125e-05,
+      "same_argmax": true
+    },
+    {
+      "doc": 44,
+      "prompt_tokens": 149,
+      "cached_tokens": 131,
+      "fresh_tokens": 18,
+      "cold_s": 0.43259300105273724,
+      "warm_s": 0.13419985200744122,
+      "build_s": 0.34046687197405845,
+      "max_logit_diff": 2.3365020751953125e-05,
+      "same_argmax": true
+    },
+    {
+      "doc": 45,
+      "prompt_tokens": 149,
+      "cached_tokens": 131,
+      "fresh_tokens": 18,
+      "cold_s": 0.4384520760504529,
+      "warm_s": 0.2675780699355528,
+      "build_s": 0.4684924010653049,
+      "max_logit_diff": 2.3365020751953125e-05,
+      "same_argmax": true
+    },
+    {
+      "doc": 46,
+      "prompt_tokens": 149,
+      "cached_tokens": 131,
+      "fresh_tokens": 18,
+      "cold_s": 0.4106015950674191,
+      "warm_s": 0.17370854294858873,
+      "build_s": 0.3521336780395359,
+      "max_logit_diff": 1.621246337890625e-05,
+      "same_argmax": true
+    },
+    {
+      "doc": 47,
+      "prompt_tokens": 149,
+      "cached_tokens": 131,
+      "fresh_tokens": 18,
+      "cold_s": 0.4120014199288562,
+      "warm_s": 0.13469138694927096,
+      "build_s": 0.48952078097499907,
+      "max_logit_diff": 2.193450927734375e-05,
+      "same_argmax": true
+    }
+  ],
+  "trap": [
+    {
+      "ok_max_diff": 4.100799560546875e-05,
+      "bad_max_diff": 6.572784423828125,
+      "ok_same_argmax": true,
+      "bad_same_argmax": true,
+      "ref_text": "Members of Task Force Manchu who escaped from Hill 2",
+      "ok_text": "Members of Task Force Manchu who escaped from Hill 2",
+      "bad_text": "Members of Task Force Manchu who escaped from Hill 2",
+      "ref_abs_mean": 2.8626978397369385
+    },
+    {
+      "ok_max_diff": 3.981590270996094e-05,
+      "bad_max_diff": 5.370888710021973,
+      "ok_same_argmax": true,
+      "bad_same_argmax": true,
+      "ref_text": "The North Koreans advanced to Changnyong itself during the afternoon",
+      "ok_text": "The North Koreans advanced to Changnyong itself during the afternoon",
+      "bad_text": "The first five words of the second passage are: \"There",
+      "ref_abs_mean": 2.587137222290039
+    },
+    {
+      "ok_max_diff": 3.719329833984375e-05,
+      "bad_max_diff": 11.367921829223633,
+      "ok_same_argmax": true,
+      "bad_same_argmax": true,
+      "ref_text": "The first five words of the second passage are: \"2",
+      "ok_text": "The first five words of the second passage are: \"2",
+      "bad_text": "The first five words of the second passage are: \"organized",
+      "ref_abs_mean": 3.1047728061676025
+    },
+    {
+      "ok_max_diff": 3.5762786865234375e-05,
+      "bad_max_diff": 5.6390275955200195,
+      "ok_same_argmax": true,
+      "bad_same_argmax": false,
+      "ref_text": "Meanwhile , during these actions in its rear , the 1",
+      "ok_text": "Meanwhile , during these actions in its rear , the 1",
+      "bad_text": "On the morning of September 1, 3rd Battalion",
+      "ref_abs_mean": 2.5505306720733643
+    },
+    {
+      "ok_max_diff": 3.838539123535156e-05,
+      "bad_max_diff": 5.030063629150391,
+      "ok_same_argmax": true,
+      "bad_same_argmax": false,
+      "ref_text": "On the second day of the fighting at the pass, the",
+      "ok_text": "On the second day of the fighting at the pass, the",
+      "bad_text": "The first five words of the second passage are: \"On",
+      "ref_abs_mean": 2.5097100734710693
+    },
+    {
+      "ok_max_diff": 5.0067901611328125e-05,
+      "bad_max_diff": 10.644378662109375,
+      "ok_same_argmax": true,
+      "bad_same_argmax": true,
+      "ref_text": "The 1st and 2nd Regiments of the",
+      "ok_text": "The 1st and 2nd Regiments of the",
+      "bad_text": "The 1st and 2nd Regiments of the",
+      "ref_abs_mean": 2.601372480392456
+    },
+    {
+      "ok_max_diff": 5.340576171875e-05,
+      "bad_max_diff": 10.91933536529541,
+      "ok_same_argmax": true,
+      "bad_same_argmax": true,
+      "ref_text": "The first five words of the second passage are: \"The",
+      "ok_text": "The first five words of the second passage are: \"The",
+      "bad_text": "The first five words of the second passage are: \"Motor",
+      "ref_abs_mean": 2.5785932540893555
+    },
+    {
+      "ok_max_diff": 5.698204040527344e-05,
+      "bad_max_diff": 4.881942272186279,
+      "ok_same_argmax": true,
+      "bad_same_argmax": true,
+      "ref_text": "The first five words of the second passage are: \"North",
+      "ok_text": "The first five words of the second passage are: \"North",
+      "bad_text": "The first five words of the second passage are: \"North",
+      "ref_abs_mean": 2.860245943069458
+    }
+  ],
+  "econ": [
+    {
+      "capacity": 1,
+      "hit_rate": 0.0288,
+      "mean_ttft_s": 0.3847437337255105,
+      "store_gb": 0.003219456
+    },
+    {
+      "capacity": 2,
+      "hit_rate": 0.05515,
+      "mean_ttft_s": 0.3786354521648318,
+      "store_gb": 0.006438912
+    },
+    {
+      "capacity": 4,
+      "hit_rate": 0.1018,
+      "mean_ttft_s": 0.3678213597623399,
+      "store_gb": 0.012877824
+    },
+    {
+      "capacity": 8,
+      "hit_rate": 0.1761,
+      "mean_ttft_s": 0.35059762845461956,
+      "store_gb": 0.025755648
+    },
+    {
+      "capacity": 16,
+      "hit_rate": 0.2799,
+      "mean_ttft_s": 0.3265354035590426,
+      "store_gb": 0.051511296
+    },
+    {
+      "capacity": 32,
+      "hit_rate": 0.3919,
+      "mean_ttft_s": 0.3005723092593835,
+      "store_gb": 0.103022592
+    },
+    {
+      "capacity": 64,
+      "hit_rate": 0.50305,
+      "mean_ttft_s": 0.2748062563003914,
+      "store_gb": 0.206045184
+    },
+    {
+      "capacity": 128,
+      "hit_rate": 0.61725,
+      "mean_ttft_s": 0.24833317264841753,
+      "store_gb": 0.412090368
+    },
+    {
+      "capacity": 256,
+      "hit_rate": 0.73785,
+      "mean_ttft_s": 0.22037648360789172,
+      "store_gb": 0.824180736
+    },
+    {
+      "capacity": 512,
+      "hit_rate": 0.8587,
+      "mean_ttft_s": 0.19236184123187558,
+      "store_gb": 1.648361472
+    },
+    {
+      "capacity": 1000,
+      "hit_rate": 0.95055,
+      "mean_ttft_s": 0.1710697857727355,
+      "store_gb": 3.219456
+    }
+  ]
+}

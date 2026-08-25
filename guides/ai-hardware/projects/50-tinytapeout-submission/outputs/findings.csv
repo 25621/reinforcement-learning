@@ -1,0 +1,27 @@
+section,key,value,unit,kind
+A sim,MAC8 exact match,True,,simulated
+A sim,MAC8 cycles per MAC,2.0,cycles,simulated
+A sim,BinaryNeuron exact match,True,,simulated
+A sim,BinaryNeuron cycles per MAC,0.125,cycles,simulated
+B synth,mac8 gates,792,,synthesized
+B synth,mac8 flops,32,,synthesized
+B synth,mac8 cells,824,,synthesized
+C tile,mac8 area,5619.1,um^2,arithmetic
+C tile,mac8 copies per tile,1,,arithmetic
+B synth,binneuron gates,104,,synthesized
+B synth,binneuron flops,16,,synthesized
+B synth,binneuron cells,120,,synthesized
+C tile,binneuron area,927.1,um^2,arithmetic
+C tile,binneuron copies per tile,10,,arithmetic
+D throughput,mac8,0.05,GOP/s,arithmetic
+E pins,mac8 pin-limited,False,,arithmetic
+D throughput,binneuron,8.0,GOP/s,arithmetic
+E pins,binneuron pin-limited,True,,arithmetic
+F energy,mac8 core,40.046,uW,arithmetic
+F energy,mac8 pads,4.0,mW,arithmetic
+F energy,binneuron core,58.32,uW,arithmetic
+F energy,binneuron pads,4.0,mW,arithmetic
+F ratios,gpu_over_tile_throughput,609682.0,x,mixed
+F ratios,tile_over_gpu_efficiency_core,4.6937,x,mixed
+F ratios,tile_over_gpu_efficiency_total,0.0465,x,mixed
+F ratios,binary_over_mac_throughput,160.0,x,mixed

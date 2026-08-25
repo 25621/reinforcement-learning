@@ -1,0 +1,131 @@
+{
+ "regions": [
+  {
+   "label": "same_region",
+   "owd_ms": 0.25,
+   "rtt_ms": 0.5,
+   "ttft_p50_s": 0.1257,
+   "ttft_min_s": 0.1155,
+   "e2e_p50_s": 0.6364,
+   "itl_p50_ms": 45.06,
+   "n": 12
+  },
+  {
+   "label": "same_continent",
+   "owd_ms": 15.0,
+   "rtt_ms": 30.0,
+   "ttft_p50_s": 0.1504,
+   "ttft_min_s": 0.143,
+   "e2e_p50_s": 0.639,
+   "itl_p50_ms": 44.16,
+   "n": 12
+  },
+  {
+   "label": "trans_atlantic",
+   "owd_ms": 40.0,
+   "rtt_ms": 80.0,
+   "ttft_p50_s": 0.2262,
+   "ttft_min_s": 0.214,
+   "e2e_p50_s": 0.7142,
+   "itl_p50_ms": 43.82,
+   "n": 12
+  },
+  {
+   "label": "trans_pacific",
+   "owd_ms": 70.0,
+   "rtt_ms": 140.0,
+   "ttft_p50_s": 0.3833,
+   "ttft_min_s": 0.3344,
+   "e2e_p50_s": 0.8649,
+   "itl_p50_ms": 43.41,
+   "n": 12
+  }
+ ],
+ "cold_vs_warm": [
+  {
+   "label": "same_region_cold",
+   "owd_ms": 0.25,
+   "rtt_ms": 0.5,
+   "ttft_p50_s": 0.1356,
+   "ttft_min_s": 0.1215,
+   "e2e_p50_s": 0.6288,
+   "itl_p50_ms": 45.04,
+   "n": 10,
+   "warm_ttft_s": 0.1155,
+   "handshake_ms": 6.0,
+   "handshake_rtts": 12.0
+  },
+  {
+   "label": "same_continent_cold",
+   "owd_ms": 15.0,
+   "rtt_ms": 30.0,
+   "ttft_p50_s": 0.1951,
+   "ttft_min_s": 0.1886,
+   "e2e_p50_s": 0.7033,
+   "itl_p50_ms": 45.7,
+   "n": 10,
+   "warm_ttft_s": 0.143,
+   "handshake_ms": 45.6,
+   "handshake_rtts": 1.52
+  },
+  {
+   "label": "trans_atlantic_cold",
+   "owd_ms": 40.0,
+   "rtt_ms": 80.0,
+   "ttft_p50_s": 0.4502,
+   "ttft_min_s": 0.3573,
+   "e2e_p50_s": 1.0539,
+   "itl_p50_ms": 55.12,
+   "n": 10,
+   "warm_ttft_s": 0.214,
+   "handshake_ms": 143.3,
+   "handshake_rtts": 1.79
+  },
+  {
+   "label": "trans_pacific_cold",
+   "owd_ms": 70.0,
+   "rtt_ms": 140.0,
+   "ttft_p50_s": 0.4952,
+   "ttft_min_s": 0.4826,
+   "e2e_p50_s": 1.0734,
+   "itl_p50_ms": 51.28,
+   "n": 10,
+   "warm_ttft_s": 0.3344,
+   "handshake_ms": 148.2,
+   "handshake_rtts": 1.06
+  }
+ ],
+ "streaming": [
+  {
+   "region": "same_region",
+   "rtt_ms": 0.5,
+   "streaming_first_token_s": 0.1155,
+   "buffered_first_token_s": 0.6364
+  },
+  {
+   "region": "same_continent",
+   "rtt_ms": 30.0,
+   "streaming_first_token_s": 0.143,
+   "buffered_first_token_s": 0.639
+  },
+  {
+   "region": "trans_atlantic",
+   "rtt_ms": 80.0,
+   "streaming_first_token_s": 0.214,
+   "buffered_first_token_s": 0.7142
+  },
+  {
+   "region": "trans_pacific",
+   "rtt_ms": 140.0,
+   "streaming_first_token_s": 0.3344,
+   "buffered_first_token_s": 0.8649
+  }
+ ],
+ "decision": {
+  "local_ttft_s": 0.1155,
+  "remote_ttft_s": 0.214,
+  "delta_ms": 98.5,
+  "compute_ms": 115.5,
+  "note": "the replica is the same process in both cases; the whole difference is distance"
+ }
+}

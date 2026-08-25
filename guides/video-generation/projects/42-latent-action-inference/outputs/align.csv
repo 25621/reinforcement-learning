@@ -1,0 +1,6 @@
+arm,n_codes,trained_on,codes_used,purity_free,nmi_free,purity_blocked,recon_mse
+k4,4,rand,4,0.4210,0.1227,0.3012,0.0043
+k8,8,rand,7,0.4318,0.1428,0.3236,0.0030
+k16,16,rand,11,0.4358,0.1100,0.3535,0.0038
+oracle,4,rand,4,1.0000,1.0000,1.0000,0.0003
+greedy,8,greedy,8,0.4031,0.0699,0.3602,0.0025

@@ -1,0 +1,24 @@
+section,quantity,value,note
+affordance,trials collected,3000,
+affordance,base rate of success,0.221,
+affordance,accuracy at 0.5,0.972,
+affordance,calibration error (weighted),0.0114,predicted p vs measured p
+generation,generated lines,11,
+generation,lines that are runnable skills,1,9%
+say,"corr(say score, token count)",-0.436,longer sentences score lower
+say,top skill by raw say,turn on the kettle,
+say,top skill by per-token say,put the mug on the counter,
+planner,can_only: task success,0.0,"steps 8.0, illegal proposals 0.00"
+planner,say_only: task success,0.167,"steps 6.9, illegal proposals 5.28"
+planner,saycan: task success,0.483,"steps 5.2, illegal proposals 1.17"
+planner,saycan_norm: task success,0.267,"steps 6.4, illegal proposals 0.00"
+planner,saycan_oracle: task success,0.483,"steps 5.2, illegal proposals 0.00"
+ablation,say + precondition filter: task success,0.483,steps 5.2
+ablation,SayCan minus say-only,0.317,
+ablation,precondition filter minus say-only,0.317,
+ablation,SayCan minus precondition filter,0.0,what the LEARNED part bought
+cost,distinct prompts scored,40,
+cost,seconds per LLM scoring call,14.9,
+cost,seconds spent generating free-form plans,234.6,
+cost,prompt scorings saved by the cache,1763,
+cost,total runtime (s),835.8,

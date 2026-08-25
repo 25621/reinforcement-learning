@@ -1,0 +1,9 @@
+model,frames_in,latent_frames,frames_out,roundtrip_ok
+causal,1,1,1,1
+causal,5,2,5,1
+causal,9,3,9,1
+causal,17,5,17,1
+non-causal,1,1,4,0
+non-causal,5,2,8,0
+non-causal,9,3,12,0
+non-causal,17,5,20,0

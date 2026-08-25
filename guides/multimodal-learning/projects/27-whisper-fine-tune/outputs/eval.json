@@ -1,0 +1,262 @@
+[
+ {
+  "arm": "full",
+  "new_voice": {
+   "exact_raw": 0.992,
+   "exact_normalised": 0.992,
+   "word_present": 0.992,
+   "n": 250
+  },
+  "seen_voice": {
+   "exact_raw": 1.0,
+   "exact_normalised": 1.0,
+   "word_present": 1.0,
+   "n": 250
+  },
+  "examples": [
+   {
+    "truth": "four",
+    "said": " four"
+   },
+   {
+    "truth": "three",
+    "said": " three"
+   },
+   {
+    "truth": "seven",
+    "said": " seven"
+   },
+   {
+    "truth": "eight",
+    "said": " eight"
+   },
+   {
+    "truth": "two",
+    "said": " two"
+   },
+   {
+    "truth": "nine",
+    "said": " nine"
+   },
+   {
+    "truth": "one",
+    "said": " one"
+   },
+   {
+    "truth": "zero",
+    "said": " zero"
+   },
+   {
+    "truth": "six",
+    "said": " six"
+   },
+   {
+    "truth": "seven",
+    "said": " seven"
+   },
+   {
+    "truth": "one",
+    "said": " one"
+   },
+   {
+    "truth": "zero",
+    "said": " zero"
+   }
+  ]
+ },
+ {
+  "arm": "decoder",
+  "new_voice": {
+   "exact_raw": 0.992,
+   "exact_normalised": 0.992,
+   "word_present": 0.992,
+   "n": 250
+  },
+  "seen_voice": {
+   "exact_raw": 1.0,
+   "exact_normalised": 1.0,
+   "word_present": 1.0,
+   "n": 250
+  },
+  "examples": [
+   {
+    "truth": "four",
+    "said": " four"
+   },
+   {
+    "truth": "three",
+    "said": " three"
+   },
+   {
+    "truth": "seven",
+    "said": " seven"
+   },
+   {
+    "truth": "eight",
+    "said": " eight"
+   },
+   {
+    "truth": "two",
+    "said": " two"
+   },
+   {
+    "truth": "nine",
+    "said": " nine"
+   },
+   {
+    "truth": "one",
+    "said": " one"
+   },
+   {
+    "truth": "zero",
+    "said": " zero"
+   },
+   {
+    "truth": "six",
+    "said": " six"
+   },
+   {
+    "truth": "seven",
+    "said": " seven"
+   },
+   {
+    "truth": "one",
+    "said": " one"
+   },
+   {
+    "truth": "zero",
+    "said": " zero"
+   }
+  ]
+ },
+ {
+  "arm": "small",
+  "new_voice": {
+   "exact_raw": 0.948,
+   "exact_normalised": 0.948,
+   "word_present": 0.948,
+   "n": 250
+  },
+  "seen_voice": {
+   "exact_raw": 0.98,
+   "exact_normalised": 0.98,
+   "word_present": 0.98,
+   "n": 250
+  },
+  "examples": [
+   {
+    "truth": "four",
+    "said": " four"
+   },
+   {
+    "truth": "three",
+    "said": " three"
+   },
+   {
+    "truth": "seven",
+    "said": " seven"
+   },
+   {
+    "truth": "eight",
+    "said": " eight"
+   },
+   {
+    "truth": "two",
+    "said": " two"
+   },
+   {
+    "truth": "nine",
+    "said": " nine"
+   },
+   {
+    "truth": "one",
+    "said": " one"
+   },
+   {
+    "truth": "zero",
+    "said": " zero"
+   },
+   {
+    "truth": "six",
+    "said": " eight"
+   },
+   {
+    "truth": "seven",
+    "said": " seven"
+   },
+   {
+    "truth": "one",
+    "said": " one"
+   },
+   {
+    "truth": "zero",
+    "said": " zero"
+   }
+  ]
+ },
+ {
+  "arm": "zeroshot",
+  "new_voice": {
+   "exact_raw": 0.0,
+   "exact_normalised": 0.536,
+   "word_present": 0.536,
+   "n": 250
+  },
+  "seen_voice": {
+   "exact_raw": 0.004,
+   "exact_normalised": 0.5,
+   "word_present": 0.5,
+   "n": 250
+  },
+  "examples": [
+   {
+    "truth": "four",
+    "said": " Poor."
+   },
+   {
+    "truth": "three",
+    "said": " Three."
+   },
+   {
+    "truth": "seven",
+    "said": " Kevin."
+   },
+   {
+    "truth": "eight",
+    "said": " 8"
+   },
+   {
+    "truth": "two",
+    "said": " Two."
+   },
+   {
+    "truth": "nine",
+    "said": " Nine."
+   },
+   {
+    "truth": "one",
+    "said": " One."
+   },
+   {
+    "truth": "zero",
+    "said": " Zero."
+   },
+   {
+    "truth": "six",
+    "said": " Big."
+   },
+   {
+    "truth": "seven",
+    "said": " Kevin."
+   },
+   {
+    "truth": "one",
+    "said": " One."
+   },
+   {
+    "truth": "zero",
+    "said": " The Earl."
+   }
+  ]
+ }
+]

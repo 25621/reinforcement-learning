@@ -1,0 +1,117 @@
+{
+  "device": {
+    "name": "NVIDIA GeForce GTX 1070 Ti",
+    "cc": "6.1",
+    "sms": 19,
+    "clock_khz": 1683000,
+    "tensor_cores": false
+  },
+  "peak_fp32_tflops": 8.186112,
+  "peak_int8_tops": 32.744448,
+  "N": 2048,
+  "kernels": [
+    {
+      "name": "naive_fp32",
+      "ms": 48.391987,
+      "tops": 0.35501475035526026,
+      "peak_tops": 8.186112,
+      "pct_peak": 4.33679322192587
+    },
+    {
+      "name": "tiled_fp32",
+      "ms": 17.660725,
+      "tops": 0.9727725891207751,
+      "peak_tops": 8.186112,
+      "pct_peak": 11.883206449176058
+    },
+    {
+      "name": "cublas_fp32",
+      "ms": 2.383053,
+      "tops": 7.209184682002456,
+      "peak_tops": 8.186112,
+      "pct_peak": 88.06604016659503
+    },
+    {
+      "name": "dp4a_int8",
+      "ms": 7.052288,
+      "tops": 2.4360702773341076,
+      "peak_tops": 32.744448,
+      "pct_peak": 7.439643744594831
+    },
+    {
+      "name": "cublas_int8",
+      "ms": 0.62505,
+      "tops": 27.485591847052234,
+      "peak_tops": 32.744448,
+      "pct_peak": 83.93970131074506
+    }
+  ],
+  "wmma_compile_gate": {
+    "sm_61": {
+      "ok": false,
+      "first_error": "error: name must be a namespace name"
+    },
+    "sm_70": {
+      "ok": true,
+      "first_error": ""
+    }
+  },
+  "profilers": {
+    "ncu": {
+      "rc": 255,
+      "msg": "==ERROR== ERR_NVGPUCTRPERM - The user does not have permission to access NVIDIA GPU Performance Counters on the target device 0. For instructions on enabling permissions and to get more information se"
+    },
+    "nsys": {
+      "rc": 0,
+      "msg": "Importer error status: The importer binary and its dependencies were not found."
+    }
+  },
+  "sass_idp4a": 24,
+  "sass_ffma": 61,
+  "dp4a_mismatches": 0,
+  "maxabsdiff_vs_naive": {
+    "tiled_fp32": "0.000e+00",
+    "cublas_fp32": "0.000e+00"
+  },
+  "timeline": [
+    {
+      "n": 128,
+      "h2d": 0.026208,
+      "comp": 0.00656,
+      "d2h": 0.016832
+    },
+    {
+      "n": 256,
+      "h2d": 0.052128,
+      "comp": 0.012928,
+      "d2h": 0.031616
+    },
+    {
+      "n": 512,
+      "h2d": 0.174304,
+      "comp": 0.052896,
+      "d2h": 0.088928
+    },
+    {
+      "n": 1024,
+      "h2d": 0.68576,
+      "comp": 0.336192,
+      "d2h": 0.331904
+    },
+    {
+      "n": 2048,
+      "h2d": 2.68336,
+      "comp": 2.377856,
+      "d2h": 1.28656
+    },
+    {
+      "n": 4096,
+      "h2d": 10.725824,
+      "comp": 19.39616,
+      "d2h": 5.27456
+    }
+  ],
+  "int8_over_fp32": 3.8125797936165107,
+  "cublas_over_ours_fp32": 7.4109661010476895,
+  "cublas_over_ours_int8": 11.282758179345652
+}

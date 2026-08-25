@@ -1,0 +1,30 @@
+experiment,setting,ms,gbs,hit_rate_lower_bound,note
+calibration,131072 B working set,0.184115,365.21,,
+calibration,262144 B working set,0.128205,525.5,,
+calibration,524288 B working set,0.091341,740.45,,
+calibration,1048576 B working set,0.058368,1167.72,,
+calibration,2097152 B working set,0.048934,1414.26,,
+calibration,4194304 B working set,0.104806,680.33,,
+calibration,8388608 B working set,0.342221,220.61,,
+calibration,16777216 B working set,0.381075,220.13,,
+calibration,33554432 B working set,0.456909,220.31,,
+calibration,67108864 B working set,0.60887,220.44,,
+calibration,134217728 B working set,0.609062,220.37,,
+calibration,268435456 B working set,1.217286,220.52,,
+validation,0% hot,0.094413,211.02,0.0,two-speed model says 0.000
+validation,10% hot,0.090419,220.34,0.0,two-speed model says 0.068
+validation,25% hot,0.078435,254.01,0.13184520294476587,two-speed model says 0.272
+validation,50% hot,0.052515,379.37,0.41872051031974056,two-speed model says 0.714
+validation,75% hot,0.037683,528.7,0.5829014564024967,two-speed model says 0.966
+validation,90% hot,0.037066,537.5,0.5897302325581395,two-speed model says 0.977
+validation,100% hot,0.035712,557.88,0.604717860471786,two-speed model says 1.000
+attention,S=512 in-order,0.313344,218.35,0.0,"real kernel 1.634 ms, 1.19 TFLOP/s"
+attention,S=512 staggered,0.313754,218.07,0.0,"real kernel 1.633 ms, 1.19 TFLOP/s"
+attention,S=1024 in-order,0.557875,239.65,0.07982474441894427,"real kernel 3.164 ms, 1.27 TFLOP/s"
+attention,S=1024 staggered,0.559104,239.12,0.07778521244563397,"real kernel 3.161 ms, 1.27 TFLOP/s"
+attention,S=2048 in-order,1.082163,255.81,0.13795395019741208,"real kernel 6.268 ms, 1.37 TFLOP/s"
+attention,S=2048 staggered,0.997683,277.47,0.20524741413486147,"real kernel 6.138 ms, 1.40 TFLOP/s"
+attention,S=4096 in-order,2.116576,257.61,0.1439773300725904,"real kernel 12.434 ms, 1.38 TFLOP/s"
+attention,S=4096 staggered,1.882965,289.57,0.2384570224816106,"real kernel 12.091 ms, 1.42 TFLOP/s"
+attention,S=8192 in-order,4.215467,256.7,0.14094273470977792,"real kernel 24.746 ms, 1.39 TFLOP/s"
+attention,S=8192 staggered,4.071765,265.76,0.17022877784467183,"real kernel 24.723 ms, 1.39 TFLOP/s"

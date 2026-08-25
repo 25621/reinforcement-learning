@@ -1,0 +1,271 @@
+{
+  "device": {
+    "name": "NVIDIA GeForce GTX 1070 Ti",
+    "cc": "6.1",
+    "sms": 19,
+    "mem_gb": 7.92
+  },
+  "config": {
+    "M": 8192,
+    "K": 128,
+    "BLOCK_M": 32,
+    "BLOCK_N": 64
+  },
+  "correctness": [
+    {
+      "path": "layernorm",
+      "rel_err": 1.195155359751536e-07
+    },
+    {
+      "path": "layernorm_chain",
+      "rel_err": 1.195155359751536e-07
+    },
+    {
+      "path": "ln+linear fused 1D",
+      "rel_err": 4.7060589864109457e-07
+    },
+    {
+      "path": "ln+linear fused 2D",
+      "rel_err": 4.7060589864109457e-07
+    }
+  ],
+  "numerics": [
+    {
+      "shift": 0.0,
+      "centred": 1.195930401157228e-07,
+      "one_pass": 1.1734913678829487e-07,
+      "one_pass_nonfinite": 0
+    },
+    {
+      "shift": 100.0,
+      "centred": 2.1903638023970768e-06,
+      "one_pass": 0.0009042863729172843,
+      "one_pass_nonfinite": 0
+    },
+    {
+      "shift": 1000.0,
+      "centred": 1.9615974326129042e-05,
+      "one_pass": 0.06749151762214521,
+      "one_pass_nonfinite": 0
+    },
+    {
+      "shift": 10000.0,
+      "centred": 0.0003201612987008885,
+      "one_pass": NaN,
+      "one_pass_nonfinite": 15360
+    },
+    {
+      "shift": 100000.0,
+      "centred": 0.0023097417040340035,
+      "one_pass": NaN,
+      "one_pass_nonfinite": 15488
+    }
+  ],
+  "layernorm_alone": {
+    "one_kernel_ms": 0.043458561897277835,
+    "chain_ms": 0.1316767978668213,
+    "one_gbs": 193.02543926391286,
+    "chain_gbs": 191.11813476397617,
+    "speedup": 3.029939144743519,
+    "traffic_ratio": 3.0
+  },
+  "fusion": [
+    {
+      "N": 64,
+      "ln_ms": 0.051507198810577394,
+      "matmul_ms": 0.07767040133476258,
+      "split_ms": 0.13664640188217164,
+      "fused_ms": 0.060971200466156006,
+      "speedup": 2.2411630546461283,
+      "split_mb": 14.712832,
+      "fused_mb": 6.324224,
+      "predicted": 2.326424870466321,
+      "flop": 134217728.0,
+      "matmul_gflops": 1728.0421588336612,
+      "fused_gflops": 2201.329922550923
+    },
+    {
+      "N": 128,
+      "ln_ms": 0.04484640061855316,
+      "matmul_ms": 0.0843775987625122,
+      "split_ms": 0.13849600553512573,
+      "fused_ms": 0.10086400508880615,
+      "speedup": 1.3730964323019528,
+      "split_mb": 16.842752,
+      "fused_mb": 8.454144,
+      "predicted": 1.9922480620155039,
+      "flop": 268435456.0,
+      "matmul_gflops": 3181.359269959009,
+      "fused_gflops": 2661.36027182001
+    },
+    {
+      "N": 256,
+      "ln_ms": 0.04398080110549927,
+      "matmul_ms": 0.14863359928131104,
+      "split_ms": 0.20199201107025147,
+      "fused_ms": 0.17960959672927856,
+      "speedup": 1.1246170290928796,
+      "split_mb": 21.102592,
+      "fused_mb": 12.713984,
+      "predicted": 1.6597938144329898,
+      "flop": 536870912.0,
+      "matmul_gflops": 3612.042731898677,
+      "fused_gflops": 2989.0992562564084
+    },
+    {
+      "N": 512,
+      "ln_ms": 0.04398080110549927,
+      "matmul_ms": 0.27595360279083253,
+      "split_ms": 0.329203200340271,
+      "fused_ms": 0.37767839431762695,
+      "speedup": 0.8716495444094999,
+      "split_mb": 29.622272,
+      "fused_mb": 21.233664,
+      "predicted": 1.3950617283950617,
+      "flop": 1073741824.0,
+      "matmul_gflops": 3891.023031193673,
+      "fused_gflops": 2843.0056899071246
+    },
+    {
+      "N": 1024,
+      "ln_ms": 0.0444927990436554,
+      "matmul_ms": 0.5320191860198975,
+      "split_ms": 0.5843855857849121,
+      "fused_ms": 0.7235936164855957,
+      "speedup": 0.8076157285952856,
+      "split_mb": 46.661632,
+      "fused_mb": 38.273024,
+      "predicted": 1.2191780821917808,
+      "flop": 2147483648.0,
+      "matmul_gflops": 4036.4778271731057,
+      "fused_gflops": 2967.8034729356255
+    },
+    {
+      "N": 2048,
+      "ln_ms": 0.04509919881820679,
+      "matmul_ms": 1.0445311546325684,
+      "split_ms": 1.097977638244629,
+      "fused_ms": 1.4165360450744628,
+      "speedup": 0.7751145070134179,
+      "split_mb": 80.740352,
+      "fused_mb": 72.351744,
+      "predicted": 1.1159420289855073,
+      "flop": 4294967296.0,
+      "matmul_gflops": 4111.861361867017,
+      "fused_gflops": 3032.0211836008925
+    },
+    {
+      "N": 4096,
+      "ln_ms": 0.04402079880237579,
+      "matmul_ms": 2.0592559814453124,
+      "split_ms": 2.1114736557006837,
+      "fused_ms": 2.795929527282715,
+      "speedup": 0.7551955924127907,
+      "split_mb": 148.897792,
+      "fused_mb": 140.509184,
+      "predicted": 1.0597014925373134,
+      "flop": 8589934592.0,
+      "matmul_gflops": 4171.377754586419,
+      "fused_gflops": 3072.3001092049394
+    }
+  ],
+  "budget": [
+    {
+      "K": 64,
+      "BM": 32,
+      "BN": 64,
+      "ok": true,
+      "need_bytes": 24576,
+      "regs": 60,
+      "spills": 0,
+      "shared": 24576
+    },
+    {
+      "K": 128,
+      "BM": 16,
+      "BN": 32,
+      "ok": true,
+      "need_bytes": 24576,
+      "regs": 48,
+      "spills": 0,
+      "shared": 24576
+    },
+    {
+      "K": 128,
+      "BM": 32,
+      "BN": 64,
+      "ok": true,
+      "need_bytes": 49152,
+      "regs": 80,
+      "spills": 0,
+      "shared": 49152
+    },
+    {
+      "K": 256,
+      "BM": 16,
+      "BN": 32,
+      "ok": true,
+      "need_bytes": 49152,
+      "regs": 32,
+      "spills": 540,
+      "shared": 49152
+    },
+    {
+      "K": 256,
+      "BM": 32,
+      "BN": 32,
+      "ok": false,
+      "need_bytes": 65536,
+      "error": "out of resource: shared memory, Required: 65536, Hardware li"
+    },
+    {
+      "K": 512,
+      "BM": 16,
+      "BN": 16,
+      "ok": false,
+      "need_bytes": 65536,
+      "error": "out of resource: shared memory, Required: 65536, Hardware li"
+    }
+  ],
+  "grid_compile": {
+    "one_d": {
+      "regs": 80,
+      "spills": 0,
+      "shared": 49152
+    },
+    "two_d": {
+      "regs": 32,
+      "spills": 638,
+      "shared": 49152
+    }
+  },
+  "grid_shape": [
+    {
+      "N": 256,
+      "one_d_ms": 0.1827023983001709,
+      "two_d_ms": 7.085459136962891,
+      "ratio": 38.78142379566269,
+      "programs_1d": 256,
+      "programs_2d": 1024,
+      "ln_recomputes": 4
+    },
+    {
+      "N": 1024,
+      "one_d_ms": 0.725374412536621,
+      "two_d_ms": 28.225381469726564,
+      "ratio": 38.91146555752211,
+      "programs_1d": 256,
+      "programs_2d": 4096,
+      "ln_recomputes": 16
+    },
+    {
+      "N": 4096,
+      "one_d_ms": 2.7967296600341798,
+      "two_d_ms": 112.76658935546875,
+      "ratio": 40.3208758311272,
+      "programs_1d": 256,
+      "programs_2d": 16384,
+      "ln_recomputes": 64
+    }
+  ]
+}

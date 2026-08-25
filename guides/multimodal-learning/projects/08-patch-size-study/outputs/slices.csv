@@ -1,0 +1,4 @@
+patch,tokens,steps_done,seconds,equal_step_acc,equal_time_acc,budget_acc
+8,17,1950,177.0,0.317,0.502,0.499
+4,65,675,173.0,0.295,0.381,0.3826
+2,257,168,182.0,0.269,0.292,0.2694

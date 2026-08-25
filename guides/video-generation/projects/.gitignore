@@ -1,0 +1,12 @@
+# Generated artifacts — downloaded videos, derived clips, and intermediate
+# arrays are reproducible from the scripts and stay out of the repo. Small
+# PNG/CSV/TXT outputs embedded in the READMEs are committed.
+**/data/
+**/checkpoints/
+**/__pycache__/
+**/outputs/run*.log
+**/outputs/*.npz
+**/outputs/*.npy
+**/outputs/*.mp4
+**/outputs/*.webm
+**/outputs/*.avi

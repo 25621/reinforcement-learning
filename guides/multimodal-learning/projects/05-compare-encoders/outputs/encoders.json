@@ -1,0 +1,30 @@
+{
+  "resnet50": {
+    "name": "ResNet-50",
+    "how": "supervised on ImageNet-1k labels",
+    "dim": 2048,
+    "params_m": 23.5,
+    "ms_per_image": 47.8
+  },
+  "vit_b16": {
+    "name": "ViT-B/16",
+    "how": "supervised on ImageNet-21k labels",
+    "dim": 768,
+    "params_m": 86.4,
+    "ms_per_image": 91.3
+  },
+  "siglip": {
+    "name": "SigLIP-B/16",
+    "how": "contrastive on web image-text pairs (no labels)",
+    "dim": 768,
+    "params_m": 92.9,
+    "ms_per_image": 95.9
+  },
+  "dinov2": {
+    "name": "DINOv2-B/14",
+    "how": "self-supervised on images alone (no labels, no text)",
+    "dim": 768,
+    "params_m": 86.6,
+    "ms_per_image": 132.8
+  }
+}

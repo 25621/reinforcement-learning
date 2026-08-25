@@ -1,0 +1,45 @@
+experiment,metric,value
+1_task,image size fed to the network,84x64
+1_task,decisions per episode,24
+1_task,action,"dx, dy, dz, d(yaw), open/close"
+2_clone,expert episodes attempted,300
+2_clone,expert success rate,1.0
+2_clone,frames kept,7200
+2_clone,collection time (s),58
+2_clone,state policy (given the object's pose): held-out action error,0.0468
+2_clone,state policy (given the object's pose): training time (s),73
+2_clone,pixel policy (camera + hand position): held-out action error,0.0835
+2_clone,pixel policy (camera + hand position): training time (s),109
+2_clone,pixel policy (camera only): held-out action error,0.1027
+2_clone,pixel policy (camera only): training time (s),32
+3_success,state policy (given the object's pose),1.0
+3_success,pixel policy (camera + hand position),0.8
+3_success,pixel policy (camera only),0.2333
+3_success,scripted expert (the ceiling),1.0
+3_success,"open loop, eyes shut (control)",0.1
+4_data,"state policy (given the object's pose), ~30 demos",0.25
+4_data,"pixel policy (camera + hand position), ~30 demos",0.0
+4_data,"state policy (given the object's pose), ~80 demos",1.0
+4_data,"pixel policy (camera + hand position), ~80 demos",0.05
+4_data,"state policy (given the object's pose), ~160 demos",1.0
+4_data,"pixel policy (camera + hand position), ~160 demos",0.175
+4_data,"state policy (given the object's pose), ~300 demos",1.0
+4_data,"pixel policy (camera + hand position), ~300 demos",0.475
+5_drift,state policy (given the object's pose): action error at step 1,0.1668
+5_drift,state policy (given the object's pose): action error at step 24,0.0176
+5_drift,state policy (given the object's pose): error on the expert's own states (held out),0.0468
+5_drift,pixel policy (camera + hand position): action error at step 1,0.3582
+5_drift,pixel policy (camera + hand position): action error at step 24,0.0583
+5_drift,pixel policy (camera + hand position): error on the expert's own states (held out),0.0835
+67_break,clean: state policy (given the object's pose),1.0
+67_break,clean: pixel policy (camera + hand position),0.8
+67_break,+ 1 distractor: state policy (given the object's pose),0.9778
+67_break,+ 1 distractor: pixel policy (camera + hand position),0.1333
+67_break,+ 2 distractors: state policy (given the object's pose),1.0
+67_break,+ 2 distractors: pixel policy (camera + hand position),0.0889
+67_break,camera +10 mm: state policy (given the object's pose),1.0
+67_break,camera +10 mm: pixel policy (camera + hand position),0.675
+67_break,camera +20 mm: state policy (given the object's pose),1.0
+67_break,camera +20 mm: pixel policy (camera + hand position),0.675
+67_break,camera +40 mm: state policy (given the object's pose),1.0
+67_break,camera +40 mm: pixel policy (camera + hand position),0.6

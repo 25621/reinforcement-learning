@@ -1,0 +1,9 @@
+knob,value,roundtrip_mse,latent_var,seconds
+sampling steps,10,0.0349,0.866,0.5
+sampling steps,20,0.0083,0.866,0.9
+sampling steps,40,0.00215,0.866,5.2
+sampling steps,60,0.00096,0.866,2.2
+guidance during BOTH directions,1.0,0.00096,0.866,2.7
+guidance during BOTH directions,2.0,0.00159,0.866,4.8
+guidance during BOTH directions,3.0,0.00279,0.866,5.5
+guidance during BOTH directions,5.0,0.00617,0.866,4.6

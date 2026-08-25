@@ -1,0 +1,5 @@
+pos,params,ms_per_step,eval_loss,fid_proxy,order_real,order_shuffled,order_gap_pct
+rope3d,1554448,103.3,0.11915,186.78,0.20372,0.47443,132.9
+learned,1562640,88.0,0.1438,260.44,0.24401,0.35766,46.6
+none,1554448,64.8,0.19261,232.41,0.315,0.31723,0.7
+real clips (floor),,,,1.36,,,

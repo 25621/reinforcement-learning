@@ -1,0 +1,11 @@
+dataset,prompt_style,accuracy,chance
+imagenette,wnid,0.117,0.1
+imagenette,bare,0.986,0.1
+imagenette,photo,0.988,0.1
+imagenette,context,0.987,0.1
+imagenette,ensemble,0.986,0.1
+imagewoof,wnid,0.114,0.1
+imagewoof,bare,0.886,0.1
+imagewoof,photo,0.885,0.1
+imagewoof,context,0.881,0.1
+imagewoof,ensemble,0.895,0.1

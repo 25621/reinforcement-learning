@@ -1,0 +1,10 @@
+{
+ "train": 7602,
+ "val": 1167,
+ "val_by_kind": {
+  "presence": 589,
+  "choice": 273,
+  "describe": 305
+ },
+ "val_presence_yes_rate": 0.5008488964346349
+}

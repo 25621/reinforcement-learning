@@ -1,0 +1,16 @@
+{
+ "naive_dft_vs_numpy_fft_max_abs": 2.8139112766480895e-12,
+ "our_stft_vs_torch_stft_rel": 2.338796293775889e-14,
+ "parseval_rel_error": 1.5729721635603653e-16,
+ "istft_roundtrip_max_abs": 2.220446049250313e-16,
+ "filterbank_row_area_min": 0.9999999999999998,
+ "filterbank_row_area_max": 1.0000000000000002,
+ "fft_bins_uncovered_in_band": 0,
+ "bins_per_mel_band_lowest": 1.5113192806284415,
+ "bins_per_mel_band_highest": 12.456828460782264,
+ "bands_thinner_than_2_bins": 21,
+ "n_fft": 512,
+ "hop": 128,
+ "n_mels": 80,
+ "sr": 16000
+}

@@ -1,0 +1,111 @@
+{
+ "_setup": {
+  "items": 70,
+  "docs": 2645,
+  "leaked": 38,
+  "by_flavor": {
+   "verbatim": 9,
+   "reworded": 9,
+   "answer-key": 9,
+   "image-only": 11
+  },
+  "median_question_words": 11,
+  "questions_under_13_words": 40
+ },
+ "exact": {
+  "flagged": 0,
+  "tp": 0,
+  "fp": 0,
+  "fn": 38,
+  "precision": 0.0,
+  "recall": 0.0,
+  "f1": 0.0,
+  "recall_by_flavor": {
+   "verbatim": 0.0,
+   "reworded": 0.0,
+   "answer-key": 0.0,
+   "image-only": 0.0
+  },
+  "seconds": 0.01
+ },
+ "ngram-13": {
+  "flagged": 10,
+  "tp": 7,
+  "fp": 3,
+  "fn": 31,
+  "precision": 0.7,
+  "recall": 0.18421052631578946,
+  "f1": 0.29166666666666663,
+  "recall_by_flavor": {
+   "verbatim": 0.2222222222222222,
+   "reworded": 0.5555555555555556,
+   "answer-key": 0.0,
+   "image-only": 0.0
+  },
+  "seconds": 0.01
+ },
+ "ngram-8": {
+  "flagged": 43,
+  "tp": 25,
+  "fp": 18,
+  "fn": 13,
+  "precision": 0.5813953488372093,
+  "recall": 0.6578947368421053,
+  "f1": 0.6172839506172839,
+  "recall_by_flavor": {
+   "verbatim": 1.0,
+   "reworded": 0.6666666666666666,
+   "answer-key": 0.3333333333333333,
+   "image-only": 0.6363636363636364
+  },
+  "seconds": 0.02
+ },
+ "minhash-0.4": {
+  "flagged": 43,
+  "tp": 28,
+  "fp": 15,
+  "fn": 10,
+  "precision": 0.6511627906976745,
+  "recall": 0.7368421052631579,
+  "f1": 0.6913580246913581,
+  "recall_by_flavor": {
+   "verbatim": 1.0,
+   "reworded": 0.8888888888888888,
+   "answer-key": 0.4444444444444444,
+   "image-only": 0.6363636363636364
+  },
+  "seconds": 0.23
+ },
+ "clip-text-0.92": {
+  "flagged": 37,
+  "tp": 26,
+  "fp": 11,
+  "fn": 12,
+  "precision": 0.7027027027027027,
+  "recall": 0.6842105263157895,
+  "f1": 0.6933333333333334,
+  "recall_by_flavor": {
+   "verbatim": 1.0,
+   "reworded": 0.8888888888888888,
+   "answer-key": 0.6666666666666666,
+   "image-only": 0.2727272727272727
+  },
+  "seconds": 105.66
+ },
+ "phash-image": {
+  "flagged": 13,
+  "tp": 13,
+  "fp": 0,
+  "fn": 25,
+  "precision": 1.0,
+  "recall": 0.34210526315789475,
+  "f1": 0.5098039215686275,
+  "recall_by_flavor": {
+   "verbatim": 0.0,
+   "reworded": 0.0,
+   "answer-key": 0.2222222222222222,
+   "image-only": 1.0
+  },
+  "seconds": 0.19
+ }
+}

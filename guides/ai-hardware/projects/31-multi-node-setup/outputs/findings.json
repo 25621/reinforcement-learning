@@ -1,0 +1,284 @@
+{
+ "A_tcp": {
+  "points": {
+   "nodelay": [
+    {
+     "bytes": 8,
+     "rtt_us": 23.87010559074618,
+     "oneway_us": 11.93505279537309,
+     "GBs": 0.0006702944793927841
+    },
+    {
+     "bytes": 1024,
+     "rtt_us": 17.490909533135255,
+     "oneway_us": 8.745454766567628,
+     "GBs": 0.11708939412900243
+    },
+    {
+     "bytes": 16384,
+     "rtt_us": 26.097075414642617,
+     "oneway_us": 13.048537707321309,
+     "GBs": 1.2556196232476855
+    },
+    {
+     "bytes": 65536,
+     "rtt_us": 40.49412792739578,
+     "oneway_us": 20.24706396369789,
+     "GBs": 3.236814983026834
+    },
+    {
+     "bytes": 262144,
+     "rtt_us": 78.73387165510884,
+     "oneway_us": 39.36693582755442,
+     "GBs": 6.6589891869744005
+    },
+    {
+     "bytes": 1048576,
+     "rtt_us": 210.15794929833368,
+     "oneway_us": 105.07897464916684,
+     "GBs": 9.978932545744193
+    },
+    {
+     "bytes": 4194304,
+     "rtt_us": 923.6315714328416,
+     "oneway_us": 461.8157857164208,
+     "GBs": 9.082201452887372
+    },
+    {
+     "bytes": 16777216,
+     "rtt_us": 3405.4958544272395,
+     "oneway_us": 1702.7479272136197,
+     "GBs": 9.853023886779456
+    }
+   ],
+   "nagle": [
+    {
+     "bytes": 8,
+     "rtt_us": 17.881201259585932,
+     "oneway_us": 8.940600629792966,
+     "GBs": 0.0008947944697743705
+    },
+    {
+     "bytes": 1024,
+     "rtt_us": 17.372673393774722,
+     "oneway_us": 8.686336696887361,
+     "GBs": 0.1178862892071565
+    },
+    {
+     "bytes": 16384,
+     "rtt_us": 20.89010033260413,
+     "oneway_us": 10.445050166302066,
+     "GBs": 1.5685898812490378
+    },
+    {
+     "bytes": 65536,
+     "rtt_us": 31.527000455520096,
+     "oneway_us": 15.763500227760048,
+     "GBs": 4.157452282367398
+    },
+    {
+     "bytes": 262144,
+     "rtt_us": 59.739846246651354,
+     "oneway_us": 29.869923123325677,
+     "GBs": 8.776185961968196
+    },
+    {
+     "bytes": 1048576,
+     "rtt_us": 150.85487095161508,
+     "oneway_us": 75.42743547580754,
+     "GBs": 13.90178511817916
+    },
+    {
+     "bytes": 4194304,
+     "rtt_us": 577.5668541900814,
+     "oneway_us": 288.7834270950407,
+     "GBs": 14.524046764704488
+    },
+    {
+     "bytes": 16777216,
+     "rtt_us": 2029.6077127568424,
+     "oneway_us": 1014.8038563784212,
+     "GBs": 16.5324716639072
+    }
+   ]
+  },
+  "latency_us": 11.93505279537309,
+  "peak_GBs": 9.978932545744193,
+  "nagle_penalty": 0.7491044055757344,
+  "split_write": {
+   "nodelay": {
+    "rtt_us": 35.453367983006615,
+    "nodelay": true
+   },
+   "nagle": {
+    "rtt_us": 41333.76243806921,
+    "nodelay": false
+   }
+  },
+  "split_nagle_penalty": 1165.8627879269795,
+  "hostname": "nest"
+ },
+ "B_rendezvous": {
+  "rank": 0,
+  "node": 0,
+  "world": 4,
+  "master": "0@nest",
+  "baseline_allreduce_s": 0.005125375930219889,
+  "torchrun_node0": "torchrun --nnodes=2 --nproc_per_node=2 --node_rank=0 --master_addr=10.0.0.1 --master_port=29500 train.py",
+  "torchrun_node1": "torchrun --nnodes=2 --nproc_per_node=2 --node_rank=1 --master_addr=10.0.0.1 --master_port=29500 train.py",
+  "required_env": [
+   "MASTER_ADDR",
+   "MASTER_PORT",
+   "GLOO_SOCKET_IFNAME / NCCL_SOCKET_IFNAME"
+  ]
+ },
+ "C_link_sweep": [
+  {
+   "lat_us": 0,
+   "bw_GBs": 0,
+   "flat_ms": 11.746995151042938,
+   "hier_ms": 11.09937485307455,
+   "speedup": 1.0583474570902518,
+   "flat_crossed_MB": 0.0,
+   "hier_crossed_MB": 0.0,
+   "flat_crossings": 0.0,
+   "hier_crossings": 0.0,
+   "max_err": 9.5367431640625e-07
+  },
+  {
+   "lat_us": 0,
+   "bw_GBs": 5.0,
+   "flat_ms": 9.975995868444443,
+   "hier_ms": 14.07671719789505,
+   "speedup": 0.7086876668898481,
+   "flat_crossed_MB": 12.582912,
+   "hier_crossed_MB": 8.388608,
+   "flat_crossings": 12.0,
+   "hier_crossings": 4.0,
+   "max_err": 9.5367431640625e-07
+  },
+  {
+   "lat_us": 100,
+   "bw_GBs": 5.0,
+   "flat_ms": 10.286184959113598,
+   "hier_ms": 12.891151010990143,
+   "speedup": 0.7979260308365232,
+   "flat_crossed_MB": 12.582912,
+   "hier_crossed_MB": 8.388608,
+   "flat_crossings": 12.0,
+   "hier_crossings": 4.0,
+   "max_err": 9.5367431640625e-07
+  },
+  {
+   "lat_us": 100,
+   "bw_GBs": 1.0,
+   "flat_ms": 16.07610657811165,
+   "hier_ms": 12.471994385123253,
+   "speedup": 1.2889764124082213,
+   "flat_crossed_MB": 12.582912,
+   "hier_crossed_MB": 8.388608,
+   "flat_crossings": 12.0,
+   "hier_crossings": 4.0,
+   "max_err": 9.5367431640625e-07
+  },
+  {
+   "lat_us": 100,
+   "bw_GBs": 0.2,
+   "flat_ms": 57.70304054021835,
+   "hier_ms": 42.968399822711945,
+   "speedup": 1.3429180695185692,
+   "flat_crossed_MB": 12.582912,
+   "hier_crossed_MB": 8.388608,
+   "flat_crossings": 12.0,
+   "hier_crossings": 4.0,
+   "max_err": 9.5367431640625e-07
+  }
+ ],
+ "D_crossover": [
+  {
+   "bw_GBs": 20.0,
+   "flat_ms": 9.6128573641181,
+   "hier_ms": 13.8398427516222,
+   "speedup": 0.6945785105102696,
+   "predicted_speedup": 0.8348767252146705
+  },
+  {
+   "bw_GBs": 10.0,
+   "flat_ms": 10.71771141141653,
+   "hier_ms": 12.710816226899624,
+   "speedup": 0.8431961583029476,
+   "predicted_speedup": 0.8644682229019947
+  },
+  {
+   "bw_GBs": 5.0,
+   "flat_ms": 9.59015917032957,
+   "hier_ms": 10.585634037852287,
+   "speedup": 0.9059598259336115,
+   "predicted_speedup": 0.9163974630232015
+  },
+  {
+   "bw_GBs": 2.0,
+   "flat_ms": 11.9654955342412,
+   "hier_ms": 12.844818644225597,
+   "speedup": 0.9315425827067089,
+   "predicted_speedup": 1.0312917745189827
+  },
+  {
+   "bw_GBs": 1.0,
+   "flat_ms": 15.111420303583145,
+   "hier_ms": 12.328694574534893,
+   "speedup": 1.2257113040009942,
+   "predicted_speedup": 1.1470884272191622
+  },
+  {
+   "bw_GBs": 0.5,
+   "flat_ms": 23.06855097413063,
+   "hier_ms": 15.267709270119667,
+   "speedup": 1.5109372706800188,
+   "predicted_speedup": 1.2637980930562318
+  }
+ ],
+ "E_cluster_arithmetic": {
+  "grad_bytes": 14000000000.0,
+  "world": 16,
+  "ranks_per_node": 8,
+  "rows": [
+   {
+    "link": "NVLink 4 (H100, in-node)",
+    "bw_GBs": 900.0,
+    "flat_s": 0.02918541666666667,
+    "hier_s": 0.02917166666666667,
+    "speedup": 1.000471347768954
+   },
+   {
+    "link": "InfiniBand NDR 400 Gb/s",
+    "bw_GBs": 50.0,
+    "flat_s": 0.09116458333333334,
+    "hier_s": 0.06222722222222222,
+    "speedup": 1.4650273638725462
+   },
+   {
+    "link": "InfiniBand HDR 200 Gb/s",
+    "bw_GBs": 25.0,
+    "flat_s": 0.15678958333333332,
+    "hier_s": 0.09722722222222221,
+    "speedup": 1.6126099229182498
+   },
+   {
+    "link": "100 GbE",
+    "bw_GBs": 12.5,
+    "flat_s": 0.2880395833333333,
+    "hier_s": 0.16722722222222222,
+    "speedup": 1.722444345517908
+   },
+   {
+    "link": "10 GbE",
+    "bw_GBs": 1.25,
+    "flat_s": 2.6505395833333334,
+    "hier_s": 1.4272272222222224,
+    "speedup": 1.857125159935212
+   }
+  ]
+ },
+ "runtime_s": 28.07182410999667
+}

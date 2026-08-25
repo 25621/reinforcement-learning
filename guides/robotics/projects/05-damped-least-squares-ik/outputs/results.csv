@@ -1,0 +1,56 @@
+quantity,value,unit
+[lambda = 0 (plain pseudo-inverse)] success rate,1.0,
+[lambda = 0 (plain pseudo-inverse)] median iterations to converge,12.0,
+[lambda = 0 (plain pseudo-inverse)] 99th-percentile largest joint step,1397.5379737236365,rad
+[lambda = 0 (plain pseudo-inverse)] largest joint step seen,30194.446891100477,rad
+[lambda = 0.001] success rate,1.0,
+[lambda = 0.001] median iterations to converge,12.0,
+[lambda = 0.001] 99th-percentile largest joint step,340.398870451169,rad
+[lambda = 0.001] largest joint step seen,539.6843940468985,rad
+[lambda = 0.01] success rate,0.998,
+[lambda = 0.01] median iterations to converge,12.0,
+[lambda = 0.01] 99th-percentile largest joint step,65.92576326891817,rad
+[lambda = 0.01] largest joint step seen,81.43556828253853,rad
+[lambda = 0.05] success rate,0.994,
+[lambda = 0.05] median iterations to converge,12.0,
+[lambda = 0.05] 99th-percentile largest joint step,14.426264621836086,rad
+[lambda = 0.05] largest joint step seen,15.460962983370385,rad
+[lambda = 0.2] success rate,0.896,
+[lambda = 0.2] median iterations to converge,27.5,
+[lambda = 0.2] 99th-percentile largest joint step,4.160798654793147,rad
+[lambda = 0.2] largest joint step seen,4.882560783568052,rad
+[adaptive lambda] success rate,0.99,
+[adaptive lambda] median iterations to converge,10.0,
+[adaptive lambda] 99th-percentile largest joint step,25.102741994478837,rad
+[adaptive lambda] largest joint step seen,27.851829479163523,rad
+"[lambda = 0.01, clamped to joint limits] success rate",0.486,
+"[lambda = 0.01, clamped to joint limits] median iterations to converge",18.0,
+"[lambda = 0.01, clamped to joint limits] 99th-percentile largest joint step",44.199514553874984,rad
+"[lambda = 0.01, clamped to joint limits] largest joint step seen",71.52522707512371,rad
+smallest singular value AT wrist_2 = 0,4.726424215686186e-18,
+smallest singular value at wrist_2 = 0.85,0.020292377558085828,
+[lambda = 0] peak joint speed,74.15245067457236,rad/s
+[lambda = 0] mean position error along the path,0.00011722715230874627,m
+[lambda = 0] worst position error along the path,0.0008835868766103295,m
+[lambda = 0] worst orientation error along the path,0.4230289066470483,deg
+[lambda = 0.02] peak joint speed,0.9901133541601481,rad/s
+[lambda = 0.02] mean position error along the path,0.0006093843394015537,m
+[lambda = 0.02] worst position error along the path,0.0014605505595751001,m
+[lambda = 0.02] worst orientation error along the path,0.012861185890964402,deg
+[lambda = 0.1] peak joint speed,0.9286131651260119,rad/s
+[lambda = 0.1] mean position error along the path,0.0027065970353050382,m
+[lambda = 0.1] worst position error along the path,0.0039016918496305245,m
+[lambda = 0.1] worst orientation error along the path,0.09668546624287465,deg
+[adaptive] peak joint speed,0.9357301586000644,rad/s
+[adaptive] mean position error along the path,0.0013009596135556054,m
+[adaptive] worst position error along the path,0.0020968153731648316,m
+[adaptive] worst orientation error along the path,0.03624288219128725,deg
+"accuracy ratio, adaptive vs the fixed lambda at the same peak speed (>1 = adaptive better)",0.8717212973138623,x
+the fixed lambda that matches adaptive on peak speed,0.051681288563260354,
+"accuracy ratio, adaptive vs a BADLY chosen fixed lambda (the largest swept)",30.795833498310337,x
+adaptive: peak joint speed,0.9357301586000644,rad/s
+adaptive: mean position error,1.3009596135556054,mm
+solutions found for ONE tool pose,134.0,
+"widest spread across solutions, over all joints",5.8,rad
+fraction of solutions within 0.1 rad of a joint limit,0.40298507462686567,
+fraction of solutions AT a joint limit (margin < 1e-6),0.31343283582089554,

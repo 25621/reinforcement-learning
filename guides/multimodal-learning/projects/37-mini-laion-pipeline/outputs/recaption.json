@@ -1,0 +1,47 @@
+{
+ "n": 885,
+ "seconds": 0.0,
+ "seconds_per_image": 0.0,
+ "alt_mean_words": 10.607909604519774,
+ "recap_mean_words": 8.326553672316384,
+ "alt_unique": 0.9943502824858758,
+ "recap_unique": 0.9367231638418079,
+ "populations": {
+  "clip_selected": {
+   "n": 885,
+   "clip_alt": 0.3186475932598114,
+   "clip_recap": 0.2977169454097748,
+   "recap_wins": 0.24632768361581922,
+   "genuine_share": 0.96045197740113,
+   "by_defect": {
+    "ok": {
+     "n": 850,
+     "clip_alt": 0.31887635588645935,
+     "clip_recap": 0.29813265800476074
+    }
+   }
+  },
+  "cheap_filtered": {
+   "n": 1967,
+   "clip_alt": 0.27340611815452576,
+   "clip_recap": 0.2879942059516907,
+   "recap_wins": 0.5129639044229791,
+   "genuine_share": 0.8113879003558719,
+   "by_defect": {
+    "ok": {
+     "n": 1596,
+     "clip_alt": 0.29487553238868713,
+     "clip_recap": 0.28867653012275696
+    },
+    "mismatch": {
+     "n": 271,
+     "clip_alt": 0.15130917727947235,
+     "clip_recap": 0.28882747888565063
+    }
+   }
+  }
+ },
+ "clip_alt": 0.3186475932598114,
+ "clip_recap": 0.2977169454097748,
+ "recap_wins": 0.24632768361581922
+}

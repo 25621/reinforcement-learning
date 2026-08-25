@@ -1,0 +1,30 @@
+[
+ {
+  "arm": "mlp2",
+  "image_tokens": 49,
+  "ttft_ms": 72.17168807983398,
+  "ms_per_token": 40.441736578941345,
+  "kv_kb": 2205.0
+ },
+ {
+  "arm": "pool-4x4",
+  "image_tokens": 16,
+  "ttft_ms": 54.169416427612305,
+  "ms_per_token": 40.173694491386414,
+  "kv_kb": 720.0
+ },
+ {
+  "arm": "pool-3x3",
+  "image_tokens": 9,
+  "ttft_ms": 50.94575881958008,
+  "ms_per_token": 41.0311296582222,
+  "kv_kb": 405.0
+ },
+ {
+  "arm": "pool-2x2",
+  "image_tokens": 4,
+  "ttft_ms": 47.63984680175781,
+  "ms_per_token": 41.0904660820961,
+  "kv_kb": 180.0
+ }
+]

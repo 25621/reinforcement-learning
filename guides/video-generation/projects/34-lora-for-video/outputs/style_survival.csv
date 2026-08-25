@@ -1,0 +1,7 @@
+style,note,size_of_change,size_after_vae,survives_the_vae
+plain,the data the base model was trained on,0.0,0.0,0.0
+thick,"bold, heavy strokes — an APPEARANCE style",0.1059,0.1045,0.87
+trail,a fading ghost behind the digit — a MOTION style,0.0439,0.0567,0.77
+outline,hollow strokes (rejected: the VAE reshapes it into a blob),0.0944,0.0508,0.44
+halo,a soft glow (rejected: a faint change the VAE fades further),0.053,0.0608,0.75
+negative,dark on white (rejected: the VAE cannot encode it at all),1.9765,0.0797,0.17

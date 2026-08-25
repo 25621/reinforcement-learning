@@ -1,0 +1,70 @@
+{
+ "steps": 500,
+ "runs": [
+  {
+   "psnr": 17.658145446777343,
+   "used": 55,
+   "perplexity": 17.19004249572754,
+   "bits_per_token": 9.0,
+   "tokens": 64,
+   "name": "plain VQ",
+   "k": 512,
+   "ema": false,
+   "restart": false,
+   "frac_used": 0.107421875,
+   "effective_bits": 4.103501206212911
+  },
+  {
+   "psnr": 18.61053924560547,
+   "used": 16,
+   "perplexity": 11.351234436035156,
+   "bits_per_token": 9.0,
+   "tokens": 64,
+   "name": "EMA",
+   "k": 512,
+   "ema": true,
+   "restart": false,
+   "frac_used": 0.03125,
+   "effective_bits": 3.5047772926596146
+  },
+  {
+   "psnr": 18.906847763061524,
+   "used": 508,
+   "perplexity": 405.2036437988281,
+   "bits_per_token": 9.0,
+   "tokens": 64,
+   "name": "EMA + restart",
+   "k": 512,
+   "ema": true,
+   "restart": true,
+   "frac_used": 0.9921875,
+   "effective_bits": 8.662503337425283
+  },
+  {
+   "psnr": 18.729705963134766,
+   "used": 64,
+   "perplexity": 54.51062774658203,
+   "bits_per_token": 6.0,
+   "tokens": 64,
+   "name": "EMA + restart, K=64",
+   "k": 64,
+   "ema": true,
+   "restart": true,
+   "frac_used": 1.0,
+   "effective_bits": 5.768465629410342
+  },
+  {
+   "psnr": 18.925595169067382,
+   "used": 1919,
+   "perplexity": 1286.6591796875,
+   "bits_per_token": 11.0,
+   "tokens": 64,
+   "name": "EMA + restart, K=2048",
+   "k": 2048,
+   "ema": true,
+   "restart": true,
+   "frac_used": 0.93701171875,
+   "effective_bits": 10.329414236517856
+  }
+ ]
+}

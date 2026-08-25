@@ -1,0 +1,47 @@
+{
+ "steps": 800,
+ "results": [
+  {
+   "psnr": 25.688511199951172,
+   "used": 512,
+   "perplexity": 354.7937927246094,
+   "bits_per_token": 9.0,
+   "tokens": 1024,
+   "down": 2,
+   "grid": 32,
+   "train_secs": 216.54363107681274,
+   "ms_per_step": 270.67953884601593,
+   "params": 62179,
+   "bytes_per_image": 1152.0,
+   "compression": 10.666666666666666
+  },
+  {
+   "psnr": 23.05606002807617,
+   "used": 512,
+   "perplexity": 449.1783142089844,
+   "bits_per_token": 9.0,
+   "tokens": 256,
+   "down": 4,
+   "grid": 16,
+   "train_secs": 160.5012903213501,
+   "ms_per_step": 200.62661290168762,
+   "params": 253027,
+   "bytes_per_image": 288.0,
+   "compression": 42.666666666666664
+  },
+  {
+   "psnr": 19.769912033081056,
+   "used": 512,
+   "perplexity": 376.5270080566406,
+   "bits_per_token": 9.0,
+   "tokens": 64,
+   "down": 8,
+   "grid": 8,
+   "train_secs": 127.56236553192139,
+   "ms_per_step": 159.45295691490173,
+   "params": 384227,
+   "bytes_per_image": 72.0,
+   "compression": 170.66666666666666
+  }
+ ]
+}

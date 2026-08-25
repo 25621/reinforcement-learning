@@ -1,0 +1,41 @@
+{
+ "kv_bytes_per_token": 46080,
+ "rows": [
+  {
+   "arm": "linear",
+   "image_tokens": 49,
+   "seq_len": 69,
+   "params": 444480,
+   "projector_ms": 0.3133535385131836,
+   "prefill_ms": 72.02725410461426,
+   "kv_kb": 2205.0
+  },
+  {
+   "arm": "mlp2",
+   "image_tokens": 49,
+   "seq_len": 69,
+   "params": 776832,
+   "projector_ms": 0.31707286834716797,
+   "prefill_ms": 73.97499084472656,
+   "kv_kb": 2205.0
+  },
+  {
+   "arm": "pool",
+   "image_tokens": 16,
+   "seq_len": 36,
+   "params": 776832,
+   "projector_ms": 0.476682186126709,
+   "prefill_ms": 53.94272804260254,
+   "kv_kb": 720.0
+  },
+  {
+   "arm": "qformer",
+   "image_tokens": 16,
+   "seq_len": 36,
+   "params": 5774784,
+   "projector_ms": 2.3708581924438477,
+   "prefill_ms": 57.98320770263672,
+   "kv_kb": 720.0
+  }
+ ]
+}

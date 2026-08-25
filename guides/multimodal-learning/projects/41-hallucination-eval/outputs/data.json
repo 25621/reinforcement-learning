@@ -1,0 +1,82 @@
+{
+ "images": 107,
+ "per_split": {
+  "random": 214,
+  "popular": 214,
+  "adversarial": 214
+ },
+ "yes_rate_by_construction": {
+  "random": 0.5,
+  "popular": 0.5,
+  "adversarial": 0.5
+ },
+ "distinct_negatives_per_image": 2.2803738317757007,
+ "most_asked_negatives": {
+  "random": [
+   [
+    "sign",
+    5
+   ],
+   [
+    "cow",
+    5
+   ],
+   [
+    "beach",
+    4
+   ],
+   [
+    "sheep",
+    4
+   ],
+   [
+    "cake",
+    4
+   ],
+   [
+    "tree",
+    4
+   ]
+  ],
+  "popular": [
+   [
+    "person",
+    61
+   ],
+   [
+    "street",
+    41
+   ],
+   [
+    "table",
+    5
+   ]
+  ],
+  "adversarial": [
+   [
+    "person",
+    43
+   ],
+   [
+    "street",
+    42
+   ],
+   [
+    "grass",
+    12
+   ],
+   [
+    "table",
+    4
+   ],
+   [
+    "sink",
+    3
+   ],
+   [
+    "mirror",
+    1
+   ]
+  ]
+ }
+}

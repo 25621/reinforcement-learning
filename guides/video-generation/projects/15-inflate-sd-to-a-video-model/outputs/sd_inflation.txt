@@ -1,0 +1,8 @@
+model: emilianJR/epiCRealism (SD 1.5 U-Net architecture)
+spatial (pretrained, would stay frozen) params: 859,520,964
+temporal (new, zero-initialized) params:        55,329,280  (6.4% of spatial)
+temporal blocks inserted: 9  (channels: [320, 640, 1280, 1280, 1280, 1280, 1280, 640, 320])
+identity at init, max |base - inflated|: 0.00e+00
+forward pass, 8 frames at 32x32 latents (= 256x256 px):
+  original per-frame U-Net: 16.6 s
+  inflated video U-Net:     18.9 s

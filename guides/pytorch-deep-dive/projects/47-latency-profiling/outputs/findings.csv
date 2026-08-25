@@ -1,0 +1,49 @@
+section,name,value
+1,p50,0.943 ms
+1,p90,1.263 ms
+1,p95,3.481 ms
+1,p99,9.154 ms
+1,p99.9,99.157 ms
+1,mean,1.476 ms
+1,max,131.973 ms
+1,mean / p50,1.56x  (the average is pulled up by the tail)
+1,p99 / p50,9.71x
+1,max / p50,139.92x
+1,calls slower than the mean,8.4%  (not 50% - the distribution is skewed)
+2,batch  1,p50    0.84 ms  p95    4.10 ms  p99   12.75 ms   0.839 ms/image     1191 img/s  (n=3840)
+2,batch  2,p50    1.36 ms  p95    5.21 ms  p99   18.69 ms   0.681 ms/image     1469 img/s  (n=1920)
+2,batch  4,p50    2.01 ms  p95   12.67 ms  p99   38.65 ms   0.503 ms/image     1989 img/s  (n=960)
+2,batch  8,p50    3.18 ms  p95   10.89 ms  p99   24.54 ms   0.397 ms/image     2517 img/s  (n=480)
+2,batch 16,p50    5.65 ms  p95   10.63 ms  p99   29.64 ms   0.353 ms/image     2832 img/s  (n=288)
+2,batch 32,p50   12.13 ms  p95   37.65 ms  p99   86.31 ms   0.379 ms/image     2638 img/s  (n=288)
+2,batch 64,p50   26.47 ms  p95   98.84 ms  p99  163.17 ms   0.414 ms/image     2418 img/s  (n=288)
+2,largest batch whose p95 fits a 10 ms budget,batch 2 at 1469 img/s
+2,throughput gained from batch 1 to that batch,1.23x
+3,p99 from all 3000 samples (treated as truth),9.154 ms
+3,p99 estimated from   20 samples,"95% of estimates land in [1.06, 81.11] ms  = +/-437.2% of the true value"
+3,p99 estimated from  100 samples,"95% of estimates land in [3.88, 27.05] ms  = +/-126.6% of the true value"
+3,p99 estimated from  300 samples,"95% of estimates land in [4.77, 21.91] ms  = +/- 93.6% of the true value"
+3,p99 estimated from 1000 samples,"95% of estimates land in [6.23, 17.36] ms  = +/- 60.8% of the true value"
+3,p99 estimated from 3000 samples,"95% of estimates land in [7.21, 11.76] ms  = +/- 24.9% of the true value"
+3,"samples strictly above the p99, at n=20","0.2 expected - the estimate is an extrapolation, not a measurement"
+4,fresh process: import torch,1.77 s
+4,fresh process: build the model and load weights,23 ms
+4,fresh process: first inference,31.4 ms
+4,fresh process: second inference,1.28 ms
+4,total time before the first answer,1.83 s  = 1437x one warm call
+4,first 6 calls of a fresh model (ms),135.93  35.84  29.58  33.58  71.97  0.89
+4,call 1 vs the steady state,135.93 ms vs 0.94 ms  = 144.1x
+4,calls needed to reach 1.2x the steady state,6
+4,p99 including the first 12 calls,4.283 ms  vs 2.907 ms without
+5,p50: alone / with a neighbour,0.995 / 43.851 ms   44.09x
+5,p99: alone / with a neighbour,2.907 / 239.943 ms   82.53x
+5,max: alone / with a neighbour,8.256 / 302.024 ms
+5,which percentile noticed the neighbour more,p99
+6, 1 sequential calls: real p99 / k x p99,   8.40 /    9.15 ms   (92% of the naive bound)
+6,  chance at least one of the  1 calls is a p99 outlier,0.9%   (1 - 0.99^1 = 1.0%)
+6, 2 sequential calls: real p99 / k x p99,  19.13 /   18.31 ms   (105% of the naive bound)
+6,  chance at least one of the  2 calls is a p99 outlier,1.9%   (1 - 0.99^2 = 2.0%)
+6, 5 sequential calls: real p99 / k x p99,  76.84 /   45.77 ms   (168% of the naive bound)
+6,  chance at least one of the  5 calls is a p99 outlier,5.0%   (1 - 0.99^5 = 4.9%)
+6,10 sequential calls: real p99 / k x p99, 111.82 /   91.54 ms   (122% of the naive bound)
+6,  chance at least one of the 10 calls is a p99 outlier,9.6%   (1 - 0.99^10 = 9.6%)

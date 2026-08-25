@@ -1,0 +1,16 @@
+section,key,value
+A,ttft_streaming_s,0.202
+A,ttft_buffered_s,2.264
+A,ttft_speedup,11.2
+B,itl_p50_s@chunk1,0.0901
+B,itl_p50_s@chunk2,0.1818
+B,itl_p50_s@chunk4,0.4536
+B,itl_p50_s@chunk8,0.8038
+C,ttft_p50_s@c1,0.182
+C,tok_per_s@c1,9.9
+C,ttft_p50_s@c2,2.879
+C,tok_per_s@c2,9.2
+C,ttft_p50_s@c4,7.469
+C,tok_per_s@c4,9.7
+C,ttft_p50_s@c8,16.707
+C,tok_per_s@c8,10.2

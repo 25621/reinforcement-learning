@@ -1,0 +1,30 @@
+experiment,add_one_in,agree,defect,drop,effect,fix,gap,layer,leave_one_out,mean_mm,n_defects,real,real_success,recovery,sim,sim_success,subset,success,with_it,without_it,worst_mm
+symptom,,,,,,,0.525,,,,,0.3125,,,0.8375,,,,,,
+add_one_in,,,D dynamics,0.09999999999999998,,,,,,,,,,,,,,0.7375,,,
+add_one_in,,,A actuation,0.0625,,,,,,,,,,,,,,0.775,,,
+add_one_in,,,P perception,0.41250000000000003,,,,,,,,,,,,,,0.425,,,
+leave_one_out,,,D dynamics,,,,,,,,,,,0.04999999999999999,,,,0.3625,,,
+leave_one_out,,,A actuation,,,,,,,,,,,0.04999999999999999,,,,0.3625,,,
+leave_one_out,,,P perception,,,,,,,,,,,0.32499999999999996,,,,0.6375,,,
+ranking,P perception > D dynamics > A actuation,True,,,,,,,P perception > D dynamics > A actuation,,,,,,,,,,,,
+factorial,,,,,,,,,,,0,,,,,,none,0.8375,,,
+factorial,,,,,,,,,,,1,,,,,,D,0.7375,,,
+factorial,,,,,,,,,,,1,,,,,,A,0.775,,,
+factorial,,,,,,,,,,,1,,,,,,P,0.425,,,
+factorial,,,,,,,,,,,2,,,,,,D+A,0.6375,,,
+factorial,,,,,,,,,,,2,,,,,,D+P,0.3625,,,
+factorial,,,,,,,,,,,2,,,,,,A+P,0.3625,,,
+factorial,,,,,,,,,,,3,,,,,,D+A+P,0.3125,,,
+main_effect,,,D dynamics,,-0.08750000000000002,,,,,,,,,,,,,,0.5125,0.6,
+main_effect,,,A actuation,,-0.06874999999999987,,,,,,,,,,,,,,0.5218750000000001,0.590625,
+main_effect,,,P perception,,-0.38125,,,,,,,,,,,,,,0.365625,0.746875,
+open_loop,,,,,,,,,,0.0,,,,,,,none,,,,0.0
+open_loop,,,,,,,,,,19.93047272324743,,,,,,,D,,,,45.634299567527606
+open_loop,,,,,,,,,,12.887888820357553,,,,,,,A,,,,26.202159482043918
+open_loop,,,,,,,,,,0.0,,,,,,,P,,,,0.0
+open_loop,,,,,,,,,,32.7234807276594,,,,,,,D+A+P,,,,71.56116405521261
+fix,,,,,,no fix (the sim policy),,physics,,,,,0.3125,,,0.8375,,,,,
+fix,,,,,,"randomise the physics, widely",,physics,,,,,0.325,,,0.75,,,,,
+fix,,,,,,system ID: train on the real physics,,physics,,,,,0.3,,,0.875,,,,,
+fix,,,,,,randomise the camera offset,,perception,,,,,0.0375,,,0.025,,,,,
+fix,,,,,,calibrate the camera,,perception,,,,,0.675,,,0.8375,,,,,

@@ -1,0 +1,44 @@
+[Gloo] Rank 1 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[Gloo] Rank 0 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+A: world=2 max|DDP-single| = 7.451e-09 (grad norm 0.138), 1 messages, 6.32 MB/step
+[Gloo] Rank 0 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+[Gloo] Rank 2 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+[Gloo] Rank 3 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+[Gloo] Rank 1 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+A: world=4 max|DDP-single| = 4.191e-09 (grad norm 0.097), 1 messages, 6.32 MB/step
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+B: world=1 local=   7.15 ms  ddp=   7.47 ms  in-allreduce=   0.13 ms  exposed=  0.33 ms (4.4%)
+[Gloo] Rank 1 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[Gloo] Rank 0 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+B: world=2 local=   7.35 ms  ddp=  14.67 ms  in-allreduce=   3.27 ms  exposed=  7.32 ms (49.9%)
+[Gloo] Rank 0 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+[Gloo] Rank 1 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+[Gloo] Rank 3 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+[Gloo] Rank 2 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+B: world=4 local=  12.67 ms  ddp=  27.35 ms  in-allreduce=   9.53 ms  exposed= 14.69 ms (53.7%)
+[Gloo] Rank 1 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+[Gloo] Rank 0 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+[Gloo] Rank 3 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+[Gloo] Rank 2 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+C: cap=  0.1 MB    6.0 messages/step  step=  51.75 ms  in-allreduce=134.59 ms
+C: cap=  0.5 MB    6.0 messages/step  step=  56.07 ms  in-allreduce=131.06 ms
+C: cap=  2.0 MB    3.0 messages/step  step=  35.54 ms  in-allreduce= 41.84 ms
+C: cap= 25.0 MB    1.0 messages/step  step=  27.27 ms  in-allreduce=  8.36 ms
+[Gloo] Rank 1 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[Gloo] Rank 0 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+D: world=2 ddp(overlapped, 1.0 msgs)=  15.10 ms   manual(1 msg, no overlap)=  14.56 ms   ratio=0.96x
+[Gloo] Rank 0 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+[Gloo] Rank 1 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+[Gloo] Rank 2 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+[Gloo] Rank 3 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+D: world=4 ddp(overlapped, 1.0 msgs)=  29.51 ms   manual(1 msg, no overlap)=  27.07 ms   ratio=0.92x
+[Gloo] Rank 0 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+[Gloo] Rank 3 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+[Gloo] Rank 2 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+[Gloo] Rank 1 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+E: batch/rank=   8  compute=   7.06 ms  step=  25.69 ms  exposed comm= 72.5%      1245 samples/s
+E: batch/rank=  32  compute=   8.63 ms  step=  28.06 ms  exposed comm= 69.2%      4562 samples/s
+E: batch/rank= 128  compute=  17.09 ms  step=  32.61 ms  exposed comm= 47.6%     15703 samples/s
+E: batch/rank= 512  compute=  32.55 ms  step=  67.98 ms  exposed comm= 52.1%     30128 samples/s
+total runtime 35.9 s
+wrote /home/canary/project/tmp/claude-ai-hardware-phase6/guides/ai-hardware/projects/29-multi-gpu-ddp/outputs

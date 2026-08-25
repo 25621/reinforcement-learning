@@ -1,0 +1,308 @@
+{
+  "model": "Qwen/Qwen2.5-0.5B-Instruct",
+  "prompt": "Explain in two sentences why a large language model server may return different answers to the same question.",
+  "prompt_tokens": 20,
+  "reference_threads": 6,
+  "A_repeatability": {
+    "runs": 100,
+    "bitwise_different": 0,
+    "seconds": 13.0
+  },
+  "B_batch_size": [
+    {
+      "max_abs_diff": 1.71661376953125e-05,
+      "mean_abs_diff": 2.6744205570139457e-06,
+      "bitwise_identical": false,
+      "argmax_same": true,
+      "top5_same": true,
+      "batch": 2
+    },
+    {
+      "max_abs_diff": 1.8596649169921875e-05,
+      "mean_abs_diff": 3.0772851005167468e-06,
+      "bitwise_identical": false,
+      "argmax_same": true,
+      "top5_same": true,
+      "batch": 4
+    },
+    {
+      "max_abs_diff": 3.24249267578125e-05,
+      "mean_abs_diff": 4.970276222593384e-06,
+      "bitwise_identical": false,
+      "argmax_same": true,
+      "top5_same": true,
+      "batch": 8
+    },
+    {
+      "max_abs_diff": 3.337860107421875e-05,
+      "mean_abs_diff": 5.987277745589381e-06,
+      "bitwise_identical": false,
+      "argmax_same": true,
+      "top5_same": true,
+      "batch": 16
+    },
+    {
+      "max_abs_diff": 3.0994415283203125e-05,
+      "mean_abs_diff": 6.233624390006298e-06,
+      "bitwise_identical": false,
+      "argmax_same": true,
+      "top5_same": true,
+      "batch": 32
+    }
+  ],
+  "C_threads": [
+    {
+      "max_abs_diff": 3.24249267578125e-05,
+      "mean_abs_diff": 5.121187314216513e-06,
+      "bitwise_identical": false,
+      "argmax_same": true,
+      "top5_same": true,
+      "threads": 1
+    },
+    {
+      "max_abs_diff": 3.910064697265625e-05,
+      "mean_abs_diff": 6.335782472888241e-06,
+      "bitwise_identical": false,
+      "argmax_same": true,
+      "top5_same": true,
+      "threads": 2
+    },
+    {
+      "max_abs_diff": 2.6702880859375e-05,
+      "mean_abs_diff": 4.380111931823194e-06,
+      "bitwise_identical": false,
+      "argmax_same": true,
+      "top5_same": true,
+      "threads": 3
+    },
+    {
+      "max_abs_diff": 0.0,
+      "mean_abs_diff": 0.0,
+      "bitwise_identical": true,
+      "argmax_same": true,
+      "top5_same": true,
+      "threads": 12
+    }
+  ],
+  "D_padding": [
+    {
+      "max_abs_diff": 4.00543212890625e-05,
+      "mean_abs_diff": 6.152458809083328e-06,
+      "bitwise_identical": false,
+      "argmax_same": true,
+      "top5_same": true,
+      "left_pad_tokens": 1
+    },
+    {
+      "max_abs_diff": 3.1948089599609375e-05,
+      "mean_abs_diff": 5.117951332067605e-06,
+      "bitwise_identical": false,
+      "argmax_same": true,
+      "top5_same": true,
+      "left_pad_tokens": 8
+    },
+    {
+      "max_abs_diff": 4.1961669921875e-05,
+      "mean_abs_diff": 6.997618129389593e-06,
+      "bitwise_identical": false,
+      "argmax_same": true,
+      "top5_same": true,
+      "left_pad_tokens": 64
+    }
+  ],
+  "E_text_divergence": {
+    "runs": 20,
+    "diverged": 0,
+    "divergence_rate": 0.0,
+    "median_first_divergent_token": null,
+    "earliest_divergence": null,
+    "reference_text": " A large language model server may return different answers to the same question due to variations in the training data, the complexity of",
+    "rows": [
+      {
+        "batch": 8,
+        "threads": 6,
+        "first_divergent_token": -1
+      },
+      {
+        "batch": 1,
+        "threads": 3,
+        "first_divergent_token": -1
+      },
+      {
+        "batch": 16,
+        "threads": 6,
+        "first_divergent_token": -1
+      },
+      {
+        "batch": 8,
+        "threads": 3,
+        "first_divergent_token": -1
+      },
+      {
+        "batch": 8,
+        "threads": 3,
+        "first_divergent_token": -1
+      },
+      {
+        "batch": 16,
+        "threads": 2,
+        "first_divergent_token": -1
+      },
+      {
+        "batch": 16,
+        "threads": 2,
+        "first_divergent_token": -1
+      },
+      {
+        "batch": 4,
+        "threads": 2,
+        "first_divergent_token": -1
+      },
+      {
+        "batch": 1,
+        "threads": 12,
+        "first_divergent_token": -1
+      },
+      {
+        "batch": 4,
+        "threads": 12,
+        "first_divergent_token": -1
+      },
+      {
+        "batch": 16,
+        "threads": 2,
+        "first_divergent_token": -1
+      },
+      {
+        "batch": 4,
+        "threads": 1,
+        "first_divergent_token": -1
+      },
+      {
+        "batch": 1,
+        "threads": 3,
+        "first_divergent_token": -1
+      },
+      {
+        "batch": 8,
+        "threads": 12,
+        "first_divergent_token": -1
+      },
+      {
+        "batch": 1,
+        "threads": 3,
+        "first_divergent_token": -1
+      },
+      {
+        "batch": 8,
+        "threads": 3,
+        "first_divergent_token": -1
+      },
+      {
+        "batch": 16,
+        "threads": 2,
+        "first_divergent_token": -1
+      },
+      {
+        "batch": 16,
+        "threads": 6,
+        "first_divergent_token": -1
+      },
+      {
+        "batch": 8,
+        "threads": 12,
+        "first_divergent_token": -1
+      },
+      {
+        "batch": 4,
+        "threads": 1,
+        "first_divergent_token": -1
+      }
+    ],
+    "seconds": 77.8
+  },
+  "F_decision_margin": {
+    "n_steps": 240,
+    "prompts": 4,
+    "gaps_sorted_head": [
+      0.00999,
+      0.03116,
+      0.07289,
+      0.08527,
+      0.13955,
+      0.231,
+      0.27752,
+      0.3187,
+      0.34897,
+      0.38299,
+      0.39277,
+      0.42463,
+      0.49931,
+      0.50514,
+      0.52158,
+      0.54924,
+      0.61279,
+      0.73192,
+      0.7563,
+      0.78505
+    ],
+    "min_gap": 0.009995,
+    "p10_gap": 1.0865,
+    "median_gap": 5.1444,
+    "exact_ties": 0,
+    "batch_noise_max_abs_diff": 3.337860107421875e-05,
+    "margin_over_noise_worst_case": 299.4,
+    "steps_within_noise": 0,
+    "fraction_within_noise": 0.0
+  },
+  "G_bfloat16": {
+    "batch_rows": [
+      {
+        "max_abs_diff": 0.0,
+        "mean_abs_diff": 0.0,
+        "bitwise_identical": true,
+        "argmax_same": true,
+        "top5_same": true,
+        "batch": 2
+      },
+      {
+        "max_abs_diff": 0.0,
+        "mean_abs_diff": 0.0,
+        "bitwise_identical": true,
+        "argmax_same": true,
+        "top5_same": true,
+        "batch": 8
+      },
+      {
+        "max_abs_diff": 0.0,
+        "mean_abs_diff": 0.0,
+        "bitwise_identical": true,
+        "argmax_same": true,
+        "top5_same": true,
+        "batch": 32
+      }
+    ],
+    "n_steps": 240,
+    "min_gap": 0.0,
+    "median_gap": 5.375,
+    "exact_ties": 2,
+    "tie_rate": 0.0083,
+    "fp32_exact_ties": 0
+  },
+  "H_fix": {
+    "runs": 20,
+    "diverged": 0,
+    "divergence_rate": 0.0,
+    "fixed_variables": [
+      "batch position",
+      "thread count"
+    ],
+    "still_unfixed": [
+      "different hardware",
+      "different engine",
+      "different library version",
+      "a scheduler that batches your request with other traffic"
+    ]
+  },
+  "wall_clock_s": 191.6
+}

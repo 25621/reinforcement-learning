@@ -1,0 +1,117 @@
+# HELP llm_requests_total Requests finished, by outcome.
+# TYPE llm_requests_total counter
+llm_requests_total{outcome="ok"} 44
+# HELP llm_prompt_tokens_total Prompt tokens prefilled.
+# TYPE llm_prompt_tokens_total counter
+llm_prompt_tokens_total 3764
+# HELP llm_generation_tokens_total Tokens generated.
+# TYPE llm_generation_tokens_total counter
+llm_generation_tokens_total 1769
+# HELP llm_iterations_total Forward passes, by kind.
+# TYPE llm_iterations_total counter
+llm_iterations_total{kind="prefill"} 44
+llm_iterations_total{kind="decode"} 455
+# HELP llm_time_to_first_token_seconds TTFT.
+# TYPE llm_time_to_first_token_seconds histogram
+llm_time_to_first_token_seconds_bucket{le="0.001"} 0
+llm_time_to_first_token_seconds_bucket{le="0.005"} 0
+llm_time_to_first_token_seconds_bucket{le="0.01"} 0
+llm_time_to_first_token_seconds_bucket{le="0.02"} 0
+llm_time_to_first_token_seconds_bucket{le="0.04"} 0
+llm_time_to_first_token_seconds_bucket{le="0.06"} 0
+llm_time_to_first_token_seconds_bucket{le="0.08"} 0
+llm_time_to_first_token_seconds_bucket{le="0.1"} 0
+llm_time_to_first_token_seconds_bucket{le="0.25"} 11
+llm_time_to_first_token_seconds_bucket{le="0.5"} 27
+llm_time_to_first_token_seconds_bucket{le="0.75"} 31
+llm_time_to_first_token_seconds_bucket{le="1"} 34
+llm_time_to_first_token_seconds_bucket{le="2.5"} 41
+llm_time_to_first_token_seconds_bucket{le="5"} 44
+llm_time_to_first_token_seconds_bucket{le="7.5"} 44
+llm_time_to_first_token_seconds_bucket{le="10"} 44
+llm_time_to_first_token_seconds_bucket{le="20"} 44
+llm_time_to_first_token_seconds_bucket{le="40"} 44
+llm_time_to_first_token_seconds_bucket{le="80"} 44
+llm_time_to_first_token_seconds_bucket{le="160"} 44
+llm_time_to_first_token_seconds_bucket{le="640"} 44
+llm_time_to_first_token_seconds_bucket{le="2560"} 44
+llm_time_to_first_token_seconds_bucket{le="+Inf"} 44
+llm_time_to_first_token_seconds_sum 35.71635456217473
+llm_time_to_first_token_seconds_count 44
+# HELP llm_inter_token_latency_seconds Time per output token.
+# TYPE llm_inter_token_latency_seconds histogram
+llm_inter_token_latency_seconds_bucket{le="0.005"} 0
+llm_inter_token_latency_seconds_bucket{le="0.01"} 0
+llm_inter_token_latency_seconds_bucket{le="0.025"} 0
+llm_inter_token_latency_seconds_bucket{le="0.05"} 0
+llm_inter_token_latency_seconds_bucket{le="0.075"} 0
+llm_inter_token_latency_seconds_bucket{le="0.1"} 191
+llm_inter_token_latency_seconds_bucket{le="0.25"} 1570
+llm_inter_token_latency_seconds_bucket{le="0.5"} 1680
+llm_inter_token_latency_seconds_bucket{le="0.75"} 1705
+llm_inter_token_latency_seconds_bucket{le="1"} 1725
+llm_inter_token_latency_seconds_bucket{le="2.5"} 1725
+llm_inter_token_latency_seconds_bucket{le="5"} 1725
+llm_inter_token_latency_seconds_bucket{le="7.5"} 1725
+llm_inter_token_latency_seconds_bucket{le="10"} 1725
+llm_inter_token_latency_seconds_bucket{le="+Inf"} 1725
+llm_inter_token_latency_seconds_sum 266.2319747473812
+llm_inter_token_latency_seconds_count 1725
+# HELP llm_e2e_request_latency_seconds End-to-end latency.
+# TYPE llm_e2e_request_latency_seconds histogram
+llm_e2e_request_latency_seconds_bucket{le="0.001"} 0
+llm_e2e_request_latency_seconds_bucket{le="0.005"} 0
+llm_e2e_request_latency_seconds_bucket{le="0.01"} 0
+llm_e2e_request_latency_seconds_bucket{le="0.02"} 0
+llm_e2e_request_latency_seconds_bucket{le="0.04"} 0
+llm_e2e_request_latency_seconds_bucket{le="0.06"} 0
+llm_e2e_request_latency_seconds_bucket{le="0.08"} 0
+llm_e2e_request_latency_seconds_bucket{le="0.1"} 0
+llm_e2e_request_latency_seconds_bucket{le="0.25"} 0
+llm_e2e_request_latency_seconds_bucket{le="0.5"} 0
+llm_e2e_request_latency_seconds_bucket{le="0.75"} 0
+llm_e2e_request_latency_seconds_bucket{le="1"} 0
+llm_e2e_request_latency_seconds_bucket{le="2.5"} 4
+llm_e2e_request_latency_seconds_bucket{le="5"} 12
+llm_e2e_request_latency_seconds_bucket{le="7.5"} 28
+llm_e2e_request_latency_seconds_bucket{le="10"} 37
+llm_e2e_request_latency_seconds_bucket{le="20"} 44
+llm_e2e_request_latency_seconds_bucket{le="40"} 44
+llm_e2e_request_latency_seconds_bucket{le="80"} 44
+llm_e2e_request_latency_seconds_bucket{le="160"} 44
+llm_e2e_request_latency_seconds_bucket{le="640"} 44
+llm_e2e_request_latency_seconds_bucket{le="2560"} 44
+llm_e2e_request_latency_seconds_bucket{le="+Inf"} 44
+llm_e2e_request_latency_seconds_sum 301.94832930955585
+llm_e2e_request_latency_seconds_count 44
+# HELP llm_request_queue_time_seconds Admitted-but-not-started time.
+# TYPE llm_request_queue_time_seconds histogram
+llm_request_queue_time_seconds_bucket{le="0.005"} 4
+llm_request_queue_time_seconds_bucket{le="0.01"} 4
+llm_request_queue_time_seconds_bucket{le="0.025"} 7
+llm_request_queue_time_seconds_bucket{le="0.05"} 13
+llm_request_queue_time_seconds_bucket{le="0.075"} 20
+llm_request_queue_time_seconds_bucket{le="0.1"} 24
+llm_request_queue_time_seconds_bucket{le="0.25"} 30
+llm_request_queue_time_seconds_bucket{le="0.5"} 31
+llm_request_queue_time_seconds_bucket{le="0.75"} 34
+llm_request_queue_time_seconds_bucket{le="1"} 36
+llm_request_queue_time_seconds_bucket{le="2.5"} 41
+llm_request_queue_time_seconds_bucket{le="5"} 44
+llm_request_queue_time_seconds_bucket{le="7.5"} 44
+llm_request_queue_time_seconds_bucket{le="10"} 44
+llm_request_queue_time_seconds_bucket{le="+Inf"} 44
+llm_request_queue_time_seconds_sum 24.649546549977007
+llm_request_queue_time_seconds_count 44
+# HELP llm_num_requests_running Requests decoding.
+# TYPE llm_num_requests_running gauge
+llm_num_requests_running 1
+# HELP llm_num_requests_waiting Requests queued.
+# TYPE llm_num_requests_waiting gauge
+llm_num_requests_waiting 0
+# HELP llm_kv_cache_usage_perc KV slots in use / slots available.
+# TYPE llm_kv_cache_usage_perc gauge
+llm_kv_cache_usage_perc 0.125
+# HELP llm_engine_busy_perc Fraction of wall time inside a forward pass.
+# TYPE llm_engine_busy_perc gauge
+llm_engine_busy_perc 0.9306153606847551

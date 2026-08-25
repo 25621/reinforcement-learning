@@ -1,0 +1,61 @@
+experiment,metric,value
+1_scene,positive rate in this scene,0.022
+2_train,training patches,44000
+2_train,positive rate,0.1392
+2_train,  label reason: not force closed,30009 (68.2%)
+2_train,  label reason: ok,6126 (13.9%)
+2_train,  label reason: too wide,4487 (10.2%)
+2_train,  label reason: too weak for the weight,2991 (6.8%)
+2_train,  label reason: too narrow,267 (0.6%)
+2_train,  label reason: off object,115 (0.3%)
+2_train,  label reason: finger hits a neighbour,5 (0.0%)
+2_train,training time (s),55.2
+2_train,held-out accuracy,0.9539
+2_train,held-out AUC (good outranks bad),0.9937
+2_train,held-out positive rate,0.1299
+3_compare,random: top-1 success,0.1318
+3_compare,random: ms per scene,1.4
+3_compare,depth heuristic (as printed in the guide): top-1 success,0.0818
+3_compare,depth heuristic (as printed in the guide): ms per scene,1.7
+3_compare,"depth heuristic, sign fixed: top-1 success",0.0545
+3_compare,"depth heuristic, sign fixed: ms per scene",1.9
+3_compare,analytic on observed depth: top-1 success,0.7182
+3_compare,analytic on observed depth: ms per scene,16.5
+3_compare,learned GQ-CNN: top-1 success,0.8864
+3_compare,learned GQ-CNN: ms per scene,6.3
+3_compare,ceiling (some candidate holds),0.9091
+4_noise,"depth heuristic, sign fixed @ 0.0 mm",0.1231
+4_noise,"depth heuristic, sign fixed @ 1.0 mm",0.0769
+4_noise,"depth heuristic, sign fixed @ 2.0 mm",0.0923
+4_noise,"depth heuristic, sign fixed @ 4.0 mm",0.0846
+4_noise,"depth heuristic, sign fixed @ 8.0 mm",0.0692
+4_noise,analytic on observed depth @ 0.0 mm,0.8462
+4_noise,analytic on observed depth @ 1.0 mm,0.7462
+4_noise,analytic on observed depth @ 2.0 mm,0.7
+4_noise,analytic on observed depth @ 4.0 mm,0.5923
+4_noise,analytic on observed depth @ 8.0 mm,0.6077
+4_noise,learned GQ-CNN (trained at 1.5 mm) @ 0.0 mm,0.9
+4_noise,learned GQ-CNN (trained at 1.5 mm) @ 1.0 mm,0.8846
+4_noise,learned GQ-CNN (trained at 1.5 mm) @ 2.0 mm,0.8769
+4_noise,learned GQ-CNN (trained at 1.5 mm) @ 4.0 mm,0.8769
+4_noise,learned GQ-CNN (trained at 1.5 mm) @ 8.0 mm,0.8538
+4_noise,learned GQ-CNN (retrained per level) @ 0.0 mm,0.6923
+4_noise,learned GQ-CNN (retrained per level) @ 1.0 mm,0.6231
+4_noise,learned GQ-CNN (retrained per level) @ 2.0 mm,0.6769
+4_noise,learned GQ-CNN (retrained per level) @ 4.0 mm,0.6538
+4_noise,learned GQ-CNN (retrained per level) @ 8.0 mm,0.6077
+5_novel,"training shapes: depth heuristic, sign fixed",0.0833
+5_novel,training shapes: analytic on observed depth,0.8056
+5_novel,training shapes: learned GQ-CNN,0.9167
+5_novel,training shapes: ceiling,0.9389
+5_novel,"novel shapes: depth heuristic, sign fixed",0.0167
+5_novel,novel shapes: analytic on observed depth,0.3611
+5_novel,novel shapes: learned GQ-CNN,0.0611
+5_novel,novel shapes: ceiling,0.6444
+6_data,1500 patches: top-1 success,0.3154
+6_data,6000 patches: top-1 success,0.3846
+6_data,20000 patches: top-1 success,0.9077
+6_data,44000 patches: top-1 success,0.9385
+6_data,saliency at the fingertip sites,0.01248
+6_data,saliency at the patch centre,0.01883
+6_data,fingertip / centre,0.66

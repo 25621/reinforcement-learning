@@ -1,0 +1,75 @@
+experiment,metric,value
+1_pipeline,cloud points above the table,453
+1_pipeline,candidates generated,266
+1_pipeline,candidate generation (ms),63.1
+1_pipeline,chosen grasp width (mm),54.7
+1_pipeline,chosen grasp lifted the object,True
+2_dataset,scenes,300
+2_dataset,grasps executed in simulation,3000
+2_dataset,of which succeeded,0.352
+2_dataset,dataset time (s),153
+2_dataset,funnel: sampled,81000 (100.0%)
+2_dataset,funnel: approach_too_flat,28752 (35.5%)
+2_dataset,funnel: empty,368 (0.5%)
+2_dataset,funnel: too_wide,3666 (4.5%)
+2_dataset,funnel: finger_collision,18382 (22.7%)
+2_dataset,funnel: below_table,45 (0.1%)
+2_dataset,funnel: kept,29787 (36.8%)
+3_compare,random: top-1 success,0.2455
+3_compare,"antipodal test (project 39, in 3D): top-1 success",0.0818
+3_compare,most points between the fingers: top-1 success,0.4273
+3_compare,learned PointNet: top-1 success,0.6545
+3_compare,scenes evaluated,110
+4_scores,"AUC of antipodal test (project 39, in 3D)",0.519
+4_scores,AUC of points between the fingers,0.619
+4_scores,AUC of learned PointNet,0.788
+4_scores,AUC of narrower is better,0.525
+4_scores,grasps executed,315
+4_scores,of which succeeded,0.384
+4_scores,"antipodal AUC, fingers close ACROSS the view",0.535
+4_scores,"antipodal AUC, fingers close ALONG the view (far face hidden)",0.546
+4_scores,median view alignment,0.331
+5_collision,with the filter: top-1 success,0.6545
+5_collision,with the filter: disturbed a neighbouring object,0.3455
+5_collision,without it: top-1 success,0.6182
+5_collision,without it: disturbed a neighbouring object,0.3818
+6_clutter,"1 objects, random",0.3
+6_clutter,"1 objects, antipodal test (project 39, in 3D)",0.05
+6_clutter,"1 objects, most points between the fingers",0.175
+6_clutter,"1 objects, learned PointNet",0.475
+6_clutter,"2 objects, random",0.3
+6_clutter,"2 objects, antipodal test (project 39, in 3D)",0.25
+6_clutter,"2 objects, most points between the fingers",0.375
+6_clutter,"2 objects, learned PointNet",0.6
+6_clutter,"3 objects, random",0.325
+6_clutter,"3 objects, antipodal test (project 39, in 3D)",0.2
+6_clutter,"3 objects, most points between the fingers",0.45
+6_clutter,"3 objects, learned PointNet",0.8
+6_clutter,"4 objects, random",0.4
+6_clutter,"4 objects, antipodal test (project 39, in 3D)",0.175
+6_clutter,"4 objects, most points between the fingers",0.5
+6_clutter,"4 objects, learned PointNet",0.725
+6_clutter,"5 objects, random",0.55
+6_clutter,"5 objects, antipodal test (project 39, in 3D)",0.1
+6_clutter,"5 objects, most points between the fingers",0.45
+6_clutter,"5 objects, learned PointNet",0.675
+7_transfer,novel shapes (L and T): random,0.0545
+7_transfer,"novel shapes (L and T): antipodal test (project 39, in 3D)",0.0
+7_transfer,novel shapes (L and T): most points between the fingers,0.5455
+7_transfer,novel shapes (L and T): learned PointNet,0.0364
+7_transfer,depth noise 0 mm: random,0.35
+7_transfer,"depth noise 0 mm: antipodal test (project 39, in 3D)",0.1
+7_transfer,depth noise 0 mm: most points between the fingers,0.35
+7_transfer,depth noise 0 mm: learned PointNet,0.6
+7_transfer,depth noise 1 mm: random,0.3
+7_transfer,"depth noise 1 mm: antipodal test (project 39, in 3D)",0.175
+7_transfer,depth noise 1 mm: most points between the fingers,0.375
+7_transfer,depth noise 1 mm: learned PointNet,0.775
+7_transfer,depth noise 3 mm: random,0.4
+7_transfer,"depth noise 3 mm: antipodal test (project 39, in 3D)",0.225
+7_transfer,depth noise 3 mm: most points between the fingers,0.4
+7_transfer,depth noise 3 mm: learned PointNet,0.7
+7_transfer,depth noise 6 mm: random,0.325
+7_transfer,"depth noise 6 mm: antipodal test (project 39, in 3D)",0.475
+7_transfer,depth noise 6 mm: most points between the fingers,0.35
+7_transfer,depth noise 6 mm: learned PointNet,0.675

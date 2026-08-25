@@ -1,0 +1,2 @@
+struct TORCH_API structured_ufunc_add_CPU : public at::meta::structured_add_Tensor {
+struct TORCH_API structured_ufunc_add_CUDA : public at::meta::structured_add_Tensor {

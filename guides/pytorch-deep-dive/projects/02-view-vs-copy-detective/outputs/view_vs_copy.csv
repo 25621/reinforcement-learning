@@ -1,0 +1,33 @@
+expression,shares_storage,is_view_flag,writable,write_reaches_parent
+"x.view(6, 4)",True,True,True,True
+"x.reshape(6, 4)",True,True,True,True
+x.t(),True,True,True,True
+"x.transpose(0, 1)",True,True,True,True
+"x.permute(1, 0)",True,True,True,True
+x.flatten(),True,True,True,True
+x.squeeze(),True,True,True,True
+x.unsqueeze(0),True,True,True,True
+x[0],True,True,True,True
+x[0:2],True,True,True,True
+"x[:, 1:3]",True,True,True,True
+x[::2],True,True,True,True
+"x[[0, 2]]        # fancy",False,False,True,False
+x[x > 5]         # mask,False,False,True,False
+"x.index_select(0, idx)",False,False,True,False
+"x.narrow(0, 1, 2)",True,True,True,True
+"x.select(0, 1)",True,True,True,True
+x.diagonal(),True,True,True,True
+x.expand_as(x),True,True,True,True
+"x[:, :1].expand(4, 6)",True,True,False,False
+"x.repeat(1, 1)",False,False,True,False
+x.contiguous(),True,True,True,True
+x.t().contiguous(),False,False,True,False
+x.clone(),False,False,True,False
+x.detach(),True,False,True,True
+x.to(torch.float32),True,True,True,True
+x.to(torch.float64),False,False,True,False
+x.float(),True,True,True,True
+x + 0,False,False,True,False
+x.split(2)[0],True,True,True,True
+x.chunk(2)[0],True,True,True,True
+"torch.as_strided(x,(2,2),(1,1))",True,True,True,True

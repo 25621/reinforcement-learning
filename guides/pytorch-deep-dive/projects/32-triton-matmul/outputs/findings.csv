@@ -1,0 +1,37 @@
+section,what,value,note
+compile,p32_matmul,0.0,s
+correctness,mm_ijk,3.17e-07,129x97 @ 97x131
+correctness,mm_ikj,3.62e-07,129x97 @ 97x131
+correctness,mm_tiled(64),3.62e-07,129x97 @ 97x131
+correctness,mm_tiled_par(64),3.62e-07,129x97 @ 97x131
+speed,mm_ijk (textbook),228.88 ms,1.2 GFLOP/s
+speed,mm_ikj (two lines swapped),11.48 ms,23.4 GFLOP/s
+speed,mm_tiled (BLOCK=64),12.35 ms,21.7 GFLOP/s
+speed,mm_tiled_par (6 threads),4.02 ms,66.7 GFLOP/s
+speed,torch.mm (oneDNN),0.83 ms,321.6 GFLOP/s
+traffic model,tiled BLOCK=16,67,MB read
+traffic model,tiled BLOCK=32,34,MB read
+traffic model,tiled BLOCK=64,17,MB read
+traffic model,tiled BLOCK=128,8,MB read
+traffic model,untiled,1074,MB read
+tile sweep,BLOCK=8,14.29 ms,18.8 GFLOP/s
+tile sweep,BLOCK=16,7.79 ms,34.4 GFLOP/s
+tile sweep,BLOCK=32,6.37 ms,42.1 GFLOP/s
+tile sweep,BLOCK=64,4.47 ms,60.1 GFLOP/s
+tile sweep,BLOCK=128,5.17 ms,51.9 GFLOP/s
+tile sweep,BLOCK=256,9.11 ms,29.5 GFLOP/s
+tile sweep,best BLOCK,64,60.1 GFLOP/s
+tiling crossover,N=256,1.00x,B is 0.3 MB
+tiling crossover,N=512,1.01x,B is 1.0 MB
+tiling crossover,N=1024,0.88x,B is 4.2 MB
+tiling crossover,N=2048,1.66x,B is 16.8 MB
+threads,row bands available,8,"BLOCK=64, N=512"
+threads,1 threads,17.68 ms,1.00x
+threads,2 threads,9.71 ms,1.82x
+threads,4 threads,5.10 ms,3.46x
+threads,6 threads,8.83 ms,2.00x
+size scaling,N=128,125.6% of torch.mm,0.9 GFLOP/s
+size scaling,N=256,19.3% of torch.mm,57.1 GFLOP/s
+size scaling,N=512,17.5% of torch.mm,51.5 GFLOP/s
+size scaling,N=1024,19.2% of torch.mm,65.3 GFLOP/s
+reference,theoretical peak,710,GFLOP/s

@@ -1,0 +1,51 @@
+quantity,value,unit
+arm6: links compared against MuJoCo,6.0,
+arm6: worst position error vs MuJoCo (2000 configs),4.75098925995612e-16,m
+arm6: worst orientation error vs MuJoCo,7.06305628899749e-16,rad
+arm6: median position error vs MuJoCo,5.721958498152797e-17,m
+arm6: one full forward-kinematics sweep,116.84705699250723,us
+arm6: cost per joint,19.474509498751207,us
+arm7: links compared against MuJoCo,7.0,
+arm7: worst position error vs MuJoCo (2000 configs),4.62985963945236e-16,m
+arm7: worst orientation error vs MuJoCo,7.373258116186482e-16,rad
+arm7: median position error vs MuJoCo,5.551115123125783e-17,m
+arm7: one full forward-kinematics sweep,128.8994069909677,us
+arm7: cost per joint,18.41420099870967,us
+testarm: links compared against MuJoCo,5.0,
+testarm: worst position error vs MuJoCo (2000 configs),5.502328482176191e-16,m
+testarm: worst orientation error vs MuJoCo,1.2492709290015286e-15,rad
+testarm: median position error vs MuJoCo,7.473417450352271e-17,m
+testarm: one full forward-kinematics sweep,87.93383433173099,us
+testarm: cost per joint,17.5867668663462,us
+inverted-transform trap: distance between right and wrong answer,0.5231655073423751,m
+inverted-transform trap: both answers are inside the workspace,0.47888519315546774,m
+bug[arm6/transposed_rotation] median tool error,421.69447233047987,mm
+bug[arm6/transposed_rotation] error at the home pose,0.0,mm
+bug[arm6/swapped_order] median tool error,482.4541384409403,mm
+bug[arm6/swapped_order] error at the home pose,0.0,mm
+bug[arm6/unnormalised_axis] median tool error,0.0,mm
+bug[arm6/unnormalised_axis] error at the home pose,0.0,mm
+bug[arm6/rpy_reversed] median tool error,0.0,mm
+bug[arm6/rpy_reversed] error at the home pose,0.0,mm
+bug[arm6/no_tool_offset] median tool error,120.0,mm
+bug[arm6/no_tool_offset] error at the home pose,119.99999999999989,mm
+bug[arm7/transposed_rotation] median tool error,462.9900407696409,mm
+bug[arm7/transposed_rotation] error at the home pose,0.0,mm
+bug[arm7/swapped_order] median tool error,117.158601953184,mm
+bug[arm7/swapped_order] error at the home pose,0.0,mm
+bug[arm7/unnormalised_axis] median tool error,0.0,mm
+bug[arm7/unnormalised_axis] error at the home pose,0.0,mm
+bug[arm7/rpy_reversed] median tool error,0.0,mm
+bug[arm7/rpy_reversed] error at the home pose,0.0,mm
+bug[arm7/no_tool_offset] median tool error,110.0,mm
+bug[arm7/no_tool_offset] error at the home pose,110.0000000000001,mm
+bug[testarm/transposed_rotation] median tool error,426.5974758859156,mm
+bug[testarm/transposed_rotation] error at the home pose,0.0,mm
+bug[testarm/swapped_order] median tool error,458.9841682949743,mm
+bug[testarm/swapped_order] error at the home pose,0.0,mm
+bug[testarm/unnormalised_axis] median tool error,276.2691167413482,mm
+bug[testarm/unnormalised_axis] error at the home pose,0.0,mm
+bug[testarm/rpy_reversed] median tool error,249.09710854664328,mm
+bug[testarm/rpy_reversed] error at the home pose,338.8557875238141,mm
+bug[testarm/no_tool_offset] median tool error,94.86832980505137,mm
+bug[testarm/no_tool_offset] error at the home pose,94.86832980505135,mm

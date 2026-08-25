@@ -1,0 +1,74 @@
+[
+ {
+  "image": 28,
+  "kind": "describe",
+  "q": "Describe the image.",
+  "a": "A field that has a fence around it."
+ },
+ {
+  "image": 28,
+  "kind": "choice",
+  "q": "Which is in the image, an airplane or a street?",
+  "a": "street"
+ },
+ {
+  "image": 28,
+  "kind": "presence",
+  "q": "Is there a giraffe in the image? Answer yes or no.",
+  "a": "No"
+ },
+ {
+  "image": 2720,
+  "kind": "describe",
+  "q": "Describe the image.",
+  "a": "desert plants and yellow fire hydrant in front of a monument"
+ },
+ {
+  "image": 2720,
+  "kind": "describe",
+  "q": "Describe the image.",
+  "a": "A sign at the entrance of an establishment with cactus plants by it."
+ },
+ {
+  "image": 2720,
+  "kind": "choice",
+  "q": "Which is in the image, a sign or a book?",
+  "a": "sign"
+ },
+ {
+  "image": 1966,
+  "kind": "choice",
+  "q": "Which is in the image, a sink or a street?",
+  "a": "street"
+ },
+ {
+  "image": 1966,
+  "kind": "describe",
+  "q": "Describe the image.",
+  "a": "a black and white parked motorcycle and some bicycles"
+ },
+ {
+  "image": 1966,
+  "kind": "presence",
+  "q": "Is there a water in the image? Answer yes or no.",
+  "a": "No"
+ },
+ {
+  "image": 398,
+  "kind": "choice",
+  "q": "Which is in the image, a person or a ball?",
+  "a": "person"
+ },
+ {
+  "image": 398,
+  "kind": "describe",
+  "q": "Describe the image.",
+  "a": "A woman riding waves in the ocean on a surf board"
+ },
+ {
+  "image": 398,
+  "kind": "presence",
+  "q": "Is there a person in the image? Answer yes or no.",
+  "a": "Yes"
+ }
+]

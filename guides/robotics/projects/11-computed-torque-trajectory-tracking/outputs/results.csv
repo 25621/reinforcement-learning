@@ -1,0 +1,88 @@
+section,quantity,value,unit
+1-three,PID only: joint error RMS,69.91520899173263,mrad
+1-three,PID only: worst joint error,256.8782296077913,mrad
+1-three,PID only: torque RMS,15.859004414475141,N*m
+1-three,gravity comp + PID: joint error RMS,20.768346415926537,mrad
+1-three,gravity comp + PID: worst joint error,66.07331738205873,mrad
+1-three,gravity comp + PID: torque RMS,15.007867398009939,N*m
+1-three,computed torque + PID: joint error RMS,0.07711535655157227,mrad
+1-three,computed torque + PID: worst joint error,0.1363771709921302,mrad
+1-three,computed torque + PID: torque RMS,14.673158471709433,N*m
+1-three,gravity comp vs PID only,3.3664311828946114,x better
+1-three,computed torque vs PID only,906.6314689860196,x better
+1-three,computed torque vs gravity comp,269.3153133777879,x better
+1-three,share of the total gain that gravity comp alone buys,70.37257178372961,%
+2-speed,speed x0.25 PID only: error RMS,71.14704499494421,mrad
+2-speed,speed x0.25 gravity comp + PID: error RMS,1.3553709676332872,mrad
+2-speed,speed x0.25 computed torque + PID: error RMS,0.0043271547510605,mrad
+2-speed,speed x0.50 PID only: error RMS,70.65980741177101,mrad
+2-speed,speed x0.50 gravity comp + PID: error RMS,6.138200255153748,mrad
+2-speed,speed x0.50 computed torque + PID: error RMS,0.018151182679652277,mrad
+2-speed,speed x1.00 PID only: error RMS,69.91520899173263,mrad
+2-speed,speed x1.00 gravity comp + PID: error RMS,20.768346415926537,mrad
+2-speed,speed x1.00 computed torque + PID: error RMS,0.07711535655157227,mrad
+2-speed,speed x2.00 PID only: error RMS,124.88989611925868,mrad
+2-speed,speed x2.00 gravity comp + PID: error RMS,72.03466881474272,mrad
+2-speed,speed x2.00 computed torque + PID: error RMS,0.29950323378884586,mrad
+2-speed,speed x3.00 PID only: error RMS,190.26213840493412,mrad
+2-speed,speed x3.00 gravity comp + PID: error RMS,147.2376465246222,mrad
+2-speed,speed x3.00 computed torque + PID: error RMS,0.659885908255622,mrad
+2-speed,PID only: error growth from x0.25 to x3.0,2.6742099888822417,x
+2-speed,gravity comp + PID: error growth from x0.25 to x3.0,108.63272863349336,x
+2-speed,computed torque + PID: error growth from x0.25 to x3.0,152.49880030149072,x
+2-speed,CT advantage at x0.25,16441.99227621972,x
+2-speed,CT advantage at x3.0,288.32580909006424,x
+3-model,controller mass x0.50: error RMS,44.31434921443118,mrad
+3-model,controller mass x0.70: error RMS,19.503341932985606,mrad
+3-model,controller mass x0.85: error RMS,8.102421939957106,mrad
+3-model,controller mass x1.00: error RMS,0.29950323378884586,mrad
+3-model,controller mass x1.20: error RMS,7.929481963888728,mrad
+3-model,controller mass x1.50: error RMS,15.920958871415744,mrad
+3-model,controller mass x2.00: error RMS,24.05231717566927,mrad
+3-model,PID-only baseline at the same speed,124.88989611925868,mrad
+3-model,gravity-comp baseline at the same speed,72.03466881474272,mrad
+3-model,worst computed-torque result in the whole sweep,44.31434921443118,mrad
+3-model,  still better than PID only by,2.8182721473564523,x
+4-payload,payload 0.0 kg: unknown to the controller,0.07711535655157227,mrad
+4-payload,payload 0.0 kg: weighed and modelled,0.07711535655157227,mrad
+4-payload,"payload 0.0 kg: unknown, and no I term",0.08013756023490491,mrad
+4-payload,payload 0.5 kg: unknown to the controller,68.21169162017326,mrad
+4-payload,payload 0.5 kg: weighed and modelled,0.0771153565515761,mrad
+4-payload,"payload 0.5 kg: unknown, and no I term",70.72668333917458,mrad
+4-payload,payload 1.0 kg: unknown to the controller,150.14236556644317,mrad
+4-payload,payload 1.0 kg: weighed and modelled,0.0771153565515702,mrad
+4-payload,"payload 1.0 kg: unknown, and no I term",156.4640356323383,mrad
+4-payload,payload 2.0 kg: unknown to the controller,316.64943081822395,mrad
+4-payload,payload 2.0 kg: weighed and modelled,0.07711535655157722,mrad
+4-payload,"payload 2.0 kg: unknown, and no I term",332.37743113029234,mrad
+4-payload,payload 3.0 kg: unknown to the controller,447.82875457515695,mrad
+4-payload,payload 3.0 kg: weighed and modelled,0.07711535655158012,mrad
+4-payload,"payload 3.0 kg: unknown, and no I term",468.99448889765426,mrad
+4-payload,3 kg unknown vs no payload,5807.2577836771525,x
+4-payload,3 kg: what the I term recovers,1.047263008697547,x
+4-payload,3 kg: what WEIGHING the payload recovers,5807.25778367656,x
+4-payload,payload 1.0 kg: worst eigenvalue of M_true^-1 (M_true - M_model),0.6826160392836522,
+4-payload,  so the feedback gain is multiplied by as little as,0.3173839607163478,x
+4-payload,payload 3.0 kg: worst eigenvalue of M_true^-1 (M_true - M_model),0.8658127616345387,
+4-payload,  so the feedback gain is multiplied by as little as,0.13418723836546131,x
+5-gains,gains x1: PID-only error RMS,124.88989611925868,mrad
+5-gains,gains x1: torque saturated,0.0,% of ticks
+5-gains,gains x1: computed-torque error RMS,0.29950323378884586,mrad
+5-gains,gains x2: PID-only error RMS,62.87694484473882,mrad
+5-gains,gains x2: torque saturated,0.0,% of ticks
+5-gains,gains x2: computed-torque error RMS,0.22023182441944766,mrad
+5-gains,gains x4: PID-only error RMS,31.257468154092873,mrad
+5-gains,gains x4: torque saturated,0.0,% of ticks
+5-gains,gains x4: computed-torque error RMS,0.15962363863588735,mrad
+5-gains,gains x8: PID-only error RMS,15.498222664164368,mrad
+5-gains,gains x8: torque saturated,0.0,% of ticks
+5-gains,gains x8: computed-torque error RMS,0.11464373542101763,mrad
+5-gains,gains x16: PID-only error RMS,7.697822468930176,mrad
+5-gains,gains x16: torque saturated,0.0,% of ticks
+5-gains,gains x16: computed-torque error RMS,0.08187258459300083,mrad
+5-gains,gain multiplier PID needs to match plain computed torque,16.0,x
+6-cost,computed torque (one RNEA),1785.1567873731256,us
+6-cost,gravity compensation (one RNEA),1817.3566200130153,us
+6-cost,the PID arithmetic itself,1.1040536264772527,us
+6-cost,computed torque as a share of a 1 ms tick,178.51567873731256,%
+6-cost,how much slower than plain PID,1616.9113026412451,x

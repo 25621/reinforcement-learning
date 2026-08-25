@@ -1,0 +1,178 @@
+{
+  "model": {
+    "kv_bytes_per_token": 24576,
+    "block_tokens": 64
+  },
+  "A_tiers": {
+    "block_bytes": 65536,
+    "rounds": 24,
+    "ram_write_s": 1.0500021744519472e-05,
+    "ram_write_gbps": 6.241510883937624,
+    "ram_read_s": 9.17899888008833e-06,
+    "ram_read_gbps": 7.139776445791369,
+    "nvme_write_s": 0.003496555029414594,
+    "nvme_write_gbps": 0.01874301975764193,
+    "nvme_read_warm_s": 6.192800356075168e-05,
+    "nvme_read_warm_gbps": 1.0582611457142947,
+    "nvme_read_cold_s": 0.00028703099815174937,
+    "nvme_read_cold_gbps": 0.22832377137660934
+  },
+  "B_active": [
+    {
+      "resident_blocks": 8,
+      "resident_frac": 1.0,
+      "median_step_s": 0.09596936652087606,
+      "fetches": 0,
+      "fetch_s": 0.0,
+      "writes_skipped": 0,
+      "resident_bytes": 12779520
+    },
+    {
+      "resident_blocks": 4,
+      "resident_frac": 0.5,
+      "median_step_s": 0.12544888502452523,
+      "fetches": 864,
+      "fetch_s": 0.2619496683473699,
+      "writes_skipped": 768,
+      "resident_bytes": 6488064
+    },
+    {
+      "resident_blocks": 2,
+      "resident_frac": 0.25,
+      "median_step_s": 0.1401400500035379,
+      "fetches": 1296,
+      "fetch_s": 0.3827180748921819,
+      "writes_skipped": 1248,
+      "resident_bytes": 3342336
+    },
+    {
+      "resident_blocks": 1,
+      "resident_frac": 0.125,
+      "median_step_s": 0.14092905347933993,
+      "fetches": 1512,
+      "fetch_s": 0.4257750564138405,
+      "writes_skipped": 1488,
+      "resident_bytes": 1769472
+    }
+  ],
+  "C_session": [
+    {
+      "ctx": 256,
+      "prefill_s": 0.6107843449572101,
+      "save_s": 0.11498998303432018,
+      "load_s": 0.014490527973975986,
+      "bytes": 6291456,
+      "recompute_vs_reload": 42.150592859979824
+    },
+    {
+      "ctx": 512,
+      "prefill_s": 1.509069013001863,
+      "save_s": 0.11107710201758891,
+      "load_s": 0.0165284049580805,
+      "bytes": 12582912,
+      "recompute_vs_reload": 91.301551288777
+    },
+    {
+      "ctx": 1024,
+      "prefill_s": 3.7497860489529558,
+      "save_s": 0.13088884099852294,
+      "load_s": 0.02859944204101339,
+      "bytes": 25165824,
+      "recompute_vs_reload": 131.11395822252504
+    },
+    {
+      "ctx": 2048,
+      "prefill_s": 9.958231062046252,
+      "save_s": 0.19119010196300223,
+      "load_s": 0.05440790898865089,
+      "bytes": 50331648,
+      "recompute_vs_reload": 183.02910821519478
+    }
+  ],
+  "D_scenarios": [
+    {
+      "scenario": "Llama-3.1-8B on 1xH100, NVMe @ 6 GB/s",
+      "ctx": 2048,
+      "recompute_s": 0.17066666666666666,
+      "reload_s": 0.044739242666666665,
+      "ratio": 3.814697265625
+    },
+    {
+      "scenario": "Llama-3.1-8B on 1xH100, NVMe @ 6 GB/s",
+      "ctx": 8192,
+      "recompute_s": 0.6826666666666666,
+      "reload_s": 0.17895697066666666,
+      "ratio": 3.814697265625
+    },
+    {
+      "scenario": "Llama-3.1-8B on 1xH100, NVMe @ 6 GB/s",
+      "ctx": 32768,
+      "recompute_s": 2.7306666666666666,
+      "reload_s": 0.7158278826666666,
+      "ratio": 3.814697265625
+    },
+    {
+      "scenario": "Llama-3.1-8B on 1xH100, host RAM @ 25 GB/s",
+      "ctx": 2048,
+      "recompute_s": 0.17066666666666666,
+      "reload_s": 0.01073741824,
+      "ratio": 15.894571940104168
+    },
+    {
+      "scenario": "Llama-3.1-8B on 1xH100, host RAM @ 25 GB/s",
+      "ctx": 8192,
+      "recompute_s": 0.6826666666666666,
+      "reload_s": 0.04294967296,
+      "ratio": 15.894571940104168
+    },
+    {
+      "scenario": "Llama-3.1-8B on 1xH100, host RAM @ 25 GB/s",
+      "ctx": 32768,
+      "recompute_s": 2.7306666666666666,
+      "reload_s": 0.17179869184,
+      "ratio": 15.894571940104168
+    },
+    {
+      "scenario": "Llama-3.1-70B on 4xH100, NVMe @ 6 GB/s",
+      "ctx": 2048,
+      "recompute_s": 0.512,
+      "reload_s": 0.11184810666666667,
+      "ratio": 4.57763671875
+    },
+    {
+      "scenario": "Llama-3.1-70B on 4xH100, NVMe @ 6 GB/s",
+      "ctx": 8192,
+      "recompute_s": 2.048,
+      "reload_s": 0.4473924266666667,
+      "ratio": 4.57763671875
+    },
+    {
+      "scenario": "Llama-3.1-70B on 4xH100, NVMe @ 6 GB/s",
+      "ctx": 32768,
+      "recompute_s": 8.192,
+      "reload_s": 1.7895697066666667,
+      "ratio": 4.57763671875
+    },
+    {
+      "scenario": "Llama-3.1-70B on 4xH100, host RAM @ 25 GB/s",
+      "ctx": 2048,
+      "recompute_s": 0.512,
+      "reload_s": 0.0268435456,
+      "ratio": 19.073486328125
+    },
+    {
+      "scenario": "Llama-3.1-70B on 4xH100, host RAM @ 25 GB/s",
+      "ctx": 8192,
+      "recompute_s": 2.048,
+      "reload_s": 0.1073741824,
+      "ratio": 19.073486328125
+    },
+    {
+      "scenario": "Llama-3.1-70B on 4xH100, host RAM @ 25 GB/s",
+      "ctx": 32768,
+      "recompute_s": 8.192,
+      "reload_s": 0.4294967296,
+      "ratio": 19.073486328125
+    }
+  ]
+}

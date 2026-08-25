@@ -1,0 +1,213 @@
+{
+ "config": {
+  "n_cases": 32,
+  "batch": 8,
+  "max_new": 44,
+  "price_hr": 0.55,
+  "overhead": 0.25,
+  "duty": 0.5,
+  "ladder": [
+   [
+    "SmolLM2-135M",
+    "HuggingFaceTB/SmolLM2-135M-Instruct"
+   ],
+   [
+    "SmolLM2-360M",
+    "HuggingFaceTB/SmolLM2-360M-Instruct"
+   ],
+   [
+    "Qwen2.5-0.5B",
+    "Qwen/Qwen2.5-0.5B-Instruct"
+   ],
+   [
+    "Qwen2.5-1.5B",
+    "Qwen/Qwen2.5-1.5B-Instruct"
+   ]
+  ]
+ },
+ "arms": [
+  {
+   "label": "SmolLM2-135M",
+   "n": 32,
+   "parse": 0.53125,
+   "schema": 0.53125,
+   "name": 0.28125,
+   "age": 0.53125,
+   "skills": 0.09375,
+   "accuracy": 0.09375,
+   "gen_tokens": 1353,
+   "gen_s": 18.328245871933177,
+   "tok_per_case": 42.28125,
+   "out_tok_s": 73.82048502917054,
+   "dollars_per_m": 5.173962813892609,
+   "dollars_per_1k_correct": 2.3334572290655666,
+   "samples": [
+    "```json\n{\n  \"name\": \"Radia\",\n  \"age\": 80,\n  \"skills\": [\n    \"Photography\",\n    \"Statistics\"\n  ]\n}\n```",
+    "```json\n{\n  \"name\": \"Katherine Turing\",\n  \"age\": 86,\n  \"skills\": [\n    \"Computer Science\",\n    \"Statistics\"\n  ]\n}\n```",
+    "```json\n{\n  \"name\": \"Donald\",\n  \"age\": 33,\n  \"skills\": [\n    \"Database\",\n    \"Networking\"\n  ]\n}\n```"
+   ],
+   "model": "SmolLM2-135M",
+   "model_id": "HuggingFaceTB/SmolLM2-135M-Instruct",
+   "params": 134515008,
+   "fp32_gb": 0.538060032,
+   "fp16_gb": 0.269030016,
+   "prompt_width": 78,
+   "arm": "plain",
+   "dominated_by": "SmolLM2-360M"
+  },
+  {
+   "label": "SmolLM2-135M + grammar",
+   "n": 32,
+   "parse": 0.90625,
+   "schema": 0.90625,
+   "name": 0.46875,
+   "age": 0.90625,
+   "skills": 0.09375,
+   "accuracy": 0.0625,
+   "gen_tokens": 1016,
+   "gen_s": 17.601946717011742,
+   "tok_per_case": 31.75,
+   "out_tok_s": 57.72088828209366,
+   "dollars_per_m": 6.617092283434805,
+   "dollars_per_1k_correct": 3.361482879984881,
+   "samples": [
+    "{\"name\": \"Radia\", \"age\": 80, \"skills\": [\"reading\", \"writing\", \"math\"]}",
+    "{\"name\": \"Katherine\", \"age\": 86, \"skills\": [\"statistics\", \"avionics\"]}",
+    "{\"name\": \"Donald\", \"age\": 33, \"skills\": [\"coding\", \"web development\", \"database\", \"network\", \"web development\"]}"
+   ],
+   "model": "SmolLM2-135M",
+   "model_id": "HuggingFaceTB/SmolLM2-135M-Instruct",
+   "params": 134515008,
+   "fp32_gb": 0.538060032,
+   "fp16_gb": 0.269030016,
+   "prompt_width": 78,
+   "arm": "grammar",
+   "index_build_s": 0.34593594807665795,
+   "dominated_by": "SmolLM2-135M"
+  },
+  {
+   "label": "SmolLM2-360M",
+   "n": 32,
+   "parse": 0.96875,
+   "schema": 0.96875,
+   "name": 0.9375,
+   "age": 0.96875,
+   "skills": 0.8125,
+   "accuracy": 0.8125,
+   "gen_tokens": 1049,
+   "gen_s": 41.32412459794432,
+   "tok_per_case": 32.78125,
+   "out_tok_s": 25.384687763045385,
+   "dollars_per_m": 15.046253395343037,
+   "dollars_per_1k_correct": 0.6070584542967248,
+   "samples": [
+    "{\n  \"name\": \"Radia Berners\",\n  \"age\": 80,\n  \"skills\": [\"optics\", \"statistics\"]\n}",
+    "{\n  \"name\": \"Katherine Turing\",\n  \"age\": 86,\n  \"skills\": [\"avionics\", \"statistics\"]\n}",
+    "{\n    \"name\": \"Donald\",\n    \"age\": 33,\n    \"skills\": [\"database\", \"networking\"]\n}"
+   ],
+   "model": "SmolLM2-360M",
+   "model_id": "HuggingFaceTB/SmolLM2-360M-Instruct",
+   "params": 361821120,
+   "fp32_gb": 1.44728448,
+   "fp16_gb": 0.72364224,
+   "prompt_width": 78,
+   "arm": "plain",
+   "dominated_by": null
+  },
+  {
+   "label": "Qwen2.5-0.5B",
+   "n": 32,
+   "parse": 1.0,
+   "schema": 1.0,
+   "name": 0.75,
+   "age": 1.0,
+   "skills": 0.90625,
+   "accuracy": 0.65625,
+   "gen_tokens": 1123,
+   "gen_s": 45.97440809709951,
+   "tok_per_case": 35.09375,
+   "out_tok_s": 24.426633130940715,
+   "dollars_per_m": 15.636393374273233,
+   "dollars_per_1k_correct": 0.836174750443278,
+   "samples": [
+    "```json\n{\n  \"name\": \"Radia Berners\",\n  \"age\": 80,\n  \"skills\": [\"optics\", \"statistics\"]\n}\n```",
+    "```json\n{\n  \"name\": \"Katherine\",\n  \"age\": 86,\n  \"skills\": [\"avionics\", \"statistics\"]\n}\n```",
+    "```json\n{\n  \"name\": \"Donald\",\n  \"age\": 33,\n  \"skills\": [\"databases\", \"networking\"]\n}\n```"
+   ],
+   "model": "Qwen2.5-0.5B",
+   "model_id": "Qwen/Qwen2.5-0.5B-Instruct",
+   "params": 494032768,
+   "fp32_gb": 1.976131072,
+   "fp16_gb": 0.988065536,
+   "prompt_width": 75,
+   "arm": "plain",
+   "dominated_by": "SmolLM2-360M"
+  },
+  {
+   "label": "Qwen2.5-0.5B + grammar",
+   "n": 32,
+   "parse": 1.0,
+   "schema": 1.0,
+   "name": 0.8125,
+   "age": 1.0,
+   "skills": 0.90625,
+   "accuracy": 0.71875,
+   "gen_tokens": 844,
+   "gen_s": 30.44063370290678,
+   "tok_per_case": 26.375,
+   "out_tok_s": 27.72609822243636,
+   "dollars_per_m": 13.775629061840712,
+   "dollars_per_1k_correct": 0.5055056925301548,
+   "samples": [
+    "{\"name\": \"Radia Berners\", \"age\": 80, \"skills\": [\"optics\", \"statistics\"]}",
+    "{\"name\": \"Katherine Turing\", \"age\": 86, \"skills\": [\"avionics\", \"statistics\"]}",
+    "{\"name\": \"Donald\", \"age\": 33, \"skills\": [\"databases\", \"networking\"]}"
+   ],
+   "model": "Qwen2.5-0.5B",
+   "model_id": "Qwen/Qwen2.5-0.5B-Instruct",
+   "params": 494032768,
+   "fp32_gb": 1.976131072,
+   "fp16_gb": 0.988065536,
+   "prompt_width": 75,
+   "arm": "grammar",
+   "index_build_s": 0.6915488800732419,
+   "dominated_by": null
+  },
+  {
+   "label": "Qwen2.5-1.5B",
+   "n": 32,
+   "parse": 1.0,
+   "schema": 1.0,
+   "name": 0.8125,
+   "age": 1.0,
+   "skills": 1.0,
+   "accuracy": 0.8125,
+   "gen_tokens": 1142,
+   "gen_s": 115.83614245208446,
+   "tok_per_case": 35.6875,
+   "out_tok_s": 9.858753717324344,
+   "dollars_per_m": 38.74165593296754,
+   "dollars_per_1k_correct": 1.7016527336711127,
+   "samples": [
+    "{\n  \"name\": \"Radia\",\n  \"age\": 80,\n  \"skills\": [\"optics\", \"statistics\"]\n}",
+    "{\n  \"name\": \"Katherine\",\n  \"age\": 86,\n  \"skills\": [\n    \"avionics\",\n    \"statistics\"\n  ]\n}",
+    "{\n  \"name\": \"Donald\",\n  \"age\": 33,\n  \"skills\": [\n    \"databases\",\n    \"networking\"\n  ]\n}"
+   ],
+   "model": "Qwen2.5-1.5B",
+   "model_id": "Qwen/Qwen2.5-1.5B-Instruct",
+   "params": 1543714304,
+   "fp32_gb": 6.174857216,
+   "fp16_gb": 3.087428608,
+   "prompt_width": 75,
+   "arm": "plain",
+   "dominated_by": "SmolLM2-360M"
+  }
+ ],
+ "frontier": [
+  "SmolLM2-360M",
+  "Qwen2.5-0.5B + grammar"
+ ],
+ "recommend": "SmolLM2-360M",
+ "best": "SmolLM2-360M",
+ "wall_s": 319.7
+}

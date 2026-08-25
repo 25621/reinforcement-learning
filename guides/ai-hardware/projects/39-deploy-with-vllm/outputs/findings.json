@@ -1,0 +1,236 @@
+{
+  "vllm_attempt": {
+    "wheel": "vllm-0.27.1-cp38-abi3-manylinux_2_28_x86_64.whl",
+    "wheel_MB": 312.9,
+    "installed_ok": true,
+    "bundled_torch": "2.13.0+cu130",
+    "gpu": "NVIDIA GeForce GTX 1070 Ti",
+    "compute_capability": "6.1",
+    "torch_supported_arch": [
+      "sm_70",
+      "sm_75",
+      "sm_80",
+      "sm_86",
+      "sm_90",
+      "sm_100",
+      "sm_120"
+    ],
+    "gpu_error": "torch.AcceleratorError: CUDA error: no kernel image is available for execution on the device",
+    "gpu_error_site": "vllm/v1/worker/gpu/buffer_utils.py:137 -- the first torch.zeros(..., device='cuda') of engine startup",
+    "cpu_fallback_error": "AssertionError: DP adjusted local rank 0 is out of bounds for 0 devices (the CUDA wheel has no CPU path)"
+  },
+  "verification": {
+    "max_abs_logit_diff": 2.4557113647460938e-05,
+    "rel_logit_diff": 1.199749476654688e-06,
+    "my_tokens": [
+      12095,
+      13,
+      1084,
+      374,
+      279,
+      7772,
+      3283,
+      304
+    ],
+    "hf_tokens": [
+      12095,
+      13,
+      1084,
+      374,
+      279,
+      7772,
+      3283,
+      304
+    ],
+    "tokens_match": true,
+    "my_text": " Paris. It is the largest city in",
+    "hf_text": " Paris. It is the largest city in",
+    "seconds": 8.548176527023315
+  },
+  "model": {
+    "name": "Qwen/Qwen2.5-0.5B-Instruct",
+    "layers": 24,
+    "d_model": 896,
+    "heads": 14,
+    "kv_heads": 2,
+    "params_GB": 1.976131072
+  },
+  "http": {
+    "text": " Paris. It is the largest city in Europe and the third",
+    "latency_s": 1.2862677459488623,
+    "port": 39581
+  },
+  "peaks": {
+    "read_GB_s": 27.518753673268012,
+    "matmul_GFLOP_s": 658.4038663198373
+  },
+  "throughput": [
+    {
+      "batch": 1,
+      "prefill_s": 0.1928851629490964,
+      "prefill_tok_s": 331.8036443108379,
+      "prefill_GFLOP_s": 327.84374566274147,
+      "decode_GFLOP_s": 8.542392530930542,
+      "step_ms": 115.66613597096875,
+      "decode_tok_s": 8.64557280837143,
+      "per_request_tok_s": 8.64557280837143,
+      "weight_GB_s": 17.084785061861083,
+      "gather_share": 0.040106026056360225,
+      "kv_MB": 2.359296
+    },
+    {
+      "batch": 2,
+      "prefill_s": 0.33839229797013104,
+      "prefill_tok_s": 378.25920024721785,
+      "prefill_GFLOP_s": 373.7448794391986,
+      "decode_GFLOP_s": 15.402674276876427,
+      "step_ms": 128.29791998956352,
+      "decode_tok_s": 15.588717261844083,
+      "per_request_tok_s": 7.794358630922042,
+      "weight_GB_s": 15.402674276876427,
+      "gather_share": 0.025083881247317596,
+      "kv_MB": 4.718592
+    },
+    {
+      "batch": 4,
+      "prefill_s": 0.5476333830156364,
+      "prefill_tok_s": 467.46602369324614,
+      "prefill_GFLOP_s": 461.8870672622559,
+      "decode_GFLOP_s": 30.361871562351215,
+      "step_ms": 130.17188798403367,
+      "decode_tok_s": 30.72860094408881,
+      "per_request_tok_s": 7.682150236022203,
+      "weight_GB_s": 15.180935781175608,
+      "gather_share": 0.030492175021705863,
+      "kv_MB": 9.437184
+    },
+    {
+      "batch": 8,
+      "prefill_s": 1.008693312003743,
+      "prefill_tok_s": 507.5873844974003,
+      "prefill_GFLOP_s": 501.5296011302619,
+      "decode_GFLOP_s": 60.1139301453486,
+      "step_ms": 131.49238901678473,
+      "decode_tok_s": 60.84002321213296,
+      "per_request_tok_s": 7.60500290151662,
+      "weight_GB_s": 15.02848253633715,
+      "gather_share": 0.039604075972887544,
+      "kv_MB": 18.874368
+    },
+    {
+      "batch": 16,
+      "prefill_s": 1.9854883209918626,
+      "prefill_tok_s": 515.7421422093556,
+      "prefill_GFLOP_s": 509.58703617987527,
+      "decode_GFLOP_s": 101.73428644827635,
+      "step_ms": 155.3954829578288,
+      "decode_tok_s": 102.96309580853182,
+      "per_request_tok_s": 6.435193488033239,
+      "weight_GB_s": 12.716785806034544,
+      "gather_share": 0.03529923284756549,
+      "kv_MB": 37.748736
+    },
+    {
+      "batch": 32,
+      "prefill_s": 4.1573736789869145,
+      "prefill_tok_s": 492.6186958731756,
+      "prefill_GFLOP_s": 486.7395557815502,
+      "decode_GFLOP_s": 177.41250868432314,
+      "step_ms": 178.21797000942752,
+      "decode_tok_s": 179.5554062158111,
+      "per_request_tok_s": 5.611106444244097,
+      "weight_GB_s": 11.088281792770196,
+      "gather_share": 0.035727303499678245,
+      "kv_MB": 75.497472
+    }
+  ],
+  "weight_bytes": 1976131072,
+  "bytes_per_token_kv": 24576.0,
+  "fragmentation": {
+    "n_requests": 256,
+    "tokens_used": 37685,
+    "max_len": 2048,
+    "bytes_per_token": 24576.0,
+    "contiguous": {
+      "tokens_allocated": 524288,
+      "waste_pct": 1291.2378930608995,
+      "MB": 12884.901888
+    },
+    "paged": {
+      "1": {
+        "block_size": 1,
+        "tokens_allocated": 37685,
+        "waste_pct": 0.0,
+        "MB": 926.14656
+      },
+      "8": {
+        "block_size": 8,
+        "tokens_allocated": 38544,
+        "waste_pct": 2.279421520498872,
+        "MB": 947.257344
+      },
+      "16": {
+        "block_size": 16,
+        "tokens_allocated": 39424,
+        "waste_pct": 4.6145681305559245,
+        "MB": 968.884224
+      },
+      "32": {
+        "block_size": 32,
+        "tokens_allocated": 41408,
+        "waste_pct": 9.879262305957278,
+        "MB": 1017.643008
+      },
+      "64": {
+        "block_size": 64,
+        "tokens_allocated": 45696,
+        "waste_pct": 21.25779487859891,
+        "MB": 1123.024896
+      },
+      "128": {
+        "block_size": 128,
+        "tokens_allocated": 54784,
+        "waste_pct": 45.37349077882447,
+        "MB": 1346.371584
+      }
+    },
+    "mean_len": 147.20703125
+  },
+  "seats": {
+    "1.0": {
+      "contiguous": 19,
+      "paged": 276
+    },
+    "8.0": {
+      "contiguous": 158,
+      "paged": 2211
+    }
+  },
+  "gather_cost": {
+    "8": {
+      "gather_ms": 32.143958883049585,
+      "step_ms": 201.45071332808584,
+      "gathered_MB": 204.47232,
+      "share": 0.15956239792856639
+    },
+    "16": {
+      "gather_ms": 37.27006157472109,
+      "step_ms": 211.14810932582864,
+      "gathered_MB": 207.618048,
+      "share": 0.17651146246925942
+    },
+    "64": {
+      "gather_ms": 35.903994944722704,
+      "step_ms": 207.20730566730103,
+      "gathered_MB": 226.492416,
+      "share": 0.17327571935311661
+    },
+    "128": {
+      "gather_ms": 39.94525066809729,
+      "step_ms": 216.23896933548772,
+      "gathered_MB": 251.65824,
+      "share": 0.18472734489463613
+    }
+  },
+  "total_seconds": 47.39591026306152
+}

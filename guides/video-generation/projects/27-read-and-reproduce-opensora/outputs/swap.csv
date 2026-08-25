@@ -1,0 +1,4 @@
+vae,latent_shape,numbers_per_clip,tokens,vae_psnr_db,vae_floor_fid,sample_fid,sample_flicker,sample_align
+3d,4x4x8x8,1024,64,22.85,25.06,120.01,0.0169,0.893
+2d,1x16x8x8,1024,64,23.13,39.49,172.87,0.0197,0.876
+real clips,,,,,,1.36,0.0413,1.0

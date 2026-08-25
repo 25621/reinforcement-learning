@@ -1,0 +1,22 @@
+[Gloo] Rank 1 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[Gloo] Rank 0 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+rank 1: simulated failure at step 3
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/home/canary/project/tmp/claude-pytorch-phase7-projects/guides/pytorch-deep-dive/projects/41-multi-node-setup/train.py", line 111, in <module>
+[rank0]:     main()
+[rank0]:   File "/home/canary/project/tmp/claude-pytorch-phase7-projects/guides/pytorch-deep-dive/projects/41-multi-node-setup/train.py", line 81, in main
+[rank0]:     loss.backward()
+[rank0]:   File "/home/canary/.local/lib/python3.12/site-packages/torch/_tensor.py", line 630, in backward
+[rank0]:     torch.autograd.backward(
+[rank0]:   File "/home/canary/.local/lib/python3.12/site-packages/torch/autograd/__init__.py", line 364, in backward
+[rank0]:     _engine_run_backward(
+[rank0]:   File "/home/canary/.local/lib/python3.12/site-packages/torch/autograd/graph.py", line 865, in _engine_run_backward
+[rank0]:     return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]: RuntimeError: [/pytorch/third_party/gloo/gloo/transport/tcp/pair.cc:538] Read error [192.168.200.105]:221: Connection reset by peer
+W0809 18:37:10.086000 901994 torch/distributed/elastic/multiprocessing/api.py:1010] Sending process 902000 closing signal SIGTERM
+E0809 18:37:10.150000 901994 torch/distributed/elastic/multiprocessing/api.py:984] failed (exitcode: 1) local_rank: 1 (pid: 902001) of binary: /usr/bin/python3
+[Gloo] Rank [Gloo] Rank 1 is connected to 01 is connected to  peer ranks. 1Expected number of connected peer ranks is :  peer ranks. 1Expected number of connected peer ranks is : 
+1
+rank 1/2 local_rank 1 node 0 done
+rank 0/2 local_rank 0 node 0 done

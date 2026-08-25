@@ -1,0 +1,15 @@
+arm,style,params,digit_acc,direction_acc,both_acc,fid_proxy,seconds
+clip,short,2001424,0.162,0.975,0.15,95.7,8.7
+clip,long_early,2001424,0.175,0.975,0.162,68.4,8.6
+clip,long_late,2001424,0.138,0.188,0.025,158.1,8.7
+clip_chunk,short,2001424,0.237,0.988,0.225,49.2,10.0
+clip_chunk,long_early,2001424,0.213,1.0,0.213,58.4,9.7
+clip_chunk,long_late,2001424,0.188,1.0,0.188,84.3,10.6
+t5,short,2001424,0.25,0.988,0.237,14.0,10.8
+t5,long_early,2001424,0.275,0.988,0.262,16.8,9.3
+t5,long_late,2001424,0.262,0.988,0.25,23.6,9.2
+both,short,2101392,0.237,1.0,0.237,68.6,10.3
+both,long_early,2101392,0.175,0.975,0.15,63.2,10.2
+both,long_late,2101392,0.15,0.975,0.125,72.8,10.2
+chance,,,0.1,0.25,0.025,,
+real clips (judge ceiling),,,0.842,1.0,,3.0,

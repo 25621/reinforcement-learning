@@ -1,0 +1,89 @@
+section,quantity,value,unit
+1-identify,true Coulomb friction,0.055,N*m
+1-identify,fitted Coulomb friction,0.05496534311334757,N*m
+1-identify,  error,0.06301252118624534,%
+1-identify,true viscous friction,0.02,N*m*s/rad
+1-identify,fitted viscous friction,0.01998616026362504,N*m*s/rad
+1-identify,  error,0.06919868187479361,%
+1-identify,measured torque at 0.01 rad/s,0.10933691633822402,N*m
+1-identify,what the straight-line fit predicts there,0.055165204715983816,N*m
+1-identify,how much the fit under-predicts near zero speed,98.1990584484213,%
+1-identify,true static friction (the break-away torque),0.11,N*m
+2-ff,"PD, no feedforward: tracking error RMS",35.753315605239614,mrad
+2-ff,"PD, no feedforward: worst error",49.8544325399346,mrad
+2-ff,"PD, gravity FF: tracking error RMS",10.489162847187831,mrad
+2-ff,"PD, gravity FF: worst error",12.681586093338082,mrad
+2-ff,"PD, gravity + friction FF: tracking error RMS",6.035320139241349,mrad
+2-ff,"PD, gravity + friction FF: worst error",8.312369919016295,mrad
+2-ff,"PID, no feedforward: tracking error RMS",2.928928899214722,mrad
+2-ff,"PID, no feedforward: worst error",14.085251177344716,mrad
+2-ff,"PID, gravity FF: tracking error RMS",2.8748654284307182,mrad
+2-ff,"PID, gravity FF: worst error",13.520865208275001,mrad
+2-ff,"PID, gravity + friction FF: tracking error RMS",1.7835019317144714,mrad
+2-ff,"PID, gravity + friction FF: worst error",9.258770407269134,mrad
+2-ff,PD: friction FF improvement over no feedforward,5.924013106243255,x
+2-ff,PD: what the friction term adds on top of gravity FF,1.7379629589137817,x
+2-ff,PID: friction FF improvement over no feedforward,1.6422347781811246,x
+2-ff,PID: what the friction term adds on top of gravity FF,1.6119216790907116,x
+3-stickslip,break-away torque of this joint,0.25,N*m
+3-stickslip,torque once it is moving,0.055,N*m
+3-stickslip,static-to-moving ratio,4.545454545454546,x
+3-stickslip,"PID, no feedforward: residual amplitude",21.179251464284484,mrad
+3-stickslip,"PID, no feedforward: hunting period",6.786666666666667,s
+3-stickslip,"PID, no feedforward: steady-state error",0.08244774641079382,mrad
+3-stickslip,PD only (Ki = 0): residual amplitude,0.5251430446884253,mrad
+3-stickslip,PD only (Ki = 0): hunting period,nan,s
+3-stickslip,PD only (Ki = 0): steady-state error,-38.89006318009413,mrad
+3-stickslip,PID + gravity feedforward: residual amplitude,22.189219303144604,mrad
+3-stickslip,PID + gravity feedforward: hunting period,nan,s
+3-stickslip,PID + gravity feedforward: steady-state error,-2.5537098670931457,mrad
+3-stickslip,PID + friction feedforward: residual amplitude,5.930898525574463,mrad
+3-stickslip,PID + friction feedforward: hunting period,nan,s
+3-stickslip,PID + friction feedforward: steady-state error,-2.5922979393091836,mrad
+3-stickslip,amplitude reduction from removing the I term,40.33044268319392,x
+3-stickslip,amplitude reduction from GRAVITY feedforward,0.9544838497892988,x
+3-stickslip,amplitude reduction from FRICTION feedforward,3.5710021631558897,x
+4-backlash,encoder on the load: error the CONTROLLER sees at rest,1.2194976073602641,mrad
+4-backlash,encoder on the load: error the TOOL actually has at rest,1.2194976073602641,mrad
+4-backlash,encoder on the motor: error the CONTROLLER sees at rest,1.2269361268904089,mrad
+4-backlash,encoder on the motor: error the TOOL actually has at rest,8.565051784884506,mrad
+4-backlash,gear dead band (half-width),0.008,rad
+4-backlash,  in degrees,0.4583662361046586,deg
+4-backlash,"worst motor-to-load discrepancy, motor-side sensing",0.008584208139200744,rad
+4-backlash,how much the motor encoder flatters the result,6.980845699435131,x
+5-relay,relay amplitude d,0.4,N*m
+5-relay,limit-cycle amplitude a,10.629720371935152,mrad
+5-relay,ultimate period Tu,146.5,ms
+5-relay,ultimate gain Ku = 4d/(pi a),47.91243796391112,N*m/rad
+5-relay,ZN Kp,28.74746277834667,N*m/rad
+5-relay,ZN Ki,392.4568297385211,N*m/(rad*s)
+5-relay,ZN Kd,0.5264379121284734,N*m*s/rad
+5-relay,hand-tuned: overshoot,13.789459837511066,%
+5-relay,hand-tuned: residual wobble,5.551115123125783e-14,mrad
+5-relay,hand-tuned: steady error,-0.32168702369445024,mrad
+5-relay,Ziegler-Nichols from the relay: overshoot,27.200043185155046,%
+5-relay,Ziegler-Nichols from the relay: residual wobble,1.6126003012906343,mrad
+5-relay,Ziegler-Nichols from the relay: steady error,0.023991008672230585,mrad
+6-limits,delay 0 ticks (0 ms): highest stable Kp,399.99995243549347,N*m/rad
+6-limits,delay 1 ticks (2 ms): highest stable Kp,32.573747515678406,N*m/rad
+6-limits,delay 2 ticks (4 ms): highest stable Kp,17.023483395576477,N*m/rad
+6-limits,delay 4 ticks (8 ms): highest stable Kp,8.732514262199402,N*m/rad
+6-limits,delay 8 ticks (16 ms): highest stable Kp,3.924598813056946,N*m/rad
+6-limits,gain lost going from 0 to 8 ticks of delay,101.92123360602196,x
+6-limits,"512 counts/rev: torque chatter, raw D",0.21605772027032144,N*m
+6-limits,"512 counts/rev: torque chatter, 20 Hz filtered D",0.12002277058324305,N*m
+6-limits,"512 counts/rev: tracking error, filtered D",4.4390736580592955,mrad
+6-limits,"1024 counts/rev: torque chatter, raw D",0.31080462415838184,N*m
+6-limits,"1024 counts/rev: torque chatter, 20 Hz filtered D",0.08315499977715797,N*m
+6-limits,"1024 counts/rev: tracking error, filtered D",3.257971576050576,mrad
+6-limits,"2048 counts/rev: torque chatter, raw D",0.3273429924898649,N*m
+6-limits,"2048 counts/rev: torque chatter, 20 Hz filtered D",0.05820103795583877,N*m
+6-limits,"2048 counts/rev: tracking error, filtered D",2.9181819986826287,mrad
+6-limits,"4096 counts/rev: torque chatter, raw D",0.24125687390296993,N*m
+6-limits,"4096 counts/rev: torque chatter, 20 Hz filtered D",0.03983120443399526,N*m
+6-limits,"4096 counts/rev: tracking error, filtered D",3.1011660598603807,mrad
+6-limits,"16384 counts/rev: torque chatter, raw D",0.09063726976379458,N*m
+6-limits,"16384 counts/rev: torque chatter, 20 Hz filtered D",0.01322612566630343,N*m
+6-limits,"16384 counts/rev: tracking error, filtered D",3.042443048608346,mrad
+6-limits,chatter reduction from filtering at 512 counts,1.8001394170489702,x
+6-limits,"chatter at 512 counts vs at 16384 counts, raw D",2.3837624504067594,x

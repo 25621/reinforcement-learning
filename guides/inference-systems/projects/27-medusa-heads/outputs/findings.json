@@ -1,0 +1,294 @@
+{
+  "setup": {
+    "target": "Qwen/Qwen2.5-1.5B-Instruct",
+    "draft": "Qwen/Qwen2.5-0.5B-Instruct",
+    "n_heads": 3,
+    "k": 3,
+    "max_new": 48,
+    "train_steps": 250,
+    "n_tokens": 16384,
+    "threads": 6
+  },
+  "A": {
+    "n_positions": 16450,
+    "collect_s": 131.96,
+    "corpus_model_agreement": 0.4621,
+    "n_params_per_headset": 14155776,
+    "d_model": 1536,
+    "vocab": 151936,
+    "untied_head_params": 700121088,
+    "train": {
+      "gt": {
+        "curve": [
+          {
+            "step": 0,
+            "loss": 11.7664
+          },
+          {
+            "step": 50,
+            "loss": 6.6046
+          },
+          {
+            "step": 100,
+            "loss": 8.8452
+          },
+          {
+            "step": 150,
+            "loss": 7.6574
+          },
+          {
+            "step": 200,
+            "loss": 5.2435
+          },
+          {
+            "step": 249,
+            "loss": 7.1581
+          }
+        ],
+        "train_s": 101.9,
+        "holdout_top1": {
+          "gt": [
+            0.3301,
+            0.2109,
+            0.1855
+          ],
+          "sd": [
+            0.3125,
+            0.1816,
+            0.1406
+          ]
+        },
+        "n_params": 14155776,
+        "steps": 250,
+        "batch": 24,
+        "lr": 0.001,
+        "label_key": "gt"
+      },
+      "sd": {
+        "curve": [
+          {
+            "step": 0,
+            "loss": 10.7751
+          },
+          {
+            "step": 50,
+            "loss": 6.3195
+          },
+          {
+            "step": 100,
+            "loss": 8.0965
+          },
+          {
+            "step": 150,
+            "loss": 6.9034
+          },
+          {
+            "step": 200,
+            "loss": 5.0076
+          },
+          {
+            "step": 249,
+            "loss": 6.7652
+          }
+        ],
+        "train_s": 102.0,
+        "holdout_top1": {
+          "gt": [
+            0.2441,
+            0.127,
+            0.1094
+          ],
+          "sd": [
+            0.3457,
+            0.1992,
+            0.1582
+          ]
+        },
+        "n_params": 14155776,
+        "steps": 250,
+        "batch": 24,
+        "lr": 0.001,
+        "label_key": "sd"
+      }
+    }
+  },
+  "C": {
+    "k": 3,
+    "max_new": 48,
+    "rows": [
+      {
+        "workload": "chat",
+        "baseline_tok_s": 3.553,
+        "baseline_decode_s": 13.509,
+        "methods": {
+          "medusa_gt": {
+            "identical": true,
+            "acceptance": 0.0426,
+            "alpha": 1.067,
+            "per_pos_hits": [
+              2,
+              0,
+              0
+            ],
+            "iters": 45,
+            "decode_s": 21.301,
+            "draft_s": 5.5806,
+            "draft_share": 0.262,
+            "tok_s": 2.253,
+            "speedup": 0.634,
+            "itl_p99": 0.6738
+          },
+          "medusa_sd": {
+            "identical": true,
+            "acceptance": 0.0638,
+            "alpha": 1.091,
+            "per_pos_hits": [
+              3,
+              0,
+              0
+            ],
+            "iters": 44,
+            "decode_s": 18.12,
+            "draft_s": 4.7924,
+            "draft_share": 0.2645,
+            "tok_s": 2.649,
+            "speedup": 0.745,
+            "itl_p99": 0.6573
+          },
+          "external_draft": {
+            "identical": true,
+            "acceptance": 0.7805,
+            "alpha": 2.833,
+            "per_pos_hits": [
+              13,
+              10,
+              9
+            ],
+            "iters": 18,
+            "decode_s": 9.779,
+            "draft_s": 4.6866,
+            "draft_share": 0.4792,
+            "tok_s": 5.215,
+            "speedup": 1.468,
+            "itl_p99": 0.5921
+          }
+        },
+        "probe": {
+          "head_top1_on_this_text": [
+            0.0667,
+            0.0222,
+            0.0
+          ],
+          "draft_top1_agreement": 0.7708,
+          "positions": 45
+        }
+      },
+      {
+        "workload": "code",
+        "baseline_tok_s": 4.167,
+        "baseline_decode_s": 11.52,
+        "methods": {
+          "medusa_gt": {
+            "identical": true,
+            "acceptance": 0.0213,
+            "alpha": 1.043,
+            "per_pos_hits": [
+              1,
+              0,
+              0
+            ],
+            "iters": 46,
+            "decode_s": 18.273,
+            "draft_s": 4.8745,
+            "draft_share": 0.2668,
+            "tok_s": 2.627,
+            "speedup": 0.63,
+            "itl_p99": 0.433
+          },
+          "medusa_sd": {
+            "identical": true,
+            "acceptance": 0.0213,
+            "alpha": 1.043,
+            "per_pos_hits": [
+              1,
+              0,
+              0
+            ],
+            "iters": 46,
+            "decode_s": 18.02,
+            "draft_s": 4.7891,
+            "draft_share": 0.2658,
+            "tok_s": 2.664,
+            "speedup": 0.639,
+            "itl_p99": 0.4333
+          },
+          "external_draft": {
+            "identical": true,
+            "acceptance": 0.9459,
+            "alpha": 3.769,
+            "per_pos_hits": [
+              12,
+              12,
+              11
+            ],
+            "iters": 13,
+            "decode_s": 7.296,
+            "draft_s": 3.5702,
+            "draft_share": 0.4894,
+            "tok_s": 6.716,
+            "speedup": 1.612,
+            "itl_p99": 0.6712
+          }
+        },
+        "probe": {
+          "head_top1_on_this_text": [
+            0.0222,
+            0.0222,
+            0.0222
+          ],
+          "draft_top1_agreement": 0.9167,
+          "positions": 45
+        }
+      }
+    ]
+  },
+  "D": {
+    "target_pass_ms": 235.92,
+    "draft_pass_ms": 79.99,
+    "medusa_all_heads_ms": 101.93,
+    "external_cost_ratio": 0.339,
+    "medusa_cost_ratio_per_token": 0.14402,
+    "cheaper_by": 2.35,
+    "breakeven": {
+      "verify_overhead_used": 1.14,
+      "external_alpha": 2.833,
+      "external_acceptance": 0.7805,
+      "medusa_alpha_needed": 2.065,
+      "medusa_acceptance_needed": 0.565
+    },
+    "scenarios": [
+      {
+        "label": "this box (1.5B target)",
+        "medusa_cost_ratio": 0.14402,
+        "external_cost_ratio": 0.339,
+        "medusa_acceptance_needed": 0.565,
+        "medusa_alpha_needed": 2.065
+      },
+      {
+        "label": "7B target, 1B draft",
+        "medusa_cost_ratio": 0.03064,
+        "external_cost_ratio": 0.14286,
+        "medusa_acceptance_needed": 0.6147,
+        "medusa_alpha_needed": 2.225
+      },
+      {
+        "label": "70B target, 1B draft",
+        "medusa_cost_ratio": 0.00308,
+        "external_cost_ratio": 0.01429,
+        "medusa_acceptance_needed": 0.7543,
+        "medusa_alpha_needed": 2.753
+      }
+    ]
+  },
+  "wall_s": 483.6
+}

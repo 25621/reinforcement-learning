@@ -1,0 +1,25 @@
+# compiled benchmark binaries - rebuilt by each project's run.py
+*/outputs/bench_ops
+*/outputs/bandwidth
+*/outputs/vecsum
+*/outputs/gemm
+*/outputs/devprops
+*/outputs/bench
+*/outputs/wmma_sm_61
+*/outputs/wmma_sm_70
+*/outputs/occ
+*/outputs/diverge
+*/outputs/trace.qdstrm
+*/outputs/trace.nsys-rep
+*/outputs/*.qdrep
+*/outputs/coalesce
+*/outputs/banks
+*/outputs/tiles
+*/outputs/hbm
+*/outputs/l2
+*/outputs/vecadd
+*/outputs/sgemm
+*/__pycache__/
+
+# downloaded corpora
+*/data/

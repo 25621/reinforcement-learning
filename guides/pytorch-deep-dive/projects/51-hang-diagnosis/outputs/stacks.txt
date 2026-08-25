@@ -1,0 +1,85 @@
+========================================================================
+dataloader_fork: DataLoader workers deadlock on a lock inherited by fork
+========================================================================
+Thread 0x0000719f41ff66c0 (most recent call first):
+  File "/usr/lib/python3.12/threading.py", line 355 in wait
+  File "/usr/lib/python3.12/multiprocessing/queues.py", line 251 in _feed
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Thread 0x0000719f417f56c0 (most recent call first):
+  File "/usr/lib/python3.12/threading.py", line 355 in wait
+  File "/usr/lib/python3.12/multiprocessing/queues.py", line 251 in _feed
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Thread 0x0000719f3cf296c0 (most recent call first):
+  File "victim.py", line 70 in holder
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Current thread 0x000071a0621b0080 (most recent call first):
+  File "/usr/lib/python3.12/selectors.py", line 415 in select
+  File "/usr/lib/python3.12/multiprocessing/connection.py", line 1136 in wait
+  File "/usr/lib/python3.12/multiprocessing/connection.py", line 440 in _poll
+  File "/usr/lib/python3.12/multiprocessing/connection.py", line 257 in poll
+  File "/usr/lib/python3.12/multiprocessing/queues.py", line 113 in get
+  File "/home/canary/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1310 in _try_get_data
+  File "/home/canary/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1483 in _get_data
+  File "/home/canary/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1524 in _next_data
+  File "/home/canary/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 741 in __next__
+  File "victim.py", line 76 in dataloader_fork
+  File "victim.py", line 204 in main
+  File "victim.py", line 208 in <module>
+
+========================================================================
+ddp_straggler: rank 1 is alive but never arrives; rank 0 waits at all_reduce
+========================================================================
+Current thread 0x000074a60d3f0080 (most recent call first):
+  File "/home/canary/.local/lib/python3.12/site-packages/torch/distributed/distributed_c10d.py", line 3014 in all_reduce
+  File "/home/canary/.local/lib/python3.12/site-packages/torch/distributed/c10d_logger.py", line 83 in wrapper
+  File "victim.py", line 111 in ddp_straggler
+  File "victim.py", line 204 in main
+  File "victim.py", line 208 in <module>
+
+========================================================================
+nan_loop: `while not (loss < tol)` with loss = NaN
+========================================================================
+Current thread 0x00007d849470b080 (most recent call first):
+  File "victim.py", line 136 in nan_loop
+  File "victim.py", line 204 in main
+  File "victim.py", line 208 in <module>
+
+========================================================================
+oversubscribed: 4 processes x 12 threads on 12 cores: slow, not stuck
+========================================================================
+Current thread 0x000078b6a0857080 (most recent call first):
+  File "victim.py", line 159 in oversubscribed
+  File "victim.py", line 204 in main
+  File "victim.py", line 208 in <module>
+
+========================================================================
+lock_order: two threads take two locks in opposite orders
+========================================================================
+Thread 0x00007189dc1fe6c0 (most recent call first):
+  File "victim.py", line 180 in worker
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Thread 0x00007189dc9ff6c0 (most recent call first):
+  File "victim.py", line 180 in worker
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Current thread 0x00007189dd552080 (most recent call first):
+  File "/usr/lib/python3.12/threading.py", line 1167 in _wait_for_tstate_lock
+  File "/usr/lib/python3.12/threading.py", line 1147 in join
+  File "victim.py", line 188 in lock_order
+  File "victim.py", line 204 in main
+  File "victim.py", line 208 in <module>
+

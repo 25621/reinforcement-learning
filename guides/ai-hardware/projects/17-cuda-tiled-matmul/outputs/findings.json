@@ -1,0 +1,253 @@
+{
+  "runs": [
+    {
+      "n": 1024,
+      "kernel": "cublas",
+      "ms": 0.3369,
+      "gflops": 6373.75,
+      "max_err": 0.0
+    },
+    {
+      "n": 1024,
+      "kernel": "naive",
+      "ms": 4.4675,
+      "gflops": 480.69,
+      "max_err": 0.0
+    },
+    {
+      "n": 1024,
+      "kernel": "smem",
+      "ms": 1.7955,
+      "gflops": 1196.05,
+      "max_err": 0.0
+    },
+    {
+      "n": 1024,
+      "kernel": "tile1d",
+      "ms": 0.9998,
+      "gflops": 2147.95,
+      "max_err": 0.0
+    },
+    {
+      "n": 1024,
+      "kernel": "tile2d",
+      "ms": 0.5307,
+      "gflops": 4046.6,
+      "max_err": 0.0
+    },
+    {
+      "n": 1024,
+      "kernel": "vec",
+      "ms": 0.4753,
+      "gflops": 4518.26,
+      "max_err": 0.0
+    },
+    {
+      "n": 2048,
+      "kernel": "cublas",
+      "ms": 2.3799,
+      "gflops": 7218.76,
+      "max_err": 0.0
+    },
+    {
+      "n": 2048,
+      "kernel": "naive",
+      "ms": 36.5624,
+      "gflops": 469.88,
+      "max_err": 0.0
+    },
+    {
+      "n": 2048,
+      "kernel": "smem",
+      "ms": 14.4166,
+      "gflops": 1191.68,
+      "max_err": 0.0
+    },
+    {
+      "n": 2048,
+      "kernel": "tile1d",
+      "ms": 7.8236,
+      "gflops": 2195.9,
+      "max_err": 0.0
+    },
+    {
+      "n": 2048,
+      "kernel": "tile2d",
+      "ms": 3.5654,
+      "gflops": 4818.44,
+      "max_err": 0.0
+    },
+    {
+      "n": 2048,
+      "kernel": "vec",
+      "ms": 3.2908,
+      "gflops": 5220.65,
+      "max_err": 0.0
+    },
+    {
+      "n": 4096,
+      "kernel": "cublas",
+      "ms": 19.6167,
+      "gflops": 7006.24,
+      "max_err": 0.0
+    },
+    {
+      "n": 4096,
+      "kernel": "naive",
+      "ms": 395.1242,
+      "gflops": 347.84,
+      "max_err": 0.0
+    },
+    {
+      "n": 4096,
+      "kernel": "smem",
+      "ms": 113.6547,
+      "gflops": 1209.27,
+      "max_err": 0.0
+    },
+    {
+      "n": 4096,
+      "kernel": "tile1d",
+      "ms": 60.4005,
+      "gflops": 2275.46,
+      "max_err": 0.0
+    },
+    {
+      "n": 4096,
+      "kernel": "tile2d",
+      "ms": 27.5961,
+      "gflops": 4980.37,
+      "max_err": 0.0
+    },
+    {
+      "n": 4096,
+      "kernel": "vec",
+      "ms": 25.727,
+      "gflops": 5342.21,
+      "max_err": 0.0
+    }
+  ],
+  "attrs": [
+    {
+      "kernel": "naive",
+      "threads": 1024,
+      "regs": 32,
+      "smem": 0,
+      "blocks_per_sm": 2,
+      "occupancy": 1.0
+    },
+    {
+      "kernel": "smem",
+      "threads": 1024,
+      "regs": 28,
+      "smem": 8192,
+      "blocks_per_sm": 2,
+      "occupancy": 1.0
+    },
+    {
+      "kernel": "tile1d",
+      "threads": 512,
+      "regs": 58,
+      "smem": 4096,
+      "blocks_per_sm": 2,
+      "occupancy": 0.5
+    },
+    {
+      "kernel": "tile2d",
+      "threads": 256,
+      "regs": 128,
+      "smem": 8192,
+      "blocks_per_sm": 2,
+      "occupancy": 0.25
+    },
+    {
+      "kernel": "vec",
+      "threads": 256,
+      "regs": 122,
+      "smem": 8192,
+      "blocks_per_sm": 2,
+      "occupancy": 0.25
+    }
+  ],
+  "device": {
+    "name": "NVIDIA GeForce GTX 1070 Ti",
+    "cc": "6.1",
+    "sms": 19,
+    "l2": 2097152,
+    "smem_per_block": 49152
+  },
+  "mix": {
+    "vec": {
+      "FFMA": 512,
+      "LDS": 32,
+      "LDG": 2,
+      "STG": 16,
+      "STS": 5
+    },
+    "tile2d": {
+      "FFMA": 512,
+      "LDS": 40,
+      "LDG": 8,
+      "STG": 64,
+      "STS": 8
+    },
+    "tile1d": {
+      "FFMA": 64,
+      "LDS": 24,
+      "LDG": 2,
+      "STG": 8,
+      "STS": 2
+    },
+    "smem": {
+      "FFMA": 32,
+      "LDS": 40,
+      "LDG": 2,
+      "STG": 1,
+      "STS": 2
+    },
+    "naive": {
+      "FFMA": 29,
+      "LDS": 0,
+      "LDG": 58,
+      "STG": 1,
+      "STS": 0
+    }
+  },
+  "roofline": {
+    "naive": {
+      "tile": "1x1 (no tile)",
+      "ai": 0.25,
+      "roof": 64.075,
+      "achieved": 347.84,
+      "of_roof": 5.428638314475224
+    },
+    "smem": {
+      "tile": "32x32",
+      "ai": 8.0,
+      "roof": 2050.4,
+      "achieved": 1209.27,
+      "of_roof": 0.5897727272727272
+    },
+    "tile1d": {
+      "tile": "64x64",
+      "ai": 16.0,
+      "roof": 4100.8,
+      "achieved": 2275.46,
+      "of_roof": 0.554881974248927
+    },
+    "tile2d": {
+      "tile": "128x128",
+      "ai": 32.0,
+      "roof": 8190.0,
+      "achieved": 4980.37,
+      "of_roof": 0.608103785103785
+    },
+    "vec": {
+      "tile": "128x128",
+      "ai": 32.0,
+      "roof": 8190.0,
+      "achieved": 5342.21,
+      "of_roof": 0.6522844932844933
+    }
+  }
+}

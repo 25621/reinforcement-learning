@@ -1,0 +1,27 @@
+experiment,setting,ms,useful_gbs,moved_gbs,sectors_per_warp
+stride,1,1.232998,217.71,217.71,4
+stride,2,1.206453,111.25,222.5,8
+stride,4,1.206618,55.62,222.47,16
+stride,8,1.207706,27.78,222.27,32
+stride,16,0.604006,27.78,222.21,32
+stride,32,0.303206,27.67,221.33,32
+stride,64,0.153125,27.39,219.13,32
+stride,128,0.111091,18.88,151.02,32
+stride,256,0.08391,12.5,99.97,32
+stride,random,0.155014,6.76,54.12,32
+offset,0,1.229914,218.26,,4
+offset,1,1.237606,216.9,,4
+offset,2,1.237394,216.94,,4
+offset,4,1.237238,216.96,,4
+offset,8,1.216347,220.69,,4
+offset,16,1.24471,215.66,,4
+offset,31,1.243272,215.91,,4
+permute,identity (lane i -> i),1.235917,217.2,,4
+permute,reversed (lane i -> 31-i),1.235338,217.3,,4
+permute,XOR 21 (lane i -> i^21),1.241395,216.24,,4
+permute,"random permutation, from a table",1.453773,184.65,,4
+permute,"identity, from a table  [control]",1.451469,184.94,,4
+layout,"AoS, read 1 of 4 fields",1.20576,55.66,222.63,
+layout,"SoA, read 1 of 4 arrays",0.308774,217.34,217.34,
+layout,"AoS, read all 4 fields",1.206302,222.53,222.53,
+layout,"SoA, read all 4 arrays",1.206048,222.57,222.57,

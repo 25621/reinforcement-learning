@@ -1,0 +1,66 @@
+[
+ {
+  "defect": "ok",
+  "alt": "A city street with many different cars driving.",
+  "declared_size": [
+   640,
+   427
+  ]
+ },
+ {
+  "defect": "dup_exact",
+  "alt": "A herd of buffalo grazing on grass next to the ocean.",
+  "declared_size": [
+   960,
+   120
+  ]
+ },
+ {
+  "defect": "dup_near",
+  "alt": "a gray day at a park with a stone bench.",
+  "declared_size": [
+   640,
+   419
+  ]
+ },
+ {
+  "defect": "mismatch",
+  "alt": "Four kids sitting on surfboards with man in background.",
+  "declared_size": [
+   427,
+   640
+  ]
+ },
+ {
+  "defect": "boilerplate",
+  "alt": "photo",
+  "declared_size": [
+   640,
+   480
+  ]
+ },
+ {
+  "defect": "tiny",
+  "alt": "A close shot of a cow standing in the wild.",
+  "declared_size": [
+   24,
+   24
+  ]
+ },
+ {
+  "defect": "banner",
+  "alt": "A white city bus traveling down a street with traffic.",
+  "declared_size": [
+   960,
+   120
+  ]
+ },
+ {
+  "defect": "blocked",
+  "alt": "A towel hangs beneath a sink in a bathroom. adultonlyplaceholder",
+  "declared_size": [
+   333,
+   500
+  ]
+ }
+]

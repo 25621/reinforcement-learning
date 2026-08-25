@@ -1,0 +1,31 @@
+section,quantity,value,note
+policy,success on the clean task (no obstacle),0.983,
+eval,no filter,0.983,tip hits 0.517  closest -0.6 mm  active 0.00
+scene,clearance at the start of an episode,81 mm,every episode starts outside the barrier
+scene,puck also hits the obstacle,0.2,
+verify,analytic h'' vs the simulator (median),3.27e-03,relative error over 60 states
+verify,"same check, worst state",1.46e-02,a motor saturated in 0% of the states
+grid,"order 1, 20 Hz, alpha=25",0.617,tip hits 0.000  closest +17.6 mm  active 0.43
+grid,"order 1, 200 Hz, alpha=25",0.417,tip hits 0.017  closest +20.6 mm  active 0.47
+grid,"order 2, 20 Hz, alpha=25",0.533,tip hits 0.100  closest +17.9 mm  active 0.63
+grid,"order 2, 200 Hz, alpha=25",0.6,tip hits 0.083  closest +15.4 mm  active 0.36
+alpha,"order 2, 20 Hz, alpha=10",0.017,tip hits 0.017  active 0.89  clipped 0.032
+alpha,"order 2, 20 Hz, alpha=25",0.533,tip hits 0.100  active 0.63  clipped 0.007
+alpha,"order 2, 20 Hz, alpha=60",0.65,tip hits 0.067  active 0.42  clipped 0.008
+alpha,"order 2, 20 Hz, alpha=150",0.6,tip hits 0.017  active 0.25  clipped 0.057
+alpha,"order 2, 200 Hz, alpha=10",0.55,tip hits 0.100  active 0.54  clipped 0.098
+alpha,"order 2, 200 Hz, alpha=25",0.6,tip hits 0.083  active 0.36  clipped 0.062
+alpha,"order 2, 200 Hz, alpha=60",0.65,tip hits 0.067  active 0.25  clipped 0.027
+alpha,"order 2, 200 Hz, alpha=150",0.617,tip hits 0.000  active 0.23  clipped 0.025
+margin,margin asked 0 mm,+8.2 mm obtained,success 0.650  tip hits 0.350
+margin,margin asked 10 mm,+14.1 mm obtained,success 0.650  tip hits 0.067
+margin,margin asked 30 mm,+27.1 mm obtained,success 0.283  tip hits 0.000
+best,"order 2, 200 Hz, alpha=150",0.617,tip hits 0.000  closest +14.8 mm  active 0.23
+scope,tip hits: no filter -> filtered,0.517 -> 0.000,
+scope,PUCK hits: no filter -> filtered,0.200 -> 0.267,the barrier was written about the tip
+saturation,"steps where the QP answer left [-1, 1]",0.0271,
+saturation,tip hits if the box is ignored,0.0,with the box 0.067
+distil,student trained on filtered actions,0.333,tip hits 0.133  closest +13.4 mm
+distil,its teacher (policy + filter),0.617,tip hits 0.000
+distil,training transitions,12229,
+cost,total runtime (s),242.8,

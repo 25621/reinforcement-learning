@@ -1,0 +1,7 @@
+scheduler,cap,makespan_s,throughput_tok_s,mean_latency_s,p99_latency_s,mean_ttft_s,slot_efficiency,wasted_slot_steps
+static,4,50.65,14.69,21.65,42.80,17.471,0.5341,628
+continuous,4,32.46,22.92,13.46,26.48,8.728,0.9184,64
+static,8,36.69,20.28,14.61,31.04,10.135,0.3965,1096
+continuous,8,22.89,32.50,8.91,15.42,3.388,0.7377,256
+static,16,31.91,23.31,14.39,26.27,7.738,0.2744,1904
+continuous,16,16.56,44.93,6.88,12.30,0.740,0.5488,592

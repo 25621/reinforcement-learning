@@ -1,0 +1,60 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Skipping import of cpp extensions due to incompatible torch version. Please upgrade to torch >= 2.11.0 (found 2.10.0+cu128).
+/home/canary/.local/lib/python3.12/site-packages/torch/cuda/__init__.py:435: UserWarning: 
+    Found GPU0 NVIDIA GeForce GTX 1070 Ti which is of cuda capability 6.1.
+    Minimum and Maximum cuda capability supported by this version of PyTorch is
+    (7.0) - (12.0)
+    
+  queued_call()
+/home/canary/.local/lib/python3.12/site-packages/torch/cuda/__init__.py:435: UserWarning: 
+    Please install PyTorch with a following CUDA
+    configurations:  12.6 following instructions at
+    https://pytorch.org/get-started/locally/
+    
+  queued_call()
+/home/canary/.local/lib/python3.12/site-packages/torch/cuda/__init__.py:435: UserWarning: 
+NVIDIA GeForce GTX 1070 Ti with CUDA capability sm_61 is not compatible with the current PyTorch installation.
+The current PyTorch install supports CUDA capabilities sm_70 sm_75 sm_80 sm_86 sm_90 sm_100 sm_120.
+If you want to use the NVIDIA GeForce GTX 1070 Ti GPU with PyTorch, please check the instructions at https://pytorch.org/get-started/locally/
+
+  queued_call()
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights:  76%|███████▌  | 219/290 [00:00<00:00, 2156.07it/s]Loading weights: 100%|██████████| 290/290 [00:00<00:00, 2081.63it/s]
+=== A. How big is a KV cache, exactly? ===
+  layers 24, key/value heads 2, head_dim 64
+  elements cached per token = 2 x 24 x 2 x 64 = 6144
+  FP16 -> 12.0 KiB per token, INT8 -> 6.0 KiB, INT4 -> 3.0 KiB
+  model weights in FP16: 988 MB
+  a single FP16 cache equals the whole model at 80,408 tokens of context
+  batch   1 x   4,096 tokens: fp16    0.05 GB   int8    0.03 GB   int4    0.01 GB
+  batch   1 x  32,768 tokens: fp16    0.40 GB   int8    0.20 GB   int4    0.10 GB
+  batch   1 x 131,072 tokens: fp16    1.61 GB   int8    0.81 GB   int4    0.40 GB
+  batch   8 x   4,096 tokens: fp16    0.40 GB   int8    0.20 GB   int4    0.10 GB
+  batch   8 x  32,768 tokens: fp16    3.22 GB   int8    1.61 GB   int4    0.81 GB
+  batch   8 x 131,072 tokens: fp16   12.88 GB   int8    6.44 GB   int4    3.22 GB
+  batch  32 x   4,096 tokens: fp16    1.61 GB   int8    0.81 GB   int4    0.40 GB
+  batch  32 x  32,768 tokens: fp16   12.88 GB   int8    6.44 GB   int4    3.22 GB
+  batch  32 x 131,072 tokens: fp16   51.54 GB   int8   25.77 GB   int4   12.88 GB
+
+  evaluating on 2 x 2048 = 4096 tokens of WikiText-2
+
+=== B. Keys and values do not look alike ===
+  k: biggest channel is    3.1x the median channel; biggest token is   1.5x the median token
+  v: biggest channel is    1.9x the median channel; biggest token is   1.8x the median token
+
+=== C. What quantizing the cache costs ===
+  FP16 cache (baseline)              ppl   12.968   agree 100.0%   (11s)
+  INT8 K+V, per-token                ppl   13.440   agree  92.7%   (11s)
+  INT8 K per-channel, V per-token    ppl   12.964   agree  99.5%   (12s)
+  INT4 K+V, per-token                ppl   92.648   agree  36.4%   (12s)
+  INT4 K per-channel, V per-token    ppl   13.312   agree  91.3%   (12s)
+  INT4 + 32 FP16 sink tokens         ppl   13.160   agree  92.7%   (12s)
+  INT2 K per-channel, V per-token    ppl   89.340   agree  35.5%   (13s)
+
+=== D. What the saving is for ===
+  Suppose 8 GB of memory and 0.99 GB of weights -> 7.01 GB left for the cache.
+  fp16: 0.40 GB per 32k-token sequence -> 17 concurrent sequences
+  int8: 0.20 GB per 32k-token sequence -> 34 concurrent sequences
+  int4: 0.10 GB per 32k-token sequence -> 69 concurrent sequences
+wrote /home/canary/project/tmp/claude-ai-hardware-phase7/guides/ai-hardware/projects/35-kv-cache-quantization/outputs/findings.json
+
+total 91s

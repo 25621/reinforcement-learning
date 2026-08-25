@@ -1,0 +1,269 @@
+{
+  "A": {
+    "kv_bytes_per_token": 24576,
+    "rows": [
+      {
+        "prompt_len": 64,
+        "kv_MB": 1.57,
+        "prefill_s": 0.276,
+        "pack_ms": 1.0,
+        "shm_write_ms": 0.03,
+        "shm_read_ms": 0.02,
+        "unpack_ms": 0.6,
+        "raw_GB_s": 65.1,
+        "transfer_vs_prefill": 0.00018,
+        "all_overhead_vs_prefill": 0.006
+      },
+      {
+        "prompt_len": 128,
+        "kv_MB": 3.15,
+        "prefill_s": 0.324,
+        "pack_ms": 0.99,
+        "shm_write_ms": 0.11,
+        "shm_read_ms": 0.05,
+        "unpack_ms": 0.78,
+        "raw_GB_s": 39.3,
+        "transfer_vs_prefill": 0.00049,
+        "all_overhead_vs_prefill": 0.006
+      },
+      {
+        "prompt_len": 256,
+        "kv_MB": 6.29,
+        "prefill_s": 0.66,
+        "pack_ms": 1.89,
+        "shm_write_ms": 0.57,
+        "shm_read_ms": 0.46,
+        "unpack_ms": 1.21,
+        "raw_GB_s": 12.3,
+        "transfer_vs_prefill": 0.00155,
+        "all_overhead_vs_prefill": 0.0063
+      }
+    ],
+    "n_layers": 24,
+    "n_kv_heads": 2,
+    "d_head": 64
+  },
+  "B": {
+    "unified": {
+      "wall_s": 17.38,
+      "ttft_p50": 4.783,
+      "ttft_p99": 13.435,
+      "itl_p50_ms": 159.4,
+      "itl_p99_ms": 2240.3,
+      "itl_jitter": 14.06,
+      "tok_s": 22.1
+    },
+    "disaggregated": {
+      "wall_s": 21.19,
+      "ttft_p50": 9.896,
+      "ttft_p99": 17.346,
+      "itl_p50_ms": 187.9,
+      "itl_p99_ms": 231.9,
+      "itl_jitter": 1.23,
+      "tok_s": 18.1,
+      "threads_each": 3
+    },
+    "transfers": [
+      {
+        "rid": 0,
+        "bytes": 6291456,
+        "queue_hop_ms": 5.08,
+        "prefill_ms": 1116.5,
+        "pack_ms": 2.66,
+        "write_ms": 1.6,
+        "read_ms": 1.45,
+        "unpack_ms": 2.93
+      },
+      {
+        "rid": 1,
+        "bytes": 6291456,
+        "queue_hop_ms": 90.3,
+        "prefill_ms": 1439.5,
+        "pack_ms": 4.64,
+        "write_ms": 1.56,
+        "read_ms": 1.15,
+        "unpack_ms": 2.02
+      },
+      {
+        "rid": 2,
+        "bytes": 6291456,
+        "queue_hop_ms": 84.38,
+        "prefill_ms": 1363.6,
+        "pack_ms": 3.8,
+        "write_ms": 1.69,
+        "read_ms": 1.0,
+        "unpack_ms": 1.44
+      },
+      {
+        "rid": 3,
+        "bytes": 6291456,
+        "queue_hop_ms": 152.53,
+        "prefill_ms": 1357.0,
+        "pack_ms": 4.69,
+        "write_ms": 1.64,
+        "read_ms": 0.95,
+        "unpack_ms": 1.6
+      },
+      {
+        "rid": 4,
+        "bytes": 6291456,
+        "queue_hop_ms": 131.26,
+        "prefill_ms": 1457.4,
+        "pack_ms": 5.32,
+        "write_ms": 2.1,
+        "read_ms": 1.54,
+        "unpack_ms": 1.91
+      },
+      {
+        "rid": 5,
+        "bytes": 6291456,
+        "queue_hop_ms": 50.5,
+        "prefill_ms": 1482.6,
+        "pack_ms": 6.2,
+        "write_ms": 2.08,
+        "read_ms": 0.88,
+        "unpack_ms": 1.89
+      },
+      {
+        "rid": 6,
+        "bytes": 6291456,
+        "queue_hop_ms": 128.26,
+        "prefill_ms": 1503.0,
+        "pack_ms": 4.33,
+        "write_ms": 2.04,
+        "read_ms": 1.05,
+        "unpack_ms": 1.85
+      },
+      {
+        "rid": 7,
+        "bytes": 6291456,
+        "queue_hop_ms": 54.95,
+        "prefill_ms": 1764.3,
+        "pack_ms": 4.09,
+        "write_ms": 1.66,
+        "read_ms": 0.85,
+        "unpack_ms": 2.03
+      },
+      {
+        "rid": 8,
+        "bytes": 6291456,
+        "queue_hop_ms": 124.37,
+        "prefill_ms": 1402.4,
+        "pack_ms": 5.95,
+        "write_ms": 1.05,
+        "read_ms": 0.89,
+        "unpack_ms": 1.88
+      },
+      {
+        "rid": 9,
+        "bytes": 6291456,
+        "queue_hop_ms": 159.52,
+        "prefill_ms": 1395.5,
+        "pack_ms": 4.4,
+        "write_ms": 1.25,
+        "read_ms": 1.26,
+        "unpack_ms": 1.95
+      },
+      {
+        "rid": 10,
+        "bytes": 6291456,
+        "queue_hop_ms": 50.5,
+        "prefill_ms": 1439.4,
+        "pack_ms": 4.19,
+        "write_ms": 1.11,
+        "read_ms": 0.8,
+        "unpack_ms": 2.12
+      },
+      {
+        "rid": 11,
+        "bytes": 6291456,
+        "queue_hop_ms": 142.08,
+        "prefill_ms": 1402.2,
+        "pack_ms": 5.9,
+        "write_ms": 1.55,
+        "read_ms": 0.76,
+        "unpack_ms": 1.52
+      }
+    ],
+    "median_hop_ms": 107.34,
+    "median_prefill_ms": 1420.9,
+    "throughput_ratio": 0.82,
+    "itl_jitter_ratio": 11.39
+  },
+  "C": [
+    {
+      "prompt_len": 64,
+      "recompute_ms": 276.0,
+      "ship_ms": 0.05,
+      "ship_plus_serdes_ms": 1.65,
+      "speedup": 167.3
+    },
+    {
+      "prompt_len": 128,
+      "recompute_ms": 324.0,
+      "ship_ms": 0.16,
+      "ship_plus_serdes_ms": 1.93,
+      "speedup": 167.9
+    },
+    {
+      "prompt_len": 256,
+      "recompute_ms": 660.0,
+      "ship_ms": 1.03,
+      "ship_plus_serdes_ms": 4.13,
+      "speedup": 159.8
+    }
+  ],
+  "D": {
+    "rows": [
+      {
+        "model": "Llama-3.1-8B  (32L, 8kv, 128d)",
+        "kv_B_per_token": 131072,
+        "prefill_tok_s": 8000,
+        "kv_bytes_per_s": 1.05,
+        "PCIe 4.0 x16": 30.52,
+        "100 Gb InfiniBand": 11.92,
+        "400 Gb InfiniBand": 47.68,
+        "NVLink 4": 858.31
+      },
+      {
+        "model": "Llama-3.1-70B (80L, 8kv, 128d)",
+        "kv_B_per_token": 327680,
+        "prefill_tok_s": 1500,
+        "kv_bytes_per_s": 0.49,
+        "PCIe 4.0 x16": 65.1,
+        "100 Gb InfiniBand": 25.43,
+        "400 Gb InfiniBand": 101.73,
+        "NVLink 4": 1831.05
+      },
+      {
+        "model": "Llama-2-13B   (40L, 40kv, 128d, MHA)",
+        "kv_B_per_token": 819200,
+        "prefill_tok_s": 5000,
+        "kv_bytes_per_s": 4.1,
+        "PCIe 4.0 x16": 7.81,
+        "100 Gb InfiniBand": 3.05,
+        "400 Gb InfiniBand": 12.21,
+        "NVLink 4": 219.73
+      }
+    ],
+    "links": [
+      [
+        "PCIe 4.0 x16",
+        32000000000.0
+      ],
+      [
+        "100 Gb InfiniBand",
+        12500000000.0
+      ],
+      [
+        "400 Gb InfiniBand",
+        50000000000.0
+      ],
+      [
+        "NVLink 4",
+        900000000000.0
+      ]
+    ],
+    "note": "x = link bandwidth / KV bytes the prefill pool produces. Below 1.0 the link, not the GPU, sets your prefill rate."
+  }
+}

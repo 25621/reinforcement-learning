@@ -1,0 +1,18 @@
+Python      | a + b
+            | torch/_tensor.py -> C binding
+C binding   | THPVariable_add
+            | torch/csrc/autograd/generated/python_variable_methods.cpp
+Op lookup   | aten::add.Tensor
+            | the schema string in native_functions.yaml
+Dispatcher  | highest key in the tensor's key set
+            | c10/core/DispatchKeySet.h
+Autograd    | AutogradCPU: record AddBackward0, redispatch
+            | torch/csrc/autograd/generated/VariableType_2.cpp
+Backend     | CPU: the generated wrapper
+            | /pytorch/build/aten/src/ATen/RegisterCPU_0.cpp:1309
+Structured  | add.out via structured_delegate
+            | aten/src/ATen/native/BinaryOps.cpp
+Kernel      | ufunc_add_CPU
+            | generated from aten/src/ATen/native/ufunc/add.h
+Loop        | TensorIterator drives the elementwise loop
+            | aten/src/ATen/TensorIterator.cpp

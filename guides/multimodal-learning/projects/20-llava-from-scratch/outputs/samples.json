@@ -1,0 +1,38 @@
+[
+ {
+  "id": 1432,
+  "truth": "A man with a snowboard next to a man with a mask.",
+  "vlm": "A man is wearing a white shirt and a black hat.",
+  "blind": "The image is a stunning example of a \"fairytale\" or \"fairy-tale\" in the context of"
+ },
+ {
+  "id": 2618,
+  "truth": "A picture of a cluttered home office desk.",
+  "vlm": "A dog is sitting on a blanket.",
+  "blind": "The image is a stunning example of a \"fairytale\" or \"fairy-tale\" in the context of"
+ },
+ {
+  "id": 562,
+  "truth": "Two girls are posing outdoors under an umbrella for a photo.",
+  "vlm": "A woman wearing a black and white dress and a white hat is walking down the street wearing a black and white dress and",
+  "blind": "The image is a stunning example of a \"fairytale\" or \"fairy-tale\" in the context of"
+ },
+ {
+  "id": 46,
+  "truth": "Group of pedestrians walking in front of a domestic house.",
+  "vlm": "A car is parked outside a store.",
+  "blind": "The image is a stunning example of a \"fairytale\" or \"fairy-tale\" in the context of"
+ },
+ {
+  "id": 2847,
+  "truth": "Car parked in the parking lot next to the pier",
+  "vlm": "A car is parked on a street.",
+  "blind": "The image is a stunning example of a \"fairytale\" or \"fairy-tale\" in the context of"
+ },
+ {
+  "id": 2986,
+  "truth": "An old black and white photo of a city street with a large cathedral on the right hand side.",
+  "vlm": "A woman is wearing a hat and sunglasses.",
+  "blind": "The image is a stunning example of a \"fairytale\" or \"fairy-tale\" in the context of"
+ }
+]

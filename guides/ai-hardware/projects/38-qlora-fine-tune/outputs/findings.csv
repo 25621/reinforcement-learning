@@ -1,0 +1,4 @@
+mode,trainable_params,frozen_params,ppl_after,weights_MB,grads_MB,optimizer_MB,activations_MB,total_MB,s_per_step
+full,134515008,0,6.7055,538.06,538.06,1076.12,1327.59,3479.83,2.574
+lora,921600,134515008,8.9432,272.72,3.69,7.37,1126.55,1410.33,1.434
+qlora,921600,134515008,10.0296,79.35,3.69,7.37,1126.55,1216.96,1.458

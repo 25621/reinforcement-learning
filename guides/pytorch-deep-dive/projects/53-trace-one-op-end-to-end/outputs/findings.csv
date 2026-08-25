@@ -1,0 +1,131 @@
+section,name,value
+"1. four spellings, one operator",a + b                            -> aten op,aten.add.Tensor
+"1. four spellings, one operator",a.add(b)                         -> aten op,aten.add.Tensor
+"1. four spellings, one operator","torch.add(a, b)                  -> aten op",aten.add.Tensor
+"1. four spellings, one operator","torch.ops.aten.add.Tensor(a, b)  -> aten op",aten.add.Tensor
+"1. four spellings, one operator",a + b                            per call (us),1.8224
+"1. four spellings, one operator",a.add(b)                         per call (us),1.80224
+"1. four spellings, one operator","torch.add(a, b)                  per call (us)",1.74057
+"1. four spellings, one operator","torch.ops.aten.add.Tensor(a, b)  per call (us)",3.06831
+"1. four spellings, one operator",spread across spellings (x),1.76282
+2. overload resolution,schema,"aten::add.Tensor(Tensor self, Tensor other, *, Scalar alpha=1) -> Tensor"
+2. overload resolution,schema,"aten::add.Scalar(Tensor self, Scalar other, Scalar alpha=1) -> Tensor"
+2. overload resolution,schema,"aten::add.out(Tensor self, Tensor other, *, Scalar alpha=1, Tensor(a!) out) -> Tensor(a!)"
+2. overload resolution,schema,"aten::add.Scalar_out(Tensor self, Scalar other, Scalar alpha=1, *, Tensor(a!) out) -> Tensor(a!)"
+2. overload resolution,schema,"aten::add.t(t[] a, t[] b) -> t[]"
+2. overload resolution,schema,"aten::add.str(str a, str b) -> str"
+2. overload resolution,schema,"aten::add.int(int a, int b) -> int"
+2. overload resolution,schema,"aten::add.complex(complex a, complex b) -> complex"
+2. overload resolution,schema,"aten::add.float(float a, float b) -> float"
+2. overload resolution,schema,"aten::add.int_complex(int a, complex b) -> complex"
+2. overload resolution,schema,"aten::add.complex_int(complex a, int b) -> complex"
+2. overload resolution,schema,"aten::add.float_complex(float a, complex b) -> complex"
+2. overload resolution,schema,"aten::add.complex_float(complex a, float b) -> complex"
+2. overload resolution,schema,"aten::add.int_float(int a, float b) -> float"
+2. overload resolution,schema,"aten::add.float_int(float a, int b) -> float"
+2. overload resolution,schema,"aten::add(Scalar a, Scalar b) -> Scalar"
+2. overload resolution,tensor + tensor          dispatches to,aten.add.Tensor
+2. overload resolution,tensor + python float    dispatches to,aten.add.Tensor
+2. overload resolution,tensor + 0-dim tensor    dispatches to,aten.add.Tensor
+2. overload resolution,aten.add.Scalar called by name,"aten.randn.default,aten.add.Scalar"
+3. the dispatch table for aten::add.Tensor,registered kernels (active),20
+3. the dispatch table for aten::add.Tensor,  key MkldnnCPU,/pytorch/build/aten/src/ATen/RegisterMkldnnCPU_0.cpp:162
+3. the dispatch table for aten::add.Tensor,  key Named,/pytorch/aten/src/ATen/core/NamedRegistrations.cpp:9
+3. the dispatch table for aten::add.Tensor,  key ZeroTensor,/pytorch/build/aten/src/ATen/RegisterZeroTensor_0.cpp:114
+3. the dispatch table for aten::add.Tensor,  key Tracer,/pytorch/torch/csrc/autograd/generated/TraceType_2.cpp:17975
+3. the dispatch table for aten::add.Tensor,  key FuncTorchBatched,/pytorch/aten/src/ATen/functorch/BatchRulesBinaryOps.cpp:353
+3. the dispatch table for aten::add.Tensor,  key Batched,/pytorch/aten/src/ATen/LegacyBatchingRegistrations.cpp:1076
+3. the dispatch table for aten::add.Tensor,  key CPU,/pytorch/build/aten/src/ATen/RegisterCPU_0.cpp:1309
+3. the dispatch table for aten::add.Tensor,  key CUDA,/pytorch/build/aten/src/ATen/RegisterCUDA_0.cpp:2432
+3. the dispatch table for aten::add.Tensor,  key Meta,/home/canary/.local/lib/python3.12/site-packages/torch/_meta_registrations.py:51
+3. the dispatch table for aten::add.Tensor,  key SparseCPU,/pytorch/build/aten/src/ATen/RegisterSparseCPU_0.cpp:341
+3. the dispatch table for aten::add.Tensor,  key SparseCUDA,/pytorch/build/aten/src/ATen/RegisterSparseCUDA_0.cpp:352
+3. the dispatch table for aten::add.Tensor,  key SparseMeta,/pytorch/build/aten/src/ATen/RegisterSparseMeta_0.cpp:142
+3. the dispatch table for aten::add.Tensor,  key SparseCsrCPU,/pytorch/build/aten/src/ATen/RegisterSparseCsrCPU_0.cpp:393
+3. the dispatch table for aten::add.Tensor,  key SparseCsrCUDA,/pytorch/build/aten/src/ATen/RegisterSparseCsrCUDA_0.cpp:409
+3. the dispatch table for aten::add.Tensor,  key SparseCsrMeta,/pytorch/build/aten/src/ATen/RegisterSparseCsrMeta_0.cpp:384
+3. the dispatch table for aten::add.Tensor,  key NestedTensorCPU,/pytorch/build/aten/src/ATen/RegisterNestedTensorCPU_0.cpp:309
+3. the dispatch table for aten::add.Tensor,  key NestedTensorCUDA,/pytorch/build/aten/src/ATen/RegisterNestedTensorCUDA_0.cpp:322
+3. the dispatch table for aten::add.Tensor,  key NestedTensorHPU,/pytorch/build/aten/src/ATen/RegisterNestedTensorHPU_0.cpp:297
+3. the dispatch table for aten::add.Tensor,  key Autograd,/pytorch/torch/csrc/autograd/generated/VariableType_2.cpp:20339
+3. the dispatch table for aten::add.Tensor,  key CompositeExplicitAutogradNonFunctional,/pytorch/build/aten/src/ATen/RegisterCompositeExplicitAutogradNonFunctional_0.cpp:1374
+3. the dispatch table for aten::add.Tensor,kernels living in generated files,16/20
+3. the dispatch table for aten::add.Tensor,"kernels registered from PYTHON, not C++",1
+3. the dispatch table for aten::add.Tensor,  python kernel for key Meta,/home/canary/.local/lib/python3.12/site-packages/torch/_meta_registrations.py:51
+4. the key set decides,plain tensor keys,CPU ADInplaceOrView AutogradCPU AutocastCPU
+4. the key set decides,requires_grad=True keys,CPU ADInplaceOrView AutogradCPU AutocastCPU
+4. the key set decides,meta tensor keys,Meta ADInplaceOrView AutogradMeta
+4. the key set decides,aten::add.Tensor has a kernel for CPU,True
+4. the key set decides,aten::add.Tensor has a kernel for Autograd,True
+4. the key set decides,aten::add.Tensor has a kernel for AutogradCPU,False
+4. the key set decides,aten::add.Tensor has a kernel for Meta,True
+4. the key set decides,aten::add.Tensor has a kernel for CUDA,True
+4. the key set decides,aten::add.Tensor has a kernel for NestedTensorCPU,True
+4. the key set decides,grad_fn built by the autograd kernel,AddBackward0
+4. the key set decides,add without autograd (us),1.64699
+4. the key set decides,add with autograd (us),2.70264
+4. the key set decides,add under no_grad() (us),3.84967
+4. the key set decides,cost of the autograd hop (us),1.05565
+4. the key set decides,autograd overhead (x),1.64096
+4. the key set decides,no_grad() around each call costs (us),1.14702
+4. the key set decides,inside no_grad(): plain (us),1.66397
+4. the key set decides,inside no_grad(): requires_grad=True (us),1.71167
+4. the key set decides,meta tensor add reaches,aten.add.Tensor
+4. the key set decides,meta result has storage bytes,16
+5. native_functions.yaml on add,add.Tensor signature,"add.Tensor(Tensor self, Tensor other, *, Scalar alpha=1) -> Tensor"
+5. native_functions.yaml on add,add.Tensor structured_delegate,add.out
+5. native_functions.yaml on add,add.Tensor own CPU kernel,None
+5. native_functions.yaml on add,add.Tensor tags,core pointwise pt2_compliant_tag
+5. native_functions.yaml on add,add.out signature,"add.out(Tensor self, Tensor other, *, Scalar alpha=1, Tensor(a!) out) -> Tensor(a!)"
+5. native_functions.yaml on add,add.out structured,True
+5. native_functions.yaml on add,add.out CPU kernel name,ufunc_add_CPU
+5. native_functions.yaml on add,add.out CUDA kernel name,ufunc_add_CUDA
+5. native_functions.yaml on add,add_native.h lines mentioning the ufunc,2
+5. native_functions.yaml on add,  decl,struct TORCH_API structured_ufunc_add_CPU : public at::meta::structured_add_Tensor {
+5. native_functions.yaml on add,  decl,struct TORCH_API structured_ufunc_add_CUDA : public at::meta::structured_add_Tensor {
+6. TensorIterator fingerprints,"broadcast (1000,1)+(1,1000) result shape","(1000, 1000)"
+6. TensorIterator fingerprints,float32 + float64    -> result dtype,torch.float64
+6. TensorIterator fingerprints,int64 + float32      -> result dtype,torch.float32
+6. TensorIterator fingerprints,bool + int64         -> result dtype,torch.int64
+6. TensorIterator fingerprints,contiguous             (us),17.9001
+6. TensorIterator fingerprints,transposed (both)      (us),22.8615
+6. TensorIterator fingerprints,transposed (one)       (us),161.387
+6. TensorIterator fingerprints,strided (every 2nd)    (us),28.2477
+6. TensorIterator fingerprints,one-transposed / both-transposed (x),7.05932
+6. TensorIterator fingerprints,add on        1 elements (us),1.69121
+6. TensorIterator fingerprints,add on        4 elements (us),1.67271
+6. TensorIterator fingerprints,add on       16 elements (us),1.65073
+6. TensorIterator fingerprints,add on       64 elements (us),1.75109
+6. TensorIterator fingerprints,add on      256 elements (us),1.85566
+6. TensorIterator fingerprints,add on     1024 elements (us),1.85618
+6. TensorIterator fingerprints,add on     4096 elements (us),2.35111
+6. TensorIterator fingerprints,add on    16384 elements (us),4.34011
+6. TensorIterator fingerprints,add on    65536 elements (us),9.9224
+6. TensorIterator fingerprints,add on   262144 elements (us),17.5819
+6. TensorIterator fingerprints,add on  1048576 elements (us),170.041
+6. TensorIterator fingerprints,add on  4194304 elements (us),2354.63
+6. TensorIterator fingerprints,fixed cost per call (us),1.69121
+6. TensorIterator fingerprints,elements bought by that fixed cost,3012
+6. TensorIterator fingerprints,effective bandwidth at 4M elements (GB/s),21.3756
+7. calling at::add from C++,C++ extension build was cold,True
+7. calling at::add from C++,C++ extension build time (s),16.113
+7. calling at::add from C++,"python  a+b, 1000 elements (us)",1.7923
+7. calling at::add from C++,"C++ at::add, 1000 elements (us)",0.842103
+7. calling at::add from C++,"C++ at::add_out, 1000 elements (us)",0.579388
+7. calling at::add from C++,python-side tax (us),0.950197
+7. calling at::add from C++,python-side tax (% of call),53.0155
+7. calling at::add from C++,allocation cost per call (us),0.262714
+7. calling at::add from C++,"python  a+b, 4M elements (us)",2353.45
+7. calling at::add from C++,"C++ at::add, 4M elements (us)",3392.92
+7. calling at::add from C++,"C++ at::add, previous result freed first (us)",2577.86
+7. calling at::add from C++,cost of holding the old buffer (x),1.31618
+7. calling at::add from C++,python-side tax at 4M (% of call),-9.53545
+8. the whole path,Python      a + b,torch/_tensor.py -> C binding
+8. the whole path,C binding   THPVariable_add,torch/csrc/autograd/generated/python_variable_methods.cpp
+8. the whole path,Op lookup   aten::add.Tensor,the schema string in native_functions.yaml
+8. the whole path,Dispatcher  highest key in the tensor's key set,c10/core/DispatchKeySet.h
+8. the whole path,"Autograd    AutogradCPU: record AddBackward0, redispatch",torch/csrc/autograd/generated/VariableType_2.cpp
+8. the whole path,Backend     CPU: the generated wrapper,/pytorch/build/aten/src/ATen/RegisterCPU_0.cpp:1309
+8. the whole path,Structured  add.out via structured_delegate,aten/src/ATen/native/BinaryOps.cpp
+8. the whole path,Kernel      ufunc_add_CPU,generated from aten/src/ATen/native/ufunc/add.h
+8. the whole path,Loop        TensorIterator drives the elementwise loop,aten/src/ATen/TensorIterator.cpp

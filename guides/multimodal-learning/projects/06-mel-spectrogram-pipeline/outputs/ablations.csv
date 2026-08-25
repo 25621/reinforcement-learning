@@ -1,0 +1,13 @@
+group,config,best,final,params,input_shape,note
+representation,log-mel (40 bins),0.72,0.704,56714,40x129,
+representation,log-spectrogram (129 bins),0.368,0.314,56714,129x129,"no mel warping, 3x taller"
+representation,raw waveform,0.672,0.66,279306,8192,"8192 samples, 1D CNN"
+log,"mel, no log",0.214,0.1,56714,40x129,raw power
+log,"mel, log",0.72,0.704,56714,40x129,same as above
+n_mels,8,0.866,0.798,56714,8x129,
+n_mels,20,0.862,0.846,56714,20x129,
+n_mels,40,0.72,0.704,56714,40x129,same as above
+n_mels,80,0.486,0.434,56714,80x129,
+window,64 samples (8 ms),0.732,0.684,56714,40x129,
+window,1024 samples (128 ms),0.616,0.6,56714,40x129,
+window,256 samples (32 ms),0.72,0.704,56714,40x129,same as above

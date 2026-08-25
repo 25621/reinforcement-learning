@@ -1,0 +1,60 @@
+experiment,metric,value
+train,nominal: training time (s),133
+1_picture,goal for this episode (deg),20.1
+1_picture,final angle (deg),12.3
+1_picture,dropped,False
+2_curve,iterations,150
+2_curve,episodes simulated,4800
+2_curve,policy parameters,72
+2_curve,success at 25 iters,0.64
+2_curve,success at the end,0.88
+3_baselines,do nothing (hold still): success,0.475
+3_baselines,do nothing (hold still): drop rate,0.0
+3_baselines,do nothing (hold still): mean final error (deg),16.6
+3_baselines,best constant push (open loop): success,0.325
+3_baselines,best constant push (open loop): drop rate,0.0
+3_baselines,best constant push (open loop): mean final error (deg),23.9
+3_baselines,learned linear policy: success,0.825
+3_baselines,learned linear policy: drop rate,0.15
+3_baselines,learned linear policy: mean final error (deg),6.8
+4_cliff,goal 0 deg: success,0.958
+4_cliff,goal 0 deg: drop rate,0.042
+4_cliff,goal 0 deg: mean error (deg),2.6
+4_cliff,goal 11 deg: success,0.417
+4_cliff,goal 11 deg: drop rate,0.0
+4_cliff,goal 11 deg: mean error (deg),14.1
+4_cliff,goal 23 deg: success,1.0
+4_cliff,goal 23 deg: drop rate,0.0
+4_cliff,goal 23 deg: mean error (deg),10.6
+4_cliff,goal 34 deg: success,0.0
+4_cliff,goal 34 deg: drop rate,0.0
+4_cliff,goal 34 deg: mean error (deg),21.4
+4_cliff,goal 46 deg: success,0.0
+4_cliff,goal 46 deg: drop rate,0.0
+4_cliff,goal 46 deg: mean error (deg),32.3
+4_cliff,goal 57 deg: success,0.0
+4_cliff,goal 57 deg: drop rate,0.917
+4_cliff,goal 57 deg: mean error (deg),39.6
+4_cliff,goal 74 deg: success,0.0
+4_cliff,goal 74 deg: drop rate,1.0
+4_cliff,goal 74 deg: mean error (deg),64.9
+4_cliff,goal 92 deg: success,0.0
+4_cliff,goal 92 deg: drop rate,1.0
+4_cliff,goal 92 deg: mean error (deg),84.7
+train,randomized: training time (s),121
+6_dr,friction 0.6: trained on one hand,0.25
+6_dr,friction 0.6: trained on randomized hands,0.625
+6_dr,friction 0.8: trained on one hand,0.5
+6_dr,friction 0.8: trained on randomized hands,0.625
+6_dr,friction 1.1: trained on one hand,0.875
+6_dr,friction 1.1: trained on randomized hands,0.625
+6_dr,friction 1.4: trained on one hand,0.792
+6_dr,friction 1.4: trained on randomized hands,0.667
+6_dr,friction 1.7: trained on one hand,0.875
+6_dr,friction 1.7: trained on randomized hands,0.625
+train,blind: training time (s),82
+7_blind,full observation: success,0.825
+7_blind,no block pose: success,0.525
+7_blind,full observation: mean error (deg),6.8
+7_blind,no block pose: mean error (deg),12.3
+7_blind,do nothing: mean error (deg),16.6

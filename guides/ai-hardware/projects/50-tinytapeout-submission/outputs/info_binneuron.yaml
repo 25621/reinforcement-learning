@@ -1,0 +1,20 @@
+# TinyTapeout project description (outputs/info.yaml)
+# Written by run.py. A real submission also needs the GDS produced by the
+# TinyTapeout GitHub Action, which runs OpenLane on this Verilog.
+project:
+  title: "Binary neuron"
+  author: "AI hardware guide, project 50"
+  description: "8 x 1-bit XNOR-popcount neuron with a threshold"
+  language: "Amaranth HDL (exported to Verilog)"
+  clock_hz: 50000000
+  tiles: "1x1"
+  top_module: "tt_um_binneuron"
+pinout:
+  ui:
+    - ui_in[7:0]: 8 binary activations
+  uo:
+    - uo_out[6:0]: dot product
+    - uo_out[7]: fired
+  uio:
+    - uio_in[0]: load weights
+    - uio_in[1]: load threshold

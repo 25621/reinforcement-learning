@@ -1,0 +1,32 @@
+section,key,value
+A,top_k(50)|same_kept_set,True
+A,top_k(50)|disputed_prob_mass,0.0
+A,min_p(0.05)|same_kept_set,True
+A,min_p(0.05)|disputed_prob_mass,0.0
+A,repetition_penalty(1.1)|same_kept_set,True
+A,repetition_penalty(1.1)|disputed_prob_mass,0.0
+A,top_p(0.9) full sort|same_kept_set,False
+A,top_p(0.9) full sort|disputed_prob_mass,6.778001989005134e-05
+B,tvd|torch.multinomial,0.0004
+B,tvd|gumbel-max,0.0008
+B,tvd|gumbel-max (clamp bug),0.37676
+C,prefilter_speedup@b1,12.24
+C,prefilter_speedup@b8,6.22
+C,prefilter_speedup@b32,4.76
+C,median_nucleus@T0.7,2
+C,prefilter_rows_differing@T0.7,1
+C,median_nucleus@T1.0,6
+C,prefilter_rows_differing@T1.0,2
+C,median_nucleus@T1.5,5179
+C,prefilter_rows_differing@T1.5,47
+C,median_nucleus@T2.0,46638
+C,prefilter_rows_differing@T2.0,62
+D,batched_speedup@vocab4096,2.09
+D,batched_speedup@vocab32768,1.33
+D,batched_speedup@vocab151936,1.02
+E,share_full_sort_pct@b1,14.5
+E,share_prefilter_pct@b1,1.7
+E,share_full_sort_pct@b8,28.9
+E,share_prefilter_pct@b8,7.6
+E,share_full_sort_pct@b32,81.2
+E,share_prefilter_pct@b32,25.7

@@ -1,0 +1,116 @@
+section,quantity,value,unit
+1-solve,"ARE residual, Hamiltonian method",3.126388037344441e-13,
+1-solve,dt=4.0 ms: |P_hamiltonian - P_iterated|,0.024056852782775806,
+1-solve,dt=4.0 ms: iterations to converge,3373.0,
+1-solve,dt=2.0 ms: |P_hamiltonian - P_iterated|,0.011014467503780878,
+1-solve,dt=2.0 ms: iterations to converge,6581.0,
+1-solve,dt=1.0 ms: |P_hamiltonian - P_iterated|,0.005253632745629844,
+1-solve,dt=1.0 ms: iterations to converge,12840.0,
+1-solve,dt=0.5 ms: |P_hamiltonian - P_iterated|,0.0025634090970747536,
+1-solve,dt=0.5 ms: iterations to converge,25029.0,
+1-solve,gap ratio when dt halves (2.0 = first order),2.1100427227265683,
+1-solve,matrix exponential vs a plain Taylor series,4.440892098500626e-16,
+1-solve,slowest closed-loop pole (real part),-1.07455273608122,1/s
+1-solve,fastest closed-loop pole (real part),-22.961124046685477,1/s
+1-solve,worst OPEN-loop pole (real part),4.6456431201718456,1/s
+1-solve,gain on cart position,-9.999999999999787,
+1-solve,gain on cart velocity,-16.709463036844664,
+1-solve,gain on pole angle,-98.6916190175358,
+1-solve,gain on pole rate,-23.142957207041515,
+2-balance,starting tilt,20.05352282957881,deg
+2-balance,peak cart excursion,0.47827864244873436,m
+2-balance,final cart position,0.003105472838586193,m
+2-balance,final pole angle,0.022265853812516244,deg
+2-balance,time for |angle| to stay under 0.01 rad,2.798,s
+2-balance,peak force,34.54206665613753,N
+2-balance,sign of the first force vs sign of the tilt,1.0,
+3-weights,R=0.0001: peak force,203.38621758164254,N
+3-weights,R=0.0001: settling time,2.912,s
+3-weights,R=0.0002424: peak force,132.2532346161517,N
+3-weights,R=0.0002424: settling time,2.926,s
+3-weights,R=0.0005878: peak force,86.58622015124409,N
+3-weights,R=0.0005878: settling time,2.948,s
+3-weights,R=0.001425: peak force,57.28280646539715,N
+3-weights,R=0.001425: settling time,2.984,s
+3-weights,R=0.003455: peak force,38.50063493968482,N
+3-weights,R=0.003455: settling time,3.0380000000000003,s
+3-weights,R=0.008377: peak force,26.491225077694093,N
+3-weights,R=0.008377: settling time,3.122,s
+3-weights,R=0.02031: peak force,18.849163358760553,N
+3-weights,R=0.02031: settling time,3.2560000000000002,s
+3-weights,R=0.04924: peak force,14.026107886890397,N
+3-weights,R=0.04924: settling time,3.468,s
+3-weights,R=0.1194: peak force,11.01487765872118,N
+3-weights,R=0.1194: settling time,3.794,s
+3-weights,R=0.2894: peak force,9.149389255234965,N
+3-weights,R=0.2894: settling time,4.2700000000000005,s
+3-weights,R=0.7017: peak force,7.98836875588701,N
+3-weights,R=0.7017: settling time,4.918,s
+3-weights,R=1.701: peak force,7.2494368516389205,N
+3-weights,R=1.701: settling time,5.726,s
+3-weights,R=4.125: peak force,6.761808177522819,N
+3-weights,R=4.125: settling time,6.644,s
+3-weights,R=10: peak force,6.426605115332743,N
+3-weights,R=10: settling time,7.538,s
+3-weights,"peak force, cheapest control (R=1e-4)",203.38621758164254,N
+3-weights,"peak force, dearest control (R=10)",6.426605115332743,N
+3-weights,force ratio across the sweep,31.64753613014109,x
+3-weights,settling ratio across the sweep,2.5885989010989015,x
+4-pid,PID angle gain (copied from LQR),-98.6916190175358,N/rad
+4-pid,PID rate gain (copied from LQR),-23.142957207041515,N*s/rad
+4-pid,PID: final pole angle,9.4273250071896e-18,deg
+4-pid,PID: cart drift after 10 s,5.203940997866424,m
+4-pid,PID: cart speed at 10 s,0.5229540892707293,m/s
+4-pid,LQR: final pole angle,0.00015880924904020026,deg
+4-pid,LQR: cart drift after 10 s,2.214685014842655e-05,m
+4-pid,drift ratio (PID / LQR),234974.3174758486,x
+5-basin,R=0.0001: recovers,44.49047224523612,%
+5-basin,R=0.0001: angle gain,-813.5448703265702,N/rad
+5-basin,R=0.0001: largest recoverable tilt at rest,38.96113006889599,deg
+5-basin,R=0.01: recovers,46.03700635183651,%
+5-basin,R=0.01: angle gain,-98.6916190175358,N/rad
+5-basin,R=0.01: largest recoverable tilt at rest,38.96113006889599,deg
+5-basin,R=1: recovers,52.66500966583817,%
+5-basin,R=1: angle gain,-30.61497677055769,N/rad
+5-basin,R=1: largest recoverable tilt at rest,45.83662361046587,deg
+5-basin,R=10: recovers,43.10963822148578,%
+5-basin,R=10: angle gain,-25.70642046133097,N/rad
+5-basin,R=10: largest recoverable tilt at rest,36.669298888372694,deg
+5-basin,R with the LARGEST basin under a 12 N force limit,1.0,
+5-basin,its basin vs the cheapest-control basin,1.1837368094351335,x
+6-linear,tilt where the linear model is 5% wrong (at rest),36.833001115552925,deg
+6-linear,tilt where the linear model is 20% wrong (at rest),60.66611948444011,deg
+6-linear,tilt where it is 20% wrong while spinning at 3 rad/s,56.33282523555153,deg
+6-linear,"error at 45 deg, at rest",9.47036869836734,%
+7-rate,"500 Hz: final |angle|, continuous gains",0.0013602280455971467,deg
+7-rate,"500 Hz: final |angle|, discrete design",0.001368019726802962,deg
+7-rate,"200 Hz: final |angle|, continuous gains",0.0013490210426709936,deg
+7-rate,"200 Hz: final |angle|, discrete design",0.0013687115558900225,deg
+7-rate,"100 Hz: final |angle|, continuous gains",0.0013306087324209497,deg
+7-rate,"100 Hz: final |angle|, discrete design",0.0013706892501288278,deg
+7-rate,"60 Hz: final |angle|, continuous gains",0.001306586196640964,deg
+7-rate,"60 Hz: final |angle|, discrete design",0.0013749133713140149,deg
+7-rate,"40 Hz: final |angle|, continuous gains",0.0012774425849196342,deg
+7-rate,"40 Hz: final |angle|, discrete design",0.0013826842466519306,deg
+7-rate,"30 Hz: final |angle|, continuous gains",0.0012493722684186349,deg
+7-rate,"30 Hz: final |angle|, discrete design",0.0013931126083657234,deg
+7-rate,"25 Hz: final |angle|, continuous gains",0.0012278133199011905,deg
+7-rate,"25 Hz: final |angle|, discrete design",0.0014032721848615626,deg
+7-rate,"20 Hz: final |angle|, continuous gains",0.0011974407302855837,deg
+7-rate,"20 Hz: final |angle|, discrete design",0.00142134957801961,deg
+7-rate,"15 Hz: final |angle|, continuous gains",0.001120711347241332,deg
+7-rate,"15 Hz: final |angle|, discrete design",0.001458368972539178,deg
+7-rate,"12 Hz: final |angle|, continuous gains",1.0398169499704837,deg
+7-rate,"12 Hz: final |angle|, discrete design",0.00150301071441878,deg
+7-rate,"10 Hz: final |angle|, continuous gains",10.866705742157006,deg
+7-rate,"10 Hz: final |angle|, discrete design",0.001554364110960753,deg
+7-rate,"8 Hz: final |angle|, continuous gains",17188.733853924696,deg
+7-rate,"8 Hz: final |angle|, discrete design",0.001642635078870276,deg
+7-rate,"6 Hz: final |angle|, continuous gains",17188.733853924696,deg
+7-rate,"6 Hz: final |angle|, discrete design",0.0018171279594231104,deg
+7-rate,lowest rate the continuous gains survive,15,Hz
+7-rate,lowest rate the discrete design survives,6,Hz
+7-rate,gain on cart position: continuous -> 20 Hz design,0.4896898563183606,x
+7-rate,gain on cart velocity: continuous -> 20 Hz design,0.4993781536400201,x
+7-rate,gain on pole angle: continuous -> 20 Hz design,0.5726416204764575,x
+7-rate,gain on pole rate: continuous -> 20 Hz design,0.5625144129117992,x

@@ -1,0 +1,10 @@
+Two prompts, 'a 7 drifting left' vs 'a 1 drifting right',
+compared AFTER CLIP's 77-token truncation:
+
+short       identical token ids after truncation: False cosine 0.9140  max|difference| 4.77135
+long_early  identical token ids after truncation: False cosine 0.9583  max|difference| 3.54457
+long_late   identical token ids after truncation: True  cosine 1.0000  max|difference| 0.00000
+
+For long_late the two captions reach CLIP as the same tokens, so
+the model receives the same numbers for both.  No amount of
+training can recover a difference that was deleted upstream.

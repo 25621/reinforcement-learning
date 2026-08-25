@@ -1,0 +1,75 @@
+/home/canary/.local/lib/python3.12/site-packages/torch/cuda/__init__.py:435: UserWarning: 
+    Found GPU0 NVIDIA GeForce GTX 1070 Ti which is of cuda capability 6.1.
+    Minimum and Maximum cuda capability supported by this version of PyTorch is
+    (7.0) - (12.0)
+    
+  queued_call()
+/home/canary/.local/lib/python3.12/site-packages/torch/cuda/__init__.py:435: UserWarning: 
+    Please install PyTorch with a following CUDA
+    configurations:  12.6 following instructions at
+    https://pytorch.org/get-started/locally/
+    
+  queued_call()
+/home/canary/.local/lib/python3.12/site-packages/torch/cuda/__init__.py:435: UserWarning: 
+NVIDIA GeForce GTX 1070 Ti with CUDA capability sm_61 is not compatible with the current PyTorch installation.
+The current PyTorch install supports CUDA capabilities sm_70 sm_75 sm_80 sm_86 sm_90 sm_100 sm_120.
+If you want to use the NVIDIA GeForce GTX 1070 Ti GPU with PyTorch, please check the instructions at https://pytorch.org/get-started/locally/
+
+  queued_call()
+A: {"gpu_count": 1, "gpu_name": "NVIDIA GeForce GTX 1070 Ti", "capability": "sm_61", "torch_supported_arch": ["sm_70", "sm_75", "sm_80", "sm_86", "sm_90", "sm_100", "sm_120"], "nccl_built_in": true, "nccl_runs": false, "nccl_error": "[rank0]: torch.AcceleratorError: CUDA error: no kernel image is avail
+[Gloo] Rank 1 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[Gloo] Rank 0 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[Gloo] Rank 3 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+[Gloo] Rank 1 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+[Gloo] Rank 0 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+[Gloo] Rank 2 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+[Gloo] Rank 2 is connected to 5 peer ranks. Expected number of connected peer ranks is : 5
+[Gloo] Rank 0 is connected to 5 peer ranks. Expected number of connected peer ranks is : 5
+[Gloo] Rank 1 is connected to 5 peer ranks. Expected number of connected peer ranks is : 5
+[Gloo] Rank 3 is connected to 5 peer ranks. Expected number of connected peer ranks is : 5
+[Gloo] Rank 5 is connected to 5 peer ranks. Expected number of connected peer ranks is : 5
+[Gloo] Rank 4 is connected to 5 peer ranks. Expected number of connected peer ranks is : 5
+B: world=2 all_reduce          7.51 ms algbw=2.234 busbw=2.234 GB/s
+B: world=2 all_gather          8.73 ms algbw=1.922 busbw=0.961 GB/s
+B: world=2 reduce_scatter     12.09 ms algbw=1.388 busbw=0.694 GB/s
+B: world=2 broadcast           3.69 ms algbw=4.543 busbw=4.543 GB/s
+B: world=4 all_reduce         18.73 ms algbw=0.896 busbw=1.344 GB/s
+B: world=4 all_gather         16.75 ms algbw=1.001 busbw=0.751 GB/s
+B: world=4 reduce_scatter     25.79 ms algbw=0.651 busbw=0.488 GB/s
+B: world=4 broadcast           9.12 ms algbw=1.839 busbw=1.839 GB/s
+B: world=6 all_reduce         34.04 ms algbw=0.493 busbw=0.821 GB/s
+B: world=6 all_gather         26.74 ms algbw=0.627 busbw=0.523 GB/s
+B: world=6 reduce_scatter     38.48 ms algbw=0.436 busbw=0.363 GB/s
+B: world=6 broadcast          13.21 ms algbw=1.270 busbw=1.270 GB/s
+[Gloo] Rank 1 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[Gloo] Rank 0 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+C: world=2 alpha=   181.5 us  bw=2.009 GB/s  crossover=356.0 KiB
+[Gloo] Rank 0 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+[Gloo] Rank 1 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+[Gloo] Rank 3 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+[Gloo] Rank 2 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+C: world=4 alpha=   489.4 us  bw=0.777 GB/s  crossover=371.3 KiB
+[Gloo] Rank 0 is connected to 5 peer ranks. Expected number of connected peer ranks is : 5
+[Gloo] Rank 4 is connected to 5 peer ranks. Expected number of connected peer ranks is : 5
+[Gloo] Rank 1 is connected to 5 peer ranks. Expected number of connected peer ranks is : 5
+[Gloo] Rank 2 is connected to 5 peer ranks. Expected number of connected peer ranks is : 5
+[Gloo] Rank 3 is connected to 5 peer ranks. Expected number of connected peer ranks is : 5
+[Gloo] Rank 5 is connected to 5 peer ranks. Expected number of connected peer ranks is : 5
+C: world=6 alpha=   814.3 us  bw=0.428 GB/s  crossover=340.0 KiB
+[Gloo] Rank 0 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[Gloo] Rank 1 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[Gloo] Rank 0 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+[Gloo] Rank 2 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+[Gloo] Rank 1 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+[Gloo] Rank 3 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+D: world=4 ring                      4096 B      639.7 us  err=4.8e-07
+D: world=4 recursive_doubling        4096 B      256.2 us  err=4.8e-07
+D: world=4 flat                      4096 B      243.9 us  err=4.8e-07
+D: world=4 gloo_builtin              4096 B      666.9 us  err=0.0e+00
+D: world=4 ring                   8388608 B    17728.9 us  err=9.5e-07
+D: world=4 recursive_doubling     8388608 B    28171.8 us  err=9.5e-07
+D: world=4 flat                   8388608 B    23030.9 us  err=9.5e-07
+D: world=4 gloo_builtin           8388608 B    13615.0 us  err=0.0e+00
+E: 16 MiB all-reduce  algbw spread over worlds 4.53x, busbw spread 2.72x
+total runtime 34.3 s
+wrote /home/canary/project/tmp/claude-ai-hardware-phase6/guides/ai-hardware/projects/28-nccl-tests/outputs

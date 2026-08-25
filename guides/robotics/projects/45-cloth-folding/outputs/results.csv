@@ -1,0 +1,31 @@
+experiment,metric,value
+1_picture,footprint after 0 folds (px),1681
+1_picture,footprint after 1 folds (px),957
+1_picture,footprint after 2 folds (px),621
+1_picture,"area ratio, one fold",0.569
+1_picture,"area ratio, two folds",0.369
+2_metric,with self-collision: IoU vs the expert's own result,0.98
+2_metric,with self-collision: area ratio after two folds,0.363
+2_metric,with self-collision: peak layer count,5.4
+2_metric,without self-collision: IoU vs the expert's own result,1.0
+2_metric,without self-collision: area ratio after two folds,0.34
+2_metric,without self-collision: peak layer count,6.1
+2_metric,IoU of an UNFOLDED sheet against the target,0.102
+3_precision,pick error 0 mm: IoU,0.985
+3_precision,pick error 7 mm: IoU,0.919
+3_precision,pick error 15 mm: IoU,0.793
+3_precision,pick error 25 mm: IoU,0.793
+3_precision,pick error 40 mm: IoU,0.691
+4_layer,grab the TOP layer: IoU,0.983
+4_layer,grab the BOTTOM layer: IoU,0.951
+5_learned,demonstration episodes,120
+5_learned,training examples (2 folds each),240
+5_learned,collection time (s),95
+5_learned,expert: mean IoU,0.982
+5_learned,learned: mean IoU,0.821
+5_learned,fold to the centre: mean IoU,0.126
+5_learned,random: mean IoU,0.073
+6_data,15 demonstrations: mean IoU,0.567
+6_data,40 demonstrations: mean IoU,0.605
+6_data,80 demonstrations: mean IoU,0.605
+6_data,120 demonstrations: mean IoU,0.644

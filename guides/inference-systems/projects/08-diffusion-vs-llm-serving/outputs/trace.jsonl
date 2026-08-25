@@ -1,0 +1,20 @@
+{"kind": "llm", "request_id": "accb35e4", "queue_s": 0.00039136101258918643, "first_content_s": 0.12270959099987522, "total_s": 0.21936100500170141, "units": 2}
+{"kind": "sd", "request_id": "145e222a", "steps": 2, "preview": false, "queue_s": 0.0001742049935273826, "first_content_s": 5.790917326987255, "total_s": 5.814107234997209, "units": 2}
+{"kind": "llm", "request_id": "6286da8d", "queue_s": 0.00025068101240321994, "first_content_s": 0.12010160001227632, "total_s": 2.2123456289991736, "units": 24}
+{"kind": "llm", "request_id": "a241a6ef", "queue_s": 0.0002063040155917406, "first_content_s": 0.1198097670567222, "total_s": 2.2877017450518906, "units": 24}
+{"kind": "llm", "request_id": "ef2c0521", "queue_s": 0.0002334429882466793, "first_content_s": 0.1568593590054661, "total_s": 2.794464987004176, "units": 24}
+{"kind": "llm", "request_id": "dafe3957", "queue_s": 0.0002472689957357943, "first_content_s": 0.14807077997829765, "total_s": 2.6518974239588715, "units": 24}
+{"kind": "llm", "request_id": "b085d954", "queue_s": 2.650976762000937, "first_content_s": 2.811586908006575, "total_s": 5.180322026018985, "units": 24}
+{"kind": "llm", "request_id": "8ad60675", "queue_s": 5.179744149034377, "first_content_s": 5.306190774019342, "total_s": 8.179974867030978, "units": 24}
+{"kind": "llm", "request_id": "c5d0a17d", "queue_s": 8.179142285021953, "first_content_s": 8.308784910012037, "total_s": 10.638471421028953, "units": 24}
+{"kind": "llm", "request_id": "ba665583", "queue_s": 7.985510182974394, "first_content_s": 8.109940440976061, "total_s": 10.505501898005605, "units": 24}
+{"kind": "llm", "request_id": "b7bad2bf", "queue_s": 7.976432338007726, "first_content_s": 8.164582049997989, "total_s": 10.709882979048416, "units": 24}
+{"kind": "llm", "request_id": "348d09a2", "queue_s": 7.709553534048609, "first_content_s": 7.841569929034449, "total_s": 10.134809744020458, "units": 24}
+{"kind": "llm", "request_id": "cce5064f", "queue_s": 7.672488479001913, "first_content_s": 7.803897155972663, "total_s": 10.09515388199361, "units": 24}
+{"kind": "sd", "request_id": "6843cbce", "steps": 6, "preview": false, "queue_s": 0.00015823100693523884, "first_content_s": 13.210904827981722, "total_s": 13.25681304000318, "units": 6}
+{"kind": "sd", "request_id": "fba4e5bd", "steps": 6, "preview": false, "queue_s": 0.0008201420423574746, "first_content_s": 13.031310324033257, "total_s": 13.077229728049133, "units": 6}
+{"kind": "sd", "request_id": "9a78db1e", "steps": 6, "preview": false, "queue_s": 9.487697388976812e-05, "first_content_s": 13.674457217974123, "total_s": 13.69500752800377, "units": 6}
+{"kind": "sd", "request_id": "3ec6f623", "steps": 6, "preview": false, "queue_s": 13.688925120979548, "first_content_s": 25.85449819895439, "total_s": 25.879946757981088, "units": 6}
+{"kind": "sd", "request_id": "efb92d20", "steps": 6, "preview": false, "queue_s": 25.87611581501551, "first_content_s": 35.610002126020845, "total_s": 35.63417190202745, "units": 6}
+{"kind": "sd", "request_id": "b80ec683", "steps": 6, "preview": false, "queue_s": 35.63052708102623, "first_content_s": 45.663557293999474, "total_s": 45.68714609503513, "units": 6}
+{"kind": "sd", "request_id": "0308eb65", "steps": 6, "preview": true, "queue_s": 0.0001318909926339984, "first_content_s": 2.8923748420202173, "total_s": 19.190995051001664, "units": 6}

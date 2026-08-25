@@ -1,0 +1,126 @@
+{
+  "model": "Qwen/Qwen2.5-0.5B-Instruct",
+  "pattern": "\\{\"name\": \"[A-Za-z ]+\", \"age\": (0|[1-9][0-9]*), \"skills\": \\[\"[a-z ]+\"(, \"[a-z ]+\")*\\]\\}",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "name": {
+        "type": "string"
+      },
+      "age": {
+        "type": "integer"
+      },
+      "skills": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      }
+    },
+    "required": [
+      "name",
+      "age",
+      "skills"
+    ]
+  },
+  "n_per_arm": 160,
+  "max_new": 56,
+  "dfa_states": 48,
+  "index_build_s": 0.3779030619189143,
+  "index_walks": 787364,
+  "arms": {
+    "unconstrained T=0.0": {
+      "parse_ok": 1.0,
+      "schema_ok": 1.0,
+      "name_ok": 0.775,
+      "age_ok": 1.0,
+      "skills_ok": 0.9375,
+      "all_ok": 0.725,
+      "n": 160,
+      "mean_tokens": 35.025,
+      "wall_s": 61.49249597697053
+    },
+    "unconstrained T=0.7": {
+      "parse_ok": 0.99375,
+      "schema_ok": 0.98125,
+      "name_ok": 0.68125,
+      "age_ok": 0.98125,
+      "skills_ok": 0.9125,
+      "all_ok": 0.63125,
+      "n": 160,
+      "mean_tokens": 35.04375,
+      "wall_s": 95.01149411895312
+    },
+    "unconstrained T=1.0": {
+      "parse_ok": 0.975,
+      "schema_ok": 0.9125,
+      "name_ok": 0.60625,
+      "age_ok": 0.9125,
+      "skills_ok": 0.78125,
+      "all_ok": 0.525,
+      "n": 160,
+      "mean_tokens": 35.4125,
+      "wall_s": 101.63686933496501
+    },
+    "constrained T=0.7": {
+      "parse_ok": 1.0,
+      "schema_ok": 1.0,
+      "name_ok": 0.825,
+      "age_ok": 1.0,
+      "skills_ok": 0.94375,
+      "all_ok": 0.775,
+      "n": 160,
+      "mean_tokens": 26.2875,
+      "wall_s": 79.64388224296272
+    },
+    "constrained T=1.0": {
+      "parse_ok": 0.99375,
+      "schema_ok": 0.99375,
+      "name_ok": 0.76875,
+      "age_ok": 0.99375,
+      "skills_ok": 0.875,
+      "all_ok": 0.66875,
+      "n": 160,
+      "mean_tokens": 26.63125,
+      "wall_s": 98.86516934493557
+    }
+  },
+  "samples": {
+    "unconstrained T=0.0": [
+      "```json\n{\n  \"name\": \"Radia Berners\",\n  \"age\": 80,\n  \"skills\": [\"optics\", \"statistics\"]\n}\n```",
+      "```json\n{\n  \"name\": \"Katherine\",\n  \"age\": 86,\n  \"skills\": [\"avionics\", \"statistics\"]\n}\n```",
+      "```json\n{\n  \"name\": \"Donald\",\n  \"age\": 33,\n  \"skills\": [\"databases\", \"networking\"]\n}\n```",
+      "```json\n{\n  \"name\": \"Grace Berners\",\n  \"age\": 26,\n  \"skills\": [\"robotics\", \"linguistics\", \"statistics\"]\n}\n```"
+    ],
+    "unconstrained T=0.7": [
+      "```json\n{\n  \"name\": \"Radia\",\n  \"age\": 80,\n  \"skills\": [\"in optics\", \"in statistics\"]\n}\n```",
+      "```json\n{\n  \"name\": \"Katherine\",\n  \"age\": 86,\n  \"skills\": [\"avionics\", \"statistics\"]\n}\n```",
+      "```json\n{\n  \"name\": \"Donald\",\n  \"age\": 33,\n  \"skills\": [\"databases\", \"networking\"]\n}\n```",
+      "```json\n{\n  \"name\": \"Grace Berners\",\n  \"age\": 26,\n  \"skills\": [\n    \"Robotics\",\n    \"Linguistics\",\n    \"Statistics\"\n  ]\n}\n```"
+    ],
+    "unconstrained T=1.0": [
+      "```json\n{\n  \"name\": \"Radia\",\n  \"age\": 80,\n  \"skills\": [\"in optics\", \"statistics\"]\n}\n```",
+      "```json\n{\n  \"name\": \"Katherine\",\n  \"age\": 86,\n  \"skills\": [\"avionics\", \"statistics\"]\n}\n```",
+      "```json\n{\n  \"name\": \"Donald Turing\",\n  \"age\": 33,\n  \"skills\": [\"databases\", \"networking\"]\n}\n```",
+      "```json\n{\n  \"name\": \"Grace Berners\",\n  \"age\": 26,\n  \"skills\": [\n    \"Robotics\",\n    \"Linguistics\",\n    \"Statistics\"\n  ]\n}\n```"
+    ],
+    "constrained T=0.7": [
+      "{\"name\": \"Radia Berners\", \"age\": 80, \"skills\": [\"mathematics\", \"statistics\"]}",
+      "{\"name\": \"Katherine Turing\", \"age\": 86, \"skills\": [\"avionics\", \"statistics\"]}",
+      "{\"name\": \"Donald Turing\", \"age\": 33, \"skills\": [\"databases\", \"networking\"]}",
+      "{\"name\": \"Grace Berners\", \"age\": 26, \"skills\": [\"robotics\", \"linguistics\", \"statistics\"]}"
+    ],
+    "constrained T=1.0": [
+      "{\"name\": \"Radia Berners\", \"age\": 80, \"skills\": [\"math\", \"computer science\", \"optics\"]}",
+      "{\"name\": \"Katherine Turing\", \"age\": 86, \"skills\": [\"avionics\", \"statistics\"]}",
+      "{\"name\": \"Donald Turing\", \"age\": 33, \"skills\": [\"databases\", \"networking\"]}",
+      "{\"name\": \"Grace Berners\", \"age\": 26, \"skills\": [\"robotics\", \"linguistics\", \"statistics\"]}"
+    ]
+  },
+  "mask_cost": {
+    "plain_s_per_step": 2.783800915155249,
+    "masked_s_per_step": 2.7624404538267604,
+    "steps": 6,
+    "batch": 80
+  }
+}

@@ -1,0 +1,278 @@
+{
+  "setup": {
+    "target": "Qwen/Qwen2.5-1.5B-Instruct",
+    "draft": "Qwen/Qwen2.5-0.5B-Instruct",
+    "target_layers": 28,
+    "draft_layers": 24,
+    "vocab": 151936,
+    "threads": 6,
+    "k": 4,
+    "max_new": 48
+  },
+  "A": {
+    "k": 4,
+    "max_new": 48,
+    "rows": [
+      {
+        "workload": "chat",
+        "prompt_tokens": 44,
+        "identical": true,
+        "text": "The sky appears blue during the day due to a phenomenon called Rayleigh scattering. When sunlight enters the Earth's atmosphere, it encounters gas molecules and tiny particles like dust and water droplets. These particles scatter the shorter blue and violet light more",
+        "acceptance_rate": 0.5469,
+        "tokens_per_iter": 3.25,
+        "iters": 16,
+        "base_decode_s": 11.474,
+        "spec_decode_s": 10.059,
+        "spec_draft_s": 5.491,
+        "spec_verify_s": 4.568,
+        "per_pos_hits": [
+          13,
+          9,
+          8,
+          5
+        ],
+        "accept_run": [
+          4,
+          3,
+          4,
+          1,
+          4,
+          3,
+          0,
+          1,
+          0,
+          1,
+          1,
+          0,
+          4,
+          2,
+          3,
+          4
+        ]
+      },
+      {
+        "workload": "summarize",
+        "prompt_tokens": 136,
+        "identical": true,
+        "text": "The Antikythera mechanism is an ancient Greek device that predates modern computers and was used to predict astronomical events and track athletic games. It was discovered in 1901 and was not matched by any similar device for over",
+        "acceptance_rate": 0.4706,
+        "tokens_per_iter": 2.941,
+        "iters": 17,
+        "base_decode_s": 11.605,
+        "spec_decode_s": 10.991,
+        "spec_draft_s": 6.047,
+        "spec_verify_s": 4.944,
+        "per_pos_hits": [
+          12,
+          8,
+          8,
+          4
+        ],
+        "accept_run": [
+          4,
+          1,
+          3,
+          1,
+          1,
+          1,
+          4,
+          0,
+          0,
+          3,
+          0,
+          4,
+          3,
+          0,
+          0,
+          3,
+          4
+        ]
+      },
+      {
+        "workload": "code",
+        "prompt_tokens": 75,
+        "identical": true,
+        "text": "```python\ndef normalise_scores(scores):\n    total = sum(scores)\n    if total == 0:\n        return [0.0 for s in scores]\n    return [s / total for s in scores]\n```<|im_end|>\n<|endoftext|>",
+        "acceptance_rate": 0.7917,
+        "tokens_per_iter": 4.25,
+        "iters": 12,
+        "base_decode_s": 11.482,
+        "spec_decode_s": 7.811,
+        "spec_draft_s": 4.303,
+        "spec_verify_s": 3.508,
+        "per_pos_hits": [
+          11,
+          10,
+          9,
+          8
+        ],
+        "accept_run": [
+          2,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          1,
+          0,
+          4,
+          4,
+          3
+        ]
+      },
+      {
+        "workload": "json",
+        "prompt_tokens": 61,
+        "identical": true,
+        "text": "```json\n{\n  \"name\": \"Lyon\",\n  \"city\": \"Lyon\",\n  \"country\": \"France\",\n  \"population\": 4850000\n}\n```<|im_end|>\n<|endoftext|>Human: Can",
+        "acceptance_rate": 0.6538,
+        "tokens_per_iter": 3.692,
+        "iters": 13,
+        "base_decode_s": 11.448,
+        "spec_decode_s": 8.341,
+        "spec_draft_s": 4.542,
+        "spec_verify_s": 3.798,
+        "per_pos_hits": [
+          9,
+          9,
+          9,
+          7
+        ],
+        "accept_run": [
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          0,
+          0,
+          0,
+          0,
+          3,
+          4,
+          3
+        ]
+      }
+    ],
+    "all_identical": true
+  },
+  "B": {
+    "iters": 58,
+    "marginal_accept": [
+      0.7759,
+      0.6207,
+      0.5862,
+      0.4138
+    ],
+    "conditional_accept": [
+      0.7759,
+      0.8,
+      0.9444,
+      0.7059
+    ],
+    "run_hist": [
+      0.2241,
+      0.1552,
+      0.0345,
+      0.1724,
+      0.4138
+    ],
+    "mean_accepted": 2.397,
+    "mean_tokens_per_iter": 3.397
+  },
+  "C": {
+    "rows": [
+      {
+        "workload": "chat",
+        "baseline_decode_s": 11.444,
+        "spec_decode_s": 10.033,
+        "speedup": 1.141,
+        "draft_s": 5.41,
+        "verify_s": 4.623,
+        "draft_share": 0.5393,
+        "iters": 16,
+        "tokens_per_iter": 3.25,
+        "baseline_tok_s": 4.194,
+        "spec_tok_s": 4.784
+      },
+      {
+        "workload": "summarize",
+        "baseline_decode_s": 11.621,
+        "spec_decode_s": 11.095,
+        "speedup": 1.047,
+        "draft_s": 6.102,
+        "verify_s": 4.993,
+        "draft_share": 0.55,
+        "iters": 17,
+        "tokens_per_iter": 2.941,
+        "baseline_tok_s": 4.131,
+        "spec_tok_s": 4.326
+      }
+    ]
+  },
+  "D": {
+    "target_1tok_ms": 238.43,
+    "target_k1tok_ms": 284.81,
+    "draft_1tok_ms": 82.2,
+    "cost_ratio": 0.3448,
+    "verify_overhead": 0.1945,
+    "alpha_len": 3.397,
+    "predicted_speedup": 1.32,
+    "measured_speedup": 1.094,
+    "model_error": 0.2065,
+    "per_workload": [
+      {
+        "workload": "chat",
+        "alpha_len": 3.25,
+        "predicted": 1.263,
+        "measured": 1.141,
+        "error": 0.1068
+      },
+      {
+        "workload": "summarize",
+        "alpha_len": 2.941,
+        "predicted": 1.143,
+        "measured": 1.047,
+        "error": 0.0915
+      }
+    ],
+    "scenarios": [
+      {
+        "label": "this box: 0.5B draft / 1.5B target",
+        "cost_ratio": 0.3448,
+        "verify_overhead": 0.1945,
+        "speedup": 1.32
+      },
+      {
+        "label": "1B draft / 7B target",
+        "cost_ratio": 0.1429,
+        "verify_overhead": 0.05,
+        "speedup": 2.095
+      },
+      {
+        "label": "1B draft / 70B target",
+        "cost_ratio": 0.0143,
+        "verify_overhead": 0.05,
+        "speedup": 3.068
+      },
+      {
+        "label": "zero-cost drafter (n-gram, Medusa)",
+        "cost_ratio": 0.0,
+        "verify_overhead": 0.05,
+        "speedup": 3.235
+      }
+    ]
+  },
+  "E": {
+    "identical": true,
+    "acceptance_rate": 0.0,
+    "tokens_per_iter": 1.021,
+    "baseline_decode_s": 11.836,
+    "random_decode_s": 13.56,
+    "speedup": 0.873,
+    "verify_overhead_paid": 1.146
+  },
+  "wall_s": 221.8
+}

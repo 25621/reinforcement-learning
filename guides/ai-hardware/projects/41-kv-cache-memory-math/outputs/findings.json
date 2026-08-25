@@ -1,0 +1,223 @@
+{
+  "verification": {
+    "model": "Qwen/Qwen2.5-0.5B-Instruct",
+    "tokens": 128,
+    "predicted_bytes_per_token": 24576,
+    "hf_cache_bytes": 3145728,
+    "hf_bytes_per_token": 24576.0,
+    "engine_bytes_per_token": 24576.0,
+    "formula_error_pct": 0.0,
+    "reservation": {
+      "requested_MB": 2000.0,
+      "torch.empty": {
+        "rss_after_alloc_MB": 0.004096000000117783,
+        "rss_after_touch_MB": 2000.0686080000005
+      },
+      "torch.zeros": {
+        "rss_after_alloc_MB": 2000.0030720000004,
+        "rss_after_touch_MB": 2000.0030720000004
+      }
+    }
+  },
+  "llama3_32k": {
+    "bytes_per_token": 131072.0,
+    "kind": "GQA",
+    "rows": [
+      {
+        "batch": 1,
+        "GB": 4.294967296,
+        "pct_of_H100": 5.36870912,
+        "fits": true
+      },
+      {
+        "batch": 8,
+        "GB": 34.359738368,
+        "pct_of_H100": 42.94967296,
+        "fits": true
+      },
+      {
+        "batch": 32,
+        "GB": 137.438953472,
+        "pct_of_H100": 171.79869184,
+        "fits": false
+      }
+    ],
+    "weights_fp16_GB": 16.06
+  },
+  "architectures": [
+    {
+      "label": "Llama-2 7B (MHA)",
+      "repo": "NousResearch/Llama-2-7b-hf",
+      "kind": "MHA",
+      "params": 6740000000.0,
+      "bytes_per_token": 524288.0,
+      "KiB_per_token": 512.0,
+      "layers": 32,
+      "kv_heads": 32,
+      "q_heads": 32,
+      "sliding_window": null,
+      "sliding_layers": 0,
+      "GB_at_32k": 17.179869184,
+      "GB_at_32k_effective": 17.179869184,
+      "weights_GB": 13.48,
+      "crossover_tokens": 25711.0595703125,
+      "seats_at_32k": 3
+    },
+    {
+      "label": "Llama-3 8B (GQA 8)",
+      "repo": "NousResearch/Meta-Llama-3-8B",
+      "kind": "GQA",
+      "params": 8030000000.0,
+      "bytes_per_token": 131072.0,
+      "KiB_per_token": 128.0,
+      "layers": 32,
+      "kv_heads": 8,
+      "q_heads": 32,
+      "sliding_window": null,
+      "sliding_layers": 0,
+      "GB_at_32k": 4.294967296,
+      "GB_at_32k_effective": 4.294967296,
+      "weights_GB": 16.06,
+      "crossover_tokens": 122528.07617187499,
+      "seats_at_32k": 14
+    },
+    {
+      "label": "Mistral 7B (GQA 8 + SWA)",
+      "repo": "mistralai/Mistral-7B-v0.1",
+      "kind": "GQA",
+      "params": 7240000000.0,
+      "bytes_per_token": 131072.0,
+      "KiB_per_token": 128.0,
+      "layers": 32,
+      "kv_heads": 8,
+      "q_heads": 32,
+      "sliding_window": 4096,
+      "sliding_layers": 0,
+      "GB_at_32k": 4.294967296,
+      "GB_at_32k_effective": 0.536870912,
+      "weights_GB": 14.48,
+      "crossover_tokens": 110473.6328125,
+      "seats_at_32k": 15
+    },
+    {
+      "label": "Qwen2.5 7B (GQA 4)",
+      "repo": "Qwen/Qwen2.5-7B-Instruct",
+      "kind": "GQA",
+      "params": 7620000000.0,
+      "bytes_per_token": 57344.0,
+      "KiB_per_token": 56.0,
+      "layers": 28,
+      "kv_heads": 4,
+      "q_heads": 28,
+      "sliding_window": null,
+      "sliding_layers": 0,
+      "GB_at_32k": 1.879048192,
+      "GB_at_32k_effective": 1.879048192,
+      "weights_GB": 15.24,
+      "crossover_tokens": 265764.5089285714,
+      "seats_at_32k": 34
+    },
+    {
+      "label": "Gemma-2 9B (GQA 8)",
+      "repo": "unsloth/gemma-2-9b",
+      "kind": "GQA",
+      "params": 9240000000.0,
+      "bytes_per_token": 344064.0,
+      "KiB_per_token": 336.0,
+      "layers": 42,
+      "kv_heads": 8,
+      "q_heads": 16,
+      "sliding_window": 4096,
+      "sliding_layers": 21,
+      "GB_at_32k": 11.274289152,
+      "GB_at_32k_effective": 6.341787648,
+      "weights_GB": 18.48,
+      "crossover_tokens": 53710.9375,
+      "seats_at_32k": 5
+    },
+    {
+      "label": "Phi-3 mini (MHA)",
+      "repo": "microsoft/Phi-3-mini-4k-instruct",
+      "kind": "MHA",
+      "params": 3820000000.0,
+      "bytes_per_token": 393216.0,
+      "KiB_per_token": 384.0,
+      "layers": 32,
+      "kv_heads": 32,
+      "q_heads": 32,
+      "sliding_window": 2047,
+      "sliding_layers": 0,
+      "GB_at_32k": 12.884901888,
+      "GB_at_32k_effective": 0.804913152,
+      "weights_GB": 7.64,
+      "crossover_tokens": 19429.524739583332,
+      "seats_at_32k": 5
+    },
+    {
+      "label": "DeepSeek-V2-Lite (MLA)",
+      "repo": "deepseek-ai/DeepSeek-V2-Lite",
+      "kind": "MLA",
+      "params": 15700000000.0,
+      "bytes_per_token": 31104.0,
+      "KiB_per_token": 30.375,
+      "layers": 27,
+      "kv_heads": 16,
+      "q_heads": 16,
+      "sliding_window": null,
+      "sliding_layers": 0,
+      "GB_at_32k": 1.019215872,
+      "GB_at_32k_effective": 1.019215872,
+      "weights_GB": 31.4,
+      "crossover_tokens": 1009516.4609053498,
+      "seats_at_32k": 47
+    }
+  ],
+  "tricks": [
+    {
+      "name": "fp16 KV (baseline)",
+      "bytes_per_token": 131072.0,
+      "seats_32k": 14.887191355228424,
+      "GB_per_request": 4.294967296
+    },
+    {
+      "name": "fp8 KV",
+      "bytes_per_token": 65536.0,
+      "seats_32k": 29.774382710456848,
+      "GB_per_request": 2.147483648
+    },
+    {
+      "name": "int4 KV",
+      "bytes_per_token": 32768.0,
+      "seats_32k": 59.548765420913696,
+      "GB_per_request": 1.073741824
+    },
+    {
+      "name": "MHA instead of GQA",
+      "bytes_per_token": 524288.0,
+      "seats_32k": 3.721797838807106,
+      "GB_per_request": 17.179869184
+    },
+    {
+      "name": "MQA (1 kv head)",
+      "bytes_per_token": 16384.0,
+      "seats_32k": 119.09753084182739,
+      "GB_per_request": 0.536870912
+    },
+    {
+      "name": "sliding window 4096",
+      "bytes_per_token": 16384.0,
+      "seats_32k": 119.09753084182739,
+      "GB_per_request": 0.536870912
+    }
+  ],
+  "crossover": {
+    "Llama-2 7B (MHA)": 25711.0595703125,
+    "Llama-3 8B (GQA 8)": 122528.07617187499,
+    "Mistral 7B (GQA 8 + SWA)": 110473.6328125,
+    "Qwen2.5 7B (GQA 4)": 265764.5089285714,
+    "Gemma-2 9B (GQA 8)": 53710.9375,
+    "Phi-3 mini (MHA)": 19429.524739583332,
+    "DeepSeek-V2-Lite (MLA)": 1009516.4609053498
+  },
+  "total_seconds": 9.913014888763428
+}

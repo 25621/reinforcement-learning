@@ -1,0 +1,31 @@
+section,name,value,note
+split,d_model / heads / head dim,512 / 8 / 64,
+split,"qkv.weight (fused q,k,v)","(1536, 512)",
+split,proj.weight,"(512, 512)",
+split,"rank 0 qkv slice, 2 ranks","(768, 512)",
+split,"rank 0 proj slice, 2 ranks","(512, 256)",
+split,attention params per rank / single process,"524,288 / 1,048,576  (2.0x smaller)",
+equal,2 ranks: max |out(TP) - out(1 process)|,5.364e-07,
+equal,2 ranks: relative to the largest output value,3.675e-07,
+equal,2 ranks: max error in d(loss)/d(input),1.907e-06,
+equal,2 ranks: max error in d(loss)/d(qkv weight),6.104e-05,
+equal,"2 ranks: the same three, relative to the largest true value",3.7e-07 / 3.8e-07 / 3.4e-07,"float32 has ~1e-7 of relative precision, so this is as equal as it gets"
+equal,"4 ranks: forward / input-grad / weight-grad, relative",3.4e-07 / 3.8e-07 / 3.8e-07,
+fg,no f (no all-reduce in backward): forward error,5.364e-07,forward is untouched - nothing looks wrong
+fg,no f: input-gradient error (relative 0.75),3.776e+00,each rank keeps only its own heads' share of the gradient
+fg,no f: weight-gradient error,6.104e-05,this layer's own weights are still correct - the damage is upstream
+fg,no g (no all-reduce in forward): forward error,8.708e-01,each rank returns only its own partial sum
+fg,no g: input-gradient error,1.907e-06,
+trap,chunked across the q/k boundary: forward error,1.357e+00,
+trap,  relative to the largest output value,9.297e-01,"no exception, no NaN - just a different function"
+trap,  rank 0 slice shape (looks perfectly reasonable),"(768, 512)",
+api,ColwiseParallel: global shape -> local shape,"(2048, 512) -> (1024, 512)  (Shard(dim=0),)",
+api,RowwiseParallel: local shape,"(512, 1024)  (Shard(dim=1),)",
+api,max |out(parallelize_module) - out(1 process)|,2.980e-07,
+cost,"activation all-reduced per layer, per step (forward)",1.0 MB,
+cost,  and once more in the backward pass,1.0 MB,
+cost,gradient all-reduced per step by DDP for this layer,4.0 MB,
+cost,"TP traffic / DDP traffic for one layer, one step",0.50x,TP traffic grows with batch and sequence length; DDP traffic does not
+cost,tokens per step at which TP traffic overtakes DDP traffic,1024  (we use 512),
+cost,"1 process x 4 threads, fwd+bwd",21.6 ms,
+cost,"2 ranks x 2 threads, fwd+bwd (TP)",21.3 ms   (1.01x),

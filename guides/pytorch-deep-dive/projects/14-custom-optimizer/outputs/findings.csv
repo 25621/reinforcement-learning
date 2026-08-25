@@ -1,0 +1,27 @@
+key,value
+bitexact_worst_diff,0.0
+no_grad_error,a leaf Variable that requires grad is being used in an in-place operation
+momentum_0.0_final_loss,0.27028387784957886
+momentum_0.0_amplification,1.0
+momentum_0.0_amplification_step10,1.0
+momentum_0.5_final_loss,0.1679404377937317
+momentum_0.5_amplification,2.0
+momentum_0.5_amplification_step10,1.998046875
+momentum_0.9_final_loss,0.04088554158806801
+momentum_0.9_amplification,10.0
+momentum_0.9_amplification_step10,6.513214111328125
+momentum_0.99_final_loss,6.809060141677037e-05
+momentum_0.99_amplification,100.0
+momentum_0.99_amplification_step10,9.561790466308594
+convention_diff_constant_lr,3.5762786865234375e-07
+convention_diff_StepLR,0.013517200946807861
+convention_diff_CosineAnnealingLR,0.02180612087249756
+convention_ratio_sched_vs_constant,37796.833333333336
+group_decay_everything_bias_norm,0.0781683549284935
+group_biases_exempt_bias_norm,0.5181853771209717
+set_to_none_max_diff,1.6259291172027588
+resume_True_final,0.024233240634202957
+resume_True_first_update,0.0202990360558033
+resume_False_final,0.026511095464229584
+resume_False_first_update,0.0018823095597326756
+resume_gap,0.0011629614979028688

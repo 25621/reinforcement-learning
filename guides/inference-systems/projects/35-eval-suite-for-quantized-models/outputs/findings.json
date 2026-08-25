@@ -1,0 +1,619 @@
+{
+  "setup": {
+    "model": "Qwen/Qwen2.5-0.5B-Instruct",
+    "threads": 6,
+    "window": 512,
+    "eval_windows": 10,
+    "mmlu_n": 140,
+    "gens": 8,
+    "gen_tokens": 24
+  },
+  "A": {
+    "baseline": {
+      "ppl": 20.630607321807727,
+      "mmlu": 0.45,
+      "seconds": {
+        "perplexity+shadow": 14.037226438522339,
+        "mmlu": 45.30508899688721,
+        "generation": 16.774160385131836
+      }
+    },
+    "rows": [
+      {
+        "name": "INT8 per-channel",
+        "ppl": 20.683095730462256,
+        "ppl_ratio": 1.0025442008485639,
+        "mmlu": 0.4357142857142857,
+        "mmlu_drop_pts": 1.428571428571429,
+        "agree": 0.9772994129158513,
+        "gen_identical": 0.625,
+        "mean_first_divergence": 18.0
+      },
+      {
+        "name": "AWQ INT4 g128",
+        "ppl": 23.40922105193638,
+        "ppl_ratio": 1.134684049130803,
+        "mmlu": 0.42857142857142855,
+        "mmlu_drop_pts": 2.1428571428571463,
+        "agree": 0.7876712328767124,
+        "gen_identical": 0.125,
+        "mean_first_divergence": 4.125
+      },
+      {
+        "name": "RTN INT4 g128",
+        "ppl": 25.26313764071067,
+        "ppl_ratio": 1.2245464831278183,
+        "mmlu": 0.39285714285714285,
+        "mmlu_drop_pts": 5.714285714285716,
+        "agree": 0.7397260273972602,
+        "gen_identical": 0.0,
+        "mean_first_divergence": 4.25
+      },
+      {
+        "name": "RTN INT4 per-channel",
+        "ppl": 36.493169317521144,
+        "ppl_ratio": 1.7688848780978825,
+        "mmlu": 0.3357142857142857,
+        "mmlu_drop_pts": 11.428571428571432,
+        "agree": 0.5874755381604697,
+        "gen_identical": 0.0,
+        "mean_first_divergence": 1.375
+      },
+      {
+        "name": "RTN INT3 g128",
+        "ppl": 87.18111220304935,
+        "ppl_ratio": 4.225814143187823,
+        "mmlu": 0.3,
+        "mmlu_drop_pts": 15.000000000000002,
+        "agree": 0.39882583170254404,
+        "gen_identical": 0.0,
+        "mean_first_divergence": 0.375
+      }
+    ],
+    "mmlu_n": 140,
+    "windows": 10,
+    "gens": 8
+  },
+  "B": {
+    "rows": [
+      {
+        "metric": "MMLU accuracy (n=140)",
+        "unit": "points",
+        "sd": 4.178494733728394,
+        "ci95": 15.714285714285714
+      },
+      {
+        "metric": "perplexity (10 windows)",
+        "unit": "x",
+        "sd": 0.0798954162570007,
+        "ci95": 0.353559203028432
+      },
+      {
+        "metric": "shadow agreement",
+        "unit": "fraction",
+        "sd": 0.0,
+        "ci95": 0.0
+      }
+    ],
+    "mmlu_threshold_pts": 3.0,
+    "mmlu_threshold_in_sd": 0.7179618956521109,
+    "mmlu_n_for_1pt_resolution": 9900
+  },
+  "C": {
+    "rows": [
+      {
+        "metric": "mmlu",
+        "noise_sd": 4.178494733728394,
+        "seconds": 45.30508899688721,
+        "separation_per_cand": [
+          0.34188661697719575,
+          0.5128299254657943,
+          1.367546467908783,
+          2.735092935817566,
+          3.5898094782605545
+        ],
+        "mildest_candidate": "INT8 per-channel",
+        "mildest_separation": 0.34188661697719575
+      },
+      {
+        "metric": "perplexity",
+        "noise_sd": 0.07686419964806944,
+        "seconds": 14.037226438522339,
+        "separation_per_cand": [
+          0.033057910708330314,
+          1.6438633583603395,
+          2.63543442229008,
+          7.420220834691229,
+          18.750106622546877
+        ],
+        "mildest_candidate": "INT8 per-channel",
+        "mildest_separation": 0.033057910708330314
+      },
+      {
+        "metric": "shadow_agreement",
+        "noise_sd": 0.005535855898097089,
+        "seconds": 14.037226438522339,
+        "separation_per_cand": [
+          4.100646314141206,
+          38.35518319692428,
+          47.016031015584616,
+          74.5186416397386,
+          108.59642652622249
+        ],
+        "mildest_candidate": "INT8 per-channel",
+        "mildest_separation": 4.100646314141206
+      }
+    ],
+    "candidates": [
+      "INT8 per-channel",
+      "AWQ INT4 g128",
+      "RTN INT4 g128",
+      "RTN INT4 per-channel",
+      "RTN INT3 g128"
+    ]
+  },
+  "D": {
+    "rows": [
+      {
+        "metric": "perplexity",
+        "order": [
+          "INT8 per-channel",
+          "AWQ INT4 g128",
+          "RTN INT4 g128",
+          "RTN INT4 per-channel",
+          "RTN INT3 g128"
+        ],
+        "inversions_vs_perplexity": 0
+      },
+      {
+        "metric": "mmlu (lower acc = worse)",
+        "order": [
+          "INT8 per-channel",
+          "AWQ INT4 g128",
+          "RTN INT4 g128",
+          "RTN INT4 per-channel",
+          "RTN INT3 g128"
+        ],
+        "inversions_vs_perplexity": 0
+      },
+      {
+        "metric": "shadow disagreement",
+        "order": [
+          "INT8 per-channel",
+          "AWQ INT4 g128",
+          "RTN INT4 g128",
+          "RTN INT4 per-channel",
+          "RTN INT3 g128"
+        ],
+        "inversions_vs_perplexity": 0
+      },
+      {
+        "metric": "generation divergence",
+        "order": [
+          "INT8 per-channel",
+          "RTN INT4 g128",
+          "AWQ INT4 g128",
+          "RTN INT4 per-channel",
+          "RTN INT3 g128"
+        ],
+        "inversions_vs_perplexity": 1
+      }
+    ],
+    "reference": [
+      "INT8 per-channel",
+      "AWQ INT4 g128",
+      "RTN INT4 g128",
+      "RTN INT4 per-channel",
+      "RTN INT3 g128"
+    ]
+  },
+  "E": {
+    "rows": [
+      {
+        "gate": "naive full gate",
+        "false_block_rate": 0.905,
+        "false_pass_rate": 0.0,
+        "false_block_by_check": {
+          "shadow_agreement": 0.8975,
+          "mmlu": 0.0625
+        },
+        "catch_by_check": {
+          "perplexity": 1.0,
+          "shadow_agreement": 1.0,
+          "generation_identical": 1.0,
+          "mmlu": 0.7225
+        }
+      },
+      {
+        "gate": "naive, scores only",
+        "false_block_rate": 0.0625,
+        "false_pass_rate": 0.0,
+        "false_block_by_check": {
+          "mmlu": 0.0625
+        },
+        "catch_by_check": {
+          "perplexity": 1.0,
+          "mmlu": 0.7225
+        }
+      },
+      {
+        "gate": "naive, MMLU only",
+        "false_block_rate": 0.0625,
+        "false_pass_rate": 0.27749999999999997,
+        "false_block_by_check": {
+          "mmlu": 0.0625
+        },
+        "catch_by_check": {
+          "mmlu": 0.7225
+        }
+      },
+      {
+        "gate": "calibrated full gate",
+        "false_block_rate": 0.0,
+        "false_pass_rate": 0.0,
+        "false_block_by_check": {},
+        "catch_by_check": {
+          "perplexity": 1.0,
+          "shadow_agreement": 1.0,
+          "generation_identical": 1.0,
+          "mmlu": 0.3125
+        }
+      },
+      {
+        "gate": "calibrated, scores only",
+        "false_block_rate": 0.0,
+        "false_pass_rate": 0.0,
+        "false_block_by_check": {},
+        "catch_by_check": {
+          "perplexity": 1.0,
+          "mmlu": 0.3125
+        }
+      },
+      {
+        "gate": "calibrated, MMLU only",
+        "false_block_rate": 0.0,
+        "false_pass_rate": 0.6875,
+        "false_block_by_check": {},
+        "catch_by_check": {
+          "mmlu": 0.3125
+        }
+      },
+      {
+        "gate": "calibrated, shadow only",
+        "false_block_rate": 0.0,
+        "false_pass_rate": 0.0,
+        "false_block_by_check": {},
+        "catch_by_check": {
+          "shadow_agreement": 1.0
+        }
+      }
+    ],
+    "healthy": "INT8 per-channel",
+    "damaged": "RTN INT4 g128",
+    "n_trials": 400
+  },
+  "F": {
+    "gates": {
+      "naive": {
+        "checks": {
+          "perplexity": {
+            "kind": "ratio",
+            "max": 1.05
+          },
+          "mmlu": {
+            "kind": "drop_pts",
+            "max": 3.0
+          },
+          "shadow_agreement": {
+            "kind": "min",
+            "min": 0.98
+          },
+          "generation_identical": {
+            "kind": "min",
+            "min": 0.5
+          }
+        },
+        "rows": [
+          {
+            "candidate": "INT8 per-channel",
+            "verdict": "BLOCK",
+            "fails": [
+              "shadow_agreement"
+            ],
+            "detail": {
+              "perplexity": {
+                "value": 1.0025442008485639,
+                "pass": true
+              },
+              "mmlu": {
+                "value": 1.428571428571429,
+                "pass": true
+              },
+              "shadow_agreement": {
+                "value": 0.9772994129158513,
+                "pass": false
+              },
+              "generation_identical": {
+                "value": 0.625,
+                "pass": true
+              }
+            }
+          },
+          {
+            "candidate": "AWQ INT4 g128",
+            "verdict": "BLOCK",
+            "fails": [
+              "perplexity",
+              "shadow_agreement",
+              "generation_identical"
+            ],
+            "detail": {
+              "perplexity": {
+                "value": 1.134684049130803,
+                "pass": false
+              },
+              "mmlu": {
+                "value": 2.1428571428571463,
+                "pass": true
+              },
+              "shadow_agreement": {
+                "value": 0.7876712328767124,
+                "pass": false
+              },
+              "generation_identical": {
+                "value": 0.125,
+                "pass": false
+              }
+            }
+          },
+          {
+            "candidate": "RTN INT4 g128",
+            "verdict": "BLOCK",
+            "fails": [
+              "perplexity",
+              "mmlu",
+              "shadow_agreement",
+              "generation_identical"
+            ],
+            "detail": {
+              "perplexity": {
+                "value": 1.2245464831278183,
+                "pass": false
+              },
+              "mmlu": {
+                "value": 5.714285714285716,
+                "pass": false
+              },
+              "shadow_agreement": {
+                "value": 0.7397260273972602,
+                "pass": false
+              },
+              "generation_identical": {
+                "value": 0.0,
+                "pass": false
+              }
+            }
+          },
+          {
+            "candidate": "RTN INT4 per-channel",
+            "verdict": "BLOCK",
+            "fails": [
+              "perplexity",
+              "mmlu",
+              "shadow_agreement",
+              "generation_identical"
+            ],
+            "detail": {
+              "perplexity": {
+                "value": 1.7688848780978825,
+                "pass": false
+              },
+              "mmlu": {
+                "value": 11.428571428571432,
+                "pass": false
+              },
+              "shadow_agreement": {
+                "value": 0.5874755381604697,
+                "pass": false
+              },
+              "generation_identical": {
+                "value": 0.0,
+                "pass": false
+              }
+            }
+          },
+          {
+            "candidate": "RTN INT3 g128",
+            "verdict": "BLOCK",
+            "fails": [
+              "perplexity",
+              "mmlu",
+              "shadow_agreement",
+              "generation_identical"
+            ],
+            "detail": {
+              "perplexity": {
+                "value": 4.225814143187823,
+                "pass": false
+              },
+              "mmlu": {
+                "value": 15.000000000000002,
+                "pass": false
+              },
+              "shadow_agreement": {
+                "value": 0.39882583170254404,
+                "pass": false
+              },
+              "generation_identical": {
+                "value": 0.0,
+                "pass": false
+              }
+            }
+          }
+        ]
+      },
+      "calibrated": {
+        "checks": {
+          "perplexity": {
+            "kind": "ratio",
+            "max": 1.05
+          },
+          "mmlu": {
+            "kind": "drop_pts",
+            "max": 8.4
+          },
+          "shadow_agreement": {
+            "kind": "min",
+            "min": 0.95
+          },
+          "generation_identical": {
+            "kind": "min",
+            "min": 0.3
+          }
+        },
+        "rows": [
+          {
+            "candidate": "INT8 per-channel",
+            "verdict": "PASS",
+            "fails": [],
+            "detail": {
+              "perplexity": {
+                "value": 1.0025442008485639,
+                "pass": true
+              },
+              "mmlu": {
+                "value": 1.428571428571429,
+                "pass": true
+              },
+              "shadow_agreement": {
+                "value": 0.9772994129158513,
+                "pass": true
+              },
+              "generation_identical": {
+                "value": 0.625,
+                "pass": true
+              }
+            }
+          },
+          {
+            "candidate": "AWQ INT4 g128",
+            "verdict": "BLOCK",
+            "fails": [
+              "perplexity",
+              "shadow_agreement",
+              "generation_identical"
+            ],
+            "detail": {
+              "perplexity": {
+                "value": 1.134684049130803,
+                "pass": false
+              },
+              "mmlu": {
+                "value": 2.1428571428571463,
+                "pass": true
+              },
+              "shadow_agreement": {
+                "value": 0.7876712328767124,
+                "pass": false
+              },
+              "generation_identical": {
+                "value": 0.125,
+                "pass": false
+              }
+            }
+          },
+          {
+            "candidate": "RTN INT4 g128",
+            "verdict": "BLOCK",
+            "fails": [
+              "perplexity",
+              "shadow_agreement",
+              "generation_identical"
+            ],
+            "detail": {
+              "perplexity": {
+                "value": 1.2245464831278183,
+                "pass": false
+              },
+              "mmlu": {
+                "value": 5.714285714285716,
+                "pass": true
+              },
+              "shadow_agreement": {
+                "value": 0.7397260273972602,
+                "pass": false
+              },
+              "generation_identical": {
+                "value": 0.0,
+                "pass": false
+              }
+            }
+          },
+          {
+            "candidate": "RTN INT4 per-channel",
+            "verdict": "BLOCK",
+            "fails": [
+              "perplexity",
+              "mmlu",
+              "shadow_agreement",
+              "generation_identical"
+            ],
+            "detail": {
+              "perplexity": {
+                "value": 1.7688848780978825,
+                "pass": false
+              },
+              "mmlu": {
+                "value": 11.428571428571432,
+                "pass": false
+              },
+              "shadow_agreement": {
+                "value": 0.5874755381604697,
+                "pass": false
+              },
+              "generation_identical": {
+                "value": 0.0,
+                "pass": false
+              }
+            }
+          },
+          {
+            "candidate": "RTN INT3 g128",
+            "verdict": "BLOCK",
+            "fails": [
+              "perplexity",
+              "mmlu",
+              "shadow_agreement",
+              "generation_identical"
+            ],
+            "detail": {
+              "perplexity": {
+                "value": 4.225814143187823,
+                "pass": false
+              },
+              "mmlu": {
+                "value": 15.000000000000002,
+                "pass": false
+              },
+              "shadow_agreement": {
+                "value": 0.39882583170254404,
+                "pass": false
+              },
+              "generation_identical": {
+                "value": 0.0,
+                "pass": false
+              }
+            }
+          }
+        ]
+      }
+    },
+    "seconds_per_model": 76.11647582054138,
+    "seconds_breakdown": {
+      "perplexity+shadow": 14.037226438522339,
+      "mmlu": 45.30508899688721,
+      "generation": 16.774160385131836
+    }
+  },
+  "wall_s": 487.7
+}

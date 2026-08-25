@@ -1,0 +1,377 @@
+[
+ {
+  "arm": "mlp",
+  "layer": "last",
+  "new_voice": {
+   "digits_exact": 0.304,
+   "digits_per_slot": 0.554,
+   "first_digit": 0.688,
+   "second_digit": 0.42,
+   "n": 250,
+   "examples": [
+    {
+     "truth": "five six",
+     "said": "five three"
+    },
+    {
+     "truth": "seven six",
+     "said": "eight eight"
+    },
+    {
+     "truth": "one five",
+     "said": "one three"
+    },
+    {
+     "truth": "three five",
+     "said": "three nine"
+    },
+    {
+     "truth": "four eight",
+     "said": "three eight"
+    },
+    {
+     "truth": "zero six",
+     "said": "zero eight"
+    },
+    {
+     "truth": "two nine",
+     "said": "three six"
+    },
+    {
+     "truth": "one seven",
+     "said": "one six"
+    }
+   ]
+  },
+  "seen_voice": {
+   "digits_exact": 0.36,
+   "digits_per_slot": 0.628,
+   "first_digit": 0.764,
+   "second_digit": 0.492,
+   "n": 250,
+   "examples": [
+    {
+     "truth": "eight five",
+     "said": "eight five"
+    },
+    {
+     "truth": "two one",
+     "said": "two two"
+    },
+    {
+     "truth": "four five",
+     "said": "four five"
+    },
+    {
+     "truth": "nine three",
+     "said": "nine nine"
+    },
+    {
+     "truth": "one one",
+     "said": "one six"
+    },
+    {
+     "truth": "four five",
+     "said": "four five"
+    },
+    {
+     "truth": "eight zero",
+     "said": "seven zero"
+    },
+    {
+     "truth": "zero three",
+     "said": "zero two"
+    }
+   ]
+  },
+  "speaker": {
+   "accuracy": 0.916,
+   "n": 250,
+   "classes": 5,
+   "examples": [
+    {
+     "truth": "theo",
+     "said": "theo"
+    },
+    {
+     "truth": "jackson",
+     "said": "jackson"
+    },
+    {
+     "truth": "jackson",
+     "said": "jackson"
+    },
+    {
+     "truth": "jackson",
+     "said": "jackson"
+    },
+    {
+     "truth": "lucas",
+     "said": "lucas"
+    },
+    {
+     "truth": "george",
+     "said": "george"
+    },
+    {
+     "truth": "theo",
+     "said": "theo"
+    },
+    {
+     "truth": "jackson",
+     "said": "jackson"
+    }
+   ]
+  }
+ },
+ {
+  "arm": "prefix",
+  "layer": "last",
+  "new_voice": {
+   "digits_exact": 0.012,
+   "digits_per_slot": 0.098,
+   "first_digit": 0.092,
+   "second_digit": 0.104,
+   "n": 250,
+   "examples": [
+    {
+     "truth": "five six",
+     "said": "four zero"
+    },
+    {
+     "truth": "seven six",
+     "said": "four zero"
+    },
+    {
+     "truth": "one five",
+     "said": "four zero"
+    },
+    {
+     "truth": "three five",
+     "said": "four zero"
+    },
+    {
+     "truth": "four eight",
+     "said": "four zero"
+    },
+    {
+     "truth": "zero six",
+     "said": "four zero"
+    },
+    {
+     "truth": "two nine",
+     "said": "four zero"
+    },
+    {
+     "truth": "one seven",
+     "said": "four zero"
+    }
+   ]
+  },
+  "seen_voice": {
+   "digits_exact": 0.0,
+   "digits_per_slot": 0.086,
+   "first_digit": 0.056,
+   "second_digit": 0.116,
+   "n": 250,
+   "examples": [
+    {
+     "truth": "eight five",
+     "said": "four zero"
+    },
+    {
+     "truth": "two one",
+     "said": "four zero"
+    },
+    {
+     "truth": "four five",
+     "said": "four zero"
+    },
+    {
+     "truth": "nine three",
+     "said": "four zero"
+    },
+    {
+     "truth": "one one",
+     "said": "four zero"
+    },
+    {
+     "truth": "four five",
+     "said": "four zero"
+    },
+    {
+     "truth": "eight zero",
+     "said": "four zero"
+    },
+    {
+     "truth": "zero three",
+     "said": "four zero"
+    }
+   ]
+  },
+  "speaker": {
+   "accuracy": 0.248,
+   "n": 250,
+   "classes": 5,
+   "examples": [
+    {
+     "truth": "theo",
+     "said": "nicolas"
+    },
+    {
+     "truth": "jackson",
+     "said": "nicolas"
+    },
+    {
+     "truth": "jackson",
+     "said": "nicolas"
+    },
+    {
+     "truth": "jackson",
+     "said": "nicolas"
+    },
+    {
+     "truth": "lucas",
+     "said": "nicolas"
+    },
+    {
+     "truth": "george",
+     "said": "nicolas"
+    },
+    {
+     "truth": "theo",
+     "said": "nicolas"
+    },
+    {
+     "truth": "jackson",
+     "said": "nicolas"
+    }
+   ]
+  }
+ },
+ {
+  "arm": "early",
+  "layer": "early",
+  "new_voice": {
+   "digits_exact": 0.02,
+   "digits_per_slot": 0.168,
+   "first_digit": 0.248,
+   "second_digit": 0.088,
+   "n": 250,
+   "examples": [
+    {
+     "truth": "five six",
+     "said": "one two"
+    },
+    {
+     "truth": "seven six",
+     "said": "six four"
+    },
+    {
+     "truth": "one five",
+     "said": "one two"
+    },
+    {
+     "truth": "three five",
+     "said": "six four"
+    },
+    {
+     "truth": "four eight",
+     "said": "one six"
+    },
+    {
+     "truth": "zero six",
+     "said": "six eight"
+    },
+    {
+     "truth": "two nine",
+     "said": "six four"
+    },
+    {
+     "truth": "one seven",
+     "said": "one two"
+    }
+   ]
+  },
+  "seen_voice": {
+   "digits_exact": 0.076,
+   "digits_per_slot": 0.266,
+   "first_digit": 0.4,
+   "second_digit": 0.132,
+   "n": 250,
+   "examples": [
+    {
+     "truth": "eight five",
+     "said": "six eight"
+    },
+    {
+     "truth": "two one",
+     "said": "zero zero"
+    },
+    {
+     "truth": "four five",
+     "said": "four five"
+    },
+    {
+     "truth": "nine three",
+     "said": "nine zero"
+    },
+    {
+     "truth": "one one",
+     "said": "one two"
+    },
+    {
+     "truth": "four five",
+     "said": "four five"
+    },
+    {
+     "truth": "eight zero",
+     "said": "six eight"
+    },
+    {
+     "truth": "zero three",
+     "said": "zero zero"
+    }
+   ]
+  },
+  "speaker": {
+   "accuracy": 0.956,
+   "n": 250,
+   "classes": 5,
+   "examples": [
+    {
+     "truth": "theo",
+     "said": "theo"
+    },
+    {
+     "truth": "jackson",
+     "said": "jackson"
+    },
+    {
+     "truth": "jackson",
+     "said": "jackson"
+    },
+    {
+     "truth": "jackson",
+     "said": "jackson"
+    },
+    {
+     "truth": "lucas",
+     "said": "lucas"
+    },
+    {
+     "truth": "george",
+     "said": "george"
+    },
+    {
+     "truth": "theo",
+     "said": "theo"
+    },
+    {
+     "truth": "jackson",
+     "said": "jackson"
+    }
+   ]
+  }
+ }
+]

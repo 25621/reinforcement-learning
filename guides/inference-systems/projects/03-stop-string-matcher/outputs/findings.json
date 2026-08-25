@@ -1,0 +1,339 @@
+{
+  "model": "Qwen/Qwen2.5-0.5B-Instruct",
+  "A_cases": [
+    {
+      "name": "stop inside one token",
+      "pieces": [
+        "Answer",
+        ": 42<|end|>",
+        " more"
+      ],
+      "stops": [
+        "<|end|>"
+      ],
+      "expected": "Answer: 42",
+      "naive_ok": true,
+      "naive_text": "Answer: 42",
+      "eager_ok": false,
+      "eager_leaked_chars": 7,
+      "streaming_ok": true,
+      "streaming_max_hold": 0
+    },
+    {
+      "name": "stop split over two tokens",
+      "pieces": [
+        "Answer",
+        ": 42<|",
+        "end|>",
+        " more"
+      ],
+      "stops": [
+        "<|end|>"
+      ],
+      "expected": "Answer: 42",
+      "naive_ok": false,
+      "naive_text": "Answer: 42<|end|> more",
+      "eager_ok": false,
+      "eager_leaked_chars": 7,
+      "streaming_ok": true,
+      "streaming_max_hold": 2
+    },
+    {
+      "name": "stop split over four tokens",
+      "pieces": [
+        "ok",
+        "<",
+        "|",
+        "end",
+        "|>",
+        "tail"
+      ],
+      "stops": [
+        "<|end|>"
+      ],
+      "expected": "ok",
+      "naive_ok": false,
+      "naive_text": "ok<|end|>tail",
+      "eager_ok": false,
+      "eager_leaked_chars": 7,
+      "streaming_ok": true,
+      "streaming_max_hold": 5
+    },
+    {
+      "name": "double newline split across tokens",
+      "pieces": [
+        "line one",
+        "\n",
+        "\n",
+        "line two"
+      ],
+      "stops": [
+        "\n\n"
+      ],
+      "expected": "line one",
+      "naive_ok": false,
+      "naive_text": "line one\n\nline two",
+      "eager_ok": false,
+      "eager_leaked_chars": 2,
+      "streaming_ok": true,
+      "streaming_max_hold": 1
+    },
+    {
+      "name": "false start that never completes",
+      "pieces": [
+        "a<",
+        "b",
+        "c"
+      ],
+      "stops": [
+        "<|end|>"
+      ],
+      "expected": "a<bc",
+      "naive_ok": true,
+      "naive_text": "a<bc",
+      "eager_ok": true,
+      "eager_leaked_chars": 0,
+      "streaming_ok": true,
+      "streaming_max_hold": 1
+    },
+    {
+      "name": "two stops, the later one is shorter",
+      "pieces": [
+        "hello ",
+        "wor",
+        "ld STOP tail"
+      ],
+      "stops": [
+        "STOP",
+        "world"
+      ],
+      "expected": "hello ",
+      "naive_ok": false,
+      "naive_text": "hello world ",
+      "eager_ok": false,
+      "eager_leaked_chars": 15,
+      "streaming_ok": true,
+      "streaming_max_hold": 3
+    },
+    {
+      "name": "stop is the very first thing emitted",
+      "pieces": [
+        "STO",
+        "P",
+        "anything"
+      ],
+      "stops": [
+        "STOP"
+      ],
+      "expected": "",
+      "naive_ok": false,
+      "naive_text": "STOPanything",
+      "eager_ok": false,
+      "eager_leaked_chars": 4,
+      "streaming_ok": true,
+      "streaming_max_hold": 3
+    },
+    {
+      "name": "overlapping near-miss then a real hit",
+      "pieces": [
+        "aa",
+        "ab",
+        "aab",
+        "x"
+      ],
+      "stops": [
+        "aab"
+      ],
+      "expected": "a",
+      "naive_ok": false,
+      "naive_text": "aaab",
+      "eager_ok": false,
+      "eager_leaked_chars": 3,
+      "streaming_ok": true,
+      "streaming_max_hold": 2
+    }
+  ],
+  "A_summary": {
+    "n": 8,
+    "naive_passed": 2,
+    "eager_passed": 1,
+    "streaming_passed": 8
+  },
+  "B_fuzz": {
+    "n_cases": 4000,
+    "vocab_sampled": 7371,
+    "cases_with_a_hit": 2427,
+    "naive_wrong": 2361,
+    "naive_missed_hit": 2348,
+    "eager_wrong": 2427,
+    "eager_leak_chars_total": 16845,
+    "eager_max_leak": 48,
+    "streaming_wrong": 0,
+    "streaming_max_hold": 5,
+    "bound_violations": 0,
+    "hits_within_one_token": 79,
+    "hits_straddling": 2348,
+    "naive_missed_within": 0,
+    "naive_missed_straddling": 2348,
+    "naive_detection_rate": 0.0326,
+    "naive_detection_rate_within_one_token": 1.0,
+    "naive_detection_rate_straddling": 0.0,
+    "eager_mean_leak_chars": 6.94,
+    "streaming_accuracy": 1.0
+  },
+  "B_examples": [
+    {
+      "pieces": [
+        "FC",
+        ".Print",
+        "cast",
+        " ex",
+        " len",
+        "account",
+        " Sm",
+        " buy",
+        " rows",
+        "ARAM",
+        " q",
+        "require",
+        " city",
+        "igr",
+        " strugg",
+        " cap"
+      ],
+      "stops": [
+        "na"
+      ],
+      "expected": "FC.Printcast ex le",
+      "naive_gave": "FC.Printcast ex lenaccount Sm buy rowsARAM qrequire cityigr strugg cap"
+    },
+    {
+      "pieces": [
+        "it",
+        "ng",
+        "iforn",
+        "initely",
+        "Height",
+        " loop",
+        "Co",
+        " histor",
+        "pite",
+        "VAL",
+        "*",
+        " parts",
+        "Down",
+        " Auth",
+        "ston",
+        "_get",
+        " catch",
+        " considered",
+        "ART",
+        "required",
+        "Err"
+      ],
+      "stops": [
+        "Tr",
+        "xxz"
+      ],
+      "expected": "itngiforninitelyHeight loopCo historpiteVAL* partsDown Authston_get catch consideredAR",
+      "naive_gave": "itngiforninitelyHeight loopCo historpiteVAL* partsDown Authston_get catch consideredARTrequiredErr"
+    },
+    {
+      "pieces": [
+        " |",
+        "ical",
+        "document",
+        ".cl",
+        " long",
+        " James",
+        " error",
+        "elf",
+        "_content",
+        " pre",
+        "Write",
+        " effects",
+        " Find",
+        "Pos",
+        " shoot",
+        " Free",
+        "ulations",
+        "uate",
+        " lower"
+      ],
+      "stops": [
+        "f_co"
+      ],
+      "expected": " |icaldocument.cl long James errorel",
+      "naive_gave": " |icaldocument.cl long James errorelf_content preWrite effects FindPos shoot Freeulationsuate lower"
+    }
+  ],
+  "D_cost": [
+    {
+      "n_tokens": 1000,
+      "incremental_s": 0.0017,
+      "rescan_s": 0.0007,
+      "rescan_over_incremental": 0.39,
+      "incremental_us_per_token": 1.72,
+      "rescan_us_per_token": 0.68
+    },
+    {
+      "n_tokens": 2000,
+      "incremental_s": 0.0035,
+      "rescan_s": 0.0024,
+      "rescan_over_incremental": 0.68,
+      "incremental_us_per_token": 1.76,
+      "rescan_us_per_token": 1.21
+    },
+    {
+      "n_tokens": 4000,
+      "incremental_s": 0.0073,
+      "rescan_s": 0.0151,
+      "rescan_over_incremental": 2.08,
+      "incremental_us_per_token": 1.82,
+      "rescan_us_per_token": 3.78
+    },
+    {
+      "n_tokens": 8000,
+      "incremental_s": 0.0151,
+      "rescan_s": 0.1004,
+      "rescan_over_incremental": 6.66,
+      "incremental_us_per_token": 1.88,
+      "rescan_us_per_token": 12.55
+    },
+    {
+      "n_tokens": 16000,
+      "incremental_s": 0.0307,
+      "rescan_s": 0.4243,
+      "rescan_over_incremental": 13.83,
+      "incremental_us_per_token": 1.92,
+      "rescan_us_per_token": 26.52
+    }
+  ],
+  "E_real_generation": {
+    "prompt": "List three colours, one per line, then stop.\n1. red\n2. green\n",
+    "stops": [
+      "\n4."
+    ],
+    "max_new_tokens": 48,
+    "first_tokens": [
+      "3",
+      ".",
+      " blue",
+      "\n",
+      "4",
+      ".",
+      " yellow",
+      "\n"
+    ],
+    "streaming_tokens_used": 6,
+    "streaming_stopped": true,
+    "naive_tokens_used": 48,
+    "naive_stopped": false,
+    "text_delivered": "3. blue",
+    "full_text_if_never_stopped": "3. blue\n4. yellow\n5. purple\n6. orange\n7. black\n8. white\n9. gray\n10. brown\n11. navy\n12. lime\n13. teal\n",
+    "decode_steps_saved": 42,
+    "median_decode_step_s": 0.0885,
+    "seconds_saved": 3.72
+  },
+  "wall_clock_s": 15.5
+}

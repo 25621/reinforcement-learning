@@ -1,0 +1,9 @@
+{
+  "model": "openai/whisper-tiny",
+  "layers": 4,
+  "d_model": 384,
+  "params_m": 8.21,
+  "valid_frames": 52,
+  "total_frames": 1500,
+  "n_clips": 1500
+}

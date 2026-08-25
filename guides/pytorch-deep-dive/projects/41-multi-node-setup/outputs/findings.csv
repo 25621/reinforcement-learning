@@ -1,0 +1,34 @@
+section,name,value,note
+launch,"exit codes (node 0, node 1)","0, 0",
+launch,processes that reported in,4,
+launch,rank table,"{""0"": {""RANK"": ""0"", ""LOCAL_RANK"": ""0"", ""GROUP_RANK"": ""0"", ""WORLD_SIZE"": ""4"", ""LOCAL_WORLD_SIZE"": ""2""}, ""1"": {""RANK"": ""1"", ""LOCAL_RANK"": ""1"", ""GROUP_RANK"": ""0"", ""WORLD_SIZE"": ""4"", ""LOCAL_WORLD_SIZE"": ""2""}, ""2"": {""RANK"": ""2"", ""LOCAL_RANK"": ""0"", ""GROUP_RANK"": ""1"", ""WORLD_SIZE"": ""4"", ""LOCAL_WORLD_SIZE"": ""2""}, ""3"": {""RANK"": ""3"", ""LOCAL_RANK"": ""1"", ""GROUP_RANK"": ""1"", ""WORLD_SIZE"": ""4"", ""LOCAL_WORLD_SIZE"": ""2""}}",
+launch,max spread of weight sums across the 4 processes,0.000e+00,the two 'nodes' really are training one model
+ckpt,processes writing to ONE path (mode=everyone),4,"4 concurrent writers, same file - last one wins, or a torn file"
+ckpt,  which rank's copy actually survived,0,
+ckpt,processes writing (mode=rank0),1,
+ckpt,"files written (mode=local_rank0, one per node)",2,"the right pattern for per-node caches, not for checkpoints"
+rdzv,"declared --nnodes=2, launched only node 0",exit TIMEOUT after 60s,the agent waits at the meeting point; nothing tells you who is late
+rdzv,  the message,(still waiting when killed),
+rdzv,both machines launched with --node-rank=0,"exit 0, ranks reported: 4",
+rdzv,  GROUP_RANK each process actually got,"['0', '0', '1', '1']","with --rdzv-backend=c10d, node ranks are assigned AT the rendezvous and --node-rank is ignored; it only matters for static rendezvous"
+rdzv,unreachable rendezvous endpoint (port 1),exit TIMEOUT after 60s,
+rdzv,  the message,"[W809 18:36:36.061717433 TCPStore.cpp:340] [c10d] TCP client failed to connect/validate to host 127.0.0.1:1 - retrying (try=0, timeout=60000ms, delay=23152ms): The client",
+restart,"1 agent x 2 workers, --max-restarts=0: exit code",1,
+restart,  workers that finished,0,rank 1 died and torchrun tore down both
+restart,"--max-restarts=2, rdzv=static: runs that recovered",3 of 3,"seconds: 9, 9, 11"
+restart,"--max-restarts=2, rdzv=c10d: runs that recovered",2 of 3,"seconds: 120, 12, 12"
+restart,  TORCHELASTIC_RESTART_COUNT after recovery (static),"{0: 1, 1: 1}","every worker restarts from scratch, not just the one that died - which is why a restart is only useful with a checkpoint to reload"
+restart,"recovered, 2 workers, both rendezvous backends","static 3/3, c10d 2/3","at 4 workers on this machine the replacement group never finished its second rendezvous and the job hung instead - a restart re-runs the rendezvous, so it inherits every way a rendezvous can fail"
+link,loopback: latency alpha,135.5 us,
+link,loopback: bandwidth B,2.07 GB/s,
+link,loopback: 4 bytes / 4 MB all-reduce,135 us / 2.2 ms,
+link,via interface enp0s31f6: latency / bandwidth,256.0 us / 1.89 GB/s,"same host, so Linux still routes it through memory"
+link,ratio to loopback,"1.89x latency, 1.10x bandwidth",a two-node test on one box does NOT test the network
+link,  this box (measured),340 ms per step of pure communication,
+link,  100 Gb/s InfiniBand,56 ms per step of pure communication,
+link,  10 Gb/s ethernet,560 ms per step of pure communication,
+link,  1 Gb/s ethernet,5601 ms per step of pure communication,
+hier,result correct?,max error 0.0e+00,
+hier,"bytes crossing the link per rank, flat all-reduce",6.0 MB,
+hier,"bytes crossing the link per rank, hierarchical",2.0 MB   (3.0x less),
+hier,"measured time flat / hierarchical (one box, fast link)",7.61 ms / 14.37 ms,no win here because there is no slow link to avoid

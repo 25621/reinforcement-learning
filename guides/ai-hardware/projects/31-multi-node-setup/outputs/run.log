@@ -1,0 +1,33 @@
+A: 8-byte one-way 11.9 us   17 MB at 9.85 GB/s   peak 9.98 GB/s   Nagle on 8 B costs 0.75x
+A: two 4-byte writes per round trip: nodelay 35.5 us vs Nagle 41333.8 us (1165.86x)
+[Gloo] Rank 0 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+[Gloo] Rank 1 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+[Gloo] Rank 3 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+[Gloo] Rank 2 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+B: 4 ranks over 2 emulated nodes; baseline 4 MiB all-reduce 5.13 ms (no link penalty yet)
+[Gloo] Rank 0 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+[Gloo] Rank 1 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+[Gloo] Rank 2 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+[Gloo] Rank 3 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+C: link lat=   0 us bw=free GB/s | flat    11.75 ms (0 crossings, 0.00 MB) | hier    11.10 ms (0, 0.00 MB) | 1.06x
+C: link lat=   0 us bw= 5.0 GB/s | flat     9.98 ms (12 crossings, 12.58 MB) | hier    14.08 ms (4, 8.39 MB) | 0.71x
+C: link lat= 100 us bw= 5.0 GB/s | flat    10.29 ms (12 crossings, 12.58 MB) | hier    12.89 ms (4, 8.39 MB) | 0.80x
+C: link lat= 100 us bw= 1.0 GB/s | flat    16.08 ms (12 crossings, 12.58 MB) | hier    12.47 ms (4, 8.39 MB) | 1.29x
+C: link lat= 100 us bw= 0.2 GB/s | flat    57.70 ms (12 crossings, 12.58 MB) | hier    42.97 ms (4, 8.39 MB) | 1.34x
+[Gloo] Rank 0 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+[Gloo] Rank 1 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+[Gloo] Rank 3 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+[Gloo] Rank 2 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+D: inter-node  20.0 GB/s -> measured 0.69x, model 0.83x
+D: inter-node  10.0 GB/s -> measured 0.84x, model 0.86x
+D: inter-node   5.0 GB/s -> measured 0.91x, model 0.92x
+D: inter-node   2.0 GB/s -> measured 0.93x, model 1.03x
+D: inter-node   1.0 GB/s -> measured 1.23x, model 1.15x
+D: inter-node   0.5 GB/s -> measured 1.51x, model 1.26x
+E: NVLink 4 (H100, in-node)       900.0 GB/s  flat     29.2 ms  hier     29.2 ms  1.00x
+E: InfiniBand NDR 400 Gb/s         50.0 GB/s  flat     91.2 ms  hier     62.2 ms  1.47x
+E: InfiniBand HDR 200 Gb/s         25.0 GB/s  flat    156.8 ms  hier     97.2 ms  1.61x
+E: 100 GbE                         12.5 GB/s  flat    288.0 ms  hier    167.2 ms  1.72x
+E: 10 GbE                           1.2 GB/s  flat   2650.5 ms  hier   1427.2 ms  1.86x
+total runtime 28.1 s
+wrote /home/canary/project/tmp/claude-ai-hardware-phase6/guides/ai-hardware/projects/31-multi-node-setup/outputs

@@ -1,0 +1,26 @@
+[
+ {
+  "new_tokens": 8,
+  "with_cache_ms": 397.84932136535645,
+  "without_cache_ms": 589.1318321228027,
+  "speedup": 1.4807913460829711
+ },
+ {
+  "new_tokens": 16,
+  "with_cache_ms": 712.5637531280518,
+  "without_cache_ms": 1196.0971355438232,
+  "speedup": 1.6785826254747451
+ },
+ {
+  "new_tokens": 32,
+  "with_cache_ms": 1377.4778842926025,
+  "without_cache_ms": 2494.2615032196045,
+  "speedup": 1.8107452262295456
+ },
+ {
+  "new_tokens": 64,
+  "with_cache_ms": 2677.957057952881,
+  "without_cache_ms": 5949.659585952759,
+  "speedup": 2.2217158293422656
+ }
+]

@@ -1,0 +1,5 @@
+rank 1 skipped the collective and exited:
+  RuntimeError: [/pytorch/third_party/gloo/gloo/transport/tcp/pair.cc:547] Connection closed by peer [192.168.200.105]:6575
+
+rank 1 skipped it and kept working:
+  RuntimeError: [/pytorch/third_party/gloo/gloo/transport/tcp/unbound_buffer.cc:78] Timed out waiting 12000ms for recv operation to complete

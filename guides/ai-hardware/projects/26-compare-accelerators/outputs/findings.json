@@ -1,0 +1,506 @@
+{
+ "A_cpu_bw_gbs": 25.2,
+ "A_cpu_gflops_numpy": 520.0,
+ "A_cpu_gflops_xla": 558.0,
+ "A_cpu_gflops": 558.0,
+ "A_gpu_bw_gbs": 222.0,
+ "A_gpu_bw_spec": 256.3,
+ "A_gpu_gflops": 8190.0,
+ "A_cpu_ridge": 22.1,
+ "A_gpu_ridge": 32.0,
+ "A_gpu_over_cpu_flops": 14.7,
+ "A_gpu_over_cpu_bw": 10.2,
+ "B_xla_max_abs_err": {
+  "axpy": 9.54e-07,
+  "chain": 4.77e-06,
+  "softmax": 7.45e-09,
+  "matmul": 0.000549
+ },
+ "B_triton_max_abs_err": {
+  "chain": 4.76837158203125e-06,
+  "softmax": 7.450580596923828e-09,
+  "matmul": 2.471613242960302e-06
+ },
+ "B_pcie_ms_per_array": 5.383,
+ "B_rows": [
+  {
+   "backend": "numpy",
+   "workload": "axpy  d=a*b+c",
+   "ms": 39.3277,
+   "gflops": 0.9,
+   "gbs": 6.8,
+   "ai": 0.125
+  },
+  {
+   "backend": "XLA",
+   "workload": "axpy  d=a*b+c",
+   "ms": 16.0929,
+   "gflops": 2.1,
+   "gbs": 16.7,
+   "ai": 0.125
+  },
+  {
+   "backend": "Triton",
+   "workload": "axpy  d=a*b+c",
+   "ms": 1.2726,
+   "gflops": 26.4,
+   "gbs": 210.9,
+   "ai": 0.125
+  },
+  {
+   "backend": "numpy",
+   "workload": "chain 6 ops",
+   "ms": 245.4302,
+   "gflops": 0.5,
+   "gbs": 1.1,
+   "ai": 0.5
+  },
+  {
+   "backend": "XLA",
+   "workload": "chain 6 ops",
+   "ms": 15.9841,
+   "gflops": 8.4,
+   "gbs": 16.8,
+   "ai": 0.5
+  },
+  {
+   "backend": "Triton",
+   "workload": "chain 6 ops",
+   "ms": 1.2709,
+   "gflops": 105.6,
+   "gbs": 211.2,
+   "ai": 0.5
+  },
+  {
+   "backend": "numpy",
+   "workload": "matmul 2048^3",
+   "ms": 30.8702,
+   "gflops": 556.5,
+   "gbs": 1.6,
+   "ai": 341.333
+  },
+  {
+   "backend": "XLA",
+   "workload": "matmul 2048^3",
+   "ms": 31.2398,
+   "gflops": 549.9,
+   "gbs": 1.6,
+   "ai": 341.333
+  },
+  {
+   "backend": "Triton",
+   "workload": "matmul 2048^3",
+   "ms": 3.8163,
+   "gflops": 4501.7,
+   "gbs": 13.2,
+   "ai": 341.333
+  },
+  {
+   "backend": "numpy",
+   "workload": "softmax rows",
+   "ms": 24.5749,
+   "gflops": 0.9,
+   "gbs": 1.4,
+   "ai": 0.625
+  },
+  {
+   "backend": "XLA",
+   "workload": "softmax rows",
+   "ms": 2.035,
+   "gflops": 10.3,
+   "gbs": 16.5,
+   "ai": 0.625
+  },
+  {
+   "backend": "Triton",
+   "workload": "softmax rows",
+   "ms": 0.1678,
+   "gflops": 125.0,
+   "gbs": 200.0,
+   "ai": 0.625
+  }
+ ],
+ "B_specs": {
+  "axpy  d=a*b+c": {
+   "flops": 33554432.0,
+   "bytes": 268435456.0,
+   "ai": 0.125
+  },
+  "chain 6 ops": {
+   "flops": 134217728.0,
+   "bytes": 268435456.0,
+   "ai": 0.5
+  },
+  "softmax rows": {
+   "flops": 20971520.0,
+   "bytes": 33554432.0,
+   "ai": 0.625
+  },
+  "matmul 2048^3": {
+   "flops": 17179869184.0,
+   "bytes": 50331648.0,
+   "ai": 341.333
+  }
+ },
+ "C_per_workload": {
+  "axpy  d=a*b+c": {
+   "ai": 0.125,
+   "winner": "Triton",
+   "speedup_over_numpy": 30.9,
+   "gpu_over_numpy": 30.9,
+   "xla_over_numpy": 2.44
+  },
+  "chain 6 ops": {
+   "ai": 0.5,
+   "winner": "Triton",
+   "speedup_over_numpy": 193.12,
+   "gpu_over_numpy": 193.12,
+   "xla_over_numpy": 15.35
+  },
+  "softmax rows": {
+   "ai": 0.625,
+   "winner": "Triton",
+   "speedup_over_numpy": 146.45,
+   "gpu_over_numpy": 146.45,
+   "xla_over_numpy": 12.08
+  },
+  "matmul 2048^3": {
+   "ai": 341.333,
+   "winner": "Triton",
+   "speedup_over_numpy": 8.09,
+   "gpu_over_numpy": 8.09,
+   "xla_over_numpy": 0.99
+  }
+ },
+ "C_gpu_advantage_range": [
+  8.09,
+  193.12
+ ],
+ "C_efficiency": [
+  {
+   "backend": "numpy",
+   "workload": "axpy  d=a*b+c",
+   "gflops": 0.9,
+   "roofline": 3.1,
+   "pct": 28.6
+  },
+  {
+   "backend": "XLA",
+   "workload": "axpy  d=a*b+c",
+   "gflops": 2.1,
+   "roofline": 3.1,
+   "pct": 66.7
+  },
+  {
+   "backend": "Triton",
+   "workload": "axpy  d=a*b+c",
+   "gflops": 26.4,
+   "roofline": 32.0,
+   "pct": 82.4
+  },
+  {
+   "backend": "numpy",
+   "workload": "chain 6 ops",
+   "gflops": 0.5,
+   "roofline": 12.6,
+   "pct": 4.0
+  },
+  {
+   "backend": "XLA",
+   "workload": "chain 6 ops",
+   "gflops": 8.4,
+   "roofline": 12.6,
+   "pct": 66.7
+  },
+  {
+   "backend": "Triton",
+   "workload": "chain 6 ops",
+   "gflops": 105.6,
+   "roofline": 128.2,
+   "pct": 82.4
+  },
+  {
+   "backend": "numpy",
+   "workload": "matmul 2048^3",
+   "gflops": 556.5,
+   "roofline": 558.0,
+   "pct": 99.7
+  },
+  {
+   "backend": "XLA",
+   "workload": "matmul 2048^3",
+   "gflops": 549.9,
+   "roofline": 558.0,
+   "pct": 98.5
+  },
+  {
+   "backend": "Triton",
+   "workload": "matmul 2048^3",
+   "gflops": 4501.7,
+   "roofline": 8190.0,
+   "pct": 55.0
+  },
+  {
+   "backend": "numpy",
+   "workload": "softmax rows",
+   "gflops": 0.9,
+   "roofline": 15.8,
+   "pct": 5.7
+  },
+  {
+   "backend": "XLA",
+   "workload": "softmax rows",
+   "gflops": 10.3,
+   "roofline": 15.8,
+   "pct": 65.4
+  },
+  {
+   "backend": "Triton",
+   "workload": "softmax rows",
+   "gflops": 125.0,
+   "roofline": 160.2,
+   "pct": 78.0
+  }
+ ],
+ "D_rows": [
+  {
+   "workload": "axpy  d=a*b+c",
+   "kernel_ms": 1.2726,
+   "transfer_ms": 21.532,
+   "end_to_end_ms": 22.8046,
+   "kernel_frac": 0.056,
+   "best_cpu_ms": 16.0929,
+   "gpu_wins_kernel_only": true,
+   "gpu_wins_end_to_end": false,
+   "speedup_kernel": 12.65,
+   "speedup_end_to_end": 0.71
+  },
+  {
+   "workload": "chain 6 ops",
+   "kernel_ms": 1.2709,
+   "transfer_ms": 21.532,
+   "end_to_end_ms": 22.8029,
+   "kernel_frac": 0.056,
+   "best_cpu_ms": 15.9841,
+   "gpu_wins_kernel_only": true,
+   "gpu_wins_end_to_end": false,
+   "speedup_kernel": 12.58,
+   "speedup_end_to_end": 0.7
+  },
+  {
+   "workload": "softmax rows",
+   "kernel_ms": 0.1678,
+   "transfer_ms": 2.6915,
+   "end_to_end_ms": 2.8593,
+   "kernel_frac": 0.059,
+   "best_cpu_ms": 2.035,
+   "gpu_wins_kernel_only": true,
+   "gpu_wins_end_to_end": false,
+   "speedup_kernel": 12.13,
+   "speedup_end_to_end": 0.71
+  },
+  {
+   "workload": "matmul 2048^3",
+   "kernel_ms": 3.8163,
+   "transfer_ms": 4.0373,
+   "end_to_end_ms": 7.8536,
+   "kernel_frac": 0.486,
+   "best_cpu_ms": 30.8702,
+   "gpu_wins_kernel_only": true,
+   "gpu_wins_end_to_end": true,
+   "speedup_kernel": 8.09,
+   "speedup_end_to_end": 3.93
+  }
+ ],
+ "D_flips": [
+  "axpy  d=a*b+c",
+  "chain 6 ops",
+  "softmax rows"
+ ],
+ "E_zoo": [
+  {
+   "device": "this i7-8700K (6c)",
+   "gflops": 558.0,
+   "gbs": 25.2,
+   "ridge": 22.1
+  },
+  {
+   "device": "this GTX 1070 Ti",
+   "gflops": 8190,
+   "gbs": 256.3,
+   "ridge": 32.0
+  },
+  {
+   "device": "NVIDIA A100 80GB",
+   "gflops": 312000,
+   "gbs": 2039,
+   "ridge": 153.0
+  },
+  {
+   "device": "NVIDIA H100 SXM",
+   "gflops": 990000,
+   "gbs": 3350,
+   "ridge": 295.5
+  },
+  {
+   "device": "NVIDIA B200 SXM",
+   "gflops": 2250000,
+   "gbs": 8000,
+   "ridge": 281.2
+  },
+  {
+   "device": "AMD MI300X",
+   "gflops": 1300000,
+   "gbs": 5300,
+   "ridge": 245.3
+  },
+  {
+   "device": "Google TPU v5p",
+   "gflops": 459000,
+   "gbs": 2765,
+   "ridge": 166.0
+  },
+  {
+   "device": "Apple M4 Max",
+   "gflops": 17000,
+   "gbs": 546,
+   "ridge": 31.1
+  }
+ ],
+ "E_ridge_lo": {
+  "device": "this i7-8700K (6c)",
+  "gflops": 558.0,
+  "gbs": 25.2,
+  "ridge": 22.1
+ },
+ "E_ridge_hi": {
+  "device": "NVIDIA H100 SXM",
+  "gflops": 990000,
+  "gbs": 3350,
+  "ridge": 295.5
+ },
+ "E_ridge_spread": 13.4,
+ "E_grid": [
+  {
+   "workload": "axpy  d=a*b+c",
+   "ai": 0.125,
+   "this i7-8700K (6c)": "memory",
+   "this GTX 1070 Ti": "memory",
+   "NVIDIA A100 80GB": "memory",
+   "NVIDIA H100 SXM": "memory",
+   "NVIDIA B200 SXM": "memory",
+   "AMD MI300X": "memory",
+   "Google TPU v5p": "memory",
+   "Apple M4 Max": "memory"
+  },
+  {
+   "workload": "chain 6 ops",
+   "ai": 0.5,
+   "this i7-8700K (6c)": "memory",
+   "this GTX 1070 Ti": "memory",
+   "NVIDIA A100 80GB": "memory",
+   "NVIDIA H100 SXM": "memory",
+   "NVIDIA B200 SXM": "memory",
+   "AMD MI300X": "memory",
+   "Google TPU v5p": "memory",
+   "Apple M4 Max": "memory"
+  },
+  {
+   "workload": "softmax rows",
+   "ai": 0.625,
+   "this i7-8700K (6c)": "memory",
+   "this GTX 1070 Ti": "memory",
+   "NVIDIA A100 80GB": "memory",
+   "NVIDIA H100 SXM": "memory",
+   "NVIDIA B200 SXM": "memory",
+   "AMD MI300X": "memory",
+   "Google TPU v5p": "memory",
+   "Apple M4 Max": "memory"
+  },
+  {
+   "workload": "matmul 2048^3",
+   "ai": 341.333,
+   "this i7-8700K (6c)": "compute",
+   "this GTX 1070 Ti": "compute",
+   "NVIDIA A100 80GB": "compute",
+   "NVIDIA H100 SXM": "compute",
+   "NVIDIA B200 SXM": "compute",
+   "AMD MI300X": "compute",
+   "Google TPU v5p": "compute",
+   "Apple M4 Max": "compute"
+  },
+  {
+   "workload": "fp16 decode, batch 16",
+   "ai": 16.0,
+   "this i7-8700K (6c)": "memory",
+   "this GTX 1070 Ti": "memory",
+   "NVIDIA A100 80GB": "memory",
+   "NVIDIA H100 SXM": "memory",
+   "NVIDIA B200 SXM": "memory",
+   "AMD MI300X": "memory",
+   "Google TPU v5p": "memory",
+   "Apple M4 Max": "memory"
+  },
+  {
+   "workload": "fp16 decode, batch 32",
+   "ai": 32.0,
+   "this i7-8700K (6c)": "compute",
+   "this GTX 1070 Ti": "compute",
+   "NVIDIA A100 80GB": "memory",
+   "NVIDIA H100 SXM": "memory",
+   "NVIDIA B200 SXM": "memory",
+   "AMD MI300X": "memory",
+   "Google TPU v5p": "memory",
+   "Apple M4 Max": "compute"
+  },
+  {
+   "workload": "fp16 decode, batch 64",
+   "ai": 64.0,
+   "this i7-8700K (6c)": "compute",
+   "this GTX 1070 Ti": "compute",
+   "NVIDIA A100 80GB": "memory",
+   "NVIDIA H100 SXM": "memory",
+   "NVIDIA B200 SXM": "memory",
+   "AMD MI300X": "memory",
+   "Google TPU v5p": "memory",
+   "Apple M4 Max": "compute"
+  },
+  {
+   "workload": "fp16 decode, batch 128",
+   "ai": 128.0,
+   "this i7-8700K (6c)": "compute",
+   "this GTX 1070 Ti": "compute",
+   "NVIDIA A100 80GB": "memory",
+   "NVIDIA H100 SXM": "memory",
+   "NVIDIA B200 SXM": "memory",
+   "AMD MI300X": "memory",
+   "Google TPU v5p": "memory",
+   "Apple M4 Max": "compute"
+  },
+  {
+   "workload": "fp16 decode, batch 256",
+   "ai": 256.0,
+   "this i7-8700K (6c)": "compute",
+   "this GTX 1070 Ti": "compute",
+   "NVIDIA A100 80GB": "compute",
+   "NVIDIA H100 SXM": "memory",
+   "NVIDIA B200 SXM": "memory",
+   "AMD MI300X": "compute",
+   "Google TPU v5p": "compute",
+   "Apple M4 Max": "compute"
+  }
+ ],
+ "E_workloads_that_flip": [
+  "fp16 decode, batch 32",
+  "fp16 decode, batch 64",
+  "fp16 decode, batch 128",
+  "fp16 decode, batch 256"
+ ],
+ "runtime_s": 10.7,
+ "device": {
+  "name": "NVIDIA GeForce GTX 1070 Ti",
+  "cc": "6.1",
+  "sms": 19,
+  "mem_gb": 7.92
+ }
+}

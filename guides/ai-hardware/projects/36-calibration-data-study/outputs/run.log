@@ -1,0 +1,45 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Skipping import of cpp extensions due to incompatible torch version. Please upgrade to torch >= 2.11.0 (found 2.10.0+cu128).
+/home/canary/.local/lib/python3.12/site-packages/torch/cuda/__init__.py:435: UserWarning: 
+    Found GPU0 NVIDIA GeForce GTX 1070 Ti which is of cuda capability 6.1.
+    Minimum and Maximum cuda capability supported by this version of PyTorch is
+    (7.0) - (12.0)
+    
+  queued_call()
+/home/canary/.local/lib/python3.12/site-packages/torch/cuda/__init__.py:435: UserWarning: 
+    Please install PyTorch with a following CUDA
+    configurations:  12.6 following instructions at
+    https://pytorch.org/get-started/locally/
+    
+  queued_call()
+/home/canary/.local/lib/python3.12/site-packages/torch/cuda/__init__.py:435: UserWarning: 
+NVIDIA GeForce GTX 1070 Ti with CUDA capability sm_61 is not compatible with the current PyTorch installation.
+The current PyTorch install supports CUDA capabilities sm_70 sm_75 sm_80 sm_86 sm_90 sm_100 sm_120.
+If you want to use the NVIDIA GeForce GTX 1070 Ti GPU with PyTorch, please check the instructions at https://pytorch.org/get-started/locally/
+
+  queued_call()
+Loading weights:   0%|          | 0/272 [00:00<?, ?it/s]Loading weights: 100%|██████████| 272/272 [00:00<00:00, 3752.72it/s]
+  model HuggingFaceTB/SmolLM2-135M-Instruct; quantizing 210 Linear layers to INT4, group 64
+[transformers] Token indices sequence length is longer than the specified maximum sequence length for this model (10569 > 8192). Running this sequence through the model will result in indexing errors
+
+=== A. Two baselines that need no calibration at all ===
+  fp32 (no quantization)             ppl   23.506
+  RTN INT4 (ignores the data)        ppl   32.185
+
+=== B. How many calibration sequences? ===
+  GPTQ,  1 x 512 wikitext tokens     ppl   33.388   (26s)
+  GPTQ,  4 x 512 wikitext tokens     ppl   32.185   (47s)
+  GPTQ, 16 x 512 wikitext tokens     ppl   31.061   (60s)
+  GPTQ, 64 x 512 wikitext tokens     ppl   31.023   (110s)
+
+=== C. Same size, different draw -- is the difference above noise? ===
+  GPTQ,  4 x 512, draw @208          ppl   32.337   (29s)
+  GPTQ,  4 x 512, draw @408          ppl   33.022   (35s)
+  spread across three 4-sequence draws: 0.837 perplexity
+
+=== D. Calibrating on the wrong kind of text ===
+  GPTQ, 16 x 512 python source code  ppl   35.829   (76s)
+  GPTQ, 16 x 512 uniform random tokens ppl   33.882   (76s)
+wrote /home/canary/project/tmp/claude-ai-hardware-phase7/guides/ai-hardware/projects/36-calibration-data-study/outputs/findings.json
+
+total 527s

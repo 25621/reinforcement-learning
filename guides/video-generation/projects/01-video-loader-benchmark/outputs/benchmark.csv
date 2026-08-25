@@ -1,0 +1,6 @@
+library,sequential_ms_per_clip,random_ms_per_clip,sequential_frames_per_s
+decord,15.6,11.8,4113
+PyAV,69.5,42.1,921
+OpenCV,35.8,36.6,1789
+torchvision.io,72.6,73.2,882
+ffmpeg-python,26.2,21.5,2438

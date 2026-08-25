@@ -1,0 +1,36 @@
+finding,value
+no_create_graph_error,element 0 of tensors does not require grad and does not have a gra
+first_derivative,12.0
+second_derivative,12.0
+mixed_partial_maxdiff,0.000e+00
+gp_False_final_lipschitz,3391.902
+gp_False_final_gap,8153.957
+gp_True_final_lipschitz,1.223
+gp_True_final_gap,3.815
+gp_lipschitz_ratio,2774.5
+detach_penalty_value_correct,0.8627
+detach_penalty_value_detached,0.8627
+detach_gradnorm_no_penalty,2.453077
+detach_gradnorm_correct,13.382113
+detach_gradnorm_detached,2.453077
+detach_gradnorm_no_create_graph,2.453077
+no_create_graph_equals_no_penalty,True
+detached_equals_no_penalty,True
+correct_minus_none_gradnorm,13.3456
+hvp_params,697
+hvp_ms,6.72
+full_hessian_ms,999.1
+hvp_speedup,148.7
+hvp_vs_full_maxdiff,6.557e-07
+cost_plain_mb,16.81
+cost_double_mb,37.83
+cost_plain_ms,13.6
+cost_double_ms,28.8
+cost_mem_ratio,2.25
+cost_time_ratio,2.11
+refuse_once_differentiable,RuntimeError: element 0 of tensors does not require grad and does 
+refuse_plain_backward,second derivative = 2.0
+ste_round_first_derivative,1.0
+ste_round_second_derivative,no graph
+ste_soft_first_derivative,1.0499
+ste_soft_second_derivative,7.9963

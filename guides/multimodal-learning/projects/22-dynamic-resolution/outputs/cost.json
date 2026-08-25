@@ -1,0 +1,75 @@
+{
+ "kv_bytes_per_token": 46080,
+ "rows": [
+  {
+   "cond": "squash",
+   "image_tokens": 49,
+   "seq_len": 69,
+   "prefill_ms": 81.25448226928711,
+   "kv_kb": 2205.0,
+   "clip_views": 1
+  },
+  {
+   "cond": "crop",
+   "image_tokens": 49,
+   "seq_len": 69,
+   "prefill_ms": 78.70316505432129,
+   "kv_kb": 2205.0,
+   "clip_views": 1
+  },
+  {
+   "cond": "anyres",
+   "image_tokens": 196,
+   "seq_len": 216,
+   "prefill_ms": 181.40292167663574,
+   "kv_kb": 8820.0,
+   "clip_views": 4
+  },
+  {
+   "cond": "anyres+thumb",
+   "image_tokens": 245,
+   "seq_len": 265,
+   "prefill_ms": 237.06936836242676,
+   "kv_kb": 11025.0,
+   "clip_views": 5
+  }
+ ],
+ "grids": [
+  {
+   "size": "448x448",
+   "grid": "2x2",
+   "tiles": 4,
+   "tokens": 245
+  },
+  {
+   "size": "672x224",
+   "grid": "3x1",
+   "tiles": 3,
+   "tokens": 196
+  },
+  {
+   "size": "224x672",
+   "grid": "1x3",
+   "tiles": 3,
+   "tokens": 196
+  },
+  {
+   "size": "896x224",
+   "grid": "4x1",
+   "tiles": 4,
+   "tokens": 245
+  },
+  {
+   "size": "336x448",
+   "grid": "2x2",
+   "tiles": 4,
+   "tokens": 245
+  },
+  {
+   "size": "224x224",
+   "grid": "1x1",
+   "tiles": 1,
+   "tokens": 98
+  }
+ ]
+}

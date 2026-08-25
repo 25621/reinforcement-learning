@@ -1,0 +1,41 @@
+section,name,value,note
+params,parameter count,"3,225,088",
+params,parameters (fp32),12.30 MB,3225088 x 4 bytes
+params,predicted by formula,"3,225,088",12*d^2 per block + embeddings + head
+params,formula error,0.00 %,
+buckets,params,12.30 MB,6.8 % of total
+buckets,grads,12.30 MB,6.8 % of total
+buckets,optim,24.61 MB,13.5 % of total
+buckets,acts,132.80 MB,73.0 % of total
+buckets,total,182.01 MB,
+buckets,grads / params,1.00x,one gradient per parameter
+buckets,AdamW state / params,2.00x,exp_avg + exp_avg_sq
+activations,measured peak,132.80 MB,
+activations,hand estimate,140.50 MB,~17 tensors of B*T*d per block
+activations,ratio,0.95x,
+activations,per sample,8.30 MB,
+optimizers,SGD,0.0 KB,0 x parameters
+optimizers,SGD+momentum,12.30 MB,1 x parameters
+optimizers,Adam,24.61 MB,2 x parameters
+optimizers,AdamW,24.61 MB,2 x parameters
+sweep,batch 1,8.30 MB,activations = 14 % of total
+sweep,batch 2,16.60 MB,activations = 25 % of total
+sweep,batch 4,33.20 MB,activations = 40 % of total
+sweep,batch 8,66.40 MB,activations = 57 % of total
+sweep,batch 16,132.80 MB,activations = 73 % of total
+sweep,batch 32,265.59 MB,activations = 84 % of total
+sweep,fixed cost (params+grads+optim),49.21 MB,
+sweep,activations per sample,8.30 MB,
+sweep,crossover batch size,5.9,"above this, activations dominate"
+checkpoint,activations held after the forward,12.55 MB,
+checkpoint,vs plain,10.58x smaller,an upper bound — see the note below
+checkpoint,"total, checkpointed",61.76 MB,vs 182.01 MB plain
+checkpoint,what this hook cannot see,the recompute,torch.utils.checkpoint installs its own saved_tensors_hooks inside
+zero_grad,grad bytes after zero_grad(False),12.30 MB,was 12.30 MB
+zero_grad,grad bytes after zero_grad(True),0.0 KB,"the tensors are gone, not zeroed"
+scale,1B fp32 AdamW (GB),14.9,4 params + 4 grads + 8 state
+scale,1B mixed-precision AdamW (GB),16.8,bf16 copy + fp32 master + grads + state
+scale,1B frozen bf16 weights only (GB),1.9,what LoRA / inference needs
+scale,7B fp32 AdamW (GB),104.3,4 params + 4 grads + 8 state
+scale,7B mixed-precision AdamW (GB),117.3,bf16 copy + fp32 master + grads + state
+scale,7B frozen bf16 weights only (GB),13.0,what LoRA / inference needs

@@ -1,0 +1,419 @@
+{
+  "setup": {
+    "model": "Qwen/Qwen2.5-0.5B-Instruct",
+    "threads": 6,
+    "eval_windows": 8,
+    "calib_windows": 16,
+    "window_tokens": 512,
+    "mmlu_n": 100
+  },
+  "A": {
+    "rows": [
+      {
+        "model": "Qwen2.5-0.5B",
+        "params": 493961216,
+        "w_bits": 16,
+        "head_bits": 16,
+        "bytes": 987922432.0,
+        "gib": 0.920074462890625,
+        "eff_bits_per_weight": 16.0,
+        "plan": "BF16",
+        "h100s": 1
+      },
+      {
+        "model": "Qwen2.5-0.5B",
+        "params": 493961216,
+        "w_bits": 8,
+        "head_bits": 8,
+        "bytes": 509397504.0,
+        "gib": 0.4744133949279785,
+        "eff_bits_per_weight": 8.25,
+        "plan": "FP8 / INT8",
+        "h100s": 1
+      },
+      {
+        "model": "Qwen2.5-0.5B",
+        "params": 493961216,
+        "w_bits": 4,
+        "head_bits": 8,
+        "bytes": 330484224.0,
+        "gib": 0.3077874183654785,
+        "eff_bits_per_weight": 5.352391455769677,
+        "plan": "INT4 body, INT8 head",
+        "h100s": 1
+      },
+      {
+        "model": "Qwen2.5-0.5B",
+        "params": 493961216,
+        "w_bits": 4,
+        "head_bits": 4,
+        "bytes": 262416896.0,
+        "gib": 0.24439477920532227,
+        "eff_bits_per_weight": 4.25,
+        "plan": "INT4 everything",
+        "h100s": 1
+      },
+      {
+        "model": "Qwen2.5-1.5B",
+        "params": 1543569408,
+        "w_bits": 16,
+        "head_bits": 16,
+        "bytes": 3087138816.0,
+        "gib": 2.8751220703125,
+        "eff_bits_per_weight": 16.0,
+        "plan": "BF16",
+        "h100s": 1
+      },
+      {
+        "model": "Qwen2.5-1.5B",
+        "params": 1543569408,
+        "w_bits": 8,
+        "head_bits": 8,
+        "bytes": 1591805952.0,
+        "gib": 1.4824848175048828,
+        "eff_bits_per_weight": 8.25,
+        "plan": "FP8 / INT8",
+        "h100s": 1
+      },
+      {
+        "model": "Qwen2.5-1.5B",
+        "params": 1543569408,
+        "w_bits": 4,
+        "head_bits": 8,
+        "bytes": 936708096.0,
+        "gib": 0.8723773956298828,
+        "eff_bits_per_weight": 4.854763724366323,
+        "plan": "INT4 body, INT8 head",
+        "h100s": 1
+      },
+      {
+        "model": "Qwen2.5-1.5B",
+        "params": 1543569408,
+        "w_bits": 4,
+        "head_bits": 4,
+        "bytes": 820021248.0,
+        "gib": 0.7637042999267578,
+        "eff_bits_per_weight": 4.25,
+        "plan": "INT4 everything",
+        "h100s": 1
+      },
+      {
+        "model": "Qwen2.5-7B",
+        "params": 7615283200,
+        "w_bits": 16,
+        "head_bits": 16,
+        "bytes": 15230566400.0,
+        "gib": 14.1845703125,
+        "eff_bits_per_weight": 16.0,
+        "plan": "BF16",
+        "h100s": 1
+      },
+      {
+        "model": "Qwen2.5-7B",
+        "params": 7615283200,
+        "w_bits": 8,
+        "head_bits": 8,
+        "bytes": 7853260800.0,
+        "gib": 7.3139190673828125,
+        "eff_bits_per_weight": 8.25,
+        "plan": "FP8 / INT8",
+        "h100s": 1
+      },
+      {
+        "model": "Qwen2.5-7B",
+        "params": 7615283200,
+        "w_bits": 4,
+        "head_bits": 8,
+        "bytes": 4590616576.0,
+        "gib": 4.2753448486328125,
+        "eff_bits_per_weight": 4.822530120481928,
+        "plan": "INT4 body, INT8 head",
+        "h100s": 1
+      },
+      {
+        "model": "Qwen2.5-7B",
+        "params": 7615283200,
+        "w_bits": 4,
+        "head_bits": 4,
+        "bytes": 4045619200.0,
+        "gib": 3.7677764892578125,
+        "eff_bits_per_weight": 4.25,
+        "plan": "INT4 everything",
+        "h100s": 1
+      },
+      {
+        "model": "Llama-3-70B",
+        "params": 70552387584,
+        "w_bits": 16,
+        "head_bits": 16,
+        "bytes": 141104775168.0,
+        "gib": 131.4140625,
+        "eff_bits_per_weight": 16.0,
+        "plan": "BF16",
+        "h100s": 2
+      },
+      {
+        "model": "Llama-3-70B",
+        "params": 70552387584,
+        "w_bits": 8,
+        "head_bits": 8,
+        "bytes": 72757149696.0,
+        "gib": 67.7603759765625,
+        "eff_bits_per_weight": 8.25,
+        "plan": "FP8 / INT8",
+        "h100s": 1
+      },
+      {
+        "model": "Llama-3-70B",
+        "params": 70552387584,
+        "w_bits": 4,
+        "head_bits": 8,
+        "bytes": 38531629056.0,
+        "gib": 35.8853759765625,
+        "eff_bits_per_weight": 4.369136793294096,
+        "plan": "INT4 body, INT8 head",
+        "h100s": 1
+      },
+      {
+        "model": "Llama-3-70B",
+        "params": 70552387584,
+        "w_bits": 4,
+        "head_bits": 4,
+        "bytes": 37480955904.0,
+        "gib": 34.9068603515625,
+        "eff_bits_per_weight": 4.25,
+        "plan": "INT4 everything",
+        "h100s": 1
+      }
+    ]
+  },
+  "B": {
+    "baseline_ppl": 19.412619835819093,
+    "rows": [
+      {
+        "label": "fp32 baseline",
+        "bits": 16,
+        "group": 0,
+        "awq": false,
+        "ppl": 19.412619835819093,
+        "agree": 1.0,
+        "eff_bits": 16.0
+      },
+      {
+        "label": "RTN int8 per-channel",
+        "bits": 8,
+        "group": 0,
+        "awq": false,
+        "ppl": 19.452051530379357,
+        "agree": 0.9762719869613647,
+        "eff_bits": 8.0
+      },
+      {
+        "label": "RTN int4 per-channel",
+        "bits": 4,
+        "group": 0,
+        "awq": false,
+        "ppl": 34.27812440319154,
+        "agree": 0.5946673154830933,
+        "eff_bits": 4.0
+      },
+      {
+        "label": "RTN int4 group-128",
+        "bits": 4,
+        "group": 128,
+        "awq": false,
+        "ppl": 23.66752998663452,
+        "agree": 0.7424168586730957,
+        "eff_bits": 4.25
+      },
+      {
+        "label": "RTN int4 group-64",
+        "bits": 4,
+        "group": 64,
+        "awq": false,
+        "ppl": 22.843002178957686,
+        "agree": 0.7805773019790649,
+        "eff_bits": 4.5
+      },
+      {
+        "label": "RTN int3 group-128",
+        "bits": 3,
+        "group": 128,
+        "awq": false,
+        "ppl": 81.19475937597186,
+        "agree": 0.4102250635623932,
+        "eff_bits": 3.25
+      },
+      {
+        "label": "AWQ int4 group-128",
+        "bits": 4,
+        "group": 128,
+        "awq": true,
+        "ppl": 21.794121004401266,
+        "agree": 0.7884050607681274,
+        "eff_bits": 4.25
+      },
+      {
+        "label": "AWQ int4 group-64",
+        "bits": 4,
+        "group": 64,
+        "awq": true,
+        "ppl": 21.45751398651291,
+        "agree": 0.8282778859138489,
+        "eff_bits": 4.5
+      },
+      {
+        "label": "AWQ int3 group-128",
+        "bits": 3,
+        "group": 128,
+        "awq": true,
+        "ppl": 47.70246756800567,
+        "agree": 0.5051369667053223,
+        "eff_bits": 3.25
+      }
+    ],
+    "eval_tokens": 4088,
+    "alpha_hist_g128": {
+      "0.25": 118,
+      "0.5": 48,
+      "0.0": 2
+    },
+    "alpha_by_proj": {
+      "q_proj": 0.28125,
+      "k_proj": 0.25,
+      "v_proj": 0.3958333333333333,
+      "o_proj": 0.3333333333333333,
+      "gate_proj": 0.25,
+      "up_proj": 0.4895833333333333,
+      "down_proj": 0.22916666666666666
+    },
+    "calib_s": 23.112428903579712,
+    "search_s": 22.87820816040039
+  },
+  "E": {
+    "rtn_ppl": 23.66752998663452,
+    "awq_real_ppl": 21.794121004401266,
+    "awq_random_ppl": 22.722630525035687,
+    "awq_random_agree": 0.7864481210708618,
+    "recovered_real": 0.44029342943334004,
+    "recovered_random": 0.22207271789693359
+  },
+  "D": {
+    "baseline_ppl": 17.987440409536426,
+    "rtn_ppl": 22.17420656049441,
+    "rows": [
+      {
+        "windows": 2,
+        "tokens": 1024,
+        "ppl": 20.668377443862145,
+        "recovered": 0.35966401330719505,
+        "mean_alpha": 0.3244047619047619
+      },
+      {
+        "windows": 8,
+        "tokens": 4096,
+        "ppl": 20.604175054967406,
+        "recovered": 0.37499861442410914,
+        "mean_alpha": 0.31994047619047616
+      },
+      {
+        "windows": 16,
+        "tokens": 8192,
+        "ppl": 20.60880819183385,
+        "recovered": 0.3738919997483921,
+        "mean_alpha": 0.31845238095238093
+      }
+    ]
+  },
+  "F": {
+    "gate": {
+      "max_ppl_ratio": 1.15,
+      "max_mmlu_drop": 3.0,
+      "min_shadow_agree": 0.95
+    },
+    "baseline": {
+      "ppl": 19.412619835819093,
+      "mmlu": 0.44,
+      "mmlu_se": 0.04963869458396343
+    },
+    "mmlu_n": 100,
+    "rows": [
+      {
+        "name": "INT8 per-channel",
+        "ppl": 19.452051530379357,
+        "mmlu": 0.44,
+        "mmlu_se": 0.04963869458396343,
+        "ppl_ratio": 1.002031240239275,
+        "mmlu_drop": 0.0,
+        "shadow_agree": 0.9762719869613647,
+        "mean_first_divergence": 18.75,
+        "identical_gens": 3,
+        "n_gens": 4,
+        "fails": [],
+        "verdict": "PASS"
+      },
+      {
+        "name": "AWQ INT4 group-128",
+        "ppl": 21.794121004401266,
+        "mmlu": 0.38,
+        "mmlu_se": 0.048538644398046386,
+        "ppl_ratio": 1.1226779893040484,
+        "mmlu_drop": 6.0,
+        "shadow_agree": 0.7884050607681274,
+        "mean_first_divergence": 1.0,
+        "identical_gens": 0,
+        "n_gens": 4,
+        "fails": [
+          "mmlu",
+          "shadow"
+        ],
+        "verdict": "BLOCK"
+      },
+      {
+        "name": "RTN INT4 per-channel",
+        "ppl": 34.27812440319154,
+        "mmlu": 0.37,
+        "mmlu_se": 0.048280430818293245,
+        "ppl_ratio": 1.7657649865446516,
+        "mmlu_drop": 7.000000000000001,
+        "shadow_agree": 0.5946673154830933,
+        "mean_first_divergence": 2.0,
+        "identical_gens": 0,
+        "n_gens": 4,
+        "fails": [
+          "perplexity",
+          "mmlu",
+          "shadow"
+        ],
+        "verdict": "BLOCK"
+      },
+      {
+        "name": "RTN INT3 group-128",
+        "ppl": 81.19475937597186,
+        "mmlu": 0.27,
+        "mmlu_se": 0.044395945760846225,
+        "ppl_ratio": 4.182576080027888,
+        "mmlu_drop": 17.0,
+        "shadow_agree": 0.4102250635623932,
+        "mean_first_divergence": 0.0,
+        "identical_gens": 0,
+        "n_gens": 4,
+        "fails": [
+          "perplexity",
+          "mmlu",
+          "shadow"
+        ],
+        "verdict": "BLOCK"
+      }
+    ],
+    "example": {
+      "prompt": "<|im_start|>system\nYou are Qwen, created by Alibaba Cloud. You are a helpful assistant.<|im_end|>\n<|im_start|>user\nWhat are two common mistakes people make with the water cycle?<|im_end|>\n<|im_start|>assistant\n",
+      "fp32 baseline": "The water cycle is a complex process that involves evaporation, condensation, precipitation, and collection of",
+      "INT8 per-channel": "The water cycle is a complex process that involves evaporation, condensation, precipitation, and collection of",
+      "AWQ INT4 group-128": "I'm sorry, but I need to clarify that as an AI language model, I don't have",
+      "RTN INT4 per-channel": "Here are some common mistakes that people often make when trying to understand and use the water cycle:\n\n1",
+      "RTN INT3 group-128": "I apologize in the Chinese language to not specify their level of proficiency but I understand they have made significant"
+    }
+  },
+  "wall_s": 556.5
+}

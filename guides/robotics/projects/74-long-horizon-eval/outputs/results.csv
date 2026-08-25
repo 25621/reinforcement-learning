@@ -1,0 +1,44 @@
+section,quantity,value,note
+forecast,expert s=0.20: fresh per-stage p,0.9783,
+forecast,expert s=0.20: p**50 forecast,0.3345,
+forecast,expert s=0.20: observed 50-stage success,0.9333,mean stages reached 47.3/50
+forecast,expert s=0.20: in-chain per-stage p,0.9986,forecast from it 0.9320
+forecast,expert s=0.30: fresh per-stage p,0.9383,
+forecast,expert s=0.30: p**50 forecast,0.0415,
+forecast,expert s=0.30: observed 50-stage success,0.5,mean stages reached 35.0/50
+forecast,expert s=0.30: in-chain per-stage p,0.9859,forecast from it 0.4925
+forecast,expert s=0.40: fresh per-stage p,0.87,
+forecast,expert s=0.40: p**50 forecast,0.0009,
+forecast,expert s=0.40: observed 50-stage success,0.0667,mean stages reached 16.0/50
+forecast,expert s=0.40: in-chain per-stage p,0.9448,forecast from it 0.0585
+forecast,cloned policy: fresh per-stage p,0.9517,
+forecast,cloned policy: p**50 forecast,0.084,
+forecast,cloned policy: observed 50-stage success,0.0,mean stages reached 7.0/50
+forecast,cloned policy: in-chain per-stage p,0.8751,forecast from it 0.0013
+drift,expert s=0.30: p over stages 0-5,0.9647,538 stage attempts
+drift,expert s=0.30: p over stages 5-15,0.9907,963 stage attempts
+drift,expert s=0.30: p over stages 15-30,0.9955,1334 stage attempts
+drift,expert s=0.30: p over stages 30-50,0.9818,1431 stage attempts
+independence,stages reached: mean,35.05,
+independence,stages reached: std,19.21,
+independence,std a coin-flip model predicts,0.12,geometric distribution with the same p
+independence,chains that died in the first 5 stages,0.158,
+independence,chains that finished all 50,0.5,
+recovery,"s=0.40, 0 retries",0.067,stages reached 16.0  attempts 16.9
+recovery,"s=0.40, 1 retry",1.0,stages reached 50.0  attempts 52.3
+recovery,"s=0.40, 2 retries",1.0,stages reached 50.0  attempts 52.3
+recovery,"s=0.30, 0 retries",0.5,stages reached 35.0  attempts 35.5
+arithmetic,p=0.999: stages at 50% chain success,692,p**50 = 0.9512
+arithmetic,p=0.99: stages at 50% chain success,68,p**50 = 0.6050
+arithmetic,p=0.98: stages at 50% chain success,34,p**50 = 0.3642
+arithmetic,p=0.95: stages at 50% chain success,13,p**50 = 0.0769
+arithmetic,p=0.9: stages at 50% chain success,6,p**50 = 0.0052
+arithmetic,p=0.8: stages at 50% chain success,3,p**50 = 0.0000
+arithmetic,per-stage p needed for 50% over 50 stages,0.98623,
+arithmetic,per-stage p needed for 99% over 50 stages,0.999799,
+amplifier,per-stage p: base -> regressed,0.9783 -> 0.9567,drop 0.0217
+amplifier,stages reached: base -> regressed,46.5 -> 41.9,relative drop 0.098
+amplifier,amplification (relative chain drop / per-stage drop),4.5,
+amplifier,stage trials needed to see it (95%),513,
+amplifier,chains needed to see it (95%),74,= 3441 stage attempts
+cost,total runtime (s),914.7,

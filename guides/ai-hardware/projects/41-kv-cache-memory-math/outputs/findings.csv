@@ -1,0 +1,8 @@
+model,kind,layers,q_heads,kv_heads,KiB_per_token,GB_at_32k,weights_GB,crossover_tokens,seats_at_32k
+"Llama-2 7B (MHA)",MHA,32,32,32,512.00,17.180,13.48,25711,3
+"Llama-3 8B (GQA 8)",GQA,32,32,8,128.00,4.295,16.06,122528,14
+"Mistral 7B (GQA 8 + SWA)",GQA,32,32,8,128.00,4.295,14.48,110474,15
+"Qwen2.5 7B (GQA 4)",GQA,28,28,4,56.00,1.879,15.24,265765,34
+"Gemma-2 9B (GQA 8)",GQA,42,16,8,336.00,11.274,18.48,53711,5
+"Phi-3 mini (MHA)",MHA,32,32,32,384.00,12.885,7.64,19430,5
+"DeepSeek-V2-Lite (MLA)",MLA,27,16,16,30.38,1.019,31.40,1009516,47

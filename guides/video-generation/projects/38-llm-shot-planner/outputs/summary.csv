@@ -1,0 +1,5 @@
+arm,json_valid,repairs,subject_consistency,motion_variety,subject_acc,direction_follow,digit_stable,identity_drift_end
+zero_shot,1.0,0.0,0.3438,1.0,0.2469,0.8359,0.3188,0.1497
+few_shot,0.875,1.0,1.0,0.9688,0.2156,0.8828,0.2938,0.1802
+constrained,1.0,0.0,1.0,1.0,0.3344,0.8203,0.3969,0.2257
+random,1.0,0.0,0.3125,0.5938,0.3031,0.8125,0.3812,0.1715

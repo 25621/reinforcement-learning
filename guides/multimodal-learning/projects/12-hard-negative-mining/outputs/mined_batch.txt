@@ -1,0 +1,21 @@
+mining model: trained (the random-batch model from this project)
+
+ANCHOR: A wooden desk filled with a laptop and computer monitor.
+
+  overlap 0.00   A cat sitting on top of a backpack on the ground.
+  overlap 0.00   A man cutting a slice of birthday cake.
+  overlap 0.00   A cat sitting in the middle of eight pairs of shoes.
+  overlap 0.00   A woman blow drying her hair, in he mirror.
+  overlap 0.00   A woman sitting on a toilet wearing pink shoes.
+  overlap 0.17   A city street at night filled with lots of traffic.
+  overlap 0.17   A display case in a donut shop filled with lots of donuts.
+
+for comparison, a RANDOM batch against the same anchor:
+
+  overlap 0.00   a couple of birds are standing on a branch
+  overlap 0.00   A woman holding up a pregnancy test near a plate of food.
+  overlap 0.00   A woman holding her cell phone tucked in a wool cover.
+  overlap 0.00   A large clock mounted to the face of a buildings entrance.
+  overlap 0.00   A man on a court swinging a tennis racket.
+  overlap 0.00   a close up of food on a plate on a table
+  overlap 0.00   A skateboarder is riding along the top of a rail.

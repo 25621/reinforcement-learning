@@ -1,0 +1,66 @@
+{
+ "rows": [
+  {
+   "kbps": 1.5,
+   "codebooks": 2,
+   "frames": 450,
+   "frame_rate_hz": 75.0,
+   "tokens_per_second": 150.0,
+   "si_snr_db": 1.930393099784851,
+   "lsd_db": 9.267777388632487,
+   "bytes_per_second": 187.5,
+   "compression_vs_pcm16": 256.0,
+   "seconds_to_run": 0.6758685111999512
+  },
+  {
+   "kbps": 3.0,
+   "codebooks": 4,
+   "frames": 450,
+   "frame_rate_hz": 75.0,
+   "tokens_per_second": 300.0,
+   "si_snr_db": 5.636466979980469,
+   "lsd_db": 8.543189424008878,
+   "bytes_per_second": 375.0,
+   "compression_vs_pcm16": 128.0,
+   "seconds_to_run": 0.59297776222229
+  },
+  {
+   "kbps": 6.0,
+   "codebooks": 8,
+   "frames": 450,
+   "frame_rate_hz": 75.0,
+   "tokens_per_second": 600.0,
+   "si_snr_db": 9.619756698608398,
+   "lsd_db": 8.231617502568813,
+   "bytes_per_second": 750.0,
+   "compression_vs_pcm16": 64.0,
+   "seconds_to_run": 0.6035997867584229
+  },
+  {
+   "kbps": 12.0,
+   "codebooks": 16,
+   "frames": 450,
+   "frame_rate_hz": 75.0,
+   "tokens_per_second": 1200.0,
+   "si_snr_db": 12.778253555297852,
+   "lsd_db": 8.043975672653419,
+   "bytes_per_second": 1500.0,
+   "compression_vs_pcm16": 32.0,
+   "seconds_to_run": 0.6262161731719971
+  },
+  {
+   "kbps": 24.0,
+   "codebooks": 32,
+   "frames": 450,
+   "frame_rate_hz": 75.0,
+   "tokens_per_second": 2400.0,
+   "si_snr_db": 15.16424560546875,
+   "lsd_db": 7.782334639188702,
+   "bytes_per_second": 3000.0,
+   "compression_vs_pcm16": 16.0,
+   "seconds_to_run": 0.7174403667449951
+  }
+ ],
+ "clip_seconds": 6.0,
+ "pcm16_kbps": 384.0
+}

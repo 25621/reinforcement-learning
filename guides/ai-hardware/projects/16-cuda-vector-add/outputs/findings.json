@@ -1,0 +1,194 @@
+{
+  "block": [
+    {
+      "threads": 32,
+      "blocks": 2097152,
+      "ms": 4.0009,
+      "gbs": 201.28
+    },
+    {
+      "threads": 64,
+      "blocks": 1048576,
+      "ms": 3.8537,
+      "gbs": 208.97
+    },
+    {
+      "threads": 128,
+      "blocks": 524288,
+      "ms": 3.8562,
+      "gbs": 208.83
+    },
+    {
+      "threads": 256,
+      "blocks": 262144,
+      "ms": 3.8572,
+      "gbs": 208.78
+    },
+    {
+      "threads": 512,
+      "blocks": 131072,
+      "ms": 3.8573,
+      "gbs": 208.77
+    },
+    {
+      "threads": 1024,
+      "blocks": 65536,
+      "ms": 3.859,
+      "gbs": 208.68
+    }
+  ],
+  "stride": [
+    {
+      "waves": 1,
+      "blocks": 19,
+      "ms": 5.5664,
+      "gbs": 144.67
+    },
+    {
+      "waves": 2,
+      "blocks": 38,
+      "ms": 4.1282,
+      "gbs": 195.07
+    },
+    {
+      "waves": 4,
+      "blocks": 76,
+      "ms": 3.9344,
+      "gbs": 204.69
+    },
+    {
+      "waves": 8,
+      "blocks": 152,
+      "ms": 3.905,
+      "gbs": 206.23
+    },
+    {
+      "waves": 16,
+      "blocks": 304,
+      "ms": 3.9311,
+      "gbs": 204.86
+    },
+    {
+      "waves": 32,
+      "blocks": 608,
+      "ms": 3.8902,
+      "gbs": 207.01
+    },
+    {
+      "waves": 64,
+      "blocks": 1216,
+      "ms": 3.8697,
+      "gbs": 208.1
+    }
+  ],
+  "reuse": [
+    {
+      "k": 1,
+      "gpu_ms": 67.512,
+      "cpu_ms": 39.581
+    },
+    {
+      "k": 2,
+      "gpu_ms": 71.369,
+      "cpu_ms": 79.163
+    },
+    {
+      "k": 4,
+      "gpu_ms": 79.083,
+      "cpu_ms": 158.326
+    },
+    {
+      "k": 8,
+      "gpu_ms": 94.512,
+      "cpu_ms": 316.652
+    },
+    {
+      "k": 16,
+      "gpu_ms": 125.37,
+      "cpu_ms": 633.304
+    },
+    {
+      "k": 32,
+      "gpu_ms": 187.085,
+      "cpu_ms": 1266.607
+    },
+    {
+      "k": 64,
+      "gpu_ms": 310.515,
+      "cpu_ms": 2533.214
+    },
+    {
+      "k": 128,
+      "gpu_ms": 557.376,
+      "cpu_ms": 5066.429
+    },
+    {
+      "k": 256,
+      "gpu_ms": 1051.099,
+      "cpu_ms": 10132.857
+    },
+    {
+      "k": 512,
+      "gpu_ms": 2038.542,
+      "cpu_ms": 20265.715
+    },
+    {
+      "k": 1024,
+      "gpu_ms": 4013.431,
+      "cpu_ms": 40531.429
+    }
+  ],
+  "oob": [
+    {
+      "case": "slack",
+      "n": 1000,
+      "threads": 1024,
+      "past_end": 24,
+      "at_launch": "cudaSuccess",
+      "at_sync": "cudaSuccess"
+    },
+    {
+      "case": "far",
+      "n": 1000,
+      "threads": 1049600,
+      "past_end": 1048600,
+      "at_launch": "cudaSuccess",
+      "at_sync": "cudaErrorIllegalAddress"
+    }
+  ],
+  "device": {
+    "name": "NVIDIA GeForce GTX 1070 Ti",
+    "cc": "6.1",
+    "sms": 19,
+    "l2": 2097152
+  },
+  "n": 67108864,
+  "max_error": 5.96e-08,
+  "async": {
+    "no_sync_ms": 0.017,
+    "with_sync_ms": 3.8731
+  },
+  "e2e": {
+    "h2d_ms": 42.574,
+    "kernel_ms": 3.857,
+    "d2h_ms": 21.08,
+    "cpu1_ms": 48.341,
+    "cpu_omp_ms": 39.581,
+    "cpu_threads": 12
+  },
+  "derived": {
+    "bytes_per_pass_mb": 805.306368,
+    "kernel_gbs": 208.79086543946073,
+    "cpu_gbs": 20.345781258684724,
+    "cpu1_gbs": 16.658868620839453,
+    "pcie_h2d_gbs": 12.610299995302297,
+    "pcie_d2h_gbs": 12.734129791271346,
+    "trip_ms": 67.511,
+    "kernel_share_of_trip": 0.057131430433558984,
+    "gpu_vs_cpu_end_to_end": 1.7056415957151156,
+    "cpu_thread_speedup": 1.2213183092898108,
+    "async_lie_factor": 227.82941176470587,
+    "block_spread": 1.0381970573734334,
+    "crossover_k": 1.7818273429627138
+  }
+}

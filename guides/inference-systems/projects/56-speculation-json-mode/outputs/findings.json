@@ -1,0 +1,90 @@
+{
+  "model": "Qwen/Qwen2.5-0.5B-Instruct",
+  "n_cases": 12,
+  "max_new": 60,
+  "draft_k": 4,
+  "ngram": 2,
+  "dfa_states": 48,
+  "json": {
+    "plain": {
+      "tokens": 338,
+      "forwards": 350,
+      "jumped": 0,
+      "drafted": 0,
+      "accepted": 0,
+      "wall_s": 49.22213127033319,
+      "forwards_per_token": 1.0355029585798816,
+      "ms_per_token": 145.62760730867808,
+      "free_token_pct": 0.0,
+      "accept_per_draft": 0.0,
+      "sample": "{\"name\": \"Dennis Ritchie\", \"age\": 46, \"skills\": [\"networking\", \"cryptography\", \"avionics\"]"
+    },
+    "lookup": {
+      "tokens": 338,
+      "forwards": 241,
+      "jumped": 0,
+      "drafted": 82,
+      "accepted": 109,
+      "wall_s": 36.81066132464912,
+      "forwards_per_token": 0.7130177514792899,
+      "ms_per_token": 108.90728202558911,
+      "free_token_pct": 0.0,
+      "accept_per_draft": 1.329268292682927,
+      "sample": "{\"name\": \"Dennis Ritchie\", \"age\": 46, \"skills\": [\"networking\", \"cryptography\", \"avionics\"]"
+    },
+    "jump": {
+      "tokens": 338,
+      "forwards": 189,
+      "jumped": 161,
+      "drafted": 0,
+      "accepted": 0,
+      "wall_s": 27.730487545370124,
+      "forwards_per_token": 0.5591715976331361,
+      "ms_per_token": 82.04286256026664,
+      "free_token_pct": 47.633136094674555,
+      "accept_per_draft": 0.0,
+      "sample": "{\"name\": \"Dennis Ritchie\", \"age\": 46, \"skills\": [\"networking\", \"cryptography\", \"avionics\"]"
+    },
+    "both": {
+      "tokens": 338,
+      "forwards": 164,
+      "jumped": 158,
+      "drafted": 72,
+      "accepted": 28,
+      "wall_s": 26.016909056110308,
+      "forwards_per_token": 0.48520710059171596,
+      "ms_per_token": 76.97310371630269,
+      "free_token_pct": 46.74556213017752,
+      "accept_per_draft": 0.3888888888888889,
+      "sample": "{\"name\": \"Dennis Ritchie\", \"age\": 46, \"skills\": [\"networking\", \"cryptography\", \"avionics\"]"
+    }
+  },
+  "prose": {
+    "plain": {
+      "tokens": 339,
+      "forwards": 351,
+      "jumped": 0,
+      "drafted": 0,
+      "accepted": 0,
+      "wall_s": 49.250528449891135,
+      "forwards_per_token": 1.0353982300884956,
+      "ms_per_token": 145.28179483743696,
+      "free_token_pct": 0.0,
+      "accept_per_draft": 0.0,
+      "sample": "Dennis Ritchie, at the age of 46, is a renowned computer scientist and software engineer, "
+    },
+    "lookup": {
+      "tokens": 339,
+      "forwards": 300,
+      "jumped": 0,
+      "drafted": 34,
+      "accepted": 51,
+      "wall_s": 43.32406162004918,
+      "forwards_per_token": 0.8849557522123894,
+      "ms_per_token": 127.7995917995551,
+      "free_token_pct": 0.0,
+      "accept_per_draft": 1.5,
+      "sample": "Dennis Ritchie, at the age of 46, is a renowned computer scientist and software engineer, "
+    }
+  }
+}

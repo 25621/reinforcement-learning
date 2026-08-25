@@ -1,0 +1,7 @@
+model,text_alignment,subject_consistency,motion_smoothness,imaging_quality,background_stability,overall
+real (oracle),1.0000,0.9963,0.8224,0.9450,0.7381,0.9004
+base generator,1.0000,0.9229,0.7804,0.9152,0.7130,0.8663
+blurry,0.8278,0.9206,0.7809,0.7520,0.7993,0.8161
+flickery,0.7589,0.9244,0.7134,0.8140,0.4369,0.7295
+frozen (no motion),0.5544,1.0000,1.0000,0.8945,1.0000,0.8898
+ignores prompt,0.4089,0.9253,0.7856,0.9158,0.7174,0.7506

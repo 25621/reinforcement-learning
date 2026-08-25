@@ -1,0 +1,34 @@
+# Project 10 - GPU specification inputs.
+#
+# Every column here is a PRIMITIVE fact you can read off a vendor datasheet or
+# a die shot. Nothing derived is stored: peak FLOP/s, memory bandwidth, the
+# ridge point and the decode ceiling are all computed by run.py from these.
+# That is the whole point - if you store the derived number you can never
+# notice when it disagrees with its own inputs.
+#
+# Columns
+#   name              marketing name
+#   year              launch year
+#   arch              microarchitecture
+#   sms               streaming multiprocessors (blank = not published)
+#   fp32_cores_per_sm 64 on datacenter Volta/Ampere-GA100, 128 elsewhere
+#   boost_ghz         published boost clock (blank = not published)
+#   fp32_tflops_spec  published non-tensor FP32 peak
+#   bf16_tflops_dense published 16-bit tensor peak WITHOUT sparsity
+#   bf16_or_fp16      which 16-bit format that number is for
+#   fp8_tflops_dense  published 8-bit tensor peak without sparsity (blank = n/a)
+#   mem_type          DRAM technology
+#   mem_gbps_per_pin  per-pin data rate (GDDR: effective; HBM: per pin)
+#   mem_bus_bits      total memory interface width
+#   mem_bw_spec_gbs   published bandwidth, for cross-checking our arithmetic
+#   capacity_gb       on-package/on-board memory
+#   tdp_w             board power
+name,year,arch,sms,fp32_cores_per_sm,boost_ghz,fp32_tflops_spec,bf16_tflops_dense,bf16_or_fp16,fp8_tflops_dense,mem_type,mem_gbps_per_pin,mem_bus_bits,mem_bw_spec_gbs,capacity_gb,tdp_w
+GTX 1070 Ti,2017,Pascal,19,128,1.683,8.19,,none,,GDDR5,8.008,256,256,8,180
+Tesla V100 SXM2,2017,Volta,80,64,1.530,15.7,125,fp16,,HBM2,1.758,4096,900,16,300
+A100 SXM 80GB,2020,Ampere,108,64,1.410,19.5,312,bf16,,HBM2e,2.430,5120,1555,80,400
+RTX 4090,2022,Ada,128,128,2.520,82.6,165.2,bf16,330.3,GDDR6X,21.000,384,1008,24,450
+H100 SXM5,2022,Hopper,132,128,1.980,67.0,989.4,bf16,1978.9,HBM3,5.230,5120,3350,80,700
+H200 SXM,2023,Hopper,132,128,1.980,67.0,989.4,bf16,1978.9,HBM3e,6.400,6144,4800,141,700
+B200 SXM,2024,Blackwell,,128,,80.0,2250,bf16,4500,HBM3e,8.000,8192,8000,192,1000
+RTX 5090,2025,Blackwell,170,128,2.407,104.8,209.5,bf16,419.0,GDDR7,28.000,512,1792,32,575

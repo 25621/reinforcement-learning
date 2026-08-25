@@ -1,0 +1,14 @@
+finding,value
+addresses_predicted,862
+mismatches,0
+view_bytes,4000000
+copy_bytes,1023738880
+unfold_matches,True
+loop_matches,True
+strided_ms,0.3061649913433939
+loop_ms,86.22904701041989
+windows_timed,20000
+reachable_8,12
+capacity,20
+safe_8,True
+safe_40,False

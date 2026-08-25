@@ -1,0 +1,379 @@
+{
+ "A": {
+  "rows": [
+   {
+    "turn": 1,
+    "ctx": 151,
+    "fresh": 151,
+    "cold_ms": 104.2,
+    "warm_ms": 102.1,
+    "speedup": 1.02
+   },
+   {
+    "turn": 2,
+    "ctx": 313,
+    "fresh": 162,
+    "cold_ms": 208.1,
+    "warm_ms": 112.9,
+    "speedup": 1.84
+   },
+   {
+    "turn": 3,
+    "ctx": 480,
+    "fresh": 167,
+    "cold_ms": 336.1,
+    "warm_ms": 116.6,
+    "speedup": 2.88
+   },
+   {
+    "turn": 4,
+    "ctx": 645,
+    "fresh": 165,
+    "cold_ms": 405.7,
+    "warm_ms": 120.8,
+    "speedup": 3.36
+   },
+   {
+    "turn": 5,
+    "ctx": 804,
+    "fresh": 159,
+    "cold_ms": 468.8,
+    "warm_ms": 120.2,
+    "speedup": 3.9
+   },
+   {
+    "turn": 6,
+    "ctx": 962,
+    "fresh": 158,
+    "cold_ms": 584.8,
+    "warm_ms": 122.2,
+    "speedup": 4.79
+   }
+  ],
+  "layers": 8,
+  "cold_total_ms": 2107.8,
+  "warm_total_ms": 694.7,
+  "total_speedup": 3.03,
+  "ctx_final": 962,
+  "kv_bytes": 7880704,
+  "bytes_per_token": 8192.0
+ },
+ "B": {
+  "rows": [
+   {
+    "ctx": 151,
+    "bytes": 1236992,
+    "recompute_ms": 103.7,
+    "offload_out_ms": 0.24,
+    "restore_ms": 1.55,
+    "copy_gbs": 0.8,
+    "pcie_restore_ms": 0.049,
+    "ratio": 67.0
+   },
+   {
+    "ctx": 313,
+    "bytes": 2564096,
+    "recompute_ms": 227.23,
+    "offload_out_ms": 0.41,
+    "restore_ms": 0.73,
+    "copy_gbs": 3.54,
+    "pcie_restore_ms": 0.103,
+    "ratio": 313.35
+   },
+   {
+    "ctx": 480,
+    "bytes": 3932160,
+    "recompute_ms": 317.08,
+    "offload_out_ms": 0.5,
+    "restore_ms": 0.87,
+    "copy_gbs": 4.5,
+    "pcie_restore_ms": 0.157,
+    "ratio": 362.53
+   },
+   {
+    "ctx": 645,
+    "bytes": 5283840,
+    "recompute_ms": 377.73,
+    "offload_out_ms": 0.63,
+    "restore_ms": 1.21,
+    "copy_gbs": 4.38,
+    "pcie_restore_ms": 0.211,
+    "ratio": 313.19
+   },
+   {
+    "ctx": 804,
+    "bytes": 6586368,
+    "recompute_ms": 467.69,
+    "offload_out_ms": 0.75,
+    "restore_ms": 1.37,
+    "copy_gbs": 4.8,
+    "pcie_restore_ms": 0.263,
+    "ratio": 340.53
+   },
+   {
+    "ctx": 962,
+    "bytes": 7880704,
+    "recompute_ms": 575.15,
+    "offload_out_ms": 0.87,
+    "restore_ms": 1.82,
+    "copy_gbs": 4.32,
+    "pcie_restore_ms": 0.315,
+    "ratio": 315.37
+   }
+  ],
+  "pcie_gbs": 25.0,
+  "mean_copy_gbs": 3.72,
+  "crossover": {
+   "note": "offload beats recompute when the link is faster than bytes_per_token x prefill_tokens_per_second",
+   "rows": {
+    "this CPU, 0.5B (8 layers), measured": {
+     "bytes_per_token": 8192.0,
+     "prefill_tok_s": 1563.1,
+     "link_needed_gb_s": 0.013,
+     "link_available_gb_s": 3.72
+    },
+    "8B on an H100 over PCIe (arithmetic)": {
+     "bytes_per_token": 131072,
+     "prefill_tok_s": 10000,
+     "link_needed_gb_s": 1.311,
+     "link_available_gb_s": 25.0
+    },
+    "8B over 10 Gb Ethernet (arithmetic)": {
+     "bytes_per_token": 131072,
+     "prefill_tok_s": 10000,
+     "link_needed_gb_s": 1.311,
+     "link_available_gb_s": 1.25
+    },
+    "70B MHA on 8xH100 over PCIe (arithmetic)": {
+     "bytes_per_token": 2621440,
+     "prefill_tok_s": 4000,
+     "link_needed_gb_s": 10.486,
+     "link_available_gb_s": 25.0
+    }
+   }
+  }
+ },
+ "C": {
+  "base_ctx": 480,
+  "base_bytes": 3932160,
+  "base_prefill_ms": 293.08,
+  "branches": [
+   {
+    "text": "Try the search tool.",
+    "new_tokens": 5,
+    "clone_ms": 1.04,
+    "extend_ms": 47.16,
+    "bytes": 3973120
+   },
+   {
+    "text": "Try reading the file.",
+    "new_tokens": 5,
+    "clone_ms": 1.06,
+    "extend_ms": 47.59,
+    "bytes": 3973120
+   },
+   {
+    "text": "Try querying the database.",
+    "new_tokens": 5,
+    "clone_ms": 1.15,
+    "extend_ms": 50.07,
+    "bytes": 3973120
+   }
+  ],
+  "n_branches": 3,
+  "copied_bytes": 11919360,
+  "shared_bytes": 4055040,
+  "saving_x": 2.94,
+  "clone_vs_prefill": 0.004
+ },
+ "D": {
+  "ctx": 962,
+  "bytes": 7880704.0,
+  "round_trip_measured_ms": 4.27,
+  "round_trip_pcie_ms": 0.63,
+  "rows": {
+   "search": {
+    "stall_s": 2.5,
+    "hold_cost_ratio": 585.4,
+    "hold_cost_ratio_pcie": 3965.4,
+    "mb_seconds_if_held": 19.7
+   },
+   "read_file": {
+    "stall_s": 0.4,
+    "hold_cost_ratio": 93.7,
+    "hold_cost_ratio_pcie": 634.5,
+    "mb_seconds_if_held": 3.2
+   },
+   "run_tests": {
+    "stall_s": 12.0,
+    "hold_cost_ratio": 2809.8,
+    "hold_cost_ratio_pcie": 19033.8,
+    "mb_seconds_if_held": 94.6
+   },
+   "http_get": {
+    "stall_s": 1.2,
+    "hold_cost_ratio": 281.0,
+    "hold_cost_ratio_pcie": 1903.4,
+    "mb_seconds_if_held": 9.5
+   },
+   "db_query": {
+    "stall_s": 0.8,
+    "hold_cost_ratio": 187.3,
+    "hold_cost_ratio_pcie": 1268.9,
+    "mb_seconds_if_held": 6.3
+   }
+  }
+ },
+ "E": [
+  {
+   "policy": "no-cache",
+   "mean_ms": 849.7,
+   "p95_ms": 1105.6,
+   "p99_ms": 1105.6,
+   "evictions": 0,
+   "restored": 0,
+   "recomputed_tokens": 153600,
+   "peak_sessions_held": null,
+   "last_turn_ms": 1105.6,
+   "first_turn_ms": 593.8,
+   "mem_gb_seconds": 0.0
+  },
+  {
+   "policy": "drop-lru",
+   "mean_ms": 830.6,
+   "p95_ms": 1105.6,
+   "p99_ms": 1105.6,
+   "evictions": 260,
+   "restored": 0,
+   "recomputed_tokens": 140960,
+   "peak_sessions_held": null,
+   "last_turn_ms": 1073.7,
+   "first_turn_ms": 593.8,
+   "mem_gb_seconds": 1.0
+  },
+  {
+   "policy": "offload-lru",
+   "mean_ms": 595.1,
+   "p95_ms": 596.5,
+   "p99_ms": 596.5,
+   "evictions": 260,
+   "restored": 215,
+   "recomputed_tokens": 0,
+   "peak_sessions_held": null,
+   "last_turn_ms": 596.3,
+   "first_turn_ms": 593.8,
+   "mem_gb_seconds": 1.0
+  },
+  {
+   "policy": "stall-aware",
+   "mean_ms": 595.5,
+   "p95_ms": 597.6,
+   "p99_ms": 597.6,
+   "evictions": 234,
+   "restored": 188,
+   "recomputed_tokens": 0,
+   "peak_sessions_held": null,
+   "last_turn_ms": 597.4,
+   "first_turn_ms": 593.9,
+   "mem_gb_seconds": 0.69
+  },
+  {
+   "policy": "unlimited",
+   "mean_ms": 593.8,
+   "p95_ms": 593.8,
+   "p99_ms": 593.8,
+   "evictions": 0,
+   "restored": 0,
+   "recomputed_tokens": 0,
+   "peak_sessions_held": null,
+   "last_turn_ms": 593.8,
+   "first_turn_ms": 593.8,
+   "mem_gb_seconds": 11.43
+  }
+ ],
+ "E_gpu": [
+  {
+   "policy": "no-cache",
+   "mean_ms": 256.0,
+   "p95_ms": 296.0,
+   "p99_ms": 296.0,
+   "evictions": 0,
+   "restored": 0,
+   "recomputed_tokens": 153600,
+   "peak_sessions_held": null,
+   "last_turn_ms": 296.0,
+   "first_turn_ms": 216.0,
+   "mem_gb_seconds": 0.0
+  },
+  {
+   "policy": "drop-lru",
+   "mean_ms": 249.7,
+   "p95_ms": 296.0,
+   "p99_ms": 296.0,
+   "evictions": 237,
+   "restored": 0,
+   "recomputed_tokens": 127680,
+   "peak_sessions_held": null,
+   "last_turn_ms": 289.3,
+   "first_turn_ms": 216.0,
+   "mem_gb_seconds": 15.69
+  },
+  {
+   "policy": "offload-lru",
+   "mean_ms": 217.8,
+   "p95_ms": 220.2,
+   "p99_ms": 220.2,
+   "evictions": 237,
+   "restored": 192,
+   "recomputed_tokens": 0,
+   "peak_sessions_held": null,
+   "last_turn_ms": 219.8,
+   "first_turn_ms": 216.0,
+   "mem_gb_seconds": 15.69
+  },
+  {
+   "policy": "stall-aware",
+   "mean_ms": 220.4,
+   "p95_ms": 225.2,
+   "p99_ms": 225.2,
+   "evictions": 235,
+   "restored": 189,
+   "recomputed_tokens": 0,
+   "peak_sessions_held": null,
+   "last_turn_ms": 224.8,
+   "first_turn_ms": 216.4,
+   "mem_gb_seconds": 10.63
+  },
+  {
+   "policy": "unlimited",
+   "mean_ms": 216.0,
+   "p95_ms": 216.0,
+   "p99_ms": 216.0,
+   "evictions": 0,
+   "restored": 0,
+   "recomputed_tokens": 0,
+   "peak_sessions_held": null,
+   "last_turn_ms": 216.0,
+   "first_turn_ms": 216.0,
+   "mem_gb_seconds": 178.54
+  }
+ ],
+ "gpu_cal": {
+  "bytes_per_token": 131072,
+  "tokens_per_turn": 160,
+  "prefill_s_per_token": 0.0001,
+  "restore_s_per_byte": 4e-11,
+  "offload_s_per_byte": 4e-11,
+  "decode_s_per_turn": 0.2,
+  "park_gain": 1.0
+ },
+ "cal": {
+  "bytes_per_token": 8192.0,
+  "tokens_per_turn": 160,
+  "prefill_s_per_token": 0.000639752275,
+  "restore_s_per_byte": 4.04e-10,
+  "offload_s_per_byte": 1.37e-10,
+  "decode_s_per_turn": 0.49148231803,
+  "park_gain": 1.0
+ }
+}

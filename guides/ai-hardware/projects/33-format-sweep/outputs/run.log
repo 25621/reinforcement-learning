@@ -1,0 +1,68 @@
+
+=== A. Does our from-scratch caster agree with the hardware format? ===
+  BF16       mismatches vs torch.torch.bfloat16: 0 / 150000
+  FP16       mismatches vs torch.torch.float16: 0 / 150000
+  FP8 E4M3   mismatches vs torch.torch.float8_e4m3fn: 0 / 150000
+  FP8 E5M2   mismatches vs torch.torch.float8_e5m2: 0 / 150000
+
+=== B. Format anatomy, measured rather than quoted ===
+  FP32       32 bits  1+8+23  max=3.4e+38  min_normal=1.18e-38  eps=1.19e-07  steps in [1,2)=8388608
+  TF32       19 bits  1+8+10  max=3.4e+38  min_normal=1.18e-38  eps=0.000977  steps in [1,2)=1024
+  BF16       16 bits  1+8+ 7  max=3.39e+38  min_normal=1.18e-38  eps=0.00781  steps in [1,2)=128
+  FP16       16 bits  1+5+10  max=6.55e+04  min_normal=6.1e-05  eps=0.000977  steps in [1,2)=1024
+  FP8 E4M3    8 bits  1+4+ 3  max=448  min_normal=0.0156  eps=0.125  steps in [1,2)=8
+  FP8 E5M2    8 bits  1+5+ 2  max=5.73e+04  min_normal=6.1e-05  eps=0.25  steps in [1,2)=4
+  FP4 E2M1    4 bits  1+2+ 1  max=6  min_normal=1  eps=0.5  steps in [1,2)=2
+
+  Bit layout of 0.1 in FP32 (sign exponent mantissa):
+      0.1 -> 0 01111011 10011001100110011001101   (exponent field 123 = 2^-4, mantissa 5033165/2^23)
+      1.0 -> 0 01111111 00000000000000000000000   (exponent field 127 = 2^0, mantissa 0/2^23)
+     -2.5 -> 1 10000000 01000000000000000000000   (exponent field 128 = 2^1, mantissa 2097152/2^23)
+
+  What happens at the edges of FP8 E4M3 (max = 448):
+    BF16       ['0.300781', '0.000100136', '448', '500']
+    FP16       ['0.300049', '0.000100017', '448', '500']
+    FP8 E4M3   ['0.3125', '0', '448', 'nan']
+    FP8 E5M2   ['0.3125', '0.000106812', '448', '512']
+
+  Every value FP4 E2M1 can represent (positives): [0.0, 0.5, 1.0, 1.5, 2.0, 3.0, 4.0, 6.0]
+
+  Relative error of the same tensor at different magnitudes:
+    BF16       0.001 0.001 0.001 0.001 0.001 0.001 0.001 0.001 0.001 0.001 0.001 0.001 0.001 0.001 0.001 0.001
+    FP16       1.000 1.000 0.998 0.185 0.019 0.002 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.806
+    FP8 E4M3   1.000 1.000 1.000 1.000 1.000 1.000 1.000 0.605 0.061 0.023 0.023 0.023 0.022 0.901 0.999 1.000
+    FP8 E5M2   1.000 1.000 1.000 1.000 1.000 0.474 0.060 0.045 0.045 0.045 0.045 0.045 0.045 0.045 0.045 0.835
+    magnitudes: 1e-10 1e-9  1e-8  1e-7  1e-6  1e-5  1e-4  1e-3  1e-2  1e-1  1e0   1e1   1e2   1e3   1e4   1e5  
+
+  wrote /home/canary/project/tmp/claude-ai-hardware-phase7/guides/ai-hardware/projects/33-format-sweep/outputs/value_grid.png
+
+=== D. Matmul speed per dtype on this CPU ===
+  torch.float32       4.14 ms     518.7 GFLOP/s
+  torch.bfloat16   1928.80 ms       1.1 GFLOP/s
+  torch.float16    2185.01 ms       1.0 GFLOP/s
+  fastest: torch.float32 (1.00x vs fp32)
+
+=== E. Training the same tiny transformer in six formats ===
+/home/canary/project/tmp/claude-ai-hardware-phase7/guides/ai-hardware/projects/33-format-sweep/run.py:262: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:836.)
+  curve.append((step, float(loss)))
+  FP32                   val loss 1.89545   ppl   6.66    18.5s
+  BF16                   val loss 1.89571   ppl   6.66    48.0s
+  FP16                   val loss 1.89570   ppl   6.66    46.4s
+  FP8 E4M3 (no scale)    val loss 1.89412   ppl   6.65    48.9s
+  FP8 E4M3 (scaled)      val loss 1.89117   ppl   6.63    56.4s
+  FP4 E2M1 (no scale)    val loss 2.49926   ppl  12.17    46.3s
+  FP4 E2M1 (scaled)      val loss 1.93696   ppl   6.94    51.8s
+  wrote /home/canary/project/tmp/claude-ai-hardware-phase7/guides/ai-hardware/projects/33-format-sweep/outputs/format_sweep.png
+
+=== F. Gradient underflow: the reason FP16 ships with a loss scaler ===
+  loss scale      1  BF16       gradients flushed to zero:  0.000%
+  loss scale      1  FP16       gradients flushed to zero:  0.008%
+  loss scale      1  FP8 E4M3   gradients flushed to zero: 93.339%
+  loss scale   1024  BF16       gradients flushed to zero:  0.000%
+  loss scale   1024  FP16       gradients flushed to zero:  0.000%
+  loss scale   1024  FP8 E4M3   gradients flushed to zero:  0.271%
+  smallest non-zero gradient magnitude: 3.57e-10
+  FP16 smallest subnormal: 5.96e-08   BF16: 9.18e-41   E4M3: 0.00195
+
+wrote /home/canary/project/tmp/claude-ai-hardware-phase7/guides/ai-hardware/projects/33-format-sweep/outputs/findings.json   total 334s

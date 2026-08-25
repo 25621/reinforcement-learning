@@ -1,0 +1,104 @@
+{
+ "text_to_image": [
+  {
+   "attribute": "Male",
+   "positive_prompt": "a young man",
+   "negative_prompt": "a young woman",
+   "positive": 0.5404260754585266,
+   "negative": 0.3487192690372467,
+   "swing": 0.1917068064212799,
+   "real_swing": 0.746051549911499,
+   "obedience": 0.2569618767550597
+  },
+  {
+   "attribute": "Smiling",
+   "positive_prompt": "a smiling young woman",
+   "negative_prompt": "a young woman",
+   "positive": 0.275271475315094,
+   "negative": 0.17514945566654205,
+   "swing": 0.10012201964855194,
+   "real_swing": 0.7118290066719055,
+   "obedience": 0.14065459360340443
+  },
+  {
+   "attribute": "Eyeglasses",
+   "positive_prompt": "a young man with glasses",
+   "negative_prompt": "a young man",
+   "positive": 0.3051578402519226,
+   "negative": 0.03359510377049446,
+   "swing": 0.27156273648142815,
+   "real_swing": 0.49423253536224365,
+   "obedience": 0.5494634955231923
+  },
+  {
+   "attribute": "Blond_Hair",
+   "positive_prompt": "a young woman with blond hair",
+   "negative_prompt": "a young woman with black hair",
+   "positive": 0.4539509415626526,
+   "negative": 0.007532569579780102,
+   "swing": 0.4464183719828725,
+   "real_swing": 0.6259189248085022,
+   "obedience": 0.7132207611703907
+  }
+ ],
+ "image_to_text": {
+  "unified": {
+   "per_attribute": {
+    "Male": {
+     "accuracy": 0.8224999904632568,
+     "n": 400
+    },
+    "Smiling": {
+     "accuracy": 0.8174999952316284,
+     "n": 400
+    },
+    "Young": {
+     "accuracy": 0.8424999713897705,
+     "n": 400
+    },
+    "Eyeglasses": {
+     "accuracy": 0.9350000023841858,
+     "n": 400
+    },
+    "Blond_Hair": {
+     "accuracy": 0.9023136496543884,
+     "n": 389
+    },
+    "Wearing_Hat": {
+     "accuracy": 0.9524999856948853,
+     "n": 400
+    }
+   },
+   "mean": 0.8787189324696859
+  },
+  "text_only_prior": {
+   "per_attribute": {
+    "Male": {
+     "accuracy": 0.8149999976158142,
+     "n": 400
+    },
+    "Smiling": {
+     "accuracy": 0.7774999737739563,
+     "n": 400
+    },
+    "Young": {
+     "accuracy": 0.8399999737739563,
+     "n": 400
+    },
+    "Eyeglasses": {
+     "accuracy": 0.9375,
+     "n": 400
+    },
+    "Blond_Hair": {
+     "accuracy": 0.7712082266807556,
+     "n": 389
+    },
+    "Wearing_Hat": {
+     "accuracy": 0.9549999833106995,
+     "n": 400
+    }
+   },
+   "mean": 0.849368025859197
+  }
+ }
+}

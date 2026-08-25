@@ -1,0 +1,146 @@
+{
+  "config": {
+    "prefill": 1024,
+    "eval_steps": 128,
+    "budget": 256
+  },
+  "A_perplexity": [
+    {
+      "ppl": 7.705803179149701,
+      "prefill_s": 3.4813355799997225,
+      "tokens_held": 1152,
+      "bytes": 28311552,
+      "evicted": 0,
+      "top1_agreement": 1.0,
+      "policy": "full"
+    },
+    {
+      "ppl": 983.7554157872221,
+      "prefill_s": 3.4966928610228933,
+      "tokens_held": 256,
+      "bytes": 6291456,
+      "evicted": 21504,
+      "top1_agreement": 0.2265625,
+      "policy": "recent"
+    },
+    {
+      "ppl": 31.980491127328595,
+      "prefill_s": 3.5183524470194243,
+      "tokens_held": 256,
+      "bytes": 6291456,
+      "evicted": 21504,
+      "top1_agreement": 0.6015625,
+      "policy": "sink_recent"
+    },
+    {
+      "ppl": 24.913820889558423,
+      "prefill_s": 3.7546187239931896,
+      "tokens_held": 256,
+      "bytes": 6291456,
+      "evicted": 21504,
+      "top1_agreement": 0.671875,
+      "policy": "h2o"
+    },
+    {
+      "ppl": 24.859085058958655,
+      "prefill_s": 3.6851859460002743,
+      "tokens_held": 256,
+      "bytes": 6291456,
+      "evicted": 21504,
+      "top1_agreement": 0.671875,
+      "policy": "h2o_sink"
+    },
+    {
+      "ppl": 156.83227988770903,
+      "prefill_s": 3.5660527020227164,
+      "tokens_held": 256,
+      "bytes": 6291456,
+      "evicted": 21504,
+      "top1_agreement": 0.359375,
+      "policy": "random"
+    }
+  ],
+  "B_probe": [
+    {
+      "policy": "full",
+      "accuracy": 1.0
+    },
+    {
+      "policy": "recent",
+      "accuracy": 0.0
+    },
+    {
+      "policy": "sink_recent",
+      "accuracy": 0.0
+    },
+    {
+      "policy": "h2o",
+      "accuracy": 1.0
+    },
+    {
+      "policy": "h2o_sink",
+      "accuracy": 1.0
+    },
+    {
+      "policy": "random",
+      "accuracy": 0.0
+    }
+  ],
+  "C_sweep": [
+    {
+      "policy": "recent",
+      "budget": 64,
+      "ppl": 1346.1838901115989,
+      "bytes": 1572864
+    },
+    {
+      "policy": "sink_recent",
+      "budget": 64,
+      "ppl": 39.94707168843747,
+      "bytes": 1572864
+    },
+    {
+      "policy": "h2o_sink",
+      "budget": 64,
+      "ppl": 29.939056083421715,
+      "bytes": 1572864
+    },
+    {
+      "policy": "recent",
+      "budget": 256,
+      "ppl": 1283.42386753445,
+      "bytes": 6291456
+    },
+    {
+      "policy": "sink_recent",
+      "budget": 256,
+      "ppl": 23.931955183257784,
+      "bytes": 6291456
+    },
+    {
+      "policy": "h2o_sink",
+      "budget": 256,
+      "ppl": 15.338745968006254,
+      "bytes": 6291456
+    },
+    {
+      "policy": "recent",
+      "budget": 512,
+      "ppl": 866.6648624670033,
+      "bytes": 12582912
+    },
+    {
+      "policy": "sink_recent",
+      "budget": 512,
+      "ppl": 22.414851719993976,
+      "bytes": 12582912
+    },
+    {
+      "policy": "h2o_sink",
+      "budget": 512,
+      "ppl": 6.817945154005365,
+      "bytes": 12582912
+    }
+  ],
+  "C_full_ppl": 3.456016058000494
+}

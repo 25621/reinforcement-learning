@@ -1,0 +1,93 @@
+section,name,value
+0. the test database that ships with your wheel,op_db import seconds,1.95556
+0. the test database that ships with your wheel,OpInfo entries,697
+0. the test database that ships with your wheel,distinct operators covered,634
+0. the test database that ships with your wheel,entries claiming out= support,359
+"1. two properties, every operator",sweep seconds,4.57606
+"1. two properties, every operator",property A (meta agrees) checks,565
+"1. two properties, every operator",property A failures,13
+"1. two properties, every operator",property B (layout invariance) checks,387
+"1. two properties, every operator",property B failures,32
+"1. two properties, every operator",samples the harness could not build,25
+"1. two properties, every operator",RAW failures to triage,45
+2. triage: which failures are real,ops tagged data-dependent in native_functions.yaml,17
+2. triage: which failures are real,bucket: float rounding (different kernel path),23
+2. triage: which failures are real,bucket: NaN vs NaN: our comparator's default,7
+2. triage: which failures are real,bucket: no meta kernel written yet,5
+2. triage: which failures are real,bucket: data-dependent output (by design),5
+2. triage: which failures are real,bucket: sparse layouts (out of scope),3
+2. triage: which failures are real,bucket: documented randomness,1
+2. triage: which failures are real,bucket: stride IS the argument,1
+2. triage: which failures are real,survivors after triage,0
+2. triage: which failures are real,largest layout differences: normal,abs=13.5 rel=1.17
+2. triage: which failures are real,largest layout differences: as_strided,abs=8.07 rel=1
+2. triage: which failures are real,largest layout differences: matmul,abs=1.53e-05 rel=2.02e-07
+2. triage: which failures are real,largest layout differences: __rmatmul__,abs=1.53e-05 rel=2.02e-07
+2. triage: which failures are real,largest layout differences: inner,abs=4.77e-07 rel=1.76e-07
+3. the out= contract,operators tested for the out= rule,302
+3. the out= contract,that warn as documented,290
+3. the out= contract,that resize SILENTLY,12
+3. the out= contract,  silent,addbmm
+3. the out= contract,  silent,arange
+3. the out= contract,  silent,bernoulli
+3. the out= contract,  silent,empty
+3. the out= contract,  silent,full
+3. the out= contract,  silent,log_sigmoid
+3. the out= contract,  silent,multinomial
+3. the out= contract,  silent,narrow_copy
+3. the out= contract,  silent,normal
+3. the out= contract,  silent,ones
+3. the out= contract,  silent,randn
+3. the out= contract,  silent,zeros
+3. the out= contract,F.logsigmoid     warns on resize,False
+3. the out= contract,torch.sigmoid    warns on resize,True
+3. the out= contract,torch.tanh       warns on resize,True
+3. the out= contract,torch.threshold  warns on resize,True
+4. why: structured vs unstructured,log_sigmoid.out    structured,False
+4. why: structured vs unstructured,sigmoid.out        structured,True
+4. why: structured vs unstructured,tanh.out           structured,True
+4. why: structured vs unstructured,threshold.out      structured,True
+4. why: structured vs unstructured,addbmm.out         structured,False
+4. why: structured vs unstructured,baddbmm.out        structured,True
+4. why: structured vs unstructured,narrow_copy.out    structured,False
+4. why: structured vs unstructured,add.out            structured,True
+4. why: structured vs unstructured,the kernel that actually resizes,log_sigmoid_forward_out_cpu
+4. why: structured vs unstructured,its declaration lives in,torch/include/ATen/ops/log_sigmoid_forward_native.h
+5. does 'unstructured' predict 'silent'?,ops with an entry we can read,246
+5. does 'unstructured' predict 'silent'?,structured AND warns,123
+5. does 'unstructured' predict 'silent'?,structured AND silent,0
+5. does 'unstructured' predict 'silent'?,unstructured AND warns,111
+5. does 'unstructured' predict 'silent'?,unstructured AND silent,12
+5. does 'unstructured' predict 'silent'?,accuracy of 'structured <=> warns',0.54878
+5. does 'unstructured' predict 'silent'?,P(warns | structured),1
+5. does 'unstructured' predict 'silent'?,P(silent | unstructured),0.097561
+6. the codebase already tracks this,ops marked as expected failures on test_out_warning,27
+6. the codebase already tracks this,  the list,"_batch_norm_with_update, _native_batch_norm_legit, addbmm, arange, bernoulli, empty, empty_permuted, eye, full, linspace, log_sigmoid, logcumsumexp, logspace, lu, max_pool2d_with_indices_backward, mode, multinomial, narrow_copy, native_batch_norm, nonzero, nonzero_static, normal, ones, randint, randn, sparse.sampled_addmm, zeros"
+6. the codebase already tracks this,ops our sweep found silent,12
+6. the codebase already tracks this,"of those, already tracked",12
+6. the codebase already tracks this,precision against the maintainers' own list,1
+6. the codebase already tracks this,tracked but not found by our sweep,15
+6. the codebase already tracks this,"  (our sweep tests one sample per op, and skips some shapes)","_batch_norm_with_update, _native_batch_norm_legit, empty_permuted, eye, linspace, logcumsumexp, logspace, lu"
+6. the codebase already tracks this,total skip/xfail entries in op_db,1723
+6. the codebase already tracks this,distinct tests they cover,114
+6. the codebase already tracks this,  test_variant_consistency_jit,229
+6. the codebase already tracks this,  test_normalize_operator_exhaustive,124
+6. the codebase already tracks this,  None,113
+6. the codebase already tracks this,  test_numpy_refs,77
+6. the codebase already tracks this,  test_variant_consistency_eager,67
+6. the codebase already tracks this,  test_compare_cpu,65
+7. writing and validating the fix,before fix: warns,False
+7. writing and validating the fix,before fix: value correct,True
+7. writing and validating the fix,fix build seconds,16.1768
+7. writing and validating the fix,the CPU kernel is now registered at,/home/canary/.cache/torch_extensions/py312_cu128/p57_fix/main.cpp:21
+7. writing and validating the fix,after fix: warns,True
+7. writing and validating the fix,after fix: value correct,True
+7. writing and validating the fix,fix works,True
+7. writing and validating the fix,sibling ops still correct,True
+7. writing and validating the fix,empty out= still resizes without warning,True
+7. writing and validating the fix,  and produces the right shape,"(20,)"
+8. the test that would go in the pull request,tests run,2
+8. the test that would go in the pull request,failures,0
+8. the test that would go in the pull request,errors,0
+8. the test that would go in the pull request,all pass with the fix loaded,True
+8. the test that would go in the pull request,issue report written,outputs/issue.md

@@ -1,0 +1,296 @@
+{
+ "link_state": {
+  "idle": {
+   "pcie.link.gen.current": "1",
+   "pcie.link.width.current": "16",
+   "pstate": "P8",
+   "clocks.sm": 139.0,
+   "power.draw": 6.59
+  },
+  "busy": {
+   "pcie.link.gen.current": "3",
+   "pcie.link.width.current": "16",
+   "pstate": "P2",
+   "clocks.sm": 1860.0,
+   "power.draw": 112.11
+  }
+ },
+ "probe": {
+  "h2d": [
+   {
+    "bytes": 4096,
+    "pageable_gbs": 1.085,
+    "pinned_gbs": 1.023
+   },
+   {
+    "bytes": 65536,
+    "pageable_gbs": 6.39,
+    "pinned_gbs": 7.437
+   },
+   {
+    "bytes": 1048576,
+    "pageable_gbs": 8.656,
+    "pinned_gbs": 12.266
+   },
+   {
+    "bytes": 4194304,
+    "pageable_gbs": 9.761,
+    "pinned_gbs": 12.543
+   },
+   {
+    "bytes": 16777216,
+    "pageable_gbs": 9.786,
+    "pinned_gbs": 12.721
+   },
+   {
+    "bytes": 67108864,
+    "pageable_gbs": 8.644,
+    "pinned_gbs": 12.558
+   },
+   {
+    "bytes": 134217728,
+    "pageable_gbs": 8.626,
+    "pinned_gbs": 12.554
+   },
+   {
+    "bytes": 268435456,
+    "pageable_gbs": 8.551,
+    "pinned_gbs": 12.584
+   }
+  ],
+  "d2h": [
+   {
+    "bytes": 4096,
+    "pageable_gbs": 0.884,
+    "pinned_gbs": 1.125
+   },
+   {
+    "bytes": 65536,
+    "pageable_gbs": 4.633,
+    "pinned_gbs": 7.793
+   },
+   {
+    "bytes": 1048576,
+    "pageable_gbs": 5.915,
+    "pinned_gbs": 12.127
+   },
+   {
+    "bytes": 4194304,
+    "pageable_gbs": 8.142,
+    "pinned_gbs": 12.609
+   },
+   {
+    "bytes": 16777216,
+    "pageable_gbs": 8.489,
+    "pinned_gbs": 12.704
+   },
+   {
+    "bytes": 67108864,
+    "pageable_gbs": 8.432,
+    "pinned_gbs": 12.593
+   },
+   {
+    "bytes": 134217728,
+    "pageable_gbs": 8.488,
+    "pinned_gbs": 12.705
+   },
+   {
+    "bytes": 268435456,
+    "pageable_gbs": 8.421,
+    "pinned_gbs": 12.784
+   }
+  ],
+  "device": {
+   "name": "NVIDIA GeForce GTX 1070 Ti",
+   "cc": "6.1",
+   "sms": 19,
+   "core_mhz": 1683,
+   "mem_mhz": 4004,
+   "bus_bits": 256,
+   "vram_mb": 8107
+  },
+  "duplex": {
+   "bytes": 67108864,
+   "h2d_gbs": 12.621,
+   "d2h_gbs": 12.844,
+   "both_gbs": 21.094
+  },
+  "zerocopy": {
+   "bytes": 67108864,
+   "device_gbs": 210.905,
+   "mapped_gbs": 12.417
+  },
+  "dram_gbs": 201.513,
+  "latency": {
+   "h2d_4b_us": 3.731,
+   "launch_us": 1.166
+  }
+ },
+ "summary": {
+  "h2d_pinned": 12.721,
+  "h2d_pageable": 9.786,
+  "d2h_pinned": 12.784,
+  "pin_speedup": 1.2999182505620275,
+  "theory_gbs": 15.75,
+  "pinned_pct_of_theory": 80.76825396825396,
+  "pageable_pct_of_theory": 62.133333333333326,
+  "duplex_sum": 25.465,
+  "duplex_both": 21.094,
+  "duplex_efficiency": 0.8283526408796388,
+  "zerocopy_penalty": 16.98518160586293,
+  "dram_gbs": 201.513,
+  "dram_over_link": 15.840971621727851
+ },
+ "allreduce": {
+  "2": [
+   {
+    "mb": 1,
+    "bytes": 1048576,
+    "sec": 0.0006964751984924078,
+    "correct": true,
+    "algbw_gbs": 1.5055467908545066,
+    "busbw_gbs": 1.5055467908545066
+   },
+   {
+    "mb": 4,
+    "bytes": 4194304,
+    "sec": 0.002362959401216358,
+    "correct": true,
+    "algbw_gbs": 1.7750216096988118,
+    "busbw_gbs": 1.7750216096988118
+   },
+   {
+    "mb": 16,
+    "bytes": 16777216,
+    "sec": 0.007885890803299845,
+    "correct": true,
+    "algbw_gbs": 2.1274978843201313,
+    "busbw_gbs": 2.1274978843201313
+   },
+   {
+    "mb": 64,
+    "bytes": 67108864,
+    "sec": 0.02934000560780987,
+    "correct": true,
+    "algbw_gbs": 2.287281907749078,
+    "busbw_gbs": 2.287281907749078
+   },
+   {
+    "mb": 256,
+    "bytes": 268435456,
+    "sec": 0.11267008300637826,
+    "correct": true,
+    "algbw_gbs": 2.382490975752666,
+    "busbw_gbs": 2.382490975752666
+   }
+  ],
+  "4": [
+   {
+    "mb": 1,
+    "bytes": 1048576,
+    "sec": 0.001208653801586479,
+    "correct": true,
+    "algbw_gbs": 0.8675569452755116,
+    "busbw_gbs": 1.3013354179132675
+   },
+   {
+    "mb": 4,
+    "bytes": 4194304,
+    "sec": 0.004732089000754058,
+    "correct": true,
+    "algbw_gbs": 0.8863535743583094,
+    "busbw_gbs": 1.329530361537464
+   },
+   {
+    "mb": 16,
+    "bytes": 16777216,
+    "sec": 0.01890915900003165,
+    "correct": true,
+    "algbw_gbs": 0.8872534204176885,
+    "busbw_gbs": 1.3308801306265328
+   },
+   {
+    "mb": 64,
+    "bytes": 67108864,
+    "sec": 0.0802128850016743,
+    "correct": true,
+    "algbw_gbs": 0.8366344633857669,
+    "busbw_gbs": 1.2549516950786503
+   },
+   {
+    "mb": 256,
+    "bytes": 268435456,
+    "sec": 0.298885050675987,
+    "correct": true,
+    "algbw_gbs": 0.8981227244148904,
+    "busbw_gbs": 1.3471840866223355
+   }
+  ]
+ },
+ "verdict": [
+  {
+   "link": "PCIe 3.0 x4",
+   "theory_gbs": 3.94,
+   "healthy_lo": 2.955,
+   "healthy_hi": 3.546,
+   "matches_pinned": false,
+   "matches_pageable": false
+  },
+  {
+   "link": "PCIe 3.0 x8",
+   "theory_gbs": 7.88,
+   "healthy_lo": 5.91,
+   "healthy_hi": 7.092,
+   "matches_pinned": false,
+   "matches_pageable": false
+  },
+  {
+   "link": "PCIe 3.0 x16",
+   "theory_gbs": 15.75,
+   "healthy_lo": 11.8125,
+   "healthy_hi": 14.175,
+   "matches_pinned": true,
+   "matches_pageable": false
+  },
+  {
+   "link": "PCIe 4.0 x4",
+   "theory_gbs": 7.88,
+   "healthy_lo": 5.91,
+   "healthy_hi": 7.092,
+   "matches_pinned": false,
+   "matches_pageable": false
+  },
+  {
+   "link": "PCIe 4.0 x8",
+   "theory_gbs": 15.75,
+   "healthy_lo": 11.8125,
+   "healthy_hi": 14.175,
+   "matches_pinned": true,
+   "matches_pageable": false
+  },
+  {
+   "link": "PCIe 4.0 x16",
+   "theory_gbs": 31.5,
+   "healthy_lo": 23.625,
+   "healthy_hi": 28.35,
+   "matches_pinned": false,
+   "matches_pageable": false
+  },
+  {
+   "link": "PCIe 5.0 x8",
+   "theory_gbs": 31.5,
+   "healthy_lo": 23.625,
+   "healthy_hi": 28.35,
+   "matches_pinned": false,
+   "matches_pageable": false
+  },
+  {
+   "link": "PCIe 5.0 x16",
+   "theory_gbs": 63.0,
+   "healthy_lo": 47.25,
+   "healthy_hi": 56.7,
+   "matches_pinned": false,
+   "matches_pageable": false
+  }
+ ]
+}

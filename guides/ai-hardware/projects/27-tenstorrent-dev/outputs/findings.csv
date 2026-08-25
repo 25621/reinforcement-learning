@@ -1,0 +1,58 @@
+key,value
+A_has_tenstorrent,False
+A_tt_metal_importable,False
+A_tt_metal_error,ModuleNotFoundError
+B_onchip_gbs,1520.6
+B_offchip_gbs,221.4
+B_peak_gbs,1520.6
+B_peak_at_kb,1024
+B_peak_over_offchip,6.87
+B_onchip_over_offchip,6.87
+B_l2_mb,2
+B_cliff_kb,4096
+C_n300_over_h100_sram,2.7
+C_wse3_70b_int8_fits,False
+C_wse3_70b_int4_fits,True
+C_wse3_largest_int8_b,44.0
+D_best,snake (adjacent stages adjacent)
+D_worst,scattered (no placement pass)
+D_placement_spread,4.0
+D_lower_bound_bytes,32768
+D_snake_bottleneck_bytes,32768
+D_snake_is_optimal,True
+D_snake_mean_hops,1.0
+E_corner_over_centre,1.8
+E_gather_over_pipeline,40.0
+E_gather_bytes_vs_pipeline,1.0
+runtime_s,1.6
+
+working_set_kb,ms,GB/s
+512,0.20029,1340.2
+1024,0.17654,1520.6
+1536,0.18371,1455.5
+2048,0.17958,1494.8
+2560,0.21934,1219.0
+3072,0.27689,965.7
+4096,0.4196,639.7
+6144,0.7847,336.7
+8192,1.03301,259.9
+16384,1.1995,223.8
+32768,1.21344,221.2
+65536,1.21233,221.4
+
+accel,sram_mb,dram_gb,chips_for_70b_int8
+GTX 1070 Ti (this card),3.8,8,18306
+NVIDIA A100 80GB,60.7,80,1153
+NVIDIA H100 SXM,80.1,80,874
+AMD MI300X,275.5,192,255
+Tenstorrent Wormhole n150,108.0,12,649
+Tenstorrent Wormhole n300,216.0,24,325
+Tenstorrent Blackhole p150,210.0,32,334
+Groq LPU (LPUv1),230,0,305
+Cerebras WSE-3,44000,0,2
+
+placement,bottleneck_bytes,cycles,links_used,mean_hops
+snake (adjacent stages adjacent),32768,1024,31,1.0
+row-major,32768,1024,52,1.68
+column-major,32768,1024,58,1.87
+scattered (no placement pass),131072,4096,125,5.61

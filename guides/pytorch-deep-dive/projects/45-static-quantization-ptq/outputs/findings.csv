@@ -1,0 +1,38 @@
+section,name,value
+1,asking for Conv2d: modules actually quantized,0
+1,asking for Linear: modules actually quantized,2
+1,weights in Conv2d / in Linear,139.1k / 1.3k (99.1% is convolution)
+1,size: float32 / dynamic-quantized,0.577 MB / 0.577 MB
+1,accuracy unchanged,0.6840
+2,observers inserted by prepare_fx,7
+2,calibration: 512 images,0.32s
+2,"leaf modules, float32","{'Conv2d': 5, 'BatchNorm2d': 5, 'ReLU': 5, 'MaxPool2d': 2, 'AdaptiveAvgPool2d': 1, 'Linear': 1}"
+2,"leaf modules, int8","{'ConvReLU2d': 5, 'MaxPool2d': 2, 'AdaptiveAvgPool2d': 1, 'LinearPackedParams': 1}"
+2,quantize / dequantize nodes in the graph,2
+3,accuracy: float32 / int8,0.6840 / 0.6830  (-0.10 points)
+3,predictions identical to float32,97.75%
+3,size: float32 / int8,0.577 MB / 0.159 MB  (3.64x)
+3,latency batch 1: float32 / int8 (ms),0.907 / 0.590   1.54x
+3,latency batch 32: float32 / int8 (ms),11.900 / 5.768   2.06x
+4,calibrated on    1 real images,accuracy 0.6875
+4,calibrated on    4 real images,accuracy 0.6830
+4,calibrated on   16 real images,accuracy 0.6845
+4,calibrated on   64 real images,accuracy 0.6845
+4,calibrated on  256 real images,accuracy 0.6840
+4,calibrated on 1024 real images,accuracy 0.6860
+4,calibrated on gaussian noise,accuracy 0.6840
+4,calibrated on all zeros,accuracy 0.0975
+4,"calibrated on one image, repeated",accuracy 0.6875
+4,calibrated on images x 20 (wrong scale),accuracy 0.5805
+5,reduce_range=False + per-tensor   weights,accuracy 0.6845
+5,reduce_range=False + per-channel  weights,accuracy 0.6560
+5,reduce_range=True  + per-tensor   weights,accuracy 0.6840
+5,reduce_range=True  + per-channel  weights,accuracy 0.6840
+5,activation observer: MinMax               (reduce_range=True),accuracy 0.6835
+5,activation observer: MovingAverageMinMax  (reduce_range=True),accuracy 0.6825
+5,activation observer: Histogram            (reduce_range=True),accuracy 0.6840
+6,"MLP batch 32, float32",0.598 ms
+6,"MLP batch 32, dynamic int8",0.455 ms
+6,"MLP batch 32, static int8",0.395 ms
+6,dynamic vs static speed-up over float32,1.31x / 1.51x
+6,max |output difference| vs float32: dynamic / static,0.0082 / 0.0101

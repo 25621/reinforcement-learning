@@ -1,0 +1,28 @@
+{
+ "pool": 1967,
+ "gallery": 400,
+ "train": 1567,
+ "vocab": 1871,
+ "mean_words": {
+  "alt": 10.443823080833758,
+  "recap": 8.401626842907982
+ },
+ "human_mean_words": 10.432638535841383,
+ "unique_fraction": {
+  "alt": 0.8912048805287239,
+  "recap": 0.8739196746314184
+ },
+ "mean_clip": {
+  "alt": 0.27340614795684814
+ },
+ "defects_left_in_pool": {
+  "ok": 1596,
+  "dup_exact": 49,
+  "dup_near": 51,
+  "mismatch": 271,
+  "boilerplate": 0,
+  "tiny": 0,
+  "banner": 0,
+  "blocked": 0
+ }
+}

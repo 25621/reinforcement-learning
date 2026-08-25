@@ -1,0 +1,39 @@
+{
+ "published": {
+  "accuracy": 0.85,
+  "circular_accuracy": 0.7333333333333333,
+  "strict_accuracy": 0.0,
+  "unparsed": 0,
+  "n": 120
+ },
+ "reproduction": {
+  "exact_match": true,
+  "raw_answers_match": true
+ },
+ "readings": {
+  "as published": 0.85,
+  "strict letter parser": 0.0,
+  "no answer-format line": 0.775,
+  "wordier answer-format line": 0.36666666666666664,
+  "\"think step by step\"": 0.6833333333333333,
+  "likelihood scoring": 0.375,
+  "circular scoring": 0.7333333333333333
+ },
+ "subset_spread": {
+  "subset_mean": 0.8420648604269294,
+  "subset_std": 0.023724419344557806,
+  "subset_min": 0.8083333333333333,
+  "subset_max": 0.8660714285714286,
+  "standard_error_of_one_run": 0.023724419344557806
+ },
+ "envelope": [
+  0.0,
+  0.85
+ ],
+ "tiling": {
+  "one view": 0.8125,
+  "four tiles + thumbnail": 0.8333333333333334,
+  "seconds one view": 33.4,
+  "seconds tiled": 517.3
+ }
+}

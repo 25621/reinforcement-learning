@@ -1,0 +1,9 @@
+[Gloo] Rank [Gloo] Rank 0 is connected to 11 is connected to  peer ranks. 1Expected number of connected peer ranks is :  peer ranks. 1Expected number of connected peer ranks is : 
+1
+rank 1: simulated failure at step 3
+W0809 18:37:19.144000 902021 torch/distributed/elastic/multiprocessing/api.py:1010] Sending process 902025 closing signal SIGTERM
+E0809 18:37:19.211000 902021 torch/distributed/elastic/multiprocessing/api.py:984] failed (exitcode: 1) local_rank: 1 (pid: 902026) of binary: /usr/bin/python3
+[Gloo] Rank [Gloo] Rank 1 is connected to 01 is connected to  peer ranks. 1Expected number of connected peer ranks is :  peer ranks. 1Expected number of connected peer ranks is : 
+1
+rank 1/2 local_rank 1 node 0 done
+rank 0/2 local_rank 0 node 0 done

@@ -1,0 +1,62 @@
+### zero_shot
+story: a knight rescues a princess
+raw reply:
+```json
+[
+  {
+    "shot": 1,
+    "subject": 7,
+    "motion": "right",
+    "caption": "Knight leaps into battle, sword raised, ready to save Princess"
+  },
+  {
+    "shot": 2,
+    "subject": 8,
+    "motion": "down",
+    "caption": "Knight swings his sword, preparing to strike at the princess"
+  },
+  {
+    "shot": 3,
+    "subject": 5,
+    "motion": "left",
+    "caption": "Knight moves forward, aiming to reach the princess"
+  },
+  {
+    "shot": 4,
+    "subject": 6,
+    "motion": "up",
+    "caption": "Knight lands on the princess's chest, saving her from harm"
+  }
+]
+```
+plan used:
+  shot 1: subject 7, right  Knight leaps into battle, sword raised, ready to save Princess
+  shot 2: subject 8, down   Knight swings his sword, preparing to strike at the princess
+  shot 3: subject 5, left   Knight moves forward, aiming to reach the princess
+  shot 4: subject 6, up     Knight lands on the princess's chest, saving her from harm
+
+### few_shot
+story: a knight rescues a princess
+raw reply:
+[{"shot": 1, "subject": 8, "motion": "up", "caption": "the knight steps forward to rescue the princess"}, {"shot": 2, "subject": 8, "motion": "right", "caption": "he follows the castle path"}, {"shot": 3, "subject": 8, "motion": "down", "caption": "he reaches the castle door"}, {"shot": 4, "subject": 8, "motion": "left", "caption": "he approaches the princess's chamber"}]
+plan used:
+  shot 1: subject 8, up     the knight steps forward to rescue the princess
+  shot 2: subject 8, right  he follows the castle path
+  shot 3: subject 8, down   he reaches the castle door
+  shot 4: subject 8, left   he approaches the princess's chamber
+
+### constrained
+story: a knight rescues a princess
+plan used:
+  shot 1: subject 1, right  
+  shot 2: subject 1, down   
+  shot 3: subject 1, left   
+  shot 4: subject 1, up     
+
+### random
+story: a knight rescues a princess
+plan used:
+  shot 1: subject 2, down   
+  shot 2: subject 3, right  
+  shot 3: subject 3, left   
+  shot 4: subject 4, left   
